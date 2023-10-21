@@ -107,7 +107,45 @@ class GetDomainsDomainResult(dict):
              status: str,
              tl_domain_name: str,
              tracef_record: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cnameAuthStatus' in kwargs:
+            cname_auth_status = kwargs['cnameAuthStatus']
+        if 'cnameConfirmStatus' in kwargs:
+            cname_confirm_status = kwargs['cnameConfirmStatus']
+        if 'cnameRecord' in kwargs:
+            cname_record = kwargs['cnameRecord']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'defaultDomain' in kwargs:
+            default_domain = kwargs['defaultDomain']
+        if 'dnsMx' in kwargs:
+            dns_mx = kwargs['dnsMx']
+        if 'dnsSpf' in kwargs:
+            dns_spf = kwargs['dnsSpf']
+        if 'dnsTxt' in kwargs:
+            dns_txt = kwargs['dnsTxt']
+        if 'domainId' in kwargs:
+            domain_id = kwargs['domainId']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'domainType' in kwargs:
+            domain_type = kwargs['domainType']
+        if 'icpStatus' in kwargs:
+            icp_status = kwargs['icpStatus']
+        if 'mxAuthStatus' in kwargs:
+            mx_auth_status = kwargs['mxAuthStatus']
+        if 'mxRecord' in kwargs:
+            mx_record = kwargs['mxRecord']
+        if 'spfAuthStatus' in kwargs:
+            spf_auth_status = kwargs['spfAuthStatus']
+        if 'spfRecord' in kwargs:
+            spf_record = kwargs['spfRecord']
+        if 'tlDomainName' in kwargs:
+            tl_domain_name = kwargs['tlDomainName']
+        if 'tracefRecord' in kwargs:
+            tracef_record = kwargs['tracefRecord']
+
         _setter("cname_auth_status", cname_auth_status)
         _setter("cname_confirm_status", cname_confirm_status)
         _setter("cname_record", cname_record)
@@ -353,7 +391,29 @@ class GetMailAddressesAddressResult(dict):
              reply_status: str,
              sendtype: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dailyCount' in kwargs:
+            daily_count = kwargs['dailyCount']
+        if 'dailyReqCount' in kwargs:
+            daily_req_count = kwargs['dailyReqCount']
+        if 'domainStatus' in kwargs:
+            domain_status = kwargs['domainStatus']
+        if 'mailAddressId' in kwargs:
+            mail_address_id = kwargs['mailAddressId']
+        if 'monthCount' in kwargs:
+            month_count = kwargs['monthCount']
+        if 'monthReqCount' in kwargs:
+            month_req_count = kwargs['monthReqCount']
+        if 'replyAddress' in kwargs:
+            reply_address = kwargs['replyAddress']
+        if 'replyStatus' in kwargs:
+            reply_status = kwargs['replyStatus']
+
         _setter("account_name", account_name)
         _setter("create_time", create_time)
         _setter("daily_count", daily_count)
@@ -512,7 +572,17 @@ class GetReceiversReceiverseResult(dict):
              receivers_id: str,
              receivers_name: str,
              status: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'receiversAlias' in kwargs:
+            receivers_alias = kwargs['receiversAlias']
+        if 'receiversId' in kwargs:
+            receivers_id = kwargs['receiversId']
+        if 'receiversName' in kwargs:
+            receivers_name = kwargs['receiversName']
+
         _setter("create_time", create_time)
         _setter("description", description)
         _setter("id", id)
@@ -601,7 +671,13 @@ class GetTagsTagResult(dict):
              id: str,
              tag_id: str,
              tag_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'tagId' in kwargs:
+            tag_id = kwargs['tagId']
+        if 'tagName' in kwargs:
+            tag_name = kwargs['tagName']
+
         _setter("id", id)
         _setter("tag_id", tag_id)
         _setter("tag_name", tag_name)

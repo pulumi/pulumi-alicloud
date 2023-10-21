@@ -120,7 +120,43 @@ class InstanceArgs:
              topic_quota: Optional[pulumi.Input[int]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deployType' in kwargs:
+            deploy_type = kwargs['deployType']
+        if 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'eipMax' in kwargs:
+            eip_max = kwargs['eipMax']
+        if 'ioMax' in kwargs:
+            io_max = kwargs['ioMax']
+        if 'ioMaxSpec' in kwargs:
+            io_max_spec = kwargs['ioMaxSpec']
+        if 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if 'paidType' in kwargs:
+            paid_type = kwargs['paidType']
+        if 'partitionNum' in kwargs:
+            partition_num = kwargs['partitionNum']
+        if 'securityGroup' in kwargs:
+            security_group = kwargs['securityGroup']
+        if 'selectedZones' in kwargs:
+            selected_zones = kwargs['selectedZones']
+        if 'serviceVersion' in kwargs:
+            service_version = kwargs['serviceVersion']
+        if 'specType' in kwargs:
+            spec_type = kwargs['specType']
+        if 'topicQuota' in kwargs:
+            topic_quota = kwargs['topicQuota']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("deploy_type", deploy_type)
         _setter("disk_size", disk_size)
         _setter("disk_type", disk_type)
@@ -543,7 +579,45 @@ class _InstanceState:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deployType' in kwargs:
+            deploy_type = kwargs['deployType']
+        if 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if 'eipMax' in kwargs:
+            eip_max = kwargs['eipMax']
+        if 'endPoint' in kwargs:
+            end_point = kwargs['endPoint']
+        if 'ioMax' in kwargs:
+            io_max = kwargs['ioMax']
+        if 'ioMaxSpec' in kwargs:
+            io_max_spec = kwargs['ioMaxSpec']
+        if 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if 'paidType' in kwargs:
+            paid_type = kwargs['paidType']
+        if 'partitionNum' in kwargs:
+            partition_num = kwargs['partitionNum']
+        if 'securityGroup' in kwargs:
+            security_group = kwargs['securityGroup']
+        if 'selectedZones' in kwargs:
+            selected_zones = kwargs['selectedZones']
+        if 'serviceVersion' in kwargs:
+            service_version = kwargs['serviceVersion']
+        if 'specType' in kwargs:
+            spec_type = kwargs['specType']
+        if 'topicQuota' in kwargs:
+            topic_quota = kwargs['topicQuota']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if config is not None:
             _setter("config", config)
         if deploy_type is not None:

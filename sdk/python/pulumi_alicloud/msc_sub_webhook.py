@@ -31,7 +31,13 @@ class MscSubWebhookArgs:
              _setter: Callable[[Any, Any], None],
              server_url: pulumi.Input[str],
              webhook_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverUrl' in kwargs:
+            server_url = kwargs['serverUrl']
+        if 'webhookName' in kwargs:
+            webhook_name = kwargs['webhookName']
+
         _setter("server_url", server_url)
         _setter("webhook_name", webhook_name)
 
@@ -80,7 +86,13 @@ class _MscSubWebhookState:
              _setter: Callable[[Any, Any], None],
              server_url: Optional[pulumi.Input[str]] = None,
              webhook_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverUrl' in kwargs:
+            server_url = kwargs['serverUrl']
+        if 'webhookName' in kwargs:
+            webhook_name = kwargs['webhookName']
+
         if server_url is not None:
             _setter("server_url", server_url)
         if webhook_name is not None:

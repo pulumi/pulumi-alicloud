@@ -65,7 +65,25 @@ class GatewayArgs:
              gateway_name: Optional[pulumi.Input[str]] = None,
              internet_slb_spec: Optional[pulumi.Input[str]] = None,
              slb_spec: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'backupVswitchId' in kwargs:
+            backup_vswitch_id = kwargs['backupVswitchId']
+        if 'deleteSlb' in kwargs:
+            delete_slb = kwargs['deleteSlb']
+        if 'enterpriseSecurityGroup' in kwargs:
+            enterprise_security_group = kwargs['enterpriseSecurityGroup']
+        if 'gatewayName' in kwargs:
+            gateway_name = kwargs['gatewayName']
+        if 'internetSlbSpec' in kwargs:
+            internet_slb_spec = kwargs['internetSlbSpec']
+        if 'slbSpec' in kwargs:
+            slb_spec = kwargs['slbSpec']
+
         _setter("replica", replica)
         _setter("spec", spec)
         _setter("vpc_id", vpc_id)
@@ -264,7 +282,27 @@ class _GatewayState:
              status: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupVswitchId' in kwargs:
+            backup_vswitch_id = kwargs['backupVswitchId']
+        if 'deleteSlb' in kwargs:
+            delete_slb = kwargs['deleteSlb']
+        if 'enterpriseSecurityGroup' in kwargs:
+            enterprise_security_group = kwargs['enterpriseSecurityGroup']
+        if 'gatewayName' in kwargs:
+            gateway_name = kwargs['gatewayName']
+        if 'internetSlbSpec' in kwargs:
+            internet_slb_spec = kwargs['internetSlbSpec']
+        if 'slbLists' in kwargs:
+            slb_lists = kwargs['slbLists']
+        if 'slbSpec' in kwargs:
+            slb_spec = kwargs['slbSpec']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if backup_vswitch_id is not None:
             _setter("backup_vswitch_id", backup_vswitch_id)
         if delete_slb is not None:

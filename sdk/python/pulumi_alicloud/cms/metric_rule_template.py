@@ -73,7 +73,27 @@ class MetricRuleTemplateArgs:
              rest_version: Optional[pulumi.Input[str]] = None,
              silence_time: Optional[pulumi.Input[int]] = None,
              webhook: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'metricRuleTemplateName' in kwargs:
+            metric_rule_template_name = kwargs['metricRuleTemplateName']
+        if 'alertTemplates' in kwargs:
+            alert_templates = kwargs['alertTemplates']
+        if 'applyMode' in kwargs:
+            apply_mode = kwargs['applyMode']
+        if 'enableEndTime' in kwargs:
+            enable_end_time = kwargs['enableEndTime']
+        if 'enableStartTime' in kwargs:
+            enable_start_time = kwargs['enableStartTime']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'notifyLevel' in kwargs:
+            notify_level = kwargs['notifyLevel']
+        if 'restVersion' in kwargs:
+            rest_version = kwargs['restVersion']
+        if 'silenceTime' in kwargs:
+            silence_time = kwargs['silenceTime']
+
         _setter("metric_rule_template_name", metric_rule_template_name)
         if alert_templates is not None:
             _setter("alert_templates", alert_templates)
@@ -293,7 +313,27 @@ class _MetricRuleTemplateState:
              rest_version: Optional[pulumi.Input[str]] = None,
              silence_time: Optional[pulumi.Input[int]] = None,
              webhook: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alertTemplates' in kwargs:
+            alert_templates = kwargs['alertTemplates']
+        if 'applyMode' in kwargs:
+            apply_mode = kwargs['applyMode']
+        if 'enableEndTime' in kwargs:
+            enable_end_time = kwargs['enableEndTime']
+        if 'enableStartTime' in kwargs:
+            enable_start_time = kwargs['enableStartTime']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'metricRuleTemplateName' in kwargs:
+            metric_rule_template_name = kwargs['metricRuleTemplateName']
+        if 'notifyLevel' in kwargs:
+            notify_level = kwargs['notifyLevel']
+        if 'restVersion' in kwargs:
+            rest_version = kwargs['restVersion']
+        if 'silenceTime' in kwargs:
+            silence_time = kwargs['silenceTime']
+
         if alert_templates is not None:
             _setter("alert_templates", alert_templates)
         if apply_mode is not None:

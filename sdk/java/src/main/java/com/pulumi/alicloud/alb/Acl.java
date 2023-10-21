@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Application Load Balancer (ALB) Acl resource.
  * 
- * For information about ALB Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createacl).
+ * For information about ALB Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createacl).
  * 
  * &gt; **NOTE:** Available since v1.133.0.
  * 

@@ -35,7 +35,13 @@ class SamlProviderArgs:
              saml_provider_name: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
              encodedsaml_metadata_document: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'samlProviderName' in kwargs:
+            saml_provider_name = kwargs['samlProviderName']
+        if 'encodedsamlMetadataDocument' in kwargs:
+            encodedsaml_metadata_document = kwargs['encodedsamlMetadataDocument']
+
         _setter("saml_provider_name", saml_provider_name)
         if description is not None:
             _setter("description", description)
@@ -111,7 +117,15 @@ class _SamlProviderState:
              encodedsaml_metadata_document: Optional[pulumi.Input[str]] = None,
              saml_provider_name: Optional[pulumi.Input[str]] = None,
              update_date: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'encodedsamlMetadataDocument' in kwargs:
+            encodedsaml_metadata_document = kwargs['encodedsamlMetadataDocument']
+        if 'samlProviderName' in kwargs:
+            saml_provider_name = kwargs['samlProviderName']
+        if 'updateDate' in kwargs:
+            update_date = kwargs['updateDate']
+
         if arn is not None:
             _setter("arn", arn)
         if description is not None:

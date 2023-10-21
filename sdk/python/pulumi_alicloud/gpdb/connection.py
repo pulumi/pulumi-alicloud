@@ -35,7 +35,13 @@ class ConnectionArgs:
              instance_id: pulumi.Input[str],
              connection_prefix: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'connectionPrefix' in kwargs:
+            connection_prefix = kwargs['connectionPrefix']
+
         _setter("instance_id", instance_id)
         if connection_prefix is not None:
             _setter("connection_prefix", connection_prefix)
@@ -111,7 +117,17 @@ class _ConnectionState:
              instance_id: Optional[pulumi.Input[str]] = None,
              ip_address: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectionPrefix' in kwargs:
+            connection_prefix = kwargs['connectionPrefix']
+        if 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
         if connection_prefix is not None:
             _setter("connection_prefix", connection_prefix)
         if connection_string is not None:

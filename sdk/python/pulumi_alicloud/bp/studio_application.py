@@ -53,7 +53,17 @@ class StudioApplicationArgs:
              instances: Optional[pulumi.Input[Sequence[pulumi.Input['StudioApplicationInstanceArgs']]]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applicationName' in kwargs:
+            application_name = kwargs['applicationName']
+        if 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+        if 'areaId' in kwargs:
+            area_id = kwargs['areaId']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("application_name", application_name)
         _setter("template_id", template_id)
         if area_id is not None:
@@ -196,7 +206,17 @@ class _StudioApplicationState:
              status: Optional[pulumi.Input[str]] = None,
              template_id: Optional[pulumi.Input[str]] = None,
              variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applicationName' in kwargs:
+            application_name = kwargs['applicationName']
+        if 'areaId' in kwargs:
+            area_id = kwargs['areaId']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+
         if application_name is not None:
             _setter("application_name", application_name)
         if area_id is not None:

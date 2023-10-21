@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a ECD Ad Connector Office Site resource.
  *
- * For information about ECD Ad Connector Office Site and how to use it, see [What is Ad Connector Office Site](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/createadconnectorofficesite).
+ * For information about ECD Ad Connector Office Site and how to use it, see [What is Ad Connector Office Site](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createadconnectorofficesite).
  *
  * > **NOTE:** Available since v1.176.0.
  *

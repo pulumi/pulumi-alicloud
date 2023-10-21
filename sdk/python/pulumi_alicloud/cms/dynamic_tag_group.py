@@ -45,7 +45,19 @@ class DynamicTagGroupArgs:
              tag_key: pulumi.Input[str],
              match_express_filter_relation: Optional[pulumi.Input[str]] = None,
              template_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'contactGroupLists' in kwargs:
+            contact_group_lists = kwargs['contactGroupLists']
+        if 'matchExpresses' in kwargs:
+            match_expresses = kwargs['matchExpresses']
+        if 'tagKey' in kwargs:
+            tag_key = kwargs['tagKey']
+        if 'matchExpressFilterRelation' in kwargs:
+            match_express_filter_relation = kwargs['matchExpressFilterRelation']
+        if 'templateIdLists' in kwargs:
+            template_id_lists = kwargs['templateIdLists']
+
         _setter("contact_group_lists", contact_group_lists)
         _setter("match_expresses", match_expresses)
         _setter("tag_key", tag_key)
@@ -151,7 +163,19 @@ class _DynamicTagGroupState:
              status: Optional[pulumi.Input[str]] = None,
              tag_key: Optional[pulumi.Input[str]] = None,
              template_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'contactGroupLists' in kwargs:
+            contact_group_lists = kwargs['contactGroupLists']
+        if 'matchExpressFilterRelation' in kwargs:
+            match_express_filter_relation = kwargs['matchExpressFilterRelation']
+        if 'matchExpresses' in kwargs:
+            match_expresses = kwargs['matchExpresses']
+        if 'tagKey' in kwargs:
+            tag_key = kwargs['tagKey']
+        if 'templateIdLists' in kwargs:
+            template_id_lists = kwargs['templateIdLists']
+
         if contact_group_lists is not None:
             _setter("contact_group_lists", contact_group_lists)
         if match_express_filter_relation is not None:

@@ -27,7 +27,11 @@ class RdsServiceLinkedRoleArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              service_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         _setter("service_name", service_name)
 
     @property
@@ -71,7 +75,15 @@ class _RdsServiceLinkedRoleState:
              role_id: Optional[pulumi.Input[str]] = None,
              role_name: Optional[pulumi.Input[str]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+        if 'roleName' in kwargs:
+            role_name = kwargs['roleName']
+        if 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if arn is not None:
             _setter("arn", arn)
         if role_id is not None:

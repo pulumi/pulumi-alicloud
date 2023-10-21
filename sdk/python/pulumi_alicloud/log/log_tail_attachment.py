@@ -35,7 +35,13 @@ class LogTailAttachmentArgs:
              logtail_config_name: pulumi.Input[str],
              machine_group_name: pulumi.Input[str],
              project: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'logtailConfigName' in kwargs:
+            logtail_config_name = kwargs['logtailConfigName']
+        if 'machineGroupName' in kwargs:
+            machine_group_name = kwargs['machineGroupName']
+
         _setter("logtail_config_name", logtail_config_name)
         _setter("machine_group_name", machine_group_name)
         _setter("project", project)
@@ -101,7 +107,13 @@ class _LogTailAttachmentState:
              logtail_config_name: Optional[pulumi.Input[str]] = None,
              machine_group_name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'logtailConfigName' in kwargs:
+            logtail_config_name = kwargs['logtailConfigName']
+        if 'machineGroupName' in kwargs:
+            machine_group_name = kwargs['machineGroupName']
+
         if logtail_config_name is not None:
             _setter("logtail_config_name", logtail_config_name)
         if machine_group_name is not None:

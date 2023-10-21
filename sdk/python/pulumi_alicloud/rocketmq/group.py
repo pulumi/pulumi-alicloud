@@ -53,7 +53,19 @@ class GroupArgs:
              read_enable: Optional[pulumi.Input[bool]] = None,
              remark: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'groupType' in kwargs:
+            group_type = kwargs['groupType']
+        if 'readEnable' in kwargs:
+            read_enable = kwargs['readEnable']
+
         _setter("instance_id", instance_id)
         if group_id is not None:
             warnings.warn("""Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.""", DeprecationWarning)
@@ -203,7 +215,19 @@ class _GroupState:
              read_enable: Optional[pulumi.Input[bool]] = None,
              remark: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'groupType' in kwargs:
+            group_type = kwargs['groupType']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'readEnable' in kwargs:
+            read_enable = kwargs['readEnable']
+
         if group_id is not None:
             warnings.warn("""Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""group_id is deprecated: Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.""")

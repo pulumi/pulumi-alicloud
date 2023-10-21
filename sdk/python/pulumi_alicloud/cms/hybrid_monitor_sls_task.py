@@ -53,7 +53,19 @@ class HybridMonitorSlsTaskArgs:
              attach_labels: Optional[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskAttachLabelArgs']]]] = None,
              collect_interval: Optional[pulumi.Input[int]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'collectTargetType' in kwargs:
+            collect_target_type = kwargs['collectTargetType']
+        if 'slsProcessConfig' in kwargs:
+            sls_process_config = kwargs['slsProcessConfig']
+        if 'taskName' in kwargs:
+            task_name = kwargs['taskName']
+        if 'attachLabels' in kwargs:
+            attach_labels = kwargs['attachLabels']
+        if 'collectInterval' in kwargs:
+            collect_interval = kwargs['collectInterval']
+
         _setter("collect_target_type", collect_target_type)
         _setter("namespace", namespace)
         _setter("sls_process_config", sls_process_config)
@@ -190,7 +202,19 @@ class _HybridMonitorSlsTaskState:
              namespace: Optional[pulumi.Input[str]] = None,
              sls_process_config: Optional[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigArgs']] = None,
              task_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'attachLabels' in kwargs:
+            attach_labels = kwargs['attachLabels']
+        if 'collectInterval' in kwargs:
+            collect_interval = kwargs['collectInterval']
+        if 'collectTargetType' in kwargs:
+            collect_target_type = kwargs['collectTargetType']
+        if 'slsProcessConfig' in kwargs:
+            sls_process_config = kwargs['slsProcessConfig']
+        if 'taskName' in kwargs:
+            task_name = kwargs['taskName']
+
         if attach_labels is not None:
             _setter("attach_labels", attach_labels)
         if collect_interval is not None:

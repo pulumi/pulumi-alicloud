@@ -21,23 +21,33 @@ class DBClusterLakeVersionArgs:
                  vpc_id: pulumi.Input[str],
                  vswitch_id: pulumi.Input[str],
                  zone_id: pulumi.Input[str],
+                 backup_set_id: Optional[pulumi.Input[str]] = None,
                  db_cluster_description: Optional[pulumi.Input[str]] = None,
                  enable_default_resource_group: Optional[pulumi.Input[bool]] = None,
-                 security_ips: Optional[pulumi.Input[str]] = None):
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 restore_to_time: Optional[pulumi.Input[str]] = None,
+                 restore_type: Optional[pulumi.Input[str]] = None,
+                 security_ips: Optional[pulumi.Input[str]] = None,
+                 source_db_cluster_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DBClusterLakeVersion resource.
         :param pulumi.Input[str] compute_resource: The computing resources of the cluster.
-        :param pulumi.Input[str] db_cluster_version: The version of the cluster. Value options: `5.0`.
-        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values are `PayAsYouGo`.
+        :param pulumi.Input[str] db_cluster_version: The version of the cluster. Valid values: `5.0`.
+        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`.
         :param pulumi.Input[str] storage_resource: The storage resources of the cluster.
         :param pulumi.Input[str] vpc_id: The vpc ID of the resource.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
         :param pulumi.Input[str] zone_id: The zone ID of the resource.
+        :param pulumi.Input[str] backup_set_id: The ID of the backup set that you want to use to restore data.
         :param pulumi.Input[str] db_cluster_description: The description of the cluster.
         :param pulumi.Input[bool] enable_default_resource_group: Whether to enable default allocation of resources to user_default resource groups.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] restore_to_time: The point in time to which you want to restore data from the backup set.
+        :param pulumi.Input[str] restore_type: The method that you want to use to restore data. Valid values:
         :param pulumi.Input[str] security_ips: The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
                - IP addresses, such as 10.23.XX.XX.
                - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
+        :param pulumi.Input[str] source_db_cluster_id: The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
         """
         DBClusterLakeVersionArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -48,9 +58,14 @@ class DBClusterLakeVersionArgs:
             vpc_id=vpc_id,
             vswitch_id=vswitch_id,
             zone_id=zone_id,
+            backup_set_id=backup_set_id,
             db_cluster_description=db_cluster_description,
             enable_default_resource_group=enable_default_resource_group,
+            resource_group_id=resource_group_id,
+            restore_to_time=restore_to_time,
+            restore_type=restore_type,
             security_ips=security_ips,
+            source_db_cluster_id=source_db_cluster_id,
         )
     @staticmethod
     def _configure(
@@ -62,10 +77,47 @@ class DBClusterLakeVersionArgs:
              vpc_id: pulumi.Input[str],
              vswitch_id: pulumi.Input[str],
              zone_id: pulumi.Input[str],
+             backup_set_id: Optional[pulumi.Input[str]] = None,
              db_cluster_description: Optional[pulumi.Input[str]] = None,
              enable_default_resource_group: Optional[pulumi.Input[bool]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             restore_to_time: Optional[pulumi.Input[str]] = None,
+             restore_type: Optional[pulumi.Input[str]] = None,
              security_ips: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             source_db_cluster_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'computeResource' in kwargs:
+            compute_resource = kwargs['computeResource']
+        if 'dbClusterVersion' in kwargs:
+            db_cluster_version = kwargs['dbClusterVersion']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'storageResource' in kwargs:
+            storage_resource = kwargs['storageResource']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'backupSetId' in kwargs:
+            backup_set_id = kwargs['backupSetId']
+        if 'dbClusterDescription' in kwargs:
+            db_cluster_description = kwargs['dbClusterDescription']
+        if 'enableDefaultResourceGroup' in kwargs:
+            enable_default_resource_group = kwargs['enableDefaultResourceGroup']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'restoreToTime' in kwargs:
+            restore_to_time = kwargs['restoreToTime']
+        if 'restoreType' in kwargs:
+            restore_type = kwargs['restoreType']
+        if 'securityIps' in kwargs:
+            security_ips = kwargs['securityIps']
+        if 'sourceDbClusterId' in kwargs:
+            source_db_cluster_id = kwargs['sourceDbClusterId']
+
         _setter("compute_resource", compute_resource)
         _setter("db_cluster_version", db_cluster_version)
         _setter("payment_type", payment_type)
@@ -73,12 +125,22 @@ class DBClusterLakeVersionArgs:
         _setter("vpc_id", vpc_id)
         _setter("vswitch_id", vswitch_id)
         _setter("zone_id", zone_id)
+        if backup_set_id is not None:
+            _setter("backup_set_id", backup_set_id)
         if db_cluster_description is not None:
             _setter("db_cluster_description", db_cluster_description)
         if enable_default_resource_group is not None:
             _setter("enable_default_resource_group", enable_default_resource_group)
+        if resource_group_id is not None:
+            _setter("resource_group_id", resource_group_id)
+        if restore_to_time is not None:
+            _setter("restore_to_time", restore_to_time)
+        if restore_type is not None:
+            _setter("restore_type", restore_type)
         if security_ips is not None:
             _setter("security_ips", security_ips)
+        if source_db_cluster_id is not None:
+            _setter("source_db_cluster_id", source_db_cluster_id)
 
     @property
     @pulumi.getter(name="computeResource")
@@ -96,7 +158,7 @@ class DBClusterLakeVersionArgs:
     @pulumi.getter(name="dbClusterVersion")
     def db_cluster_version(self) -> pulumi.Input[str]:
         """
-        The version of the cluster. Value options: `5.0`.
+        The version of the cluster. Valid values: `5.0`.
         """
         return pulumi.get(self, "db_cluster_version")
 
@@ -108,7 +170,7 @@ class DBClusterLakeVersionArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Input[str]:
         """
-        The payment type of the resource. Valid values are `PayAsYouGo`.
+        The payment type of the resource. Valid values: `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -165,6 +227,18 @@ class DBClusterLakeVersionArgs:
         pulumi.set(self, "zone_id", value)
 
     @property
+    @pulumi.getter(name="backupSetId")
+    def backup_set_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the backup set that you want to use to restore data.
+        """
+        return pulumi.get(self, "backup_set_id")
+
+    @backup_set_id.setter
+    def backup_set_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "backup_set_id", value)
+
+    @property
     @pulumi.getter(name="dbClusterDescription")
     def db_cluster_description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -189,6 +263,42 @@ class DBClusterLakeVersionArgs:
         pulumi.set(self, "enable_default_resource_group", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="restoreToTime")
+    def restore_to_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The point in time to which you want to restore data from the backup set.
+        """
+        return pulumi.get(self, "restore_to_time")
+
+    @restore_to_time.setter
+    def restore_to_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "restore_to_time", value)
+
+    @property
+    @pulumi.getter(name="restoreType")
+    def restore_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The method that you want to use to restore data. Valid values:
+        """
+        return pulumi.get(self, "restore_type")
+
+    @restore_type.setter
+    def restore_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "restore_type", value)
+
+    @property
     @pulumi.getter(name="securityIps")
     def security_ips(self) -> Optional[pulumi.Input[str]]:
         """
@@ -202,10 +312,23 @@ class DBClusterLakeVersionArgs:
     def security_ips(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "security_ips", value)
 
+    @property
+    @pulumi.getter(name="sourceDbClusterId")
+    def source_db_cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
+        """
+        return pulumi.get(self, "source_db_cluster_id")
+
+    @source_db_cluster_id.setter
+    def source_db_cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_db_cluster_id", value)
+
 
 @pulumi.input_type
 class _DBClusterLakeVersionState:
     def __init__(__self__, *,
+                 backup_set_id: Optional[pulumi.Input[str]] = None,
                  commodity_code: Optional[pulumi.Input[str]] = None,
                  compute_resource: Optional[pulumi.Input[str]] = None,
                  connection_string: Optional[pulumi.Input[str]] = None,
@@ -222,7 +345,10 @@ class _DBClusterLakeVersionState:
                  payment_type: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 restore_to_time: Optional[pulumi.Input[str]] = None,
+                 restore_type: Optional[pulumi.Input[str]] = None,
                  security_ips: Optional[pulumi.Input[str]] = None,
+                 source_db_cluster_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  storage_resource: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -230,12 +356,13 @@ class _DBClusterLakeVersionState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DBClusterLakeVersion resources.
+        :param pulumi.Input[str] backup_set_id: The ID of the backup set that you want to use to restore data.
         :param pulumi.Input[str] commodity_code: The name of the service.
         :param pulumi.Input[str] compute_resource: The computing resources of the cluster.
         :param pulumi.Input[str] connection_string: The endpoint of the cluster.
         :param pulumi.Input[str] create_time: The createTime of the cluster.
         :param pulumi.Input[str] db_cluster_description: The description of the cluster.
-        :param pulumi.Input[str] db_cluster_version: The version of the cluster. Value options: `5.0`.
+        :param pulumi.Input[str] db_cluster_version: The version of the cluster. Valid values: `5.0`.
         :param pulumi.Input[bool] enable_default_resource_group: Whether to enable default allocation of resources to user_default resource groups.
         :param pulumi.Input[str] engine: The engine of the database.
         :param pulumi.Input[str] engine_version: The engine version of the database.
@@ -243,12 +370,15 @@ class _DBClusterLakeVersionState:
         :param pulumi.Input[str] expired: Indicates whether the cluster has expired.
         :param pulumi.Input[str] lock_mode: The lock mode of the cluster.
         :param pulumi.Input[str] lock_reason: The reason why the cluster is locked.
-        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values are `PayAsYouGo`.
+        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`.
         :param pulumi.Input[str] port: The port that is used to access the cluster.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] restore_to_time: The point in time to which you want to restore data from the backup set.
+        :param pulumi.Input[str] restore_type: The method that you want to use to restore data. Valid values:
         :param pulumi.Input[str] security_ips: The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
                - IP addresses, such as 10.23.XX.XX.
                - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
+        :param pulumi.Input[str] source_db_cluster_id: The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[str] storage_resource: The storage resources of the cluster.
         :param pulumi.Input[str] vpc_id: The vpc ID of the resource.
@@ -257,6 +387,7 @@ class _DBClusterLakeVersionState:
         """
         _DBClusterLakeVersionState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
+            backup_set_id=backup_set_id,
             commodity_code=commodity_code,
             compute_resource=compute_resource,
             connection_string=connection_string,
@@ -273,7 +404,10 @@ class _DBClusterLakeVersionState:
             payment_type=payment_type,
             port=port,
             resource_group_id=resource_group_id,
+            restore_to_time=restore_to_time,
+            restore_type=restore_type,
             security_ips=security_ips,
+            source_db_cluster_id=source_db_cluster_id,
             status=status,
             storage_resource=storage_resource,
             vpc_id=vpc_id,
@@ -283,6 +417,7 @@ class _DBClusterLakeVersionState:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
+             backup_set_id: Optional[pulumi.Input[str]] = None,
              commodity_code: Optional[pulumi.Input[str]] = None,
              compute_resource: Optional[pulumi.Input[str]] = None,
              connection_string: Optional[pulumi.Input[str]] = None,
@@ -299,13 +434,64 @@ class _DBClusterLakeVersionState:
              payment_type: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
+             restore_to_time: Optional[pulumi.Input[str]] = None,
+             restore_type: Optional[pulumi.Input[str]] = None,
              security_ips: Optional[pulumi.Input[str]] = None,
+             source_db_cluster_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              storage_resource: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupSetId' in kwargs:
+            backup_set_id = kwargs['backupSetId']
+        if 'commodityCode' in kwargs:
+            commodity_code = kwargs['commodityCode']
+        if 'computeResource' in kwargs:
+            compute_resource = kwargs['computeResource']
+        if 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dbClusterDescription' in kwargs:
+            db_cluster_description = kwargs['dbClusterDescription']
+        if 'dbClusterVersion' in kwargs:
+            db_cluster_version = kwargs['dbClusterVersion']
+        if 'enableDefaultResourceGroup' in kwargs:
+            enable_default_resource_group = kwargs['enableDefaultResourceGroup']
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if 'lockMode' in kwargs:
+            lock_mode = kwargs['lockMode']
+        if 'lockReason' in kwargs:
+            lock_reason = kwargs['lockReason']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'restoreToTime' in kwargs:
+            restore_to_time = kwargs['restoreToTime']
+        if 'restoreType' in kwargs:
+            restore_type = kwargs['restoreType']
+        if 'securityIps' in kwargs:
+            security_ips = kwargs['securityIps']
+        if 'sourceDbClusterId' in kwargs:
+            source_db_cluster_id = kwargs['sourceDbClusterId']
+        if 'storageResource' in kwargs:
+            storage_resource = kwargs['storageResource']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
+        if backup_set_id is not None:
+            _setter("backup_set_id", backup_set_id)
         if commodity_code is not None:
             _setter("commodity_code", commodity_code)
         if compute_resource is not None:
@@ -338,8 +524,14 @@ class _DBClusterLakeVersionState:
             _setter("port", port)
         if resource_group_id is not None:
             _setter("resource_group_id", resource_group_id)
+        if restore_to_time is not None:
+            _setter("restore_to_time", restore_to_time)
+        if restore_type is not None:
+            _setter("restore_type", restore_type)
         if security_ips is not None:
             _setter("security_ips", security_ips)
+        if source_db_cluster_id is not None:
+            _setter("source_db_cluster_id", source_db_cluster_id)
         if status is not None:
             _setter("status", status)
         if storage_resource is not None:
@@ -350,6 +542,18 @@ class _DBClusterLakeVersionState:
             _setter("vswitch_id", vswitch_id)
         if zone_id is not None:
             _setter("zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="backupSetId")
+    def backup_set_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the backup set that you want to use to restore data.
+        """
+        return pulumi.get(self, "backup_set_id")
+
+    @backup_set_id.setter
+    def backup_set_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "backup_set_id", value)
 
     @property
     @pulumi.getter(name="commodityCode")
@@ -415,7 +619,7 @@ class _DBClusterLakeVersionState:
     @pulumi.getter(name="dbClusterVersion")
     def db_cluster_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The version of the cluster. Value options: `5.0`.
+        The version of the cluster. Valid values: `5.0`.
         """
         return pulumi.get(self, "db_cluster_version")
 
@@ -511,7 +715,7 @@ class _DBClusterLakeVersionState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The payment type of the resource. Valid values are `PayAsYouGo`.
+        The payment type of the resource. Valid values: `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -544,6 +748,30 @@ class _DBClusterLakeVersionState:
         pulumi.set(self, "resource_group_id", value)
 
     @property
+    @pulumi.getter(name="restoreToTime")
+    def restore_to_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The point in time to which you want to restore data from the backup set.
+        """
+        return pulumi.get(self, "restore_to_time")
+
+    @restore_to_time.setter
+    def restore_to_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "restore_to_time", value)
+
+    @property
+    @pulumi.getter(name="restoreType")
+    def restore_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The method that you want to use to restore data. Valid values:
+        """
+        return pulumi.get(self, "restore_type")
+
+    @restore_type.setter
+    def restore_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "restore_type", value)
+
+    @property
     @pulumi.getter(name="securityIps")
     def security_ips(self) -> Optional[pulumi.Input[str]]:
         """
@@ -556,6 +784,18 @@ class _DBClusterLakeVersionState:
     @security_ips.setter
     def security_ips(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "security_ips", value)
+
+    @property
+    @pulumi.getter(name="sourceDbClusterId")
+    def source_db_cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
+        """
+        return pulumi.get(self, "source_db_cluster_id")
+
+    @source_db_cluster_id.setter
+    def source_db_cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_db_cluster_id", value)
 
     @property
     @pulumi.getter
@@ -623,12 +863,17 @@ class DBClusterLakeVersion(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 backup_set_id: Optional[pulumi.Input[str]] = None,
                  compute_resource: Optional[pulumi.Input[str]] = None,
                  db_cluster_description: Optional[pulumi.Input[str]] = None,
                  db_cluster_version: Optional[pulumi.Input[str]] = None,
                  enable_default_resource_group: Optional[pulumi.Input[bool]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 restore_to_time: Optional[pulumi.Input[str]] = None,
+                 restore_type: Optional[pulumi.Input[str]] = None,
                  security_ips: Optional[pulumi.Input[str]] = None,
+                 source_db_cluster_id: Optional[pulumi.Input[str]] = None,
                  storage_resource: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -637,7 +882,7 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         """
         Provides a AnalyticDB for MySQL (ADB) DB Cluster Lake Version resource.
 
-        For information about AnalyticDB for MySQL (ADB) DB Cluster Lake Version and how to use it, see [What is DB Cluster Lake Version](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2021-12-01-api-doc-createdbcluster).
+        For information about AnalyticDB for MySQL (ADB) DB Cluster Lake Version and how to use it, see [What is DB Cluster Lake Version](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-createdbcluster).
 
         > **NOTE:** Available since v1.190.0.
 
@@ -649,29 +894,19 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        zone_id = default_zones.ids[len(default_zones.ids) - 1]
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="10.4.0.0/24",
-            zone_id=zone_id,
-            vswitch_name=name)
+        default_zones = alicloud.adb.get_zones()
+        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+            zone_id=default_zones.ids[0])
         default_db_cluster_lake_version = alicloud.adb.DBClusterLakeVersion("defaultDBClusterLakeVersion",
-            compute_resource="16ACU",
             db_cluster_version="5.0",
+            vpc_id=default_networks.ids[0],
+            vswitch_id=default_switches.ids[0],
+            zone_id=default_zones.ids[0],
+            compute_resource="16ACU",
+            storage_resource="0ACU",
             payment_type="PayAsYouGo",
-            storage_resource="24ACU",
-            enable_default_resource_group=False,
-            vswitch_id=default_switch.id,
-            vpc_id=default_network.id,
-            zone_id=zone_id)
+            enable_default_resource_group=False)
         ```
 
         ## Import
@@ -684,14 +919,19 @@ class DBClusterLakeVersion(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] backup_set_id: The ID of the backup set that you want to use to restore data.
         :param pulumi.Input[str] compute_resource: The computing resources of the cluster.
         :param pulumi.Input[str] db_cluster_description: The description of the cluster.
-        :param pulumi.Input[str] db_cluster_version: The version of the cluster. Value options: `5.0`.
+        :param pulumi.Input[str] db_cluster_version: The version of the cluster. Valid values: `5.0`.
         :param pulumi.Input[bool] enable_default_resource_group: Whether to enable default allocation of resources to user_default resource groups.
-        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values are `PayAsYouGo`.
+        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] restore_to_time: The point in time to which you want to restore data from the backup set.
+        :param pulumi.Input[str] restore_type: The method that you want to use to restore data. Valid values:
         :param pulumi.Input[str] security_ips: The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
                - IP addresses, such as 10.23.XX.XX.
                - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
+        :param pulumi.Input[str] source_db_cluster_id: The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
         :param pulumi.Input[str] storage_resource: The storage resources of the cluster.
         :param pulumi.Input[str] vpc_id: The vpc ID of the resource.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
@@ -706,7 +946,7 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         """
         Provides a AnalyticDB for MySQL (ADB) DB Cluster Lake Version resource.
 
-        For information about AnalyticDB for MySQL (ADB) DB Cluster Lake Version and how to use it, see [What is DB Cluster Lake Version](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2021-12-01-api-doc-createdbcluster).
+        For information about AnalyticDB for MySQL (ADB) DB Cluster Lake Version and how to use it, see [What is DB Cluster Lake Version](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-createdbcluster).
 
         > **NOTE:** Available since v1.190.0.
 
@@ -718,29 +958,19 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        zone_id = default_zones.ids[len(default_zones.ids) - 1]
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="10.4.0.0/24",
-            zone_id=zone_id,
-            vswitch_name=name)
+        default_zones = alicloud.adb.get_zones()
+        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+            zone_id=default_zones.ids[0])
         default_db_cluster_lake_version = alicloud.adb.DBClusterLakeVersion("defaultDBClusterLakeVersion",
-            compute_resource="16ACU",
             db_cluster_version="5.0",
+            vpc_id=default_networks.ids[0],
+            vswitch_id=default_switches.ids[0],
+            zone_id=default_zones.ids[0],
+            compute_resource="16ACU",
+            storage_resource="0ACU",
             payment_type="PayAsYouGo",
-            storage_resource="24ACU",
-            enable_default_resource_group=False,
-            vswitch_id=default_switch.id,
-            vpc_id=default_network.id,
-            zone_id=zone_id)
+            enable_default_resource_group=False)
         ```
 
         ## Import
@@ -770,12 +1000,17 @@ class DBClusterLakeVersion(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 backup_set_id: Optional[pulumi.Input[str]] = None,
                  compute_resource: Optional[pulumi.Input[str]] = None,
                  db_cluster_description: Optional[pulumi.Input[str]] = None,
                  db_cluster_version: Optional[pulumi.Input[str]] = None,
                  enable_default_resource_group: Optional[pulumi.Input[bool]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 restore_to_time: Optional[pulumi.Input[str]] = None,
+                 restore_type: Optional[pulumi.Input[str]] = None,
                  security_ips: Optional[pulumi.Input[str]] = None,
+                 source_db_cluster_id: Optional[pulumi.Input[str]] = None,
                  storage_resource: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -789,6 +1024,7 @@ class DBClusterLakeVersion(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DBClusterLakeVersionArgs.__new__(DBClusterLakeVersionArgs)
 
+            __props__.__dict__["backup_set_id"] = backup_set_id
             if compute_resource is None and not opts.urn:
                 raise TypeError("Missing required property 'compute_resource'")
             __props__.__dict__["compute_resource"] = compute_resource
@@ -800,7 +1036,11 @@ class DBClusterLakeVersion(pulumi.CustomResource):
             if payment_type is None and not opts.urn:
                 raise TypeError("Missing required property 'payment_type'")
             __props__.__dict__["payment_type"] = payment_type
+            __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["restore_to_time"] = restore_to_time
+            __props__.__dict__["restore_type"] = restore_type
             __props__.__dict__["security_ips"] = security_ips
+            __props__.__dict__["source_db_cluster_id"] = source_db_cluster_id
             if storage_resource is None and not opts.urn:
                 raise TypeError("Missing required property 'storage_resource'")
             __props__.__dict__["storage_resource"] = storage_resource
@@ -823,7 +1063,6 @@ class DBClusterLakeVersion(pulumi.CustomResource):
             __props__.__dict__["lock_mode"] = None
             __props__.__dict__["lock_reason"] = None
             __props__.__dict__["port"] = None
-            __props__.__dict__["resource_group_id"] = None
             __props__.__dict__["status"] = None
         super(DBClusterLakeVersion, __self__).__init__(
             'alicloud:adb/dBClusterLakeVersion:DBClusterLakeVersion',
@@ -835,6 +1074,7 @@ class DBClusterLakeVersion(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            backup_set_id: Optional[pulumi.Input[str]] = None,
             commodity_code: Optional[pulumi.Input[str]] = None,
             compute_resource: Optional[pulumi.Input[str]] = None,
             connection_string: Optional[pulumi.Input[str]] = None,
@@ -851,7 +1091,10 @@ class DBClusterLakeVersion(pulumi.CustomResource):
             payment_type: Optional[pulumi.Input[str]] = None,
             port: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
+            restore_to_time: Optional[pulumi.Input[str]] = None,
+            restore_type: Optional[pulumi.Input[str]] = None,
             security_ips: Optional[pulumi.Input[str]] = None,
+            source_db_cluster_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             storage_resource: Optional[pulumi.Input[str]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
@@ -864,12 +1107,13 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] backup_set_id: The ID of the backup set that you want to use to restore data.
         :param pulumi.Input[str] commodity_code: The name of the service.
         :param pulumi.Input[str] compute_resource: The computing resources of the cluster.
         :param pulumi.Input[str] connection_string: The endpoint of the cluster.
         :param pulumi.Input[str] create_time: The createTime of the cluster.
         :param pulumi.Input[str] db_cluster_description: The description of the cluster.
-        :param pulumi.Input[str] db_cluster_version: The version of the cluster. Value options: `5.0`.
+        :param pulumi.Input[str] db_cluster_version: The version of the cluster. Valid values: `5.0`.
         :param pulumi.Input[bool] enable_default_resource_group: Whether to enable default allocation of resources to user_default resource groups.
         :param pulumi.Input[str] engine: The engine of the database.
         :param pulumi.Input[str] engine_version: The engine version of the database.
@@ -877,12 +1121,15 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         :param pulumi.Input[str] expired: Indicates whether the cluster has expired.
         :param pulumi.Input[str] lock_mode: The lock mode of the cluster.
         :param pulumi.Input[str] lock_reason: The reason why the cluster is locked.
-        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values are `PayAsYouGo`.
+        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`.
         :param pulumi.Input[str] port: The port that is used to access the cluster.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] restore_to_time: The point in time to which you want to restore data from the backup set.
+        :param pulumi.Input[str] restore_type: The method that you want to use to restore data. Valid values:
         :param pulumi.Input[str] security_ips: The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
                - IP addresses, such as 10.23.XX.XX.
                - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
+        :param pulumi.Input[str] source_db_cluster_id: The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[str] storage_resource: The storage resources of the cluster.
         :param pulumi.Input[str] vpc_id: The vpc ID of the resource.
@@ -893,6 +1140,7 @@ class DBClusterLakeVersion(pulumi.CustomResource):
 
         __props__ = _DBClusterLakeVersionState.__new__(_DBClusterLakeVersionState)
 
+        __props__.__dict__["backup_set_id"] = backup_set_id
         __props__.__dict__["commodity_code"] = commodity_code
         __props__.__dict__["compute_resource"] = compute_resource
         __props__.__dict__["connection_string"] = connection_string
@@ -909,13 +1157,24 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["port"] = port
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["restore_to_time"] = restore_to_time
+        __props__.__dict__["restore_type"] = restore_type
         __props__.__dict__["security_ips"] = security_ips
+        __props__.__dict__["source_db_cluster_id"] = source_db_cluster_id
         __props__.__dict__["status"] = status
         __props__.__dict__["storage_resource"] = storage_resource
         __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["zone_id"] = zone_id
         return DBClusterLakeVersion(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="backupSetId")
+    def backup_set_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the backup set that you want to use to restore data.
+        """
+        return pulumi.get(self, "backup_set_id")
 
     @property
     @pulumi.getter(name="commodityCode")
@@ -961,7 +1220,7 @@ class DBClusterLakeVersion(pulumi.CustomResource):
     @pulumi.getter(name="dbClusterVersion")
     def db_cluster_version(self) -> pulumi.Output[str]:
         """
-        The version of the cluster. Value options: `5.0`.
+        The version of the cluster. Valid values: `5.0`.
         """
         return pulumi.get(self, "db_cluster_version")
 
@@ -1025,7 +1284,7 @@ class DBClusterLakeVersion(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[str]:
         """
-        The payment type of the resource. Valid values are `PayAsYouGo`.
+        The payment type of the resource. Valid values: `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -1046,6 +1305,22 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         return pulumi.get(self, "resource_group_id")
 
     @property
+    @pulumi.getter(name="restoreToTime")
+    def restore_to_time(self) -> pulumi.Output[Optional[str]]:
+        """
+        The point in time to which you want to restore data from the backup set.
+        """
+        return pulumi.get(self, "restore_to_time")
+
+    @property
+    @pulumi.getter(name="restoreType")
+    def restore_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The method that you want to use to restore data. Valid values:
+        """
+        return pulumi.get(self, "restore_type")
+
+    @property
     @pulumi.getter(name="securityIps")
     def security_ips(self) -> pulumi.Output[str]:
         """
@@ -1054,6 +1329,14 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
         """
         return pulumi.get(self, "security_ips")
+
+    @property
+    @pulumi.getter(name="sourceDbClusterId")
+    def source_db_cluster_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
+        """
+        return pulumi.get(self, "source_db_cluster_id")
 
     @property
     @pulumi.getter

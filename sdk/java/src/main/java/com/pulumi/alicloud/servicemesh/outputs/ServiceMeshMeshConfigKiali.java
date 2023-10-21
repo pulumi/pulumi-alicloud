@@ -5,6 +5,7 @@ package com.pulumi.alicloud.servicemesh.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -12,18 +13,30 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceMeshMeshConfigKiali {
     /**
-     * @return Whether to enable Service grid audit.
+     * @return Enable CNI.
      * 
      */
     private @Nullable Boolean enabled;
+    /**
+     * @return Grid topology service address.
+     * 
+     */
+    private @Nullable String url;
 
     private ServiceMeshMeshConfigKiali() {}
     /**
-     * @return Whether to enable Service grid audit.
+     * @return Enable CNI.
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
+    }
+    /**
+     * @return Grid topology service address.
+     * 
+     */
+    public Optional<String> url() {
+        return Optional.ofNullable(this.url);
     }
 
     public static Builder builder() {
@@ -36,10 +49,12 @@ public final class ServiceMeshMeshConfigKiali {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
+        private @Nullable String url;
         public Builder() {}
         public Builder(ServiceMeshMeshConfigKiali defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
+    	      this.url = defaults.url;
         }
 
         @CustomType.Setter
@@ -47,9 +62,15 @@ public final class ServiceMeshMeshConfigKiali {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
+        public Builder url(@Nullable String url) {
+            this.url = url;
+            return this;
+        }
         public ServiceMeshMeshConfigKiali build() {
             final var o = new ServiceMeshMeshConfigKiali();
             o.enabled = enabled;
+            o.url = url;
             return o;
         }
     }

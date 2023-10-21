@@ -37,7 +37,15 @@ class BackendServerArgs:
              load_balancer_id: pulumi.Input[str],
              backend_servers: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServerBackendServerArgs']]]] = None,
              delete_protection_validation: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+        if 'backendServers' in kwargs:
+            backend_servers = kwargs['backendServers']
+        if 'deleteProtectionValidation' in kwargs:
+            delete_protection_validation = kwargs['deleteProtectionValidation']
+
         _setter("load_balancer_id", load_balancer_id)
         if backend_servers is not None:
             _setter("backend_servers", backend_servers)
@@ -105,7 +113,15 @@ class _BackendServerState:
              backend_servers: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServerBackendServerArgs']]]] = None,
              delete_protection_validation: Optional[pulumi.Input[bool]] = None,
              load_balancer_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backendServers' in kwargs:
+            backend_servers = kwargs['backendServers']
+        if 'deleteProtectionValidation' in kwargs:
+            delete_protection_validation = kwargs['deleteProtectionValidation']
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+
         if backend_servers is not None:
             _setter("backend_servers", backend_servers)
         if delete_protection_validation is not None:

@@ -71,7 +71,11 @@ class ApiConstantParameter(dict):
              name: str,
              value: str,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'in' in kwargs:
+            in_ = kwargs['in']
+
         _setter("in_", in_)
         _setter("name", name)
         _setter("value", value)
@@ -163,7 +167,15 @@ class ApiFcServiceConfig(dict):
              service_name: str,
              timeout: int,
              arn_role: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'functionName' in kwargs:
+            function_name = kwargs['functionName']
+        if 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if 'arnRole' in kwargs:
+            arn_role = kwargs['arnRole']
+
         _setter("function_name", function_name)
         _setter("region", region)
         _setter("service_name", service_name)
@@ -260,7 +272,11 @@ class ApiHttpServiceConfig(dict):
              path: str,
              timeout: int,
              aone_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aoneName' in kwargs:
+            aone_name = kwargs['aoneName']
+
         _setter("address", address)
         _setter("method", method)
         _setter("path", path)
@@ -357,7 +373,11 @@ class ApiHttpVpcServiceConfig(dict):
              path: str,
              timeout: int,
              aone_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aoneName' in kwargs:
+            aone_name = kwargs['aoneName']
+
         _setter("method", method)
         _setter("name", name)
         _setter("path", path)
@@ -442,7 +462,11 @@ class ApiMockServiceConfig(dict):
              _setter: Callable[[Any, Any], None],
              result: str,
              aone_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aoneName' in kwargs:
+            aone_name = kwargs['aoneName']
+
         _setter("result", result)
         if aone_name is not None:
             _setter("aone_name", aone_name)
@@ -512,7 +536,11 @@ class ApiRequestConfig(dict):
              path: str,
              protocol: str,
              body_format: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bodyFormat' in kwargs:
+            body_format = kwargs['bodyFormat']
+
         _setter("method", method)
         _setter("mode", mode)
         _setter("path", path)
@@ -627,7 +655,17 @@ class ApiRequestParameter(dict):
              type: str,
              default_value: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'in' in kwargs:
+            in_ = kwargs['in']
+        if 'inService' in kwargs:
+            in_service = kwargs['inService']
+        if 'nameService' in kwargs:
+            name_service = kwargs['nameService']
+        if 'defaultValue' in kwargs:
+            default_value = kwargs['defaultValue']
+
         _setter("in_", in_)
         _setter("in_service", in_service)
         _setter("name", name)
@@ -746,7 +784,13 @@ class ApiSystemParameter(dict):
              in_: str,
              name: str,
              name_service: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'in' in kwargs:
+            in_ = kwargs['in']
+        if 'nameService' in kwargs:
+            name_service = kwargs['nameService']
+
         _setter("in_", in_)
         _setter("name", name)
         _setter("name_service", name_service)
@@ -811,7 +855,15 @@ class GetApisApiResult(dict):
              id: str,
              name: str,
              region_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+
         _setter("description", description)
         _setter("group_id", group_id)
         _setter("group_name", group_name)
@@ -903,7 +955,15 @@ class GetAppsAppResult(dict):
              id: int,
              modified_time: str,
              name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appCode' in kwargs:
+            app_code = kwargs['appCode']
+        if 'createdTime' in kwargs:
+            created_time = kwargs['createdTime']
+        if 'modifiedTime' in kwargs:
+            modified_time = kwargs['modifiedTime']
+
         _setter("app_code", app_code)
         _setter("created_time", created_time)
         _setter("description", description)
@@ -998,7 +1058,19 @@ class GetBackendsBackendResult(dict):
              description: str,
              id: str,
              modified_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backendId' in kwargs:
+            backend_id = kwargs['backendId']
+        if 'backendName' in kwargs:
+            backend_name = kwargs['backendName']
+        if 'backendType' in kwargs:
+            backend_type = kwargs['backendType']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'modifiedTime' in kwargs:
+            modified_time = kwargs['modifiedTime']
+
         _setter("backend_id", backend_id)
         _setter("backend_name", backend_name)
         _setter("backend_type", backend_type)
@@ -1116,7 +1188,23 @@ class GetGroupsGroupResult(dict):
              region_id: str,
              sub_domain: str,
              traffic_limit: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'billingStatus' in kwargs:
+            billing_status = kwargs['billingStatus']
+        if 'createdTime' in kwargs:
+            created_time = kwargs['createdTime']
+        if 'illegalStatus' in kwargs:
+            illegal_status = kwargs['illegalStatus']
+        if 'modifiedTime' in kwargs:
+            modified_time = kwargs['modifiedTime']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'subDomain' in kwargs:
+            sub_domain = kwargs['subDomain']
+        if 'trafficLimit' in kwargs:
+            traffic_limit = kwargs['trafficLimit']
+
         _setter("billing_status", billing_status)
         _setter("created_time", created_time)
         _setter("description", description)
@@ -1244,7 +1332,17 @@ class GetLogConfigsConfigResult(dict):
              region_id: str,
              sls_log_store: str,
              sls_project: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'logType' in kwargs:
+            log_type = kwargs['logType']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'slsLogStore' in kwargs:
+            sls_log_store = kwargs['slsLogStore']
+        if 'slsProject' in kwargs:
+            sls_project = kwargs['slsProject']
+
         _setter("id", id)
         _setter("log_type", log_type)
         _setter("region_id", region_id)
@@ -1339,7 +1437,21 @@ class GetModelsModelResult(dict):
              model_ref: str,
              modified_time: str,
              schema: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'modelId' in kwargs:
+            model_id = kwargs['modelId']
+        if 'modelName' in kwargs:
+            model_name = kwargs['modelName']
+        if 'modelRef' in kwargs:
+            model_ref = kwargs['modelRef']
+        if 'modifiedTime' in kwargs:
+            modified_time = kwargs['modifiedTime']
+
         _setter("create_time", create_time)
         _setter("description", description)
         _setter("group_id", group_id)
@@ -1470,7 +1582,21 @@ class GetPluginsPluginResult(dict):
              plugin_name: str,
              plugin_type: str,
              tags: Mapping[str, Any],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'modifiedTime' in kwargs:
+            modified_time = kwargs['modifiedTime']
+        if 'pluginData' in kwargs:
+            plugin_data = kwargs['pluginData']
+        if 'pluginId' in kwargs:
+            plugin_id = kwargs['pluginId']
+        if 'pluginName' in kwargs:
+            plugin_name = kwargs['pluginName']
+        if 'pluginType' in kwargs:
+            plugin_type = kwargs['pluginType']
+
         _setter("create_time", create_time)
         _setter("description", description)
         _setter("id", id)

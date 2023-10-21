@@ -3407,6 +3407,16 @@ public final class RamFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.Group;
+     * import com.pulumi.alicloud.ram.GroupArgs;
+     * import com.pulumi.alicloud.ram.User;
+     * import com.pulumi.alicloud.ram.UserArgs;
+     * import com.pulumi.alicloud.ram.GroupMembership;
+     * import com.pulumi.alicloud.ram.GroupMembershipArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import com.pulumi.alicloud.ram.UserPolicyAttachment;
+     * import com.pulumi.alicloud.ram.UserPolicyAttachmentArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetUsersArgs;
      * import java.util.List;
@@ -3422,15 +3432,62 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
-     *             .outputFile(&#34;users.txt&#34;)
-     *             .groupName(&#34;group1&#34;)
-     *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
-     *             .policyType(&#34;Custom&#34;)
-     *             .nameRegex(&#34;^user&#34;)
+     *         var defaultGroup = new Group(&#34;defaultGroup&#34;, GroupArgs.builder()        
+     *             .comments(&#34;group comments&#34;)
+     *             .force(true)
      *             .build());
      * 
-     *         ctx.export(&#34;firstUserId&#34;, usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
+     *             .displayName(&#34;displayname&#34;)
+     *             .mobile(&#34;86-18888888888&#34;)
+     *             .email(&#34;hello.uuu@aaa.com&#34;)
+     *             .comments(&#34;yoyoyo&#34;)
+     *             .build());
+     * 
+     *         var defaultGroupMembership = new GroupMembership(&#34;defaultGroupMembership&#34;, GroupMembershipArgs.builder()        
+     *             .groupName(defaultGroup.name())
+     *             .userNames(defaultUser.name())
+     *             .build());
+     * 
+     *         var defaultPolicy = new Policy(&#34;defaultPolicy&#34;, PolicyArgs.builder()        
+     *             .policyName(&#34;ram-policy-example&#34;)
+     *             .policyDocument(&#34;&#34;&#34;
+     * 			{
+     * 				&#34;Statement&#34;: [
+     * 				 {
+     * 					&#34;Action&#34;: [
+     * 					&#34;oss:ListObjects&#34;,
+     * 					&#34;oss:ListObjects&#34;
+     * 			  		],
+     * 			  		&#34;Effect&#34;: &#34;Deny&#34;,
+     * 			  		&#34;Resource&#34;: [
+     * 						&#34;acs:oss:*:*:mybucket&#34;,
+     * 						&#34;acs:oss:*:*:mybucket/*&#34;
+     * 			  		]
+     * 				 }
+     * 		  		],
+     * 				&#34;Version&#34;: &#34;1&#34;
+     * 			}
+     *             &#34;&#34;&#34;)
+     *             .description(&#34;this is a policy example&#34;)
+     *             .force(true)
+     *             .build());
+     * 
+     *         var defaultUserPolicyAttachment = new UserPolicyAttachment(&#34;defaultUserPolicyAttachment&#34;, UserPolicyAttachmentArgs.builder()        
+     *             .policyName(defaultPolicy.policyName())
+     *             .userName(defaultUser.name())
+     *             .policyType(defaultPolicy.type())
+     *             .build());
+     * 
+     *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
+     *             .outputFile(&#34;users.txt&#34;)
+     *             .groupName(defaultGroup.name())
+     *             .policyName(defaultPolicy.policyName())
+     *             .policyType(&#34;Custom&#34;)
+     *             .nameRegex(defaultUser.name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstUserId&#34;, usersDs.applyValue(getUsersResult -&gt; getUsersResult).applyValue(usersDs -&gt; usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id())));
      *     }
      * }
      * ```
@@ -3451,6 +3508,16 @@ public final class RamFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.Group;
+     * import com.pulumi.alicloud.ram.GroupArgs;
+     * import com.pulumi.alicloud.ram.User;
+     * import com.pulumi.alicloud.ram.UserArgs;
+     * import com.pulumi.alicloud.ram.GroupMembership;
+     * import com.pulumi.alicloud.ram.GroupMembershipArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import com.pulumi.alicloud.ram.UserPolicyAttachment;
+     * import com.pulumi.alicloud.ram.UserPolicyAttachmentArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetUsersArgs;
      * import java.util.List;
@@ -3466,15 +3533,62 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
-     *             .outputFile(&#34;users.txt&#34;)
-     *             .groupName(&#34;group1&#34;)
-     *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
-     *             .policyType(&#34;Custom&#34;)
-     *             .nameRegex(&#34;^user&#34;)
+     *         var defaultGroup = new Group(&#34;defaultGroup&#34;, GroupArgs.builder()        
+     *             .comments(&#34;group comments&#34;)
+     *             .force(true)
      *             .build());
      * 
-     *         ctx.export(&#34;firstUserId&#34;, usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
+     *             .displayName(&#34;displayname&#34;)
+     *             .mobile(&#34;86-18888888888&#34;)
+     *             .email(&#34;hello.uuu@aaa.com&#34;)
+     *             .comments(&#34;yoyoyo&#34;)
+     *             .build());
+     * 
+     *         var defaultGroupMembership = new GroupMembership(&#34;defaultGroupMembership&#34;, GroupMembershipArgs.builder()        
+     *             .groupName(defaultGroup.name())
+     *             .userNames(defaultUser.name())
+     *             .build());
+     * 
+     *         var defaultPolicy = new Policy(&#34;defaultPolicy&#34;, PolicyArgs.builder()        
+     *             .policyName(&#34;ram-policy-example&#34;)
+     *             .policyDocument(&#34;&#34;&#34;
+     * 			{
+     * 				&#34;Statement&#34;: [
+     * 				 {
+     * 					&#34;Action&#34;: [
+     * 					&#34;oss:ListObjects&#34;,
+     * 					&#34;oss:ListObjects&#34;
+     * 			  		],
+     * 			  		&#34;Effect&#34;: &#34;Deny&#34;,
+     * 			  		&#34;Resource&#34;: [
+     * 						&#34;acs:oss:*:*:mybucket&#34;,
+     * 						&#34;acs:oss:*:*:mybucket/*&#34;
+     * 			  		]
+     * 				 }
+     * 		  		],
+     * 				&#34;Version&#34;: &#34;1&#34;
+     * 			}
+     *             &#34;&#34;&#34;)
+     *             .description(&#34;this is a policy example&#34;)
+     *             .force(true)
+     *             .build());
+     * 
+     *         var defaultUserPolicyAttachment = new UserPolicyAttachment(&#34;defaultUserPolicyAttachment&#34;, UserPolicyAttachmentArgs.builder()        
+     *             .policyName(defaultPolicy.policyName())
+     *             .userName(defaultUser.name())
+     *             .policyType(defaultPolicy.type())
+     *             .build());
+     * 
+     *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
+     *             .outputFile(&#34;users.txt&#34;)
+     *             .groupName(defaultGroup.name())
+     *             .policyName(defaultPolicy.policyName())
+     *             .policyType(&#34;Custom&#34;)
+     *             .nameRegex(defaultUser.name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstUserId&#34;, usersDs.applyValue(getUsersResult -&gt; getUsersResult).applyValue(usersDs -&gt; usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id())));
      *     }
      * }
      * ```
@@ -3495,6 +3609,16 @@ public final class RamFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.Group;
+     * import com.pulumi.alicloud.ram.GroupArgs;
+     * import com.pulumi.alicloud.ram.User;
+     * import com.pulumi.alicloud.ram.UserArgs;
+     * import com.pulumi.alicloud.ram.GroupMembership;
+     * import com.pulumi.alicloud.ram.GroupMembershipArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import com.pulumi.alicloud.ram.UserPolicyAttachment;
+     * import com.pulumi.alicloud.ram.UserPolicyAttachmentArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetUsersArgs;
      * import java.util.List;
@@ -3510,15 +3634,62 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
-     *             .outputFile(&#34;users.txt&#34;)
-     *             .groupName(&#34;group1&#34;)
-     *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
-     *             .policyType(&#34;Custom&#34;)
-     *             .nameRegex(&#34;^user&#34;)
+     *         var defaultGroup = new Group(&#34;defaultGroup&#34;, GroupArgs.builder()        
+     *             .comments(&#34;group comments&#34;)
+     *             .force(true)
      *             .build());
      * 
-     *         ctx.export(&#34;firstUserId&#34;, usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
+     *             .displayName(&#34;displayname&#34;)
+     *             .mobile(&#34;86-18888888888&#34;)
+     *             .email(&#34;hello.uuu@aaa.com&#34;)
+     *             .comments(&#34;yoyoyo&#34;)
+     *             .build());
+     * 
+     *         var defaultGroupMembership = new GroupMembership(&#34;defaultGroupMembership&#34;, GroupMembershipArgs.builder()        
+     *             .groupName(defaultGroup.name())
+     *             .userNames(defaultUser.name())
+     *             .build());
+     * 
+     *         var defaultPolicy = new Policy(&#34;defaultPolicy&#34;, PolicyArgs.builder()        
+     *             .policyName(&#34;ram-policy-example&#34;)
+     *             .policyDocument(&#34;&#34;&#34;
+     * 			{
+     * 				&#34;Statement&#34;: [
+     * 				 {
+     * 					&#34;Action&#34;: [
+     * 					&#34;oss:ListObjects&#34;,
+     * 					&#34;oss:ListObjects&#34;
+     * 			  		],
+     * 			  		&#34;Effect&#34;: &#34;Deny&#34;,
+     * 			  		&#34;Resource&#34;: [
+     * 						&#34;acs:oss:*:*:mybucket&#34;,
+     * 						&#34;acs:oss:*:*:mybucket/*&#34;
+     * 			  		]
+     * 				 }
+     * 		  		],
+     * 				&#34;Version&#34;: &#34;1&#34;
+     * 			}
+     *             &#34;&#34;&#34;)
+     *             .description(&#34;this is a policy example&#34;)
+     *             .force(true)
+     *             .build());
+     * 
+     *         var defaultUserPolicyAttachment = new UserPolicyAttachment(&#34;defaultUserPolicyAttachment&#34;, UserPolicyAttachmentArgs.builder()        
+     *             .policyName(defaultPolicy.policyName())
+     *             .userName(defaultUser.name())
+     *             .policyType(defaultPolicy.type())
+     *             .build());
+     * 
+     *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
+     *             .outputFile(&#34;users.txt&#34;)
+     *             .groupName(defaultGroup.name())
+     *             .policyName(defaultPolicy.policyName())
+     *             .policyType(&#34;Custom&#34;)
+     *             .nameRegex(defaultUser.name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstUserId&#34;, usersDs.applyValue(getUsersResult -&gt; getUsersResult).applyValue(usersDs -&gt; usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id())));
      *     }
      * }
      * ```
@@ -3539,6 +3710,16 @@ public final class RamFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.Group;
+     * import com.pulumi.alicloud.ram.GroupArgs;
+     * import com.pulumi.alicloud.ram.User;
+     * import com.pulumi.alicloud.ram.UserArgs;
+     * import com.pulumi.alicloud.ram.GroupMembership;
+     * import com.pulumi.alicloud.ram.GroupMembershipArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import com.pulumi.alicloud.ram.UserPolicyAttachment;
+     * import com.pulumi.alicloud.ram.UserPolicyAttachmentArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetUsersArgs;
      * import java.util.List;
@@ -3554,15 +3735,62 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
-     *             .outputFile(&#34;users.txt&#34;)
-     *             .groupName(&#34;group1&#34;)
-     *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
-     *             .policyType(&#34;Custom&#34;)
-     *             .nameRegex(&#34;^user&#34;)
+     *         var defaultGroup = new Group(&#34;defaultGroup&#34;, GroupArgs.builder()        
+     *             .comments(&#34;group comments&#34;)
+     *             .force(true)
      *             .build());
      * 
-     *         ctx.export(&#34;firstUserId&#34;, usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
+     *             .displayName(&#34;displayname&#34;)
+     *             .mobile(&#34;86-18888888888&#34;)
+     *             .email(&#34;hello.uuu@aaa.com&#34;)
+     *             .comments(&#34;yoyoyo&#34;)
+     *             .build());
+     * 
+     *         var defaultGroupMembership = new GroupMembership(&#34;defaultGroupMembership&#34;, GroupMembershipArgs.builder()        
+     *             .groupName(defaultGroup.name())
+     *             .userNames(defaultUser.name())
+     *             .build());
+     * 
+     *         var defaultPolicy = new Policy(&#34;defaultPolicy&#34;, PolicyArgs.builder()        
+     *             .policyName(&#34;ram-policy-example&#34;)
+     *             .policyDocument(&#34;&#34;&#34;
+     * 			{
+     * 				&#34;Statement&#34;: [
+     * 				 {
+     * 					&#34;Action&#34;: [
+     * 					&#34;oss:ListObjects&#34;,
+     * 					&#34;oss:ListObjects&#34;
+     * 			  		],
+     * 			  		&#34;Effect&#34;: &#34;Deny&#34;,
+     * 			  		&#34;Resource&#34;: [
+     * 						&#34;acs:oss:*:*:mybucket&#34;,
+     * 						&#34;acs:oss:*:*:mybucket/*&#34;
+     * 			  		]
+     * 				 }
+     * 		  		],
+     * 				&#34;Version&#34;: &#34;1&#34;
+     * 			}
+     *             &#34;&#34;&#34;)
+     *             .description(&#34;this is a policy example&#34;)
+     *             .force(true)
+     *             .build());
+     * 
+     *         var defaultUserPolicyAttachment = new UserPolicyAttachment(&#34;defaultUserPolicyAttachment&#34;, UserPolicyAttachmentArgs.builder()        
+     *             .policyName(defaultPolicy.policyName())
+     *             .userName(defaultUser.name())
+     *             .policyType(defaultPolicy.type())
+     *             .build());
+     * 
+     *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
+     *             .outputFile(&#34;users.txt&#34;)
+     *             .groupName(defaultGroup.name())
+     *             .policyName(defaultPolicy.policyName())
+     *             .policyType(&#34;Custom&#34;)
+     *             .nameRegex(defaultUser.name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstUserId&#34;, usersDs.applyValue(getUsersResult -&gt; getUsersResult).applyValue(usersDs -&gt; usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id())));
      *     }
      * }
      * ```
@@ -3583,6 +3811,16 @@ public final class RamFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.Group;
+     * import com.pulumi.alicloud.ram.GroupArgs;
+     * import com.pulumi.alicloud.ram.User;
+     * import com.pulumi.alicloud.ram.UserArgs;
+     * import com.pulumi.alicloud.ram.GroupMembership;
+     * import com.pulumi.alicloud.ram.GroupMembershipArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import com.pulumi.alicloud.ram.UserPolicyAttachment;
+     * import com.pulumi.alicloud.ram.UserPolicyAttachmentArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetUsersArgs;
      * import java.util.List;
@@ -3598,15 +3836,62 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
-     *             .outputFile(&#34;users.txt&#34;)
-     *             .groupName(&#34;group1&#34;)
-     *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
-     *             .policyType(&#34;Custom&#34;)
-     *             .nameRegex(&#34;^user&#34;)
+     *         var defaultGroup = new Group(&#34;defaultGroup&#34;, GroupArgs.builder()        
+     *             .comments(&#34;group comments&#34;)
+     *             .force(true)
      *             .build());
      * 
-     *         ctx.export(&#34;firstUserId&#34;, usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
+     *             .displayName(&#34;displayname&#34;)
+     *             .mobile(&#34;86-18888888888&#34;)
+     *             .email(&#34;hello.uuu@aaa.com&#34;)
+     *             .comments(&#34;yoyoyo&#34;)
+     *             .build());
+     * 
+     *         var defaultGroupMembership = new GroupMembership(&#34;defaultGroupMembership&#34;, GroupMembershipArgs.builder()        
+     *             .groupName(defaultGroup.name())
+     *             .userNames(defaultUser.name())
+     *             .build());
+     * 
+     *         var defaultPolicy = new Policy(&#34;defaultPolicy&#34;, PolicyArgs.builder()        
+     *             .policyName(&#34;ram-policy-example&#34;)
+     *             .policyDocument(&#34;&#34;&#34;
+     * 			{
+     * 				&#34;Statement&#34;: [
+     * 				 {
+     * 					&#34;Action&#34;: [
+     * 					&#34;oss:ListObjects&#34;,
+     * 					&#34;oss:ListObjects&#34;
+     * 			  		],
+     * 			  		&#34;Effect&#34;: &#34;Deny&#34;,
+     * 			  		&#34;Resource&#34;: [
+     * 						&#34;acs:oss:*:*:mybucket&#34;,
+     * 						&#34;acs:oss:*:*:mybucket/*&#34;
+     * 			  		]
+     * 				 }
+     * 		  		],
+     * 				&#34;Version&#34;: &#34;1&#34;
+     * 			}
+     *             &#34;&#34;&#34;)
+     *             .description(&#34;this is a policy example&#34;)
+     *             .force(true)
+     *             .build());
+     * 
+     *         var defaultUserPolicyAttachment = new UserPolicyAttachment(&#34;defaultUserPolicyAttachment&#34;, UserPolicyAttachmentArgs.builder()        
+     *             .policyName(defaultPolicy.policyName())
+     *             .userName(defaultUser.name())
+     *             .policyType(defaultPolicy.type())
+     *             .build());
+     * 
+     *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
+     *             .outputFile(&#34;users.txt&#34;)
+     *             .groupName(defaultGroup.name())
+     *             .policyName(defaultPolicy.policyName())
+     *             .policyType(&#34;Custom&#34;)
+     *             .nameRegex(defaultUser.name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstUserId&#34;, usersDs.applyValue(getUsersResult -&gt; getUsersResult).applyValue(usersDs -&gt; usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id())));
      *     }
      * }
      * ```
@@ -3627,6 +3912,16 @@ public final class RamFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.Group;
+     * import com.pulumi.alicloud.ram.GroupArgs;
+     * import com.pulumi.alicloud.ram.User;
+     * import com.pulumi.alicloud.ram.UserArgs;
+     * import com.pulumi.alicloud.ram.GroupMembership;
+     * import com.pulumi.alicloud.ram.GroupMembershipArgs;
+     * import com.pulumi.alicloud.ram.Policy;
+     * import com.pulumi.alicloud.ram.PolicyArgs;
+     * import com.pulumi.alicloud.ram.UserPolicyAttachment;
+     * import com.pulumi.alicloud.ram.UserPolicyAttachmentArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetUsersArgs;
      * import java.util.List;
@@ -3642,15 +3937,62 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
-     *             .outputFile(&#34;users.txt&#34;)
-     *             .groupName(&#34;group1&#34;)
-     *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
-     *             .policyType(&#34;Custom&#34;)
-     *             .nameRegex(&#34;^user&#34;)
+     *         var defaultGroup = new Group(&#34;defaultGroup&#34;, GroupArgs.builder()        
+     *             .comments(&#34;group comments&#34;)
+     *             .force(true)
      *             .build());
      * 
-     *         ctx.export(&#34;firstUserId&#34;, usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
+     *             .displayName(&#34;displayname&#34;)
+     *             .mobile(&#34;86-18888888888&#34;)
+     *             .email(&#34;hello.uuu@aaa.com&#34;)
+     *             .comments(&#34;yoyoyo&#34;)
+     *             .build());
+     * 
+     *         var defaultGroupMembership = new GroupMembership(&#34;defaultGroupMembership&#34;, GroupMembershipArgs.builder()        
+     *             .groupName(defaultGroup.name())
+     *             .userNames(defaultUser.name())
+     *             .build());
+     * 
+     *         var defaultPolicy = new Policy(&#34;defaultPolicy&#34;, PolicyArgs.builder()        
+     *             .policyName(&#34;ram-policy-example&#34;)
+     *             .policyDocument(&#34;&#34;&#34;
+     * 			{
+     * 				&#34;Statement&#34;: [
+     * 				 {
+     * 					&#34;Action&#34;: [
+     * 					&#34;oss:ListObjects&#34;,
+     * 					&#34;oss:ListObjects&#34;
+     * 			  		],
+     * 			  		&#34;Effect&#34;: &#34;Deny&#34;,
+     * 			  		&#34;Resource&#34;: [
+     * 						&#34;acs:oss:*:*:mybucket&#34;,
+     * 						&#34;acs:oss:*:*:mybucket/*&#34;
+     * 			  		]
+     * 				 }
+     * 		  		],
+     * 				&#34;Version&#34;: &#34;1&#34;
+     * 			}
+     *             &#34;&#34;&#34;)
+     *             .description(&#34;this is a policy example&#34;)
+     *             .force(true)
+     *             .build());
+     * 
+     *         var defaultUserPolicyAttachment = new UserPolicyAttachment(&#34;defaultUserPolicyAttachment&#34;, UserPolicyAttachmentArgs.builder()        
+     *             .policyName(defaultPolicy.policyName())
+     *             .userName(defaultUser.name())
+     *             .policyType(defaultPolicy.type())
+     *             .build());
+     * 
+     *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
+     *             .outputFile(&#34;users.txt&#34;)
+     *             .groupName(defaultGroup.name())
+     *             .policyName(defaultPolicy.policyName())
+     *             .policyType(&#34;Custom&#34;)
+     *             .nameRegex(defaultUser.name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstUserId&#34;, usersDs.applyValue(getUsersResult -&gt; getUsersResult).applyValue(usersDs -&gt; usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id())));
      *     }
      * }
      * ```

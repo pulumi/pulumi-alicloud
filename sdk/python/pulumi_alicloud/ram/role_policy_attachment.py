@@ -35,7 +35,15 @@ class RolePolicyAttachmentArgs:
              policy_name: pulumi.Input[str],
              policy_type: pulumi.Input[str],
              role_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if 'policyType' in kwargs:
+            policy_type = kwargs['policyType']
+        if 'roleName' in kwargs:
+            role_name = kwargs['roleName']
+
         _setter("policy_name", policy_name)
         _setter("policy_type", policy_type)
         _setter("role_name", role_name)
@@ -101,7 +109,15 @@ class _RolePolicyAttachmentState:
              policy_name: Optional[pulumi.Input[str]] = None,
              policy_type: Optional[pulumi.Input[str]] = None,
              role_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if 'policyType' in kwargs:
+            policy_type = kwargs['policyType']
+        if 'roleName' in kwargs:
+            role_name = kwargs['roleName']
+
         if policy_name is not None:
             _setter("policy_name", policy_name)
         if policy_type is not None:

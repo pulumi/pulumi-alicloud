@@ -27,7 +27,7 @@ func GetProducts(ctx *pulumi.Context, args *GetProductsArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getProducts.
 type GetProductsArgs struct {
-	// The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
+	// The Category ID of products.
 	CategoryId *string `pulumi:"categoryId"`
 	// A list of product code.
 	Ids []string `pulumi:"ids"`
@@ -86,7 +86,7 @@ func GetProductsOutput(ctx *pulumi.Context, args GetProductsOutputArgs, opts ...
 
 // A collection of arguments for invoking getProducts.
 type GetProductsOutputArgs struct {
-	// The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
+	// The Category ID of products.
 	CategoryId pulumi.StringPtrInput `pulumi:"categoryId"`
 	// A list of product code.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`

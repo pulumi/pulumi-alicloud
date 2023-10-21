@@ -106,7 +106,13 @@ class DomainConfigFunctionArg(dict):
              _setter: Callable[[Any, Any], None],
              arg_name: str,
              arg_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'argName' in kwargs:
+            arg_name = kwargs['argName']
+        if 'argValue' in kwargs:
+            arg_value = kwargs['argValue']
+
         _setter("arg_name", arg_name)
         _setter("arg_value", arg_value)
 
@@ -161,7 +167,9 @@ class DomainSource(dict):
              port: Optional[int] = None,
              priority: Optional[str] = None,
              weight: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("content", content)
         _setter("type", type)
         if port is not None:
@@ -459,7 +467,79 @@ class ErEnvConf(dict):
              preset_canary_zhejiang: Optional['outputs.ErEnvConfPresetCanaryZhejiang'] = None,
              production: Optional['outputs.ErEnvConfProduction'] = None,
              staging: Optional['outputs.ErEnvConfStaging'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'presetCanaryAnhui' in kwargs:
+            preset_canary_anhui = kwargs['presetCanaryAnhui']
+        if 'presetCanaryBeijing' in kwargs:
+            preset_canary_beijing = kwargs['presetCanaryBeijing']
+        if 'presetCanaryChongqing' in kwargs:
+            preset_canary_chongqing = kwargs['presetCanaryChongqing']
+        if 'presetCanaryFujian' in kwargs:
+            preset_canary_fujian = kwargs['presetCanaryFujian']
+        if 'presetCanaryGansu' in kwargs:
+            preset_canary_gansu = kwargs['presetCanaryGansu']
+        if 'presetCanaryGuangdong' in kwargs:
+            preset_canary_guangdong = kwargs['presetCanaryGuangdong']
+        if 'presetCanaryGuangxi' in kwargs:
+            preset_canary_guangxi = kwargs['presetCanaryGuangxi']
+        if 'presetCanaryGuizhou' in kwargs:
+            preset_canary_guizhou = kwargs['presetCanaryGuizhou']
+        if 'presetCanaryHainan' in kwargs:
+            preset_canary_hainan = kwargs['presetCanaryHainan']
+        if 'presetCanaryHebei' in kwargs:
+            preset_canary_hebei = kwargs['presetCanaryHebei']
+        if 'presetCanaryHeilongjiang' in kwargs:
+            preset_canary_heilongjiang = kwargs['presetCanaryHeilongjiang']
+        if 'presetCanaryHenan' in kwargs:
+            preset_canary_henan = kwargs['presetCanaryHenan']
+        if 'presetCanaryHongKong' in kwargs:
+            preset_canary_hong_kong = kwargs['presetCanaryHongKong']
+        if 'presetCanaryHubei' in kwargs:
+            preset_canary_hubei = kwargs['presetCanaryHubei']
+        if 'presetCanaryHunan' in kwargs:
+            preset_canary_hunan = kwargs['presetCanaryHunan']
+        if 'presetCanaryJiangsu' in kwargs:
+            preset_canary_jiangsu = kwargs['presetCanaryJiangsu']
+        if 'presetCanaryJiangxi' in kwargs:
+            preset_canary_jiangxi = kwargs['presetCanaryJiangxi']
+        if 'presetCanaryJilin' in kwargs:
+            preset_canary_jilin = kwargs['presetCanaryJilin']
+        if 'presetCanaryLiaoning' in kwargs:
+            preset_canary_liaoning = kwargs['presetCanaryLiaoning']
+        if 'presetCanaryMacau' in kwargs:
+            preset_canary_macau = kwargs['presetCanaryMacau']
+        if 'presetCanaryNeimenggu' in kwargs:
+            preset_canary_neimenggu = kwargs['presetCanaryNeimenggu']
+        if 'presetCanaryNingxia' in kwargs:
+            preset_canary_ningxia = kwargs['presetCanaryNingxia']
+        if 'presetCanaryOverseas' in kwargs:
+            preset_canary_overseas = kwargs['presetCanaryOverseas']
+        if 'presetCanaryQinghai' in kwargs:
+            preset_canary_qinghai = kwargs['presetCanaryQinghai']
+        if 'presetCanaryShaanxi' in kwargs:
+            preset_canary_shaanxi = kwargs['presetCanaryShaanxi']
+        if 'presetCanaryShandong' in kwargs:
+            preset_canary_shandong = kwargs['presetCanaryShandong']
+        if 'presetCanaryShanghai' in kwargs:
+            preset_canary_shanghai = kwargs['presetCanaryShanghai']
+        if 'presetCanaryShanxi' in kwargs:
+            preset_canary_shanxi = kwargs['presetCanaryShanxi']
+        if 'presetCanarySichuan' in kwargs:
+            preset_canary_sichuan = kwargs['presetCanarySichuan']
+        if 'presetCanaryTaiwan' in kwargs:
+            preset_canary_taiwan = kwargs['presetCanaryTaiwan']
+        if 'presetCanaryTianjin' in kwargs:
+            preset_canary_tianjin = kwargs['presetCanaryTianjin']
+        if 'presetCanaryXinjiang' in kwargs:
+            preset_canary_xinjiang = kwargs['presetCanaryXinjiang']
+        if 'presetCanaryXizang' in kwargs:
+            preset_canary_xizang = kwargs['presetCanaryXizang']
+        if 'presetCanaryYunnan' in kwargs:
+            preset_canary_yunnan = kwargs['presetCanaryYunnan']
+        if 'presetCanaryZhejiang' in kwargs:
+            preset_canary_zhejiang = kwargs['presetCanaryZhejiang']
+
         if preset_canary_anhui is not None:
             _setter("preset_canary_anhui", preset_canary_anhui)
         if preset_canary_beijing is not None:
@@ -876,7 +956,15 @@ class ErEnvConfPresetCanaryAnhui(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -953,7 +1041,15 @@ class ErEnvConfPresetCanaryBeijing(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1030,7 +1126,15 @@ class ErEnvConfPresetCanaryChongqing(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1107,7 +1211,15 @@ class ErEnvConfPresetCanaryFujian(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1184,7 +1296,15 @@ class ErEnvConfPresetCanaryGansu(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1261,7 +1381,15 @@ class ErEnvConfPresetCanaryGuangdong(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1338,7 +1466,15 @@ class ErEnvConfPresetCanaryGuangxi(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1415,7 +1551,15 @@ class ErEnvConfPresetCanaryGuizhou(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1492,7 +1636,15 @@ class ErEnvConfPresetCanaryHainan(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1569,7 +1721,15 @@ class ErEnvConfPresetCanaryHebei(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1646,7 +1806,15 @@ class ErEnvConfPresetCanaryHeilongjiang(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1723,7 +1891,15 @@ class ErEnvConfPresetCanaryHenan(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1800,7 +1976,15 @@ class ErEnvConfPresetCanaryHongKong(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1877,7 +2061,15 @@ class ErEnvConfPresetCanaryHubei(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1954,7 +2146,15 @@ class ErEnvConfPresetCanaryHunan(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -2031,7 +2231,15 @@ class ErEnvConfPresetCanaryJiangsu(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -2108,7 +2316,15 @@ class ErEnvConfPresetCanaryJiangxi(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -2185,7 +2401,15 @@ class ErEnvConfPresetCanaryJilin(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -2262,7 +2486,15 @@ class ErEnvConfPresetCanaryLiaoning(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -2339,7 +2571,15 @@ class ErEnvConfPresetCanaryMacau(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -2416,7 +2656,15 @@ class ErEnvConfPresetCanaryNeimenggu(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -2493,7 +2741,15 @@ class ErEnvConfPresetCanaryNingxia(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -2570,7 +2826,15 @@ class ErEnvConfPresetCanaryOverseas(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -2647,7 +2911,15 @@ class ErEnvConfPresetCanaryQinghai(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -2724,7 +2996,15 @@ class ErEnvConfPresetCanaryShaanxi(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -2801,7 +3081,15 @@ class ErEnvConfPresetCanaryShandong(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -2878,7 +3166,15 @@ class ErEnvConfPresetCanaryShanghai(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -2955,7 +3251,15 @@ class ErEnvConfPresetCanaryShanxi(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -3032,7 +3336,15 @@ class ErEnvConfPresetCanarySichuan(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -3109,7 +3421,15 @@ class ErEnvConfPresetCanaryTaiwan(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -3186,7 +3506,15 @@ class ErEnvConfPresetCanaryTianjin(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -3263,7 +3591,15 @@ class ErEnvConfPresetCanaryXinjiang(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -3340,7 +3676,15 @@ class ErEnvConfPresetCanaryXizang(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -3417,7 +3761,15 @@ class ErEnvConfPresetCanaryYunnan(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -3494,7 +3846,15 @@ class ErEnvConfPresetCanaryZhejiang(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -3571,7 +3931,15 @@ class ErEnvConfProduction(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -3648,7 +4016,15 @@ class ErEnvConfStaging(dict):
              allowed_hosts: Optional[Sequence[str]] = None,
              code_rev: Optional[str] = None,
              spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedHosts' in kwargs:
+            allowed_hosts = kwargs['allowedHosts']
+        if 'codeRev' in kwargs:
+            code_rev = kwargs['codeRev']
+        if 'specName' in kwargs:
+            spec_name = kwargs['specName']
+
         if allowed_hosts is not None:
             _setter("allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -3712,7 +4088,9 @@ class IpaDomainSource(dict):
              priority: str,
              type: str,
              weight: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("content", content)
         _setter("port", port)
         _setter("priority", priority)
@@ -3806,7 +4184,13 @@ class WafRuleCondition(dict):
              op_value: str,
              sub_key: Optional[str] = None,
              values: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'opValue' in kwargs:
+            op_value = kwargs['opValue']
+        if 'subKey' in kwargs:
+            sub_key = kwargs['subKey']
+
         _setter("key", key)
         _setter("op_value", op_value)
         if sub_key is not None:
@@ -3899,7 +4283,11 @@ class WafRuleRateLimit(dict):
              target: Optional[str] = None,
              threshold: Optional[int] = None,
              ttl: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'subKey' in kwargs:
+            sub_key = kwargs['subKey']
+
         if interval is not None:
             _setter("interval", interval)
         if status is not None:
@@ -3985,7 +4373,9 @@ class WafRuleRateLimitStatus(dict):
              code: Optional[str] = None,
              count: Optional[int] = None,
              ratio: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if code is not None:
             _setter("code", code)
         if count is not None:
@@ -4077,7 +4467,21 @@ class GetDomainsDomainResult(dict):
              ssl_protocol: str,
              ssl_pub: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'certName' in kwargs:
+            cert_name = kwargs['certName']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'gmtModified' in kwargs:
+            gmt_modified = kwargs['gmtModified']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'sslProtocol' in kwargs:
+            ssl_protocol = kwargs['sslProtocol']
+        if 'sslPub' in kwargs:
+            ssl_pub = kwargs['sslPub']
+
         _setter("cert_name", cert_name)
         _setter("cname", cname)
         _setter("description", description)
@@ -4223,7 +4627,9 @@ class GetDomainsDomainSourceResult(dict):
              priority: str,
              type: str,
              weight: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("content", content)
         _setter("enabled", enabled)
         _setter("port", port)
@@ -4339,7 +4745,21 @@ class GetIpaDomainsDomainResult(dict):
              ssl_protocol: str,
              ssl_pub: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'certName' in kwargs:
+            cert_name = kwargs['certName']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'sslProtocol' in kwargs:
+            ssl_protocol = kwargs['sslProtocol']
+        if 'sslPub' in kwargs:
+            ssl_pub = kwargs['sslPub']
+
         _setter("cert_name", cert_name)
         _setter("cname", cname)
         _setter("create_time", create_time)
@@ -4481,7 +4901,9 @@ class GetIpaDomainsDomainSourceResult(dict):
              priority: str,
              type: str,
              weight: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("content", content)
         _setter("port", port)
         _setter("priority", priority)
@@ -4556,7 +4978,15 @@ class GetWafDomainsDomainResult(dict):
              defense_scenes: Sequence['outputs.GetWafDomainsDomainDefenseSceneResult'],
              domain_name: str,
              id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clientIpTag' in kwargs:
+            client_ip_tag = kwargs['clientIpTag']
+        if 'defenseScenes' in kwargs:
+            defense_scenes = kwargs['defenseScenes']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+
         _setter("client_ip_tag", client_ip_tag)
         _setter("defense_scenes", defense_scenes)
         _setter("domain_name", domain_name)
@@ -4614,7 +5044,13 @@ class GetWafDomainsDomainDefenseSceneResult(dict):
              _setter: Callable[[Any, Any], None],
              defense_scene: str,
              policy_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defenseScene' in kwargs:
+            defense_scene = kwargs['defenseScene']
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+
         _setter("defense_scene", defense_scene)
         _setter("policy_id", policy_id)
 
@@ -4682,7 +5118,23 @@ class GetWafPoliciesPolicyResult(dict):
              policy_type: str,
              rule_count: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dcdnWafPolicyId' in kwargs:
+            dcdn_waf_policy_id = kwargs['dcdnWafPolicyId']
+        if 'defenseScene' in kwargs:
+            defense_scene = kwargs['defenseScene']
+        if 'domainCount' in kwargs:
+            domain_count = kwargs['domainCount']
+        if 'gmtModified' in kwargs:
+            gmt_modified = kwargs['gmtModified']
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if 'policyType' in kwargs:
+            policy_type = kwargs['policyType']
+        if 'ruleCount' in kwargs:
+            rule_count = kwargs['ruleCount']
+
         _setter("dcdn_waf_policy_id", dcdn_waf_policy_id)
         _setter("defense_scene", defense_scene)
         _setter("domain_count", domain_count)
@@ -4853,7 +5305,35 @@ class GetWafRulesWafRuleResult(dict):
              status: str,
              waf_group_ids: str,
              waf_rule_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ccStatus' in kwargs:
+            cc_status = kwargs['ccStatus']
+        if 'cnRegionList' in kwargs:
+            cn_region_list = kwargs['cnRegionList']
+        if 'defenseScene' in kwargs:
+            defense_scene = kwargs['defenseScene']
+        if 'gmtModified' in kwargs:
+            gmt_modified = kwargs['gmtModified']
+        if 'otherRegionList' in kwargs:
+            other_region_list = kwargs['otherRegionList']
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if 'rateLimits' in kwargs:
+            rate_limits = kwargs['rateLimits']
+        if 'regularRules' in kwargs:
+            regular_rules = kwargs['regularRules']
+        if 'regularTypes' in kwargs:
+            regular_types = kwargs['regularTypes']
+        if 'remoteAddrs' in kwargs:
+            remote_addrs = kwargs['remoteAddrs']
+        if 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+        if 'wafGroupIds' in kwargs:
+            waf_group_ids = kwargs['wafGroupIds']
+        if 'wafRuleId' in kwargs:
+            waf_rule_id = kwargs['wafRuleId']
+
         _setter("action", action)
         _setter("cc_status", cc_status)
         _setter("cn_region_list", cn_region_list)
@@ -5054,7 +5534,13 @@ class GetWafRulesWafRuleConditionResult(dict):
              op_value: str,
              sub_key: str,
              values: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'opValue' in kwargs:
+            op_value = kwargs['opValue']
+        if 'subKey' in kwargs:
+            sub_key = kwargs['subKey']
+
         _setter("key", key)
         _setter("op_value", op_value)
         _setter("sub_key", sub_key)
@@ -5128,7 +5614,11 @@ class GetWafRulesWafRuleRateLimitResult(dict):
              target: str,
              threshold: int,
              ttl: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'subKey' in kwargs:
+            sub_key = kwargs['subKey']
+
         _setter("interval", interval)
         _setter("statuses", statuses)
         _setter("sub_key", sub_key)
@@ -5192,6 +5682,7 @@ class GetWafRulesWafRuleRateLimitStatusResult(dict):
                  count: int,
                  ratio: int):
         """
+        :param str code: The HTTP status code returned.
         :param int count: The number of times that the HTTP status code that was returned.
         :param int ratio: The percentage of HTTP status codes.
         """
@@ -5207,7 +5698,9 @@ class GetWafRulesWafRuleRateLimitStatusResult(dict):
              code: str,
              count: int,
              ratio: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("code", code)
         _setter("count", count)
         _setter("ratio", ratio)
@@ -5215,6 +5708,9 @@ class GetWafRulesWafRuleRateLimitStatusResult(dict):
     @property
     @pulumi.getter
     def code(self) -> str:
+        """
+        The HTTP status code returned.
+        """
         return pulumi.get(self, "code")
 
     @property

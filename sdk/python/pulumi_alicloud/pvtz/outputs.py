@@ -75,7 +75,15 @@ class EndpointIpConfig(dict):
              vswitch_id: str,
              zone_id: str,
              ip: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("cidr_block", cidr_block)
         _setter("vswitch_id", vswitch_id)
         _setter("zone_id", zone_id)
@@ -153,7 +161,13 @@ class RuleAttachmentVpc(dict):
              _setter: Callable[[Any, Any], None],
              region_id: str,
              vpc_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         _setter("region_id", region_id)
         _setter("vpc_id", vpc_id)
 
@@ -193,7 +207,9 @@ class RuleForwardIp(dict):
              _setter: Callable[[Any, Any], None],
              ip: str,
              port: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("ip", ip)
         _setter("port", port)
 
@@ -241,8 +257,6 @@ class ZoneAttachmentVpc(dict):
         """
         :param str vpc_id: The Id of the vpc.
         :param str region_id: The region of the vpc. If not set, the current region will instead of.
-               
-               Recommend to use `vpcs`.
         """
         ZoneAttachmentVpc._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -254,7 +268,13 @@ class ZoneAttachmentVpc(dict):
              _setter: Callable[[Any, Any], None],
              vpc_id: str,
              region_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+
         _setter("vpc_id", vpc_id)
         if region_id is not None:
             _setter("region_id", region_id)
@@ -272,8 +292,6 @@ class ZoneAttachmentVpc(dict):
     def region_id(self) -> Optional[str]:
         """
         The region of the vpc. If not set, the current region will instead of.
-
-        Recommend to use `vpcs`.
         """
         return pulumi.get(self, "region_id")
 
@@ -316,7 +334,13 @@ class ZoneUserInfo(dict):
              _setter: Callable[[Any, Any], None],
              region_ids: Optional[Sequence[str]] = None,
              user_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'regionIds' in kwargs:
+            region_ids = kwargs['regionIds']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if region_ids is not None:
             _setter("region_ids", region_ids)
         if user_id is not None:
@@ -385,7 +409,23 @@ class GetEndpointsEndpointResult(dict):
              vpc_id: str,
              vpc_name: str,
              vpc_region_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'endpointName' in kwargs:
+            endpoint_name = kwargs['endpointName']
+        if 'ipConfigs' in kwargs:
+            ip_configs = kwargs['ipConfigs']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vpcName' in kwargs:
+            vpc_name = kwargs['vpcName']
+        if 'vpcRegionId' in kwargs:
+            vpc_region_id = kwargs['vpcRegionId']
+
         _setter("create_time", create_time)
         _setter("endpoint_name", endpoint_name)
         _setter("id", id)
@@ -493,7 +533,15 @@ class GetEndpointsEndpointIpConfigResult(dict):
              ip: str,
              vswitch_id: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("cidr_block", cidr_block)
         _setter("ip", ip)
         _setter("vswitch_id", vswitch_id)
@@ -551,7 +599,11 @@ class GetResolverZonesZoneResult(dict):
              _setter: Callable[[Any, Any], None],
              status: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("status", status)
         _setter("zone_id", zone_id)
 
@@ -622,7 +674,25 @@ class GetRulesRuleResult(dict):
              rule_name: str,
              type: str,
              zone_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bindVpcs' in kwargs:
+            bind_vpcs = kwargs['bindVpcs']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'endpointId' in kwargs:
+            endpoint_id = kwargs['endpointId']
+        if 'endpointName' in kwargs:
+            endpoint_name = kwargs['endpointName']
+        if 'forwardIps' in kwargs:
+            forward_ips = kwargs['forwardIps']
+        if 'ruleId' in kwargs:
+            rule_id = kwargs['ruleId']
+        if 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+        if 'zoneName' in kwargs:
+            zone_name = kwargs['zoneName']
+
         _setter("bind_vpcs", bind_vpcs)
         _setter("create_time", create_time)
         _setter("endpoint_id", endpoint_id)
@@ -739,7 +809,17 @@ class GetRulesRuleBindVpcResult(dict):
              region_name: str,
              vpc_id: str,
              vpc_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'regionName' in kwargs:
+            region_name = kwargs['regionName']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vpcName' in kwargs:
+            vpc_name = kwargs['vpcName']
+
         _setter("region_id", region_id)
         _setter("region_name", region_name)
         _setter("vpc_id", vpc_id)
@@ -793,7 +873,9 @@ class GetRulesRuleForwardIpResult(dict):
              _setter: Callable[[Any, Any], None],
              ip: str,
              port: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("ip", ip)
         _setter("port", port)
 
@@ -861,7 +943,13 @@ class GetZoneRecordsRecordResult(dict):
              ttl: int,
              type: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'recordId' in kwargs:
+            record_id = kwargs['recordId']
+        if 'resourceRecord' in kwargs:
+            resource_record = kwargs['resourceRecord']
+
         _setter("id", id)
         _setter("priority", priority)
         _setter("record_id", record_id)
@@ -1025,7 +1113,33 @@ class GetZonesZoneResult(dict):
              update_timestamp: int,
              zone_id: str,
              zone_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bindVpcs' in kwargs:
+            bind_vpcs = kwargs['bindVpcs']
+        if 'createTimestamp' in kwargs:
+            create_timestamp = kwargs['createTimestamp']
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'isPtr' in kwargs:
+            is_ptr = kwargs['isPtr']
+        if 'proxyPattern' in kwargs:
+            proxy_pattern = kwargs['proxyPattern']
+        if 'recordCount' in kwargs:
+            record_count = kwargs['recordCount']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'slaveDns' in kwargs:
+            slave_dns = kwargs['slaveDns']
+        if 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if 'updateTimestamp' in kwargs:
+            update_timestamp = kwargs['updateTimestamp']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'zoneName' in kwargs:
+            zone_name = kwargs['zoneName']
+
         _setter("bind_vpcs", bind_vpcs)
         _setter("create_timestamp", create_timestamp)
         _setter("creation_time", creation_time)
@@ -1183,7 +1297,17 @@ class GetZonesZoneBindVpcResult(dict):
              region_name: str,
              vpc_id: str,
              vpc_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'regionName' in kwargs:
+            region_name = kwargs['regionName']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vpcName' in kwargs:
+            vpc_name = kwargs['vpcName']
+
         _setter("region_id", region_id)
         _setter("region_name", region_name)
         _setter("vpc_id", vpc_id)

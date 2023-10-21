@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Adb
     /// <summary>
     /// Provides a AnalyticDB for MySQL (ADB) DB Cluster Lake Version resource.
     /// 
-    /// For information about AnalyticDB for MySQL (ADB) DB Cluster Lake Version and how to use it, see [What is DB Cluster Lake Version](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2021-12-01-api-doc-createdbcluster).
+    /// For information about AnalyticDB for MySQL (ADB) DB Cluster Lake Version and how to use it, see [What is DB Cluster Lake Version](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-createdbcluster).
     /// 
     /// &gt; **NOTE:** Available since v1.190.0.
     /// 
@@ -28,44 +28,29 @@ namespace Pulumi.AliCloud.Adb
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var defaultZones = AliCloud.Adb.GetZones.Invoke();
+    /// 
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
     ///     {
-    ///         AvailableResourceCreation = "VSwitch",
+    ///         NameRegex = "^default-NODELETING$",
     ///     });
     /// 
-    ///     var zoneId = Output.Tuple(defaultZones, defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids).Length).Apply(values =&gt;
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
     ///     {
-    ///         var defaultZones = values.Item1;
-    ///         var length = values.Item2;
-    ///         return defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids)[length - 1];
-    ///     });
-    /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
-    ///     {
-    ///         VpcName = name,
-    ///         CidrBlock = "10.4.0.0/16",
-    ///     });
-    /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
-    ///     {
-    ///         VpcId = defaultNetwork.Id,
-    ///         CidrBlock = "10.4.0.0/24",
-    ///         ZoneId = zoneId,
-    ///         VswitchName = name,
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
     ///     });
     /// 
     ///     var defaultDBClusterLakeVersion = new AliCloud.Adb.DBClusterLakeVersion("defaultDBClusterLakeVersion", new()
     ///     {
-    ///         ComputeResource = "16ACU",
     ///         DbClusterVersion = "5.0",
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///         ComputeResource = "16ACU",
+    ///         StorageResource = "0ACU",
     ///         PaymentType = "PayAsYouGo",
-    ///         StorageResource = "24ACU",
     ///         EnableDefaultResourceGroup = false,
-    ///         VswitchId = defaultSwitch.Id,
-    ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = zoneId,
     ///     });
     /// 
     /// });
@@ -82,6 +67,12 @@ namespace Pulumi.AliCloud.Adb
     [AliCloudResourceType("alicloud:adb/dBClusterLakeVersion:DBClusterLakeVersion")]
     public partial class DBClusterLakeVersion : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The ID of the backup set that you want to use to restore data.
+        /// </summary>
+        [Output("backupSetId")]
+        public Output<string?> BackupSetId { get; private set; } = null!;
+
         /// <summary>
         /// The name of the service.
         /// </summary>
@@ -113,7 +104,7 @@ namespace Pulumi.AliCloud.Adb
         public Output<string> DbClusterDescription { get; private set; } = null!;
 
         /// <summary>
-        /// The version of the cluster. Value options: `5.0`.
+        /// The version of the cluster. Valid values: `5.0`.
         /// </summary>
         [Output("dbClusterVersion")]
         public Output<string> DbClusterVersion { get; private set; } = null!;
@@ -161,7 +152,7 @@ namespace Pulumi.AliCloud.Adb
         public Output<string> LockReason { get; private set; } = null!;
 
         /// <summary>
-        /// The payment type of the resource. Valid values are `PayAsYouGo`.
+        /// The payment type of the resource. Valid values: `PayAsYouGo`.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
@@ -179,12 +170,30 @@ namespace Pulumi.AliCloud.Adb
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
+        /// The point in time to which you want to restore data from the backup set.
+        /// </summary>
+        [Output("restoreToTime")]
+        public Output<string?> RestoreToTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The method that you want to use to restore data. Valid values:
+        /// </summary>
+        [Output("restoreType")]
+        public Output<string?> RestoreType { get; private set; } = null!;
+
+        /// <summary>
         /// The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
         /// - IP addresses, such as 10.23.XX.XX.
         /// - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
         /// </summary>
         [Output("securityIps")]
         public Output<string> SecurityIps { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
+        /// </summary>
+        [Output("sourceDbClusterId")]
+        public Output<string?> SourceDbClusterId { get; private set; } = null!;
 
         /// <summary>
         /// The status of the resource.
@@ -263,6 +272,12 @@ namespace Pulumi.AliCloud.Adb
     public sealed class DBClusterLakeVersionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The ID of the backup set that you want to use to restore data.
+        /// </summary>
+        [Input("backupSetId")]
+        public Input<string>? BackupSetId { get; set; }
+
+        /// <summary>
         /// The computing resources of the cluster.
         /// </summary>
         [Input("computeResource", required: true)]
@@ -275,7 +290,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? DbClusterDescription { get; set; }
 
         /// <summary>
-        /// The version of the cluster. Value options: `5.0`.
+        /// The version of the cluster. Valid values: `5.0`.
         /// </summary>
         [Input("dbClusterVersion", required: true)]
         public Input<string> DbClusterVersion { get; set; } = null!;
@@ -287,10 +302,28 @@ namespace Pulumi.AliCloud.Adb
         public Input<bool>? EnableDefaultResourceGroup { get; set; }
 
         /// <summary>
-        /// The payment type of the resource. Valid values are `PayAsYouGo`.
+        /// The payment type of the resource. Valid values: `PayAsYouGo`.
         /// </summary>
         [Input("paymentType", required: true)]
         public Input<string> PaymentType { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The point in time to which you want to restore data from the backup set.
+        /// </summary>
+        [Input("restoreToTime")]
+        public Input<string>? RestoreToTime { get; set; }
+
+        /// <summary>
+        /// The method that you want to use to restore data. Valid values:
+        /// </summary>
+        [Input("restoreType")]
+        public Input<string>? RestoreType { get; set; }
 
         /// <summary>
         /// The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
@@ -299,6 +332,12 @@ namespace Pulumi.AliCloud.Adb
         /// </summary>
         [Input("securityIps")]
         public Input<string>? SecurityIps { get; set; }
+
+        /// <summary>
+        /// The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
+        /// </summary>
+        [Input("sourceDbClusterId")]
+        public Input<string>? SourceDbClusterId { get; set; }
 
         /// <summary>
         /// The storage resources of the cluster.
@@ -333,6 +372,12 @@ namespace Pulumi.AliCloud.Adb
     public sealed class DBClusterLakeVersionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The ID of the backup set that you want to use to restore data.
+        /// </summary>
+        [Input("backupSetId")]
+        public Input<string>? BackupSetId { get; set; }
+
+        /// <summary>
         /// The name of the service.
         /// </summary>
         [Input("commodityCode")]
@@ -363,7 +408,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? DbClusterDescription { get; set; }
 
         /// <summary>
-        /// The version of the cluster. Value options: `5.0`.
+        /// The version of the cluster. Valid values: `5.0`.
         /// </summary>
         [Input("dbClusterVersion")]
         public Input<string>? DbClusterVersion { get; set; }
@@ -411,7 +456,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? LockReason { get; set; }
 
         /// <summary>
-        /// The payment type of the resource. Valid values are `PayAsYouGo`.
+        /// The payment type of the resource. Valid values: `PayAsYouGo`.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
@@ -429,12 +474,30 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
+        /// The point in time to which you want to restore data from the backup set.
+        /// </summary>
+        [Input("restoreToTime")]
+        public Input<string>? RestoreToTime { get; set; }
+
+        /// <summary>
+        /// The method that you want to use to restore data. Valid values:
+        /// </summary>
+        [Input("restoreType")]
+        public Input<string>? RestoreType { get; set; }
+
+        /// <summary>
         /// The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
         /// - IP addresses, such as 10.23.XX.XX.
         /// - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
         /// </summary>
         [Input("securityIps")]
         public Input<string>? SecurityIps { get; set; }
+
+        /// <summary>
+        /// The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
+        /// </summary>
+        [Input("sourceDbClusterId")]
+        public Input<string>? SourceDbClusterId { get; set; }
 
         /// <summary>
         /// The status of the resource.

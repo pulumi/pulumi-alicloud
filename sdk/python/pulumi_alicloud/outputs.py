@@ -80,7 +80,27 @@ class GetMscSubContactsContactResult(dict):
              last_mobile_verification_time_stamp: str,
              mobile: str,
              position: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountUid' in kwargs:
+            account_uid = kwargs['accountUid']
+        if 'contactId' in kwargs:
+            contact_id = kwargs['contactId']
+        if 'contactName' in kwargs:
+            contact_name = kwargs['contactName']
+        if 'isAccount' in kwargs:
+            is_account = kwargs['isAccount']
+        if 'isObsolete' in kwargs:
+            is_obsolete = kwargs['isObsolete']
+        if 'isVerifiedEmail' in kwargs:
+            is_verified_email = kwargs['isVerifiedEmail']
+        if 'isVerifiedMobile' in kwargs:
+            is_verified_mobile = kwargs['isVerifiedMobile']
+        if 'lastEmailVerificationTimeStamp' in kwargs:
+            last_email_verification_time_stamp = kwargs['lastEmailVerificationTimeStamp']
+        if 'lastMobileVerificationTimeStamp' in kwargs:
+            last_mobile_verification_time_stamp = kwargs['lastMobileVerificationTimeStamp']
+
         _setter("account_uid", account_uid)
         _setter("contact_id", contact_id)
         _setter("contact_name", contact_name)
@@ -259,7 +279,27 @@ class GetMscSubSubscriptionsSubscriptionResult(dict):
              tts_status: int,
              webhook_ids: Sequence[int],
              webhook_status: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'contactIds' in kwargs:
+            contact_ids = kwargs['contactIds']
+        if 'emailStatus' in kwargs:
+            email_status = kwargs['emailStatus']
+        if 'itemId' in kwargs:
+            item_id = kwargs['itemId']
+        if 'itemName' in kwargs:
+            item_name = kwargs['itemName']
+        if 'pmsgStatus' in kwargs:
+            pmsg_status = kwargs['pmsgStatus']
+        if 'smsStatus' in kwargs:
+            sms_status = kwargs['smsStatus']
+        if 'ttsStatus' in kwargs:
+            tts_status = kwargs['ttsStatus']
+        if 'webhookIds' in kwargs:
+            webhook_ids = kwargs['webhookIds']
+        if 'webhookStatus' in kwargs:
+            webhook_status = kwargs['webhookStatus']
+
         _setter("channel", channel)
         _setter("contact_ids", contact_ids)
         _setter("description", description)
@@ -397,7 +437,15 @@ class GetMscSubWebhooksWebhookResult(dict):
              server_url: str,
              webhook_id: str,
              webhook_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverUrl' in kwargs:
+            server_url = kwargs['serverUrl']
+        if 'webhookId' in kwargs:
+            webhook_id = kwargs['webhookId']
+        if 'webhookName' in kwargs:
+            webhook_name = kwargs['webhookName']
+
         _setter("id", id)
         _setter("server_url", server_url)
         _setter("webhook_id", webhook_id)
@@ -458,7 +506,13 @@ class GetRegionsRegionResult(dict):
              id: str,
              local_name: str,
              region_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'localName' in kwargs:
+            local_name = kwargs['localName']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+
         _setter("id", id)
         _setter("local_name", local_name)
         _setter("region_id", region_id)
@@ -528,7 +582,21 @@ class GetZonesZoneResult(dict):
              local_name: str,
              multi_zone_ids: Sequence[str],
              slb_slave_zone_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availableDiskCategories' in kwargs:
+            available_disk_categories = kwargs['availableDiskCategories']
+        if 'availableInstanceTypes' in kwargs:
+            available_instance_types = kwargs['availableInstanceTypes']
+        if 'availableResourceCreations' in kwargs:
+            available_resource_creations = kwargs['availableResourceCreations']
+        if 'localName' in kwargs:
+            local_name = kwargs['localName']
+        if 'multiZoneIds' in kwargs:
+            multi_zone_ids = kwargs['multiZoneIds']
+        if 'slbSlaveZoneIds' in kwargs:
+            slb_slave_zone_ids = kwargs['slbSlaveZoneIds']
+
         _setter("available_disk_categories", available_disk_categories)
         _setter("available_instance_types", available_instance_types)
         _setter("available_resource_creations", available_resource_creations)

@@ -67,7 +67,25 @@ class ClusterAdditionalVolumeArgs:
              volume_mountpoint: Optional[pulumi.Input[str]] = None,
              volume_protocol: Optional[pulumi.Input[str]] = None,
              volume_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'jobQueue' in kwargs:
+            job_queue = kwargs['jobQueue']
+        if 'localDirectory' in kwargs:
+            local_directory = kwargs['localDirectory']
+        if 'remoteDirectory' in kwargs:
+            remote_directory = kwargs['remoteDirectory']
+        if 'volumeId' in kwargs:
+            volume_id = kwargs['volumeId']
+        if 'volumeMountOption' in kwargs:
+            volume_mount_option = kwargs['volumeMountOption']
+        if 'volumeMountpoint' in kwargs:
+            volume_mountpoint = kwargs['volumeMountpoint']
+        if 'volumeProtocol' in kwargs:
+            volume_protocol = kwargs['volumeProtocol']
+        if 'volumeType' in kwargs:
+            volume_type = kwargs['volumeType']
+
         if job_queue is not None:
             _setter("job_queue", job_queue)
         if local_directory is not None:
@@ -225,7 +243,9 @@ class ClusterAdditionalVolumeRoleArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
 
@@ -257,7 +277,9 @@ class ClusterApplicationArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              tag: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if tag is not None:
             _setter("tag", tag)
 
@@ -293,7 +315,9 @@ class ClusterPostInstallScriptArgs:
              _setter: Callable[[Any, Any], None],
              args: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if args is not None:
             _setter("args", args)
         if url is not None:

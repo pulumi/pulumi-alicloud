@@ -38,7 +38,15 @@ class InstanceSlbConnAddrArgs:
              conn_addr: Optional[pulumi.Input[str]] = None,
              conn_addr_port: Optional[pulumi.Input[str]] = None,
              net_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connAddr' in kwargs:
+            conn_addr = kwargs['connAddr']
+        if 'connAddrPort' in kwargs:
+            conn_addr_port = kwargs['connAddrPort']
+        if 'netType' in kwargs:
+            net_type = kwargs['netType']
+
         if conn_addr is not None:
             _setter("conn_addr", conn_addr)
         if conn_addr_port is not None:
@@ -106,7 +114,15 @@ class InstanceUiProxyConnAddrArgs:
              conn_addr: Optional[pulumi.Input[str]] = None,
              conn_addr_port: Optional[pulumi.Input[str]] = None,
              net_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connAddr' in kwargs:
+            conn_addr = kwargs['connAddr']
+        if 'connAddrPort' in kwargs:
+            conn_addr_port = kwargs['connAddrPort']
+        if 'netType' in kwargs:
+            net_type = kwargs['netType']
+
         if conn_addr is not None:
             _setter("conn_addr", conn_addr)
         if conn_addr_port is not None:
@@ -174,7 +190,15 @@ class InstanceZkConnAddrArgs:
              conn_addr: Optional[pulumi.Input[str]] = None,
              conn_addr_port: Optional[pulumi.Input[str]] = None,
              net_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connAddr' in kwargs:
+            conn_addr = kwargs['connAddr']
+        if 'connAddrPort' in kwargs:
+            conn_addr_port = kwargs['connAddrPort']
+        if 'netType' in kwargs:
+            net_type = kwargs['netType']
+
         if conn_addr is not None:
             _setter("conn_addr", conn_addr)
         if conn_addr_port is not None:

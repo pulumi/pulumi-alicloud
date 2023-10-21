@@ -41,7 +41,15 @@ class RdsInstanceCrossBackupPolicyArgs:
              instance_id: pulumi.Input[str],
              log_backup_enabled: Optional[pulumi.Input[str]] = None,
              retention: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'crossBackupRegion' in kwargs:
+            cross_backup_region = kwargs['crossBackupRegion']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'logBackupEnabled' in kwargs:
+            log_backup_enabled = kwargs['logBackupEnabled']
+
         _setter("cross_backup_region", cross_backup_region)
         _setter("instance_id", instance_id)
         if log_backup_enabled is not None:
@@ -165,7 +173,29 @@ class _RdsInstanceCrossBackupPolicyState:
              log_backup_enabled_time: Optional[pulumi.Input[str]] = None,
              retent_type: Optional[pulumi.Input[str]] = None,
              retention: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupEnabled' in kwargs:
+            backup_enabled = kwargs['backupEnabled']
+        if 'backupEnabledTime' in kwargs:
+            backup_enabled_time = kwargs['backupEnabledTime']
+        if 'crossBackupRegion' in kwargs:
+            cross_backup_region = kwargs['crossBackupRegion']
+        if 'crossBackupType' in kwargs:
+            cross_backup_type = kwargs['crossBackupType']
+        if 'dbInstanceStatus' in kwargs:
+            db_instance_status = kwargs['dbInstanceStatus']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'lockMode' in kwargs:
+            lock_mode = kwargs['lockMode']
+        if 'logBackupEnabled' in kwargs:
+            log_backup_enabled = kwargs['logBackupEnabled']
+        if 'logBackupEnabledTime' in kwargs:
+            log_backup_enabled_time = kwargs['logBackupEnabledTime']
+        if 'retentType' in kwargs:
+            retent_type = kwargs['retentType']
+
         if backup_enabled is not None:
             _setter("backup_enabled", backup_enabled)
         if backup_enabled_time is not None:

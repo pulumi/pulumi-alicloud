@@ -6,8 +6,6 @@ package com.pulumi.alicloud.cloudfirewall.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAddressBooksBookEcsTag {
@@ -15,27 +13,27 @@ public final class GetAddressBooksBookEcsTag {
      * @return The key of ECS tag that to be matched.
      * 
      */
-    private @Nullable String tagKey;
+    private String tagKey;
     /**
      * @return The value of ECS tag that to be matched.
      * 
      */
-    private @Nullable String tagValue;
+    private String tagValue;
 
     private GetAddressBooksBookEcsTag() {}
     /**
      * @return The key of ECS tag that to be matched.
      * 
      */
-    public Optional<String> tagKey() {
-        return Optional.ofNullable(this.tagKey);
+    public String tagKey() {
+        return this.tagKey;
     }
     /**
      * @return The value of ECS tag that to be matched.
      * 
      */
-    public Optional<String> tagValue() {
-        return Optional.ofNullable(this.tagValue);
+    public String tagValue() {
+        return this.tagValue;
     }
 
     public static Builder builder() {
@@ -47,8 +45,8 @@ public final class GetAddressBooksBookEcsTag {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String tagKey;
-        private @Nullable String tagValue;
+        private String tagKey;
+        private String tagValue;
         public Builder() {}
         public Builder(GetAddressBooksBookEcsTag defaults) {
     	      Objects.requireNonNull(defaults);
@@ -57,13 +55,13 @@ public final class GetAddressBooksBookEcsTag {
         }
 
         @CustomType.Setter
-        public Builder tagKey(@Nullable String tagKey) {
-            this.tagKey = tagKey;
+        public Builder tagKey(String tagKey) {
+            this.tagKey = Objects.requireNonNull(tagKey);
             return this;
         }
         @CustomType.Setter
-        public Builder tagValue(@Nullable String tagValue) {
-            this.tagValue = tagValue;
+        public Builder tagValue(String tagValue) {
+            this.tagValue = Objects.requireNonNull(tagValue);
             return this;
         }
         public GetAddressBooksBookEcsTag build() {

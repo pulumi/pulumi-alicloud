@@ -80,6 +80,25 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * Encrypted the data in this disk.
+     * 
+     * Default to false
+     * 
+     */
+    @Import(name="encrypted")
+    private @Nullable Output<Boolean> encrypted;
+
+    /**
+     * @return Encrypted the data in this disk.
+     * 
+     * Default to false
+     * 
+     */
+    public Optional<Output<Boolean>> encrypted() {
+        return Optional.ofNullable(this.encrypted);
+    }
+
     @Import(name="iops")
     private @Nullable Output<String> iops;
 
@@ -140,6 +159,7 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
         this.category = $.category;
         this.deleteWithInstance = $.deleteWithInstance;
         this.description = $.description;
+        this.encrypted = $.encrypted;
         this.iops = $.iops;
         this.name = $.name;
         this.performanceLevel = $.performanceLevel;
@@ -243,6 +263,31 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param encrypted Encrypted the data in this disk.
+         * 
+         * Default to false
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encrypted(@Nullable Output<Boolean> encrypted) {
+            $.encrypted = encrypted;
+            return this;
+        }
+
+        /**
+         * @param encrypted Encrypted the data in this disk.
+         * 
+         * Default to false
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encrypted(Boolean encrypted) {
+            return encrypted(Output.of(encrypted));
         }
 
         public Builder iops(@Nullable Output<String> iops) {

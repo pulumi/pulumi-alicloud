@@ -41,7 +41,11 @@ class MscSubContractArgs:
              email: pulumi.Input[str],
              mobile: pulumi.Input[str],
              position: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'contactName' in kwargs:
+            contact_name = kwargs['contactName']
+
         _setter("contact_name", contact_name)
         _setter("email", email)
         _setter("mobile", mobile)
@@ -128,7 +132,11 @@ class _MscSubContractState:
              email: Optional[pulumi.Input[str]] = None,
              mobile: Optional[pulumi.Input[str]] = None,
              position: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'contactName' in kwargs:
+            contact_name = kwargs['contactName']
+
         if contact_name is not None:
             _setter("contact_name", contact_name)
         if email is not None:

@@ -79,7 +79,27 @@ class InstanceArgs:
              oss_size: Optional[pulumi.Input[str]] = None,
              renew_period: Optional[pulumi.Input[int]] = None,
              renewal_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'sdCbool' in kwargs:
+            sd_cbool = kwargs['sdCbool']
+        if 'sddpVersion' in kwargs:
+            sddp_version = kwargs['sddpVersion']
+        if 'udCbool' in kwargs:
+            ud_cbool = kwargs['udCbool']
+        if 'dataphinCount' in kwargs:
+            dataphin_count = kwargs['dataphinCount']
+        if 'modifyType' in kwargs:
+            modify_type = kwargs['modifyType']
+        if 'ossSize' in kwargs:
+            oss_size = kwargs['ossSize']
+        if 'renewPeriod' in kwargs:
+            renew_period = kwargs['renewPeriod']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+
         _setter("payment_type", payment_type)
         _setter("period", period)
         _setter("sd_cbool", sd_cbool)
@@ -367,7 +387,37 @@ class _InstanceState:
              status: Optional[pulumi.Input[str]] = None,
              ud_cbool: Optional[pulumi.Input[str]] = None,
              udc: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dataphinCount' in kwargs:
+            dataphin_count = kwargs['dataphinCount']
+        if 'instanceNum' in kwargs:
+            instance_num = kwargs['instanceNum']
+        if 'modifyType' in kwargs:
+            modify_type = kwargs['modifyType']
+        if 'odpsSet' in kwargs:
+            odps_set = kwargs['odpsSet']
+        if 'ossBucketSet' in kwargs:
+            oss_bucket_set = kwargs['ossBucketSet']
+        if 'ossSize' in kwargs:
+            oss_size = kwargs['ossSize']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'rdsSet' in kwargs:
+            rds_set = kwargs['rdsSet']
+        if 'remainDays' in kwargs:
+            remain_days = kwargs['remainDays']
+        if 'renewPeriod' in kwargs:
+            renew_period = kwargs['renewPeriod']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if 'sdCbool' in kwargs:
+            sd_cbool = kwargs['sdCbool']
+        if 'sddpVersion' in kwargs:
+            sddp_version = kwargs['sddpVersion']
+        if 'udCbool' in kwargs:
+            ud_cbool = kwargs['udCbool']
+
         if authed is not None:
             _setter("authed", authed)
         if dataphin is not None:

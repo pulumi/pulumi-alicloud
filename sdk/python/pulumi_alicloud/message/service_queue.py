@@ -51,7 +51,23 @@ class ServiceQueueArgs:
              message_retention_period: Optional[pulumi.Input[int]] = None,
              polling_wait_seconds: Optional[pulumi.Input[int]] = None,
              visibility_timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'queueName' in kwargs:
+            queue_name = kwargs['queueName']
+        if 'delaySeconds' in kwargs:
+            delay_seconds = kwargs['delaySeconds']
+        if 'loggingEnabled' in kwargs:
+            logging_enabled = kwargs['loggingEnabled']
+        if 'maximumMessageSize' in kwargs:
+            maximum_message_size = kwargs['maximumMessageSize']
+        if 'messageRetentionPeriod' in kwargs:
+            message_retention_period = kwargs['messageRetentionPeriod']
+        if 'pollingWaitSeconds' in kwargs:
+            polling_wait_seconds = kwargs['pollingWaitSeconds']
+        if 'visibilityTimeout' in kwargs:
+            visibility_timeout = kwargs['visibilityTimeout']
+
         _setter("queue_name", queue_name)
         if delay_seconds is not None:
             _setter("delay_seconds", delay_seconds)
@@ -191,7 +207,23 @@ class _ServiceQueueState:
              polling_wait_seconds: Optional[pulumi.Input[int]] = None,
              queue_name: Optional[pulumi.Input[str]] = None,
              visibility_timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'delaySeconds' in kwargs:
+            delay_seconds = kwargs['delaySeconds']
+        if 'loggingEnabled' in kwargs:
+            logging_enabled = kwargs['loggingEnabled']
+        if 'maximumMessageSize' in kwargs:
+            maximum_message_size = kwargs['maximumMessageSize']
+        if 'messageRetentionPeriod' in kwargs:
+            message_retention_period = kwargs['messageRetentionPeriod']
+        if 'pollingWaitSeconds' in kwargs:
+            polling_wait_seconds = kwargs['pollingWaitSeconds']
+        if 'queueName' in kwargs:
+            queue_name = kwargs['queueName']
+        if 'visibilityTimeout' in kwargs:
+            visibility_timeout = kwargs['visibilityTimeout']
+
         if delay_seconds is not None:
             _setter("delay_seconds", delay_seconds)
         if logging_enabled is not None:

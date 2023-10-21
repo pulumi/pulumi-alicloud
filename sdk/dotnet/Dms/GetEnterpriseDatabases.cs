@@ -12,13 +12,15 @@ namespace Pulumi.AliCloud.Dms
     public static class GetEnterpriseDatabases
     {
         /// <summary>
-        /// This data source provides DMS Enterprise Database available to the user.[What is Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-listdatabases)
+        /// This data source provides DMS Enterprise Database available to the user. [What is Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-listdatabases).
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -47,13 +49,15 @@ namespace Pulumi.AliCloud.Dms
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEnterpriseDatabasesResult>("alicloud:dms/getEnterpriseDatabases:getEnterpriseDatabases", args ?? new GetEnterpriseDatabasesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides DMS Enterprise Database available to the user.[What is Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-listdatabases)
+        /// This data source provides DMS Enterprise Database available to the user. [What is Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-listdatabases).
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

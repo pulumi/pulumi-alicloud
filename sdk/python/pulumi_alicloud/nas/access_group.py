@@ -47,7 +47,15 @@ class AccessGroupArgs:
              file_system_type: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessGroupName' in kwargs:
+            access_group_name = kwargs['accessGroupName']
+        if 'accessGroupType' in kwargs:
+            access_group_type = kwargs['accessGroupType']
+        if 'fileSystemType' in kwargs:
+            file_system_type = kwargs['fileSystemType']
+
         if access_group_name is not None:
             _setter("access_group_name", access_group_name)
         if access_group_type is not None:
@@ -170,7 +178,15 @@ class _AccessGroupState:
              file_system_type: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessGroupName' in kwargs:
+            access_group_name = kwargs['accessGroupName']
+        if 'accessGroupType' in kwargs:
+            access_group_type = kwargs['accessGroupType']
+        if 'fileSystemType' in kwargs:
+            file_system_type = kwargs['fileSystemType']
+
         if access_group_name is not None:
             _setter("access_group_name", access_group_name)
         if access_group_type is not None:
@@ -273,7 +289,7 @@ class AccessGroup(pulumi.CustomResource):
         Provides a NAS Access Group resource.
 
         In NAS, the permission group acts as a whitelist that allows you to restrict file system access. You can allow specified IP addresses or CIDR blocks to access the file system, and assign different levels of access permission to different IP addresses or CIDR blocks by adding rules to the permission group.
-        For information about NAS Access Group and how to use it, see [What is NAS Access Group](https://www.alibabacloud.com/help/en/doc-detail/27534)
+        For information about NAS Access Group and how to use it, see [What is NAS Access Group](https://www.alibabacloud.com/help/en/nas/developer-reference/api-nas-2017-06-26-createaccessgroup)
 
         > **NOTE:** Available in v1.33.0+.
 
@@ -319,7 +335,7 @@ class AccessGroup(pulumi.CustomResource):
         Provides a NAS Access Group resource.
 
         In NAS, the permission group acts as a whitelist that allows you to restrict file system access. You can allow specified IP addresses or CIDR blocks to access the file system, and assign different levels of access permission to different IP addresses or CIDR blocks by adding rules to the permission group.
-        For information about NAS Access Group and how to use it, see [What is NAS Access Group](https://www.alibabacloud.com/help/en/doc-detail/27534)
+        For information about NAS Access Group and how to use it, see [What is NAS Access Group](https://www.alibabacloud.com/help/en/nas/developer-reference/api-nas-2017-06-26-createaccessgroup)
 
         > **NOTE:** Available in v1.33.0+.
 

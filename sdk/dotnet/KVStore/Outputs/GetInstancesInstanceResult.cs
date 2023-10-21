@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.KVStore.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+        /// Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
         /// </summary>
         public readonly string InstanceClass;
         public readonly bool InstanceReleaseProtection;

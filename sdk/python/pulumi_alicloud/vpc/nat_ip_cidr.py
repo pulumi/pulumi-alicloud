@@ -43,7 +43,19 @@ class NatIpCidrArgs:
              nat_ip_cidr: Optional[pulumi.Input[str]] = None,
              nat_ip_cidr_description: Optional[pulumi.Input[str]] = None,
              nat_ip_cidr_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'natGatewayId' in kwargs:
+            nat_gateway_id = kwargs['natGatewayId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'natIpCidr' in kwargs:
+            nat_ip_cidr = kwargs['natIpCidr']
+        if 'natIpCidrDescription' in kwargs:
+            nat_ip_cidr_description = kwargs['natIpCidrDescription']
+        if 'natIpCidrName' in kwargs:
+            nat_ip_cidr_name = kwargs['natIpCidrName']
+
         _setter("nat_gateway_id", nat_gateway_id)
         if dry_run is not None:
             _setter("dry_run", dry_run)
@@ -151,7 +163,19 @@ class _NatIpCidrState:
              nat_ip_cidr_description: Optional[pulumi.Input[str]] = None,
              nat_ip_cidr_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'natGatewayId' in kwargs:
+            nat_gateway_id = kwargs['natGatewayId']
+        if 'natIpCidr' in kwargs:
+            nat_ip_cidr = kwargs['natIpCidr']
+        if 'natIpCidrDescription' in kwargs:
+            nat_ip_cidr_description = kwargs['natIpCidrDescription']
+        if 'natIpCidrName' in kwargs:
+            nat_ip_cidr_name = kwargs['natIpCidrName']
+
         if dry_run is not None:
             _setter("dry_run", dry_run)
         if nat_gateway_id is not None:

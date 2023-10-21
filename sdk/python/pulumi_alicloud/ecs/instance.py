@@ -330,7 +330,131 @@ class InstanceArgs:
              user_data: Optional[pulumi.Input[str]] = None,
              volume_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'securityGroups' in kwargs:
+            security_groups = kwargs['securityGroups']
+        if 'allocatePublicIp' in kwargs:
+            allocate_public_ip = kwargs['allocatePublicIp']
+        if 'autoReleaseTime' in kwargs:
+            auto_release_time = kwargs['autoReleaseTime']
+        if 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'creditSpecification' in kwargs:
+            credit_specification = kwargs['creditSpecification']
+        if 'dataDisks' in kwargs:
+            data_disks = kwargs['dataDisks']
+        if 'dedicatedHostId' in kwargs:
+            dedicated_host_id = kwargs['dedicatedHostId']
+        if 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if 'deploymentSetId' in kwargs:
+            deployment_set_id = kwargs['deploymentSetId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'forceDelete' in kwargs:
+            force_delete = kwargs['forceDelete']
+        if 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if 'hpcClusterId' in kwargs:
+            hpc_cluster_id = kwargs['hpcClusterId']
+        if 'httpEndpoint' in kwargs:
+            http_endpoint = kwargs['httpEndpoint']
+        if 'httpPutResponseHopLimit' in kwargs:
+            http_put_response_hop_limit = kwargs['httpPutResponseHopLimit']
+        if 'httpTokens' in kwargs:
+            http_tokens = kwargs['httpTokens']
+        if 'includeDataDisks' in kwargs:
+            include_data_disks = kwargs['includeDataDisks']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'internetMaxBandwidthIn' in kwargs:
+            internet_max_bandwidth_in = kwargs['internetMaxBandwidthIn']
+        if 'internetMaxBandwidthOut' in kwargs:
+            internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
+        if 'ioOptimized' in kwargs:
+            io_optimized = kwargs['ioOptimized']
+        if 'ipv6AddressCount' in kwargs:
+            ipv6_address_count = kwargs['ipv6AddressCount']
+        if 'ipv6Addresses' in kwargs:
+            ipv6_addresses = kwargs['ipv6Addresses']
+        if 'isOutdated' in kwargs:
+            is_outdated = kwargs['isOutdated']
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if 'kmsEncryptedPassword' in kwargs:
+            kms_encrypted_password = kwargs['kmsEncryptedPassword']
+        if 'kmsEncryptionContext' in kwargs:
+            kms_encryption_context = kwargs['kmsEncryptionContext']
+        if 'maintenanceAction' in kwargs:
+            maintenance_action = kwargs['maintenanceAction']
+        if 'maintenanceNotify' in kwargs:
+            maintenance_notify = kwargs['maintenanceNotify']
+        if 'maintenanceTime' in kwargs:
+            maintenance_time = kwargs['maintenanceTime']
+        if 'operatorType' in kwargs:
+            operator_type = kwargs['operatorType']
+        if 'periodUnit' in kwargs:
+            period_unit = kwargs['periodUnit']
+        if 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'roleName' in kwargs:
+            role_name = kwargs['roleName']
+        if 'secondaryPrivateIpAddressCount' in kwargs:
+            secondary_private_ip_address_count = kwargs['secondaryPrivateIpAddressCount']
+        if 'secondaryPrivateIps' in kwargs:
+            secondary_private_ips = kwargs['secondaryPrivateIps']
+        if 'securityEnhancementStrategy' in kwargs:
+            security_enhancement_strategy = kwargs['securityEnhancementStrategy']
+        if 'spotDuration' in kwargs:
+            spot_duration = kwargs['spotDuration']
+        if 'spotPriceLimit' in kwargs:
+            spot_price_limit = kwargs['spotPriceLimit']
+        if 'spotStrategy' in kwargs:
+            spot_strategy = kwargs['spotStrategy']
+        if 'stoppedMode' in kwargs:
+            stopped_mode = kwargs['stoppedMode']
+        if 'systemDiskAutoSnapshotPolicyId' in kwargs:
+            system_disk_auto_snapshot_policy_id = kwargs['systemDiskAutoSnapshotPolicyId']
+        if 'systemDiskCategory' in kwargs:
+            system_disk_category = kwargs['systemDiskCategory']
+        if 'systemDiskDescription' in kwargs:
+            system_disk_description = kwargs['systemDiskDescription']
+        if 'systemDiskEncryptAlgorithm' in kwargs:
+            system_disk_encrypt_algorithm = kwargs['systemDiskEncryptAlgorithm']
+        if 'systemDiskEncrypted' in kwargs:
+            system_disk_encrypted = kwargs['systemDiskEncrypted']
+        if 'systemDiskKmsKeyId' in kwargs:
+            system_disk_kms_key_id = kwargs['systemDiskKmsKeyId']
+        if 'systemDiskName' in kwargs:
+            system_disk_name = kwargs['systemDiskName']
+        if 'systemDiskPerformanceLevel' in kwargs:
+            system_disk_performance_level = kwargs['systemDiskPerformanceLevel']
+        if 'systemDiskSize' in kwargs:
+            system_disk_size = kwargs['systemDiskSize']
+        if 'systemDiskStorageClusterId' in kwargs:
+            system_disk_storage_cluster_id = kwargs['systemDiskStorageClusterId']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if 'volumeTags' in kwargs:
+            volume_tags = kwargs['volumeTags']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("image_id", image_id)
         _setter("instance_type", instance_type)
         _setter("security_groups", security_groups)
@@ -1662,7 +1786,145 @@ class _InstanceState:
              user_data: Optional[pulumi.Input[str]] = None,
              volume_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allocatePublicIp' in kwargs:
+            allocate_public_ip = kwargs['allocatePublicIp']
+        if 'autoReleaseTime' in kwargs:
+            auto_release_time = kwargs['autoReleaseTime']
+        if 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'creditSpecification' in kwargs:
+            credit_specification = kwargs['creditSpecification']
+        if 'dataDisks' in kwargs:
+            data_disks = kwargs['dataDisks']
+        if 'dedicatedHostId' in kwargs:
+            dedicated_host_id = kwargs['dedicatedHostId']
+        if 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if 'deploymentSetGroupNo' in kwargs:
+            deployment_set_group_no = kwargs['deploymentSetGroupNo']
+        if 'deploymentSetId' in kwargs:
+            deployment_set_id = kwargs['deploymentSetId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'forceDelete' in kwargs:
+            force_delete = kwargs['forceDelete']
+        if 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if 'hpcClusterId' in kwargs:
+            hpc_cluster_id = kwargs['hpcClusterId']
+        if 'httpEndpoint' in kwargs:
+            http_endpoint = kwargs['httpEndpoint']
+        if 'httpPutResponseHopLimit' in kwargs:
+            http_put_response_hop_limit = kwargs['httpPutResponseHopLimit']
+        if 'httpTokens' in kwargs:
+            http_tokens = kwargs['httpTokens']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'includeDataDisks' in kwargs:
+            include_data_disks = kwargs['includeDataDisks']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'internetMaxBandwidthIn' in kwargs:
+            internet_max_bandwidth_in = kwargs['internetMaxBandwidthIn']
+        if 'internetMaxBandwidthOut' in kwargs:
+            internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
+        if 'ioOptimized' in kwargs:
+            io_optimized = kwargs['ioOptimized']
+        if 'ipv6AddressCount' in kwargs:
+            ipv6_address_count = kwargs['ipv6AddressCount']
+        if 'ipv6Addresses' in kwargs:
+            ipv6_addresses = kwargs['ipv6Addresses']
+        if 'isOutdated' in kwargs:
+            is_outdated = kwargs['isOutdated']
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if 'kmsEncryptedPassword' in kwargs:
+            kms_encrypted_password = kwargs['kmsEncryptedPassword']
+        if 'kmsEncryptionContext' in kwargs:
+            kms_encryption_context = kwargs['kmsEncryptionContext']
+        if 'maintenanceAction' in kwargs:
+            maintenance_action = kwargs['maintenanceAction']
+        if 'maintenanceNotify' in kwargs:
+            maintenance_notify = kwargs['maintenanceNotify']
+        if 'maintenanceTime' in kwargs:
+            maintenance_time = kwargs['maintenanceTime']
+        if 'networkInterfaceId' in kwargs:
+            network_interface_id = kwargs['networkInterfaceId']
+        if 'operatorType' in kwargs:
+            operator_type = kwargs['operatorType']
+        if 'osName' in kwargs:
+            os_name = kwargs['osName']
+        if 'osType' in kwargs:
+            os_type = kwargs['osType']
+        if 'periodUnit' in kwargs:
+            period_unit = kwargs['periodUnit']
+        if 'primaryIpAddress' in kwargs:
+            primary_ip_address = kwargs['primaryIpAddress']
+        if 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+        if 'publicIp' in kwargs:
+            public_ip = kwargs['publicIp']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'roleName' in kwargs:
+            role_name = kwargs['roleName']
+        if 'secondaryPrivateIpAddressCount' in kwargs:
+            secondary_private_ip_address_count = kwargs['secondaryPrivateIpAddressCount']
+        if 'secondaryPrivateIps' in kwargs:
+            secondary_private_ips = kwargs['secondaryPrivateIps']
+        if 'securityEnhancementStrategy' in kwargs:
+            security_enhancement_strategy = kwargs['securityEnhancementStrategy']
+        if 'securityGroups' in kwargs:
+            security_groups = kwargs['securityGroups']
+        if 'spotDuration' in kwargs:
+            spot_duration = kwargs['spotDuration']
+        if 'spotPriceLimit' in kwargs:
+            spot_price_limit = kwargs['spotPriceLimit']
+        if 'spotStrategy' in kwargs:
+            spot_strategy = kwargs['spotStrategy']
+        if 'stoppedMode' in kwargs:
+            stopped_mode = kwargs['stoppedMode']
+        if 'systemDiskAutoSnapshotPolicyId' in kwargs:
+            system_disk_auto_snapshot_policy_id = kwargs['systemDiskAutoSnapshotPolicyId']
+        if 'systemDiskCategory' in kwargs:
+            system_disk_category = kwargs['systemDiskCategory']
+        if 'systemDiskDescription' in kwargs:
+            system_disk_description = kwargs['systemDiskDescription']
+        if 'systemDiskEncryptAlgorithm' in kwargs:
+            system_disk_encrypt_algorithm = kwargs['systemDiskEncryptAlgorithm']
+        if 'systemDiskEncrypted' in kwargs:
+            system_disk_encrypted = kwargs['systemDiskEncrypted']
+        if 'systemDiskId' in kwargs:
+            system_disk_id = kwargs['systemDiskId']
+        if 'systemDiskKmsKeyId' in kwargs:
+            system_disk_kms_key_id = kwargs['systemDiskKmsKeyId']
+        if 'systemDiskName' in kwargs:
+            system_disk_name = kwargs['systemDiskName']
+        if 'systemDiskPerformanceLevel' in kwargs:
+            system_disk_performance_level = kwargs['systemDiskPerformanceLevel']
+        if 'systemDiskSize' in kwargs:
+            system_disk_size = kwargs['systemDiskSize']
+        if 'systemDiskStorageClusterId' in kwargs:
+            system_disk_storage_cluster_id = kwargs['systemDiskStorageClusterId']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if 'volumeTags' in kwargs:
+            volume_tags = kwargs['volumeTags']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if allocate_public_ip is not None:
             warnings.warn("""Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""", DeprecationWarning)
             pulumi.log.warn("""allocate_public_ip is deprecated: Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""")

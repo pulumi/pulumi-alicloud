@@ -55,7 +55,19 @@ class OrderArgs:
              duration: Optional[pulumi.Input[int]] = None,
              pay_type: Optional[pulumi.Input[str]] = None,
              quantity: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'packageVersion' in kwargs:
+            package_version = kwargs['packageVersion']
+        if 'pricingCycle' in kwargs:
+            pricing_cycle = kwargs['pricingCycle']
+        if 'productCode' in kwargs:
+            product_code = kwargs['productCode']
+        if 'couponId' in kwargs:
+            coupon_id = kwargs['couponId']
+        if 'payType' in kwargs:
+            pay_type = kwargs['payType']
+
         _setter("package_version", package_version)
         _setter("pricing_cycle", pricing_cycle)
         _setter("product_code", product_code)
@@ -211,7 +223,19 @@ class _OrderState:
              pricing_cycle: Optional[pulumi.Input[str]] = None,
              product_code: Optional[pulumi.Input[str]] = None,
              quantity: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'couponId' in kwargs:
+            coupon_id = kwargs['couponId']
+        if 'packageVersion' in kwargs:
+            package_version = kwargs['packageVersion']
+        if 'payType' in kwargs:
+            pay_type = kwargs['payType']
+        if 'pricingCycle' in kwargs:
+            pricing_cycle = kwargs['pricingCycle']
+        if 'productCode' in kwargs:
+            product_code = kwargs['productCode']
+
         if components is not None:
             _setter("components", components)
         if coupon_id is not None:

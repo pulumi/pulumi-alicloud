@@ -32,14 +32,14 @@ public final class ServiceMeshMeshConfigPilotArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The  percentage of the Link trace sampling.
+     * Link trace sampling percentage.
      * 
      */
     @Import(name="traceSampling")
     private @Nullable Output<Double> traceSampling;
 
     /**
-     * @return The  percentage of the Link trace sampling.
+     * @return Link trace sampling percentage.
      * 
      */
     public Optional<Output<Double>> traceSampling() {
@@ -93,7 +93,7 @@ public final class ServiceMeshMeshConfigPilotArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param traceSampling The  percentage of the Link trace sampling.
+         * @param traceSampling Link trace sampling percentage.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ServiceMeshMeshConfigPilotArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param traceSampling The  percentage of the Link trace sampling.
+         * @param traceSampling Link trace sampling percentage.
          * 
          * @return builder
          * 

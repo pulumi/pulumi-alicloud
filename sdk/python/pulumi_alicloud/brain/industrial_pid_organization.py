@@ -31,7 +31,13 @@ class IndustrialPidOrganizationArgs:
              _setter: Callable[[Any, Any], None],
              pid_organization_name: pulumi.Input[str],
              parent_pid_organization_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'pidOrganizationName' in kwargs:
+            pid_organization_name = kwargs['pidOrganizationName']
+        if 'parentPidOrganizationId' in kwargs:
+            parent_pid_organization_id = kwargs['parentPidOrganizationId']
+
         _setter("pid_organization_name", pid_organization_name)
         if parent_pid_organization_id is not None:
             _setter("parent_pid_organization_id", parent_pid_organization_id)
@@ -81,7 +87,13 @@ class _IndustrialPidOrganizationState:
              _setter: Callable[[Any, Any], None],
              parent_pid_organization_id: Optional[pulumi.Input[str]] = None,
              pid_organization_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'parentPidOrganizationId' in kwargs:
+            parent_pid_organization_id = kwargs['parentPidOrganizationId']
+        if 'pidOrganizationName' in kwargs:
+            pid_organization_name = kwargs['pidOrganizationName']
+
         if parent_pid_organization_id is not None:
             _setter("parent_pid_organization_id", parent_pid_organization_id)
         if pid_organization_name is not None:

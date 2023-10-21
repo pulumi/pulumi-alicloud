@@ -80,7 +80,27 @@ class GetBaseInstancesInstanceResult(dict):
              series: str,
              status: str,
              zones: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'commodityCode' in kwargs:
+            commodity_code = kwargs['commodityCode']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'nodeNum' in kwargs:
+            node_num = kwargs['nodeNum']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("commodity_code", commodity_code)
         _setter("cpu", cpu)
         _setter("create_time", create_time)

@@ -55,7 +55,21 @@ class AccessConfigurationArgs:
              permission_policies: Optional[pulumi.Input[Sequence[pulumi.Input['AccessConfigurationPermissionPolicyArgs']]]] = None,
              relay_state: Optional[pulumi.Input[str]] = None,
              session_duration: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessConfigurationName' in kwargs:
+            access_configuration_name = kwargs['accessConfigurationName']
+        if 'directoryId' in kwargs:
+            directory_id = kwargs['directoryId']
+        if 'forceRemovePermissionPolicies' in kwargs:
+            force_remove_permission_policies = kwargs['forceRemovePermissionPolicies']
+        if 'permissionPolicies' in kwargs:
+            permission_policies = kwargs['permissionPolicies']
+        if 'relayState' in kwargs:
+            relay_state = kwargs['relayState']
+        if 'sessionDuration' in kwargs:
+            session_duration = kwargs['sessionDuration']
+
         _setter("access_configuration_name", access_configuration_name)
         _setter("directory_id", directory_id)
         if description is not None:
@@ -202,7 +216,23 @@ class _AccessConfigurationState:
              permission_policies: Optional[pulumi.Input[Sequence[pulumi.Input['AccessConfigurationPermissionPolicyArgs']]]] = None,
              relay_state: Optional[pulumi.Input[str]] = None,
              session_duration: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessConfigurationId' in kwargs:
+            access_configuration_id = kwargs['accessConfigurationId']
+        if 'accessConfigurationName' in kwargs:
+            access_configuration_name = kwargs['accessConfigurationName']
+        if 'directoryId' in kwargs:
+            directory_id = kwargs['directoryId']
+        if 'forceRemovePermissionPolicies' in kwargs:
+            force_remove_permission_policies = kwargs['forceRemovePermissionPolicies']
+        if 'permissionPolicies' in kwargs:
+            permission_policies = kwargs['permissionPolicies']
+        if 'relayState' in kwargs:
+            relay_state = kwargs['relayState']
+        if 'sessionDuration' in kwargs:
+            session_duration = kwargs['sessionDuration']
+
         if access_configuration_id is not None:
             _setter("access_configuration_id", access_configuration_id)
         if access_configuration_name is not None:

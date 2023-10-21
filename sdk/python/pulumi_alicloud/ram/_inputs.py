@@ -39,7 +39,9 @@ class PolicyStatementArgs:
              actions: pulumi.Input[Sequence[pulumi.Input[str]]],
              effect: pulumi.Input[str],
              resources: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("actions", actions)
         _setter("effect", effect)
         _setter("resources", resources)
@@ -112,7 +114,9 @@ class GetPolicyDocumentStatementArgs:
              effect: Optional[str] = None,
              principals: Optional[Sequence['GetPolicyDocumentStatementPrincipalArgs']] = None,
              resources: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("actions", actions)
         if conditions is not None:
             _setter("conditions", conditions)
@@ -207,7 +211,9 @@ class GetPolicyDocumentStatementConditionArgs:
              operator: str,
              values: Sequence[str],
              variable: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("operator", operator)
         _setter("values", values)
         _setter("variable", variable)
@@ -268,7 +274,9 @@ class GetPolicyDocumentStatementPrincipalArgs:
              _setter: Callable[[Any, Any], None],
              entity: str,
              identifiers: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("entity", entity)
         _setter("identifiers", identifiers)
 

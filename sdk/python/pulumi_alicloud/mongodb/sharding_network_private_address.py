@@ -50,7 +50,19 @@ class ShardingNetworkPrivateAddressArgs:
              zone_id: pulumi.Input[str],
              account_name: Optional[pulumi.Input[str]] = None,
              account_password: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'accountPassword' in kwargs:
+            account_password = kwargs['accountPassword']
+
         _setter("db_instance_id", db_instance_id)
         _setter("node_id", node_id)
         _setter("zone_id", zone_id)
@@ -166,7 +178,21 @@ class _ShardingNetworkPrivateAddressState:
              network_addresses: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingNetworkPrivateAddressNetworkAddressArgs']]]] = None,
              node_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'accountPassword' in kwargs:
+            account_password = kwargs['accountPassword']
+        if 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+        if 'networkAddresses' in kwargs:
+            network_addresses = kwargs['networkAddresses']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if account_name is not None:
             _setter("account_name", account_name)
         if account_password is not None:

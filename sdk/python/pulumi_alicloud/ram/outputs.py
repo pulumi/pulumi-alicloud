@@ -45,7 +45,9 @@ class PolicyStatement(dict):
              actions: Sequence[str],
              effect: str,
              resources: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("actions", actions)
         _setter("effect", effect)
         _setter("resources", resources)
@@ -94,7 +96,9 @@ class GetGroupsGroupResult(dict):
              _setter: Callable[[Any, Any], None],
              comments: str,
              name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("comments", comments)
         _setter("name", name)
 
@@ -178,7 +182,25 @@ class GetPoliciesPolicyResult(dict):
              update_date: str,
              user_name: str,
              version_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'attachmentCount' in kwargs:
+            attachment_count = kwargs['attachmentCount']
+        if 'createDate' in kwargs:
+            create_date = kwargs['createDate']
+        if 'defaultVersion' in kwargs:
+            default_version = kwargs['defaultVersion']
+        if 'policyDocument' in kwargs:
+            policy_document = kwargs['policyDocument']
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if 'updateDate' in kwargs:
+            update_date = kwargs['updateDate']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+        if 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+
         _setter("attachment_count", attachment_count)
         _setter("create_date", create_date)
         _setter("default_version", default_version)
@@ -329,7 +351,9 @@ class GetPolicyDocumentStatementResult(dict):
              effect: Optional[str] = None,
              principals: Optional[Sequence['outputs.GetPolicyDocumentStatementPrincipalResult']] = None,
              resources: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("actions", actions)
         if conditions is not None:
             _setter("conditions", conditions)
@@ -404,7 +428,9 @@ class GetPolicyDocumentStatementConditionResult(dict):
              operator: str,
              values: Sequence[str],
              variable: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("operator", operator)
         _setter("values", values)
         _setter("variable", variable)
@@ -453,7 +479,9 @@ class GetPolicyDocumentStatementPrincipalResult(dict):
              _setter: Callable[[Any, Any], None],
              entity: str,
              identifiers: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("entity", entity)
         _setter("identifiers", identifiers)
 
@@ -517,7 +545,15 @@ class GetRolesRoleResult(dict):
              id: str,
              name: str,
              update_date: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'assumeRolePolicyDocument' in kwargs:
+            assume_role_policy_document = kwargs['assumeRolePolicyDocument']
+        if 'createDate' in kwargs:
+            create_date = kwargs['createDate']
+        if 'updateDate' in kwargs:
+            update_date = kwargs['updateDate']
+
         _setter("arn", arn)
         _setter("assume_role_policy_document", assume_role_policy_document)
         _setter("create_date", create_date)
@@ -627,7 +663,15 @@ class GetSamlProvidersProviderResult(dict):
              id: str,
              saml_provider_name: str,
              update_date: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'encodedsamlMetadataDocument' in kwargs:
+            encodedsaml_metadata_document = kwargs['encodedsamlMetadataDocument']
+        if 'samlProviderName' in kwargs:
+            saml_provider_name = kwargs['samlProviderName']
+        if 'updateDate' in kwargs:
+            update_date = kwargs['updateDate']
+
         _setter("arn", arn)
         _setter("description", description)
         _setter("encodedsaml_metadata_document", encodedsaml_metadata_document)
@@ -711,7 +755,13 @@ class GetUsersUserResult(dict):
              id: str,
              last_login_date: str,
              name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createDate' in kwargs:
+            create_date = kwargs['createDate']
+        if 'lastLoginDate' in kwargs:
+            last_login_date = kwargs['lastLoginDate']
+
         _setter("create_date", create_date)
         _setter("id", id)
         _setter("last_login_date", last_login_date)

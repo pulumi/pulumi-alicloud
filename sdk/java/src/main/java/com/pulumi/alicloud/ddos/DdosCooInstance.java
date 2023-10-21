@@ -162,7 +162,7 @@ public class DdosCooInstance extends com.pulumi.resources.CustomResource {
         return this.portCount;
     }
     /**
-     * The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+     * The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
      * - ddoscoo: Only supports domestic account.
      * - ddoscoo_intl: Only supports to international account.
      *   Default to ddoscoo.
@@ -172,7 +172,7 @@ public class DdosCooInstance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> productType;
 
     /**
-     * @return The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+     * @return The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
      * - ddoscoo: Only supports domestic account.
      * - ddoscoo_intl: Only supports to international account.
      *   Default to ddoscoo.

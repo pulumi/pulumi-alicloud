@@ -51,7 +51,21 @@ class BgpGroupArgs:
              description: Optional[pulumi.Input[str]] = None,
              is_fake_asn: Optional[pulumi.Input[bool]] = None,
              local_asn: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'peerAsn' in kwargs:
+            peer_asn = kwargs['peerAsn']
+        if 'routerId' in kwargs:
+            router_id = kwargs['routerId']
+        if 'authKey' in kwargs:
+            auth_key = kwargs['authKey']
+        if 'bgpGroupName' in kwargs:
+            bgp_group_name = kwargs['bgpGroupName']
+        if 'isFakeAsn' in kwargs:
+            is_fake_asn = kwargs['isFakeAsn']
+        if 'localAsn' in kwargs:
+            local_asn = kwargs['localAsn']
+
         _setter("peer_asn", peer_asn)
         _setter("router_id", router_id)
         if auth_key is not None:
@@ -194,7 +208,21 @@ class _BgpGroupState:
              peer_asn: Optional[pulumi.Input[int]] = None,
              router_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authKey' in kwargs:
+            auth_key = kwargs['authKey']
+        if 'bgpGroupName' in kwargs:
+            bgp_group_name = kwargs['bgpGroupName']
+        if 'isFakeAsn' in kwargs:
+            is_fake_asn = kwargs['isFakeAsn']
+        if 'localAsn' in kwargs:
+            local_asn = kwargs['localAsn']
+        if 'peerAsn' in kwargs:
+            peer_asn = kwargs['peerAsn']
+        if 'routerId' in kwargs:
+            router_id = kwargs['routerId']
+
         if auth_key is not None:
             _setter("auth_key", auth_key)
         if bgp_group_name is not None:

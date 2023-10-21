@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cen Transit Router Multicast Domain Member resource.
  * 
- * For information about Cen Transit Router Multicast Domain Member and how to use it, see [What is Transit Router Multicast Domain Member](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupmembers).
+ * For information about Cen Transit Router Multicast Domain Member and how to use it, see [What is Transit Router Multicast Domain Member](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupmembers).
  * 
  * &gt; **NOTE:** Available since v1.195.0.
  * 

@@ -62,7 +62,7 @@ class GetLaunchOptionsResult:
     @pulumi.getter(name="launchOptions")
     def launch_options(self) -> Sequence['outputs.GetLaunchOptionsLaunchOptionResult']:
         """
-        A list of Launch Option Entries. Each element contains the following attributes:
+        (Available since v1.197.0) A list of Launch Option Entries. Each element contains the following attributes:
         """
         return pulumi.get(self, "launch_options")
 
@@ -74,6 +74,9 @@ class GetLaunchOptionsResult:
     @property
     @pulumi.getter
     def options(self) -> Sequence['outputs.GetLaunchOptionsOptionResult']:
+        """
+        (Deprecated since v1.197.0) A list of Launch Option Entries. Each element contains the following attributes:
+        """
         warnings.warn("""Field 'options' has been deprecated from provider version 1.197.0.""", DeprecationWarning)
         pulumi.log.warn("""options is deprecated: Field 'options' has been deprecated from provider version 1.197.0.""")
 
@@ -111,11 +114,13 @@ def get_launch_options(ids: Optional[Sequence[str]] = None,
                        product_id: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLaunchOptionsResult:
     """
-    This data source provides Service Catalog Launch Option available to the user.[What is Launch Option](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listlaunchoptions)
+    This data source provides Service Catalog Launch Option available to the user. [What is Launch Option](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listlaunchoptions).
 
-    > **NOTE:** Available in 1.196.0+
+    > **NOTE:** Available since v1.196.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
@@ -127,6 +132,7 @@ def get_launch_options(ids: Optional[Sequence[str]] = None,
     ```
 
 
+    :param Sequence[str] ids: A list of Launch Option IDs.
     :param str name_regex: A regex string to filter results by portfolio name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str product_id: Product ID.
@@ -156,11 +162,13 @@ def get_launch_options_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
                               product_id: Optional[pulumi.Input[str]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLaunchOptionsResult]:
     """
-    This data source provides Service Catalog Launch Option available to the user.[What is Launch Option](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listlaunchoptions)
+    This data source provides Service Catalog Launch Option available to the user. [What is Launch Option](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listlaunchoptions).
 
-    > **NOTE:** Available in 1.196.0+
+    > **NOTE:** Available since v1.196.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
@@ -172,6 +180,7 @@ def get_launch_options_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
     ```
 
 
+    :param Sequence[str] ids: A list of Launch Option IDs.
     :param str name_regex: A regex string to filter results by portfolio name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str product_id: Product ID.

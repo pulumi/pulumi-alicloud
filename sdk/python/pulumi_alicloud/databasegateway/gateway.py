@@ -31,7 +31,13 @@ class GatewayArgs:
              _setter: Callable[[Any, Any], None],
              gateway_name: pulumi.Input[str],
              gateway_desc: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'gatewayName' in kwargs:
+            gateway_name = kwargs['gatewayName']
+        if 'gatewayDesc' in kwargs:
+            gateway_desc = kwargs['gatewayDesc']
+
         _setter("gateway_name", gateway_name)
         if gateway_desc is not None:
             _setter("gateway_desc", gateway_desc)
@@ -85,7 +91,13 @@ class _GatewayState:
              gateway_desc: Optional[pulumi.Input[str]] = None,
              gateway_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'gatewayDesc' in kwargs:
+            gateway_desc = kwargs['gatewayDesc']
+        if 'gatewayName' in kwargs:
+            gateway_name = kwargs['gatewayName']
+
         if gateway_desc is not None:
             _setter("gateway_desc", gateway_desc)
         if gateway_name is not None:

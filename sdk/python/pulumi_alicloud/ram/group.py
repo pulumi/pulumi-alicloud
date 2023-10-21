@@ -35,7 +35,9 @@ class GroupArgs:
              comments: Optional[pulumi.Input[str]] = None,
              force: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if comments is not None:
             _setter("comments", comments)
         if force is not None:
@@ -104,7 +106,9 @@ class _GroupState:
              comments: Optional[pulumi.Input[str]] = None,
              force: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if comments is not None:
             _setter("comments", comments)
         if force is not None:

@@ -80,7 +80,35 @@ class DataCenterArgs:
              period: Optional[pulumi.Input[int]] = None,
              period_unit: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+        if 'payType' in kwargs:
+            pay_type = kwargs['payType']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if 'dataCenterName' in kwargs:
+            data_center_name = kwargs['dataCenterName']
+        if 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if 'enablePublic' in kwargs:
+            enable_public = kwargs['enablePublic']
+        if 'periodUnit' in kwargs:
+            period_unit = kwargs['periodUnit']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("cluster_id", cluster_id)
         _setter("instance_type", instance_type)
         _setter("node_count", node_count)
@@ -347,7 +375,39 @@ class _DataCenterState:
              status: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'dataCenterId' in kwargs:
+            data_center_id = kwargs['dataCenterId']
+        if 'dataCenterName' in kwargs:
+            data_center_name = kwargs['dataCenterName']
+        if 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if 'enablePublic' in kwargs:
+            enable_public = kwargs['enablePublic']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+        if 'payType' in kwargs:
+            pay_type = kwargs['payType']
+        if 'periodUnit' in kwargs:
+            period_unit = kwargs['periodUnit']
+        if 'publicPoints' in kwargs:
+            public_points = kwargs['publicPoints']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if auto_renew is not None:
             _setter("auto_renew", auto_renew)
         if auto_renew_period is not None:

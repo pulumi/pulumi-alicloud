@@ -51,7 +51,21 @@ class HostAccountArgs:
              pass_phrase: Optional[pulumi.Input[str]] = None,
              password: Optional[pulumi.Input[str]] = None,
              private_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'hostAccountName' in kwargs:
+            host_account_name = kwargs['hostAccountName']
+        if 'hostId' in kwargs:
+            host_id = kwargs['hostId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'protocolName' in kwargs:
+            protocol_name = kwargs['protocolName']
+        if 'passPhrase' in kwargs:
+            pass_phrase = kwargs['passPhrase']
+        if 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+
         _setter("host_account_name", host_account_name)
         _setter("host_id", host_id)
         _setter("instance_id", instance_id)
@@ -192,7 +206,23 @@ class _HostAccountState:
              password: Optional[pulumi.Input[str]] = None,
              private_key: Optional[pulumi.Input[str]] = None,
              protocol_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'hostAccountId' in kwargs:
+            host_account_id = kwargs['hostAccountId']
+        if 'hostAccountName' in kwargs:
+            host_account_name = kwargs['hostAccountName']
+        if 'hostId' in kwargs:
+            host_id = kwargs['hostId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'passPhrase' in kwargs:
+            pass_phrase = kwargs['passPhrase']
+        if 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if 'protocolName' in kwargs:
+            protocol_name = kwargs['protocolName']
+
         if host_account_id is not None:
             _setter("host_account_id", host_account_id)
         if host_account_name is not None:

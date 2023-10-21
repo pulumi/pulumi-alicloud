@@ -35,7 +35,11 @@ class GroupArgs:
              description: pulumi.Input[str],
              instance_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("description", description)
         if instance_id is not None:
             _setter("instance_id", instance_id)
@@ -111,7 +115,15 @@ class _GroupState:
              name: Optional[pulumi.Input[str]] = None,
              sub_domain: Optional[pulumi.Input[str]] = None,
              vpc_domain: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'subDomain' in kwargs:
+            sub_domain = kwargs['subDomain']
+        if 'vpcDomain' in kwargs:
+            vpc_domain = kwargs['vpcDomain']
+
         if description is not None:
             _setter("description", description)
         if instance_id is not None:

@@ -27,6 +27,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.pvtz.Zone;
+ * import com.pulumi.alicloud.pvtz.ZoneArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.pvtz.ZoneAttachment;
@@ -44,13 +45,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var zone = new Zone(&#34;zone&#34;);
+ *         var zone = new Zone(&#34;zone&#34;, ZoneArgs.builder()        
+ *             .zoneName(&#34;foo.example.com&#34;)
+ *             .build());
  * 
  *         var first = new Network(&#34;first&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;the-first-vpc&#34;)
  *             .cidrBlock(&#34;172.16.0.0/12&#34;)
  *             .build());
  * 
  *         var second = new Network(&#34;second&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;the-second-vpc&#34;)
  *             .cidrBlock(&#34;172.16.0.0/16&#34;)
  *             .build());
  * 
@@ -73,6 +78,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.pvtz.Zone;
+ * import com.pulumi.alicloud.pvtz.ZoneArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.pvtz.ZoneAttachment;
@@ -91,13 +97,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var zone = new Zone(&#34;zone&#34;);
+ *         var zone = new Zone(&#34;zone&#34;, ZoneArgs.builder()        
+ *             .zoneName(&#34;foo.example.com&#34;)
+ *             .build());
  * 
  *         var first = new Network(&#34;first&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;the-first-vpc&#34;)
  *             .cidrBlock(&#34;172.16.0.0/12&#34;)
  *             .build());
  * 
  *         var second = new Network(&#34;second&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;the-second-vpc&#34;)
  *             .cidrBlock(&#34;172.16.0.0/16&#34;)
  *             .build());
  * 
@@ -124,6 +134,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.pvtz.Zone;
+ * import com.pulumi.alicloud.pvtz.ZoneArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.Provider;
@@ -145,13 +156,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var zone = new Zone(&#34;zone&#34;);
+ *         var zone = new Zone(&#34;zone&#34;, ZoneArgs.builder()        
+ *             .zoneName(&#34;foo.example.com&#34;)
+ *             .build());
  * 
  *         var first = new Network(&#34;first&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;the-first-vpc&#34;)
  *             .cidrBlock(&#34;172.16.0.0/12&#34;)
  *             .build());
  * 
  *         var second = new Network(&#34;second&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;the-second-vpc&#34;)
  *             .cidrBlock(&#34;172.16.0.0/16&#34;)
  *             .build());
  * 
@@ -160,6 +175,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var third = new Network(&#34;third&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;the-third-vpc&#34;)
  *             .cidrBlock(&#34;172.16.0.0/16&#34;)
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(alicloud.eu())
@@ -238,14 +254,14 @@ public class ZoneAttachment extends com.pulumi.resources.CustomResource {
         return this.vpcIds;
     }
     /**
-     * The List of the VPC:
+     * See `vpcs` below.Recommend to use `vpcs`.
      * 
      */
     @Export(name="vpcs", type=List.class, parameters={ZoneAttachmentVpc.class})
     private Output<List<ZoneAttachmentVpc>> vpcs;
 
     /**
-     * @return The List of the VPC:
+     * @return See `vpcs` below.Recommend to use `vpcs`.
      * 
      */
     public Output<List<ZoneAttachmentVpc>> vpcs() {

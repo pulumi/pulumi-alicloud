@@ -27,7 +27,11 @@ class TagArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              tag_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'tagName' in kwargs:
+            tag_name = kwargs['tagName']
+
         _setter("tag_name", tag_name)
 
     @property
@@ -59,7 +63,11 @@ class _TagState:
     def _configure(
              _setter: Callable[[Any, Any], None],
              tag_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'tagName' in kwargs:
+            tag_name = kwargs['tagName']
+
         if tag_name is not None:
             _setter("tag_name", tag_name)
 
@@ -86,7 +94,7 @@ class Tag(pulumi.CustomResource):
         """
         Provides a Direct Mail Tag resource.
 
-        For information about Direct Mail Tag and how to use it, see [What is Tag](https://www.alibabacloud.com/help/zh/doc-detail/119007.htm).
+        For information about Direct Mail Tag and how to use it, see [What is Tag](https://www.alibabacloud.com/help/en/directmail/latest/createtag).
 
         > **NOTE:** Available since v1.144.0.
 
@@ -126,7 +134,7 @@ class Tag(pulumi.CustomResource):
         """
         Provides a Direct Mail Tag resource.
 
-        For information about Direct Mail Tag and how to use it, see [What is Tag](https://www.alibabacloud.com/help/zh/doc-detail/119007.htm).
+        For information about Direct Mail Tag and how to use it, see [What is Tag](https://www.alibabacloud.com/help/en/directmail/latest/createtag).
 
         > **NOTE:** Available since v1.144.0.
 

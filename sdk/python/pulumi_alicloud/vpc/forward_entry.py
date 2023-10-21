@@ -61,7 +61,25 @@ class ForwardEntryArgs:
              forward_entry_name: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              port_break: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'externalIp' in kwargs:
+            external_ip = kwargs['externalIp']
+        if 'externalPort' in kwargs:
+            external_port = kwargs['externalPort']
+        if 'forwardTableId' in kwargs:
+            forward_table_id = kwargs['forwardTableId']
+        if 'internalIp' in kwargs:
+            internal_ip = kwargs['internalIp']
+        if 'internalPort' in kwargs:
+            internal_port = kwargs['internalPort']
+        if 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if 'forwardEntryName' in kwargs:
+            forward_entry_name = kwargs['forwardEntryName']
+        if 'portBreak' in kwargs:
+            port_break = kwargs['portBreak']
+
         _setter("external_ip", external_ip)
         _setter("external_port", external_port)
         _setter("forward_table_id", forward_table_id)
@@ -250,7 +268,27 @@ class _ForwardEntryState:
              name: Optional[pulumi.Input[str]] = None,
              port_break: Optional[pulumi.Input[bool]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'externalIp' in kwargs:
+            external_ip = kwargs['externalIp']
+        if 'externalPort' in kwargs:
+            external_port = kwargs['externalPort']
+        if 'forwardEntryId' in kwargs:
+            forward_entry_id = kwargs['forwardEntryId']
+        if 'forwardEntryName' in kwargs:
+            forward_entry_name = kwargs['forwardEntryName']
+        if 'forwardTableId' in kwargs:
+            forward_table_id = kwargs['forwardTableId']
+        if 'internalIp' in kwargs:
+            internal_ip = kwargs['internalIp']
+        if 'internalPort' in kwargs:
+            internal_port = kwargs['internalPort']
+        if 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if 'portBreak' in kwargs:
+            port_break = kwargs['portBreak']
+
         if external_ip is not None:
             _setter("external_ip", external_ip)
         if external_port is not None:

@@ -41,7 +41,15 @@ class CustomDomainArgs:
              protocol: pulumi.Input[str],
              cert_config: Optional[pulumi.Input['CustomDomainCertConfigArgs']] = None,
              route_configs: Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'certConfig' in kwargs:
+            cert_config = kwargs['certConfig']
+        if 'routeConfigs' in kwargs:
+            route_configs = kwargs['routeConfigs']
+
         _setter("domain_name", domain_name)
         _setter("protocol", protocol)
         if cert_config is not None:
@@ -142,7 +150,23 @@ class _CustomDomainState:
              last_modified_time: Optional[pulumi.Input[str]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
              route_configs: Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'apiVersion' in kwargs:
+            api_version = kwargs['apiVersion']
+        if 'certConfig' in kwargs:
+            cert_config = kwargs['certConfig']
+        if 'createdTime' in kwargs:
+            created_time = kwargs['createdTime']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'lastModifiedTime' in kwargs:
+            last_modified_time = kwargs['lastModifiedTime']
+        if 'routeConfigs' in kwargs:
+            route_configs = kwargs['routeConfigs']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if api_version is not None:
@@ -269,7 +293,7 @@ class CustomDomain(pulumi.CustomResource):
                  __props__=None):
         """
         Provides an Alicloud Function Compute custom domain resource.
-         For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-createcustomdomain).
+         For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/fc/developer-reference/api-fc-open-2021-04-06-createcustomdomain).
 
         > **NOTE:** Available since v1.98.0.
 
@@ -381,7 +405,7 @@ class CustomDomain(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides an Alicloud Function Compute custom domain resource.
-         For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-createcustomdomain).
+         For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/fc/developer-reference/api-fc-open-2021-04-06-createcustomdomain).
 
         > **NOTE:** Available since v1.98.0.
 

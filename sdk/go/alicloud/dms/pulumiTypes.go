@@ -1036,7 +1036,8 @@ type GetEnterpriseProxyAccessesAccess struct {
 	// The authorized account of the security agent.
 	AccessId     string `pulumi:"accessId"`
 	AccessSecret string `pulumi:"accessSecret"`
-	CreateTime   string `pulumi:"createTime"`
+	// The authorization time of the security access agent permission.
+	CreateTime string `pulumi:"createTime"`
 	// Security Protection authorization ID.
 	Id string `pulumi:"id"`
 	// Database account.
@@ -1072,7 +1073,8 @@ type GetEnterpriseProxyAccessesAccessArgs struct {
 	// The authorized account of the security agent.
 	AccessId     pulumi.StringInput `pulumi:"accessId"`
 	AccessSecret pulumi.StringInput `pulumi:"accessSecret"`
-	CreateTime   pulumi.StringInput `pulumi:"createTime"`
+	// The authorization time of the security access agent permission.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// Security Protection authorization ID.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Database account.
@@ -1171,6 +1173,7 @@ func (o GetEnterpriseProxyAccessesAccessOutput) AccessSecret() pulumi.StringOutp
 	return o.ApplyT(func(v GetEnterpriseProxyAccessesAccess) string { return v.AccessSecret }).(pulumi.StringOutput)
 }
 
+// The authorization time of the security access agent permission.
 func (o GetEnterpriseProxyAccessesAccessOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnterpriseProxyAccessesAccess) string { return v.CreateTime }).(pulumi.StringOutput)
 }

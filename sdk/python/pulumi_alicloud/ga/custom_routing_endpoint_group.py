@@ -43,7 +43,17 @@ class CustomRoutingEndpointGroupArgs:
              listener_id: pulumi.Input[str],
              custom_routing_endpoint_group_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'endpointGroupRegion' in kwargs:
+            endpoint_group_region = kwargs['endpointGroupRegion']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if 'customRoutingEndpointGroupName' in kwargs:
+            custom_routing_endpoint_group_name = kwargs['customRoutingEndpointGroupName']
+
         _setter("accelerator_id", accelerator_id)
         _setter("endpoint_group_region", endpoint_group_region)
         _setter("listener_id", listener_id)
@@ -149,7 +159,17 @@ class _CustomRoutingEndpointGroupState:
              endpoint_group_region: Optional[pulumi.Input[str]] = None,
              listener_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'customRoutingEndpointGroupName' in kwargs:
+            custom_routing_endpoint_group_name = kwargs['customRoutingEndpointGroupName']
+        if 'endpointGroupRegion' in kwargs:
+            endpoint_group_region = kwargs['endpointGroupRegion']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+
         if accelerator_id is not None:
             _setter("accelerator_id", accelerator_id)
         if custom_routing_endpoint_group_name is not None:

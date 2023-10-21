@@ -31,7 +31,13 @@ class RecycleBinArgs:
              _setter: Callable[[Any, Any], None],
              file_system_id: pulumi.Input[str],
              reserved_days: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fileSystemId' in kwargs:
+            file_system_id = kwargs['fileSystemId']
+        if 'reservedDays' in kwargs:
+            reserved_days = kwargs['reservedDays']
+
         _setter("file_system_id", file_system_id)
         if reserved_days is not None:
             _setter("reserved_days", reserved_days)
@@ -85,7 +91,13 @@ class _RecycleBinState:
              file_system_id: Optional[pulumi.Input[str]] = None,
              reserved_days: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fileSystemId' in kwargs:
+            file_system_id = kwargs['fileSystemId']
+        if 'reservedDays' in kwargs:
+            reserved_days = kwargs['reservedDays']
+
         if file_system_id is not None:
             _setter("file_system_id", file_system_id)
         if reserved_days is not None:

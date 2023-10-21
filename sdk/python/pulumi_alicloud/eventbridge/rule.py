@@ -49,7 +49,15 @@ class RuleArgs:
              targets: pulumi.Input[Sequence[pulumi.Input['RuleTargetArgs']]],
              description: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'eventBusName' in kwargs:
+            event_bus_name = kwargs['eventBusName']
+        if 'filterPattern' in kwargs:
+            filter_pattern = kwargs['filterPattern']
+        if 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+
         _setter("event_bus_name", event_bus_name)
         _setter("filter_pattern", filter_pattern)
         _setter("rule_name", rule_name)
@@ -168,7 +176,15 @@ class _RuleState:
              rule_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              targets: Optional[pulumi.Input[Sequence[pulumi.Input['RuleTargetArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'eventBusName' in kwargs:
+            event_bus_name = kwargs['eventBusName']
+        if 'filterPattern' in kwargs:
+            filter_pattern = kwargs['filterPattern']
+        if 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+
         if description is not None:
             _setter("description", description)
         if event_bus_name is not None:

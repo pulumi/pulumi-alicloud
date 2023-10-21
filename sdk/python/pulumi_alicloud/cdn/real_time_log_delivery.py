@@ -41,7 +41,11 @@ class RealTimeLogDeliveryArgs:
              logstore: pulumi.Input[str],
              project: pulumi.Input[str],
              sls_region: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'slsRegion' in kwargs:
+            sls_region = kwargs['slsRegion']
+
         _setter("domain", domain)
         _setter("logstore", logstore)
         _setter("project", project)
@@ -132,7 +136,11 @@ class _RealTimeLogDeliveryState:
              project: Optional[pulumi.Input[str]] = None,
              sls_region: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'slsRegion' in kwargs:
+            sls_region = kwargs['slsRegion']
+
         if domain is not None:
             _setter("domain", domain)
         if logstore is not None:

@@ -7,8 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class LoadBalancerAccessLogConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,33 +14,33 @@ public final class LoadBalancerAccessLogConfigArgs extends com.pulumi.resources.
     public static final LoadBalancerAccessLogConfigArgs Empty = new LoadBalancerAccessLogConfigArgs();
 
     /**
-     * The log service that access logs are shipped to.
+     * This Log Storage Project.
      * 
      */
-    @Import(name="logProject")
-    private @Nullable Output<String> logProject;
+    @Import(name="logProject", required=true)
+    private Output<String> logProject;
 
     /**
-     * @return The log service that access logs are shipped to.
+     * @return This Log Storage Project.
      * 
      */
-    public Optional<Output<String>> logProject() {
-        return Optional.ofNullable(this.logProject);
+    public Output<String> logProject() {
+        return this.logProject;
     }
 
     /**
-     * The log service that access logs are shipped to.
+     * This Log Storage Method Is Increased.
      * 
      */
-    @Import(name="logStore")
-    private @Nullable Output<String> logStore;
+    @Import(name="logStore", required=true)
+    private Output<String> logStore;
 
     /**
-     * @return The log service that access logs are shipped to.
+     * @return This Log Storage Method Is Increased.
      * 
      */
-    public Optional<Output<String>> logStore() {
-        return Optional.ofNullable(this.logStore);
+    public Output<String> logStore() {
+        return this.logStore;
     }
 
     private LoadBalancerAccessLogConfigArgs() {}
@@ -71,18 +69,18 @@ public final class LoadBalancerAccessLogConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param logProject The log service that access logs are shipped to.
+         * @param logProject This Log Storage Project.
          * 
          * @return builder
          * 
          */
-        public Builder logProject(@Nullable Output<String> logProject) {
+        public Builder logProject(Output<String> logProject) {
             $.logProject = logProject;
             return this;
         }
 
         /**
-         * @param logProject The log service that access logs are shipped to.
+         * @param logProject This Log Storage Project.
          * 
          * @return builder
          * 
@@ -92,18 +90,18 @@ public final class LoadBalancerAccessLogConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param logStore The log service that access logs are shipped to.
+         * @param logStore This Log Storage Method Is Increased.
          * 
          * @return builder
          * 
          */
-        public Builder logStore(@Nullable Output<String> logStore) {
+        public Builder logStore(Output<String> logStore) {
             $.logStore = logStore;
             return this;
         }
 
         /**
-         * @param logStore The log service that access logs are shipped to.
+         * @param logStore This Log Storage Method Is Increased.
          * 
          * @return builder
          * 
@@ -113,6 +111,8 @@ public final class LoadBalancerAccessLogConfigArgs extends com.pulumi.resources.
         }
 
         public LoadBalancerAccessLogConfigArgs build() {
+            $.logProject = Objects.requireNonNull($.logProject, "expected parameter 'logProject' to be non-null");
+            $.logStore = Objects.requireNonNull($.logStore, "expected parameter 'logStore' to be non-null");
             return $;
         }
     }

@@ -418,7 +418,7 @@ func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput
 }
 
 type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression struct {
-	// The key of the tag of the dispatch rule. Valud values:
+	// The key of the tag of the dispatch rule. Valid values:
 	// * _aliyun_arms_userid: user ID
 	// * _aliyun_arms_involvedObject_kind: type of the associated object
 	// * _aliyun_arms_involvedObject_id: ID of the associated object
@@ -448,7 +448,7 @@ type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpr
 }
 
 type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs struct {
-	// The key of the tag of the dispatch rule. Valud values:
+	// The key of the tag of the dispatch rule. Valid values:
 	// * _aliyun_arms_userid: user ID
 	// * _aliyun_arms_involvedObject_kind: type of the associated object
 	// * _aliyun_arms_involvedObject_id: ID of the associated object
@@ -535,7 +535,7 @@ func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchE
 	}
 }
 
-// The key of the tag of the dispatch rule. Valud values:
+// The key of the tag of the dispatch rule. Valid values:
 // * _aliyun_arms_userid: user ID
 // * _aliyun_arms_involvedObject_kind: type of the associated object
 // * _aliyun_arms_involvedObject_id: ID of the associated object

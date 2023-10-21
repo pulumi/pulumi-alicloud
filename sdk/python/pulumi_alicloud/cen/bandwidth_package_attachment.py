@@ -31,7 +31,13 @@ class BandwidthPackageAttachmentArgs:
              _setter: Callable[[Any, Any], None],
              bandwidth_package_id: pulumi.Input[str],
              instance_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bandwidthPackageId' in kwargs:
+            bandwidth_package_id = kwargs['bandwidthPackageId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("bandwidth_package_id", bandwidth_package_id)
         _setter("instance_id", instance_id)
 
@@ -80,7 +86,13 @@ class _BandwidthPackageAttachmentState:
              _setter: Callable[[Any, Any], None],
              bandwidth_package_id: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bandwidthPackageId' in kwargs:
+            bandwidth_package_id = kwargs['bandwidthPackageId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if bandwidth_package_id is not None:
             _setter("bandwidth_package_id", bandwidth_package_id)
         if instance_id is not None:

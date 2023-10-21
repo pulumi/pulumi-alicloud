@@ -15,6 +15,11 @@ export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
 utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
 
+export { PolardbxInstanceArgs, PolardbxInstanceState } from "./polardbxInstance";
+export type PolardbxInstance = import("./polardbxInstance").PolardbxInstance;
+export const PolardbxInstance: typeof import("./polardbxInstance").PolardbxInstance = null as any;
+utilities.lazyLoad(exports, ["PolardbxInstance"], () => require("./polardbxInstance"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -22,9 +27,12 @@ const _module = {
         switch (type) {
             case "alicloud:drds/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "alicloud:drds/polardbxInstance:PolardbxInstance":
+                return new PolardbxInstance(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "drds/instance", _module)
+pulumi.runtime.registerResourceModule("alicloud", "drds/polardbxInstance", _module)

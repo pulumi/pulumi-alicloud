@@ -78,7 +78,25 @@ class FileSystemArgs:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'protocolType' in kwargs:
+            protocol_type = kwargs['protocolType']
+        if 'storageType' in kwargs:
+            storage_type = kwargs['storageType']
+        if 'encryptType' in kwargs:
+            encrypt_type = kwargs['encryptType']
+        if 'fileSystemType' in kwargs:
+            file_system_type = kwargs['fileSystemType']
+        if 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("protocol_type", protocol_type)
         _setter("storage_type", storage_type)
         if capacity is not None:
@@ -311,7 +329,25 @@ class _FileSystemState:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'encryptType' in kwargs:
+            encrypt_type = kwargs['encryptType']
+        if 'fileSystemType' in kwargs:
+            file_system_type = kwargs['fileSystemType']
+        if 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if 'protocolType' in kwargs:
+            protocol_type = kwargs['protocolType']
+        if 'storageType' in kwargs:
+            storage_type = kwargs['storageType']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if capacity is not None:
             _setter("capacity", capacity)
         if description is not None:

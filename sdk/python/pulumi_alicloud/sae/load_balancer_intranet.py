@@ -37,7 +37,13 @@ class LoadBalancerIntranetArgs:
              app_id: pulumi.Input[str],
              intranets: pulumi.Input[Sequence[pulumi.Input['LoadBalancerIntranetIntranetArgs']]],
              intranet_slb_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if 'intranetSlbId' in kwargs:
+            intranet_slb_id = kwargs['intranetSlbId']
+
         _setter("app_id", app_id)
         _setter("intranets", intranets)
         if intranet_slb_id is not None:
@@ -108,7 +114,15 @@ class _LoadBalancerIntranetState:
              intranet_ip: Optional[pulumi.Input[str]] = None,
              intranet_slb_id: Optional[pulumi.Input[str]] = None,
              intranets: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerIntranetIntranetArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if 'intranetIp' in kwargs:
+            intranet_ip = kwargs['intranetIp']
+        if 'intranetSlbId' in kwargs:
+            intranet_slb_id = kwargs['intranetSlbId']
+
         if app_id is not None:
             _setter("app_id", app_id)
         if intranet_ip is not None:

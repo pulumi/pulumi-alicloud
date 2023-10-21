@@ -113,7 +113,49 @@ class InstanceArgs:
              threat_analysis: Optional[pulumi.Input[str]] = None,
              threat_analysis_switch: Optional[pulumi.Input[str]] = None,
              v_core: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'versionCode' in kwargs:
+            version_code = kwargs['versionCode']
+        if 'buyNumber' in kwargs:
+            buy_number = kwargs['buyNumber']
+        if 'containerImageScan' in kwargs:
+            container_image_scan = kwargs['containerImageScan']
+        if 'honeypotSwitch' in kwargs:
+            honeypot_switch = kwargs['honeypotSwitch']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'modifyType' in kwargs:
+            modify_type = kwargs['modifyType']
+        if 'renewPeriod' in kwargs:
+            renew_period = kwargs['renewPeriod']
+        if 'renewalPeriodUnit' in kwargs:
+            renewal_period_unit = kwargs['renewalPeriodUnit']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if 'sasAntiRansomware' in kwargs:
+            sas_anti_ransomware = kwargs['sasAntiRansomware']
+        if 'sasSc' in kwargs:
+            sas_sc = kwargs['sasSc']
+        if 'sasSdk' in kwargs:
+            sas_sdk = kwargs['sasSdk']
+        if 'sasSdkSwitch' in kwargs:
+            sas_sdk_switch = kwargs['sasSdkSwitch']
+        if 'sasSlsStorage' in kwargs:
+            sas_sls_storage = kwargs['sasSlsStorage']
+        if 'sasWebguardBoolean' in kwargs:
+            sas_webguard_boolean = kwargs['sasWebguardBoolean']
+        if 'sasWebguardOrderNum' in kwargs:
+            sas_webguard_order_num = kwargs['sasWebguardOrderNum']
+        if 'threatAnalysis' in kwargs:
+            threat_analysis = kwargs['threatAnalysis']
+        if 'threatAnalysisSwitch' in kwargs:
+            threat_analysis_switch = kwargs['threatAnalysisSwitch']
+        if 'vCore' in kwargs:
+            v_core = kwargs['vCore']
+
         _setter("payment_type", payment_type)
         _setter("version_code", version_code)
         if buy_number is not None:
@@ -534,7 +576,51 @@ class _InstanceState:
              threat_analysis_switch: Optional[pulumi.Input[str]] = None,
              v_core: Optional[pulumi.Input[str]] = None,
              version_code: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'buyNumber' in kwargs:
+            buy_number = kwargs['buyNumber']
+        if 'containerImageScan' in kwargs:
+            container_image_scan = kwargs['containerImageScan']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'honeypotSwitch' in kwargs:
+            honeypot_switch = kwargs['honeypotSwitch']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'modifyType' in kwargs:
+            modify_type = kwargs['modifyType']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'renewPeriod' in kwargs:
+            renew_period = kwargs['renewPeriod']
+        if 'renewalPeriodUnit' in kwargs:
+            renewal_period_unit = kwargs['renewalPeriodUnit']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if 'sasAntiRansomware' in kwargs:
+            sas_anti_ransomware = kwargs['sasAntiRansomware']
+        if 'sasSc' in kwargs:
+            sas_sc = kwargs['sasSc']
+        if 'sasSdk' in kwargs:
+            sas_sdk = kwargs['sasSdk']
+        if 'sasSdkSwitch' in kwargs:
+            sas_sdk_switch = kwargs['sasSdkSwitch']
+        if 'sasSlsStorage' in kwargs:
+            sas_sls_storage = kwargs['sasSlsStorage']
+        if 'sasWebguardBoolean' in kwargs:
+            sas_webguard_boolean = kwargs['sasWebguardBoolean']
+        if 'sasWebguardOrderNum' in kwargs:
+            sas_webguard_order_num = kwargs['sasWebguardOrderNum']
+        if 'threatAnalysis' in kwargs:
+            threat_analysis = kwargs['threatAnalysis']
+        if 'threatAnalysisSwitch' in kwargs:
+            threat_analysis_switch = kwargs['threatAnalysisSwitch']
+        if 'vCore' in kwargs:
+            v_core = kwargs['vCore']
+        if 'versionCode' in kwargs:
+            version_code = kwargs['versionCode']
+
         if buy_number is not None:
             _setter("buy_number", buy_number)
         if container_image_scan is not None:

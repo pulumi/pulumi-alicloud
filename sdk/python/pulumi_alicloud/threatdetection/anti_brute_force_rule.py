@@ -47,7 +47,19 @@ class AntiBruteForceRuleArgs:
              span: pulumi.Input[int],
              uuid_lists: pulumi.Input[Sequence[pulumi.Input[str]]],
              default_rule: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'antiBruteForceRuleName' in kwargs:
+            anti_brute_force_rule_name = kwargs['antiBruteForceRuleName']
+        if 'failCount' in kwargs:
+            fail_count = kwargs['failCount']
+        if 'forbiddenTime' in kwargs:
+            forbidden_time = kwargs['forbiddenTime']
+        if 'uuidLists' in kwargs:
+            uuid_lists = kwargs['uuidLists']
+        if 'defaultRule' in kwargs:
+            default_rule = kwargs['defaultRule']
+
         _setter("anti_brute_force_rule_name", anti_brute_force_rule_name)
         _setter("fail_count", fail_count)
         _setter("forbidden_time", forbidden_time)
@@ -169,7 +181,21 @@ class _AntiBruteForceRuleState:
              forbidden_time: Optional[pulumi.Input[int]] = None,
              span: Optional[pulumi.Input[int]] = None,
              uuid_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'antiBruteForceRuleId' in kwargs:
+            anti_brute_force_rule_id = kwargs['antiBruteForceRuleId']
+        if 'antiBruteForceRuleName' in kwargs:
+            anti_brute_force_rule_name = kwargs['antiBruteForceRuleName']
+        if 'defaultRule' in kwargs:
+            default_rule = kwargs['defaultRule']
+        if 'failCount' in kwargs:
+            fail_count = kwargs['failCount']
+        if 'forbiddenTime' in kwargs:
+            forbidden_time = kwargs['forbiddenTime']
+        if 'uuidLists' in kwargs:
+            uuid_lists = kwargs['uuidLists']
+
         if anti_brute_force_rule_id is not None:
             _setter("anti_brute_force_rule_id", anti_brute_force_rule_id)
         if anti_brute_force_rule_name is not None:
@@ -285,9 +311,9 @@ class AntiBruteForceRule(pulumi.CustomResource):
         """
         Provides a Threat Detection Anti Brute Force Rule resource.
 
-        For information about Threat Detection Anti Brute Force Rule and how to use it, see [What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createantibruteforcerule).
+        For information about Threat Detection Anti Brute Force Rule and how to use it, see [What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createantibruteforcerule).
 
-        > **NOTE:** Available in v1.195.0+.
+        > **NOTE:** Available since v1.195.0.
 
         ## Example Usage
 
@@ -298,7 +324,7 @@ class AntiBruteForceRule(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.threatdetection.AntiBruteForceRule("default",
-            anti_brute_force_rule_name="apispec_test",
+            anti_brute_force_rule_name="apispec_example",
             fail_count=80,
             forbidden_time=360,
             span=10,
@@ -331,9 +357,9 @@ class AntiBruteForceRule(pulumi.CustomResource):
         """
         Provides a Threat Detection Anti Brute Force Rule resource.
 
-        For information about Threat Detection Anti Brute Force Rule and how to use it, see [What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createantibruteforcerule).
+        For information about Threat Detection Anti Brute Force Rule and how to use it, see [What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createantibruteforcerule).
 
-        > **NOTE:** Available in v1.195.0+.
+        > **NOTE:** Available since v1.195.0.
 
         ## Example Usage
 
@@ -344,7 +370,7 @@ class AntiBruteForceRule(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.threatdetection.AntiBruteForceRule("default",
-            anti_brute_force_rule_name="apispec_test",
+            anti_brute_force_rule_name="apispec_example",
             fail_count=80,
             forbidden_time=360,
             span=10,

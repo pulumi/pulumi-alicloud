@@ -45,7 +45,15 @@ class EcsPrefixListArgs:
              max_entries: pulumi.Input[int],
              prefix_list_name: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addressFamily' in kwargs:
+            address_family = kwargs['addressFamily']
+        if 'maxEntries' in kwargs:
+            max_entries = kwargs['maxEntries']
+        if 'prefixListName' in kwargs:
+            prefix_list_name = kwargs['prefixListName']
+
         _setter("address_family", address_family)
         _setter("entries", entries)
         _setter("max_entries", max_entries)
@@ -146,7 +154,15 @@ class _EcsPrefixListState:
              entries: Optional[pulumi.Input[Sequence[pulumi.Input['EcsPrefixListEntryArgs']]]] = None,
              max_entries: Optional[pulumi.Input[int]] = None,
              prefix_list_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addressFamily' in kwargs:
+            address_family = kwargs['addressFamily']
+        if 'maxEntries' in kwargs:
+            max_entries = kwargs['maxEntries']
+        if 'prefixListName' in kwargs:
+            prefix_list_name = kwargs['prefixListName']
+
         if address_family is not None:
             _setter("address_family", address_family)
         if description is not None:

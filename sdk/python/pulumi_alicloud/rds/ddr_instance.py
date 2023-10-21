@@ -141,7 +141,7 @@ class DdrInstanceArgs:
                - true: delete protect.
                - false: no delete protect.
                
-               > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+               > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
         :param pulumi.Input[str] effective_time: The method to update the engine version and change.  Default value: Immediate. Valid values:
                - Immediate: The change immediately takes effect.
                - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -387,7 +387,127 @@ class DdrInstanceArgs:
              vswitch_id: Optional[pulumi.Input[str]] = None,
              whitelist_network_type: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'instanceStorage' in kwargs:
+            instance_storage = kwargs['instanceStorage']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'restoreType' in kwargs:
+            restore_type = kwargs['restoreType']
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if 'autoUpgradeMinorVersion' in kwargs:
+            auto_upgrade_minor_version = kwargs['autoUpgradeMinorVersion']
+        if 'backupSetId' in kwargs:
+            backup_set_id = kwargs['backupSetId']
+        if 'caType' in kwargs:
+            ca_type = kwargs['caType']
+        if 'clientCaCert' in kwargs:
+            client_ca_cert = kwargs['clientCaCert']
+        if 'clientCaEnabled' in kwargs:
+            client_ca_enabled = kwargs['clientCaEnabled']
+        if 'clientCertRevocationList' in kwargs:
+            client_cert_revocation_list = kwargs['clientCertRevocationList']
+        if 'clientCrlEnabled' in kwargs:
+            client_crl_enabled = kwargs['clientCrlEnabled']
+        if 'connectionStringPrefix' in kwargs:
+            connection_string_prefix = kwargs['connectionStringPrefix']
+        if 'dbInstanceIpArrayAttribute' in kwargs:
+            db_instance_ip_array_attribute = kwargs['dbInstanceIpArrayAttribute']
+        if 'dbInstanceIpArrayName' in kwargs:
+            db_instance_ip_array_name = kwargs['dbInstanceIpArrayName']
+        if 'dbInstanceStorageType' in kwargs:
+            db_instance_storage_type = kwargs['dbInstanceStorageType']
+        if 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if 'effectiveTime' in kwargs:
+            effective_time = kwargs['effectiveTime']
+        if 'encryptionKey' in kwargs:
+            encryption_key = kwargs['encryptionKey']
+        if 'forceRestart' in kwargs:
+            force_restart = kwargs['forceRestart']
+        if 'freshWhiteListReadins' in kwargs:
+            fresh_white_list_readins = kwargs['freshWhiteListReadins']
+        if 'haConfig' in kwargs:
+            ha_config = kwargs['haConfig']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'maintainTime' in kwargs:
+            maintain_time = kwargs['maintainTime']
+        if 'manualHaTime' in kwargs:
+            manual_ha_time = kwargs['manualHaTime']
+        if 'modifyMode' in kwargs:
+            modify_mode = kwargs['modifyMode']
+        if 'monitoringPeriod' in kwargs:
+            monitoring_period = kwargs['monitoringPeriod']
+        if 'pgHbaConfs' in kwargs:
+            pg_hba_confs = kwargs['pgHbaConfs']
+        if 'privateIpAddress' in kwargs:
+            private_ip_address = kwargs['privateIpAddress']
+        if 'releasedKeepPolicy' in kwargs:
+            released_keep_policy = kwargs['releasedKeepPolicy']
+        if 'replicationAcl' in kwargs:
+            replication_acl = kwargs['replicationAcl']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'restoreTime' in kwargs:
+            restore_time = kwargs['restoreTime']
+        if 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if 'securityIpMode' in kwargs:
+            security_ip_mode = kwargs['securityIpMode']
+        if 'securityIpType' in kwargs:
+            security_ip_type = kwargs['securityIpType']
+        if 'securityIps' in kwargs:
+            security_ips = kwargs['securityIps']
+        if 'serverCert' in kwargs:
+            server_cert = kwargs['serverCert']
+        if 'serverKey' in kwargs:
+            server_key = kwargs['serverKey']
+        if 'sourceDbInstanceName' in kwargs:
+            source_db_instance_name = kwargs['sourceDbInstanceName']
+        if 'sourceRegion' in kwargs:
+            source_region = kwargs['sourceRegion']
+        if 'sqlCollectorConfigValue' in kwargs:
+            sql_collector_config_value = kwargs['sqlCollectorConfigValue']
+        if 'sqlCollectorStatus' in kwargs:
+            sql_collector_status = kwargs['sqlCollectorStatus']
+        if 'sslAction' in kwargs:
+            ssl_action = kwargs['sslAction']
+        if 'storageAutoScale' in kwargs:
+            storage_auto_scale = kwargs['storageAutoScale']
+        if 'storageThreshold' in kwargs:
+            storage_threshold = kwargs['storageThreshold']
+        if 'storageUpperBound' in kwargs:
+            storage_upper_bound = kwargs['storageUpperBound']
+        if 'switchTime' in kwargs:
+            switch_time = kwargs['switchTime']
+        if 'targetMinorVersion' in kwargs:
+            target_minor_version = kwargs['targetMinorVersion']
+        if 'tcpConnectionType' in kwargs:
+            tcp_connection_type = kwargs['tcpConnectionType']
+        if 'tdeStatus' in kwargs:
+            tde_status = kwargs['tdeStatus']
+        if 'upgradeDbInstanceKernelVersion' in kwargs:
+            upgrade_db_instance_kernel_version = kwargs['upgradeDbInstanceKernelVersion']
+        if 'upgradeTime' in kwargs:
+            upgrade_time = kwargs['upgradeTime']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'whitelistNetworkType' in kwargs:
+            whitelist_network_type = kwargs['whitelistNetworkType']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("engine", engine)
         _setter("engine_version", engine_version)
         _setter("instance_storage", instance_storage)
@@ -795,7 +915,7 @@ class DdrInstanceArgs:
         - true: delete protect.
         - false: no delete protect.
 
-        > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+        > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -1517,7 +1637,7 @@ class _DdrInstanceState:
                - true: delete protect.
                - false: no delete protect.
                
-               > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+               > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
         :param pulumi.Input[str] effective_time: The method to update the engine version and change.  Default value: Immediate. Valid values:
                - Immediate: The change immediately takes effect.
                - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -1790,7 +1910,135 @@ class _DdrInstanceState:
              zone_id: Optional[pulumi.Input[str]] = None,
              zone_id_slave_a: Optional[pulumi.Input[str]] = None,
              zone_id_slave_b: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if 'autoUpgradeMinorVersion' in kwargs:
+            auto_upgrade_minor_version = kwargs['autoUpgradeMinorVersion']
+        if 'backupSetId' in kwargs:
+            backup_set_id = kwargs['backupSetId']
+        if 'caType' in kwargs:
+            ca_type = kwargs['caType']
+        if 'clientCaCert' in kwargs:
+            client_ca_cert = kwargs['clientCaCert']
+        if 'clientCaEnabled' in kwargs:
+            client_ca_enabled = kwargs['clientCaEnabled']
+        if 'clientCertRevocationList' in kwargs:
+            client_cert_revocation_list = kwargs['clientCertRevocationList']
+        if 'clientCrlEnabled' in kwargs:
+            client_crl_enabled = kwargs['clientCrlEnabled']
+        if 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if 'connectionStringPrefix' in kwargs:
+            connection_string_prefix = kwargs['connectionStringPrefix']
+        if 'dbInstanceIpArrayAttribute' in kwargs:
+            db_instance_ip_array_attribute = kwargs['dbInstanceIpArrayAttribute']
+        if 'dbInstanceIpArrayName' in kwargs:
+            db_instance_ip_array_name = kwargs['dbInstanceIpArrayName']
+        if 'dbInstanceStorageType' in kwargs:
+            db_instance_storage_type = kwargs['dbInstanceStorageType']
+        if 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if 'effectiveTime' in kwargs:
+            effective_time = kwargs['effectiveTime']
+        if 'encryptionKey' in kwargs:
+            encryption_key = kwargs['encryptionKey']
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'forceRestart' in kwargs:
+            force_restart = kwargs['forceRestart']
+        if 'freshWhiteListReadins' in kwargs:
+            fresh_white_list_readins = kwargs['freshWhiteListReadins']
+        if 'haConfig' in kwargs:
+            ha_config = kwargs['haConfig']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'instanceStorage' in kwargs:
+            instance_storage = kwargs['instanceStorage']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'maintainTime' in kwargs:
+            maintain_time = kwargs['maintainTime']
+        if 'manualHaTime' in kwargs:
+            manual_ha_time = kwargs['manualHaTime']
+        if 'modifyMode' in kwargs:
+            modify_mode = kwargs['modifyMode']
+        if 'monitoringPeriod' in kwargs:
+            monitoring_period = kwargs['monitoringPeriod']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'pgHbaConfs' in kwargs:
+            pg_hba_confs = kwargs['pgHbaConfs']
+        if 'privateIpAddress' in kwargs:
+            private_ip_address = kwargs['privateIpAddress']
+        if 'releasedKeepPolicy' in kwargs:
+            released_keep_policy = kwargs['releasedKeepPolicy']
+        if 'replicationAcl' in kwargs:
+            replication_acl = kwargs['replicationAcl']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'restoreTime' in kwargs:
+            restore_time = kwargs['restoreTime']
+        if 'restoreType' in kwargs:
+            restore_type = kwargs['restoreType']
+        if 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if 'securityIpMode' in kwargs:
+            security_ip_mode = kwargs['securityIpMode']
+        if 'securityIpType' in kwargs:
+            security_ip_type = kwargs['securityIpType']
+        if 'securityIps' in kwargs:
+            security_ips = kwargs['securityIps']
+        if 'serverCert' in kwargs:
+            server_cert = kwargs['serverCert']
+        if 'serverKey' in kwargs:
+            server_key = kwargs['serverKey']
+        if 'sourceDbInstanceName' in kwargs:
+            source_db_instance_name = kwargs['sourceDbInstanceName']
+        if 'sourceRegion' in kwargs:
+            source_region = kwargs['sourceRegion']
+        if 'sqlCollectorConfigValue' in kwargs:
+            sql_collector_config_value = kwargs['sqlCollectorConfigValue']
+        if 'sqlCollectorStatus' in kwargs:
+            sql_collector_status = kwargs['sqlCollectorStatus']
+        if 'sslAction' in kwargs:
+            ssl_action = kwargs['sslAction']
+        if 'sslStatus' in kwargs:
+            ssl_status = kwargs['sslStatus']
+        if 'storageAutoScale' in kwargs:
+            storage_auto_scale = kwargs['storageAutoScale']
+        if 'storageThreshold' in kwargs:
+            storage_threshold = kwargs['storageThreshold']
+        if 'storageUpperBound' in kwargs:
+            storage_upper_bound = kwargs['storageUpperBound']
+        if 'switchTime' in kwargs:
+            switch_time = kwargs['switchTime']
+        if 'targetMinorVersion' in kwargs:
+            target_minor_version = kwargs['targetMinorVersion']
+        if 'tcpConnectionType' in kwargs:
+            tcp_connection_type = kwargs['tcpConnectionType']
+        if 'tdeStatus' in kwargs:
+            tde_status = kwargs['tdeStatus']
+        if 'upgradeDbInstanceKernelVersion' in kwargs:
+            upgrade_db_instance_kernel_version = kwargs['upgradeDbInstanceKernelVersion']
+        if 'upgradeTime' in kwargs:
+            upgrade_time = kwargs['upgradeTime']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'whitelistNetworkType' in kwargs:
+            whitelist_network_type = kwargs['whitelistNetworkType']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'zoneIdSlaveA' in kwargs:
+            zone_id_slave_a = kwargs['zoneIdSlaveA']
+        if 'zoneIdSlaveB' in kwargs:
+            zone_id_slave_b = kwargs['zoneIdSlaveB']
+
         if acl is not None:
             _setter("acl", acl)
         if auto_renew is not None:
@@ -2158,7 +2406,7 @@ class _DdrInstanceState:
         - true: delete protect.
         - false: no delete protect.
 
-        > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+        > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -3001,7 +3249,7 @@ class DdrInstance(pulumi.CustomResource):
                - true: delete protect.
                - false: no delete protect.
                
-               > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+               > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
         :param pulumi.Input[str] effective_time: The method to update the engine version and change.  Default value: Immediate. Valid values:
                - Immediate: The change immediately takes effect.
                - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -3448,7 +3696,7 @@ class DdrInstance(pulumi.CustomResource):
                - true: delete protect.
                - false: no delete protect.
                
-               > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+               > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
         :param pulumi.Input[str] effective_time: The method to update the engine version and change.  Default value: Immediate. Valid values:
                - Immediate: The change immediately takes effect.
                - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
@@ -3813,7 +4061,7 @@ class DdrInstance(pulumi.CustomResource):
         - true: delete protect.
         - false: no delete protect.
 
-        > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+        > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
         """
         return pulumi.get(self, "deletion_protection")
 

@@ -31,7 +31,13 @@ class RouteTableAttachmentArgs:
              _setter: Callable[[Any, Any], None],
              route_table_id: pulumi.Input[str],
              vswitch_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'routeTableId' in kwargs:
+            route_table_id = kwargs['routeTableId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("route_table_id", route_table_id)
         _setter("vswitch_id", vswitch_id)
 
@@ -84,7 +90,13 @@ class _RouteTableAttachmentState:
              route_table_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'routeTableId' in kwargs:
+            route_table_id = kwargs['routeTableId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if route_table_id is not None:
             _setter("route_table_id", route_table_id)
         if status is not None:

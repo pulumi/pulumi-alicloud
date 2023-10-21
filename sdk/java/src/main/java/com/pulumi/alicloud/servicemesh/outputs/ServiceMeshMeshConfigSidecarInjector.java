@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.servicemesh.outputs;
 
+import com.pulumi.alicloud.servicemesh.outputs.ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.String;
@@ -23,25 +24,35 @@ public final class ServiceMeshMeshConfigSidecarInjector {
      */
     private @Nullable Boolean enableNamespacesByDefault;
     /**
-     * @return The CPU resource  of the limitsOPA proxy container.
+     * @return CNI configuration. See `mesh_config-sidecar_injector-init_cni_configuration` below.
+     * 
+     */
+    private @Nullable ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration initCniConfiguration;
+    /**
+     * @return Sidecar injector Pods on the throttle.
      * 
      */
     private @Nullable String limitCpu;
     /**
-     * @return The memory resource limit of the OPA proxy container.
+     * @return Sidecar injector Pods on the throttle.
      * 
      */
     private @Nullable String limitMemory;
     /**
-     * @return The CPU resource request of the OPA proxy container.
+     * @return Sidecar injector Pods on the requested resource.
      * 
      */
     private @Nullable String requestCpu;
     /**
-     * @return The memory resource request of the OPA proxy container.
+     * @return Sidecar injector Pods on the requested resource.
      * 
      */
     private @Nullable String requestMemory;
+    /**
+     * @return Other configurations of automatically injected sidecar (in YAML format).
+     * 
+     */
+    private @Nullable String sidecarInjectorWebhookAsYaml;
 
     private ServiceMeshMeshConfigSidecarInjector() {}
     /**
@@ -59,32 +70,46 @@ public final class ServiceMeshMeshConfigSidecarInjector {
         return Optional.ofNullable(this.enableNamespacesByDefault);
     }
     /**
-     * @return The CPU resource  of the limitsOPA proxy container.
+     * @return CNI configuration. See `mesh_config-sidecar_injector-init_cni_configuration` below.
+     * 
+     */
+    public Optional<ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration> initCniConfiguration() {
+        return Optional.ofNullable(this.initCniConfiguration);
+    }
+    /**
+     * @return Sidecar injector Pods on the throttle.
      * 
      */
     public Optional<String> limitCpu() {
         return Optional.ofNullable(this.limitCpu);
     }
     /**
-     * @return The memory resource limit of the OPA proxy container.
+     * @return Sidecar injector Pods on the throttle.
      * 
      */
     public Optional<String> limitMemory() {
         return Optional.ofNullable(this.limitMemory);
     }
     /**
-     * @return The CPU resource request of the OPA proxy container.
+     * @return Sidecar injector Pods on the requested resource.
      * 
      */
     public Optional<String> requestCpu() {
         return Optional.ofNullable(this.requestCpu);
     }
     /**
-     * @return The memory resource request of the OPA proxy container.
+     * @return Sidecar injector Pods on the requested resource.
      * 
      */
     public Optional<String> requestMemory() {
         return Optional.ofNullable(this.requestMemory);
+    }
+    /**
+     * @return Other configurations of automatically injected sidecar (in YAML format).
+     * 
+     */
+    public Optional<String> sidecarInjectorWebhookAsYaml() {
+        return Optional.ofNullable(this.sidecarInjectorWebhookAsYaml);
     }
 
     public static Builder builder() {
@@ -98,19 +123,23 @@ public final class ServiceMeshMeshConfigSidecarInjector {
     public static final class Builder {
         private @Nullable Boolean autoInjectionPolicyEnabled;
         private @Nullable Boolean enableNamespacesByDefault;
+        private @Nullable ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration initCniConfiguration;
         private @Nullable String limitCpu;
         private @Nullable String limitMemory;
         private @Nullable String requestCpu;
         private @Nullable String requestMemory;
+        private @Nullable String sidecarInjectorWebhookAsYaml;
         public Builder() {}
         public Builder(ServiceMeshMeshConfigSidecarInjector defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoInjectionPolicyEnabled = defaults.autoInjectionPolicyEnabled;
     	      this.enableNamespacesByDefault = defaults.enableNamespacesByDefault;
+    	      this.initCniConfiguration = defaults.initCniConfiguration;
     	      this.limitCpu = defaults.limitCpu;
     	      this.limitMemory = defaults.limitMemory;
     	      this.requestCpu = defaults.requestCpu;
     	      this.requestMemory = defaults.requestMemory;
+    	      this.sidecarInjectorWebhookAsYaml = defaults.sidecarInjectorWebhookAsYaml;
         }
 
         @CustomType.Setter
@@ -121,6 +150,11 @@ public final class ServiceMeshMeshConfigSidecarInjector {
         @CustomType.Setter
         public Builder enableNamespacesByDefault(@Nullable Boolean enableNamespacesByDefault) {
             this.enableNamespacesByDefault = enableNamespacesByDefault;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder initCniConfiguration(@Nullable ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration initCniConfiguration) {
+            this.initCniConfiguration = initCniConfiguration;
             return this;
         }
         @CustomType.Setter
@@ -143,14 +177,21 @@ public final class ServiceMeshMeshConfigSidecarInjector {
             this.requestMemory = requestMemory;
             return this;
         }
+        @CustomType.Setter
+        public Builder sidecarInjectorWebhookAsYaml(@Nullable String sidecarInjectorWebhookAsYaml) {
+            this.sidecarInjectorWebhookAsYaml = sidecarInjectorWebhookAsYaml;
+            return this;
+        }
         public ServiceMeshMeshConfigSidecarInjector build() {
             final var o = new ServiceMeshMeshConfigSidecarInjector();
             o.autoInjectionPolicyEnabled = autoInjectionPolicyEnabled;
             o.enableNamespacesByDefault = enableNamespacesByDefault;
+            o.initCniConfiguration = initCniConfiguration;
             o.limitCpu = limitCpu;
             o.limitMemory = limitMemory;
             o.requestCpu = requestCpu;
             o.requestMemory = requestMemory;
+            o.sidecarInjectorWebhookAsYaml = sidecarInjectorWebhookAsYaml;
             return o;
         }
     }

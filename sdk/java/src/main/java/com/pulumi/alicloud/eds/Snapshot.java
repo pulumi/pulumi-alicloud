@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a ECD Snapshot resource.
  * 
- * For information about ECD Snapshot and how to use it, see [What is Snapshot](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/createsnapshot).
+ * For information about ECD Snapshot and how to use it, see [What is Snapshot](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createsnapshot).
  * 
  * &gt; **NOTE:** Available since v1.169.0.
  * 

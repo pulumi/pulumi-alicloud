@@ -62,7 +62,15 @@ class EciScalingConfigurationAcrRegistryInfoArgs:
              instance_id: Optional[pulumi.Input[str]] = None,
              instance_name: Optional[pulumi.Input[str]] = None,
              region_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+
         if domains is not None:
             _setter("domains", domains)
         if instance_id is not None:
@@ -266,7 +274,57 @@ class EciScalingConfigurationContainerArgs:
              readiness_probe_timeout_seconds: Optional[pulumi.Input[int]] = None,
              volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerVolumeMountArgs']]]] = None,
              working_dir: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'environmentVars' in kwargs:
+            environment_vars = kwargs['environmentVars']
+        if 'imagePullPolicy' in kwargs:
+            image_pull_policy = kwargs['imagePullPolicy']
+        if 'livenessProbeExecCommands' in kwargs:
+            liveness_probe_exec_commands = kwargs['livenessProbeExecCommands']
+        if 'livenessProbeFailureThreshold' in kwargs:
+            liveness_probe_failure_threshold = kwargs['livenessProbeFailureThreshold']
+        if 'livenessProbeHttpGetPath' in kwargs:
+            liveness_probe_http_get_path = kwargs['livenessProbeHttpGetPath']
+        if 'livenessProbeHttpGetPort' in kwargs:
+            liveness_probe_http_get_port = kwargs['livenessProbeHttpGetPort']
+        if 'livenessProbeHttpGetScheme' in kwargs:
+            liveness_probe_http_get_scheme = kwargs['livenessProbeHttpGetScheme']
+        if 'livenessProbeInitialDelaySeconds' in kwargs:
+            liveness_probe_initial_delay_seconds = kwargs['livenessProbeInitialDelaySeconds']
+        if 'livenessProbePeriodSeconds' in kwargs:
+            liveness_probe_period_seconds = kwargs['livenessProbePeriodSeconds']
+        if 'livenessProbeSuccessThreshold' in kwargs:
+            liveness_probe_success_threshold = kwargs['livenessProbeSuccessThreshold']
+        if 'livenessProbeTcpSocketPort' in kwargs:
+            liveness_probe_tcp_socket_port = kwargs['livenessProbeTcpSocketPort']
+        if 'livenessProbeTimeoutSeconds' in kwargs:
+            liveness_probe_timeout_seconds = kwargs['livenessProbeTimeoutSeconds']
+        if 'readinessProbeExecCommands' in kwargs:
+            readiness_probe_exec_commands = kwargs['readinessProbeExecCommands']
+        if 'readinessProbeFailureThreshold' in kwargs:
+            readiness_probe_failure_threshold = kwargs['readinessProbeFailureThreshold']
+        if 'readinessProbeHttpGetPath' in kwargs:
+            readiness_probe_http_get_path = kwargs['readinessProbeHttpGetPath']
+        if 'readinessProbeHttpGetPort' in kwargs:
+            readiness_probe_http_get_port = kwargs['readinessProbeHttpGetPort']
+        if 'readinessProbeHttpGetScheme' in kwargs:
+            readiness_probe_http_get_scheme = kwargs['readinessProbeHttpGetScheme']
+        if 'readinessProbeInitialDelaySeconds' in kwargs:
+            readiness_probe_initial_delay_seconds = kwargs['readinessProbeInitialDelaySeconds']
+        if 'readinessProbePeriodSeconds' in kwargs:
+            readiness_probe_period_seconds = kwargs['readinessProbePeriodSeconds']
+        if 'readinessProbeSuccessThreshold' in kwargs:
+            readiness_probe_success_threshold = kwargs['readinessProbeSuccessThreshold']
+        if 'readinessProbeTcpSocketPort' in kwargs:
+            readiness_probe_tcp_socket_port = kwargs['readinessProbeTcpSocketPort']
+        if 'readinessProbeTimeoutSeconds' in kwargs:
+            readiness_probe_timeout_seconds = kwargs['readinessProbeTimeoutSeconds']
+        if 'volumeMounts' in kwargs:
+            volume_mounts = kwargs['volumeMounts']
+        if 'workingDir' in kwargs:
+            working_dir = kwargs['workingDir']
+
         if args is not None:
             _setter("args", args)
         if commands is not None:
@@ -739,7 +797,9 @@ class EciScalingConfigurationContainerEnvironmentVarArgs:
              _setter: Callable[[Any, Any], None],
              key: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if value is not None:
@@ -790,7 +850,9 @@ class EciScalingConfigurationContainerPortArgs:
              _setter: Callable[[Any, Any], None],
              port: Optional[pulumi.Input[int]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if port is not None:
             _setter("port", port)
         if protocol is not None:
@@ -845,7 +907,13 @@ class EciScalingConfigurationContainerVolumeMountArgs:
              mount_path: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              read_only: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'mountPath' in kwargs:
+            mount_path = kwargs['mountPath']
+        if 'readOnly' in kwargs:
+            read_only = kwargs['readOnly']
+
         if mount_path is not None:
             _setter("mount_path", mount_path)
         if name is not None:
@@ -910,7 +978,9 @@ class EciScalingConfigurationHostAliasArgs:
              _setter: Callable[[Any, Any], None],
              hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if hostnames is not None:
             _setter("hostnames", hostnames)
         if ip is not None:
@@ -967,7 +1037,9 @@ class EciScalingConfigurationImageRegistryCredentialArgs:
              password: Optional[pulumi.Input[str]] = None,
              server: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if password is not None:
             _setter("password", password)
         if server is not None:
@@ -1075,7 +1147,17 @@ class EciScalingConfigurationInitContainerArgs:
              ports: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerPortArgs']]]] = None,
              volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerVolumeMountArgs']]]] = None,
              working_dir: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'environmentVars' in kwargs:
+            environment_vars = kwargs['environmentVars']
+        if 'imagePullPolicy' in kwargs:
+            image_pull_policy = kwargs['imagePullPolicy']
+        if 'volumeMounts' in kwargs:
+            volume_mounts = kwargs['volumeMounts']
+        if 'workingDir' in kwargs:
+            working_dir = kwargs['workingDir']
+
         if args is not None:
             _setter("args", args)
         if commands is not None:
@@ -1267,7 +1349,9 @@ class EciScalingConfigurationInitContainerEnvironmentVarArgs:
              _setter: Callable[[Any, Any], None],
              key: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if value is not None:
@@ -1318,7 +1402,9 @@ class EciScalingConfigurationInitContainerPortArgs:
              _setter: Callable[[Any, Any], None],
              port: Optional[pulumi.Input[int]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if port is not None:
             _setter("port", port)
         if protocol is not None:
@@ -1373,7 +1459,13 @@ class EciScalingConfigurationInitContainerVolumeMountArgs:
              mount_path: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              read_only: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'mountPath' in kwargs:
+            mount_path = kwargs['mountPath']
+        if 'readOnly' in kwargs:
+            read_only = kwargs['readOnly']
+
         if mount_path is not None:
             _setter("mount_path", mount_path)
         if name is not None:
@@ -1483,7 +1575,29 @@ class EciScalingConfigurationVolumeArgs:
              nfs_volume_read_only: Optional[pulumi.Input[bool]] = None,
              nfs_volume_server: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configFileVolumeConfigFileToPaths' in kwargs:
+            config_file_volume_config_file_to_paths = kwargs['configFileVolumeConfigFileToPaths']
+        if 'diskVolumeDiskId' in kwargs:
+            disk_volume_disk_id = kwargs['diskVolumeDiskId']
+        if 'diskVolumeDiskSize' in kwargs:
+            disk_volume_disk_size = kwargs['diskVolumeDiskSize']
+        if 'diskVolumeFsType' in kwargs:
+            disk_volume_fs_type = kwargs['diskVolumeFsType']
+        if 'flexVolumeDriver' in kwargs:
+            flex_volume_driver = kwargs['flexVolumeDriver']
+        if 'flexVolumeFsType' in kwargs:
+            flex_volume_fs_type = kwargs['flexVolumeFsType']
+        if 'flexVolumeOptions' in kwargs:
+            flex_volume_options = kwargs['flexVolumeOptions']
+        if 'nfsVolumePath' in kwargs:
+            nfs_volume_path = kwargs['nfsVolumePath']
+        if 'nfsVolumeReadOnly' in kwargs:
+            nfs_volume_read_only = kwargs['nfsVolumeReadOnly']
+        if 'nfsVolumeServer' in kwargs:
+            nfs_volume_server = kwargs['nfsVolumeServer']
+
         if config_file_volume_config_file_to_paths is not None:
             _setter("config_file_volume_config_file_to_paths", config_file_volume_config_file_to_paths)
         if disk_volume_disk_id is not None:
@@ -1678,7 +1792,9 @@ class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs:
              _setter: Callable[[Any, Any], None],
              content: Optional[pulumi.Input[str]] = None,
              path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if content is not None:
             _setter("content", content)
         if path is not None:
@@ -1764,7 +1880,19 @@ class ScalingConfigurationDataDiskArgs:
              performance_level: Optional[pulumi.Input[str]] = None,
              size: Optional[pulumi.Input[int]] = None,
              snapshot_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoSnapshotPolicyId' in kwargs:
+            auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
+        if 'deleteWithInstance' in kwargs:
+            delete_with_instance = kwargs['deleteWithInstance']
+        if 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+
         if auto_snapshot_policy_id is not None:
             _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
         if category is not None:
@@ -1954,7 +2082,13 @@ class ScalingConfigurationInstancePatternInfoArgs:
              instance_family_level: Optional[pulumi.Input[str]] = None,
              max_price: Optional[pulumi.Input[float]] = None,
              memory: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceFamilyLevel' in kwargs:
+            instance_family_level = kwargs['instanceFamilyLevel']
+        if 'maxPrice' in kwargs:
+            max_price = kwargs['maxPrice']
+
         if cores is not None:
             _setter("cores", cores)
         if instance_family_level is not None:
@@ -2032,7 +2166,13 @@ class ScalingConfigurationSpotPriceLimitArgs:
              _setter: Callable[[Any, Any], None],
              instance_type: Optional[pulumi.Input[str]] = None,
              price_limit: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'priceLimit' in kwargs:
+            price_limit = kwargs['priceLimit']
+
         if instance_type is not None:
             _setter("instance_type", instance_type)
         if price_limit is not None:
@@ -2082,7 +2222,13 @@ class ScalingGroupVServerGroupsVserverGroupArgs:
              _setter: Callable[[Any, Any], None],
              loadbalancer_id: pulumi.Input[str],
              vserver_attributes: pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'loadbalancerId' in kwargs:
+            loadbalancer_id = kwargs['loadbalancerId']
+        if 'vserverAttributes' in kwargs:
+            vserver_attributes = kwargs['vserverAttributes']
+
         _setter("loadbalancer_id", loadbalancer_id)
         _setter("vserver_attributes", vserver_attributes)
 
@@ -2134,7 +2280,11 @@ class ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs:
              port: pulumi.Input[int],
              vserver_group_id: pulumi.Input[str],
              weight: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vserverGroupId' in kwargs:
+            vserver_group_id = kwargs['vserverGroupId']
+
         _setter("port", port)
         _setter("vserver_group_id", vserver_group_id)
         _setter("weight", weight)
@@ -2199,7 +2349,15 @@ class ScalingRuleStepAdjustmentArgs:
              metric_interval_lower_bound: Optional[pulumi.Input[str]] = None,
              metric_interval_upper_bound: Optional[pulumi.Input[str]] = None,
              scaling_adjustment: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'metricIntervalLowerBound' in kwargs:
+            metric_interval_lower_bound = kwargs['metricIntervalLowerBound']
+        if 'metricIntervalUpperBound' in kwargs:
+            metric_interval_upper_bound = kwargs['metricIntervalUpperBound']
+        if 'scalingAdjustment' in kwargs:
+            scaling_adjustment = kwargs['scalingAdjustment']
+
         if metric_interval_lower_bound is not None:
             _setter("metric_interval_lower_bound", metric_interval_lower_bound)
         if metric_interval_upper_bound is not None:

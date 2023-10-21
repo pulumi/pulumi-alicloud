@@ -7,7 +7,9 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -213,18 +215,63 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm.
+     * The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
      * 
      */
     @Import(name="shardCount")
     private @Nullable Output<Integer> shardCount;
 
     /**
-     * @return The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm.
+     * @return The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
      * 
      */
     public Optional<Output<Integer>> shardCount() {
         return Optional.ofNullable(this.shardCount);
+    }
+
+    /**
+     * The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instance_type is &#34;tair_essd&#34;, this attribute takes effect and is required.
+     * 
+     */
+    @Import(name="storagePerformanceLevel")
+    private @Nullable Output<String> storagePerformanceLevel;
+
+    /**
+     * @return The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instance_type is &#34;tair_essd&#34;, this attribute takes effect and is required.
+     * 
+     */
+    public Optional<Output<String>> storagePerformanceLevel() {
+        return Optional.ofNullable(this.storagePerformanceLevel);
+    }
+
+    /**
+     * The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instance_type is &#34;tair_essd&#34;, this attribute takes effect and is required.
+     * 
+     */
+    @Import(name="storageSizeGb")
+    private @Nullable Output<Integer> storageSizeGb;
+
+    /**
+     * @return The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instance_type is &#34;tair_essd&#34;, this attribute takes effect and is required.
+     * 
+     */
+    public Optional<Output<Integer>> storageSizeGb() {
+        return Optional.ofNullable(this.storageSizeGb);
+    }
+
+    /**
+     * The tag of the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return The tag of the resource.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     /**
@@ -273,14 +320,14 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone ID of the instance.
+     * Zone ID.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone ID of the instance.
+     * @return Zone ID.
      * 
      */
     public Output<String> zoneId() {
@@ -304,6 +351,9 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.resourceGroupId = $.resourceGroupId;
         this.secondaryZoneId = $.secondaryZoneId;
         this.shardCount = $.shardCount;
+        this.storagePerformanceLevel = $.storagePerformanceLevel;
+        this.storageSizeGb = $.storageSizeGb;
+        this.tags = $.tags;
         this.tairInstanceName = $.tairInstanceName;
         this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
@@ -602,7 +652,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param shardCount The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm.
+         * @param shardCount The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
          * 
          * @return builder
          * 
@@ -613,13 +663,76 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param shardCount The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm.
+         * @param shardCount The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
          * 
          * @return builder
          * 
          */
         public Builder shardCount(Integer shardCount) {
             return shardCount(Output.of(shardCount));
+        }
+
+        /**
+         * @param storagePerformanceLevel The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instance_type is &#34;tair_essd&#34;, this attribute takes effect and is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storagePerformanceLevel(@Nullable Output<String> storagePerformanceLevel) {
+            $.storagePerformanceLevel = storagePerformanceLevel;
+            return this;
+        }
+
+        /**
+         * @param storagePerformanceLevel The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instance_type is &#34;tair_essd&#34;, this attribute takes effect and is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storagePerformanceLevel(String storagePerformanceLevel) {
+            return storagePerformanceLevel(Output.of(storagePerformanceLevel));
+        }
+
+        /**
+         * @param storageSizeGb The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instance_type is &#34;tair_essd&#34;, this attribute takes effect and is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageSizeGb(@Nullable Output<Integer> storageSizeGb) {
+            $.storageSizeGb = storageSizeGb;
+            return this;
+        }
+
+        /**
+         * @param storageSizeGb The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instance_type is &#34;tair_essd&#34;, this attribute takes effect and is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageSizeGb(Integer storageSizeGb) {
+            return storageSizeGb(Output.of(storageSizeGb));
+        }
+
+        /**
+         * @param tags The tag of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tag of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
         }
 
         /**
@@ -686,7 +799,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone ID of the instance.
+         * @param zoneId Zone ID.
          * 
          * @return builder
          * 
@@ -697,7 +810,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone ID of the instance.
+         * @param zoneId Zone ID.
          * 
          * @return builder
          * 

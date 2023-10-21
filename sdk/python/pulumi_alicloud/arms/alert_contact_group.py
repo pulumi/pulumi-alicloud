@@ -31,7 +31,13 @@ class AlertContactGroupArgs:
              _setter: Callable[[Any, Any], None],
              alert_contact_group_name: pulumi.Input[str],
              contact_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alertContactGroupName' in kwargs:
+            alert_contact_group_name = kwargs['alertContactGroupName']
+        if 'contactIds' in kwargs:
+            contact_ids = kwargs['contactIds']
+
         _setter("alert_contact_group_name", alert_contact_group_name)
         if contact_ids is not None:
             _setter("contact_ids", contact_ids)
@@ -81,7 +87,13 @@ class _AlertContactGroupState:
              _setter: Callable[[Any, Any], None],
              alert_contact_group_name: Optional[pulumi.Input[str]] = None,
              contact_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alertContactGroupName' in kwargs:
+            alert_contact_group_name = kwargs['alertContactGroupName']
+        if 'contactIds' in kwargs:
+            contact_ids = kwargs['contactIds']
+
         if alert_contact_group_name is not None:
             _setter("alert_contact_group_name", alert_contact_group_name)
         if contact_ids is not None:

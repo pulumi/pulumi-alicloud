@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Microservice Engine (MSE) Engine Namespace resource.
  * 
- * For information about Microservice Engine (MSE) Engine Namespace and how to use it, see [What is Engine Namespace](https://www.alibabacloud.com/help/zh/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createenginenamespace).
+ * For information about Microservice Engine (MSE) Engine Namespace and how to use it, see [What is Engine Namespace](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createenginenamespace).
  * 
  * &gt; **NOTE:** Available in v1.166.0+.
  * 

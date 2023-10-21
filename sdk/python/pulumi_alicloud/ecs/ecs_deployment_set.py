@@ -47,7 +47,13 @@ class EcsDeploymentSetArgs:
              granularity: Optional[pulumi.Input[str]] = None,
              on_unable_to_redeploy_failed_instance: Optional[pulumi.Input[str]] = None,
              strategy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deploymentSetName' in kwargs:
+            deployment_set_name = kwargs['deploymentSetName']
+        if 'onUnableToRedeployFailedInstance' in kwargs:
+            on_unable_to_redeploy_failed_instance = kwargs['onUnableToRedeployFailedInstance']
+
         if deployment_set_name is not None:
             _setter("deployment_set_name", deployment_set_name)
         if description is not None:
@@ -170,7 +176,13 @@ class _EcsDeploymentSetState:
              granularity: Optional[pulumi.Input[str]] = None,
              on_unable_to_redeploy_failed_instance: Optional[pulumi.Input[str]] = None,
              strategy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deploymentSetName' in kwargs:
+            deployment_set_name = kwargs['deploymentSetName']
+        if 'onUnableToRedeployFailedInstance' in kwargs:
+            on_unable_to_redeploy_failed_instance = kwargs['onUnableToRedeployFailedInstance']
+
         if deployment_set_name is not None:
             _setter("deployment_set_name", deployment_set_name)
         if description is not None:

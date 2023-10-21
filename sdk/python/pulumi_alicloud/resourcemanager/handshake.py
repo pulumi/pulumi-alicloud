@@ -35,7 +35,13 @@ class HandshakeArgs:
              target_entity: pulumi.Input[str],
              target_type: pulumi.Input[str],
              note: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'targetEntity' in kwargs:
+            target_entity = kwargs['targetEntity']
+        if 'targetType' in kwargs:
+            target_type = kwargs['targetType']
+
         _setter("target_entity", target_entity)
         _setter("target_type", target_type)
         if note is not None:
@@ -126,7 +132,23 @@ class _HandshakeState:
              status: Optional[pulumi.Input[str]] = None,
              target_entity: Optional[pulumi.Input[str]] = None,
              target_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if 'masterAccountId' in kwargs:
+            master_account_id = kwargs['masterAccountId']
+        if 'masterAccountName' in kwargs:
+            master_account_name = kwargs['masterAccountName']
+        if 'modifyTime' in kwargs:
+            modify_time = kwargs['modifyTime']
+        if 'resourceDirectoryId' in kwargs:
+            resource_directory_id = kwargs['resourceDirectoryId']
+        if 'targetEntity' in kwargs:
+            target_entity = kwargs['targetEntity']
+        if 'targetType' in kwargs:
+            target_type = kwargs['targetType']
+
         if expire_time is not None:
             _setter("expire_time", expire_time)
         if master_account_id is not None:

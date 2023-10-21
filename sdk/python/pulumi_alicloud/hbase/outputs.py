@@ -64,7 +64,15 @@ class InstanceSlbConnAddr(dict):
              conn_addr: Optional[str] = None,
              conn_addr_port: Optional[str] = None,
              net_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connAddr' in kwargs:
+            conn_addr = kwargs['connAddr']
+        if 'connAddrPort' in kwargs:
+            conn_addr_port = kwargs['connAddrPort']
+        if 'netType' in kwargs:
+            net_type = kwargs['netType']
+
         if conn_addr is not None:
             _setter("conn_addr", conn_addr)
         if conn_addr_port is not None:
@@ -141,7 +149,15 @@ class InstanceUiProxyConnAddr(dict):
              conn_addr: Optional[str] = None,
              conn_addr_port: Optional[str] = None,
              net_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connAddr' in kwargs:
+            conn_addr = kwargs['connAddr']
+        if 'connAddrPort' in kwargs:
+            conn_addr_port = kwargs['connAddrPort']
+        if 'netType' in kwargs:
+            net_type = kwargs['netType']
+
         if conn_addr is not None:
             _setter("conn_addr", conn_addr)
         if conn_addr_port is not None:
@@ -218,7 +234,15 @@ class InstanceZkConnAddr(dict):
              conn_addr: Optional[str] = None,
              conn_addr_port: Optional[str] = None,
              net_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connAddr' in kwargs:
+            conn_addr = kwargs['connAddr']
+        if 'connAddrPort' in kwargs:
+            conn_addr_port = kwargs['connAddrPort']
+        if 'netType' in kwargs:
+            net_type = kwargs['netType']
+
         if conn_addr is not None:
             _setter("conn_addr", conn_addr)
         if conn_addr_port is not None:
@@ -298,7 +322,19 @@ class GetInstanceTypesCoreInstanceTypeResult(dict):
              storage_type: str,
              version: str,
              zone: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cpuSize' in kwargs:
+            cpu_size = kwargs['cpuSize']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'maxCoreCount' in kwargs:
+            max_core_count = kwargs['maxCoreCount']
+        if 'memSize' in kwargs:
+            mem_size = kwargs['memSize']
+        if 'storageType' in kwargs:
+            storage_type = kwargs['storageType']
+
         _setter("category", category)
         _setter("cpu_size", cpu_size)
         _setter("engine", engine)
@@ -405,7 +441,15 @@ class GetInstanceTypesMasterInstanceTypeResult(dict):
              cpu_size: int,
              instance_type: str,
              mem_size: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cpuSize' in kwargs:
+            cpu_size = kwargs['cpuSize']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'memSize' in kwargs:
+            mem_size = kwargs['memSize']
+
         _setter("cpu_size", cpu_size)
         _setter("instance_type", instance_type)
         _setter("mem_size", mem_size)
@@ -458,7 +502,13 @@ class GetInstanceTypesTypeResult(dict):
              cpu_size: int,
              mem_size: int,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cpuSize' in kwargs:
+            cpu_size = kwargs['cpuSize']
+        if 'memSize' in kwargs:
+            mem_size = kwargs['memSize']
+
         _setter("cpu_size", cpu_size)
         _setter("mem_size", mem_size)
         _setter("value", value)
@@ -587,7 +637,43 @@ class GetInstancesInstanceResult(dict):
              vswitch_id: str,
              zone_id: str,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupStatus' in kwargs:
+            backup_status = kwargs['backupStatus']
+        if 'coreDiskSize' in kwargs:
+            core_disk_size = kwargs['coreDiskSize']
+        if 'coreDiskType' in kwargs:
+            core_disk_type = kwargs['coreDiskType']
+        if 'coreInstanceType' in kwargs:
+            core_instance_type = kwargs['coreInstanceType']
+        if 'coreNodeCount' in kwargs:
+            core_node_count = kwargs['coreNodeCount']
+        if 'createdTime' in kwargs:
+            created_time = kwargs['createdTime']
+        if 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if 'masterInstanceType' in kwargs:
+            master_instance_type = kwargs['masterInstanceType']
+        if 'masterNodeCount' in kwargs:
+            master_node_count = kwargs['masterNodeCount']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'payType' in kwargs:
+            pay_type = kwargs['payType']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("backup_status", backup_status)
         _setter("core_disk_size", core_disk_size)
         _setter("core_disk_type", core_disk_type)
@@ -808,7 +894,11 @@ class GetZonesZoneResult(dict):
              _setter: Callable[[Any, Any], None],
              id: str,
              multi_zone_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'multiZoneIds' in kwargs:
+            multi_zone_ids = kwargs['multiZoneIds']
+
         _setter("id", id)
         _setter("multi_zone_ids", multi_zone_ids)
 

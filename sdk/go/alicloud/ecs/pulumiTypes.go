@@ -15,11 +15,16 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type AutoProvisioningGroupLaunchTemplateConfig struct {
-	InstanceType     *string `pulumi:"instanceType"`
-	MaxPrice         string  `pulumi:"maxPrice"`
-	Priority         *string `pulumi:"priority"`
-	VswitchId        string  `pulumi:"vswitchId"`
-	WeightedCapacity string  `pulumi:"weightedCapacity"`
+	// The instance type of the Nth extended configurations of the launch template.
+	InstanceType *string `pulumi:"instanceType"`
+	// The maximum price of the instance type specified in the Nth extended configurations of the launch template.
+	MaxPrice string `pulumi:"maxPrice"`
+	// The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
+	Priority *string `pulumi:"priority"`
+	// The ID of the VSwitch in the Nth extended configurations of the launch template.
+	VswitchId string `pulumi:"vswitchId"`
+	// The weight of the instance type specified in the Nth extended configurations of the launch template.
+	WeightedCapacity string `pulumi:"weightedCapacity"`
 }
 
 // AutoProvisioningGroupLaunchTemplateConfigInput is an input type that accepts AutoProvisioningGroupLaunchTemplateConfigArgs and AutoProvisioningGroupLaunchTemplateConfigOutput values.
@@ -34,11 +39,16 @@ type AutoProvisioningGroupLaunchTemplateConfigInput interface {
 }
 
 type AutoProvisioningGroupLaunchTemplateConfigArgs struct {
-	InstanceType     pulumi.StringPtrInput `pulumi:"instanceType"`
-	MaxPrice         pulumi.StringInput    `pulumi:"maxPrice"`
-	Priority         pulumi.StringPtrInput `pulumi:"priority"`
-	VswitchId        pulumi.StringInput    `pulumi:"vswitchId"`
-	WeightedCapacity pulumi.StringInput    `pulumi:"weightedCapacity"`
+	// The instance type of the Nth extended configurations of the launch template.
+	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+	// The maximum price of the instance type specified in the Nth extended configurations of the launch template.
+	MaxPrice pulumi.StringInput `pulumi:"maxPrice"`
+	// The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
+	Priority pulumi.StringPtrInput `pulumi:"priority"`
+	// The ID of the VSwitch in the Nth extended configurations of the launch template.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+	// The weight of the instance type specified in the Nth extended configurations of the launch template.
+	WeightedCapacity pulumi.StringInput `pulumi:"weightedCapacity"`
 }
 
 func (AutoProvisioningGroupLaunchTemplateConfigArgs) ElementType() reflect.Type {
@@ -110,22 +120,27 @@ func (o AutoProvisioningGroupLaunchTemplateConfigOutput) ToOutput(ctx context.Co
 	}
 }
 
+// The instance type of the Nth extended configurations of the launch template.
 func (o AutoProvisioningGroupLaunchTemplateConfigOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AutoProvisioningGroupLaunchTemplateConfig) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
 
+// The maximum price of the instance type specified in the Nth extended configurations of the launch template.
 func (o AutoProvisioningGroupLaunchTemplateConfigOutput) MaxPrice() pulumi.StringOutput {
 	return o.ApplyT(func(v AutoProvisioningGroupLaunchTemplateConfig) string { return v.MaxPrice }).(pulumi.StringOutput)
 }
 
+// The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
 func (o AutoProvisioningGroupLaunchTemplateConfigOutput) Priority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AutoProvisioningGroupLaunchTemplateConfig) *string { return v.Priority }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the VSwitch in the Nth extended configurations of the launch template.
 func (o AutoProvisioningGroupLaunchTemplateConfigOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v AutoProvisioningGroupLaunchTemplateConfig) string { return v.VswitchId }).(pulumi.StringOutput)
 }
 
+// The weight of the instance type specified in the Nth extended configurations of the launch template.
 func (o AutoProvisioningGroupLaunchTemplateConfigOutput) WeightedCapacity() pulumi.StringOutput {
 	return o.ApplyT(func(v AutoProvisioningGroupLaunchTemplateConfig) string { return v.WeightedCapacity }).(pulumi.StringOutput)
 }
@@ -833,11 +848,11 @@ type EcsLaunchTemplateDataDisk struct {
 	Category *string `pulumi:"category"`
 	// Indicates whether the data disk is released with the instance.
 	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
-	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+	// The description of the data disk.
 	Description *string `pulumi:"description"`
 	// Encrypted the data in this disk.
 	Encrypted *bool `pulumi:"encrypted"`
-	// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
+	// The name of the data disk.
 	Name *string `pulumi:"name"`
 	// The performance level of the ESSD used as the data disk.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
@@ -863,11 +878,11 @@ type EcsLaunchTemplateDataDiskArgs struct {
 	Category pulumi.StringPtrInput `pulumi:"category"`
 	// Indicates whether the data disk is released with the instance.
 	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
-	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+	// The description of the data disk.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Encrypted the data in this disk.
 	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
-	// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
+	// The name of the data disk.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The performance level of the ESSD used as the data disk.
 	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
@@ -956,7 +971,7 @@ func (o EcsLaunchTemplateDataDiskOutput) DeleteWithInstance() pulumi.BoolPtrOutp
 	return o.ApplyT(func(v EcsLaunchTemplateDataDisk) *bool { return v.DeleteWithInstance }).(pulumi.BoolPtrOutput)
 }
 
-// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+// The description of the data disk.
 func (o EcsLaunchTemplateDataDiskOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateDataDisk) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -966,7 +981,7 @@ func (o EcsLaunchTemplateDataDiskOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateDataDisk) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
 }
 
-// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
+// The name of the data disk.
 func (o EcsLaunchTemplateDataDiskOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -1013,15 +1028,15 @@ func (o EcsLaunchTemplateDataDiskArrayOutput) Index(i pulumi.IntInput) EcsLaunch
 }
 
 type EcsLaunchTemplateNetworkInterfaces struct {
-	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+	// The ENI description.
 	Description *string `pulumi:"description"`
-	// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
+	// The ENI name.
 	Name *string `pulumi:"name"`
 	// The primary private IP address of the ENI.
 	PrimaryIp *string `pulumi:"primaryIp"`
-	// The security group ID.
+	// The security group ID must be one in the same VPC.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// When creating a VPC-Connected instance, you must specify its VSwitch ID.
+	// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
@@ -1037,15 +1052,15 @@ type EcsLaunchTemplateNetworkInterfacesInput interface {
 }
 
 type EcsLaunchTemplateNetworkInterfacesArgs struct {
-	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+	// The ENI description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
+	// The ENI name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The primary private IP address of the ENI.
 	PrimaryIp pulumi.StringPtrInput `pulumi:"primaryIp"`
-	// The security group ID.
+	// The security group ID must be one in the same VPC.
 	SecurityGroupId pulumi.StringPtrInput `pulumi:"securityGroupId"`
-	// When creating a VPC-Connected instance, you must specify its VSwitch ID.
+	// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
 	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
 }
 
@@ -1144,12 +1159,12 @@ func (o EcsLaunchTemplateNetworkInterfacesOutput) ToOutput(ctx context.Context) 
 	}
 }
 
-// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+// The ENI description.
 func (o EcsLaunchTemplateNetworkInterfacesOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateNetworkInterfaces) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
+// The ENI name.
 func (o EcsLaunchTemplateNetworkInterfacesOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateNetworkInterfaces) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -1159,12 +1174,12 @@ func (o EcsLaunchTemplateNetworkInterfacesOutput) PrimaryIp() pulumi.StringPtrOu
 	return o.ApplyT(func(v EcsLaunchTemplateNetworkInterfaces) *string { return v.PrimaryIp }).(pulumi.StringPtrOutput)
 }
 
-// The security group ID.
+// The security group ID must be one in the same VPC.
 func (o EcsLaunchTemplateNetworkInterfacesOutput) SecurityGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateNetworkInterfaces) *string { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
 }
 
-// When creating a VPC-Connected instance, you must specify its VSwitch ID.
+// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
 func (o EcsLaunchTemplateNetworkInterfacesOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateNetworkInterfaces) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
 }
@@ -1199,7 +1214,7 @@ func (o EcsLaunchTemplateNetworkInterfacesPtrOutput) Elem() EcsLaunchTemplateNet
 	}).(EcsLaunchTemplateNetworkInterfacesOutput)
 }
 
-// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+// The ENI description.
 func (o EcsLaunchTemplateNetworkInterfacesPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplateNetworkInterfaces) *string {
 		if v == nil {
@@ -1209,7 +1224,7 @@ func (o EcsLaunchTemplateNetworkInterfacesPtrOutput) Description() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
+// The ENI name.
 func (o EcsLaunchTemplateNetworkInterfacesPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplateNetworkInterfaces) *string {
 		if v == nil {
@@ -1229,7 +1244,7 @@ func (o EcsLaunchTemplateNetworkInterfacesPtrOutput) PrimaryIp() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// The security group ID.
+// The security group ID must be one in the same VPC.
 func (o EcsLaunchTemplateNetworkInterfacesPtrOutput) SecurityGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplateNetworkInterfaces) *string {
 		if v == nil {
@@ -1239,7 +1254,7 @@ func (o EcsLaunchTemplateNetworkInterfacesPtrOutput) SecurityGroupId() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// When creating a VPC-Connected instance, you must specify its VSwitch ID.
+// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
 func (o EcsLaunchTemplateNetworkInterfacesPtrOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplateNetworkInterfaces) *string {
 		if v == nil {
@@ -1250,19 +1265,21 @@ func (o EcsLaunchTemplateNetworkInterfacesPtrOutput) VswitchId() pulumi.StringPt
 }
 
 type EcsLaunchTemplateSystemDisk struct {
-	// The category of the disk.
+	// The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `localDisk`.
 	Category *string `pulumi:"category"`
-	// Indicates whether the data disk is released with the instance.
+	// Specifies whether to release the system disk when the instance is released. Default to `true`.
 	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
-	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+	// System disk description. It cannot begin with http:// or https://.
 	Description *string `pulumi:"description"`
+	// Specifies whether the system disk is encrypted.
+	Encrypted *bool `pulumi:"encrypted"`
 	// The Iops.
 	Iops *string `pulumi:"iops"`
-	// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
+	// System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
 	Name *string `pulumi:"name"`
-	// The performance level of the ESSD used as the data disk.
+	// The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
-	// The size of the data disk.
+	// Size of the system disk, measured in GB. Value range: [20, 500].
 	Size *int `pulumi:"size"`
 }
 
@@ -1278,19 +1295,21 @@ type EcsLaunchTemplateSystemDiskInput interface {
 }
 
 type EcsLaunchTemplateSystemDiskArgs struct {
-	// The category of the disk.
+	// The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `localDisk`.
 	Category pulumi.StringPtrInput `pulumi:"category"`
-	// Indicates whether the data disk is released with the instance.
+	// Specifies whether to release the system disk when the instance is released. Default to `true`.
 	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
-	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+	// System disk description. It cannot begin with http:// or https://.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Specifies whether the system disk is encrypted.
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
 	// The Iops.
 	Iops pulumi.StringPtrInput `pulumi:"iops"`
-	// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
+	// System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The performance level of the ESSD used as the data disk.
+	// The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
 	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
-	// The size of the data disk.
+	// Size of the system disk, measured in GB. Value range: [20, 500].
 	Size pulumi.IntPtrInput `pulumi:"size"`
 }
 
@@ -1389,19 +1408,24 @@ func (o EcsLaunchTemplateSystemDiskOutput) ToOutput(ctx context.Context) pulumix
 	}
 }
 
-// The category of the disk.
+// The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `localDisk`.
 func (o EcsLaunchTemplateSystemDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateSystemDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether the data disk is released with the instance.
+// Specifies whether to release the system disk when the instance is released. Default to `true`.
 func (o EcsLaunchTemplateSystemDiskOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateSystemDisk) *bool { return v.DeleteWithInstance }).(pulumi.BoolPtrOutput)
 }
 
-// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+// System disk description. It cannot begin with http:// or https://.
 func (o EcsLaunchTemplateSystemDiskOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateSystemDisk) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the system disk is encrypted.
+func (o EcsLaunchTemplateSystemDiskOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EcsLaunchTemplateSystemDisk) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
 }
 
 // The Iops.
@@ -1409,17 +1433,17 @@ func (o EcsLaunchTemplateSystemDiskOutput) Iops() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateSystemDisk) *string { return v.Iops }).(pulumi.StringPtrOutput)
 }
 
-// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
+// System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
 func (o EcsLaunchTemplateSystemDiskOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateSystemDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The performance level of the ESSD used as the data disk.
+// The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
 func (o EcsLaunchTemplateSystemDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateSystemDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
 }
 
-// The size of the data disk.
+// Size of the system disk, measured in GB. Value range: [20, 500].
 func (o EcsLaunchTemplateSystemDiskOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateSystemDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
@@ -1454,7 +1478,7 @@ func (o EcsLaunchTemplateSystemDiskPtrOutput) Elem() EcsLaunchTemplateSystemDisk
 	}).(EcsLaunchTemplateSystemDiskOutput)
 }
 
-// The category of the disk.
+// The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `localDisk`.
 func (o EcsLaunchTemplateSystemDiskPtrOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplateSystemDisk) *string {
 		if v == nil {
@@ -1464,7 +1488,7 @@ func (o EcsLaunchTemplateSystemDiskPtrOutput) Category() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether the data disk is released with the instance.
+// Specifies whether to release the system disk when the instance is released. Default to `true`.
 func (o EcsLaunchTemplateSystemDiskPtrOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplateSystemDisk) *bool {
 		if v == nil {
@@ -1474,7 +1498,7 @@ func (o EcsLaunchTemplateSystemDiskPtrOutput) DeleteWithInstance() pulumi.BoolPt
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+// System disk description. It cannot begin with http:// or https://.
 func (o EcsLaunchTemplateSystemDiskPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplateSystemDisk) *string {
 		if v == nil {
@@ -1482,6 +1506,16 @@ func (o EcsLaunchTemplateSystemDiskPtrOutput) Description() pulumi.StringPtrOutp
 		}
 		return v.Description
 	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the system disk is encrypted.
+func (o EcsLaunchTemplateSystemDiskPtrOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplateSystemDisk) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Encrypted
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The Iops.
@@ -1494,7 +1528,7 @@ func (o EcsLaunchTemplateSystemDiskPtrOutput) Iops() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
+// System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
 func (o EcsLaunchTemplateSystemDiskPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplateSystemDisk) *string {
 		if v == nil {
@@ -1504,7 +1538,7 @@ func (o EcsLaunchTemplateSystemDiskPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The performance level of the ESSD used as the data disk.
+// The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
 func (o EcsLaunchTemplateSystemDiskPtrOutput) PerformanceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplateSystemDisk) *string {
 		if v == nil {
@@ -1514,7 +1548,7 @@ func (o EcsLaunchTemplateSystemDiskPtrOutput) PerformanceLevel() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// The size of the data disk.
+// Size of the system disk, measured in GB. Value range: [20, 500].
 func (o EcsLaunchTemplateSystemDiskPtrOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplateSystemDisk) *int {
 		if v == nil {
@@ -2871,7 +2905,11 @@ type LaunchTemplateSystemDisk struct {
 	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
 	// The description of the data disk.
 	Description *string `pulumi:"description"`
-	Iops        *string `pulumi:"iops"`
+	// Encrypted the data in this disk.
+	//
+	// Default to false
+	Encrypted *bool   `pulumi:"encrypted"`
+	Iops      *string `pulumi:"iops"`
 	// The name of the data disk.
 	Name             *string `pulumi:"name"`
 	PerformanceLevel *string `pulumi:"performanceLevel"`
@@ -2911,7 +2949,11 @@ type LaunchTemplateSystemDiskArgs struct {
 	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
 	// The description of the data disk.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Iops        pulumi.StringPtrInput `pulumi:"iops"`
+	// Encrypted the data in this disk.
+	//
+	// Default to false
+	Encrypted pulumi.BoolPtrInput   `pulumi:"encrypted"`
+	Iops      pulumi.StringPtrInput `pulumi:"iops"`
 	// The name of the data disk.
 	Name             pulumi.StringPtrInput `pulumi:"name"`
 	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
@@ -3043,6 +3085,13 @@ func (o LaunchTemplateSystemDiskOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateSystemDisk) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Encrypted the data in this disk.
+//
+// Default to false
+func (o LaunchTemplateSystemDiskOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LaunchTemplateSystemDisk) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
 func (o LaunchTemplateSystemDiskOutput) Iops() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateSystemDisk) *string { return v.Iops }).(pulumi.StringPtrOutput)
 }
@@ -3133,6 +3182,18 @@ func (o LaunchTemplateSystemDiskPtrOutput) Description() pulumi.StringPtrOutput 
 		}
 		return v.Description
 	}).(pulumi.StringPtrOutput)
+}
+
+// Encrypted the data in this disk.
+//
+// Default to false
+func (o LaunchTemplateSystemDiskPtrOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplateSystemDisk) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Encrypted
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o LaunchTemplateSystemDiskPtrOutput) Iops() pulumi.StringPtrOutput {

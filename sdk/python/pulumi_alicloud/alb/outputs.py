@@ -26,6 +26,7 @@ __all__ = [
     'LoadBalancerLoadBalancerBillingConfig',
     'LoadBalancerModificationProtectionConfig',
     'LoadBalancerZoneMapping',
+    'LoadBalancerZoneMappingLoadBalancerAddress',
     'RuleRuleAction',
     'RuleRuleActionCorsConfig',
     'RuleRuleActionFixedResponseConfig',
@@ -144,7 +145,13 @@ class AScriptExtAttribute(dict):
              _setter: Callable[[Any, Any], None],
              attribute_key: Optional[str] = None,
              attribute_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'attributeKey' in kwargs:
+            attribute_key = kwargs['attributeKey']
+        if 'attributeValue' in kwargs:
+            attribute_value = kwargs['attributeValue']
+
         if attribute_key is not None:
             _setter("attribute_key", attribute_key)
         if attribute_value is not None:
@@ -190,7 +197,9 @@ class AclAclEntry(dict):
              description: Optional[str] = None,
              entry: Optional[str] = None,
              status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if description is not None:
             _setter("description", description)
         if entry is not None:
@@ -273,7 +282,15 @@ class ListenerAccessLogTracingConfig(dict):
              tracing_enabled: Optional[bool] = None,
              tracing_sample: Optional[int] = None,
              tracing_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'tracingEnabled' in kwargs:
+            tracing_enabled = kwargs['tracingEnabled']
+        if 'tracingSample' in kwargs:
+            tracing_sample = kwargs['tracingSample']
+        if 'tracingType' in kwargs:
+            tracing_type = kwargs['tracingType']
+
         if tracing_enabled is not None:
             _setter("tracing_enabled", tracing_enabled)
         if tracing_sample is not None:
@@ -350,7 +367,13 @@ class ListenerAclConfig(dict):
              _setter: Callable[[Any, Any], None],
              acl_relations: Optional[Sequence['outputs.ListenerAclConfigAclRelation']] = None,
              acl_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclRelations' in kwargs:
+            acl_relations = kwargs['aclRelations']
+        if 'aclType' in kwargs:
+            acl_type = kwargs['aclType']
+
         if acl_relations is not None:
             _setter("acl_relations", acl_relations)
         if acl_type is not None:
@@ -409,7 +432,11 @@ class ListenerAclConfigAclRelation(dict):
              _setter: Callable[[Any, Any], None],
              acl_id: Optional[str] = None,
              status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclId' in kwargs:
+            acl_id = kwargs['aclId']
+
         if acl_id is not None:
             _setter("acl_id", acl_id)
         if status is not None:
@@ -464,7 +491,11 @@ class ListenerCertificates(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              certificate_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'certificateId' in kwargs:
+            certificate_id = kwargs['certificateId']
+
         if certificate_id is not None:
             _setter("certificate_id", certificate_id)
 
@@ -513,7 +544,11 @@ class ListenerDefaultAction(dict):
              _setter: Callable[[Any, Any], None],
              forward_group_config: 'outputs.ListenerDefaultActionForwardGroupConfig',
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'forwardGroupConfig' in kwargs:
+            forward_group_config = kwargs['forwardGroupConfig']
+
         _setter("forward_group_config", forward_group_config)
         _setter("type", type)
 
@@ -566,7 +601,11 @@ class ListenerDefaultActionForwardGroupConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              server_group_tuples: Sequence['outputs.ListenerDefaultActionForwardGroupConfigServerGroupTuple'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverGroupTuples' in kwargs:
+            server_group_tuples = kwargs['serverGroupTuples']
+
         _setter("server_group_tuples", server_group_tuples)
 
     @property
@@ -610,7 +649,11 @@ class ListenerDefaultActionForwardGroupConfigServerGroupTuple(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              server_group_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverGroupId' in kwargs:
+            server_group_id = kwargs['serverGroupId']
+
         _setter("server_group_id", server_group_id)
 
     @property
@@ -662,7 +705,13 @@ class ListenerQuicConfig(dict):
              _setter: Callable[[Any, Any], None],
              quic_listener_id: Optional[str] = None,
              quic_upgrade_enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'quicListenerId' in kwargs:
+            quic_listener_id = kwargs['quicListenerId']
+        if 'quicUpgradeEnabled' in kwargs:
+            quic_upgrade_enabled = kwargs['quicUpgradeEnabled']
+
         if quic_listener_id is not None:
             _setter("quic_listener_id", quic_listener_id)
         if quic_upgrade_enabled is not None:
@@ -791,7 +840,35 @@ class ListenerXForwardedForConfig(dict):
              x_forwarded_for_proto_enabled: Optional[bool] = None,
              x_forwarded_for_slb_id_enabled: Optional[bool] = None,
              x_forwarded_for_slb_port_enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'xForwardedForClientCertClientVerifyAlias' in kwargs:
+            x_forwarded_for_client_cert_client_verify_alias = kwargs['xForwardedForClientCertClientVerifyAlias']
+        if 'xForwardedForClientCertClientVerifyEnabled' in kwargs:
+            x_forwarded_for_client_cert_client_verify_enabled = kwargs['xForwardedForClientCertClientVerifyEnabled']
+        if 'xForwardedForClientCertFingerPrintAlias' in kwargs:
+            x_forwarded_for_client_cert_finger_print_alias = kwargs['xForwardedForClientCertFingerPrintAlias']
+        if 'xForwardedForClientCertFingerPrintEnabled' in kwargs:
+            x_forwarded_for_client_cert_finger_print_enabled = kwargs['xForwardedForClientCertFingerPrintEnabled']
+        if 'xForwardedForClientCertIssuerDnAlias' in kwargs:
+            x_forwarded_for_client_cert_issuer_dn_alias = kwargs['xForwardedForClientCertIssuerDnAlias']
+        if 'xForwardedForClientCertIssuerDnEnabled' in kwargs:
+            x_forwarded_for_client_cert_issuer_dn_enabled = kwargs['xForwardedForClientCertIssuerDnEnabled']
+        if 'xForwardedForClientCertSubjectDnAlias' in kwargs:
+            x_forwarded_for_client_cert_subject_dn_alias = kwargs['xForwardedForClientCertSubjectDnAlias']
+        if 'xForwardedForClientCertSubjectDnEnabled' in kwargs:
+            x_forwarded_for_client_cert_subject_dn_enabled = kwargs['xForwardedForClientCertSubjectDnEnabled']
+        if 'xForwardedForClientSrcPortEnabled' in kwargs:
+            x_forwarded_for_client_src_port_enabled = kwargs['xForwardedForClientSrcPortEnabled']
+        if 'xForwardedForEnabled' in kwargs:
+            x_forwarded_for_enabled = kwargs['xForwardedForEnabled']
+        if 'xForwardedForProtoEnabled' in kwargs:
+            x_forwarded_for_proto_enabled = kwargs['xForwardedForProtoEnabled']
+        if 'xForwardedForSlbIdEnabled' in kwargs:
+            x_forwarded_for_slb_id_enabled = kwargs['xForwardedForSlbIdEnabled']
+        if 'xForwardedForSlbPortEnabled' in kwargs:
+            x_forwarded_for_slb_port_enabled = kwargs['xForwardedForSlbPortEnabled']
+
         if x_forwarded_for_client_cert_client_verify_alias is not None:
             _setter("x_forwarded_for_client_cert_client_verify_alias", x_forwarded_for_client_cert_client_verify_alias)
         if x_forwarded_for_client_cert_client_verify_enabled is not None:
@@ -946,11 +1023,11 @@ class LoadBalancerAccessLogConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 log_project: Optional[str] = None,
-                 log_store: Optional[str] = None):
+                 log_project: str,
+                 log_store: str):
         """
-        :param str log_project: The log service that access logs are shipped to.
-        :param str log_store: The log service that access logs are shipped to.
+        :param str log_project: This Log Storage Project.
+        :param str log_store: This Log Storage Method Is Increased.
         """
         LoadBalancerAccessLogConfig._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -960,27 +1037,31 @@ class LoadBalancerAccessLogConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             log_project: Optional[str] = None,
-             log_store: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
-        if log_project is not None:
-            _setter("log_project", log_project)
-        if log_store is not None:
-            _setter("log_store", log_store)
+             log_project: str,
+             log_store: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'logProject' in kwargs:
+            log_project = kwargs['logProject']
+        if 'logStore' in kwargs:
+            log_store = kwargs['logStore']
+
+        _setter("log_project", log_project)
+        _setter("log_store", log_store)
 
     @property
     @pulumi.getter(name="logProject")
-    def log_project(self) -> Optional[str]:
+    def log_project(self) -> str:
         """
-        The log service that access logs are shipped to.
+        This Log Storage Project.
         """
         return pulumi.get(self, "log_project")
 
     @property
     @pulumi.getter(name="logStore")
-    def log_store(self) -> Optional[str]:
+    def log_store(self) -> str:
         """
-        The log service that access logs are shipped to.
+        This Log Storage Method Is Increased.
         """
         return pulumi.get(self, "log_store")
 
@@ -1007,7 +1088,7 @@ class LoadBalancerLoadBalancerBillingConfig(dict):
     def __init__(__self__, *,
                  pay_type: str):
         """
-        :param str pay_type: The billing method of the ALB instance. Valid value: `PayAsYouGo`.
+        :param str pay_type: Pay Type.
         """
         LoadBalancerLoadBalancerBillingConfig._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -1017,14 +1098,18 @@ class LoadBalancerLoadBalancerBillingConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              pay_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'payType' in kwargs:
+            pay_type = kwargs['payType']
+
         _setter("pay_type", pay_type)
 
     @property
     @pulumi.getter(name="payType")
     def pay_type(self) -> str:
         """
-        The billing method of the ALB instance. Valid value: `PayAsYouGo`.
+        Pay Type.
         """
         return pulumi.get(self, "pay_type")
 
@@ -1035,8 +1120,8 @@ class LoadBalancerModificationProtectionConfig(dict):
                  reason: Optional[str] = None,
                  status: Optional[str] = None):
         """
-        :param str reason: The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. **Note:** This parameter takes effect only when `status` is set to `ConsoleProtection`.
-        :param str status: Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
+        :param str reason: Managed Instance.
+        :param str status: Load Balancing Modify the Protection Status.
         """
         LoadBalancerModificationProtectionConfig._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -1048,7 +1133,9 @@ class LoadBalancerModificationProtectionConfig(dict):
              _setter: Callable[[Any, Any], None],
              reason: Optional[str] = None,
              status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if reason is not None:
             _setter("reason", reason)
         if status is not None:
@@ -1058,7 +1145,7 @@ class LoadBalancerModificationProtectionConfig(dict):
     @pulumi.getter
     def reason(self) -> Optional[str]:
         """
-        The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. **Note:** This parameter takes effect only when `status` is set to `ConsoleProtection`.
+        Managed Instance.
         """
         return pulumi.get(self, "reason")
 
@@ -1066,7 +1153,7 @@ class LoadBalancerModificationProtectionConfig(dict):
     @pulumi.getter
     def status(self) -> Optional[str]:
         """
-        Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
+        Load Balancing Modify the Protection Status.
         """
         return pulumi.get(self, "status")
 
@@ -1080,6 +1167,8 @@ class LoadBalancerZoneMapping(dict):
             suggest = "vswitch_id"
         elif key == "zoneId":
             suggest = "zone_id"
+        elif key == "loadBalancerAddresses":
+            suggest = "load_balancer_addresses"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in LoadBalancerZoneMapping. Access the value via the '{suggest}' property getter instead.")
@@ -1094,24 +1183,38 @@ class LoadBalancerZoneMapping(dict):
 
     def __init__(__self__, *,
                  vswitch_id: str,
-                 zone_id: str):
+                 zone_id: str,
+                 load_balancer_addresses: Optional[Sequence['outputs.LoadBalancerZoneMappingLoadBalancerAddress']] = None):
         """
         :param str vswitch_id: The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
-        :param str zone_id: The ID of the zone to which the ALB instance belongs.
+        :param str zone_id: The ID of the zone to which the SLB instance belongs.
+        :param Sequence['LoadBalancerZoneMappingLoadBalancerAddressArgs'] load_balancer_addresses: The SLB Instance Address.
         """
         LoadBalancerZoneMapping._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             vswitch_id=vswitch_id,
             zone_id=zone_id,
+            load_balancer_addresses=load_balancer_addresses,
         )
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
              vswitch_id: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             load_balancer_addresses: Optional[Sequence['outputs.LoadBalancerZoneMappingLoadBalancerAddress']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'loadBalancerAddresses' in kwargs:
+            load_balancer_addresses = kwargs['loadBalancerAddresses']
+
         _setter("vswitch_id", vswitch_id)
         _setter("zone_id", zone_id)
+        if load_balancer_addresses is not None:
+            _setter("load_balancer_addresses", load_balancer_addresses)
 
     @property
     @pulumi.getter(name="vswitchId")
@@ -1125,9 +1228,116 @@ class LoadBalancerZoneMapping(dict):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> str:
         """
-        The ID of the zone to which the ALB instance belongs.
+        The ID of the zone to which the SLB instance belongs.
         """
         return pulumi.get(self, "zone_id")
+
+    @property
+    @pulumi.getter(name="loadBalancerAddresses")
+    def load_balancer_addresses(self) -> Optional[Sequence['outputs.LoadBalancerZoneMappingLoadBalancerAddress']]:
+        """
+        The SLB Instance Address.
+        """
+        return pulumi.get(self, "load_balancer_addresses")
+
+
+@pulumi.output_type
+class LoadBalancerZoneMappingLoadBalancerAddress(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allocationId":
+            suggest = "allocation_id"
+        elif key == "eipType":
+            suggest = "eip_type"
+        elif key == "ipv6Address":
+            suggest = "ipv6_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerZoneMappingLoadBalancerAddress. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerZoneMappingLoadBalancerAddress.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerZoneMappingLoadBalancerAddress.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 address: Optional[str] = None,
+                 allocation_id: Optional[str] = None,
+                 eip_type: Optional[str] = None,
+                 ipv6_address: Optional[str] = None):
+        """
+        :param str address: IP Address. The Public IP Address, and Private IP Address from the Address Type.
+        :param str allocation_id: The ID of the EIP instance.
+        :param str eip_type: The type of the EIP instance.
+        :param str ipv6_address: Ipv6 address.
+        """
+        LoadBalancerZoneMappingLoadBalancerAddress._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            allocation_id=allocation_id,
+            eip_type=eip_type,
+            ipv6_address=ipv6_address,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: Optional[str] = None,
+             allocation_id: Optional[str] = None,
+             eip_type: Optional[str] = None,
+             ipv6_address: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allocationId' in kwargs:
+            allocation_id = kwargs['allocationId']
+        if 'eipType' in kwargs:
+            eip_type = kwargs['eipType']
+        if 'ipv6Address' in kwargs:
+            ipv6_address = kwargs['ipv6Address']
+
+        if address is not None:
+            _setter("address", address)
+        if allocation_id is not None:
+            _setter("allocation_id", allocation_id)
+        if eip_type is not None:
+            _setter("eip_type", eip_type)
+        if ipv6_address is not None:
+            _setter("ipv6_address", ipv6_address)
+
+    @property
+    @pulumi.getter
+    def address(self) -> Optional[str]:
+        """
+        IP Address. The Public IP Address, and Private IP Address from the Address Type.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="allocationId")
+    def allocation_id(self) -> Optional[str]:
+        """
+        The ID of the EIP instance.
+        """
+        return pulumi.get(self, "allocation_id")
+
+    @property
+    @pulumi.getter(name="eipType")
+    def eip_type(self) -> Optional[str]:
+        """
+        The type of the EIP instance.
+        """
+        return pulumi.get(self, "eip_type")
+
+    @property
+    @pulumi.getter(name="ipv6Address")
+    def ipv6_address(self) -> Optional[str]:
+        """
+        Ipv6 address.
+        """
+        return pulumi.get(self, "ipv6_address")
 
 
 @pulumi.output_type
@@ -1215,7 +1425,25 @@ class RuleRuleAction(dict):
              rewrite_config: Optional['outputs.RuleRuleActionRewriteConfig'] = None,
              traffic_limit_config: Optional['outputs.RuleRuleActionTrafficLimitConfig'] = None,
              traffic_mirror_config: Optional['outputs.RuleRuleActionTrafficMirrorConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'corsConfig' in kwargs:
+            cors_config = kwargs['corsConfig']
+        if 'fixedResponseConfig' in kwargs:
+            fixed_response_config = kwargs['fixedResponseConfig']
+        if 'forwardGroupConfig' in kwargs:
+            forward_group_config = kwargs['forwardGroupConfig']
+        if 'insertHeaderConfig' in kwargs:
+            insert_header_config = kwargs['insertHeaderConfig']
+        if 'redirectConfig' in kwargs:
+            redirect_config = kwargs['redirectConfig']
+        if 'rewriteConfig' in kwargs:
+            rewrite_config = kwargs['rewriteConfig']
+        if 'trafficLimitConfig' in kwargs:
+            traffic_limit_config = kwargs['trafficLimitConfig']
+        if 'trafficMirrorConfig' in kwargs:
+            traffic_mirror_config = kwargs['trafficMirrorConfig']
+
         _setter("order", order)
         _setter("type", type)
         if cors_config is not None:
@@ -1381,7 +1609,21 @@ class RuleRuleActionCorsConfig(dict):
              allow_origins: Optional[Sequence[str]] = None,
              expose_headers: Optional[Sequence[str]] = None,
              max_age: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowCredentials' in kwargs:
+            allow_credentials = kwargs['allowCredentials']
+        if 'allowHeaders' in kwargs:
+            allow_headers = kwargs['allowHeaders']
+        if 'allowMethods' in kwargs:
+            allow_methods = kwargs['allowMethods']
+        if 'allowOrigins' in kwargs:
+            allow_origins = kwargs['allowOrigins']
+        if 'exposeHeaders' in kwargs:
+            expose_headers = kwargs['exposeHeaders']
+        if 'maxAge' in kwargs:
+            max_age = kwargs['maxAge']
+
         if allow_credentials is not None:
             _setter("allow_credentials", allow_credentials)
         if allow_headers is not None:
@@ -1486,7 +1728,13 @@ class RuleRuleActionFixedResponseConfig(dict):
              content: str,
              content_type: Optional[str] = None,
              http_code: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if 'httpCode' in kwargs:
+            http_code = kwargs['httpCode']
+
         _setter("content", content)
         if content_type is not None:
             _setter("content_type", content_type)
@@ -1556,7 +1804,13 @@ class RuleRuleActionForwardGroupConfig(dict):
              _setter: Callable[[Any, Any], None],
              server_group_sticky_session: Optional['outputs.RuleRuleActionForwardGroupConfigServerGroupStickySession'] = None,
              server_group_tuples: Optional[Sequence['outputs.RuleRuleActionForwardGroupConfigServerGroupTuple']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverGroupStickySession' in kwargs:
+            server_group_sticky_session = kwargs['serverGroupStickySession']
+        if 'serverGroupTuples' in kwargs:
+            server_group_tuples = kwargs['serverGroupTuples']
+
         if server_group_sticky_session is not None:
             _setter("server_group_sticky_session", server_group_sticky_session)
         if server_group_tuples is not None:
@@ -1598,7 +1852,9 @@ class RuleRuleActionForwardGroupConfigServerGroupStickySession(dict):
              _setter: Callable[[Any, Any], None],
              enabled: Optional[bool] = None,
              timeout: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if enabled is not None:
             _setter("enabled", enabled)
         if timeout is not None:
@@ -1657,7 +1913,11 @@ class RuleRuleActionForwardGroupConfigServerGroupTuple(dict):
              _setter: Callable[[Any, Any], None],
              server_group_id: Optional[str] = None,
              weight: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverGroupId' in kwargs:
+            server_group_id = kwargs['serverGroupId']
+
         if server_group_id is not None:
             _setter("server_group_id", server_group_id)
         if weight is not None:
@@ -1721,7 +1981,11 @@ class RuleRuleActionInsertHeaderConfig(dict):
              key: Optional[str] = None,
              value: Optional[str] = None,
              value_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'valueType' in kwargs:
+            value_type = kwargs['valueType']
+
         if key is not None:
             _setter("key", key)
         if value is not None:
@@ -1807,7 +2071,11 @@ class RuleRuleActionRedirectConfig(dict):
              port: Optional[str] = None,
              protocol: Optional[str] = None,
              query: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'httpCode' in kwargs:
+            http_code = kwargs['httpCode']
+
         if host is not None:
             _setter("host", host)
         if http_code is not None:
@@ -1893,7 +2161,9 @@ class RuleRuleActionRewriteConfig(dict):
              host: Optional[str] = None,
              path: Optional[str] = None,
              query: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if host is not None:
             _setter("host", host)
         if path is not None:
@@ -1941,7 +2211,9 @@ class RuleRuleActionTrafficLimitConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              qps: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if qps is not None:
             _setter("qps", qps)
 
@@ -1992,7 +2264,13 @@ class RuleRuleActionTrafficMirrorConfig(dict):
              _setter: Callable[[Any, Any], None],
              mirror_group_config: Optional['outputs.RuleRuleActionTrafficMirrorConfigMirrorGroupConfig'] = None,
              target_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'mirrorGroupConfig' in kwargs:
+            mirror_group_config = kwargs['mirrorGroupConfig']
+        if 'targetType' in kwargs:
+            target_type = kwargs['targetType']
+
         if mirror_group_config is not None:
             _setter("mirror_group_config", mirror_group_config)
         if target_type is not None:
@@ -2047,7 +2325,11 @@ class RuleRuleActionTrafficMirrorConfigMirrorGroupConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              server_group_tuples: Optional[Sequence['outputs.RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverGroupTuples' in kwargs:
+            server_group_tuples = kwargs['serverGroupTuples']
+
         if server_group_tuples is not None:
             _setter("server_group_tuples", server_group_tuples)
 
@@ -2092,7 +2374,11 @@ class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              server_group_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverGroupId' in kwargs:
+            server_group_id = kwargs['serverGroupId']
+
         if server_group_id is not None:
             _setter("server_group_id", server_group_id)
 
@@ -2177,7 +2463,23 @@ class RuleRuleCondition(dict):
              path_config: Optional['outputs.RuleRuleConditionPathConfig'] = None,
              query_string_config: Optional['outputs.RuleRuleConditionQueryStringConfig'] = None,
              source_ip_config: Optional['outputs.RuleRuleConditionSourceIpConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cookieConfig' in kwargs:
+            cookie_config = kwargs['cookieConfig']
+        if 'headerConfig' in kwargs:
+            header_config = kwargs['headerConfig']
+        if 'hostConfig' in kwargs:
+            host_config = kwargs['hostConfig']
+        if 'methodConfig' in kwargs:
+            method_config = kwargs['methodConfig']
+        if 'pathConfig' in kwargs:
+            path_config = kwargs['pathConfig']
+        if 'queryStringConfig' in kwargs:
+            query_string_config = kwargs['queryStringConfig']
+        if 'sourceIpConfig' in kwargs:
+            source_ip_config = kwargs['sourceIpConfig']
+
         _setter("type", type)
         if cookie_config is not None:
             _setter("cookie_config", cookie_config)
@@ -2274,7 +2576,9 @@ class RuleRuleConditionCookieConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Optional[Sequence['outputs.RuleRuleConditionCookieConfigValue']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if values is not None:
             _setter("values", values)
 
@@ -2307,7 +2611,9 @@ class RuleRuleConditionCookieConfigValue(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if value is not None:
@@ -2350,7 +2656,9 @@ class RuleRuleConditionHeaderConfig(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if values is not None:
@@ -2388,7 +2696,9 @@ class RuleRuleConditionHostConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if values is not None:
             _setter("values", values)
 
@@ -2416,7 +2726,9 @@ class RuleRuleConditionMethodConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if values is not None:
             _setter("values", values)
 
@@ -2444,7 +2756,9 @@ class RuleRuleConditionPathConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if values is not None:
             _setter("values", values)
 
@@ -2472,7 +2786,9 @@ class RuleRuleConditionQueryStringConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Optional[Sequence['outputs.RuleRuleConditionQueryStringConfigValue']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if values is not None:
             _setter("values", values)
 
@@ -2505,7 +2821,9 @@ class RuleRuleConditionQueryStringConfigValue(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if value is not None:
@@ -2544,7 +2862,9 @@ class RuleRuleConditionSourceIpConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if values is not None:
             _setter("values", values)
 
@@ -2656,7 +2976,33 @@ class ServerGroupHealthCheckConfig(dict):
              health_check_timeout: Optional[int] = None,
              healthy_threshold: Optional[int] = None,
              unhealthy_threshold: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'healthCheckCodes' in kwargs:
+            health_check_codes = kwargs['healthCheckCodes']
+        if 'healthCheckConnectPort' in kwargs:
+            health_check_connect_port = kwargs['healthCheckConnectPort']
+        if 'healthCheckEnabled' in kwargs:
+            health_check_enabled = kwargs['healthCheckEnabled']
+        if 'healthCheckHost' in kwargs:
+            health_check_host = kwargs['healthCheckHost']
+        if 'healthCheckHttpVersion' in kwargs:
+            health_check_http_version = kwargs['healthCheckHttpVersion']
+        if 'healthCheckInterval' in kwargs:
+            health_check_interval = kwargs['healthCheckInterval']
+        if 'healthCheckMethod' in kwargs:
+            health_check_method = kwargs['healthCheckMethod']
+        if 'healthCheckPath' in kwargs:
+            health_check_path = kwargs['healthCheckPath']
+        if 'healthCheckProtocol' in kwargs:
+            health_check_protocol = kwargs['healthCheckProtocol']
+        if 'healthCheckTimeout' in kwargs:
+            health_check_timeout = kwargs['healthCheckTimeout']
+        if 'healthyThreshold' in kwargs:
+            healthy_threshold = kwargs['healthyThreshold']
+        if 'unhealthyThreshold' in kwargs:
+            unhealthy_threshold = kwargs['unhealthyThreshold']
+
         if health_check_codes is not None:
             _setter("health_check_codes", health_check_codes)
         if health_check_connect_port is not None:
@@ -2855,7 +3201,17 @@ class ServerGroupServer(dict):
              server_ip: Optional[str] = None,
              status: Optional[str] = None,
              weight: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverId' in kwargs:
+            server_id = kwargs['serverId']
+        if 'serverType' in kwargs:
+            server_type = kwargs['serverType']
+        if 'remoteIpEnabled' in kwargs:
+            remote_ip_enabled = kwargs['remoteIpEnabled']
+        if 'serverIp' in kwargs:
+            server_ip = kwargs['serverIp']
+
         _setter("server_id", server_id)
         _setter("server_type", server_type)
         if description is not None:
@@ -2996,7 +3352,15 @@ class ServerGroupStickySessionConfig(dict):
              cookie_timeout: Optional[int] = None,
              sticky_session_enabled: Optional[bool] = None,
              sticky_session_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cookieTimeout' in kwargs:
+            cookie_timeout = kwargs['cookieTimeout']
+        if 'stickySessionEnabled' in kwargs:
+            sticky_session_enabled = kwargs['stickySessionEnabled']
+        if 'stickySessionType' in kwargs:
+            sticky_session_type = kwargs['stickySessionType']
+
         if cookie is not None:
             _setter("cookie", cookie)
         if cookie_timeout is not None:
@@ -3081,7 +3445,19 @@ class GetAclsAclResult(dict):
              id: str,
              resource_group_id: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclEntries' in kwargs:
+            acl_entries = kwargs['aclEntries']
+        if 'aclId' in kwargs:
+            acl_id = kwargs['aclId']
+        if 'aclName' in kwargs:
+            acl_name = kwargs['aclName']
+        if 'addressIpVersion' in kwargs:
+            address_ip_version = kwargs['addressIpVersion']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("acl_entries", acl_entries)
         _setter("acl_id", acl_id)
         _setter("acl_name", acl_name)
@@ -3169,7 +3545,9 @@ class GetAclsAclAclEntryResult(dict):
              description: str,
              entry: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("description", description)
         _setter("entry", entry)
         _setter("status", status)
@@ -3249,7 +3627,23 @@ class GetAscriptsAscriptResult(dict):
              position: str,
              script_content: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ascriptId' in kwargs:
+            ascript_id = kwargs['ascriptId']
+        if 'ascriptName' in kwargs:
+            ascript_name = kwargs['ascriptName']
+        if 'extAttributeEnabled' in kwargs:
+            ext_attribute_enabled = kwargs['extAttributeEnabled']
+        if 'extAttributes' in kwargs:
+            ext_attributes = kwargs['extAttributes']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+        if 'scriptContent' in kwargs:
+            script_content = kwargs['scriptContent']
+
         _setter("ascript_id", ascript_id)
         _setter("ascript_name", ascript_name)
         _setter("enabled", enabled)
@@ -3364,7 +3758,13 @@ class GetAscriptsAscriptExtAttributeResult(dict):
              _setter: Callable[[Any, Any], None],
              attribute_key: str,
              attribute_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'attributeKey' in kwargs:
+            attribute_key = kwargs['attributeKey']
+        if 'attributeValue' in kwargs:
+            attribute_value = kwargs['attributeValue']
+
         _setter("attribute_key", attribute_key)
         _setter("attribute_value", attribute_value)
 
@@ -3452,7 +3852,35 @@ class GetHealthCheckTemplatesTemplateResult(dict):
              healthy_threshold: int,
              id: str,
              unhealthy_threshold: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'healthCheckCodes' in kwargs:
+            health_check_codes = kwargs['healthCheckCodes']
+        if 'healthCheckConnectPort' in kwargs:
+            health_check_connect_port = kwargs['healthCheckConnectPort']
+        if 'healthCheckHost' in kwargs:
+            health_check_host = kwargs['healthCheckHost']
+        if 'healthCheckHttpVersion' in kwargs:
+            health_check_http_version = kwargs['healthCheckHttpVersion']
+        if 'healthCheckInterval' in kwargs:
+            health_check_interval = kwargs['healthCheckInterval']
+        if 'healthCheckMethod' in kwargs:
+            health_check_method = kwargs['healthCheckMethod']
+        if 'healthCheckPath' in kwargs:
+            health_check_path = kwargs['healthCheckPath']
+        if 'healthCheckProtocol' in kwargs:
+            health_check_protocol = kwargs['healthCheckProtocol']
+        if 'healthCheckTemplateId' in kwargs:
+            health_check_template_id = kwargs['healthCheckTemplateId']
+        if 'healthCheckTemplateName' in kwargs:
+            health_check_template_name = kwargs['healthCheckTemplateName']
+        if 'healthCheckTimeout' in kwargs:
+            health_check_timeout = kwargs['healthCheckTimeout']
+        if 'healthyThreshold' in kwargs:
+            healthy_threshold = kwargs['healthyThreshold']
+        if 'unhealthyThreshold' in kwargs:
+            unhealthy_threshold = kwargs['unhealthyThreshold']
+
         _setter("health_check_codes", health_check_codes)
         _setter("health_check_connect_port", health_check_connect_port)
         _setter("health_check_host", health_check_host)
@@ -3682,7 +4110,45 @@ class GetListenersListenerResult(dict):
              security_policy_id: str,
              status: str,
              xforwarded_for_configs: Sequence['outputs.GetListenersListenerXforwardedForConfigResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessLogRecordCustomizedHeadersEnabled' in kwargs:
+            access_log_record_customized_headers_enabled = kwargs['accessLogRecordCustomizedHeadersEnabled']
+        if 'accessLogTracingConfigs' in kwargs:
+            access_log_tracing_configs = kwargs['accessLogTracingConfigs']
+        if 'aclConfigs' in kwargs:
+            acl_configs = kwargs['aclConfigs']
+        if 'defaultActions' in kwargs:
+            default_actions = kwargs['defaultActions']
+        if 'gzipEnabled' in kwargs:
+            gzip_enabled = kwargs['gzipEnabled']
+        if 'http2Enabled' in kwargs:
+            http2_enabled = kwargs['http2Enabled']
+        if 'idleTimeout' in kwargs:
+            idle_timeout = kwargs['idleTimeout']
+        if 'listenerDescription' in kwargs:
+            listener_description = kwargs['listenerDescription']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if 'listenerPort' in kwargs:
+            listener_port = kwargs['listenerPort']
+        if 'listenerProtocol' in kwargs:
+            listener_protocol = kwargs['listenerProtocol']
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+        if 'maxResults' in kwargs:
+            max_results = kwargs['maxResults']
+        if 'nextToken' in kwargs:
+            next_token = kwargs['nextToken']
+        if 'quicConfigs' in kwargs:
+            quic_configs = kwargs['quicConfigs']
+        if 'requestTimeout' in kwargs:
+            request_timeout = kwargs['requestTimeout']
+        if 'securityPolicyId' in kwargs:
+            security_policy_id = kwargs['securityPolicyId']
+        if 'xforwardedForConfigs' in kwargs:
+            xforwarded_for_configs = kwargs['xforwardedForConfigs']
+
         _setter("access_log_record_customized_headers_enabled", access_log_record_customized_headers_enabled)
         _setter("access_log_tracing_configs", access_log_tracing_configs)
         _setter("acl_configs", acl_configs)
@@ -3909,7 +4375,15 @@ class GetListenersListenerAccessLogTracingConfigResult(dict):
              tracing_enabled: bool,
              tracing_sample: int,
              tracing_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'tracingEnabled' in kwargs:
+            tracing_enabled = kwargs['tracingEnabled']
+        if 'tracingSample' in kwargs:
+            tracing_sample = kwargs['tracingSample']
+        if 'tracingType' in kwargs:
+            tracing_type = kwargs['tracingType']
+
         _setter("tracing_enabled", tracing_enabled)
         _setter("tracing_sample", tracing_sample)
         _setter("tracing_type", tracing_type)
@@ -3964,7 +4438,13 @@ class GetListenersListenerAclConfigResult(dict):
              _setter: Callable[[Any, Any], None],
              acl_relations: Sequence['outputs.GetListenersListenerAclConfigAclRelationResult'],
              acl_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclRelations' in kwargs:
+            acl_relations = kwargs['aclRelations']
+        if 'aclType' in kwargs:
+            acl_type = kwargs['aclType']
+
         _setter("acl_relations", acl_relations)
         _setter("acl_type", acl_type)
 
@@ -4004,7 +4484,11 @@ class GetListenersListenerAclConfigAclRelationResult(dict):
              _setter: Callable[[Any, Any], None],
              acl_id: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclId' in kwargs:
+            acl_id = kwargs['aclId']
+
         _setter("acl_id", acl_id)
         _setter("status", status)
 
@@ -4040,7 +4524,11 @@ class GetListenersListenerCertificateResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              certificate_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'certificateId' in kwargs:
+            certificate_id = kwargs['certificateId']
+
         _setter("certificate_id", certificate_id)
 
     @property
@@ -4071,7 +4559,11 @@ class GetListenersListenerDefaultActionResult(dict):
              _setter: Callable[[Any, Any], None],
              forward_group_configs: Sequence['outputs.GetListenersListenerDefaultActionForwardGroupConfigResult'],
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'forwardGroupConfigs' in kwargs:
+            forward_group_configs = kwargs['forwardGroupConfigs']
+
         _setter("forward_group_configs", forward_group_configs)
         _setter("type", type)
 
@@ -4107,7 +4599,11 @@ class GetListenersListenerDefaultActionForwardGroupConfigResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              server_group_tuples: Sequence['outputs.GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverGroupTuples' in kwargs:
+            server_group_tuples = kwargs['serverGroupTuples']
+
         _setter("server_group_tuples", server_group_tuples)
 
     @property
@@ -4134,7 +4630,11 @@ class GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleResult(
     def _configure(
              _setter: Callable[[Any, Any], None],
              server_group_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverGroupId' in kwargs:
+            server_group_id = kwargs['serverGroupId']
+
         _setter("server_group_id", server_group_id)
 
     @property
@@ -4165,7 +4665,13 @@ class GetListenersListenerQuicConfigResult(dict):
              _setter: Callable[[Any, Any], None],
              quic_listener_id: str,
              quic_upgrade_enabled: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'quicListenerId' in kwargs:
+            quic_listener_id = kwargs['quicListenerId']
+        if 'quicUpgradeEnabled' in kwargs:
+            quic_upgrade_enabled = kwargs['quicUpgradeEnabled']
+
         _setter("quic_listener_id", quic_listener_id)
         _setter("quic_upgrade_enabled", quic_upgrade_enabled)
 
@@ -4249,7 +4755,13 @@ class GetListenersListenerXforwardedForConfigResult(dict):
              xforwardedforprotoenabled: bool,
              xforwardedforslbidenabled: bool,
              xforwardedforslbportenabled: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'xforwardedforclientcertIssuerdnalias' in kwargs:
+            xforwardedforclientcert_issuerdnalias = kwargs['xforwardedforclientcertIssuerdnalias']
+        if 'xforwardedforclientcertIssuerdnenabled' in kwargs:
+            xforwardedforclientcert_issuerdnenabled = kwargs['xforwardedforclientcertIssuerdnenabled']
+
         _setter("xforwardedforclientcert_issuerdnalias", xforwardedforclientcert_issuerdnalias)
         _setter("xforwardedforclientcert_issuerdnenabled", xforwardedforclientcert_issuerdnenabled)
         _setter("xforwardedforclientcertclientverifyalias", xforwardedforclientcertclientverifyalias)
@@ -4467,7 +4979,45 @@ class GetLoadBalancersBalancerResult(dict):
              tags: Mapping[str, Any],
              vpc_id: str,
              zone_mappings: Sequence['outputs.GetLoadBalancersBalancerZoneMappingResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessLogConfigs' in kwargs:
+            access_log_configs = kwargs['accessLogConfigs']
+        if 'addressAllocatedMode' in kwargs:
+            address_allocated_mode = kwargs['addressAllocatedMode']
+        if 'addressType' in kwargs:
+            address_type = kwargs['addressType']
+        if 'bandwidthPackageId' in kwargs:
+            bandwidth_package_id = kwargs['bandwidthPackageId']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'deletionProtectionConfigs' in kwargs:
+            deletion_protection_configs = kwargs['deletionProtectionConfigs']
+        if 'dnsName' in kwargs:
+            dns_name = kwargs['dnsName']
+        if 'loadBalancerBillingConfigs' in kwargs:
+            load_balancer_billing_configs = kwargs['loadBalancerBillingConfigs']
+        if 'loadBalancerBusinessStatus' in kwargs:
+            load_balancer_business_status = kwargs['loadBalancerBusinessStatus']
+        if 'loadBalancerBussinessStatus' in kwargs:
+            load_balancer_bussiness_status = kwargs['loadBalancerBussinessStatus']
+        if 'loadBalancerEdition' in kwargs:
+            load_balancer_edition = kwargs['loadBalancerEdition']
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+        if 'loadBalancerName' in kwargs:
+            load_balancer_name = kwargs['loadBalancerName']
+        if 'loadBalancerOperationLocks' in kwargs:
+            load_balancer_operation_locks = kwargs['loadBalancerOperationLocks']
+        if 'modificationProtectionConfigs' in kwargs:
+            modification_protection_configs = kwargs['modificationProtectionConfigs']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'zoneMappings' in kwargs:
+            zone_mappings = kwargs['zoneMappings']
+
         _setter("access_log_configs", access_log_configs)
         _setter("address_allocated_mode", address_allocated_mode)
         _setter("address_type", address_type)
@@ -4684,7 +5234,13 @@ class GetLoadBalancersBalancerAccessLogConfigResult(dict):
              _setter: Callable[[Any, Any], None],
              log_project: str,
              log_store: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'logProject' in kwargs:
+            log_project = kwargs['logProject']
+        if 'logStore' in kwargs:
+            log_store = kwargs['logStore']
+
         _setter("log_project", log_project)
         _setter("log_store", log_store)
 
@@ -4724,7 +5280,11 @@ class GetLoadBalancersBalancerDeletionProtectionConfigResult(dict):
              _setter: Callable[[Any, Any], None],
              enabled: bool,
              enabled_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'enabledTime' in kwargs:
+            enabled_time = kwargs['enabledTime']
+
         _setter("enabled", enabled)
         _setter("enabled_time", enabled_time)
 
@@ -4760,7 +5320,11 @@ class GetLoadBalancersBalancerLoadBalancerBillingConfigResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              pay_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'payType' in kwargs:
+            pay_type = kwargs['payType']
+
         _setter("pay_type", pay_type)
 
     @property
@@ -4791,7 +5355,13 @@ class GetLoadBalancersBalancerLoadBalancerOperationLockResult(dict):
              _setter: Callable[[Any, Any], None],
              lock_reason: str,
              lock_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'lockReason' in kwargs:
+            lock_reason = kwargs['lockReason']
+        if 'lockType' in kwargs:
+            lock_type = kwargs['lockType']
+
         _setter("lock_reason", lock_reason)
         _setter("lock_type", lock_type)
 
@@ -4831,7 +5401,9 @@ class GetLoadBalancersBalancerModificationProtectionConfigResult(dict):
              _setter: Callable[[Any, Any], None],
              reason: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("reason", reason)
         _setter("status", status)
 
@@ -4874,7 +5446,15 @@ class GetLoadBalancersBalancerZoneMappingResult(dict):
              load_balancer_addresses: Sequence['outputs.GetLoadBalancersBalancerZoneMappingLoadBalancerAddressResult'],
              vswitch_id: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'loadBalancerAddresses' in kwargs:
+            load_balancer_addresses = kwargs['loadBalancerAddresses']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("load_balancer_addresses", load_balancer_addresses)
         _setter("vswitch_id", vswitch_id)
         _setter("zone_id", zone_id)
@@ -4913,7 +5493,9 @@ class GetLoadBalancersBalancerZoneMappingLoadBalancerAddressResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              address: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("address", address)
 
     @property
@@ -4969,7 +5551,21 @@ class GetRulesRuleResult(dict):
              rule_id: str,
              rule_name: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+        if 'ruleActions' in kwargs:
+            rule_actions = kwargs['ruleActions']
+        if 'ruleConditions' in kwargs:
+            rule_conditions = kwargs['ruleConditions']
+        if 'ruleId' in kwargs:
+            rule_id = kwargs['ruleId']
+        if 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+
         _setter("id", id)
         _setter("listener_id", listener_id)
         _setter("load_balancer_id", load_balancer_id)
@@ -5100,7 +5696,23 @@ class GetRulesRuleRuleActionResult(dict):
              traffic_limit_configs: Sequence['outputs.GetRulesRuleRuleActionTrafficLimitConfigResult'],
              traffic_mirror_configs: Sequence['outputs.GetRulesRuleRuleActionTrafficMirrorConfigResult'],
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fixedResponseConfigs' in kwargs:
+            fixed_response_configs = kwargs['fixedResponseConfigs']
+        if 'forwardGroupConfigs' in kwargs:
+            forward_group_configs = kwargs['forwardGroupConfigs']
+        if 'insertHeaderConfigs' in kwargs:
+            insert_header_configs = kwargs['insertHeaderConfigs']
+        if 'redirectConfigs' in kwargs:
+            redirect_configs = kwargs['redirectConfigs']
+        if 'rewriteConfigs' in kwargs:
+            rewrite_configs = kwargs['rewriteConfigs']
+        if 'trafficLimitConfigs' in kwargs:
+            traffic_limit_configs = kwargs['trafficLimitConfigs']
+        if 'trafficMirrorConfigs' in kwargs:
+            traffic_mirror_configs = kwargs['trafficMirrorConfigs']
+
         _setter("fixed_response_configs", fixed_response_configs)
         _setter("forward_group_configs", forward_group_configs)
         _setter("insert_header_configs", insert_header_configs)
@@ -5207,7 +5819,13 @@ class GetRulesRuleRuleActionFixedResponseConfigResult(dict):
              content: str,
              content_type: str,
              http_code: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if 'httpCode' in kwargs:
+            http_code = kwargs['httpCode']
+
         _setter("content", content)
         _setter("content_type", content_type)
         _setter("http_code", http_code)
@@ -5252,7 +5870,11 @@ class GetRulesRuleRuleActionForwardGroupConfigResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              server_group_tuples: Sequence['outputs.GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverGroupTuples' in kwargs:
+            server_group_tuples = kwargs['serverGroupTuples']
+
         _setter("server_group_tuples", server_group_tuples)
 
     @property
@@ -5283,7 +5905,11 @@ class GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleResult(dict):
              _setter: Callable[[Any, Any], None],
              server_group_id: str,
              weight: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverGroupId' in kwargs:
+            server_group_id = kwargs['serverGroupId']
+
         _setter("server_group_id", server_group_id)
         _setter("weight", weight)
 
@@ -5327,7 +5953,11 @@ class GetRulesRuleRuleActionInsertHeaderConfigResult(dict):
              key: str,
              value: str,
              value_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'valueType' in kwargs:
+            value_type = kwargs['valueType']
+
         _setter("key", key)
         _setter("value", value)
         _setter("value_type", value_type)
@@ -5392,7 +6022,11 @@ class GetRulesRuleRuleActionRedirectConfigResult(dict):
              port: str,
              protocol: str,
              query: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'httpCode' in kwargs:
+            http_code = kwargs['httpCode']
+
         _setter("host", host)
         _setter("http_code", http_code)
         _setter("path", path)
@@ -5472,7 +6106,9 @@ class GetRulesRuleRuleActionRewriteConfigResult(dict):
              host: str,
              path: str,
              query: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("host", host)
         _setter("path", path)
         _setter("query", query)
@@ -5517,7 +6153,9 @@ class GetRulesRuleRuleActionTrafficLimitConfigResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              qps: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("qps", qps)
 
     @property
@@ -5548,7 +6186,13 @@ class GetRulesRuleRuleActionTrafficMirrorConfigResult(dict):
              _setter: Callable[[Any, Any], None],
              mirror_group_configs: Sequence['outputs.GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigResult'],
              target_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'mirrorGroupConfigs' in kwargs:
+            mirror_group_configs = kwargs['mirrorGroupConfigs']
+        if 'targetType' in kwargs:
+            target_type = kwargs['targetType']
+
         _setter("mirror_group_configs", mirror_group_configs)
         _setter("target_type", target_type)
 
@@ -5584,7 +6228,11 @@ class GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              server_group_tuples: Sequence['outputs.GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverGroupTuples' in kwargs:
+            server_group_tuples = kwargs['serverGroupTuples']
+
         _setter("server_group_tuples", server_group_tuples)
 
     @property
@@ -5611,7 +6259,11 @@ class GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple
     def _configure(
              _setter: Callable[[Any, Any], None],
              server_group_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverGroupId' in kwargs:
+            server_group_id = kwargs['serverGroupId']
+
         _setter("server_group_id", server_group_id)
 
     @property
@@ -5666,7 +6318,23 @@ class GetRulesRuleRuleConditionResult(dict):
              query_string_configs: Sequence['outputs.GetRulesRuleRuleConditionQueryStringConfigResult'],
              source_ip_configs: Sequence['outputs.GetRulesRuleRuleConditionSourceIpConfigResult'],
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cookieConfigs' in kwargs:
+            cookie_configs = kwargs['cookieConfigs']
+        if 'headerConfigs' in kwargs:
+            header_configs = kwargs['headerConfigs']
+        if 'hostConfigs' in kwargs:
+            host_configs = kwargs['hostConfigs']
+        if 'methodConfigs' in kwargs:
+            method_configs = kwargs['methodConfigs']
+        if 'pathConfigs' in kwargs:
+            path_configs = kwargs['pathConfigs']
+        if 'queryStringConfigs' in kwargs:
+            query_string_configs = kwargs['queryStringConfigs']
+        if 'sourceIpConfigs' in kwargs:
+            source_ip_configs = kwargs['sourceIpConfigs']
+
         _setter("cookie_configs", cookie_configs)
         _setter("header_configs", header_configs)
         _setter("host_configs", host_configs)
@@ -5756,7 +6424,9 @@ class GetRulesRuleRuleConditionCookieConfigResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Sequence['outputs.GetRulesRuleRuleConditionCookieConfigValueResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("values", values)
 
     @property
@@ -5787,7 +6457,9 @@ class GetRulesRuleRuleConditionCookieConfigValueResult(dict):
              _setter: Callable[[Any, Any], None],
              key: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 
@@ -5827,7 +6499,9 @@ class GetRulesRuleRuleConditionHeaderConfigResult(dict):
              _setter: Callable[[Any, Any], None],
              key: str,
              values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("values", values)
 
@@ -5863,7 +6537,9 @@ class GetRulesRuleRuleConditionHostConfigResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("values", values)
 
     @property
@@ -5890,7 +6566,9 @@ class GetRulesRuleRuleConditionMethodConfigResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("values", values)
 
     @property
@@ -5917,7 +6595,9 @@ class GetRulesRuleRuleConditionPathConfigResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("values", values)
 
     @property
@@ -5944,7 +6624,9 @@ class GetRulesRuleRuleConditionQueryStringConfigResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Sequence['outputs.GetRulesRuleRuleConditionQueryStringConfigValueResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("values", values)
 
     @property
@@ -5975,7 +6657,9 @@ class GetRulesRuleRuleConditionQueryStringConfigValueResult(dict):
              _setter: Callable[[Any, Any], None],
              key: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 
@@ -6011,7 +6695,9 @@ class GetRulesRuleRuleConditionSourceIpConfigResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("values", values)
 
     @property
@@ -6062,7 +6748,17 @@ class GetSecurityPoliciesPolicyResult(dict):
              security_policy_name: str,
              status: str,
              tls_versions: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityPolicyId' in kwargs:
+            security_policy_id = kwargs['securityPolicyId']
+        if 'securityPolicyName' in kwargs:
+            security_policy_name = kwargs['securityPolicyName']
+        if 'tlsVersions' in kwargs:
+            tls_versions = kwargs['tlsVersions']
+
         _setter("ciphers", ciphers)
         _setter("id", id)
         _setter("resource_group_id", resource_group_id)
@@ -6183,7 +6879,19 @@ class GetServerGroupsGroupResult(dict):
              sticky_session_configs: Sequence['outputs.GetServerGroupsGroupStickySessionConfigResult'],
              tags: Mapping[str, Any],
              vpc_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'healthCheckConfigs' in kwargs:
+            health_check_configs = kwargs['healthCheckConfigs']
+        if 'serverGroupId' in kwargs:
+            server_group_id = kwargs['serverGroupId']
+        if 'serverGroupName' in kwargs:
+            server_group_name = kwargs['serverGroupName']
+        if 'stickySessionConfigs' in kwargs:
+            sticky_session_configs = kwargs['stickySessionConfigs']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         _setter("health_check_configs", health_check_configs)
         _setter("id", id)
         _setter("protocol", protocol)
@@ -6344,7 +7052,33 @@ class GetServerGroupsGroupHealthCheckConfigResult(dict):
              health_check_timeout: int,
              healthy_threshold: int,
              unhealthy_threshold: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'healthCheckCodes' in kwargs:
+            health_check_codes = kwargs['healthCheckCodes']
+        if 'healthCheckConnectPort' in kwargs:
+            health_check_connect_port = kwargs['healthCheckConnectPort']
+        if 'healthCheckEnabled' in kwargs:
+            health_check_enabled = kwargs['healthCheckEnabled']
+        if 'healthCheckHost' in kwargs:
+            health_check_host = kwargs['healthCheckHost']
+        if 'healthCheckHttpVersion' in kwargs:
+            health_check_http_version = kwargs['healthCheckHttpVersion']
+        if 'healthCheckInterval' in kwargs:
+            health_check_interval = kwargs['healthCheckInterval']
+        if 'healthCheckMethod' in kwargs:
+            health_check_method = kwargs['healthCheckMethod']
+        if 'healthCheckPath' in kwargs:
+            health_check_path = kwargs['healthCheckPath']
+        if 'healthCheckProtocol' in kwargs:
+            health_check_protocol = kwargs['healthCheckProtocol']
+        if 'healthCheckTimeout' in kwargs:
+            health_check_timeout = kwargs['healthCheckTimeout']
+        if 'healthyThreshold' in kwargs:
+            healthy_threshold = kwargs['healthyThreshold']
+        if 'unhealthyThreshold' in kwargs:
+            unhealthy_threshold = kwargs['unhealthyThreshold']
+
         _setter("health_check_codes", health_check_codes)
         _setter("health_check_connect_port", health_check_connect_port)
         _setter("health_check_enabled", health_check_enabled)
@@ -6494,7 +7228,15 @@ class GetServerGroupsGroupServerResult(dict):
              server_type: str,
              status: str,
              weight: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverId' in kwargs:
+            server_id = kwargs['serverId']
+        if 'serverIp' in kwargs:
+            server_ip = kwargs['serverIp']
+        if 'serverType' in kwargs:
+            server_type = kwargs['serverType']
+
         _setter("description", description)
         _setter("port", port)
         _setter("server_id", server_id)
@@ -6587,7 +7329,15 @@ class GetServerGroupsGroupStickySessionConfigResult(dict):
              cookie_timeout: int,
              sticky_session_enabled: bool,
              sticky_session_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cookieTimeout' in kwargs:
+            cookie_timeout = kwargs['cookieTimeout']
+        if 'stickySessionEnabled' in kwargs:
+            sticky_session_enabled = kwargs['stickySessionEnabled']
+        if 'stickySessionType' in kwargs:
+            sticky_session_type = kwargs['stickySessionType']
+
         _setter("cookie", cookie)
         _setter("cookie_timeout", cookie_timeout)
         _setter("sticky_session_enabled", sticky_session_enabled)
@@ -6653,7 +7403,13 @@ class GetSystemSecurityPoliciesPolicyResult(dict):
              id: str,
              security_policy_id: str,
              tls_versions: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'securityPolicyId' in kwargs:
+            security_policy_id = kwargs['securityPolicyId']
+        if 'tlsVersions' in kwargs:
+            tls_versions = kwargs['tlsVersions']
+
         _setter("ciphers", ciphers)
         _setter("id", id)
         _setter("security_policy_id", security_policy_id)
@@ -6715,7 +7471,13 @@ class GetZonesZoneResult(dict):
              id: str,
              local_name: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'localName' in kwargs:
+            local_name = kwargs['localName']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("id", id)
         _setter("local_name", local_name)
         _setter("zone_id", zone_id)

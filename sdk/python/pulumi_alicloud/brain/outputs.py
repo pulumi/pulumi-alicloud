@@ -64,7 +64,25 @@ class GetIndustrialPidLoopsLoopResult(dict):
              pid_loop_type: str,
              pid_project_id: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'pidLoopConfiguration' in kwargs:
+            pid_loop_configuration = kwargs['pidLoopConfiguration']
+        if 'pidLoopDcsType' in kwargs:
+            pid_loop_dcs_type = kwargs['pidLoopDcsType']
+        if 'pidLoopDesc' in kwargs:
+            pid_loop_desc = kwargs['pidLoopDesc']
+        if 'pidLoopId' in kwargs:
+            pid_loop_id = kwargs['pidLoopId']
+        if 'pidLoopIsCrucial' in kwargs:
+            pid_loop_is_crucial = kwargs['pidLoopIsCrucial']
+        if 'pidLoopName' in kwargs:
+            pid_loop_name = kwargs['pidLoopName']
+        if 'pidLoopType' in kwargs:
+            pid_loop_type = kwargs['pidLoopType']
+        if 'pidProjectId' in kwargs:
+            pid_project_id = kwargs['pidProjectId']
+
         _setter("id", id)
         _setter("pid_loop_configuration", pid_loop_configuration)
         _setter("pid_loop_dcs_type", pid_loop_dcs_type)
@@ -182,7 +200,17 @@ class GetIndustrialPidOrganizationsOrganizationResult(dict):
              pid_organization_id: str,
              pid_organization_level: int,
              pid_organization_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'parentPidOrganizationId' in kwargs:
+            parent_pid_organization_id = kwargs['parentPidOrganizationId']
+        if 'pidOrganizationId' in kwargs:
+            pid_organization_id = kwargs['pidOrganizationId']
+        if 'pidOrganizationLevel' in kwargs:
+            pid_organization_level = kwargs['pidOrganizationLevel']
+        if 'pidOrganizationName' in kwargs:
+            pid_organization_name = kwargs['pidOrganizationName']
+
         _setter("id", id)
         _setter("parent_pid_organization_id", parent_pid_organization_id)
         _setter("pid_organization_id", pid_organization_id)
@@ -261,7 +289,17 @@ class GetIndustrialPidProjectsProjectResult(dict):
              pid_project_desc: str,
              pid_project_id: str,
              pid_project_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'pidOrganizationId' in kwargs:
+            pid_organization_id = kwargs['pidOrganizationId']
+        if 'pidProjectDesc' in kwargs:
+            pid_project_desc = kwargs['pidProjectDesc']
+        if 'pidProjectId' in kwargs:
+            pid_project_id = kwargs['pidProjectId']
+        if 'pidProjectName' in kwargs:
+            pid_project_name = kwargs['pidProjectName']
+
         _setter("id", id)
         _setter("pid_organization_id", pid_organization_id)
         _setter("pid_project_desc", pid_project_desc)

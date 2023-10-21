@@ -47,7 +47,17 @@ class SecurityPolicyArgs:
              dry_run: Optional[pulumi.Input[bool]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'securityPolicyName' in kwargs:
+            security_policy_name = kwargs['securityPolicyName']
+        if 'tlsVersions' in kwargs:
+            tls_versions = kwargs['tlsVersions']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("ciphers", ciphers)
         _setter("security_policy_name", security_policy_name)
         _setter("tls_versions", tls_versions)
@@ -171,7 +181,17 @@ class _SecurityPolicyState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityPolicyName' in kwargs:
+            security_policy_name = kwargs['securityPolicyName']
+        if 'tlsVersions' in kwargs:
+            tls_versions = kwargs['tlsVersions']
+
         if ciphers is not None:
             _setter("ciphers", ciphers)
         if dry_run is not None:
@@ -287,7 +307,7 @@ class SecurityPolicy(pulumi.CustomResource):
         """
         Provides a ALB Security Policy resource.
 
-        For information about ALB Security Policy and how to use it, see [What is Security Policy](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createsecuritypolicy).
+        For information about ALB Security Policy and how to use it, see [What is Security Policy](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createsecuritypolicy).
 
         > **NOTE:** Available since v1.130.0.
 
@@ -334,7 +354,7 @@ class SecurityPolicy(pulumi.CustomResource):
         """
         Provides a ALB Security Policy resource.
 
-        For information about ALB Security Policy and how to use it, see [What is Security Policy](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createsecuritypolicy).
+        For information about ALB Security Policy and how to use it, see [What is Security Policy](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createsecuritypolicy).
 
         > **NOTE:** Available since v1.130.0.
 

@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class EcsLaunchTemplateNetworkInterfaces
     {
         /// <summary>
-        /// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+        /// The ENI description.
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+        /// The ENI name.
         /// </summary>
         public readonly string? Name;
         /// <summary>
@@ -26,11 +26,11 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string? PrimaryIp;
         /// <summary>
-        /// The security group ID.
+        /// The security group ID must be one in the same VPC.
         /// </summary>
         public readonly string? SecurityGroupId;
         /// <summary>
-        /// When creating a VPC-Connected instance, you must specify its VSwitch ID.
+        /// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
         /// </summary>
         public readonly string? VswitchId;
 

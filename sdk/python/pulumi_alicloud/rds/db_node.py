@@ -35,7 +35,15 @@ class DbNodeArgs:
              class_code: pulumi.Input[str],
              db_instance_id: pulumi.Input[str],
              zone_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'classCode' in kwargs:
+            class_code = kwargs['classCode']
+        if 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("class_code", class_code)
         _setter("db_instance_id", db_instance_id)
         _setter("zone_id", zone_id)
@@ -113,7 +121,21 @@ class _DbNodeState:
              node_region_id: Optional[pulumi.Input[str]] = None,
              node_role: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'classCode' in kwargs:
+            class_code = kwargs['classCode']
+        if 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if 'nodeRegionId' in kwargs:
+            node_region_id = kwargs['nodeRegionId']
+        if 'nodeRole' in kwargs:
+            node_role = kwargs['nodeRole']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if class_code is not None:
             _setter("class_code", class_code)
         if db_instance_id is not None:

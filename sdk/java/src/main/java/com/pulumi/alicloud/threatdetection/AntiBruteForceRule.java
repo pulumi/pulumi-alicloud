@@ -19,9 +19,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Threat Detection Anti Brute Force Rule resource.
  * 
- * For information about Threat Detection Anti Brute Force Rule and how to use it, see [What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createantibruteforcerule).
+ * For information about Threat Detection Anti Brute Force Rule and how to use it, see [What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createantibruteforcerule).
  * 
- * &gt; **NOTE:** Available in v1.195.0+.
+ * &gt; **NOTE:** Available since v1.195.0.
  * 
  * ## Example Usage
  * 
@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new AntiBruteForceRule(&#34;default&#34;, AntiBruteForceRuleArgs.builder()        
- *             .antiBruteForceRuleName(&#34;apispec_test&#34;)
+ *             .antiBruteForceRuleName(&#34;apispec_example&#34;)
  *             .failCount(80)
  *             .forbiddenTime(360)
  *             .span(10)

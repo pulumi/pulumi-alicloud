@@ -120,6 +120,9 @@ class GetProvisionedProductsResult:
     @property
     @pulumi.getter
     def products(self) -> Sequence['outputs.GetProvisionedProductsProductResult']:
+        """
+        (Deprecated since v1.197.0) A list of Provisioned Product Entries. Each element contains the following attributes:
+        """
         warnings.warn("""Field 'products' has been deprecated from provider version 1.197.0.""", DeprecationWarning)
         pulumi.log.warn("""products is deprecated: Field 'products' has been deprecated from provider version 1.197.0.""")
 
@@ -129,7 +132,7 @@ class GetProvisionedProductsResult:
     @pulumi.getter(name="provisionedProducts")
     def provisioned_products(self) -> Sequence['outputs.GetProvisionedProductsProvisionedProductResult']:
         """
-        A list of Provisioned Product Entries. Each element contains the following attributes:
+        (Available since v1.197.0) A list of Provisioned Product Entries. Each element contains the following attributes:
         """
         return pulumi.get(self, "provisioned_products")
 
@@ -176,11 +179,13 @@ def get_provisioned_products(access_level_filter: Optional[str] = None,
                              sort_order: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProvisionedProductsResult:
     """
-    This data source provides Service Catalog Provisioned Product available to the user.[What is Provisioned Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-launchproduct)
+    This data source provides Service Catalog Provisioned Product available to the user. [What is Provisioned Product](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-launchproduct)
 
-    > **NOTE:** Available in 1.196.0+
+    > **NOTE:** Available since v1.196.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
@@ -192,9 +197,13 @@ def get_provisioned_products(access_level_filter: Optional[str] = None,
     ```
 
 
+    :param str access_level_filter: The access filter.
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Provisioned Product IDs.
     :param str name_regex: A regex string to filter results by Product name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param str sort_by: The field that is used to sort the queried data.
+    :param str sort_order: The sorting method.
     """
     __args__ = dict()
     __args__['accessLevelFilter'] = access_level_filter
@@ -237,11 +246,13 @@ def get_provisioned_products_output(access_level_filter: Optional[pulumi.Input[O
                                     sort_order: Optional[pulumi.Input[Optional[str]]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProvisionedProductsResult]:
     """
-    This data source provides Service Catalog Provisioned Product available to the user.[What is Provisioned Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-launchproduct)
+    This data source provides Service Catalog Provisioned Product available to the user. [What is Provisioned Product](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-launchproduct)
 
-    > **NOTE:** Available in 1.196.0+
+    > **NOTE:** Available since v1.196.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
@@ -253,8 +264,12 @@ def get_provisioned_products_output(access_level_filter: Optional[pulumi.Input[O
     ```
 
 
+    :param str access_level_filter: The access filter.
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Provisioned Product IDs.
     :param str name_regex: A regex string to filter results by Product name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param str sort_by: The field that is used to sort the queried data.
+    :param str sort_order: The sorting method.
     """
     ...

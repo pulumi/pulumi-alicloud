@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.ServiceCatalog
     public static class GetEndUserProducts
     {
         /// <summary>
-        /// This data source provides Service Catalog End User Product available to the user.[What is End User Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
+        /// This data source provides Service Catalog End User Product available to the user.[What is End User Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-servicecatalog-2021-09-01-listproductsasenduser)
         /// 
-        /// &gt; **NOTE:** Available in 1.197.0+
+        /// &gt; **NOTE:** Available since v1.197.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -46,9 +46,9 @@ namespace Pulumi.AliCloud.ServiceCatalog
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEndUserProductsResult>("alicloud:servicecatalog/getEndUserProducts:getEndUserProducts", args ?? new GetEndUserProductsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Service Catalog End User Product available to the user.[What is End User Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
+        /// This data source provides Service Catalog End User Product available to the user.[What is End User Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-servicecatalog-2021-09-01-listproductsasenduser)
         /// 
-        /// &gt; **NOTE:** Available in 1.197.0+
+        /// &gt; **NOTE:** Available since v1.197.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

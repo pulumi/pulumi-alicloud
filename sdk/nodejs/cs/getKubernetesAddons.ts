@@ -9,26 +9,13 @@ import * as utilities from "../utilities";
 /**
  * This data source provides a list of available addons that the cluster can install.
  *
- * > **NOTE:** Available in 1.150.0+.
- * **NOTE:** From version 1.166.0, support for returning custom configuration of kubernetes cluster addon.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.cs.getKubernetesAddons({
- *     clusterId: alicloud_cs_managed_kubernetes["default"][0].id,
- * });
- * export const addons = _default.then(_default => _default.addons);
- * ```
+ * > **NOTE:** Available since v1.150.0.
+ * **NOTE:** From version v1.166.0, support for returning custom configuration of kubernetes cluster addon.
  */
 export function getKubernetesAddons(args: GetKubernetesAddonsArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesAddonsResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cs/getKubernetesAddons:getKubernetesAddons", {
-        "addons": args.addons,
         "clusterId": args.clusterId,
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -39,10 +26,6 @@ export function getKubernetesAddons(args: GetKubernetesAddonsArgs, opts?: pulumi
  * A collection of arguments for invoking getKubernetesAddons.
  */
 export interface GetKubernetesAddonsArgs {
-    /**
-     * A list of addons.
-     */
-    addons?: inputs.cs.GetKubernetesAddonsAddon[];
     /**
      * The id of kubernetes cluster.
      */
@@ -64,7 +47,7 @@ export interface GetKubernetesAddonsResult {
     /**
      * A list of addons.
      */
-    readonly addons?: outputs.cs.GetKubernetesAddonsAddon[];
+    readonly addons: outputs.cs.GetKubernetesAddonsAddon[];
     /**
      * The id of kubernetes cluster.
      */
@@ -83,20 +66,8 @@ export interface GetKubernetesAddonsResult {
 /**
  * This data source provides a list of available addons that the cluster can install.
  *
- * > **NOTE:** Available in 1.150.0+.
- * **NOTE:** From version 1.166.0, support for returning custom configuration of kubernetes cluster addon.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.cs.getKubernetesAddons({
- *     clusterId: alicloud_cs_managed_kubernetes["default"][0].id,
- * });
- * export const addons = _default.then(_default => _default.addons);
- * ```
+ * > **NOTE:** Available since v1.150.0.
+ * **NOTE:** From version v1.166.0, support for returning custom configuration of kubernetes cluster addon.
  */
 export function getKubernetesAddonsOutput(args: GetKubernetesAddonsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesAddonsResult> {
     return pulumi.output(args).apply((a: any) => getKubernetesAddons(a, opts))
@@ -106,10 +77,6 @@ export function getKubernetesAddonsOutput(args: GetKubernetesAddonsOutputArgs, o
  * A collection of arguments for invoking getKubernetesAddons.
  */
 export interface GetKubernetesAddonsOutputArgs {
-    /**
-     * A list of addons.
-     */
-    addons?: pulumi.Input<pulumi.Input<inputs.cs.GetKubernetesAddonsAddonArgs>[]>;
     /**
      * The id of kubernetes cluster.
      */

@@ -72,7 +72,27 @@ class AggregateDeliveryArgs:
              non_compliant_notification: Optional[pulumi.Input[bool]] = None,
              oversized_data_oss_target_arn: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aggregatorId' in kwargs:
+            aggregator_id = kwargs['aggregatorId']
+        if 'deliveryChannelTargetArn' in kwargs:
+            delivery_channel_target_arn = kwargs['deliveryChannelTargetArn']
+        if 'deliveryChannelType' in kwargs:
+            delivery_channel_type = kwargs['deliveryChannelType']
+        if 'configurationItemChangeNotification' in kwargs:
+            configuration_item_change_notification = kwargs['configurationItemChangeNotification']
+        if 'configurationSnapshot' in kwargs:
+            configuration_snapshot = kwargs['configurationSnapshot']
+        if 'deliveryChannelCondition' in kwargs:
+            delivery_channel_condition = kwargs['deliveryChannelCondition']
+        if 'deliveryChannelName' in kwargs:
+            delivery_channel_name = kwargs['deliveryChannelName']
+        if 'nonCompliantNotification' in kwargs:
+            non_compliant_notification = kwargs['nonCompliantNotification']
+        if 'oversizedDataOssTargetArn' in kwargs:
+            oversized_data_oss_target_arn = kwargs['oversizedDataOssTargetArn']
+
         _setter("aggregator_id", aggregator_id)
         _setter("delivery_channel_target_arn", delivery_channel_target_arn)
         _setter("delivery_channel_type", delivery_channel_type)
@@ -296,7 +316,29 @@ class _AggregateDeliveryState:
              non_compliant_notification: Optional[pulumi.Input[bool]] = None,
              oversized_data_oss_target_arn: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aggregatorId' in kwargs:
+            aggregator_id = kwargs['aggregatorId']
+        if 'configurationItemChangeNotification' in kwargs:
+            configuration_item_change_notification = kwargs['configurationItemChangeNotification']
+        if 'configurationSnapshot' in kwargs:
+            configuration_snapshot = kwargs['configurationSnapshot']
+        if 'deliveryChannelCondition' in kwargs:
+            delivery_channel_condition = kwargs['deliveryChannelCondition']
+        if 'deliveryChannelId' in kwargs:
+            delivery_channel_id = kwargs['deliveryChannelId']
+        if 'deliveryChannelName' in kwargs:
+            delivery_channel_name = kwargs['deliveryChannelName']
+        if 'deliveryChannelTargetArn' in kwargs:
+            delivery_channel_target_arn = kwargs['deliveryChannelTargetArn']
+        if 'deliveryChannelType' in kwargs:
+            delivery_channel_type = kwargs['deliveryChannelType']
+        if 'nonCompliantNotification' in kwargs:
+            non_compliant_notification = kwargs['nonCompliantNotification']
+        if 'oversizedDataOssTargetArn' in kwargs:
+            oversized_data_oss_target_arn = kwargs['oversizedDataOssTargetArn']
+
         if aggregator_id is not None:
             _setter("aggregator_id", aggregator_id)
         if configuration_item_change_notification is not None:

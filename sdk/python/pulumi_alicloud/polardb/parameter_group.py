@@ -45,7 +45,13 @@ class ParameterGroupArgs:
              parameters: pulumi.Input[Sequence[pulumi.Input['ParameterGroupParameterArgs']]],
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbType' in kwargs:
+            db_type = kwargs['dbType']
+        if 'dbVersion' in kwargs:
+            db_version = kwargs['dbVersion']
+
         _setter("db_type", db_type)
         _setter("db_version", db_version)
         _setter("parameters", parameters)
@@ -147,7 +153,13 @@ class _ParameterGroupState:
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ParameterGroupParameterArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbType' in kwargs:
+            db_type = kwargs['dbType']
+        if 'dbVersion' in kwargs:
+            db_version = kwargs['dbVersion']
+
         if db_type is not None:
             _setter("db_type", db_type)
         if db_version is not None:
@@ -234,7 +246,7 @@ class ParameterGroup(pulumi.CustomResource):
         """
         Provides a PolarDB Parameter Group resource.
 
-        For information about PolarDB Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/polardb-for-mysql/latest/createparametergroup).
+        For information about PolarDB Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/polardb/polardb-for-mysql/user-guide/apply-a-parameter-template).
 
         > **NOTE:** Available in v1.183.0+.
 
@@ -281,7 +293,7 @@ class ParameterGroup(pulumi.CustomResource):
         """
         Provides a PolarDB Parameter Group resource.
 
-        For information about PolarDB Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/polardb-for-mysql/latest/createparametergroup).
+        For information about PolarDB Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/polardb/polardb-for-mysql/user-guide/apply-a-parameter-template).
 
         > **NOTE:** Available in v1.183.0+.
 

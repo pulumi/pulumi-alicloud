@@ -39,7 +39,13 @@ class NetworkArgs:
              cidr_block: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'isDefault' in kwargs:
+            is_default = kwargs['isDefault']
+        if 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+
         _setter("is_default", is_default)
         if cidr_block is not None:
             _setter("cidr_block", cidr_block)
@@ -125,7 +131,13 @@ class _NetworkState:
              description: Optional[pulumi.Input[str]] = None,
              is_default: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if 'isDefault' in kwargs:
+            is_default = kwargs['isDefault']
+
         if cidr_block is not None:
             _setter("cidr_block", cidr_block)
         if description is not None:

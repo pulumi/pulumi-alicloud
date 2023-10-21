@@ -37,6 +37,13 @@ public final class LaunchTemplateSystemDisk {
      * 
      */
     private @Nullable String description;
+    /**
+     * @return Encrypted the data in this disk.
+     * 
+     * Default to false
+     * 
+     */
+    private @Nullable Boolean encrypted;
     private @Nullable String iops;
     /**
      * @return The name of the data disk.
@@ -86,6 +93,15 @@ public final class LaunchTemplateSystemDisk {
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return Encrypted the data in this disk.
+     * 
+     * Default to false
+     * 
+     */
+    public Optional<Boolean> encrypted() {
+        return Optional.ofNullable(this.encrypted);
+    }
     public Optional<String> iops() {
         return Optional.ofNullable(this.iops);
     }
@@ -124,6 +140,7 @@ public final class LaunchTemplateSystemDisk {
         private @Nullable String category;
         private @Nullable Boolean deleteWithInstance;
         private @Nullable String description;
+        private @Nullable Boolean encrypted;
         private @Nullable String iops;
         private @Nullable String name;
         private @Nullable String performanceLevel;
@@ -134,6 +151,7 @@ public final class LaunchTemplateSystemDisk {
     	      this.category = defaults.category;
     	      this.deleteWithInstance = defaults.deleteWithInstance;
     	      this.description = defaults.description;
+    	      this.encrypted = defaults.encrypted;
     	      this.iops = defaults.iops;
     	      this.name = defaults.name;
     	      this.performanceLevel = defaults.performanceLevel;
@@ -153,6 +171,11 @@ public final class LaunchTemplateSystemDisk {
         @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder encrypted(@Nullable Boolean encrypted) {
+            this.encrypted = encrypted;
             return this;
         }
         @CustomType.Setter
@@ -180,6 +203,7 @@ public final class LaunchTemplateSystemDisk {
             o.category = category;
             o.deleteWithInstance = deleteWithInstance;
             o.description = description;
+            o.encrypted = encrypted;
             o.iops = iops;
             o.name = name;
             o.performanceLevel = performanceLevel;

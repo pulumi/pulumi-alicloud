@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.ApiGateway
     /// <summary>
     /// Provides a Api Gateway Plugin resource.
     /// 
-    /// For information about Api Gateway Plugin and how to use it, see [What is Plugin](https://www.alibabacloud.com/help/en/api-gateway/latest/create-an-plugin).
+    /// For information about Api Gateway Plugin and how to use it, see [What is Plugin](https://www.alibabacloud.com/help/en/api-gateway/developer-reference/api-cloudapi-2016-07-14-createplugin).
     /// 
     /// &gt; **NOTE:** Available since v1.187.0.
     /// 

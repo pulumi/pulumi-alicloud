@@ -41,7 +41,15 @@ class ApiDestinationArgs:
              connection_name: pulumi.Input[str],
              http_api_parameters: pulumi.Input['ApiDestinationHttpApiParametersArgs'],
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiDestinationName' in kwargs:
+            api_destination_name = kwargs['apiDestinationName']
+        if 'connectionName' in kwargs:
+            connection_name = kwargs['connectionName']
+        if 'httpApiParameters' in kwargs:
+            http_api_parameters = kwargs['httpApiParameters']
+
         _setter("api_destination_name", api_destination_name)
         _setter("connection_name", connection_name)
         _setter("http_api_parameters", http_api_parameters)
@@ -129,7 +137,17 @@ class _ApiDestinationState:
              create_time: Optional[pulumi.Input[int]] = None,
              description: Optional[pulumi.Input[str]] = None,
              http_api_parameters: Optional[pulumi.Input['ApiDestinationHttpApiParametersArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiDestinationName' in kwargs:
+            api_destination_name = kwargs['apiDestinationName']
+        if 'connectionName' in kwargs:
+            connection_name = kwargs['connectionName']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'httpApiParameters' in kwargs:
+            http_api_parameters = kwargs['httpApiParameters']
+
         if api_destination_name is not None:
             _setter("api_destination_name", api_destination_name)
         if connection_name is not None:

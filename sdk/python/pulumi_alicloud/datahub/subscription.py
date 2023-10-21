@@ -35,7 +35,13 @@ class SubscriptionArgs:
              project_name: pulumi.Input[str],
              topic_name: pulumi.Input[str],
              comment: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if 'topicName' in kwargs:
+            topic_name = kwargs['topicName']
+
         _setter("project_name", project_name)
         _setter("topic_name", topic_name)
         if comment is not None:
@@ -114,7 +120,19 @@ class _SubscriptionState:
              project_name: Optional[pulumi.Input[str]] = None,
              sub_id: Optional[pulumi.Input[str]] = None,
              topic_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'lastModifyTime' in kwargs:
+            last_modify_time = kwargs['lastModifyTime']
+        if 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if 'subId' in kwargs:
+            sub_id = kwargs['subId']
+        if 'topicName' in kwargs:
+            topic_name = kwargs['topicName']
+
         if comment is not None:
             _setter("comment", comment)
         if create_time is not None:

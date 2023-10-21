@@ -85,7 +85,33 @@ class EcsImagePipelineArgs:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              to_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'baseImage' in kwargs:
+            base_image = kwargs['baseImage']
+        if 'baseImageType' in kwargs:
+            base_image_type = kwargs['baseImageType']
+        if 'addAccounts' in kwargs:
+            add_accounts = kwargs['addAccounts']
+        if 'buildContent' in kwargs:
+            build_content = kwargs['buildContent']
+        if 'deleteInstanceOnFailure' in kwargs:
+            delete_instance_on_failure = kwargs['deleteInstanceOnFailure']
+        if 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'internetMaxBandwidthOut' in kwargs:
+            internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'systemDiskSize' in kwargs:
+            system_disk_size = kwargs['systemDiskSize']
+        if 'toRegionIds' in kwargs:
+            to_region_ids = kwargs['toRegionIds']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("base_image", base_image)
         _setter("base_image_type", base_image_type)
         if add_accounts is not None:
@@ -372,7 +398,33 @@ class _EcsImagePipelineState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              to_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addAccounts' in kwargs:
+            add_accounts = kwargs['addAccounts']
+        if 'baseImage' in kwargs:
+            base_image = kwargs['baseImage']
+        if 'baseImageType' in kwargs:
+            base_image_type = kwargs['baseImageType']
+        if 'buildContent' in kwargs:
+            build_content = kwargs['buildContent']
+        if 'deleteInstanceOnFailure' in kwargs:
+            delete_instance_on_failure = kwargs['deleteInstanceOnFailure']
+        if 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'internetMaxBandwidthOut' in kwargs:
+            internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'systemDiskSize' in kwargs:
+            system_disk_size = kwargs['systemDiskSize']
+        if 'toRegionIds' in kwargs:
+            to_region_ids = kwargs['toRegionIds']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if add_accounts is not None:
             _setter("add_accounts", add_accounts)
         if base_image is not None:

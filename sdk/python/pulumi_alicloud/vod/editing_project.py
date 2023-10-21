@@ -43,7 +43,13 @@ class EditingProjectArgs:
              division: Optional[pulumi.Input[str]] = None,
              editing_project_name: Optional[pulumi.Input[str]] = None,
              timeline: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'coverUrl' in kwargs:
+            cover_url = kwargs['coverUrl']
+        if 'editingProjectName' in kwargs:
+            editing_project_name = kwargs['editingProjectName']
+
         _setter("title", title)
         if cover_url is not None:
             _setter("cover_url", cover_url)
@@ -151,7 +157,13 @@ class _EditingProjectState:
              status: Optional[pulumi.Input[str]] = None,
              timeline: Optional[pulumi.Input[str]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'coverUrl' in kwargs:
+            cover_url = kwargs['coverUrl']
+        if 'editingProjectName' in kwargs:
+            editing_project_name = kwargs['editingProjectName']
+
         if cover_url is not None:
             _setter("cover_url", cover_url)
         if division is not None:

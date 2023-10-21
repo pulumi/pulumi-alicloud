@@ -74,7 +74,19 @@ class GetAccessPointsPointResult(dict):
              location: str,
              status: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessPointFeatureModels' in kwargs:
+            access_point_feature_models = kwargs['accessPointFeatureModels']
+        if 'accessPointId' in kwargs:
+            access_point_id = kwargs['accessPointId']
+        if 'accessPointName' in kwargs:
+            access_point_name = kwargs['accessPointName']
+        if 'attachedRegionNo' in kwargs:
+            attached_region_no = kwargs['attachedRegionNo']
+        if 'hostOperator' in kwargs:
+            host_operator = kwargs['hostOperator']
+
         _setter("access_point_feature_models", access_point_feature_models)
         _setter("access_point_id", access_point_id)
         _setter("access_point_name", access_point_name)
@@ -186,7 +198,13 @@ class GetAccessPointsPointAccessPointFeatureModelResult(dict):
              _setter: Callable[[Any, Any], None],
              feature_key: str,
              feature_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'featureKey' in kwargs:
+            feature_key = kwargs['featureKey']
+        if 'featureValue' in kwargs:
+            feature_value = kwargs['featureValue']
+
         _setter("feature_key", feature_key)
         _setter("feature_value", feature_value)
 
@@ -234,7 +252,15 @@ class GetGrantRuleToCensCenResult(dict):
              cen_owner_id: int,
              create_time: str,
              id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'cenOwnerId' in kwargs:
+            cen_owner_id = kwargs['cenOwnerId']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+
         _setter("cen_id", cen_id)
         _setter("cen_owner_id", cen_owner_id)
         _setter("create_time", create_time)
@@ -388,7 +414,49 @@ class GetPhysicalConnectionsConnectionResult(dict):
              spec: str,
              status: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessPointId' in kwargs:
+            access_point_id = kwargs['accessPointId']
+        if 'adLocation' in kwargs:
+            ad_location = kwargs['adLocation']
+        if 'businessStatus' in kwargs:
+            business_status = kwargs['businessStatus']
+        if 'circuitCode' in kwargs:
+            circuit_code = kwargs['circuitCode']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'enabledTime' in kwargs:
+            enabled_time = kwargs['enabledTime']
+        if 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if 'hasReservationData' in kwargs:
+            has_reservation_data = kwargs['hasReservationData']
+        if 'lineOperator' in kwargs:
+            line_operator = kwargs['lineOperator']
+        if 'loaStatus' in kwargs:
+            loa_status = kwargs['loaStatus']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'peerLocation' in kwargs:
+            peer_location = kwargs['peerLocation']
+        if 'physicalConnectionId' in kwargs:
+            physical_connection_id = kwargs['physicalConnectionId']
+        if 'physicalConnectionName' in kwargs:
+            physical_connection_name = kwargs['physicalConnectionName']
+        if 'portNumber' in kwargs:
+            port_number = kwargs['portNumber']
+        if 'portType' in kwargs:
+            port_type = kwargs['portType']
+        if 'redundantPhysicalConnectionId' in kwargs:
+            redundant_physical_connection_id = kwargs['redundantPhysicalConnectionId']
+        if 'reservationActiveTime' in kwargs:
+            reservation_active_time = kwargs['reservationActiveTime']
+        if 'reservationInternetChargeType' in kwargs:
+            reservation_internet_charge_type = kwargs['reservationInternetChargeType']
+        if 'reservationOrderType' in kwargs:
+            reservation_order_type = kwargs['reservationOrderType']
+
         _setter("access_point_id", access_point_id)
         _setter("ad_location", ad_location)
         _setter("bandwidth", bandwidth)
@@ -640,7 +708,9 @@ class GetRouterInterfacesFilterResult(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if values is not None:
@@ -819,7 +889,73 @@ class GetRouterInterfacesInterfaceResult(dict):
              spec: str,
              status: str,
              vpc_instance_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessPointId' in kwargs:
+            access_point_id = kwargs['accessPointId']
+        if 'businessStatus' in kwargs:
+            business_status = kwargs['businessStatus']
+        if 'connectedTime' in kwargs:
+            connected_time = kwargs['connectedTime']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'crossBorder' in kwargs:
+            cross_border = kwargs['crossBorder']
+        if 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if 'hasReservationData' in kwargs:
+            has_reservation_data = kwargs['hasReservationData']
+        if 'hcRate' in kwargs:
+            hc_rate = kwargs['hcRate']
+        if 'hcThreshold' in kwargs:
+            hc_threshold = kwargs['hcThreshold']
+        if 'healthCheckSourceIp' in kwargs:
+            health_check_source_ip = kwargs['healthCheckSourceIp']
+        if 'healthCheckTargetIp' in kwargs:
+            health_check_target_ip = kwargs['healthCheckTargetIp']
+        if 'oppositeAccessPointId' in kwargs:
+            opposite_access_point_id = kwargs['oppositeAccessPointId']
+        if 'oppositeBandwidth' in kwargs:
+            opposite_bandwidth = kwargs['oppositeBandwidth']
+        if 'oppositeInterfaceBusinessStatus' in kwargs:
+            opposite_interface_business_status = kwargs['oppositeInterfaceBusinessStatus']
+        if 'oppositeInterfaceId' in kwargs:
+            opposite_interface_id = kwargs['oppositeInterfaceId']
+        if 'oppositeInterfaceOwnerId' in kwargs:
+            opposite_interface_owner_id = kwargs['oppositeInterfaceOwnerId']
+        if 'oppositeInterfaceSpec' in kwargs:
+            opposite_interface_spec = kwargs['oppositeInterfaceSpec']
+        if 'oppositeInterfaceStatus' in kwargs:
+            opposite_interface_status = kwargs['oppositeInterfaceStatus']
+        if 'oppositeRegionId' in kwargs:
+            opposite_region_id = kwargs['oppositeRegionId']
+        if 'oppositeRouterId' in kwargs:
+            opposite_router_id = kwargs['oppositeRouterId']
+        if 'oppositeRouterType' in kwargs:
+            opposite_router_type = kwargs['oppositeRouterType']
+        if 'oppositeVpcInstanceId' in kwargs:
+            opposite_vpc_instance_id = kwargs['oppositeVpcInstanceId']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'reservationActiveTime' in kwargs:
+            reservation_active_time = kwargs['reservationActiveTime']
+        if 'reservationBandwidth' in kwargs:
+            reservation_bandwidth = kwargs['reservationBandwidth']
+        if 'reservationInternetChargeType' in kwargs:
+            reservation_internet_charge_type = kwargs['reservationInternetChargeType']
+        if 'reservationOrderType' in kwargs:
+            reservation_order_type = kwargs['reservationOrderType']
+        if 'routerId' in kwargs:
+            router_id = kwargs['routerId']
+        if 'routerInterfaceId' in kwargs:
+            router_interface_id = kwargs['routerInterfaceId']
+        if 'routerInterfaceName' in kwargs:
+            router_interface_name = kwargs['routerInterfaceName']
+        if 'routerType' in kwargs:
+            router_type = kwargs['routerType']
+        if 'vpcInstanceId' in kwargs:
+            vpc_instance_id = kwargs['vpcInstanceId']
+
         _setter("access_point_id", access_point_id)
         _setter("bandwidth", bandwidth)
         _setter("business_status", business_status)
@@ -1224,7 +1360,31 @@ class GetVbrPconnAssociationsAssociationResult(dict):
              status: str,
              vbr_id: str,
              vlan_id: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'circuitCode' in kwargs:
+            circuit_code = kwargs['circuitCode']
+        if 'enableIpv6' in kwargs:
+            enable_ipv6 = kwargs['enableIpv6']
+        if 'localGatewayIp' in kwargs:
+            local_gateway_ip = kwargs['localGatewayIp']
+        if 'localIpv6GatewayIp' in kwargs:
+            local_ipv6_gateway_ip = kwargs['localIpv6GatewayIp']
+        if 'peerGatewayIp' in kwargs:
+            peer_gateway_ip = kwargs['peerGatewayIp']
+        if 'peerIpv6GatewayIp' in kwargs:
+            peer_ipv6_gateway_ip = kwargs['peerIpv6GatewayIp']
+        if 'peeringIpv6SubnetMask' in kwargs:
+            peering_ipv6_subnet_mask = kwargs['peeringIpv6SubnetMask']
+        if 'peeringSubnetMask' in kwargs:
+            peering_subnet_mask = kwargs['peeringSubnetMask']
+        if 'physicalConnectionId' in kwargs:
+            physical_connection_id = kwargs['physicalConnectionId']
+        if 'vbrId' in kwargs:
+            vbr_id = kwargs['vbrId']
+        if 'vlanId' in kwargs:
+            vlan_id = kwargs['vlanId']
+
         _setter("circuit_code", circuit_code)
         _setter("enable_ipv6", enable_ipv6)
         _setter("id", id)
@@ -1364,7 +1524,9 @@ class GetVirtualBorderRoutersFilterResult(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if values is not None:
@@ -1527,7 +1689,65 @@ class GetVirtualBorderRoutersRouterResult(dict):
              virtual_border_router_name: str,
              vlan_id: int,
              vlan_interface_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessPointId' in kwargs:
+            access_point_id = kwargs['accessPointId']
+        if 'activationTime' in kwargs:
+            activation_time = kwargs['activationTime']
+        if 'circuitCode' in kwargs:
+            circuit_code = kwargs['circuitCode']
+        if 'cloudBoxInstanceId' in kwargs:
+            cloud_box_instance_id = kwargs['cloudBoxInstanceId']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'detectMultiplier' in kwargs:
+            detect_multiplier = kwargs['detectMultiplier']
+        if 'eccId' in kwargs:
+            ecc_id = kwargs['eccId']
+        if 'enableIpv6' in kwargs:
+            enable_ipv6 = kwargs['enableIpv6']
+        if 'localGatewayIp' in kwargs:
+            local_gateway_ip = kwargs['localGatewayIp']
+        if 'localIpv6GatewayIp' in kwargs:
+            local_ipv6_gateway_ip = kwargs['localIpv6GatewayIp']
+        if 'minRxInterval' in kwargs:
+            min_rx_interval = kwargs['minRxInterval']
+        if 'minTxInterval' in kwargs:
+            min_tx_interval = kwargs['minTxInterval']
+        if 'paymentVbrExpireTime' in kwargs:
+            payment_vbr_expire_time = kwargs['paymentVbrExpireTime']
+        if 'peerGatewayIp' in kwargs:
+            peer_gateway_ip = kwargs['peerGatewayIp']
+        if 'peerIpv6GatewayIp' in kwargs:
+            peer_ipv6_gateway_ip = kwargs['peerIpv6GatewayIp']
+        if 'peeringIpv6SubnetMask' in kwargs:
+            peering_ipv6_subnet_mask = kwargs['peeringIpv6SubnetMask']
+        if 'peeringSubnetMask' in kwargs:
+            peering_subnet_mask = kwargs['peeringSubnetMask']
+        if 'physicalConnectionBusinessStatus' in kwargs:
+            physical_connection_business_status = kwargs['physicalConnectionBusinessStatus']
+        if 'physicalConnectionId' in kwargs:
+            physical_connection_id = kwargs['physicalConnectionId']
+        if 'physicalConnectionOwnerUid' in kwargs:
+            physical_connection_owner_uid = kwargs['physicalConnectionOwnerUid']
+        if 'physicalConnectionStatus' in kwargs:
+            physical_connection_status = kwargs['physicalConnectionStatus']
+        if 'recoveryTime' in kwargs:
+            recovery_time = kwargs['recoveryTime']
+        if 'routeTableId' in kwargs:
+            route_table_id = kwargs['routeTableId']
+        if 'terminationTime' in kwargs:
+            termination_time = kwargs['terminationTime']
+        if 'virtualBorderRouterId' in kwargs:
+            virtual_border_router_id = kwargs['virtualBorderRouterId']
+        if 'virtualBorderRouterName' in kwargs:
+            virtual_border_router_name = kwargs['virtualBorderRouterName']
+        if 'vlanId' in kwargs:
+            vlan_id = kwargs['vlanId']
+        if 'vlanInterfaceId' in kwargs:
+            vlan_interface_id = kwargs['vlanInterfaceId']
+
         _setter("access_point_id", access_point_id)
         _setter("activation_time", activation_time)
         _setter("circuit_code", circuit_code)
@@ -1947,7 +2167,55 @@ class GetVirtualPhysicalConnectionsConnectionResult(dict):
              virtual_physical_connection_status: str,
              vlan_id: int,
              vpconn_ali_uid: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessPointId' in kwargs:
+            access_point_id = kwargs['accessPointId']
+        if 'adLocation' in kwargs:
+            ad_location = kwargs['adLocation']
+        if 'businessStatus' in kwargs:
+            business_status = kwargs['businessStatus']
+        if 'circuitCode' in kwargs:
+            circuit_code = kwargs['circuitCode']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'enabledTime' in kwargs:
+            enabled_time = kwargs['enabledTime']
+        if 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if 'expectSpec' in kwargs:
+            expect_spec = kwargs['expectSpec']
+        if 'lineOperator' in kwargs:
+            line_operator = kwargs['lineOperator']
+        if 'loaStatus' in kwargs:
+            loa_status = kwargs['loaStatus']
+        if 'orderMode' in kwargs:
+            order_mode = kwargs['orderMode']
+        if 'parentPhysicalConnectionAliUid' in kwargs:
+            parent_physical_connection_ali_uid = kwargs['parentPhysicalConnectionAliUid']
+        if 'parentPhysicalConnectionId' in kwargs:
+            parent_physical_connection_id = kwargs['parentPhysicalConnectionId']
+        if 'peerLocation' in kwargs:
+            peer_location = kwargs['peerLocation']
+        if 'portNumber' in kwargs:
+            port_number = kwargs['portNumber']
+        if 'portType' in kwargs:
+            port_type = kwargs['portType']
+        if 'redundantPhysicalConnectionId' in kwargs:
+            redundant_physical_connection_id = kwargs['redundantPhysicalConnectionId']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'virtualPhysicalConnectionId' in kwargs:
+            virtual_physical_connection_id = kwargs['virtualPhysicalConnectionId']
+        if 'virtualPhysicalConnectionName' in kwargs:
+            virtual_physical_connection_name = kwargs['virtualPhysicalConnectionName']
+        if 'virtualPhysicalConnectionStatus' in kwargs:
+            virtual_physical_connection_status = kwargs['virtualPhysicalConnectionStatus']
+        if 'vlanId' in kwargs:
+            vlan_id = kwargs['vlanId']
+        if 'vpconnAliUid' in kwargs:
+            vpconn_ali_uid = kwargs['vpconnAliUid']
+
         _setter("access_point_id", access_point_id)
         _setter("ad_location", ad_location)
         _setter("bandwidth", bandwidth)

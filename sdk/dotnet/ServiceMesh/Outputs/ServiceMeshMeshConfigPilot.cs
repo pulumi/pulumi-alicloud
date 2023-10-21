@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         /// </summary>
         public readonly bool? Http10Enabled;
         /// <summary>
-        /// The  percentage of the Link trace sampling.
+        /// Link trace sampling percentage.
         /// </summary>
         public readonly double? TraceSampling;
 

@@ -39,7 +39,17 @@ class DeviceGroupArgs:
              group_desc: Optional[pulumi.Input[str]] = None,
              iot_instance_id: Optional[pulumi.Input[str]] = None,
              super_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'groupDesc' in kwargs:
+            group_desc = kwargs['groupDesc']
+        if 'iotInstanceId' in kwargs:
+            iot_instance_id = kwargs['iotInstanceId']
+        if 'superGroupId' in kwargs:
+            super_group_id = kwargs['superGroupId']
+
         _setter("group_name", group_name)
         if group_desc is not None:
             _setter("group_desc", group_desc)
@@ -125,7 +135,17 @@ class _DeviceGroupState:
              group_name: Optional[pulumi.Input[str]] = None,
              iot_instance_id: Optional[pulumi.Input[str]] = None,
              super_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupDesc' in kwargs:
+            group_desc = kwargs['groupDesc']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'iotInstanceId' in kwargs:
+            iot_instance_id = kwargs['iotInstanceId']
+        if 'superGroupId' in kwargs:
+            super_group_id = kwargs['superGroupId']
+
         if group_desc is not None:
             _setter("group_desc", group_desc)
         if group_name is not None:

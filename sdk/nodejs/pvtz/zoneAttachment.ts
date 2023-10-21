@@ -15,9 +15,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const zone = new alicloud.pvtz.Zone("zone", {});
- * const first = new alicloud.vpc.Network("first", {cidrBlock: "172.16.0.0/12"});
- * const second = new alicloud.vpc.Network("second", {cidrBlock: "172.16.0.0/16"});
+ * const zone = new alicloud.pvtz.Zone("zone", {zoneName: "foo.example.com"});
+ * const first = new alicloud.vpc.Network("first", {
+ *     vpcName: "the-first-vpc",
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const second = new alicloud.vpc.Network("second", {
+ *     vpcName: "the-second-vpc",
+ *     cidrBlock: "172.16.0.0/16",
+ * });
  * const zone_attachment = new alicloud.pvtz.ZoneAttachment("zone-attachment", {
  *     zoneId: zone.id,
  *     vpcIds: [
@@ -33,9 +39,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const zone = new alicloud.pvtz.Zone("zone", {});
- * const first = new alicloud.vpc.Network("first", {cidrBlock: "172.16.0.0/12"});
- * const second = new alicloud.vpc.Network("second", {cidrBlock: "172.16.0.0/16"});
+ * const zone = new alicloud.pvtz.Zone("zone", {zoneName: "foo.example.com"});
+ * const first = new alicloud.vpc.Network("first", {
+ *     vpcName: "the-first-vpc",
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const second = new alicloud.vpc.Network("second", {
+ *     vpcName: "the-second-vpc",
+ *     cidrBlock: "172.16.0.0/16",
+ * });
  * const zone_attachment = new alicloud.pvtz.ZoneAttachment("zone-attachment", {
  *     zoneId: zone.id,
  *     vpcs: [
@@ -55,11 +67,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const zone = new alicloud.pvtz.Zone("zone", {});
- * const first = new alicloud.vpc.Network("first", {cidrBlock: "172.16.0.0/12"});
- * const second = new alicloud.vpc.Network("second", {cidrBlock: "172.16.0.0/16"});
+ * const zone = new alicloud.pvtz.Zone("zone", {zoneName: "foo.example.com"});
+ * const first = new alicloud.vpc.Network("first", {
+ *     vpcName: "the-first-vpc",
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const second = new alicloud.vpc.Network("second", {
+ *     vpcName: "the-second-vpc",
+ *     cidrBlock: "172.16.0.0/16",
+ * });
  * const eu = new alicloud.Provider("eu", {region: "eu-central-1"});
- * const third = new alicloud.vpc.Network("third", {cidrBlock: "172.16.0.0/16"}, {
+ * const third = new alicloud.vpc.Network("third", {
+ *     vpcName: "the-third-vpc",
+ *     cidrBlock: "172.16.0.0/16",
+ * }, {
  *     provider: alicloud.eu,
  * });
  * const zone_attachment = new alicloud.pvtz.ZoneAttachment("zone-attachment", {
@@ -128,7 +149,7 @@ export class ZoneAttachment extends pulumi.CustomResource {
      */
     public readonly vpcIds!: pulumi.Output<string[]>;
     /**
-     * The List of the VPC:
+     * See `vpcs` below.Recommend to use `vpcs`.
      */
     public readonly vpcs!: pulumi.Output<outputs.pvtz.ZoneAttachmentVpc[]>;
     /**
@@ -187,7 +208,7 @@ export interface ZoneAttachmentState {
      */
     vpcIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The List of the VPC:
+     * See `vpcs` below.Recommend to use `vpcs`.
      */
     vpcs?: pulumi.Input<pulumi.Input<inputs.pvtz.ZoneAttachmentVpc>[]>;
     /**
@@ -213,7 +234,7 @@ export interface ZoneAttachmentArgs {
      */
     vpcIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The List of the VPC:
+     * See `vpcs` below.Recommend to use `vpcs`.
      */
     vpcs?: pulumi.Input<pulumi.Input<inputs.pvtz.ZoneAttachmentVpc>[]>;
     /**

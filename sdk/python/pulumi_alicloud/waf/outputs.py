@@ -33,7 +33,9 @@ class DomainLogHeader(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if value is not None:
@@ -91,7 +93,19 @@ class GetCertificatesCertificateResult(dict):
              instance_id: str,
              is_using: bool,
              sans: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'certificateId' in kwargs:
+            certificate_id = kwargs['certificateId']
+        if 'certificateName' in kwargs:
+            certificate_name = kwargs['certificateName']
+        if 'commonName' in kwargs:
+            common_name = kwargs['commonName']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'isUsing' in kwargs:
+            is_using = kwargs['isUsing']
+
         _setter("certificate_id", certificate_id)
         _setter("certificate_name", certificate_name)
         _setter("common_name", common_name)
@@ -247,7 +261,39 @@ class GetDomainsDomainResult(dict):
              source_ips: Sequence[str],
              version: int,
              write_time: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterType' in kwargs:
+            cluster_type = kwargs['clusterType']
+        if 'connectionTime' in kwargs:
+            connection_time = kwargs['connectionTime']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'http2Ports' in kwargs:
+            http2_ports = kwargs['http2Ports']
+        if 'httpPorts' in kwargs:
+            http_ports = kwargs['httpPorts']
+        if 'httpToUserIp' in kwargs:
+            http_to_user_ip = kwargs['httpToUserIp']
+        if 'httpsPorts' in kwargs:
+            https_ports = kwargs['httpsPorts']
+        if 'httpsRedirect' in kwargs:
+            https_redirect = kwargs['httpsRedirect']
+        if 'isAccessProduct' in kwargs:
+            is_access_product = kwargs['isAccessProduct']
+        if 'loadBalancing' in kwargs:
+            load_balancing = kwargs['loadBalancing']
+        if 'logHeaders' in kwargs:
+            log_headers = kwargs['logHeaders']
+        if 'readTime' in kwargs:
+            read_time = kwargs['readTime']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'sourceIps' in kwargs:
+            source_ips = kwargs['sourceIps']
+        if 'writeTime' in kwargs:
+            write_time = kwargs['writeTime']
+
         _setter("cluster_type", cluster_type)
         _setter("cname", cname)
         _setter("connection_time", connection_time)
@@ -440,7 +486,9 @@ class GetDomainsDomainLogHeaderResult(dict):
              _setter: Callable[[Any, Any], None],
              key: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 
@@ -503,7 +551,19 @@ class GetInstancesInstanceResult(dict):
              status: int,
              subscription_type: str,
              trial: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'endDate' in kwargs:
+            end_date = kwargs['endDate']
+        if 'inDebt' in kwargs:
+            in_debt = kwargs['inDebt']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'remainDay' in kwargs:
+            remain_day = kwargs['remainDay']
+        if 'subscriptionType' in kwargs:
+            subscription_type = kwargs['subscriptionType']
+
         _setter("end_date", end_date)
         _setter("id", id)
         _setter("in_debt", in_debt)

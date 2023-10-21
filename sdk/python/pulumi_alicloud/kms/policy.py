@@ -47,7 +47,15 @@ class PolicyArgs:
              policy_name: pulumi.Input[str],
              resources: pulumi.Input[Sequence[pulumi.Input[str]]],
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessControlRules' in kwargs:
+            access_control_rules = kwargs['accessControlRules']
+        if 'kmsInstanceId' in kwargs:
+            kms_instance_id = kwargs['kmsInstanceId']
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+
         _setter("access_control_rules", access_control_rules)
         _setter("kms_instance_id", kms_instance_id)
         _setter("permissions", permissions)
@@ -165,7 +173,15 @@ class _PolicyState:
              permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              policy_name: Optional[pulumi.Input[str]] = None,
              resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessControlRules' in kwargs:
+            access_control_rules = kwargs['accessControlRules']
+        if 'kmsInstanceId' in kwargs:
+            kms_instance_id = kwargs['kmsInstanceId']
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+
         if access_control_rules is not None:
             _setter("access_control_rules", access_control_rules)
         if description is not None:

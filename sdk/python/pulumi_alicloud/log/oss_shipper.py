@@ -107,7 +107,45 @@ class OssShipperArgs:
              oss_prefix: Optional[pulumi.Input[str]] = None,
              parquet_configs: Optional[pulumi.Input[Sequence[pulumi.Input['OssShipperParquetConfigArgs']]]] = None,
              role_arn: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bufferInterval' in kwargs:
+            buffer_interval = kwargs['bufferInterval']
+        if 'bufferSize' in kwargs:
+            buffer_size = kwargs['bufferSize']
+        if 'logstoreName' in kwargs:
+            logstore_name = kwargs['logstoreName']
+        if 'ossBucket' in kwargs:
+            oss_bucket = kwargs['ossBucket']
+        if 'pathFormat' in kwargs:
+            path_format = kwargs['pathFormat']
+        if 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if 'shipperName' in kwargs:
+            shipper_name = kwargs['shipperName']
+        if 'compressType' in kwargs:
+            compress_type = kwargs['compressType']
+        if 'csvConfigColumns' in kwargs:
+            csv_config_columns = kwargs['csvConfigColumns']
+        if 'csvConfigDelimiter' in kwargs:
+            csv_config_delimiter = kwargs['csvConfigDelimiter']
+        if 'csvConfigHeader' in kwargs:
+            csv_config_header = kwargs['csvConfigHeader']
+        if 'csvConfigLinefeed' in kwargs:
+            csv_config_linefeed = kwargs['csvConfigLinefeed']
+        if 'csvConfigNullidentifier' in kwargs:
+            csv_config_nullidentifier = kwargs['csvConfigNullidentifier']
+        if 'csvConfigQuote' in kwargs:
+            csv_config_quote = kwargs['csvConfigQuote']
+        if 'jsonEnableTag' in kwargs:
+            json_enable_tag = kwargs['jsonEnableTag']
+        if 'ossPrefix' in kwargs:
+            oss_prefix = kwargs['ossPrefix']
+        if 'parquetConfigs' in kwargs:
+            parquet_configs = kwargs['parquetConfigs']
+        if 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+
         _setter("buffer_interval", buffer_interval)
         _setter("buffer_size", buffer_size)
         _setter("format", format)
@@ -452,7 +490,45 @@ class _OssShipperState:
              project_name: Optional[pulumi.Input[str]] = None,
              role_arn: Optional[pulumi.Input[str]] = None,
              shipper_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bufferInterval' in kwargs:
+            buffer_interval = kwargs['bufferInterval']
+        if 'bufferSize' in kwargs:
+            buffer_size = kwargs['bufferSize']
+        if 'compressType' in kwargs:
+            compress_type = kwargs['compressType']
+        if 'csvConfigColumns' in kwargs:
+            csv_config_columns = kwargs['csvConfigColumns']
+        if 'csvConfigDelimiter' in kwargs:
+            csv_config_delimiter = kwargs['csvConfigDelimiter']
+        if 'csvConfigHeader' in kwargs:
+            csv_config_header = kwargs['csvConfigHeader']
+        if 'csvConfigLinefeed' in kwargs:
+            csv_config_linefeed = kwargs['csvConfigLinefeed']
+        if 'csvConfigNullidentifier' in kwargs:
+            csv_config_nullidentifier = kwargs['csvConfigNullidentifier']
+        if 'csvConfigQuote' in kwargs:
+            csv_config_quote = kwargs['csvConfigQuote']
+        if 'jsonEnableTag' in kwargs:
+            json_enable_tag = kwargs['jsonEnableTag']
+        if 'logstoreName' in kwargs:
+            logstore_name = kwargs['logstoreName']
+        if 'ossBucket' in kwargs:
+            oss_bucket = kwargs['ossBucket']
+        if 'ossPrefix' in kwargs:
+            oss_prefix = kwargs['ossPrefix']
+        if 'parquetConfigs' in kwargs:
+            parquet_configs = kwargs['parquetConfigs']
+        if 'pathFormat' in kwargs:
+            path_format = kwargs['pathFormat']
+        if 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if 'shipperName' in kwargs:
+            shipper_name = kwargs['shipperName']
+
         if buffer_interval is not None:
             _setter("buffer_interval", buffer_interval)
         if buffer_size is not None:

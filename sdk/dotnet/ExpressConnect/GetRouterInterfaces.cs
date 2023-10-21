@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.ExpressConnect
     public static class GetRouterInterfaces
     {
         /// <summary>
-        /// This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/doc-detail/52412.htm)
+        /// This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
         /// 
         /// &gt; **NOTE:** Available in 1.199.0+
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.ExpressConnect
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRouterInterfacesResult>("alicloud:expressconnect/getRouterInterfaces:getRouterInterfaces", args ?? new GetRouterInterfacesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/doc-detail/52412.htm)
+        /// This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
         /// 
         /// &gt; **NOTE:** Available in 1.199.0+
         /// 

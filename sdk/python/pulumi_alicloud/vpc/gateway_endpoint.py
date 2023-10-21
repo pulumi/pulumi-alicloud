@@ -51,7 +51,21 @@ class GatewayEndpointArgs:
              policy_document: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'gatewayEndpointDescrption' in kwargs:
+            gateway_endpoint_descrption = kwargs['gatewayEndpointDescrption']
+        if 'gatewayEndpointName' in kwargs:
+            gateway_endpoint_name = kwargs['gatewayEndpointName']
+        if 'policyDocument' in kwargs:
+            policy_document = kwargs['policyDocument']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("service_name", service_name)
         _setter("vpc_id", vpc_id)
         if gateway_endpoint_descrption is not None:
@@ -198,7 +212,23 @@ class _GatewayEndpointState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'gatewayEndpointDescrption' in kwargs:
+            gateway_endpoint_descrption = kwargs['gatewayEndpointDescrption']
+        if 'gatewayEndpointName' in kwargs:
+            gateway_endpoint_name = kwargs['gatewayEndpointName']
+        if 'policyDocument' in kwargs:
+            policy_document = kwargs['policyDocument']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if gateway_endpoint_descrption is not None:

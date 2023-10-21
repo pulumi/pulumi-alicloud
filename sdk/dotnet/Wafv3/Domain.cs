@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Wafv3
     /// <summary>
     /// Provides a Wafv3 Domain resource.
     /// 
-    /// For information about Wafv3 Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-doc-waf-openapi-2021-10-01-api-doc-createdomain).
+    /// For information about Wafv3 Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-waf-openapi-2021-10-01-createdomain).
     /// 
     /// &gt; **NOTE:** Available since v1.200.0.
     /// 

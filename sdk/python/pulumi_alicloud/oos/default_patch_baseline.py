@@ -27,7 +27,11 @@ class DefaultPatchBaselineArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              patch_baseline_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'patchBaselineName' in kwargs:
+            patch_baseline_name = kwargs['patchBaselineName']
+
         _setter("patch_baseline_name", patch_baseline_name)
 
     @property
@@ -63,7 +67,13 @@ class _DefaultPatchBaselineState:
              _setter: Callable[[Any, Any], None],
              patch_baseline_id: Optional[pulumi.Input[str]] = None,
              patch_baseline_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'patchBaselineId' in kwargs:
+            patch_baseline_id = kwargs['patchBaselineId']
+        if 'patchBaselineName' in kwargs:
+            patch_baseline_name = kwargs['patchBaselineName']
+
         if patch_baseline_id is not None:
             _setter("patch_baseline_id", patch_baseline_id)
         if patch_baseline_name is not None:
@@ -104,7 +114,7 @@ class DefaultPatchBaseline(pulumi.CustomResource):
         """
         Provides a Oos Default Patch Baseline resource.
 
-        For information about Oos Default Patch Baseline and how to use it, see [What is Default Patch Baseline](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/api-doc-oos-2019-06-01-api-doc-registerdefaultpatchbaseline).
+        For information about Oos Default Patch Baseline and how to use it, see [What is Default Patch Baseline](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/api-oos-2019-06-01-registerdefaultpatchbaseline).
 
         > **NOTE:** Available in v1.203.0+.
 
@@ -145,7 +155,7 @@ class DefaultPatchBaseline(pulumi.CustomResource):
         """
         Provides a Oos Default Patch Baseline resource.
 
-        For information about Oos Default Patch Baseline and how to use it, see [What is Default Patch Baseline](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/api-doc-oos-2019-06-01-api-doc-registerdefaultpatchbaseline).
+        For information about Oos Default Patch Baseline and how to use it, see [What is Default Patch Baseline](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/api-oos-2019-06-01-registerdefaultpatchbaseline).
 
         > **NOTE:** Available in v1.203.0+.
 

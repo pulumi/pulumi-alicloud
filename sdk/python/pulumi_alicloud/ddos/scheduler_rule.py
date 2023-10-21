@@ -48,7 +48,15 @@ class SchedulerRuleArgs:
              rules: pulumi.Input[Sequence[pulumi.Input['SchedulerRuleRuleArgs']]],
              param: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+        if 'ruleType' in kwargs:
+            rule_type = kwargs['ruleType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("rule_name", rule_name)
         _setter("rule_type", rule_type)
         _setter("rules", rules)
@@ -160,7 +168,15 @@ class _SchedulerRuleState:
              rule_name: Optional[pulumi.Input[str]] = None,
              rule_type: Optional[pulumi.Input[int]] = None,
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['SchedulerRuleRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+        if 'ruleType' in kwargs:
+            rule_type = kwargs['ruleType']
+
         if cname is not None:
             _setter("cname", cname)
         if param is not None:

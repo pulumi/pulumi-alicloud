@@ -192,7 +192,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<int?> EvaluationCount { get; private set; } = null!;
 
         /// <summary>
-        /// The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
+        /// The name for the alarm's associated metric. See `dimensions` below for details.
         /// </summary>
         [Output("metricName")]
         public Output<string> MetricName { get; private set; } = null!;
@@ -343,7 +343,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<int>? EvaluationCount { get; set; }
 
         /// <summary>
-        /// The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
+        /// The name for the alarm's associated metric. See `dimensions` below for details.
         /// </summary>
         [Input("metricName", required: true)]
         public Input<string> MetricName { get; set; } = null!;
@@ -447,7 +447,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<int>? EvaluationCount { get; set; }
 
         /// <summary>
-        /// The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
+        /// The name for the alarm's associated metric. See `dimensions` below for details.
         /// </summary>
         [Input("metricName")]
         public Input<string>? MetricName { get; set; }

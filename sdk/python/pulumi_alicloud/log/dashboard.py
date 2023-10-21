@@ -43,7 +43,17 @@ class DashboardArgs:
              project_name: pulumi.Input[str],
              attribute: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'charList' in kwargs:
+            char_list = kwargs['charList']
+        if 'dashboardName' in kwargs:
+            dashboard_name = kwargs['dashboardName']
+        if 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("char_list", char_list)
         _setter("dashboard_name", dashboard_name)
         _setter("project_name", project_name)
@@ -145,7 +155,17 @@ class _DashboardState:
              dashboard_name: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              project_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'charList' in kwargs:
+            char_list = kwargs['charList']
+        if 'dashboardName' in kwargs:
+            dashboard_name = kwargs['dashboardName']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+
         if attribute is not None:
             _setter("attribute", attribute)
         if char_list is not None:

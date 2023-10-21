@@ -31,7 +31,13 @@ class BandwidthPackageAttachmentArgs:
              _setter: Callable[[Any, Any], None],
              accelerator_id: pulumi.Input[str],
              bandwidth_package_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'bandwidthPackageId' in kwargs:
+            bandwidth_package_id = kwargs['bandwidthPackageId']
+
         _setter("accelerator_id", accelerator_id)
         _setter("bandwidth_package_id", bandwidth_package_id)
 
@@ -88,7 +94,13 @@ class _BandwidthPackageAttachmentState:
              accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              bandwidth_package_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'bandwidthPackageId' in kwargs:
+            bandwidth_package_id = kwargs['bandwidthPackageId']
+
         if accelerator_id is not None:
             _setter("accelerator_id", accelerator_id)
         if accelerators is not None:

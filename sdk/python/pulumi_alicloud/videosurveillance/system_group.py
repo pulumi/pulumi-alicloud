@@ -55,7 +55,19 @@ class SystemGroupArgs:
              callback: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'inProtocol' in kwargs:
+            in_protocol = kwargs['inProtocol']
+        if 'outProtocol' in kwargs:
+            out_protocol = kwargs['outProtocol']
+        if 'playDomain' in kwargs:
+            play_domain = kwargs['playDomain']
+        if 'pushDomain' in kwargs:
+            push_domain = kwargs['pushDomain']
+
         _setter("group_name", group_name)
         _setter("in_protocol", in_protocol)
         _setter("out_protocol", out_protocol)
@@ -237,7 +249,31 @@ class _SystemGroupState:
              play_domain: Optional[pulumi.Input[str]] = None,
              push_domain: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'captureImage' in kwargs:
+            capture_image = kwargs['captureImage']
+        if 'captureInterval' in kwargs:
+            capture_interval = kwargs['captureInterval']
+        if 'captureOssBucket' in kwargs:
+            capture_oss_bucket = kwargs['captureOssBucket']
+        if 'captureOssPath' in kwargs:
+            capture_oss_path = kwargs['captureOssPath']
+        if 'captureVideo' in kwargs:
+            capture_video = kwargs['captureVideo']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'inProtocol' in kwargs:
+            in_protocol = kwargs['inProtocol']
+        if 'lazyPull' in kwargs:
+            lazy_pull = kwargs['lazyPull']
+        if 'outProtocol' in kwargs:
+            out_protocol = kwargs['outProtocol']
+        if 'playDomain' in kwargs:
+            play_domain = kwargs['playDomain']
+        if 'pushDomain' in kwargs:
+            push_domain = kwargs['pushDomain']
+
         if callback is not None:
             _setter("callback", callback)
         if capture_image is not None:

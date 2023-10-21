@@ -57,7 +57,25 @@ class StackInstanceArgs:
              parameter_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['StackInstanceParameterOverrideArgs']]]] = None,
              retain_stacks: Optional[pulumi.Input[bool]] = None,
              timeout_in_minutes: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'stackGroupName' in kwargs:
+            stack_group_name = kwargs['stackGroupName']
+        if 'stackInstanceAccountId' in kwargs:
+            stack_instance_account_id = kwargs['stackInstanceAccountId']
+        if 'stackInstanceRegionId' in kwargs:
+            stack_instance_region_id = kwargs['stackInstanceRegionId']
+        if 'operationDescription' in kwargs:
+            operation_description = kwargs['operationDescription']
+        if 'operationPreferences' in kwargs:
+            operation_preferences = kwargs['operationPreferences']
+        if 'parameterOverrides' in kwargs:
+            parameter_overrides = kwargs['parameterOverrides']
+        if 'retainStacks' in kwargs:
+            retain_stacks = kwargs['retainStacks']
+        if 'timeoutInMinutes' in kwargs:
+            timeout_in_minutes = kwargs['timeoutInMinutes']
+
         _setter("stack_group_name", stack_group_name)
         _setter("stack_instance_account_id", stack_instance_account_id)
         _setter("stack_instance_region_id", stack_instance_region_id)
@@ -217,7 +235,25 @@ class _StackInstanceState:
              stack_instance_region_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              timeout_in_minutes: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'operationDescription' in kwargs:
+            operation_description = kwargs['operationDescription']
+        if 'operationPreferences' in kwargs:
+            operation_preferences = kwargs['operationPreferences']
+        if 'parameterOverrides' in kwargs:
+            parameter_overrides = kwargs['parameterOverrides']
+        if 'retainStacks' in kwargs:
+            retain_stacks = kwargs['retainStacks']
+        if 'stackGroupName' in kwargs:
+            stack_group_name = kwargs['stackGroupName']
+        if 'stackInstanceAccountId' in kwargs:
+            stack_instance_account_id = kwargs['stackInstanceAccountId']
+        if 'stackInstanceRegionId' in kwargs:
+            stack_instance_region_id = kwargs['stackInstanceRegionId']
+        if 'timeoutInMinutes' in kwargs:
+            timeout_in_minutes = kwargs['timeoutInMinutes']
+
         if operation_description is not None:
             _setter("operation_description", operation_description)
         if operation_preferences is not None:

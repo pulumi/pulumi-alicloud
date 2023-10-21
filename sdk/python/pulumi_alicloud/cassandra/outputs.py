@@ -59,7 +59,21 @@ class GetBackupPlansPlanResult(dict):
              data_center_id: str,
              id: str,
              retention_period: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupPeriod' in kwargs:
+            backup_period = kwargs['backupPeriod']
+        if 'backupTime' in kwargs:
+            backup_time = kwargs['backupTime']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dataCenterId' in kwargs:
+            data_center_id = kwargs['dataCenterId']
+        if 'retentionPeriod' in kwargs:
+            retention_period = kwargs['retentionPeriod']
+
         _setter("active", active)
         _setter("backup_period", backup_period)
         _setter("backup_time", backup_time)
@@ -192,7 +206,27 @@ class GetClustersClusterResult(dict):
              pay_type: str,
              status: str,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'createdTime' in kwargs:
+            created_time = kwargs['createdTime']
+        if 'dataCenterCount' in kwargs:
+            data_center_count = kwargs['dataCenterCount']
+        if 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if 'lockMode' in kwargs:
+            lock_mode = kwargs['lockMode']
+        if 'majorVersion' in kwargs:
+            major_version = kwargs['majorVersion']
+        if 'minorVersion' in kwargs:
+            minor_version = kwargs['minorVersion']
+        if 'payType' in kwargs:
+            pay_type = kwargs['payType']
+
         _setter("cluster_id", cluster_id)
         _setter("cluster_name", cluster_name)
         _setter("created_time", created_time)
@@ -375,7 +409,39 @@ class GetDataCentersCenterResult(dict):
              vpc_id: str,
              vswitch_id: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'commodityInstance' in kwargs:
+            commodity_instance = kwargs['commodityInstance']
+        if 'createdTime' in kwargs:
+            created_time = kwargs['createdTime']
+        if 'dataCenterId' in kwargs:
+            data_center_id = kwargs['dataCenterId']
+        if 'dataCenterName' in kwargs:
+            data_center_name = kwargs['dataCenterName']
+        if 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'lockMode' in kwargs:
+            lock_mode = kwargs['lockMode']
+        if 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+        if 'payType' in kwargs:
+            pay_type = kwargs['payType']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("cluster_id", cluster_id)
         _setter("commodity_instance", commodity_instance)
         _setter("created_time", created_time)
@@ -538,7 +604,11 @@ class GetZonesZoneResult(dict):
              _setter: Callable[[Any, Any], None],
              id: str,
              multi_zone_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'multiZoneIds' in kwargs:
+            multi_zone_ids = kwargs['multiZoneIds']
+
         _setter("id", id)
         _setter("multi_zone_ids", multi_zone_ids)
 

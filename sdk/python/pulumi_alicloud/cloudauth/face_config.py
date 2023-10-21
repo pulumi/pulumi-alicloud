@@ -31,7 +31,13 @@ class FaceConfigArgs:
              _setter: Callable[[Any, Any], None],
              biz_name: pulumi.Input[str],
              biz_type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bizName' in kwargs:
+            biz_name = kwargs['bizName']
+        if 'bizType' in kwargs:
+            biz_type = kwargs['bizType']
+
         _setter("biz_name", biz_name)
         _setter("biz_type", biz_type)
 
@@ -84,7 +90,15 @@ class _FaceConfigState:
              biz_name: Optional[pulumi.Input[str]] = None,
              biz_type: Optional[pulumi.Input[str]] = None,
              gmt_modified: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bizName' in kwargs:
+            biz_name = kwargs['bizName']
+        if 'bizType' in kwargs:
+            biz_type = kwargs['bizType']
+        if 'gmtModified' in kwargs:
+            gmt_modified = kwargs['gmtModified']
+
         if biz_name is not None:
             _setter("biz_name", biz_name)
         if biz_type is not None:

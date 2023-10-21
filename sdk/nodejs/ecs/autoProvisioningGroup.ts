@@ -57,14 +57,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ## Block config
- *
- * The config mapping supports the following:
- * * `instanceType` - (Optional) The instance type of the Nth extended configurations of the launch template.
- * * `maxPrice` - (Required) The maximum price of the instance type specified in the Nth extended configurations of the launch template.
- * * `vswitchId` - (Required) The ID of the VSwitch in the Nth extended configurations of the launch template.
- * * `weightedCapacity` - (Required) The weight of the instance type specified in the Nth extended configurations of the launch template.
- * * `priority` - (Optional) The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
  *
  * ## Import
  *
@@ -123,7 +115,7 @@ export class AutoProvisioningGroup extends pulumi.CustomResource {
      */
     public readonly excessCapacityTerminationPolicy!: pulumi.Output<string | undefined>;
     /**
-     * DataDisk mappings to attach to ecs instance. See Block config below for details.
+     * DataDisk mappings to attach to ecs instance. See `block-config` below for details.
      */
     public readonly launchTemplateConfigs!: pulumi.Output<outputs.ecs.AutoProvisioningGroupLaunchTemplateConfig[]>;
     /**
@@ -278,7 +270,7 @@ export interface AutoProvisioningGroupState {
      */
     excessCapacityTerminationPolicy?: pulumi.Input<string>;
     /**
-     * DataDisk mappings to attach to ecs instance. See Block config below for details.
+     * DataDisk mappings to attach to ecs instance. See `block-config` below for details.
      */
     launchTemplateConfigs?: pulumi.Input<pulumi.Input<inputs.ecs.AutoProvisioningGroupLaunchTemplateConfig>[]>;
     /**
@@ -364,7 +356,7 @@ export interface AutoProvisioningGroupArgs {
      */
     excessCapacityTerminationPolicy?: pulumi.Input<string>;
     /**
-     * DataDisk mappings to attach to ecs instance. See Block config below for details.
+     * DataDisk mappings to attach to ecs instance. See `block-config` below for details.
      */
     launchTemplateConfigs: pulumi.Input<pulumi.Input<inputs.ecs.AutoProvisioningGroupLaunchTemplateConfig>[]>;
     /**

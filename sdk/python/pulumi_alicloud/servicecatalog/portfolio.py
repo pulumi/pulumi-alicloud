@@ -35,7 +35,13 @@ class PortfolioArgs:
              portfolio_name: pulumi.Input[str],
              provider_name: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'portfolioName' in kwargs:
+            portfolio_name = kwargs['portfolioName']
+        if 'providerName' in kwargs:
+            provider_name = kwargs['providerName']
+
         _setter("portfolio_name", portfolio_name)
         _setter("provider_name", provider_name)
         if description is not None:
@@ -110,7 +116,17 @@ class _PortfolioState:
              portfolio_arn: Optional[pulumi.Input[str]] = None,
              portfolio_name: Optional[pulumi.Input[str]] = None,
              provider_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'portfolioArn' in kwargs:
+            portfolio_arn = kwargs['portfolioArn']
+        if 'portfolioName' in kwargs:
+            portfolio_name = kwargs['portfolioName']
+        if 'providerName' in kwargs:
+            provider_name = kwargs['providerName']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:
@@ -195,7 +211,7 @@ class Portfolio(pulumi.CustomResource):
         """
         Provides a Service Catalog Portfolio resource.
 
-        For information about Service Catalog Portfolio and how to use it, see [What is Portfolio](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-createportfolio).
+        For information about Service Catalog Portfolio and how to use it, see [What is Portfolio](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createportfolio).
 
         > **NOTE:** Available since v1.204.0+.
 
@@ -239,7 +255,7 @@ class Portfolio(pulumi.CustomResource):
         """
         Provides a Service Catalog Portfolio resource.
 
-        For information about Service Catalog Portfolio and how to use it, see [What is Portfolio](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-createportfolio).
+        For information about Service Catalog Portfolio and how to use it, see [What is Portfolio](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createportfolio).
 
         > **NOTE:** Available since v1.204.0+.
 

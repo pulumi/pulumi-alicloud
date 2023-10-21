@@ -118,7 +118,51 @@ class ClusterArgs:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbClusterCategory' in kwargs:
+            db_cluster_category = kwargs['dbClusterCategory']
+        if 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if 'computeResource' in kwargs:
+            compute_resource = kwargs['computeResource']
+        if 'dbClusterClass' in kwargs:
+            db_cluster_class = kwargs['dbClusterClass']
+        if 'dbClusterVersion' in kwargs:
+            db_cluster_version = kwargs['dbClusterVersion']
+        if 'dbNodeClass' in kwargs:
+            db_node_class = kwargs['dbNodeClass']
+        if 'dbNodeCount' in kwargs:
+            db_node_count = kwargs['dbNodeCount']
+        if 'dbNodeStorage' in kwargs:
+            db_node_storage = kwargs['dbNodeStorage']
+        if 'diskPerformanceLevel' in kwargs:
+            disk_performance_level = kwargs['diskPerformanceLevel']
+        if 'elasticIoResource' in kwargs:
+            elastic_io_resource = kwargs['elasticIoResource']
+        if 'elasticIoResourceSize' in kwargs:
+            elastic_io_resource_size = kwargs['elasticIoResourceSize']
+        if 'maintainTime' in kwargs:
+            maintain_time = kwargs['maintainTime']
+        if 'modifyType' in kwargs:
+            modify_type = kwargs['modifyType']
+        if 'payType' in kwargs:
+            pay_type = kwargs['payType']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityIps' in kwargs:
+            security_ips = kwargs['securityIps']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("db_cluster_category", db_cluster_category)
         _setter("mode", mode)
         if auto_renew_period is not None:
@@ -576,7 +620,53 @@ class _ClusterState:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if 'computeResource' in kwargs:
+            compute_resource = kwargs['computeResource']
+        if 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if 'dbClusterCategory' in kwargs:
+            db_cluster_category = kwargs['dbClusterCategory']
+        if 'dbClusterClass' in kwargs:
+            db_cluster_class = kwargs['dbClusterClass']
+        if 'dbClusterVersion' in kwargs:
+            db_cluster_version = kwargs['dbClusterVersion']
+        if 'dbNodeClass' in kwargs:
+            db_node_class = kwargs['dbNodeClass']
+        if 'dbNodeCount' in kwargs:
+            db_node_count = kwargs['dbNodeCount']
+        if 'dbNodeStorage' in kwargs:
+            db_node_storage = kwargs['dbNodeStorage']
+        if 'diskPerformanceLevel' in kwargs:
+            disk_performance_level = kwargs['diskPerformanceLevel']
+        if 'elasticIoResource' in kwargs:
+            elastic_io_resource = kwargs['elasticIoResource']
+        if 'elasticIoResourceSize' in kwargs:
+            elastic_io_resource_size = kwargs['elasticIoResourceSize']
+        if 'maintainTime' in kwargs:
+            maintain_time = kwargs['maintainTime']
+        if 'modifyType' in kwargs:
+            modify_type = kwargs['modifyType']
+        if 'payType' in kwargs:
+            pay_type = kwargs['payType']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityIps' in kwargs:
+            security_ips = kwargs['securityIps']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if auto_renew_period is not None:
             _setter("auto_renew_period", auto_renew_period)
         if compute_resource is not None:

@@ -16,9 +16,17 @@ public final class GetTransitRouterMulticastDomainSourcesArgs extends com.pulumi
 
     public static final GetTransitRouterMulticastDomainSourcesArgs Empty = new GetTransitRouterMulticastDomainSourcesArgs();
 
+    /**
+     * A list of the multicast domain IDs.
+     * 
+     */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
+    /**
+     * @return A list of the multicast domain IDs.
+     * 
+     */
     public Optional<Output<List<String>>> ids() {
         return Optional.ofNullable(this.ids);
     }
@@ -79,15 +87,33 @@ public final class GetTransitRouterMulticastDomainSourcesArgs extends com.pulumi
             $ = new GetTransitRouterMulticastDomainSourcesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ids A list of the multicast domain IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(@Nullable Output<List<String>> ids) {
             $.ids = ids;
             return this;
         }
 
+        /**
+         * @param ids A list of the multicast domain IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(List<String> ids) {
             return ids(Output.of(ids));
         }
 
+        /**
+         * @param ids A list of the multicast domain IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }

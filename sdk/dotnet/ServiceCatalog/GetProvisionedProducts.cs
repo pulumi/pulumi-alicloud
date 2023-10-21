@@ -12,13 +12,15 @@ namespace Pulumi.AliCloud.ServiceCatalog
     public static class GetProvisionedProducts
     {
         /// <summary>
-        /// This data source provides Service Catalog Provisioned Product available to the user.[What is Provisioned Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-launchproduct)
+        /// This data source provides Service Catalog Provisioned Product available to the user. [What is Provisioned Product](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-launchproduct)
         /// 
-        /// &gt; **NOTE:** Available in 1.196.0+
+        /// &gt; **NOTE:** Available since v1.196.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -50,13 +52,15 @@ namespace Pulumi.AliCloud.ServiceCatalog
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProvisionedProductsResult>("alicloud:servicecatalog/getProvisionedProducts:getProvisionedProducts", args ?? new GetProvisionedProductsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Service Catalog Provisioned Product available to the user.[What is Provisioned Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-launchproduct)
+        /// This data source provides Service Catalog Provisioned Product available to the user. [What is Provisioned Product](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-launchproduct)
         /// 
-        /// &gt; **NOTE:** Available in 1.196.0+
+        /// &gt; **NOTE:** Available since v1.196.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -91,9 +95,15 @@ namespace Pulumi.AliCloud.ServiceCatalog
 
     public sealed class GetProvisionedProductsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The access filter.
+        /// </summary>
         [Input("accessLevelFilter")]
         public string? AccessLevelFilter { get; set; }
 
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
@@ -127,9 +137,15 @@ namespace Pulumi.AliCloud.ServiceCatalog
         [Input("pageSize")]
         public int? PageSize { get; set; }
 
+        /// <summary>
+        /// The field that is used to sort the queried data.
+        /// </summary>
         [Input("sortBy")]
         public string? SortBy { get; set; }
 
+        /// <summary>
+        /// The sorting method.
+        /// </summary>
         [Input("sortOrder")]
         public string? SortOrder { get; set; }
 
@@ -141,9 +157,15 @@ namespace Pulumi.AliCloud.ServiceCatalog
 
     public sealed class GetProvisionedProductsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The access filter.
+        /// </summary>
         [Input("accessLevelFilter")]
         public Input<string>? AccessLevelFilter { get; set; }
 
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 
@@ -177,9 +199,15 @@ namespace Pulumi.AliCloud.ServiceCatalog
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
 
+        /// <summary>
+        /// The field that is used to sort the queried data.
+        /// </summary>
         [Input("sortBy")]
         public Input<string>? SortBy { get; set; }
 
+        /// <summary>
+        /// The sorting method.
+        /// </summary>
         [Input("sortOrder")]
         public Input<string>? SortOrder { get; set; }
 
@@ -211,9 +239,12 @@ namespace Pulumi.AliCloud.ServiceCatalog
         public readonly string? OutputFile;
         public readonly int? PageNumber;
         public readonly int? PageSize;
+        /// <summary>
+        /// (Deprecated since v1.197.0) A list of Provisioned Product Entries. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetProvisionedProductsProductResult> Products;
         /// <summary>
-        /// A list of Provisioned Product Entries. Each element contains the following attributes:
+        /// (Available since v1.197.0) A list of Provisioned Product Entries. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProvisionedProductsProvisionedProductResult> ProvisionedProducts;
         public readonly string? SortBy;

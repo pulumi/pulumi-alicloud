@@ -35,7 +35,15 @@ class VpcEndpointServiceUserArgs:
              service_id: pulumi.Input[str],
              user_id: pulumi.Input[str],
              dry_run: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+
         _setter("service_id", service_id)
         _setter("user_id", user_id)
         if dry_run is not None:
@@ -102,7 +110,15 @@ class _VpcEndpointServiceUserState:
              dry_run: Optional[pulumi.Input[bool]] = None,
              service_id: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if dry_run is not None:
             _setter("dry_run", dry_run)
         if service_id is not None:

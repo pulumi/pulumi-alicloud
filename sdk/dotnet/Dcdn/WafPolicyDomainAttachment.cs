@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Dcdn
     /// <summary>
     /// Provides a DCDN Waf Policy Domain Attachment resource.
     /// 
-    /// For information about DCDN Waf Policy Domain Attachment and how to use it, see [What is Waf Policy Domain Attachment](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/modify-the-domain-name-bound-to-a-protection-policies).
+    /// For information about DCDN Waf Policy Domain Attachment and how to use it, see [What is Waf Policy Domain Attachment](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-modifydcdnwafpolicydomains).
     /// 
     /// &gt; **NOTE:** Available since v1.186.0.
     /// 

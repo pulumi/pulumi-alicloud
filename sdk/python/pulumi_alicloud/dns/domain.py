@@ -35,7 +35,13 @@ class DomainArgs:
              group_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         if group_id is not None:
             _setter("group_id", group_id)
         if name is not None:
@@ -112,7 +118,17 @@ class _DomainState:
              group_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dnsServers' in kwargs:
+            dns_servers = kwargs['dnsServers']
+        if 'domainId' in kwargs:
+            domain_id = kwargs['domainId']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         if dns_servers is not None:
             _setter("dns_servers", dns_servers)
         if domain_id is not None:

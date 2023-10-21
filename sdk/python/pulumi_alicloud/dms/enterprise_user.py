@@ -59,7 +59,19 @@ class EnterpriseUserArgs:
              status: Optional[pulumi.Input[str]] = None,
              tid: Optional[pulumi.Input[int]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxExecuteCount' in kwargs:
+            max_execute_count = kwargs['maxExecuteCount']
+        if 'maxResultCount' in kwargs:
+            max_result_count = kwargs['maxResultCount']
+        if 'nickName' in kwargs:
+            nick_name = kwargs['nickName']
+        if 'roleNames' in kwargs:
+            role_names = kwargs['roleNames']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         _setter("uid", uid)
         if max_execute_count is not None:
             _setter("max_execute_count", max_execute_count)
@@ -241,7 +253,19 @@ class _EnterpriseUserState:
              tid: Optional[pulumi.Input[int]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxExecuteCount' in kwargs:
+            max_execute_count = kwargs['maxExecuteCount']
+        if 'maxResultCount' in kwargs:
+            max_result_count = kwargs['maxResultCount']
+        if 'nickName' in kwargs:
+            nick_name = kwargs['nickName']
+        if 'roleNames' in kwargs:
+            role_names = kwargs['roleNames']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         if max_execute_count is not None:
             _setter("max_execute_count", max_execute_count)
         if max_result_count is not None:

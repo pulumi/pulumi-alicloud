@@ -31,6 +31,9 @@ class TairInstanceArgs:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  secondary_zone_id: Optional[pulumi.Input[str]] = None,
                  shard_count: Optional[pulumi.Input[int]] = None,
+                 storage_performance_level: Optional[pulumi.Input[str]] = None,
+                 storage_size_gb: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tair_instance_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TairInstance resource.
@@ -38,7 +41,7 @@ class TairInstanceArgs:
         :param pulumi.Input[str] instance_type: The storage medium of the instance. Valid values: tair_rdb, tair_scm, tair_essd.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC).
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch to which the instance is connected.
-        :param pulumi.Input[str] zone_id: The zone ID of the instance.
+        :param pulumi.Input[str] zone_id: Zone ID.
         :param pulumi.Input[str] auto_renew: Specifies whether to enable auto-renewal for the instance. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
         :param pulumi.Input[str] auto_renew_period: The subscription duration that is supported by auto-renewal. Unit: months. Valid values: 1, 2, 3, 6, and 12. This parameter is required only if the AutoRenew parameter is set to true.
         :param pulumi.Input[str] effective_time: The time when to change the configurations. Default value: Immediately. Valid values: Immediately (The configurations are immediately changed), MaintainTime (The configurations are changed within the maintenance window).
@@ -50,7 +53,10 @@ class TairInstanceArgs:
         :param pulumi.Input[int] port: The Tair service port. The service port of the instance. Valid values: 1024 to 65535. Default value: 6379.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[str] secondary_zone_id: The ID of the secondary zone.This parameter is returned only if the instance is deployed in two zones.
-        :param pulumi.Input[int] shard_count: The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm.
+        :param pulumi.Input[int] shard_count: The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
+        :param pulumi.Input[str] storage_performance_level: The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instance_type is "tair_essd", this attribute takes effect and is required.
+        :param pulumi.Input[int] storage_size_gb: The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instance_type is "tair_essd", this attribute takes effect and is required.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         :param pulumi.Input[str] tair_instance_name: The name of the resource.
         """
         TairInstanceArgs._configure(
@@ -72,6 +78,9 @@ class TairInstanceArgs:
             resource_group_id=resource_group_id,
             secondary_zone_id=secondary_zone_id,
             shard_count=shard_count,
+            storage_performance_level=storage_performance_level,
+            storage_size_gb=storage_size_gb,
+            tags=tags,
             tair_instance_name=tair_instance_name,
         )
     @staticmethod
@@ -94,8 +103,47 @@ class TairInstanceArgs:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              secondary_zone_id: Optional[pulumi.Input[str]] = None,
              shard_count: Optional[pulumi.Input[int]] = None,
+             storage_performance_level: Optional[pulumi.Input[str]] = None,
+             storage_size_gb: Optional[pulumi.Input[int]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              tair_instance_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if 'effectiveTime' in kwargs:
+            effective_time = kwargs['effectiveTime']
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'forceUpgrade' in kwargs:
+            force_upgrade = kwargs['forceUpgrade']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'secondaryZoneId' in kwargs:
+            secondary_zone_id = kwargs['secondaryZoneId']
+        if 'shardCount' in kwargs:
+            shard_count = kwargs['shardCount']
+        if 'storagePerformanceLevel' in kwargs:
+            storage_performance_level = kwargs['storagePerformanceLevel']
+        if 'storageSizeGb' in kwargs:
+            storage_size_gb = kwargs['storageSizeGb']
+        if 'tairInstanceName' in kwargs:
+            tair_instance_name = kwargs['tairInstanceName']
+
         _setter("instance_class", instance_class)
         _setter("instance_type", instance_type)
         _setter("vpc_id", vpc_id)
@@ -125,6 +173,12 @@ class TairInstanceArgs:
             _setter("secondary_zone_id", secondary_zone_id)
         if shard_count is not None:
             _setter("shard_count", shard_count)
+        if storage_performance_level is not None:
+            _setter("storage_performance_level", storage_performance_level)
+        if storage_size_gb is not None:
+            _setter("storage_size_gb", storage_size_gb)
+        if tags is not None:
+            _setter("tags", tags)
         if tair_instance_name is not None:
             _setter("tair_instance_name", tair_instance_name)
 
@@ -180,7 +234,7 @@ class TairInstanceArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The zone ID of the instance.
+        Zone ID.
         """
         return pulumi.get(self, "zone_id")
 
@@ -324,13 +378,49 @@ class TairInstanceArgs:
     @pulumi.getter(name="shardCount")
     def shard_count(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm.
+        The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
         """
         return pulumi.get(self, "shard_count")
 
     @shard_count.setter
     def shard_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "shard_count", value)
+
+    @property
+    @pulumi.getter(name="storagePerformanceLevel")
+    def storage_performance_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instance_type is "tair_essd", this attribute takes effect and is required.
+        """
+        return pulumi.get(self, "storage_performance_level")
+
+    @storage_performance_level.setter
+    def storage_performance_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_performance_level", value)
+
+    @property
+    @pulumi.getter(name="storageSizeGb")
+    def storage_size_gb(self) -> Optional[pulumi.Input[int]]:
+        """
+        The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instance_type is "tair_essd", this attribute takes effect and is required.
+        """
+        return pulumi.get(self, "storage_size_gb")
+
+    @storage_size_gb.setter
+    def storage_size_gb(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "storage_size_gb", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
     @property
     @pulumi.getter(name="tairInstanceName")
@@ -364,6 +454,9 @@ class _TairInstanceState:
                  secondary_zone_id: Optional[pulumi.Input[str]] = None,
                  shard_count: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 storage_performance_level: Optional[pulumi.Input[str]] = None,
+                 storage_size_gb: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tair_instance_name: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -384,12 +477,15 @@ class _TairInstanceState:
         :param pulumi.Input[int] port: The Tair service port. The service port of the instance. Valid values: 1024 to 65535. Default value: 6379.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[str] secondary_zone_id: The ID of the secondary zone.This parameter is returned only if the instance is deployed in two zones.
-        :param pulumi.Input[int] shard_count: The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm.
-        :param pulumi.Input[str] status: The status of the instance. Valid values: Normal, Creating, Changing, Inactive, Flushing, Released, Transforming, Unavailable, Error, Migrating, and upgrading, networkModifying, SSLModifying, and MajorVersionUpgrading.
+        :param pulumi.Input[int] shard_count: The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
+        :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[str] storage_performance_level: The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instance_type is "tair_essd", this attribute takes effect and is required.
+        :param pulumi.Input[int] storage_size_gb: The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instance_type is "tair_essd", this attribute takes effect and is required.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         :param pulumi.Input[str] tair_instance_name: The name of the resource.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC).
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch to which the instance is connected.
-        :param pulumi.Input[str] zone_id: The zone ID of the instance.
+        :param pulumi.Input[str] zone_id: Zone ID.
         """
         _TairInstanceState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -409,6 +505,9 @@ class _TairInstanceState:
             secondary_zone_id=secondary_zone_id,
             shard_count=shard_count,
             status=status,
+            storage_performance_level=storage_performance_level,
+            storage_size_gb=storage_size_gb,
+            tags=tags,
             tair_instance_name=tair_instance_name,
             vpc_id=vpc_id,
             vswitch_id=vswitch_id,
@@ -433,11 +532,52 @@ class _TairInstanceState:
              secondary_zone_id: Optional[pulumi.Input[str]] = None,
              shard_count: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[str]] = None,
+             storage_performance_level: Optional[pulumi.Input[str]] = None,
+             storage_size_gb: Optional[pulumi.Input[int]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              tair_instance_name: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'effectiveTime' in kwargs:
+            effective_time = kwargs['effectiveTime']
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'forceUpgrade' in kwargs:
+            force_upgrade = kwargs['forceUpgrade']
+        if 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'secondaryZoneId' in kwargs:
+            secondary_zone_id = kwargs['secondaryZoneId']
+        if 'shardCount' in kwargs:
+            shard_count = kwargs['shardCount']
+        if 'storagePerformanceLevel' in kwargs:
+            storage_performance_level = kwargs['storagePerformanceLevel']
+        if 'storageSizeGb' in kwargs:
+            storage_size_gb = kwargs['storageSizeGb']
+        if 'tairInstanceName' in kwargs:
+            tair_instance_name = kwargs['tairInstanceName']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if auto_renew is not None:
             _setter("auto_renew", auto_renew)
         if auto_renew_period is not None:
@@ -470,6 +610,12 @@ class _TairInstanceState:
             _setter("shard_count", shard_count)
         if status is not None:
             _setter("status", status)
+        if storage_performance_level is not None:
+            _setter("storage_performance_level", storage_performance_level)
+        if storage_size_gb is not None:
+            _setter("storage_size_gb", storage_size_gb)
+        if tags is not None:
+            _setter("tags", tags)
         if tair_instance_name is not None:
             _setter("tair_instance_name", tair_instance_name)
         if vpc_id is not None:
@@ -651,7 +797,7 @@ class _TairInstanceState:
     @pulumi.getter(name="shardCount")
     def shard_count(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm.
+        The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
         """
         return pulumi.get(self, "shard_count")
 
@@ -663,13 +809,49 @@ class _TairInstanceState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the instance. Valid values: Normal, Creating, Changing, Inactive, Flushing, Released, Transforming, Unavailable, Error, Migrating, and upgrading, networkModifying, SSLModifying, and MajorVersionUpgrading.
+        The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="storagePerformanceLevel")
+    def storage_performance_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instance_type is "tair_essd", this attribute takes effect and is required.
+        """
+        return pulumi.get(self, "storage_performance_level")
+
+    @storage_performance_level.setter
+    def storage_performance_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_performance_level", value)
+
+    @property
+    @pulumi.getter(name="storageSizeGb")
+    def storage_size_gb(self) -> Optional[pulumi.Input[int]]:
+        """
+        The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instance_type is "tair_essd", this attribute takes effect and is required.
+        """
+        return pulumi.get(self, "storage_size_gb")
+
+    @storage_size_gb.setter
+    def storage_size_gb(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "storage_size_gb", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
     @property
     @pulumi.getter(name="tairInstanceName")
@@ -711,7 +893,7 @@ class _TairInstanceState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone ID of the instance.
+        Zone ID.
         """
         return pulumi.get(self, "zone_id")
 
@@ -739,6 +921,9 @@ class TairInstance(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  secondary_zone_id: Optional[pulumi.Input[str]] = None,
                  shard_count: Optional[pulumi.Input[int]] = None,
+                 storage_performance_level: Optional[pulumi.Input[str]] = None,
+                 storage_size_gb: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tair_instance_name: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -768,11 +953,14 @@ class TairInstance(pulumi.CustomResource):
         :param pulumi.Input[int] port: The Tair service port. The service port of the instance. Valid values: 1024 to 65535. Default value: 6379.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[str] secondary_zone_id: The ID of the secondary zone.This parameter is returned only if the instance is deployed in two zones.
-        :param pulumi.Input[int] shard_count: The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm.
+        :param pulumi.Input[int] shard_count: The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
+        :param pulumi.Input[str] storage_performance_level: The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instance_type is "tair_essd", this attribute takes effect and is required.
+        :param pulumi.Input[int] storage_size_gb: The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instance_type is "tair_essd", this attribute takes effect and is required.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         :param pulumi.Input[str] tair_instance_name: The name of the resource.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC).
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch to which the instance is connected.
-        :param pulumi.Input[str] zone_id: The zone ID of the instance.
+        :param pulumi.Input[str] zone_id: Zone ID.
         """
         ...
     @overload
@@ -822,6 +1010,9 @@ class TairInstance(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  secondary_zone_id: Optional[pulumi.Input[str]] = None,
                  shard_count: Optional[pulumi.Input[int]] = None,
+                 storage_performance_level: Optional[pulumi.Input[str]] = None,
+                 storage_size_gb: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tair_instance_name: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -853,6 +1044,9 @@ class TairInstance(pulumi.CustomResource):
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["secondary_zone_id"] = secondary_zone_id
             __props__.__dict__["shard_count"] = shard_count
+            __props__.__dict__["storage_performance_level"] = storage_performance_level
+            __props__.__dict__["storage_size_gb"] = storage_size_gb
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["tair_instance_name"] = tair_instance_name
             if vpc_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_id'")
@@ -893,6 +1087,9 @@ class TairInstance(pulumi.CustomResource):
             secondary_zone_id: Optional[pulumi.Input[str]] = None,
             shard_count: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            storage_performance_level: Optional[pulumi.Input[str]] = None,
+            storage_size_gb: Optional[pulumi.Input[int]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             tair_instance_name: Optional[pulumi.Input[str]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -918,12 +1115,15 @@ class TairInstance(pulumi.CustomResource):
         :param pulumi.Input[int] port: The Tair service port. The service port of the instance. Valid values: 1024 to 65535. Default value: 6379.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[str] secondary_zone_id: The ID of the secondary zone.This parameter is returned only if the instance is deployed in two zones.
-        :param pulumi.Input[int] shard_count: The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm.
-        :param pulumi.Input[str] status: The status of the instance. Valid values: Normal, Creating, Changing, Inactive, Flushing, Released, Transforming, Unavailable, Error, Migrating, and upgrading, networkModifying, SSLModifying, and MajorVersionUpgrading.
+        :param pulumi.Input[int] shard_count: The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
+        :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[str] storage_performance_level: The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instance_type is "tair_essd", this attribute takes effect and is required.
+        :param pulumi.Input[int] storage_size_gb: The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instance_type is "tair_essd", this attribute takes effect and is required.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         :param pulumi.Input[str] tair_instance_name: The name of the resource.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC).
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch to which the instance is connected.
-        :param pulumi.Input[str] zone_id: The zone ID of the instance.
+        :param pulumi.Input[str] zone_id: Zone ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -945,6 +1145,9 @@ class TairInstance(pulumi.CustomResource):
         __props__.__dict__["secondary_zone_id"] = secondary_zone_id
         __props__.__dict__["shard_count"] = shard_count
         __props__.__dict__["status"] = status
+        __props__.__dict__["storage_performance_level"] = storage_performance_level
+        __props__.__dict__["storage_size_gb"] = storage_size_gb
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["tair_instance_name"] = tair_instance_name
         __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
@@ -1067,7 +1270,7 @@ class TairInstance(pulumi.CustomResource):
     @pulumi.getter(name="shardCount")
     def shard_count(self) -> pulumi.Output[int]:
         """
-        The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm.
+        The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
         """
         return pulumi.get(self, "shard_count")
 
@@ -1075,9 +1278,33 @@ class TairInstance(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the instance. Valid values: Normal, Creating, Changing, Inactive, Flushing, Released, Transforming, Unavailable, Error, Migrating, and upgrading, networkModifying, SSLModifying, and MajorVersionUpgrading.
+        The status of the resource.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="storagePerformanceLevel")
+    def storage_performance_level(self) -> pulumi.Output[Optional[str]]:
+        """
+        The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instance_type is "tair_essd", this attribute takes effect and is required.
+        """
+        return pulumi.get(self, "storage_performance_level")
+
+    @property
+    @pulumi.getter(name="storageSizeGb")
+    def storage_size_gb(self) -> pulumi.Output[int]:
+        """
+        The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instance_type is "tair_essd", this attribute takes effect and is required.
+        """
+        return pulumi.get(self, "storage_size_gb")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="tairInstanceName")
@@ -1107,7 +1334,7 @@ class TairInstance(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The zone ID of the instance.
+        Zone ID.
         """
         return pulumi.get(self, "zone_id")
 

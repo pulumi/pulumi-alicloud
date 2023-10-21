@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.MarketPlace
     public sealed class GetProductsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
+        /// The Category ID of products.
         /// </summary>
         [Input("categoryId")]
         public string? CategoryId { get; set; }
@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.MarketPlace
     public sealed class GetProductsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
+        /// The Category ID of products.
         /// </summary>
         [Input("categoryId")]
         public Input<string>? CategoryId { get; set; }

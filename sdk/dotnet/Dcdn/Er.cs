@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Dcdn
     /// <summary>
     /// Provides a DCDN Er resource.
     /// 
-    /// For information about DCDN Er and how to use it, see [What is Er](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/createroutine).
+    /// For information about DCDN Er and how to use it, see [What is Er](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-createroutine).
     /// 
     /// &gt; **NOTE:** Available since v1.201.0.
     /// 

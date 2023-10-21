@@ -35,7 +35,15 @@ class InstanceAttachmentArgs:
              instance_name: pulumi.Input[str],
              vpc_name: pulumi.Input[str],
              vswitch_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'vpcName' in kwargs:
+            vpc_name = kwargs['vpcName']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("instance_name", instance_name)
         _setter("vpc_name", vpc_name)
         _setter("vswitch_id", vswitch_id)
@@ -105,7 +113,17 @@ class _InstanceAttachmentState:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vpc_name: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vpcName' in kwargs:
+            vpc_name = kwargs['vpcName']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if instance_name is not None:
             _setter("instance_name", instance_name)
         if vpc_id is not None:

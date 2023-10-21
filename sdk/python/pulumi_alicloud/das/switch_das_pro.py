@@ -35,7 +35,15 @@ class SwitchDasProArgs:
              instance_id: pulumi.Input[str],
              sql_retention: Optional[pulumi.Input[int]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'sqlRetention' in kwargs:
+            sql_retention = kwargs['sqlRetention']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         _setter("instance_id", instance_id)
         if sql_retention is not None:
             _setter("sql_retention", sql_retention)
@@ -107,7 +115,15 @@ class _SwitchDasProState:
              sql_retention: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[bool]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'sqlRetention' in kwargs:
+            sql_retention = kwargs['sqlRetention']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if instance_id is not None:
             _setter("instance_id", instance_id)
         if sql_retention is not None:

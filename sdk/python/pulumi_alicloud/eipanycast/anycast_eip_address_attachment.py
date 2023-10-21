@@ -57,7 +57,23 @@ class AnycastEipAddressAttachmentArgs:
              association_mode: Optional[pulumi.Input[str]] = None,
              pop_locations: Optional[pulumi.Input[Sequence[pulumi.Input['AnycastEipAddressAttachmentPopLocationArgs']]]] = None,
              private_ip_address: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'anycastId' in kwargs:
+            anycast_id = kwargs['anycastId']
+        if 'bindInstanceId' in kwargs:
+            bind_instance_id = kwargs['bindInstanceId']
+        if 'bindInstanceRegionId' in kwargs:
+            bind_instance_region_id = kwargs['bindInstanceRegionId']
+        if 'bindInstanceType' in kwargs:
+            bind_instance_type = kwargs['bindInstanceType']
+        if 'associationMode' in kwargs:
+            association_mode = kwargs['associationMode']
+        if 'popLocations' in kwargs:
+            pop_locations = kwargs['popLocations']
+        if 'privateIpAddress' in kwargs:
+            private_ip_address = kwargs['privateIpAddress']
+
         _setter("anycast_id", anycast_id)
         _setter("bind_instance_id", bind_instance_id)
         _setter("bind_instance_region_id", bind_instance_region_id)
@@ -210,7 +226,25 @@ class _AnycastEipAddressAttachmentState:
              pop_locations: Optional[pulumi.Input[Sequence[pulumi.Input['AnycastEipAddressAttachmentPopLocationArgs']]]] = None,
              private_ip_address: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'anycastId' in kwargs:
+            anycast_id = kwargs['anycastId']
+        if 'associationMode' in kwargs:
+            association_mode = kwargs['associationMode']
+        if 'bindInstanceId' in kwargs:
+            bind_instance_id = kwargs['bindInstanceId']
+        if 'bindInstanceRegionId' in kwargs:
+            bind_instance_region_id = kwargs['bindInstanceRegionId']
+        if 'bindInstanceType' in kwargs:
+            bind_instance_type = kwargs['bindInstanceType']
+        if 'bindTime' in kwargs:
+            bind_time = kwargs['bindTime']
+        if 'popLocations' in kwargs:
+            pop_locations = kwargs['popLocations']
+        if 'privateIpAddress' in kwargs:
+            private_ip_address = kwargs['privateIpAddress']
+
         if anycast_id is not None:
             _setter("anycast_id", anycast_id)
         if association_mode is not None:

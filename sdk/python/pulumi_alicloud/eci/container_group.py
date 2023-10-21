@@ -128,7 +128,49 @@ class ContainerGroupArgs:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              volumes: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'containerGroupName' in kwargs:
+            container_group_name = kwargs['containerGroupName']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'acrRegistryInfos' in kwargs:
+            acr_registry_infos = kwargs['acrRegistryInfos']
+        if 'autoCreateEip' in kwargs:
+            auto_create_eip = kwargs['autoCreateEip']
+        if 'autoMatchImageCache' in kwargs:
+            auto_match_image_cache = kwargs['autoMatchImageCache']
+        if 'dnsConfig' in kwargs:
+            dns_config = kwargs['dnsConfig']
+        if 'eciSecurityContext' in kwargs:
+            eci_security_context = kwargs['eciSecurityContext']
+        if 'eipBandwidth' in kwargs:
+            eip_bandwidth = kwargs['eipBandwidth']
+        if 'eipInstanceId' in kwargs:
+            eip_instance_id = kwargs['eipInstanceId']
+        if 'hostAliases' in kwargs:
+            host_aliases = kwargs['hostAliases']
+        if 'imageRegistryCredentials' in kwargs:
+            image_registry_credentials = kwargs['imageRegistryCredentials']
+        if 'initContainers' in kwargs:
+            init_containers = kwargs['initContainers']
+        if 'insecureRegistry' in kwargs:
+            insecure_registry = kwargs['insecureRegistry']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'plainHttpRegistry' in kwargs:
+            plain_http_registry = kwargs['plainHttpRegistry']
+        if 'ramRoleName' in kwargs:
+            ram_role_name = kwargs['ramRoleName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'restartPolicy' in kwargs:
+            restart_policy = kwargs['restartPolicy']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("container_group_name", container_group_name)
         _setter("containers", containers)
         _setter("security_group_id", security_group_id)
@@ -607,7 +649,53 @@ class _ContainerGroupState:
              volumes: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acrRegistryInfos' in kwargs:
+            acr_registry_infos = kwargs['acrRegistryInfos']
+        if 'autoCreateEip' in kwargs:
+            auto_create_eip = kwargs['autoCreateEip']
+        if 'autoMatchImageCache' in kwargs:
+            auto_match_image_cache = kwargs['autoMatchImageCache']
+        if 'containerGroupName' in kwargs:
+            container_group_name = kwargs['containerGroupName']
+        if 'dnsConfig' in kwargs:
+            dns_config = kwargs['dnsConfig']
+        if 'eciSecurityContext' in kwargs:
+            eci_security_context = kwargs['eciSecurityContext']
+        if 'eipBandwidth' in kwargs:
+            eip_bandwidth = kwargs['eipBandwidth']
+        if 'eipInstanceId' in kwargs:
+            eip_instance_id = kwargs['eipInstanceId']
+        if 'hostAliases' in kwargs:
+            host_aliases = kwargs['hostAliases']
+        if 'imageRegistryCredentials' in kwargs:
+            image_registry_credentials = kwargs['imageRegistryCredentials']
+        if 'initContainers' in kwargs:
+            init_containers = kwargs['initContainers']
+        if 'insecureRegistry' in kwargs:
+            insecure_registry = kwargs['insecureRegistry']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'internetIp' in kwargs:
+            internet_ip = kwargs['internetIp']
+        if 'intranetIp' in kwargs:
+            intranet_ip = kwargs['intranetIp']
+        if 'plainHttpRegistry' in kwargs:
+            plain_http_registry = kwargs['plainHttpRegistry']
+        if 'ramRoleName' in kwargs:
+            ram_role_name = kwargs['ramRoleName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'restartPolicy' in kwargs:
+            restart_policy = kwargs['restartPolicy']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if acr_registry_infos is not None:
             _setter("acr_registry_infos", acr_registry_infos)
         if auto_create_eip is not None:

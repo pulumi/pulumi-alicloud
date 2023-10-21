@@ -124,14 +124,14 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+     * Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
      * 
      */
     @Import(name="instanceClass")
     private @Nullable String instanceClass;
 
     /**
-     * @return Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+     * @return Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
      * 
      */
     public Optional<String> instanceClass() {
@@ -449,7 +449,7 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param instanceClass Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+         * @param instanceClass Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
          * 
          * @return builder
          * 

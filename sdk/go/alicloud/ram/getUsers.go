@@ -30,17 +30,76 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			usersDs, err := ram.GetUsers(ctx, &ram.GetUsersArgs{
-//				OutputFile: pulumi.StringRef("users.txt"),
-//				GroupName:  pulumi.StringRef("group1"),
-//				PolicyName: pulumi.StringRef("AliyunACSDefaultAccess"),
-//				PolicyType: pulumi.StringRef("Custom"),
-//				NameRegex:  pulumi.StringRef("^user"),
-//			}, nil)
+//			defaultGroup, err := ram.NewGroup(ctx, "defaultGroup", &ram.GroupArgs{
+//				Comments: pulumi.String("group comments"),
+//				Force:    pulumi.Bool(true),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstUserId", usersDs.Users[0].Id)
+//			defaultUser, err := ram.NewUser(ctx, "defaultUser", &ram.UserArgs{
+//				DisplayName: pulumi.String("displayname"),
+//				Mobile:      pulumi.String("86-18888888888"),
+//				Email:       pulumi.String("hello.uuu@aaa.com"),
+//				Comments:    pulumi.String("yoyoyo"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ram.NewGroupMembership(ctx, "defaultGroupMembership", &ram.GroupMembershipArgs{
+//				GroupName: defaultGroup.Name,
+//				UserNames: pulumi.StringArray{
+//					defaultUser.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultPolicy, err := ram.NewPolicy(ctx, "defaultPolicy", &ram.PolicyArgs{
+//				PolicyName: pulumi.String("ram-policy-example"),
+//				PolicyDocument: pulumi.String(`			{
+//					"Statement": [
+//					 {
+//						"Action": [
+//						"oss:ListObjects",
+//						"oss:ListObjects"
+//				  		],
+//				  		"Effect": "Deny",
+//				  		"Resource": [
+//							"acs:oss:*:*:mybucket",
+//							"acs:oss:*:*:mybucket/*"
+//				  		]
+//					 }
+//			  		],
+//					"Version": "1"
+//				}
+//
+// `),
+//
+//				Description: pulumi.String("this is a policy example"),
+//				Force:       pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ram.NewUserPolicyAttachment(ctx, "defaultUserPolicyAttachment", &ram.UserPolicyAttachmentArgs{
+//				PolicyName: defaultPolicy.PolicyName,
+//				UserName:   defaultUser.Name,
+//				PolicyType: defaultPolicy.Type,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			usersDs := ram.GetUsersOutput(ctx, ram.GetUsersOutputArgs{
+//				OutputFile: pulumi.String("users.txt"),
+//				GroupName:  defaultGroup.Name,
+//				PolicyName: defaultPolicy.PolicyName,
+//				PolicyType: pulumi.String("Custom"),
+//				NameRegex:  defaultUser.Name,
+//			}, nil)
+//			ctx.Export("firstUserId", usersDs.ApplyT(func(usersDs ram.GetUsersResult) (*string, error) {
+//				return &usersDs.Users[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}

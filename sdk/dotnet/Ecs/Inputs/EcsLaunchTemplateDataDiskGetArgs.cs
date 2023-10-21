@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         public Input<bool>? DeleteWithInstance { get; set; }
 
         /// <summary>
-        /// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+        /// The description of the data disk.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         public Input<bool>? Encrypted { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+        /// The name of the data disk.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

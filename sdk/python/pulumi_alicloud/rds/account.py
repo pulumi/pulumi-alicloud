@@ -73,7 +73,27 @@ class AccountArgs:
              password: Optional[pulumi.Input[str]] = None,
              reset_permission_flag: Optional[pulumi.Input[bool]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountDescription' in kwargs:
+            account_description = kwargs['accountDescription']
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'accountPassword' in kwargs:
+            account_password = kwargs['accountPassword']
+        if 'accountType' in kwargs:
+            account_type = kwargs['accountType']
+        if 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'kmsEncryptedPassword' in kwargs:
+            kms_encrypted_password = kwargs['kmsEncryptedPassword']
+        if 'kmsEncryptionContext' in kwargs:
+            kms_encryption_context = kwargs['kmsEncryptionContext']
+        if 'resetPermissionFlag' in kwargs:
+            reset_permission_flag = kwargs['resetPermissionFlag']
+
         if account_description is not None:
             _setter("account_description", account_description)
         if account_name is not None:
@@ -339,7 +359,27 @@ class _AccountState:
              reset_permission_flag: Optional[pulumi.Input[bool]] = None,
              status: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountDescription' in kwargs:
+            account_description = kwargs['accountDescription']
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'accountPassword' in kwargs:
+            account_password = kwargs['accountPassword']
+        if 'accountType' in kwargs:
+            account_type = kwargs['accountType']
+        if 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'kmsEncryptedPassword' in kwargs:
+            kms_encrypted_password = kwargs['kmsEncryptedPassword']
+        if 'kmsEncryptionContext' in kwargs:
+            kms_encryption_context = kwargs['kmsEncryptionContext']
+        if 'resetPermissionFlag' in kwargs:
+            reset_permission_flag = kwargs['resetPermissionFlag']
+
         if account_description is not None:
             _setter("account_description", account_description)
         if account_name is not None:

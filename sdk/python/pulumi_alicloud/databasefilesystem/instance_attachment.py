@@ -31,7 +31,13 @@ class InstanceAttachmentArgs:
              _setter: Callable[[Any, Any], None],
              ecs_id: pulumi.Input[str],
              instance_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ecsId' in kwargs:
+            ecs_id = kwargs['ecsId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("ecs_id", ecs_id)
         _setter("instance_id", instance_id)
 
@@ -84,7 +90,13 @@ class _InstanceAttachmentState:
              ecs_id: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ecsId' in kwargs:
+            ecs_id = kwargs['ecsId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if ecs_id is not None:
             _setter("ecs_id", ecs_id)
         if instance_id is not None:

@@ -16,14 +16,14 @@ public final class LoadBalancerModificationProtectionConfigArgs extends com.pulu
     public static final LoadBalancerModificationProtectionConfigArgs Empty = new LoadBalancerModificationProtectionConfigArgs();
 
     /**
-     * The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. **Note:** This parameter takes effect only when `status` is set to `ConsoleProtection`.
+     * Managed Instance.
      * 
      */
     @Import(name="reason")
     private @Nullable Output<String> reason;
 
     /**
-     * @return The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. **Note:** This parameter takes effect only when `status` is set to `ConsoleProtection`.
+     * @return Managed Instance.
      * 
      */
     public Optional<Output<String>> reason() {
@@ -31,14 +31,14 @@ public final class LoadBalancerModificationProtectionConfigArgs extends com.pulu
     }
 
     /**
-     * Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
+     * Load Balancing Modify the Protection Status.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
+     * @return Load Balancing Modify the Protection Status.
      * 
      */
     public Optional<Output<String>> status() {
@@ -71,7 +71,7 @@ public final class LoadBalancerModificationProtectionConfigArgs extends com.pulu
         }
 
         /**
-         * @param reason The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. **Note:** This parameter takes effect only when `status` is set to `ConsoleProtection`.
+         * @param reason Managed Instance.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class LoadBalancerModificationProtectionConfigArgs extends com.pulu
         }
 
         /**
-         * @param reason The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. **Note:** This parameter takes effect only when `status` is set to `ConsoleProtection`.
+         * @param reason Managed Instance.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class LoadBalancerModificationProtectionConfigArgs extends com.pulu
         }
 
         /**
-         * @param status Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
+         * @param status Load Balancing Modify the Protection Status.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class LoadBalancerModificationProtectionConfigArgs extends com.pulu
         }
 
         /**
-         * @param status Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
+         * @param status Load Balancing Modify the Protection Status.
          * 
          * @return builder
          * 

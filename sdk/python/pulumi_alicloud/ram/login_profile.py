@@ -39,7 +39,15 @@ class LoginProfileArgs:
              user_name: pulumi.Input[str],
              mfa_bind_required: Optional[pulumi.Input[bool]] = None,
              password_reset_required: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+        if 'mfaBindRequired' in kwargs:
+            mfa_bind_required = kwargs['mfaBindRequired']
+        if 'passwordResetRequired' in kwargs:
+            password_reset_required = kwargs['passwordResetRequired']
+
         _setter("password", password)
         _setter("user_name", user_name)
         if mfa_bind_required is not None:
@@ -124,7 +132,15 @@ class _LoginProfileState:
              password: Optional[pulumi.Input[str]] = None,
              password_reset_required: Optional[pulumi.Input[bool]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'mfaBindRequired' in kwargs:
+            mfa_bind_required = kwargs['mfaBindRequired']
+        if 'passwordResetRequired' in kwargs:
+            password_reset_required = kwargs['passwordResetRequired']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         if mfa_bind_required is not None:
             _setter("mfa_bind_required", mfa_bind_required)
         if password is not None:

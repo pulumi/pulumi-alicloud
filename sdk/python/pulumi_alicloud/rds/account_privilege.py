@@ -45,7 +45,15 @@ class AccountPrivilegeArgs:
              db_names: pulumi.Input[Sequence[pulumi.Input[str]]],
              instance_id: pulumi.Input[str],
              privilege: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'dbNames' in kwargs:
+            db_names = kwargs['dbNames']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("account_name", account_name)
         _setter("db_names", db_names)
         _setter("instance_id", instance_id)
@@ -141,7 +149,15 @@ class _AccountPrivilegeState:
              db_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
              privilege: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'dbNames' in kwargs:
+            db_names = kwargs['dbNames']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if account_name is not None:
             _setter("account_name", account_name)
         if db_names is not None:

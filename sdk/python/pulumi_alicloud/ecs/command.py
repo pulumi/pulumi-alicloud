@@ -51,7 +51,15 @@ class CommandArgs:
              name: Optional[pulumi.Input[str]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
              working_dir: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'commandContent' in kwargs:
+            command_content = kwargs['commandContent']
+        if 'enableParameter' in kwargs:
+            enable_parameter = kwargs['enableParameter']
+        if 'workingDir' in kwargs:
+            working_dir = kwargs['workingDir']
+
         _setter("command_content", command_content)
         _setter("type", type)
         if description is not None:
@@ -190,7 +198,15 @@ class _CommandState:
              timeout: Optional[pulumi.Input[int]] = None,
              type: Optional[pulumi.Input[str]] = None,
              working_dir: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'commandContent' in kwargs:
+            command_content = kwargs['commandContent']
+        if 'enableParameter' in kwargs:
+            enable_parameter = kwargs['enableParameter']
+        if 'workingDir' in kwargs:
+            working_dir = kwargs['workingDir']
+
         if command_content is not None:
             _setter("command_content", command_content)
         if description is not None:

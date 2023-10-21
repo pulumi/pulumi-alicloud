@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.Mse
         public Output<string> ClusterType { get; private set; } = null!;
 
         /// <summary>
-        /// The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
+        /// The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
         /// </summary>
         [Output("clusterVersion")]
         public Output<string> ClusterVersion { get; private set; } = null!;
@@ -263,7 +263,7 @@ namespace Pulumi.AliCloud.Mse
         public Input<string> ClusterType { get; set; } = null!;
 
         /// <summary>
-        /// The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
+        /// The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
         /// </summary>
         [Input("clusterVersion", required: true)]
         public Input<string> ClusterVersion { get; set; } = null!;
@@ -385,7 +385,7 @@ namespace Pulumi.AliCloud.Mse
         public Input<string>? ClusterType { get; set; }
 
         /// <summary>
-        /// The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
+        /// The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
         /// </summary>
         [Input("clusterVersion")]
         public Input<string>? ClusterVersion { get; set; }

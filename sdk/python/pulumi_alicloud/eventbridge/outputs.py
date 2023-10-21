@@ -50,7 +50,9 @@ class ApiDestinationHttpApiParameters(dict):
              _setter: Callable[[Any, Any], None],
              endpoint: str,
              method: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("endpoint", endpoint)
         _setter("method", method)
 
@@ -121,7 +123,17 @@ class ConnectionAuthParameters(dict):
              authorization_type: Optional[str] = None,
              basic_auth_parameters: Optional['outputs.ConnectionAuthParametersBasicAuthParameters'] = None,
              oauth_parameters: Optional['outputs.ConnectionAuthParametersOauthParameters'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiKeyAuthParameters' in kwargs:
+            api_key_auth_parameters = kwargs['apiKeyAuthParameters']
+        if 'authorizationType' in kwargs:
+            authorization_type = kwargs['authorizationType']
+        if 'basicAuthParameters' in kwargs:
+            basic_auth_parameters = kwargs['basicAuthParameters']
+        if 'oauthParameters' in kwargs:
+            oauth_parameters = kwargs['oauthParameters']
+
         if api_key_auth_parameters is not None:
             _setter("api_key_auth_parameters", api_key_auth_parameters)
         if authorization_type is not None:
@@ -202,7 +214,13 @@ class ConnectionAuthParametersApiKeyAuthParameters(dict):
              _setter: Callable[[Any, Any], None],
              api_key_name: Optional[str] = None,
              api_key_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiKeyName' in kwargs:
+            api_key_name = kwargs['apiKeyName']
+        if 'apiKeyValue' in kwargs:
+            api_key_value = kwargs['apiKeyValue']
+
         if api_key_name is not None:
             _setter("api_key_name", api_key_name)
         if api_key_value is not None:
@@ -244,7 +262,9 @@ class ConnectionAuthParametersBasicAuthParameters(dict):
              _setter: Callable[[Any, Any], None],
              password: Optional[str] = None,
              username: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if password is not None:
             _setter("password", password)
         if username is not None:
@@ -317,7 +337,17 @@ class ConnectionAuthParametersOauthParameters(dict):
              client_parameters: Optional['outputs.ConnectionAuthParametersOauthParametersClientParameters'] = None,
              http_method: Optional[str] = None,
              oauth_http_parameters: Optional['outputs.ConnectionAuthParametersOauthParametersOauthHttpParameters'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authorizationEndpoint' in kwargs:
+            authorization_endpoint = kwargs['authorizationEndpoint']
+        if 'clientParameters' in kwargs:
+            client_parameters = kwargs['clientParameters']
+        if 'httpMethod' in kwargs:
+            http_method = kwargs['httpMethod']
+        if 'oauthHttpParameters' in kwargs:
+            oauth_http_parameters = kwargs['oauthHttpParameters']
+
         if authorization_endpoint is not None:
             _setter("authorization_endpoint", authorization_endpoint)
         if client_parameters is not None:
@@ -398,7 +428,13 @@ class ConnectionAuthParametersOauthParametersClientParameters(dict):
              _setter: Callable[[Any, Any], None],
              client_id: Optional[str] = None,
              client_secret: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+
         if client_id is not None:
             _setter("client_id", client_id)
         if client_secret is not None:
@@ -465,7 +501,15 @@ class ConnectionAuthParametersOauthParametersOauthHttpParameters(dict):
              body_parameters: Optional[Sequence['outputs.ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter']] = None,
              header_parameters: Optional[Sequence['outputs.ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter']] = None,
              query_string_parameters: Optional[Sequence['outputs.ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bodyParameters' in kwargs:
+            body_parameters = kwargs['bodyParameters']
+        if 'headerParameters' in kwargs:
+            header_parameters = kwargs['headerParameters']
+        if 'queryStringParameters' in kwargs:
+            query_string_parameters = kwargs['queryStringParameters']
+
         if body_parameters is not None:
             _setter("body_parameters", body_parameters)
         if header_parameters is not None:
@@ -538,7 +582,11 @@ class ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter(di
              is_value_secret: Optional[str] = None,
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'isValueSecret' in kwargs:
+            is_value_secret = kwargs['isValueSecret']
+
         if is_value_secret is not None:
             _setter("is_value_secret", is_value_secret)
         if key is not None:
@@ -611,7 +659,11 @@ class ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter(
              is_value_secret: Optional[str] = None,
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'isValueSecret' in kwargs:
+            is_value_secret = kwargs['isValueSecret']
+
         if is_value_secret is not None:
             _setter("is_value_secret", is_value_secret)
         if key is not None:
@@ -684,7 +736,11 @@ class ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParam
              is_value_secret: Optional[str] = None,
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'isValueSecret' in kwargs:
+            is_value_secret = kwargs['isValueSecret']
+
         if is_value_secret is not None:
             _setter("is_value_secret", is_value_secret)
         if key is not None:
@@ -767,7 +823,17 @@ class ConnectionNetworkParameters(dict):
              security_group_id: Optional[str] = None,
              vpc_id: Optional[str] = None,
              vswitche_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitcheId' in kwargs:
+            vswitche_id = kwargs['vswitcheId']
+
         _setter("network_type", network_type)
         if security_group_id is not None:
             _setter("security_group_id", security_group_id)
@@ -868,7 +934,17 @@ class RuleTarget(dict):
              type: str,
              dead_letter_queue: Optional['outputs.RuleTargetDeadLetterQueue'] = None,
              push_retry_strategy: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'paramLists' in kwargs:
+            param_lists = kwargs['paramLists']
+        if 'targetId' in kwargs:
+            target_id = kwargs['targetId']
+        if 'deadLetterQueue' in kwargs:
+            dead_letter_queue = kwargs['deadLetterQueue']
+        if 'pushRetryStrategy' in kwargs:
+            push_retry_strategy = kwargs['pushRetryStrategy']
+
         _setter("endpoint", endpoint)
         _setter("param_lists", param_lists)
         _setter("target_id", target_id)
@@ -943,7 +1019,9 @@ class RuleTargetDeadLetterQueue(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              arn: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if arn is not None:
             _setter("arn", arn)
 
@@ -1010,7 +1088,11 @@ class RuleTargetParamList(dict):
              resource_key: str,
              template: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceKey' in kwargs:
+            resource_key = kwargs['resourceKey']
+
         _setter("form", form)
         _setter("resource_key", resource_key)
         if template is not None:
@@ -1088,7 +1170,13 @@ class GetEventBusesBusResult(dict):
              description: str,
              event_bus_name: str,
              id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'eventBusName' in kwargs:
+            event_bus_name = kwargs['eventBusName']
+
         _setter("create_time", create_time)
         _setter("description", description)
         _setter("event_bus_name", event_bus_name)
@@ -1165,7 +1253,17 @@ class GetEventSourcesSourceResult(dict):
              id: str,
              linked_external_source: bool,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'eventSourceName' in kwargs:
+            event_source_name = kwargs['eventSourceName']
+        if 'externalSourceConfig' in kwargs:
+            external_source_config = kwargs['externalSourceConfig']
+        if 'externalSourceType' in kwargs:
+            external_source_type = kwargs['externalSourceType']
+        if 'linkedExternalSource' in kwargs:
+            linked_external_source = kwargs['linkedExternalSource']
+
         _setter("description", description)
         _setter("event_source_name", event_source_name)
         _setter("external_source_config", external_source_config)
@@ -1267,7 +1365,15 @@ class GetRulesRuleResult(dict):
              rule_name: str,
              status: str,
              targets: Sequence['outputs.GetRulesRuleTargetResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'eventBusName' in kwargs:
+            event_bus_name = kwargs['eventBusName']
+        if 'filterPattern' in kwargs:
+            filter_pattern = kwargs['filterPattern']
+        if 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+
         _setter("description", description)
         _setter("event_bus_name", event_bus_name)
         _setter("filter_pattern", filter_pattern)
@@ -1356,7 +1462,11 @@ class GetRulesRuleTargetResult(dict):
              endpoint: str,
              target_id: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'targetId' in kwargs:
+            target_id = kwargs['targetId']
+
         _setter("endpoint", endpoint)
         _setter("target_id", target_id)
         _setter("type", type)

@@ -47,7 +47,17 @@ class TrafficMarkingPolicyArgs:
              description: Optional[pulumi.Input[str]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
              traffic_marking_policy_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'markingDscp' in kwargs:
+            marking_dscp = kwargs['markingDscp']
+        if 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'trafficMarkingPolicyName' in kwargs:
+            traffic_marking_policy_name = kwargs['trafficMarkingPolicyName']
+
         _setter("marking_dscp", marking_dscp)
         _setter("priority", priority)
         _setter("transit_router_id", transit_router_id)
@@ -175,7 +185,19 @@ class _TrafficMarkingPolicyState:
              traffic_marking_policy_id: Optional[pulumi.Input[str]] = None,
              traffic_marking_policy_name: Optional[pulumi.Input[str]] = None,
              transit_router_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'markingDscp' in kwargs:
+            marking_dscp = kwargs['markingDscp']
+        if 'trafficMarkingPolicyId' in kwargs:
+            traffic_marking_policy_id = kwargs['trafficMarkingPolicyId']
+        if 'trafficMarkingPolicyName' in kwargs:
+            traffic_marking_policy_name = kwargs['trafficMarkingPolicyName']
+        if 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+
         if description is not None:
             _setter("description", description)
         if dry_run is not None:
@@ -305,7 +327,7 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
         """
         Provides a Cloud Enterprise Network (CEN) Traffic Marking Policy resource.
 
-        For information about Cloud Enterprise Network (CEN) Traffic Marking Policy and how to use it, see [What is Traffic Marking Policy](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtrafficmarkingpolicy).
+        For information about Cloud Enterprise Network (CEN) Traffic Marking Policy and how to use it, see [What is Traffic Marking Policy](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtrafficmarkingpolicy).
 
         > **NOTE:** Available since v1.173.0.
 
@@ -356,7 +378,7 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
         """
         Provides a Cloud Enterprise Network (CEN) Traffic Marking Policy resource.
 
-        For information about Cloud Enterprise Network (CEN) Traffic Marking Policy and how to use it, see [What is Traffic Marking Policy](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtrafficmarkingpolicy).
+        For information about Cloud Enterprise Network (CEN) Traffic Marking Policy and how to use it, see [What is Traffic Marking Policy](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtrafficmarkingpolicy).
 
         > **NOTE:** Available since v1.173.0.
 

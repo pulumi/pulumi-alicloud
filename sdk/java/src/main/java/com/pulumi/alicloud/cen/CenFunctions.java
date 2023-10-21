@@ -576,7 +576,7 @@ public final class CenFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getBandwidthPackages:getBandwidthPackages", TypeShape.of(GetBandwidthPackagesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Cen Child Instance Route Entry To Attachment available to the user.[What is Child Instance Route Entry To Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcenchildinstancerouteentrytoattachment)
+     * This data source provides Cen Child Instance Route Entry To Attachment available to the user.[What is Child Instance Route Entry To Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcenchildinstancerouteentrytoattachment)
      * 
      * &gt; **NOTE:** Available in 1.195.0+
      * 
@@ -617,7 +617,7 @@ public final class CenFunctions {
         return getChildInstanceRouteEntryToAttachments(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Cen Child Instance Route Entry To Attachment available to the user.[What is Child Instance Route Entry To Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcenchildinstancerouteentrytoattachment)
+     * This data source provides Cen Child Instance Route Entry To Attachment available to the user.[What is Child Instance Route Entry To Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcenchildinstancerouteentrytoattachment)
      * 
      * &gt; **NOTE:** Available in 1.195.0+
      * 
@@ -658,7 +658,7 @@ public final class CenFunctions {
         return getChildInstanceRouteEntryToAttachmentsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Cen Child Instance Route Entry To Attachment available to the user.[What is Child Instance Route Entry To Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcenchildinstancerouteentrytoattachment)
+     * This data source provides Cen Child Instance Route Entry To Attachment available to the user.[What is Child Instance Route Entry To Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcenchildinstancerouteentrytoattachment)
      * 
      * &gt; **NOTE:** Available in 1.195.0+
      * 
@@ -699,7 +699,7 @@ public final class CenFunctions {
         return Deployment.getInstance().invoke("alicloud:cen/getChildInstanceRouteEntryToAttachments:getChildInstanceRouteEntryToAttachments", TypeShape.of(GetChildInstanceRouteEntryToAttachmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Cen Child Instance Route Entry To Attachment available to the user.[What is Child Instance Route Entry To Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcenchildinstancerouteentrytoattachment)
+     * This data source provides Cen Child Instance Route Entry To Attachment available to the user.[What is Child Instance Route Entry To Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcenchildinstancerouteentrytoattachment)
      * 
      * &gt; **NOTE:** Available in 1.195.0+
      * 
@@ -3606,11 +3606,13 @@ public final class CenFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getTransitRouterMulticastDomainAssociations:getTransitRouterMulticastDomainAssociations", TypeShape.of(GetTransitRouterMulticastDomainAssociationsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Cen Transit Router Multicast Domain Member available to the user.[What is Transit Router Multicast Domain Member](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupmembers)
+     * This data source provides Cen Transit Router Multicast Domain Member available to the user. [What is Transit Router Multicast Domain Member](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupmembers)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -3646,11 +3648,13 @@ public final class CenFunctions {
         return getTransitRouterMulticastDomainMembers(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Cen Transit Router Multicast Domain Member available to the user.[What is Transit Router Multicast Domain Member](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupmembers)
+     * This data source provides Cen Transit Router Multicast Domain Member available to the user. [What is Transit Router Multicast Domain Member](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupmembers)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -3686,11 +3690,13 @@ public final class CenFunctions {
         return getTransitRouterMulticastDomainMembersPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Cen Transit Router Multicast Domain Member available to the user.[What is Transit Router Multicast Domain Member](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupmembers)
+     * This data source provides Cen Transit Router Multicast Domain Member available to the user. [What is Transit Router Multicast Domain Member](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupmembers)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -3726,11 +3732,13 @@ public final class CenFunctions {
         return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterMulticastDomainMembers:getTransitRouterMulticastDomainMembers", TypeShape.of(GetTransitRouterMulticastDomainMembersResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Cen Transit Router Multicast Domain Member available to the user.[What is Transit Router Multicast Domain Member](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupmembers)
+     * This data source provides Cen Transit Router Multicast Domain Member available to the user. [What is Transit Router Multicast Domain Member](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupmembers)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -3766,11 +3774,13 @@ public final class CenFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getTransitRouterMulticastDomainMembers:getTransitRouterMulticastDomainMembers", TypeShape.of(GetTransitRouterMulticastDomainMembersResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Cen Transit Router Multicast Domain Peer Member available to the user.[What is Transit Router Multicast Domain Peer Member](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupmembers)
+     * This data source provides Cen Transit Router Multicast Domain Peer Member available to the user. [What is Transit Router Multicast Domain Peer Member](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupmembers)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -3806,11 +3816,13 @@ public final class CenFunctions {
         return getTransitRouterMulticastDomainPeerMembers(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Cen Transit Router Multicast Domain Peer Member available to the user.[What is Transit Router Multicast Domain Peer Member](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupmembers)
+     * This data source provides Cen Transit Router Multicast Domain Peer Member available to the user. [What is Transit Router Multicast Domain Peer Member](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupmembers)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -3846,11 +3858,13 @@ public final class CenFunctions {
         return getTransitRouterMulticastDomainPeerMembersPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Cen Transit Router Multicast Domain Peer Member available to the user.[What is Transit Router Multicast Domain Peer Member](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupmembers)
+     * This data source provides Cen Transit Router Multicast Domain Peer Member available to the user. [What is Transit Router Multicast Domain Peer Member](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupmembers)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -3886,11 +3900,13 @@ public final class CenFunctions {
         return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterMulticastDomainPeerMembers:getTransitRouterMulticastDomainPeerMembers", TypeShape.of(GetTransitRouterMulticastDomainPeerMembersResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Cen Transit Router Multicast Domain Peer Member available to the user.[What is Transit Router Multicast Domain Peer Member](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupmembers)
+     * This data source provides Cen Transit Router Multicast Domain Peer Member available to the user. [What is Transit Router Multicast Domain Peer Member](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupmembers)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -3926,9 +3942,9 @@ public final class CenFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getTransitRouterMulticastDomainPeerMembers:getTransitRouterMulticastDomainPeerMembers", TypeShape.of(GetTransitRouterMulticastDomainPeerMembersResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupsources)
+     * This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupsources)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * ```java
@@ -3966,9 +3982,9 @@ public final class CenFunctions {
         return getTransitRouterMulticastDomainSources(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupsources)
+     * This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupsources)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * ```java
@@ -4006,9 +4022,9 @@ public final class CenFunctions {
         return getTransitRouterMulticastDomainSourcesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupsources)
+     * This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupsources)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * ```java
@@ -4046,9 +4062,9 @@ public final class CenFunctions {
         return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterMulticastDomainSources:getTransitRouterMulticastDomainSources", TypeShape.of(GetTransitRouterMulticastDomainSourcesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupsources)
+     * This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupsources)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * ```java

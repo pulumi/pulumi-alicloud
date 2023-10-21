@@ -101,7 +101,41 @@ class EcdPolicyGroupArgs:
              watermark: Optional[pulumi.Input[str]] = None,
              watermark_transparency: Optional[pulumi.Input[str]] = None,
              watermark_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authorizeAccessPolicyRules' in kwargs:
+            authorize_access_policy_rules = kwargs['authorizeAccessPolicyRules']
+        if 'authorizeSecurityPolicyRules' in kwargs:
+            authorize_security_policy_rules = kwargs['authorizeSecurityPolicyRules']
+        if 'cameraRedirect' in kwargs:
+            camera_redirect = kwargs['cameraRedirect']
+        if 'domainList' in kwargs:
+            domain_list = kwargs['domainList']
+        if 'htmlAccess' in kwargs:
+            html_access = kwargs['htmlAccess']
+        if 'htmlFileTransfer' in kwargs:
+            html_file_transfer = kwargs['htmlFileTransfer']
+        if 'localDrive' in kwargs:
+            local_drive = kwargs['localDrive']
+        if 'policyGroupName' in kwargs:
+            policy_group_name = kwargs['policyGroupName']
+        if 'recordingEndTime' in kwargs:
+            recording_end_time = kwargs['recordingEndTime']
+        if 'recordingExpires' in kwargs:
+            recording_expires = kwargs['recordingExpires']
+        if 'recordingFps' in kwargs:
+            recording_fps = kwargs['recordingFps']
+        if 'recordingStartTime' in kwargs:
+            recording_start_time = kwargs['recordingStartTime']
+        if 'usbRedirect' in kwargs:
+            usb_redirect = kwargs['usbRedirect']
+        if 'visualQuality' in kwargs:
+            visual_quality = kwargs['visualQuality']
+        if 'watermarkTransparency' in kwargs:
+            watermark_transparency = kwargs['watermarkTransparency']
+        if 'watermarkType' in kwargs:
+            watermark_type = kwargs['watermarkType']
+
         if authorize_access_policy_rules is not None:
             _setter("authorize_access_policy_rules", authorize_access_policy_rules)
         if authorize_security_policy_rules is not None:
@@ -462,7 +496,41 @@ class _EcdPolicyGroupState:
              watermark: Optional[pulumi.Input[str]] = None,
              watermark_transparency: Optional[pulumi.Input[str]] = None,
              watermark_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authorizeAccessPolicyRules' in kwargs:
+            authorize_access_policy_rules = kwargs['authorizeAccessPolicyRules']
+        if 'authorizeSecurityPolicyRules' in kwargs:
+            authorize_security_policy_rules = kwargs['authorizeSecurityPolicyRules']
+        if 'cameraRedirect' in kwargs:
+            camera_redirect = kwargs['cameraRedirect']
+        if 'domainList' in kwargs:
+            domain_list = kwargs['domainList']
+        if 'htmlAccess' in kwargs:
+            html_access = kwargs['htmlAccess']
+        if 'htmlFileTransfer' in kwargs:
+            html_file_transfer = kwargs['htmlFileTransfer']
+        if 'localDrive' in kwargs:
+            local_drive = kwargs['localDrive']
+        if 'policyGroupName' in kwargs:
+            policy_group_name = kwargs['policyGroupName']
+        if 'recordingEndTime' in kwargs:
+            recording_end_time = kwargs['recordingEndTime']
+        if 'recordingExpires' in kwargs:
+            recording_expires = kwargs['recordingExpires']
+        if 'recordingFps' in kwargs:
+            recording_fps = kwargs['recordingFps']
+        if 'recordingStartTime' in kwargs:
+            recording_start_time = kwargs['recordingStartTime']
+        if 'usbRedirect' in kwargs:
+            usb_redirect = kwargs['usbRedirect']
+        if 'visualQuality' in kwargs:
+            visual_quality = kwargs['visualQuality']
+        if 'watermarkTransparency' in kwargs:
+            watermark_transparency = kwargs['watermarkTransparency']
+        if 'watermarkType' in kwargs:
+            watermark_type = kwargs['watermarkType']
+
         if authorize_access_policy_rules is not None:
             _setter("authorize_access_policy_rules", authorize_access_policy_rules)
         if authorize_security_policy_rules is not None:
@@ -773,7 +841,7 @@ class EcdPolicyGroup(pulumi.CustomResource):
         """
         Provides a Elastic Desktop Service (ECD) Policy Group resource.
 
-        For information about Elastic Desktop Service (ECD) Policy Group and how to use it, see [What is Policy Group](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createpolicygroup).
+        For information about Elastic Desktop Service (ECD) Policy Group and how to use it, see [What is Policy Group](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createpolicygroup).
 
         > **NOTE:** Available since v1.130.0.
 
@@ -845,7 +913,7 @@ class EcdPolicyGroup(pulumi.CustomResource):
         """
         Provides a Elastic Desktop Service (ECD) Policy Group resource.
 
-        For information about Elastic Desktop Service (ECD) Policy Group and how to use it, see [What is Policy Group](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createpolicygroup).
+        For information about Elastic Desktop Service (ECD) Policy Group and how to use it, see [What is Policy Group](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createpolicygroup).
 
         > **NOTE:** Available since v1.130.0.
 

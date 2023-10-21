@@ -28,13 +28,67 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var defaultGroup = new AliCloud.Ram.Group("defaultGroup", new()
+        ///     {
+        ///         Comments = "group comments",
+        ///         Force = true,
+        ///     });
+        /// 
+        ///     var defaultUser = new AliCloud.Ram.User("defaultUser", new()
+        ///     {
+        ///         DisplayName = "displayname",
+        ///         Mobile = "86-18888888888",
+        ///         Email = "hello.uuu@aaa.com",
+        ///         Comments = "yoyoyo",
+        ///     });
+        /// 
+        ///     var defaultGroupMembership = new AliCloud.Ram.GroupMembership("defaultGroupMembership", new()
+        ///     {
+        ///         GroupName = defaultGroup.Name,
+        ///         UserNames = new[]
+        ///         {
+        ///             defaultUser.Name,
+        ///         },
+        ///     });
+        /// 
+        ///     var defaultPolicy = new AliCloud.Ram.Policy("defaultPolicy", new()
+        ///     {
+        ///         PolicyName = "ram-policy-example",
+        ///         PolicyDocument = @"			{
+        /// 				""Statement"": [
+        /// 				 {
+        /// 					""Action"": [
+        /// 					""oss:ListObjects"",
+        /// 					""oss:ListObjects""
+        /// 			  		],
+        /// 			  		""Effect"": ""Deny"",
+        /// 			  		""Resource"": [
+        /// 						""acs:oss:*:*:mybucket"",
+        /// 						""acs:oss:*:*:mybucket/*""
+        /// 			  		]
+        /// 				 }
+        /// 		  		],
+        /// 				""Version"": ""1""
+        /// 			}
+        /// ",
+        ///         Description = "this is a policy example",
+        ///         Force = true,
+        ///     });
+        /// 
+        ///     var defaultUserPolicyAttachment = new AliCloud.Ram.UserPolicyAttachment("defaultUserPolicyAttachment", new()
+        ///     {
+        ///         PolicyName = defaultPolicy.PolicyName,
+        ///         UserName = defaultUser.Name,
+        ///         PolicyType = defaultPolicy.Type,
+        ///     });
+        /// 
         ///     var usersDs = AliCloud.Ram.GetUsers.Invoke(new()
         ///     {
         ///         OutputFile = "users.txt",
-        ///         GroupName = "group1",
-        ///         PolicyName = "AliyunACSDefaultAccess",
+        ///         GroupName = defaultGroup.Name,
+        ///         PolicyName = defaultPolicy.PolicyName,
         ///         PolicyType = "Custom",
-        ///         NameRegex = "^user",
+        ///         NameRegex = defaultUser.Name,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -66,13 +120,67 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var defaultGroup = new AliCloud.Ram.Group("defaultGroup", new()
+        ///     {
+        ///         Comments = "group comments",
+        ///         Force = true,
+        ///     });
+        /// 
+        ///     var defaultUser = new AliCloud.Ram.User("defaultUser", new()
+        ///     {
+        ///         DisplayName = "displayname",
+        ///         Mobile = "86-18888888888",
+        ///         Email = "hello.uuu@aaa.com",
+        ///         Comments = "yoyoyo",
+        ///     });
+        /// 
+        ///     var defaultGroupMembership = new AliCloud.Ram.GroupMembership("defaultGroupMembership", new()
+        ///     {
+        ///         GroupName = defaultGroup.Name,
+        ///         UserNames = new[]
+        ///         {
+        ///             defaultUser.Name,
+        ///         },
+        ///     });
+        /// 
+        ///     var defaultPolicy = new AliCloud.Ram.Policy("defaultPolicy", new()
+        ///     {
+        ///         PolicyName = "ram-policy-example",
+        ///         PolicyDocument = @"			{
+        /// 				""Statement"": [
+        /// 				 {
+        /// 					""Action"": [
+        /// 					""oss:ListObjects"",
+        /// 					""oss:ListObjects""
+        /// 			  		],
+        /// 			  		""Effect"": ""Deny"",
+        /// 			  		""Resource"": [
+        /// 						""acs:oss:*:*:mybucket"",
+        /// 						""acs:oss:*:*:mybucket/*""
+        /// 			  		]
+        /// 				 }
+        /// 		  		],
+        /// 				""Version"": ""1""
+        /// 			}
+        /// ",
+        ///         Description = "this is a policy example",
+        ///         Force = true,
+        ///     });
+        /// 
+        ///     var defaultUserPolicyAttachment = new AliCloud.Ram.UserPolicyAttachment("defaultUserPolicyAttachment", new()
+        ///     {
+        ///         PolicyName = defaultPolicy.PolicyName,
+        ///         UserName = defaultUser.Name,
+        ///         PolicyType = defaultPolicy.Type,
+        ///     });
+        /// 
         ///     var usersDs = AliCloud.Ram.GetUsers.Invoke(new()
         ///     {
         ///         OutputFile = "users.txt",
-        ///         GroupName = "group1",
-        ///         PolicyName = "AliyunACSDefaultAccess",
+        ///         GroupName = defaultGroup.Name,
+        ///         PolicyName = defaultPolicy.PolicyName,
         ///         PolicyType = "Custom",
-        ///         NameRegex = "^user",
+        ///         NameRegex = defaultUser.Name,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

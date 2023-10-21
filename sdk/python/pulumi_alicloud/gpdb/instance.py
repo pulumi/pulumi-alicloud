@@ -52,7 +52,7 @@ class InstanceArgs:
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] db_instance_mode: The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
-        :param pulumi.Input[str] engine: The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
+        :param pulumi.Input[str] engine: The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance) `EngineVersion`.
         :param pulumi.Input[str] engine_version: The version of the database engine used by the instance.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
@@ -169,7 +169,67 @@ class InstanceArgs:
              vector_configuration_status: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbInstanceMode' in kwargs:
+            db_instance_mode = kwargs['dbInstanceMode']
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'createSampleData' in kwargs:
+            create_sample_data = kwargs['createSampleData']
+        if 'dbInstanceCategory' in kwargs:
+            db_instance_category = kwargs['dbInstanceCategory']
+        if 'dbInstanceClass' in kwargs:
+            db_instance_class = kwargs['dbInstanceClass']
+        if 'encryptionKey' in kwargs:
+            encryption_key = kwargs['encryptionKey']
+        if 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'instanceGroupCount' in kwargs:
+            instance_group_count = kwargs['instanceGroupCount']
+        if 'instanceNetworkType' in kwargs:
+            instance_network_type = kwargs['instanceNetworkType']
+        if 'instanceSpec' in kwargs:
+            instance_spec = kwargs['instanceSpec']
+        if 'ipWhitelists' in kwargs:
+            ip_whitelists = kwargs['ipWhitelists']
+        if 'maintainEndTime' in kwargs:
+            maintain_end_time = kwargs['maintainEndTime']
+        if 'maintainStartTime' in kwargs:
+            maintain_start_time = kwargs['maintainStartTime']
+        if 'masterNodeNum' in kwargs:
+            master_node_num = kwargs['masterNodeNum']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'privateIpAddress' in kwargs:
+            private_ip_address = kwargs['privateIpAddress']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityIpLists' in kwargs:
+            security_ip_lists = kwargs['securityIpLists']
+        if 'segNodeNum' in kwargs:
+            seg_node_num = kwargs['segNodeNum']
+        if 'segStorageType' in kwargs:
+            seg_storage_type = kwargs['segStorageType']
+        if 'sslEnabled' in kwargs:
+            ssl_enabled = kwargs['sslEnabled']
+        if 'storageSize' in kwargs:
+            storage_size = kwargs['storageSize']
+        if 'usedTime' in kwargs:
+            used_time = kwargs['usedTime']
+        if 'vectorConfigurationStatus' in kwargs:
+            vector_configuration_status = kwargs['vectorConfigurationStatus']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("db_instance_mode", db_instance_mode)
         _setter("engine", engine)
         _setter("engine_version", engine_version)
@@ -258,7 +318,7 @@ class InstanceArgs:
     @pulumi.getter
     def engine(self) -> pulumi.Input[str]:
         """
-        The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
+        The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance) `EngineVersion`.
         """
         return pulumi.get(self, "engine")
 
@@ -714,7 +774,7 @@ class _InstanceState:
                > **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
         :param pulumi.Input[str] encryption_type: The encryption type. Valid values: `CloudDisk`.
                > **NOTE:** Disk encryption cannot be disabled after it is enabled.
-        :param pulumi.Input[str] engine: The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
+        :param pulumi.Input[str] engine: The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance) `EngineVersion`.
         :param pulumi.Input[str] engine_version: The version of the database engine used by the instance.
         :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
         :param pulumi.Input[int] instance_group_count: The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
@@ -828,7 +888,69 @@ class _InstanceState:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if 'createSampleData' in kwargs:
+            create_sample_data = kwargs['createSampleData']
+        if 'dbInstanceCategory' in kwargs:
+            db_instance_category = kwargs['dbInstanceCategory']
+        if 'dbInstanceClass' in kwargs:
+            db_instance_class = kwargs['dbInstanceClass']
+        if 'dbInstanceMode' in kwargs:
+            db_instance_mode = kwargs['dbInstanceMode']
+        if 'encryptionKey' in kwargs:
+            encryption_key = kwargs['encryptionKey']
+        if 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'instanceGroupCount' in kwargs:
+            instance_group_count = kwargs['instanceGroupCount']
+        if 'instanceNetworkType' in kwargs:
+            instance_network_type = kwargs['instanceNetworkType']
+        if 'instanceSpec' in kwargs:
+            instance_spec = kwargs['instanceSpec']
+        if 'ipWhitelists' in kwargs:
+            ip_whitelists = kwargs['ipWhitelists']
+        if 'maintainEndTime' in kwargs:
+            maintain_end_time = kwargs['maintainEndTime']
+        if 'maintainStartTime' in kwargs:
+            maintain_start_time = kwargs['maintainStartTime']
+        if 'masterNodeNum' in kwargs:
+            master_node_num = kwargs['masterNodeNum']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'privateIpAddress' in kwargs:
+            private_ip_address = kwargs['privateIpAddress']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityIpLists' in kwargs:
+            security_ip_lists = kwargs['securityIpLists']
+        if 'segNodeNum' in kwargs:
+            seg_node_num = kwargs['segNodeNum']
+        if 'segStorageType' in kwargs:
+            seg_storage_type = kwargs['segStorageType']
+        if 'sslEnabled' in kwargs:
+            ssl_enabled = kwargs['sslEnabled']
+        if 'storageSize' in kwargs:
+            storage_size = kwargs['storageSize']
+        if 'usedTime' in kwargs:
+            used_time = kwargs['usedTime']
+        if 'vectorConfigurationStatus' in kwargs:
+            vector_configuration_status = kwargs['vectorConfigurationStatus']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if availability_zone is not None:
             warnings.warn("""Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.""", DeprecationWarning)
             pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.""")
@@ -1030,7 +1152,7 @@ class _InstanceState:
     @pulumi.getter
     def engine(self) -> Optional[pulumi.Input[str]]:
         """
-        The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
+        The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance) `EngineVersion`.
         """
         return pulumi.get(self, "engine")
 
@@ -1406,7 +1528,7 @@ class Instance(pulumi.CustomResource):
                  __props__=None):
         """
         Provides a AnalyticDB for PostgreSQL instance resource supports replica set instances only. the AnalyticDB for PostgreSQL provides stable, reliable, and automatic scalable database services.
-        You can see detail product introduction [here](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance)
+        You can see detail product introduction [here](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance)
 
         > **NOTE:** Available since v1.47.0.
 
@@ -1477,7 +1599,7 @@ class Instance(pulumi.CustomResource):
                > **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
         :param pulumi.Input[str] encryption_type: The encryption type. Valid values: `CloudDisk`.
                > **NOTE:** Disk encryption cannot be disabled after it is enabled.
-        :param pulumi.Input[str] engine: The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
+        :param pulumi.Input[str] engine: The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance) `EngineVersion`.
         :param pulumi.Input[str] engine_version: The version of the database engine used by the instance.
         :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
         :param pulumi.Input[int] instance_group_count: The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
@@ -1519,7 +1641,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a AnalyticDB for PostgreSQL instance resource supports replica set instances only. the AnalyticDB for PostgreSQL provides stable, reliable, and automatic scalable database services.
-        You can see detail product introduction [here](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance)
+        You can see detail product introduction [here](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance)
 
         > **NOTE:** Available since v1.47.0.
 
@@ -1747,7 +1869,7 @@ class Instance(pulumi.CustomResource):
                > **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
         :param pulumi.Input[str] encryption_type: The encryption type. Valid values: `CloudDisk`.
                > **NOTE:** Disk encryption cannot be disabled after it is enabled.
-        :param pulumi.Input[str] engine: The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
+        :param pulumi.Input[str] engine: The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance) `EngineVersion`.
         :param pulumi.Input[str] engine_version: The version of the database engine used by the instance.
         :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
         :param pulumi.Input[int] instance_group_count: The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
@@ -1908,7 +2030,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def engine(self) -> pulumi.Output[str]:
         """
-        The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
+        The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance) `EngineVersion`.
         """
         return pulumi.get(self, "engine")
 

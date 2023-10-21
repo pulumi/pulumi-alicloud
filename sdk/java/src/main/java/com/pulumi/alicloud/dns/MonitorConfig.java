@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a DNS Monitor Config resource.
  * 
- * For information about DNS Monitor Config and how to use it, see [What is Monitor Config](https://www.alibabacloud.com/help/en/doc-detail/198064.html).
+ * For information about DNS Monitor Config and how to use it, see [What is Monitor Config](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
  * 
  * &gt; **NOTE:** Available since v1.153.0.
  * 
@@ -203,14 +203,14 @@ public class MonitorConfig extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.lang);
     }
     /**
-     * The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/doc-detail/198064.html).
+     * The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
      * 
      */
     @Export(name="monitorExtendInfo", type=String.class, parameters={})
     private Output<String> monitorExtendInfo;
 
     /**
-     * @return The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/doc-detail/198064.html).
+     * @return The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
      * 
      */
     public Output<String> monitorExtendInfo() {

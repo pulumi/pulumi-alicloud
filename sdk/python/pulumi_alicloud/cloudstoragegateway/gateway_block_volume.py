@@ -83,7 +83,33 @@ class GatewayBlockVolumeArgs:
              oss_bucket_ssl: Optional[pulumi.Input[bool]] = None,
              recovery: Optional[pulumi.Input[bool]] = None,
              size: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'gatewayBlockVolumeName' in kwargs:
+            gateway_block_volume_name = kwargs['gatewayBlockVolumeName']
+        if 'gatewayId' in kwargs:
+            gateway_id = kwargs['gatewayId']
+        if 'ossBucketName' in kwargs:
+            oss_bucket_name = kwargs['ossBucketName']
+        if 'ossEndpoint' in kwargs:
+            oss_endpoint = kwargs['ossEndpoint']
+        if 'cacheMode' in kwargs:
+            cache_mode = kwargs['cacheMode']
+        if 'chapEnabled' in kwargs:
+            chap_enabled = kwargs['chapEnabled']
+        if 'chapInPassword' in kwargs:
+            chap_in_password = kwargs['chapInPassword']
+        if 'chapInUser' in kwargs:
+            chap_in_user = kwargs['chapInUser']
+        if 'chunkSize' in kwargs:
+            chunk_size = kwargs['chunkSize']
+        if 'isSourceDeletion' in kwargs:
+            is_source_deletion = kwargs['isSourceDeletion']
+        if 'localPath' in kwargs:
+            local_path = kwargs['localPath']
+        if 'ossBucketSsl' in kwargs:
+            oss_bucket_ssl = kwargs['ossBucketSsl']
+
         _setter("gateway_block_volume_name", gateway_block_volume_name)
         _setter("gateway_id", gateway_id)
         _setter("oss_bucket_name", oss_bucket_name)
@@ -371,7 +397,35 @@ class _GatewayBlockVolumeState:
              recovery: Optional[pulumi.Input[bool]] = None,
              size: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cacheMode' in kwargs:
+            cache_mode = kwargs['cacheMode']
+        if 'chapEnabled' in kwargs:
+            chap_enabled = kwargs['chapEnabled']
+        if 'chapInPassword' in kwargs:
+            chap_in_password = kwargs['chapInPassword']
+        if 'chapInUser' in kwargs:
+            chap_in_user = kwargs['chapInUser']
+        if 'chunkSize' in kwargs:
+            chunk_size = kwargs['chunkSize']
+        if 'gatewayBlockVolumeName' in kwargs:
+            gateway_block_volume_name = kwargs['gatewayBlockVolumeName']
+        if 'gatewayId' in kwargs:
+            gateway_id = kwargs['gatewayId']
+        if 'indexId' in kwargs:
+            index_id = kwargs['indexId']
+        if 'isSourceDeletion' in kwargs:
+            is_source_deletion = kwargs['isSourceDeletion']
+        if 'localPath' in kwargs:
+            local_path = kwargs['localPath']
+        if 'ossBucketName' in kwargs:
+            oss_bucket_name = kwargs['ossBucketName']
+        if 'ossBucketSsl' in kwargs:
+            oss_bucket_ssl = kwargs['ossBucketSsl']
+        if 'ossEndpoint' in kwargs:
+            oss_endpoint = kwargs['ossEndpoint']
+
         if cache_mode is not None:
             _setter("cache_mode", cache_mode)
         if chap_enabled is not None:

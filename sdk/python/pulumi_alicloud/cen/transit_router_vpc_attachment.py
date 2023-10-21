@@ -82,7 +82,35 @@ class TransitRouterVpcAttachmentArgs:
              transit_router_attachment_name: Optional[pulumi.Input[str]] = None,
              transit_router_id: Optional[pulumi.Input[str]] = None,
              vpc_owner_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'zoneMappings' in kwargs:
+            zone_mappings = kwargs['zoneMappings']
+        if 'autoPublishRouteEnabled' in kwargs:
+            auto_publish_route_enabled = kwargs['autoPublishRouteEnabled']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+        if 'routeTableAssociationEnabled' in kwargs:
+            route_table_association_enabled = kwargs['routeTableAssociationEnabled']
+        if 'routeTablePropagationEnabled' in kwargs:
+            route_table_propagation_enabled = kwargs['routeTablePropagationEnabled']
+        if 'transitRouterAttachmentDescription' in kwargs:
+            transit_router_attachment_description = kwargs['transitRouterAttachmentDescription']
+        if 'transitRouterAttachmentName' in kwargs:
+            transit_router_attachment_name = kwargs['transitRouterAttachmentName']
+        if 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+        if 'vpcOwnerId' in kwargs:
+            vpc_owner_id = kwargs['vpcOwnerId']
+
         _setter("cen_id", cen_id)
         _setter("vpc_id", vpc_id)
         _setter("zone_mappings", zone_mappings)
@@ -368,7 +396,37 @@ class _TransitRouterVpcAttachmentState:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vpc_owner_id: Optional[pulumi.Input[str]] = None,
              zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoPublishRouteEnabled' in kwargs:
+            auto_publish_route_enabled = kwargs['autoPublishRouteEnabled']
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+        if 'routeTableAssociationEnabled' in kwargs:
+            route_table_association_enabled = kwargs['routeTableAssociationEnabled']
+        if 'routeTablePropagationEnabled' in kwargs:
+            route_table_propagation_enabled = kwargs['routeTablePropagationEnabled']
+        if 'transitRouterAttachmentDescription' in kwargs:
+            transit_router_attachment_description = kwargs['transitRouterAttachmentDescription']
+        if 'transitRouterAttachmentId' in kwargs:
+            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
+        if 'transitRouterAttachmentName' in kwargs:
+            transit_router_attachment_name = kwargs['transitRouterAttachmentName']
+        if 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vpcOwnerId' in kwargs:
+            vpc_owner_id = kwargs['vpcOwnerId']
+        if 'zoneMappings' in kwargs:
+            zone_mappings = kwargs['zoneMappings']
+
         if auto_publish_route_enabled is not None:
             _setter("auto_publish_route_enabled", auto_publish_route_enabled)
         if cen_id is not None:
@@ -629,7 +687,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
                  zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TransitRouterVpcAttachmentZoneMappingArgs']]]]] = None,
                  __props__=None):
         """
-        Provides a CEN transit router VPC attachment resource that associate the VPC with the CEN instance. [What is Cen Transit Router VPC Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutervpcattachment)
+        Provides a CEN transit router VPC attachment resource that associate the VPC with the CEN instance. [What is Cen Transit Router VPC Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervpcattachment)
 
         > **NOTE:** Available since v1.126.0.
 
@@ -718,7 +776,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
                  args: TransitRouterVpcAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a CEN transit router VPC attachment resource that associate the VPC with the CEN instance. [What is Cen Transit Router VPC Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutervpcattachment)
+        Provides a CEN transit router VPC attachment resource that associate the VPC with the CEN instance. [What is Cen Transit Router VPC Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervpcattachment)
 
         > **NOTE:** Available since v1.126.0.
 

@@ -15,7 +15,7 @@ import (
 
 // Provides a Service Mesh Service Mesh resource.
 //
-// For information about Service Mesh Service Mesh and how to use it, see [What is Service Mesh](https://www.alibabacloud.com/help/en/alibaba-cloud-service-mesh/latest/api-servicemesh-2020-01-11-createservicemesh).
+// For information about Service Mesh Service Mesh and how to use it, see [What is Service Mesh](https://www.alibabacloud.com/help/en/asm/developer-reference/api-servicemesh-2020-01-11-createservicemesh).
 //
 // > **NOTE:** Available since v1.138.0.
 //
@@ -31,29 +31,40 @@ import (
 type ServiceMesh struct {
 	pulumi.CustomResourceState
 
-	// The array of the cluster ids.
+	// List of clusters.
 	ClusterIds pulumi.StringArrayOutput `pulumi:"clusterIds"`
-	// The service mesh instance specification.
-	// Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
+	// Cluster specification. The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
 	ClusterSpec pulumi.StringOutput `pulumi:"clusterSpec"`
-	// The type  of the resource. Valid values: `Default` and `Pro`. `Default`: the standard. `Pro`: the Pro version.
-	Edition pulumi.StringOutput `pulumi:"edition"`
-	// The configurations of additional features for the ASM instance. See `extraConfiguration` below.
+	// Service grid creation time.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether to customize Prometheus. Value:
+	// -'true': custom Prometheus.
+	// -'false': Do not customize Prometheus. Default value: 'false '.
+	CustomizedPrometheus pulumi.BoolPtrOutput `pulumi:"customizedPrometheus"`
+	// Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
+	Edition pulumi.StringPtrOutput `pulumi:"edition"`
+	// Data plane KubeAPI access capability. See `extraConfiguration` below.
 	ExtraConfiguration ServiceMeshExtraConfigurationOutput `pulumi:"extraConfiguration"`
-	// This parameter is used for resource destroy. Default value is `false`.
+	// Whether to forcibly delete the ASM instance. Value:
+	// -'true': force deletion of ASM instance
+	// -'false': no forced deletion of ASM instance. Default value: false.
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
-	// The configuration of the Load Balancer. See `loadBalancer` below.
-	LoadBalancer ServiceMeshLoadBalancerOutput `pulumi:"loadBalancer"`
-	// The configuration of the Service grid. See `meshConfig` below.
-	MeshConfig ServiceMeshMeshConfigOutput `pulumi:"meshConfig"`
-	// The network configuration of the Service grid. See `network` below.
+	// Load balancing information. See `loadBalancer` below.
+	LoadBalancer ServiceMeshLoadBalancerPtrOutput `pulumi:"loadBalancer"`
+	// Service grid configuration information. See `meshConfig` below.
+	MeshConfig ServiceMeshMeshConfigPtrOutput `pulumi:"meshConfig"`
+	// Service grid network configuration information. See `network` below.
 	Network ServiceMeshNetworkOutput `pulumi:"network"`
-	// The name of the resource.
-	ServiceMeshName pulumi.StringOutput `pulumi:"serviceMeshName"`
-	// The status of the resource. Valid values: `running` or `initial`.
+	// The Prometheus service address (in non-custom cases, use the ARMS address format).
+	PrometheusUrl pulumi.StringPtrOutput `pulumi:"prometheusUrl"`
+	// ServiceMeshName.
+	ServiceMeshName pulumi.StringPtrOutput `pulumi:"serviceMeshName"`
+	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The version of the resource. you can look up the version using `servicemesh.getVersions`. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istioOperatorVersion` in `servicemesh.getServiceMeshes`.
-	Version pulumi.StringOutput `pulumi:"version"`
+	// The tag of the resource.
+	Tags pulumi.MapOutput `pulumi:"tags"`
+	// Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istioOperatorVersion in `servicemesh.getServiceMeshes`.
+	Version pulumi.StringPtrOutput `pulumi:"version"`
 }
 
 // NewServiceMesh registers a new resource with the given unique name, arguments, and options.
@@ -89,54 +100,76 @@ func GetServiceMesh(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServiceMesh resources.
 type serviceMeshState struct {
-	// The array of the cluster ids.
+	// List of clusters.
 	ClusterIds []string `pulumi:"clusterIds"`
-	// The service mesh instance specification.
-	// Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
+	// Cluster specification. The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
 	ClusterSpec *string `pulumi:"clusterSpec"`
-	// The type  of the resource. Valid values: `Default` and `Pro`. `Default`: the standard. `Pro`: the Pro version.
+	// Service grid creation time.
+	CreateTime *string `pulumi:"createTime"`
+	// Whether to customize Prometheus. Value:
+	// -'true': custom Prometheus.
+	// -'false': Do not customize Prometheus. Default value: 'false '.
+	CustomizedPrometheus *bool `pulumi:"customizedPrometheus"`
+	// Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
 	Edition *string `pulumi:"edition"`
-	// The configurations of additional features for the ASM instance. See `extraConfiguration` below.
+	// Data plane KubeAPI access capability. See `extraConfiguration` below.
 	ExtraConfiguration *ServiceMeshExtraConfiguration `pulumi:"extraConfiguration"`
-	// This parameter is used for resource destroy. Default value is `false`.
+	// Whether to forcibly delete the ASM instance. Value:
+	// -'true': force deletion of ASM instance
+	// -'false': no forced deletion of ASM instance. Default value: false.
 	Force *bool `pulumi:"force"`
-	// The configuration of the Load Balancer. See `loadBalancer` below.
+	// Load balancing information. See `loadBalancer` below.
 	LoadBalancer *ServiceMeshLoadBalancer `pulumi:"loadBalancer"`
-	// The configuration of the Service grid. See `meshConfig` below.
+	// Service grid configuration information. See `meshConfig` below.
 	MeshConfig *ServiceMeshMeshConfig `pulumi:"meshConfig"`
-	// The network configuration of the Service grid. See `network` below.
+	// Service grid network configuration information. See `network` below.
 	Network *ServiceMeshNetwork `pulumi:"network"`
-	// The name of the resource.
+	// The Prometheus service address (in non-custom cases, use the ARMS address format).
+	PrometheusUrl *string `pulumi:"prometheusUrl"`
+	// ServiceMeshName.
 	ServiceMeshName *string `pulumi:"serviceMeshName"`
-	// The status of the resource. Valid values: `running` or `initial`.
+	// The status of the resource.
 	Status *string `pulumi:"status"`
-	// The version of the resource. you can look up the version using `servicemesh.getVersions`. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istioOperatorVersion` in `servicemesh.getServiceMeshes`.
+	// The tag of the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istioOperatorVersion in `servicemesh.getServiceMeshes`.
 	Version *string `pulumi:"version"`
 }
 
 type ServiceMeshState struct {
-	// The array of the cluster ids.
+	// List of clusters.
 	ClusterIds pulumi.StringArrayInput
-	// The service mesh instance specification.
-	// Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
+	// Cluster specification. The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
 	ClusterSpec pulumi.StringPtrInput
-	// The type  of the resource. Valid values: `Default` and `Pro`. `Default`: the standard. `Pro`: the Pro version.
+	// Service grid creation time.
+	CreateTime pulumi.StringPtrInput
+	// Whether to customize Prometheus. Value:
+	// -'true': custom Prometheus.
+	// -'false': Do not customize Prometheus. Default value: 'false '.
+	CustomizedPrometheus pulumi.BoolPtrInput
+	// Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
 	Edition pulumi.StringPtrInput
-	// The configurations of additional features for the ASM instance. See `extraConfiguration` below.
+	// Data plane KubeAPI access capability. See `extraConfiguration` below.
 	ExtraConfiguration ServiceMeshExtraConfigurationPtrInput
-	// This parameter is used for resource destroy. Default value is `false`.
+	// Whether to forcibly delete the ASM instance. Value:
+	// -'true': force deletion of ASM instance
+	// -'false': no forced deletion of ASM instance. Default value: false.
 	Force pulumi.BoolPtrInput
-	// The configuration of the Load Balancer. See `loadBalancer` below.
+	// Load balancing information. See `loadBalancer` below.
 	LoadBalancer ServiceMeshLoadBalancerPtrInput
-	// The configuration of the Service grid. See `meshConfig` below.
+	// Service grid configuration information. See `meshConfig` below.
 	MeshConfig ServiceMeshMeshConfigPtrInput
-	// The network configuration of the Service grid. See `network` below.
+	// Service grid network configuration information. See `network` below.
 	Network ServiceMeshNetworkPtrInput
-	// The name of the resource.
+	// The Prometheus service address (in non-custom cases, use the ARMS address format).
+	PrometheusUrl pulumi.StringPtrInput
+	// ServiceMeshName.
 	ServiceMeshName pulumi.StringPtrInput
-	// The status of the resource. Valid values: `running` or `initial`.
+	// The status of the resource.
 	Status pulumi.StringPtrInput
-	// The version of the resource. you can look up the version using `servicemesh.getVersions`. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istioOperatorVersion` in `servicemesh.getServiceMeshes`.
+	// The tag of the resource.
+	Tags pulumi.MapInput
+	// Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istioOperatorVersion in `servicemesh.getServiceMeshes`.
 	Version pulumi.StringPtrInput
 }
 
@@ -145,51 +178,69 @@ func (ServiceMeshState) ElementType() reflect.Type {
 }
 
 type serviceMeshArgs struct {
-	// The array of the cluster ids.
+	// List of clusters.
 	ClusterIds []string `pulumi:"clusterIds"`
-	// The service mesh instance specification.
-	// Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
+	// Cluster specification. The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
 	ClusterSpec *string `pulumi:"clusterSpec"`
-	// The type  of the resource. Valid values: `Default` and `Pro`. `Default`: the standard. `Pro`: the Pro version.
+	// Whether to customize Prometheus. Value:
+	// -'true': custom Prometheus.
+	// -'false': Do not customize Prometheus. Default value: 'false '.
+	CustomizedPrometheus *bool `pulumi:"customizedPrometheus"`
+	// Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
 	Edition *string `pulumi:"edition"`
-	// The configurations of additional features for the ASM instance. See `extraConfiguration` below.
+	// Data plane KubeAPI access capability. See `extraConfiguration` below.
 	ExtraConfiguration *ServiceMeshExtraConfiguration `pulumi:"extraConfiguration"`
-	// This parameter is used for resource destroy. Default value is `false`.
+	// Whether to forcibly delete the ASM instance. Value:
+	// -'true': force deletion of ASM instance
+	// -'false': no forced deletion of ASM instance. Default value: false.
 	Force *bool `pulumi:"force"`
-	// The configuration of the Load Balancer. See `loadBalancer` below.
+	// Load balancing information. See `loadBalancer` below.
 	LoadBalancer *ServiceMeshLoadBalancer `pulumi:"loadBalancer"`
-	// The configuration of the Service grid. See `meshConfig` below.
+	// Service grid configuration information. See `meshConfig` below.
 	MeshConfig *ServiceMeshMeshConfig `pulumi:"meshConfig"`
-	// The network configuration of the Service grid. See `network` below.
+	// Service grid network configuration information. See `network` below.
 	Network ServiceMeshNetwork `pulumi:"network"`
-	// The name of the resource.
+	// The Prometheus service address (in non-custom cases, use the ARMS address format).
+	PrometheusUrl *string `pulumi:"prometheusUrl"`
+	// ServiceMeshName.
 	ServiceMeshName *string `pulumi:"serviceMeshName"`
-	// The version of the resource. you can look up the version using `servicemesh.getVersions`. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istioOperatorVersion` in `servicemesh.getServiceMeshes`.
+	// The tag of the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istioOperatorVersion in `servicemesh.getServiceMeshes`.
 	Version *string `pulumi:"version"`
 }
 
 // The set of arguments for constructing a ServiceMesh resource.
 type ServiceMeshArgs struct {
-	// The array of the cluster ids.
+	// List of clusters.
 	ClusterIds pulumi.StringArrayInput
-	// The service mesh instance specification.
-	// Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
+	// Cluster specification. The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
 	ClusterSpec pulumi.StringPtrInput
-	// The type  of the resource. Valid values: `Default` and `Pro`. `Default`: the standard. `Pro`: the Pro version.
+	// Whether to customize Prometheus. Value:
+	// -'true': custom Prometheus.
+	// -'false': Do not customize Prometheus. Default value: 'false '.
+	CustomizedPrometheus pulumi.BoolPtrInput
+	// Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
 	Edition pulumi.StringPtrInput
-	// The configurations of additional features for the ASM instance. See `extraConfiguration` below.
+	// Data plane KubeAPI access capability. See `extraConfiguration` below.
 	ExtraConfiguration ServiceMeshExtraConfigurationPtrInput
-	// This parameter is used for resource destroy. Default value is `false`.
+	// Whether to forcibly delete the ASM instance. Value:
+	// -'true': force deletion of ASM instance
+	// -'false': no forced deletion of ASM instance. Default value: false.
 	Force pulumi.BoolPtrInput
-	// The configuration of the Load Balancer. See `loadBalancer` below.
+	// Load balancing information. See `loadBalancer` below.
 	LoadBalancer ServiceMeshLoadBalancerPtrInput
-	// The configuration of the Service grid. See `meshConfig` below.
+	// Service grid configuration information. See `meshConfig` below.
 	MeshConfig ServiceMeshMeshConfigPtrInput
-	// The network configuration of the Service grid. See `network` below.
+	// Service grid network configuration information. See `network` below.
 	Network ServiceMeshNetworkInput
-	// The name of the resource.
+	// The Prometheus service address (in non-custom cases, use the ARMS address format).
+	PrometheusUrl pulumi.StringPtrInput
+	// ServiceMeshName.
 	ServiceMeshName pulumi.StringPtrInput
-	// The version of the resource. you can look up the version using `servicemesh.getVersions`. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istioOperatorVersion` in `servicemesh.getServiceMeshes`.
+	// The tag of the resource.
+	Tags pulumi.MapInput
+	// Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istioOperatorVersion in `servicemesh.getServiceMeshes`.
 	Version pulumi.StringPtrInput
 }
 
@@ -304,60 +355,83 @@ func (o ServiceMeshOutput) ToOutput(ctx context.Context) pulumix.Output[*Service
 	}
 }
 
-// The array of the cluster ids.
+// List of clusters.
 func (o ServiceMeshOutput) ClusterIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServiceMesh) pulumi.StringArrayOutput { return v.ClusterIds }).(pulumi.StringArrayOutput)
 }
 
-// The service mesh instance specification.
-// Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
+// Cluster specification. The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
 func (o ServiceMeshOutput) ClusterSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceMesh) pulumi.StringOutput { return v.ClusterSpec }).(pulumi.StringOutput)
 }
 
-// The type  of the resource. Valid values: `Default` and `Pro`. `Default`: the standard. `Pro`: the Pro version.
-func (o ServiceMeshOutput) Edition() pulumi.StringOutput {
-	return o.ApplyT(func(v *ServiceMesh) pulumi.StringOutput { return v.Edition }).(pulumi.StringOutput)
+// Service grid creation time.
+func (o ServiceMeshOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceMesh) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The configurations of additional features for the ASM instance. See `extraConfiguration` below.
+// Whether to customize Prometheus. Value:
+// -'true': custom Prometheus.
+// -'false': Do not customize Prometheus. Default value: 'false '.
+func (o ServiceMeshOutput) CustomizedPrometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceMesh) pulumi.BoolPtrOutput { return v.CustomizedPrometheus }).(pulumi.BoolPtrOutput)
+}
+
+// Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
+func (o ServiceMeshOutput) Edition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMesh) pulumi.StringPtrOutput { return v.Edition }).(pulumi.StringPtrOutput)
+}
+
+// Data plane KubeAPI access capability. See `extraConfiguration` below.
 func (o ServiceMeshOutput) ExtraConfiguration() ServiceMeshExtraConfigurationOutput {
 	return o.ApplyT(func(v *ServiceMesh) ServiceMeshExtraConfigurationOutput { return v.ExtraConfiguration }).(ServiceMeshExtraConfigurationOutput)
 }
 
-// This parameter is used for resource destroy. Default value is `false`.
+// Whether to forcibly delete the ASM instance. Value:
+// -'true': force deletion of ASM instance
+// -'false': no forced deletion of ASM instance. Default value: false.
 func (o ServiceMeshOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMesh) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }
 
-// The configuration of the Load Balancer. See `loadBalancer` below.
-func (o ServiceMeshOutput) LoadBalancer() ServiceMeshLoadBalancerOutput {
-	return o.ApplyT(func(v *ServiceMesh) ServiceMeshLoadBalancerOutput { return v.LoadBalancer }).(ServiceMeshLoadBalancerOutput)
+// Load balancing information. See `loadBalancer` below.
+func (o ServiceMeshOutput) LoadBalancer() ServiceMeshLoadBalancerPtrOutput {
+	return o.ApplyT(func(v *ServiceMesh) ServiceMeshLoadBalancerPtrOutput { return v.LoadBalancer }).(ServiceMeshLoadBalancerPtrOutput)
 }
 
-// The configuration of the Service grid. See `meshConfig` below.
-func (o ServiceMeshOutput) MeshConfig() ServiceMeshMeshConfigOutput {
-	return o.ApplyT(func(v *ServiceMesh) ServiceMeshMeshConfigOutput { return v.MeshConfig }).(ServiceMeshMeshConfigOutput)
+// Service grid configuration information. See `meshConfig` below.
+func (o ServiceMeshOutput) MeshConfig() ServiceMeshMeshConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceMesh) ServiceMeshMeshConfigPtrOutput { return v.MeshConfig }).(ServiceMeshMeshConfigPtrOutput)
 }
 
-// The network configuration of the Service grid. See `network` below.
+// Service grid network configuration information. See `network` below.
 func (o ServiceMeshOutput) Network() ServiceMeshNetworkOutput {
 	return o.ApplyT(func(v *ServiceMesh) ServiceMeshNetworkOutput { return v.Network }).(ServiceMeshNetworkOutput)
 }
 
-// The name of the resource.
-func (o ServiceMeshOutput) ServiceMeshName() pulumi.StringOutput {
-	return o.ApplyT(func(v *ServiceMesh) pulumi.StringOutput { return v.ServiceMeshName }).(pulumi.StringOutput)
+// The Prometheus service address (in non-custom cases, use the ARMS address format).
+func (o ServiceMeshOutput) PrometheusUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMesh) pulumi.StringPtrOutput { return v.PrometheusUrl }).(pulumi.StringPtrOutput)
 }
 
-// The status of the resource. Valid values: `running` or `initial`.
+// ServiceMeshName.
+func (o ServiceMeshOutput) ServiceMeshName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMesh) pulumi.StringPtrOutput { return v.ServiceMeshName }).(pulumi.StringPtrOutput)
+}
+
+// The status of the resource.
 func (o ServiceMeshOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceMesh) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The version of the resource. you can look up the version using `servicemesh.getVersions`. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istioOperatorVersion` in `servicemesh.getServiceMeshes`.
-func (o ServiceMeshOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v *ServiceMesh) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
+// The tag of the resource.
+func (o ServiceMeshOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *ServiceMesh) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istioOperatorVersion in `servicemesh.getServiceMeshes`.
+func (o ServiceMeshOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMesh) pulumi.StringPtrOutput { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 type ServiceMeshArrayOutput struct{ *pulumi.OutputState }

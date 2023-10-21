@@ -43,7 +43,17 @@ class DirectoryArgs:
              mfa_authentication_status: Optional[pulumi.Input[str]] = None,
              saml_identity_provider_configuration: Optional[pulumi.Input['DirectorySamlIdentityProviderConfigurationArgs']] = None,
              scim_synchronization_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'directoryName' in kwargs:
+            directory_name = kwargs['directoryName']
+        if 'mfaAuthenticationStatus' in kwargs:
+            mfa_authentication_status = kwargs['mfaAuthenticationStatus']
+        if 'samlIdentityProviderConfiguration' in kwargs:
+            saml_identity_provider_configuration = kwargs['samlIdentityProviderConfiguration']
+        if 'scimSynchronizationStatus' in kwargs:
+            scim_synchronization_status = kwargs['scimSynchronizationStatus']
+
         if directory_name is not None:
             _setter("directory_name", directory_name)
         if mfa_authentication_status is not None:
@@ -134,7 +144,17 @@ class _DirectoryState:
              mfa_authentication_status: Optional[pulumi.Input[str]] = None,
              saml_identity_provider_configuration: Optional[pulumi.Input['DirectorySamlIdentityProviderConfigurationArgs']] = None,
              scim_synchronization_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'directoryName' in kwargs:
+            directory_name = kwargs['directoryName']
+        if 'mfaAuthenticationStatus' in kwargs:
+            mfa_authentication_status = kwargs['mfaAuthenticationStatus']
+        if 'samlIdentityProviderConfiguration' in kwargs:
+            saml_identity_provider_configuration = kwargs['samlIdentityProviderConfiguration']
+        if 'scimSynchronizationStatus' in kwargs:
+            scim_synchronization_status = kwargs['scimSynchronizationStatus']
+
         if directory_name is not None:
             _setter("directory_name", directory_name)
         if mfa_authentication_status is not None:

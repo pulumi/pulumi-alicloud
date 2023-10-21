@@ -562,6 +562,7 @@
         "drds/getInstances.ts",
         "drds/index.ts",
         "drds/instance.ts",
+        "drds/polardbxInstance.ts",
         "dts/consumerChannel.ts",
         "dts/getConsumerChannels.ts",
         "dts/getInstances.ts",

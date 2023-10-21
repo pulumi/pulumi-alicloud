@@ -39,7 +39,15 @@ class DbInstanceEndpointAddressArgs:
              db_instance_endpoint_id: pulumi.Input[str],
              db_instance_id: pulumi.Input[str],
              port: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectionStringPrefix' in kwargs:
+            connection_string_prefix = kwargs['connectionStringPrefix']
+        if 'dbInstanceEndpointId' in kwargs:
+            db_instance_endpoint_id = kwargs['dbInstanceEndpointId']
+        if 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+
         _setter("connection_string_prefix", connection_string_prefix)
         _setter("db_instance_endpoint_id", db_instance_endpoint_id)
         _setter("db_instance_id", db_instance_id)
@@ -134,7 +142,21 @@ class _DbInstanceEndpointAddressState:
              ip_address: Optional[pulumi.Input[str]] = None,
              ip_type: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if 'connectionStringPrefix' in kwargs:
+            connection_string_prefix = kwargs['connectionStringPrefix']
+        if 'dbInstanceEndpointId' in kwargs:
+            db_instance_endpoint_id = kwargs['dbInstanceEndpointId']
+        if 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if 'ipType' in kwargs:
+            ip_type = kwargs['ipType']
+
         if connection_string is not None:
             _setter("connection_string", connection_string)
         if connection_string_prefix is not None:

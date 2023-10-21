@@ -78,7 +78,11 @@ class AliasRoutingConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              additional_version_weights: Optional[Mapping[str, float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'additionalVersionWeights' in kwargs:
+            additional_version_weights = kwargs['additionalVersionWeights']
+
         if additional_version_weights is not None:
             _setter("additional_version_weights", additional_version_weights)
 
@@ -133,7 +137,13 @@ class CustomDomainCertConfig(dict):
              cert_name: str,
              certificate: str,
              private_key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'certName' in kwargs:
+            cert_name = kwargs['certName']
+        if 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+
         _setter("cert_name", cert_name)
         _setter("certificate", certificate)
         _setter("private_key", private_key)
@@ -213,7 +223,13 @@ class CustomDomainRouteConfig(dict):
              service_name: str,
              methods: Optional[Sequence[str]] = None,
              qualifier: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'functionName' in kwargs:
+            function_name = kwargs['functionName']
+        if 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         _setter("function_name", function_name)
         _setter("path", path)
         _setter("service_name", service_name)
@@ -301,7 +317,13 @@ class FunctionAsyncInvokeConfigDestinationConfig(dict):
              _setter: Callable[[Any, Any], None],
              on_failure: Optional['outputs.FunctionAsyncInvokeConfigDestinationConfigOnFailure'] = None,
              on_success: Optional['outputs.FunctionAsyncInvokeConfigDestinationConfigOnSuccess'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'onFailure' in kwargs:
+            on_failure = kwargs['onFailure']
+        if 'onSuccess' in kwargs:
+            on_success = kwargs['onSuccess']
+
         if on_failure is not None:
             _setter("on_failure", on_failure)
         if on_success is not None:
@@ -339,7 +361,9 @@ class FunctionAsyncInvokeConfigDestinationConfigOnFailure(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("destination", destination)
 
     @property
@@ -366,7 +390,9 @@ class FunctionAsyncInvokeConfigDestinationConfigOnSuccess(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("destination", destination)
 
     @property
@@ -401,7 +427,9 @@ class FunctionCustomContainerConfig(dict):
              image: str,
              args: Optional[str] = None,
              command: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("image", image)
         if args is not None:
             _setter("args", args)
@@ -479,7 +507,13 @@ class ServiceLogConfig(dict):
              project: str,
              enable_instance_metrics: Optional[bool] = None,
              enable_request_metrics: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'enableInstanceMetrics' in kwargs:
+            enable_instance_metrics = kwargs['enableInstanceMetrics']
+        if 'enableRequestMetrics' in kwargs:
+            enable_request_metrics = kwargs['enableRequestMetrics']
+
         _setter("logstore", logstore)
         _setter("project", project)
         if enable_instance_metrics is not None:
@@ -564,7 +598,15 @@ class ServiceNasConfig(dict):
              group_id: int,
              mount_points: Sequence['outputs.ServiceNasConfigMountPoint'],
              user_id: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'mountPoints' in kwargs:
+            mount_points = kwargs['mountPoints']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         _setter("group_id", group_id)
         _setter("mount_points", mount_points)
         _setter("user_id", user_id)
@@ -632,7 +674,13 @@ class ServiceNasConfigMountPoint(dict):
              _setter: Callable[[Any, Any], None],
              mount_dir: str,
              server_addr: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'mountDir' in kwargs:
+            mount_dir = kwargs['mountDir']
+        if 'serverAddr' in kwargs:
+            server_addr = kwargs['serverAddr']
+
         _setter("mount_dir", mount_dir)
         _setter("server_addr", server_addr)
 
@@ -672,7 +720,9 @@ class ServiceTracingConfig(dict):
              _setter: Callable[[Any, Any], None],
              params: Mapping[str, Any],
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("params", params)
         _setter("type", type)
 
@@ -737,7 +787,15 @@ class ServiceVpcConfig(dict):
              security_group_id: str,
              vswitch_ids: Sequence[str],
              vpc_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'vswitchIds' in kwargs:
+            vswitch_ids = kwargs['vswitchIds']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         _setter("security_group_id", security_group_id)
         _setter("vswitch_ids", vswitch_ids)
         if vpc_id is not None:
@@ -812,7 +870,15 @@ class V2FunctionCode(dict):
              oss_bucket_name: Optional[str] = None,
              oss_object_name: Optional[str] = None,
              zip_file: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ossBucketName' in kwargs:
+            oss_bucket_name = kwargs['ossBucketName']
+        if 'ossObjectName' in kwargs:
+            oss_object_name = kwargs['ossObjectName']
+        if 'zipFile' in kwargs:
+            zip_file = kwargs['zipFile']
+
         if oss_bucket_name is not None:
             _setter("oss_bucket_name", oss_bucket_name)
         if oss_object_name is not None:
@@ -895,7 +961,13 @@ class V2FunctionCustomContainerConfig(dict):
              command: Optional[str] = None,
              image: Optional[str] = None,
              web_server_mode: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accelerationType' in kwargs:
+            acceleration_type = kwargs['accelerationType']
+        if 'webServerMode' in kwargs:
+            web_server_mode = kwargs['webServerMode']
+
         if acceleration_type is not None:
             _setter("acceleration_type", acceleration_type)
         if args is not None:
@@ -990,7 +1062,13 @@ class V2FunctionCustomDns(dict):
              dns_options: Optional[Sequence['outputs.V2FunctionCustomDnsDnsOption']] = None,
              name_servers: Optional[Sequence[str]] = None,
              searches: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dnsOptions' in kwargs:
+            dns_options = kwargs['dnsOptions']
+        if 'nameServers' in kwargs:
+            name_servers = kwargs['nameServers']
+
         if dns_options is not None:
             _setter("dns_options", dns_options)
         if name_servers is not None:
@@ -1042,7 +1120,9 @@ class V2FunctionCustomDnsDnsOption(dict):
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if value is not None:
@@ -1127,7 +1207,21 @@ class V2FunctionCustomHealthCheckConfig(dict):
              period_seconds: Optional[int] = None,
              success_threshold: Optional[int] = None,
              timeout_seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'failureThreshold' in kwargs:
+            failure_threshold = kwargs['failureThreshold']
+        if 'httpGetUrl' in kwargs:
+            http_get_url = kwargs['httpGetUrl']
+        if 'initialDelaySeconds' in kwargs:
+            initial_delay_seconds = kwargs['initialDelaySeconds']
+        if 'periodSeconds' in kwargs:
+            period_seconds = kwargs['periodSeconds']
+        if 'successThreshold' in kwargs:
+            success_threshold = kwargs['successThreshold']
+        if 'timeoutSeconds' in kwargs:
+            timeout_seconds = kwargs['timeoutSeconds']
+
         if failure_threshold is not None:
             _setter("failure_threshold", failure_threshold)
         if http_get_url is not None:
@@ -1209,7 +1303,9 @@ class V2FunctionCustomRuntimeConfig(dict):
              _setter: Callable[[Any, Any], None],
              args: Optional[Sequence[str]] = None,
              commands: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if args is not None:
             _setter("args", args)
         if commands is not None:
@@ -1270,7 +1366,13 @@ class V2FunctionInstanceLifecycleConfig(dict):
              _setter: Callable[[Any, Any], None],
              pre_freeze: Optional['outputs.V2FunctionInstanceLifecycleConfigPreFreeze'] = None,
              pre_stop: Optional['outputs.V2FunctionInstanceLifecycleConfigPreStop'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'preFreeze' in kwargs:
+            pre_freeze = kwargs['preFreeze']
+        if 'preStop' in kwargs:
+            pre_stop = kwargs['preStop']
+
         if pre_freeze is not None:
             _setter("pre_freeze", pre_freeze)
         if pre_stop is not None:
@@ -1312,7 +1414,9 @@ class V2FunctionInstanceLifecycleConfigPreFreeze(dict):
              _setter: Callable[[Any, Any], None],
              handler: Optional[str] = None,
              timeout: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if handler is not None:
             _setter("handler", handler)
         if timeout is not None:
@@ -1354,7 +1458,9 @@ class V2FunctionInstanceLifecycleConfigPreStop(dict):
              _setter: Callable[[Any, Any], None],
              handler: Optional[str] = None,
              timeout: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if handler is not None:
             _setter("handler", handler)
         if timeout is not None:
@@ -1424,7 +1530,23 @@ class GetCustomDomainsDomainResult(dict):
              last_modified_time: str,
              protocol: str,
              route_configs: Sequence['outputs.GetCustomDomainsDomainRouteConfigResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'apiVersion' in kwargs:
+            api_version = kwargs['apiVersion']
+        if 'certConfig' in kwargs:
+            cert_config = kwargs['certConfig']
+        if 'createdTime' in kwargs:
+            created_time = kwargs['createdTime']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'lastModifiedTime' in kwargs:
+            last_modified_time = kwargs['lastModifiedTime']
+        if 'routeConfigs' in kwargs:
+            route_configs = kwargs['routeConfigs']
+
         _setter("account_id", account_id)
         _setter("api_version", api_version)
         _setter("cert_config", cert_config)
@@ -1527,7 +1649,11 @@ class GetCustomDomainsDomainCertConfigResult(dict):
              _setter: Callable[[Any, Any], None],
              cert_name: str,
              certificate: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'certName' in kwargs:
+            cert_name = kwargs['certName']
+
         _setter("cert_name", cert_name)
         _setter("certificate", certificate)
 
@@ -1579,7 +1705,13 @@ class GetCustomDomainsDomainRouteConfigResult(dict):
              path: str,
              qualifier: str,
              service_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'functionName' in kwargs:
+            function_name = kwargs['functionName']
+        if 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         _setter("function_name", function_name)
         _setter("methods", methods)
         _setter("path", path)
@@ -1710,7 +1842,31 @@ class GetFunctionsFunctionResult(dict):
              runtime: str,
              timeout: int,
              custom_container_config: Optional['outputs.GetFunctionsFunctionCustomContainerConfigResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'caPort' in kwargs:
+            ca_port = kwargs['caPort']
+        if 'codeChecksum' in kwargs:
+            code_checksum = kwargs['codeChecksum']
+        if 'codeSize' in kwargs:
+            code_size = kwargs['codeSize']
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'environmentVariables' in kwargs:
+            environment_variables = kwargs['environmentVariables']
+        if 'initializationTimeout' in kwargs:
+            initialization_timeout = kwargs['initializationTimeout']
+        if 'instanceConcurrency' in kwargs:
+            instance_concurrency = kwargs['instanceConcurrency']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'lastModificationTime' in kwargs:
+            last_modification_time = kwargs['lastModificationTime']
+        if 'memorySize' in kwargs:
+            memory_size = kwargs['memorySize']
+        if 'customContainerConfig' in kwargs:
+            custom_container_config = kwargs['customContainerConfig']
+
         _setter("ca_port", ca_port)
         _setter("code_checksum", code_checksum)
         _setter("code_size", code_size)
@@ -1899,7 +2055,9 @@ class GetFunctionsFunctionCustomContainerConfigResult(dict):
              args: str,
              command: str,
              image: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("args", args)
         _setter("command", command)
         _setter("image", image)
@@ -1980,7 +2138,21 @@ class GetServicesServiceResult(dict):
              nas_config: 'outputs.GetServicesServiceNasConfigResult',
              role: str,
              vpc_config: 'outputs.GetServicesServiceVpcConfigResult',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'internetAccess' in kwargs:
+            internet_access = kwargs['internetAccess']
+        if 'lastModificationTime' in kwargs:
+            last_modification_time = kwargs['lastModificationTime']
+        if 'logConfig' in kwargs:
+            log_config = kwargs['logConfig']
+        if 'nasConfig' in kwargs:
+            nas_config = kwargs['nasConfig']
+        if 'vpcConfig' in kwargs:
+            vpc_config = kwargs['vpcConfig']
+
         _setter("creation_time", creation_time)
         _setter("description", description)
         _setter("id", id)
@@ -2092,7 +2264,9 @@ class GetServicesServiceLogConfigResult(dict):
              _setter: Callable[[Any, Any], None],
              logstore: str,
              project: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("logstore", logstore)
         _setter("project", project)
 
@@ -2136,7 +2310,15 @@ class GetServicesServiceNasConfigResult(dict):
              group_id: int,
              mount_points: Sequence['outputs.GetServicesServiceNasConfigMountPointResult'],
              user_id: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'mountPoints' in kwargs:
+            mount_points = kwargs['mountPoints']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         _setter("group_id", group_id)
         _setter("mount_points", mount_points)
         _setter("user_id", user_id)
@@ -2185,7 +2367,13 @@ class GetServicesServiceNasConfigMountPointResult(dict):
              _setter: Callable[[Any, Any], None],
              mount_dir: str,
              server_addr: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'mountDir' in kwargs:
+            mount_dir = kwargs['mountDir']
+        if 'serverAddr' in kwargs:
+            server_addr = kwargs['serverAddr']
+
         _setter("mount_dir", mount_dir)
         _setter("server_addr", server_addr)
 
@@ -2229,7 +2417,15 @@ class GetServicesServiceVpcConfigResult(dict):
              security_group_id: str,
              vpc_id: str,
              vswitch_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchIds' in kwargs:
+            vswitch_ids = kwargs['vswitchIds']
+
         _setter("security_group_id", security_group_id)
         _setter("vpc_id", vpc_id)
         _setter("vswitch_ids", vswitch_ids)
@@ -2302,7 +2498,17 @@ class GetTriggersTriggerResult(dict):
              name: str,
              source_arn: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'invocationRole' in kwargs:
+            invocation_role = kwargs['invocationRole']
+        if 'lastModificationTime' in kwargs:
+            last_modification_time = kwargs['lastModificationTime']
+        if 'sourceArn' in kwargs:
+            source_arn = kwargs['sourceArn']
+
         _setter("config", config)
         _setter("creation_time", creation_time)
         _setter("id", id)
@@ -2392,7 +2598,9 @@ class GetZonesZoneResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("id", id)
 
     @property

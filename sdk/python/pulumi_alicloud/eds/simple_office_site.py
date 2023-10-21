@@ -67,7 +67,29 @@ class SimpleOfficeSiteArgs:
              mfa_enabled: Optional[pulumi.Input[bool]] = None,
              office_site_name: Optional[pulumi.Input[str]] = None,
              sso_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'cenOwnerId' in kwargs:
+            cen_owner_id = kwargs['cenOwnerId']
+        if 'desktopAccessType' in kwargs:
+            desktop_access_type = kwargs['desktopAccessType']
+        if 'enableAdminAccess' in kwargs:
+            enable_admin_access = kwargs['enableAdminAccess']
+        if 'enableCrossDesktopAccess' in kwargs:
+            enable_cross_desktop_access = kwargs['enableCrossDesktopAccess']
+        if 'enableInternetAccess' in kwargs:
+            enable_internet_access = kwargs['enableInternetAccess']
+        if 'mfaEnabled' in kwargs:
+            mfa_enabled = kwargs['mfaEnabled']
+        if 'officeSiteName' in kwargs:
+            office_site_name = kwargs['officeSiteName']
+        if 'ssoEnabled' in kwargs:
+            sso_enabled = kwargs['ssoEnabled']
+
         _setter("cidr_block", cidr_block)
         if bandwidth is not None:
             warnings.warn("""Field 'bandwidth' has been deprecated from provider version 1.142.0.""", DeprecationWarning)
@@ -295,7 +317,29 @@ class _SimpleOfficeSiteState:
              office_site_name: Optional[pulumi.Input[str]] = None,
              sso_enabled: Optional[pulumi.Input[bool]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'cenOwnerId' in kwargs:
+            cen_owner_id = kwargs['cenOwnerId']
+        if 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if 'desktopAccessType' in kwargs:
+            desktop_access_type = kwargs['desktopAccessType']
+        if 'enableAdminAccess' in kwargs:
+            enable_admin_access = kwargs['enableAdminAccess']
+        if 'enableCrossDesktopAccess' in kwargs:
+            enable_cross_desktop_access = kwargs['enableCrossDesktopAccess']
+        if 'enableInternetAccess' in kwargs:
+            enable_internet_access = kwargs['enableInternetAccess']
+        if 'mfaEnabled' in kwargs:
+            mfa_enabled = kwargs['mfaEnabled']
+        if 'officeSiteName' in kwargs:
+            office_site_name = kwargs['officeSiteName']
+        if 'ssoEnabled' in kwargs:
+            sso_enabled = kwargs['ssoEnabled']
+
         if bandwidth is not None:
             warnings.warn("""Field 'bandwidth' has been deprecated from provider version 1.142.0.""", DeprecationWarning)
             pulumi.log.warn("""bandwidth is deprecated: Field 'bandwidth' has been deprecated from provider version 1.142.0.""")
@@ -498,7 +542,7 @@ class SimpleOfficeSite(pulumi.CustomResource):
         """
         Provides a ECD Simple Office Site resource.
 
-        For information about ECD Simple Office Site and how to use it, see [What is Simple Office Site](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createsimpleofficesite).
+        For information about ECD Simple Office Site and how to use it, see [What is Simple Office Site](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createsimpleofficesite).
 
         > **NOTE:** Available since v1.140.0.
 
@@ -548,7 +592,7 @@ class SimpleOfficeSite(pulumi.CustomResource):
         """
         Provides a ECD Simple Office Site resource.
 
-        For information about ECD Simple Office Site and how to use it, see [What is Simple Office Site](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createsimpleofficesite).
+        For information about ECD Simple Office Site and how to use it, see [What is Simple Office Site](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createsimpleofficesite).
 
         > **NOTE:** Available since v1.140.0.
 

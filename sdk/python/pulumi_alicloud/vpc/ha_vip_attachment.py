@@ -48,7 +48,17 @@ class HAVipAttachmentArgs:
              ha_vip_id: Optional[pulumi.Input[str]] = None,
              havip_id: Optional[pulumi.Input[str]] = None,
              instance_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'haVipId' in kwargs:
+            ha_vip_id = kwargs['haVipId']
+        if 'havipId' in kwargs:
+            havip_id = kwargs['havipId']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+
         _setter("instance_id", instance_id)
         if force is not None:
             _setter("force", force)
@@ -172,7 +182,17 @@ class _HAVipAttachmentState:
              instance_id: Optional[pulumi.Input[str]] = None,
              instance_type: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'haVipId' in kwargs:
+            ha_vip_id = kwargs['haVipId']
+        if 'havipId' in kwargs:
+            havip_id = kwargs['havipId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+
         if force is not None:
             _setter("force", force)
         if ha_vip_id is not None:

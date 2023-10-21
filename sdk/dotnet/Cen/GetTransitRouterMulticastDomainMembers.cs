@@ -12,13 +12,15 @@ namespace Pulumi.AliCloud.Cen
     public static class GetTransitRouterMulticastDomainMembers
     {
         /// <summary>
-        /// This data source provides Cen Transit Router Multicast Domain Member available to the user.[What is Transit Router Multicast Domain Member](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupmembers)
+        /// This data source provides Cen Transit Router Multicast Domain Member available to the user. [What is Transit Router Multicast Domain Member](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupmembers)
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -46,13 +48,15 @@ namespace Pulumi.AliCloud.Cen
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterMulticastDomainMembersResult>("alicloud:cen/getTransitRouterMulticastDomainMembers:getTransitRouterMulticastDomainMembers", args ?? new GetTransitRouterMulticastDomainMembersArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Cen Transit Router Multicast Domain Member available to the user.[What is Transit Router Multicast Domain Member](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupmembers)
+        /// This data source provides Cen Transit Router Multicast Domain Member available to the user. [What is Transit Router Multicast Domain Member](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupmembers)
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

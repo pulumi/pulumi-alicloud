@@ -77,7 +77,29 @@ class TrafficMirrorSessionArgs:
              traffic_mirror_session_description: Optional[pulumi.Input[str]] = None,
              traffic_mirror_session_name: Optional[pulumi.Input[str]] = None,
              virtual_network_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'trafficMirrorFilterId' in kwargs:
+            traffic_mirror_filter_id = kwargs['trafficMirrorFilterId']
+        if 'trafficMirrorSourceIds' in kwargs:
+            traffic_mirror_source_ids = kwargs['trafficMirrorSourceIds']
+        if 'trafficMirrorTargetId' in kwargs:
+            traffic_mirror_target_id = kwargs['trafficMirrorTargetId']
+        if 'trafficMirrorTargetType' in kwargs:
+            traffic_mirror_target_type = kwargs['trafficMirrorTargetType']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'packetLength' in kwargs:
+            packet_length = kwargs['packetLength']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'trafficMirrorSessionDescription' in kwargs:
+            traffic_mirror_session_description = kwargs['trafficMirrorSessionDescription']
+        if 'trafficMirrorSessionName' in kwargs:
+            traffic_mirror_session_name = kwargs['trafficMirrorSessionName']
+        if 'virtualNetworkId' in kwargs:
+            virtual_network_id = kwargs['virtualNetworkId']
+
         _setter("priority", priority)
         _setter("traffic_mirror_filter_id", traffic_mirror_filter_id)
         _setter("traffic_mirror_source_ids", traffic_mirror_source_ids)
@@ -329,7 +351,29 @@ class _TrafficMirrorSessionState:
              traffic_mirror_target_id: Optional[pulumi.Input[str]] = None,
              traffic_mirror_target_type: Optional[pulumi.Input[str]] = None,
              virtual_network_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'packetLength' in kwargs:
+            packet_length = kwargs['packetLength']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'trafficMirrorFilterId' in kwargs:
+            traffic_mirror_filter_id = kwargs['trafficMirrorFilterId']
+        if 'trafficMirrorSessionDescription' in kwargs:
+            traffic_mirror_session_description = kwargs['trafficMirrorSessionDescription']
+        if 'trafficMirrorSessionName' in kwargs:
+            traffic_mirror_session_name = kwargs['trafficMirrorSessionName']
+        if 'trafficMirrorSourceIds' in kwargs:
+            traffic_mirror_source_ids = kwargs['trafficMirrorSourceIds']
+        if 'trafficMirrorTargetId' in kwargs:
+            traffic_mirror_target_id = kwargs['trafficMirrorTargetId']
+        if 'trafficMirrorTargetType' in kwargs:
+            traffic_mirror_target_type = kwargs['trafficMirrorTargetType']
+        if 'virtualNetworkId' in kwargs:
+            virtual_network_id = kwargs['virtualNetworkId']
+
         if dry_run is not None:
             _setter("dry_run", dry_run)
         if enabled is not None:

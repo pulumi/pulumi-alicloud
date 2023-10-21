@@ -47,7 +47,19 @@ class SlbAttachmentArgs:
              type: pulumi.Input[str],
              listener_port: Optional[pulumi.Input[int]] = None,
              vserver_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if 'slbId' in kwargs:
+            slb_id = kwargs['slbId']
+        if 'slbIp' in kwargs:
+            slb_ip = kwargs['slbIp']
+        if 'listenerPort' in kwargs:
+            listener_port = kwargs['listenerPort']
+        if 'vserverGroupId' in kwargs:
+            vserver_group_id = kwargs['vserverGroupId']
+
         _setter("app_id", app_id)
         _setter("slb_id", slb_id)
         _setter("slb_ip", slb_ip)
@@ -174,7 +186,23 @@ class _SlbAttachmentState:
              type: Optional[pulumi.Input[str]] = None,
              vserver_group_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if 'listenerPort' in kwargs:
+            listener_port = kwargs['listenerPort']
+        if 'slbId' in kwargs:
+            slb_id = kwargs['slbId']
+        if 'slbIp' in kwargs:
+            slb_ip = kwargs['slbIp']
+        if 'slbStatus' in kwargs:
+            slb_status = kwargs['slbStatus']
+        if 'vserverGroupId' in kwargs:
+            vserver_group_id = kwargs['vserverGroupId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if app_id is not None:
             _setter("app_id", app_id)
         if listener_port is not None:

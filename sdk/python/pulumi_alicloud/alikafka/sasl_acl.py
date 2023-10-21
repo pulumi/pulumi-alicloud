@@ -47,7 +47,19 @@ class SaslAclArgs:
              acl_resource_type: pulumi.Input[str],
              instance_id: pulumi.Input[str],
              username: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclOperationType' in kwargs:
+            acl_operation_type = kwargs['aclOperationType']
+        if 'aclResourceName' in kwargs:
+            acl_resource_name = kwargs['aclResourceName']
+        if 'aclResourcePatternType' in kwargs:
+            acl_resource_pattern_type = kwargs['aclResourcePatternType']
+        if 'aclResourceType' in kwargs:
+            acl_resource_type = kwargs['aclResourceType']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("acl_operation_type", acl_operation_type)
         _setter("acl_resource_name", acl_resource_name)
         _setter("acl_resource_pattern_type", acl_resource_pattern_type)
@@ -168,7 +180,19 @@ class _SaslAclState:
              host: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclOperationType' in kwargs:
+            acl_operation_type = kwargs['aclOperationType']
+        if 'aclResourceName' in kwargs:
+            acl_resource_name = kwargs['aclResourceName']
+        if 'aclResourcePatternType' in kwargs:
+            acl_resource_pattern_type = kwargs['aclResourcePatternType']
+        if 'aclResourceType' in kwargs:
+            acl_resource_type = kwargs['aclResourceType']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if acl_operation_type is not None:
             _setter("acl_operation_type", acl_operation_type)
         if acl_resource_name is not None:
@@ -282,7 +306,7 @@ class SaslAcl(pulumi.CustomResource):
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides an ALIKAFKA sasl acl resource, see [What is alikafka sasl acl](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-createacl).
+        Provides an ALIKAFKA sasl acl resource, see [What is alikafka sasl acl](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createacl).
 
         > **NOTE:** Available since v1.66.0.
 
@@ -363,7 +387,7 @@ class SaslAcl(pulumi.CustomResource):
                  args: SaslAclArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an ALIKAFKA sasl acl resource, see [What is alikafka sasl acl](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-createacl).
+        Provides an ALIKAFKA sasl acl resource, see [What is alikafka sasl acl](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createacl).
 
         > **NOTE:** Available since v1.66.0.
 

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Provides an RDS Clone DB Instance resource.
  *
- * For information about RDS Clone DB Instance and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/doc-detail/26092.htm).
+ * For information about RDS Clone DB Instance and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/rds/product-overview/what-is-apsaradb-rds).
  *
  * > **NOTE:** Available since v1.149.0+.
  *
@@ -172,7 +172,7 @@ export class RdsCloneDbInstance extends pulumi.CustomResource {
      */
     public readonly connectionStringPrefix!: pulumi.Output<string | undefined>;
     /**
-     * The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+     * The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
      */
     public readonly dbInstanceClass!: pulumi.Output<string>;
     /**
@@ -180,7 +180,7 @@ export class RdsCloneDbInstance extends pulumi.CustomResource {
      */
     public readonly dbInstanceDescription!: pulumi.Output<string | undefined>;
     /**
-     * The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+     * The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
      *
      * > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
      */
@@ -213,7 +213,7 @@ export class RdsCloneDbInstance extends pulumi.CustomResource {
      * - true: delete protect.
      * - false: no delete protect.
      *
-     * > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+     * > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
@@ -319,7 +319,7 @@ export class RdsCloneDbInstance extends pulumi.CustomResource {
      */
     public readonly restoreTime!: pulumi.Output<string | undefined>;
     /**
-     * The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+     * The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account.
      *
      * > **NOTE:** This parameter is available only when the instance runs MySQL.
      */
@@ -407,7 +407,7 @@ export class RdsCloneDbInstance extends pulumi.CustomResource {
      */
     public readonly vswitchId!: pulumi.Output<string>;
     /**
-     * The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+     * The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query the most recent region list.
      */
     public readonly zoneId!: pulumi.Output<string>;
     /**
@@ -648,7 +648,7 @@ export interface RdsCloneDbInstanceState {
      */
     connectionStringPrefix?: pulumi.Input<string>;
     /**
-     * The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+     * The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
      */
     dbInstanceClass?: pulumi.Input<string>;
     /**
@@ -656,7 +656,7 @@ export interface RdsCloneDbInstanceState {
      */
     dbInstanceDescription?: pulumi.Input<string>;
     /**
-     * The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+     * The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
      *
      * > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
      */
@@ -689,7 +689,7 @@ export interface RdsCloneDbInstanceState {
      * - true: delete protect.
      * - false: no delete protect.
      *
-     * > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+     * > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
@@ -795,7 +795,7 @@ export interface RdsCloneDbInstanceState {
      */
     restoreTime?: pulumi.Input<string>;
     /**
-     * The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+     * The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account.
      *
      * > **NOTE:** This parameter is available only when the instance runs MySQL.
      */
@@ -883,7 +883,7 @@ export interface RdsCloneDbInstanceState {
      */
     vswitchId?: pulumi.Input<string>;
     /**
-     * The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+     * The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query the most recent region list.
      */
     zoneId?: pulumi.Input<string>;
     /**
@@ -967,7 +967,7 @@ export interface RdsCloneDbInstanceArgs {
      */
     connectionStringPrefix?: pulumi.Input<string>;
     /**
-     * The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+     * The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
      */
     dbInstanceClass?: pulumi.Input<string>;
     /**
@@ -975,7 +975,7 @@ export interface RdsCloneDbInstanceArgs {
      */
     dbInstanceDescription?: pulumi.Input<string>;
     /**
-     * The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+     * The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
      *
      * > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
      */
@@ -1008,7 +1008,7 @@ export interface RdsCloneDbInstanceArgs {
      * - true: delete protect.
      * - false: no delete protect.
      *
-     * > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+     * > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
@@ -1114,7 +1114,7 @@ export interface RdsCloneDbInstanceArgs {
      */
     restoreTime?: pulumi.Input<string>;
     /**
-     * The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+     * The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account.
      *
      * > **NOTE:** This parameter is available only when the instance runs MySQL.
      */
@@ -1202,7 +1202,7 @@ export interface RdsCloneDbInstanceArgs {
      */
     vswitchId?: pulumi.Input<string>;
     /**
-     * The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+     * The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query the most recent region list.
      */
     zoneId?: pulumi.Input<string>;
     /**

@@ -41,7 +41,13 @@ class AuditLogConfigArgs:
              instance_id: pulumi.Input[str],
              db_audit: Optional[pulumi.Input[bool]] = None,
              retention: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'dbAudit' in kwargs:
+            db_audit = kwargs['dbAudit']
+
         _setter("instance_id", instance_id)
         if db_audit is not None:
             _setter("db_audit", db_audit)
@@ -129,7 +135,15 @@ class _AuditLogConfigState:
              instance_id: Optional[pulumi.Input[str]] = None,
              retention: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dbAudit' in kwargs:
+            db_audit = kwargs['dbAudit']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if db_audit is not None:

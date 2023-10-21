@@ -43,7 +43,19 @@ class CommonBandwithPackageAttachmentArgs:
              bandwidth_package_bandwidth: Optional[pulumi.Input[str]] = None,
              cancel_common_bandwidth_package_ip_bandwidth: Optional[pulumi.Input[bool]] = None,
              ip_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bandwidthPackageId' in kwargs:
+            bandwidth_package_id = kwargs['bandwidthPackageId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'bandwidthPackageBandwidth' in kwargs:
+            bandwidth_package_bandwidth = kwargs['bandwidthPackageBandwidth']
+        if 'cancelCommonBandwidthPackageIpBandwidth' in kwargs:
+            cancel_common_bandwidth_package_ip_bandwidth = kwargs['cancelCommonBandwidthPackageIpBandwidth']
+        if 'ipType' in kwargs:
+            ip_type = kwargs['ipType']
+
         _setter("bandwidth_package_id", bandwidth_package_id)
         _setter("instance_id", instance_id)
         if bandwidth_package_bandwidth is not None:
@@ -150,7 +162,19 @@ class _CommonBandwithPackageAttachmentState:
              instance_id: Optional[pulumi.Input[str]] = None,
              ip_type: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bandwidthPackageBandwidth' in kwargs:
+            bandwidth_package_bandwidth = kwargs['bandwidthPackageBandwidth']
+        if 'bandwidthPackageId' in kwargs:
+            bandwidth_package_id = kwargs['bandwidthPackageId']
+        if 'cancelCommonBandwidthPackageIpBandwidth' in kwargs:
+            cancel_common_bandwidth_package_ip_bandwidth = kwargs['cancelCommonBandwidthPackageIpBandwidth']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'ipType' in kwargs:
+            ip_type = kwargs['ipType']
+
         if bandwidth_package_bandwidth is not None:
             _setter("bandwidth_package_bandwidth", bandwidth_package_bandwidth)
         if bandwidth_package_id is not None:

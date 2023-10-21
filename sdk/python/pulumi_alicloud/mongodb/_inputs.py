@@ -39,7 +39,9 @@ class InstanceParameterArgs:
              _setter: Callable[[Any, Any], None],
              name: pulumi.Input[str],
              value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         _setter("value", value)
 
@@ -107,7 +109,23 @@ class InstanceReplicaSetArgs:
              vpc_cloud_instance_id: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectionDomain' in kwargs:
+            connection_domain = kwargs['connectionDomain']
+        if 'connectionPort' in kwargs:
+            connection_port = kwargs['connectionPort']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'replicaSetRole' in kwargs:
+            replica_set_role = kwargs['replicaSetRole']
+        if 'vpcCloudInstanceId' in kwargs:
+            vpc_cloud_instance_id = kwargs['vpcCloudInstanceId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if connection_domain is not None:
             _setter("connection_domain", connection_domain)
         if connection_port is not None:
@@ -231,7 +249,15 @@ class ServerlessInstanceSecurityIpGroupArgs:
              security_ip_group_attribute: Optional[pulumi.Input[str]] = None,
              security_ip_group_name: Optional[pulumi.Input[str]] = None,
              security_ip_list: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'securityIpGroupAttribute' in kwargs:
+            security_ip_group_attribute = kwargs['securityIpGroupAttribute']
+        if 'securityIpGroupName' in kwargs:
+            security_ip_group_name = kwargs['securityIpGroupName']
+        if 'securityIpList' in kwargs:
+            security_ip_list = kwargs['securityIpList']
+
         if security_ip_group_attribute is not None:
             _setter("security_ip_group_attribute", security_ip_group_attribute)
         if security_ip_group_name is not None:
@@ -319,7 +345,23 @@ class ShardingInstanceConfigServerListArgs:
              node_id: Optional[pulumi.Input[str]] = None,
              node_storage: Optional[pulumi.Input[int]] = None,
              port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectString' in kwargs:
+            connect_string = kwargs['connectString']
+        if 'maxConnections' in kwargs:
+            max_connections = kwargs['maxConnections']
+        if 'maxIops' in kwargs:
+            max_iops = kwargs['maxIops']
+        if 'nodeClass' in kwargs:
+            node_class = kwargs['nodeClass']
+        if 'nodeDescription' in kwargs:
+            node_description = kwargs['nodeDescription']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if 'nodeStorage' in kwargs:
+            node_storage = kwargs['nodeStorage']
+
         if connect_string is not None:
             _setter("connect_string", connect_string)
         if max_connections is not None:
@@ -461,7 +503,15 @@ class ShardingInstanceMongoListArgs:
              connect_string: Optional[pulumi.Input[str]] = None,
              node_id: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nodeClass' in kwargs:
+            node_class = kwargs['nodeClass']
+        if 'connectString' in kwargs:
+            connect_string = kwargs['connectString']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+
         _setter("node_class", node_class)
         if connect_string is not None:
             _setter("connect_string", connect_string)
@@ -547,7 +597,17 @@ class ShardingInstanceShardListArgs:
              node_storage: pulumi.Input[int],
              node_id: Optional[pulumi.Input[str]] = None,
              readonly_replicas: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nodeClass' in kwargs:
+            node_class = kwargs['nodeClass']
+        if 'nodeStorage' in kwargs:
+            node_storage = kwargs['nodeStorage']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if 'readonlyReplicas' in kwargs:
+            readonly_replicas = kwargs['readonlyReplicas']
+
         _setter("node_class", node_class)
         _setter("node_storage", node_storage)
         if node_id is not None:
@@ -656,7 +716,25 @@ class ShardingNetworkPrivateAddressNetworkAddressArgs:
              role: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if 'networkAddress' in kwargs:
+            network_address = kwargs['networkAddress']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if 'nodeType' in kwargs:
+            node_type = kwargs['nodeType']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if expired_time is not None:
             _setter("expired_time", expired_time)
         if ip_address is not None:
@@ -850,7 +928,25 @@ class ShardingNetworkPublicAddressNetworkAddressArgs:
              role: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if 'networkAddress' in kwargs:
+            network_address = kwargs['networkAddress']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if 'nodeType' in kwargs:
+            node_type = kwargs['nodeType']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if expired_time is not None:
             _setter("expired_time", expired_time)
         if ip_address is not None:

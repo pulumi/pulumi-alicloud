@@ -62,7 +62,21 @@ class GetAccessGroupsGroupResult(dict):
              mount_point_count: int,
              network_type: str,
              rule_count: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessGroupId' in kwargs:
+            access_group_id = kwargs['accessGroupId']
+        if 'accessGroupName' in kwargs:
+            access_group_name = kwargs['accessGroupName']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'mountPointCount' in kwargs:
+            mount_point_count = kwargs['mountPointCount']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'ruleCount' in kwargs:
+            rule_count = kwargs['ruleCount']
+
         _setter("access_group_id", access_group_id)
         _setter("access_group_name", access_group_name)
         _setter("create_time", create_time)
@@ -180,7 +194,19 @@ class GetAccessRulesRuleResult(dict):
              network_segment: str,
              priority: int,
              rw_access_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessGroupId' in kwargs:
+            access_group_id = kwargs['accessGroupId']
+        if 'accessRuleId' in kwargs:
+            access_rule_id = kwargs['accessRuleId']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'networkSegment' in kwargs:
+            network_segment = kwargs['networkSegment']
+        if 'rwAccessType' in kwargs:
+            rw_access_type = kwargs['rwAccessType']
+
         _setter("access_group_id", access_group_id)
         _setter("access_rule_id", access_rule_id)
         _setter("create_time", create_time)
@@ -330,7 +356,37 @@ class GetFileSystemsSystemResult(dict):
              throughput_mode: str,
              used_space_size: float,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'fileSystemId' in kwargs:
+            file_system_id = kwargs['fileSystemId']
+        if 'fileSystemName' in kwargs:
+            file_system_name = kwargs['fileSystemName']
+        if 'mountPointCount' in kwargs:
+            mount_point_count = kwargs['mountPointCount']
+        if 'numberOfDirectories' in kwargs:
+            number_of_directories = kwargs['numberOfDirectories']
+        if 'numberOfFiles' in kwargs:
+            number_of_files = kwargs['numberOfFiles']
+        if 'protocolType' in kwargs:
+            protocol_type = kwargs['protocolType']
+        if 'provisionedThroughputInMiBps' in kwargs:
+            provisioned_throughput_in_mi_bps = kwargs['provisionedThroughputInMiBps']
+        if 'spaceCapacity' in kwargs:
+            space_capacity = kwargs['spaceCapacity']
+        if 'storagePackageId' in kwargs:
+            storage_package_id = kwargs['storagePackageId']
+        if 'storageType' in kwargs:
+            storage_type = kwargs['storageType']
+        if 'throughputMode' in kwargs:
+            throughput_mode = kwargs['throughputMode']
+        if 'usedSpaceSize' in kwargs:
+            used_space_size = kwargs['usedSpaceSize']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("create_time", create_time)
         _setter("description", description)
         _setter("file_system_id", file_system_id)
@@ -532,7 +588,25 @@ class GetMountPointsPointResult(dict):
              status: str,
              vpc_id: str,
              vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessGroupId' in kwargs:
+            access_group_id = kwargs['accessGroupId']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'fileSystemId' in kwargs:
+            file_system_id = kwargs['fileSystemId']
+        if 'mountPointDomain' in kwargs:
+            mount_point_domain = kwargs['mountPointDomain']
+        if 'mountPointId' in kwargs:
+            mount_point_id = kwargs['mountPointId']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("access_group_id", access_group_id)
         _setter("create_time", create_time)
         _setter("description", description)
@@ -653,7 +727,11 @@ class GetZonesZoneResult(dict):
              _setter: Callable[[Any, Any], None],
              options: Sequence['outputs.GetZonesZoneOptionResult'],
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("options", options)
         _setter("zone_id", zone_id)
 
@@ -693,7 +771,13 @@ class GetZonesZoneOptionResult(dict):
              _setter: Callable[[Any, Any], None],
              protocol_type: str,
              storage_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'protocolType' in kwargs:
+            protocol_type = kwargs['protocolType']
+        if 'storageType' in kwargs:
+            storage_type = kwargs['storageType']
+
         _setter("protocol_type", protocol_type)
         _setter("storage_type", storage_type)
 

@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createantibruteforcerule)
+// This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-createantibruteforcerule)
 //
-// > **NOTE:** Available in 1.195.0+
+// > **NOTE:** Available since v1.195.0.
 func GetAntiBruteForceRules(ctx *pulumi.Context, args *GetAntiBruteForceRulesArgs, opts ...pulumi.InvokeOption) (*GetAntiBruteForceRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAntiBruteForceRulesResult

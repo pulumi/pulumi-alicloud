@@ -51,7 +51,21 @@ class LifecycleHookArgs:
              name: Optional[pulumi.Input[str]] = None,
              notification_arn: Optional[pulumi.Input[str]] = None,
              notification_metadata: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'lifecycleTransition' in kwargs:
+            lifecycle_transition = kwargs['lifecycleTransition']
+        if 'scalingGroupId' in kwargs:
+            scaling_group_id = kwargs['scalingGroupId']
+        if 'defaultResult' in kwargs:
+            default_result = kwargs['defaultResult']
+        if 'heartbeatTimeout' in kwargs:
+            heartbeat_timeout = kwargs['heartbeatTimeout']
+        if 'notificationArn' in kwargs:
+            notification_arn = kwargs['notificationArn']
+        if 'notificationMetadata' in kwargs:
+            notification_metadata = kwargs['notificationMetadata']
+
         _setter("lifecycle_transition", lifecycle_transition)
         _setter("scaling_group_id", scaling_group_id)
         if default_result is not None:
@@ -190,7 +204,21 @@ class _LifecycleHookState:
              notification_arn: Optional[pulumi.Input[str]] = None,
              notification_metadata: Optional[pulumi.Input[str]] = None,
              scaling_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defaultResult' in kwargs:
+            default_result = kwargs['defaultResult']
+        if 'heartbeatTimeout' in kwargs:
+            heartbeat_timeout = kwargs['heartbeatTimeout']
+        if 'lifecycleTransition' in kwargs:
+            lifecycle_transition = kwargs['lifecycleTransition']
+        if 'notificationArn' in kwargs:
+            notification_arn = kwargs['notificationArn']
+        if 'notificationMetadata' in kwargs:
+            notification_metadata = kwargs['notificationMetadata']
+        if 'scalingGroupId' in kwargs:
+            scaling_group_id = kwargs['scalingGroupId']
+
         if default_result is not None:
             _setter("default_result", default_result)
         if heartbeat_timeout is not None:

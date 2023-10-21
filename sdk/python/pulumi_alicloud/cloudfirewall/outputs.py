@@ -80,7 +80,13 @@ class AddressBookEcsTag(dict):
              _setter: Callable[[Any, Any], None],
              tag_key: Optional[str] = None,
              tag_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'tagKey' in kwargs:
+            tag_key = kwargs['tagKey']
+        if 'tagValue' in kwargs:
+            tag_value = kwargs['tagValue']
+
         if tag_key is not None:
             _setter("tag_key", tag_key)
         if tag_value is not None:
@@ -231,7 +237,43 @@ class FirewallVpcFirewallCenLocalVpc(dict):
              vpc_cidr_table_lists: Optional[Sequence['outputs.FirewallVpcFirewallCenLocalVpcVpcCidrTableList']] = None,
              vpc_id: Optional[str] = None,
              vpc_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'networkInstanceId' in kwargs:
+            network_instance_id = kwargs['networkInstanceId']
+        if 'attachmentId' in kwargs:
+            attachment_id = kwargs['attachmentId']
+        if 'attachmentName' in kwargs:
+            attachment_name = kwargs['attachmentName']
+        if 'defendCidrLists' in kwargs:
+            defend_cidr_lists = kwargs['defendCidrLists']
+        if 'eniLists' in kwargs:
+            eni_lists = kwargs['eniLists']
+        if 'manualVswitchId' in kwargs:
+            manual_vswitch_id = kwargs['manualVswitchId']
+        if 'networkInstanceName' in kwargs:
+            network_instance_name = kwargs['networkInstanceName']
+        if 'networkInstanceType' in kwargs:
+            network_instance_type = kwargs['networkInstanceType']
+        if 'ownerId' in kwargs:
+            owner_id = kwargs['ownerId']
+        if 'regionNo' in kwargs:
+            region_no = kwargs['regionNo']
+        if 'routeMode' in kwargs:
+            route_mode = kwargs['routeMode']
+        if 'supportManualMode' in kwargs:
+            support_manual_mode = kwargs['supportManualMode']
+        if 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+        if 'transitRouterType' in kwargs:
+            transit_router_type = kwargs['transitRouterType']
+        if 'vpcCidrTableLists' in kwargs:
+            vpc_cidr_table_lists = kwargs['vpcCidrTableLists']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vpcName' in kwargs:
+            vpc_name = kwargs['vpcName']
+
         _setter("network_instance_id", network_instance_id)
         if attachment_id is not None:
             _setter("attachment_id", attachment_id)
@@ -441,7 +483,13 @@ class FirewallVpcFirewallCenLocalVpcEniList(dict):
              _setter: Callable[[Any, Any], None],
              eni_id: Optional[str] = None,
              eni_private_ip_address: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'eniId' in kwargs:
+            eni_id = kwargs['eniId']
+        if 'eniPrivateIpAddress' in kwargs:
+            eni_private_ip_address = kwargs['eniPrivateIpAddress']
+
         if eni_id is not None:
             _setter("eni_id", eni_id)
         if eni_private_ip_address is not None:
@@ -502,7 +550,13 @@ class FirewallVpcFirewallCenLocalVpcVpcCidrTableList(dict):
              _setter: Callable[[Any, Any], None],
              route_entry_lists: Optional[Sequence['outputs.FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList']] = None,
              route_table_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'routeEntryLists' in kwargs:
+            route_entry_lists = kwargs['routeEntryLists']
+        if 'routeTableId' in kwargs:
+            route_table_id = kwargs['routeTableId']
+
         if route_entry_lists is not None:
             _setter("route_entry_lists", route_entry_lists)
         if route_table_id is not None:
@@ -563,7 +617,13 @@ class FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList(dict):
              _setter: Callable[[Any, Any], None],
              destination_cidr: Optional[str] = None,
              next_hop_instance_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destinationCidr' in kwargs:
+            destination_cidr = kwargs['destinationCidr']
+        if 'nextHopInstanceId' in kwargs:
+            next_hop_instance_id = kwargs['nextHopInstanceId']
+
         if destination_cidr is not None:
             _setter("destination_cidr", destination_cidr)
         if next_hop_instance_id is not None:
@@ -654,7 +714,23 @@ class FirewallVpcFirewallLocalVpc(dict):
              eni_private_ip_address: Optional[str] = None,
              router_interface_id: Optional[str] = None,
              vpc_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'localVpcCidrTableLists' in kwargs:
+            local_vpc_cidr_table_lists = kwargs['localVpcCidrTableLists']
+        if 'regionNo' in kwargs:
+            region_no = kwargs['regionNo']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'eniId' in kwargs:
+            eni_id = kwargs['eniId']
+        if 'eniPrivateIpAddress' in kwargs:
+            eni_private_ip_address = kwargs['eniPrivateIpAddress']
+        if 'routerInterfaceId' in kwargs:
+            router_interface_id = kwargs['routerInterfaceId']
+        if 'vpcName' in kwargs:
+            vpc_name = kwargs['vpcName']
+
         _setter("local_vpc_cidr_table_lists", local_vpc_cidr_table_lists)
         _setter("region_no", region_no)
         _setter("vpc_id", vpc_id)
@@ -762,7 +838,13 @@ class FirewallVpcFirewallLocalVpcLocalVpcCidrTableList(dict):
              _setter: Callable[[Any, Any], None],
              local_route_entry_lists: Sequence['outputs.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList'],
              local_route_table_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'localRouteEntryLists' in kwargs:
+            local_route_entry_lists = kwargs['localRouteEntryLists']
+        if 'localRouteTableId' in kwargs:
+            local_route_table_id = kwargs['localRouteTableId']
+
         _setter("local_route_entry_lists", local_route_entry_lists)
         _setter("local_route_table_id", local_route_table_id)
 
@@ -821,7 +903,13 @@ class FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList(dict):
              _setter: Callable[[Any, Any], None],
              local_destination_cidr: str,
              local_next_hop_instance_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'localDestinationCidr' in kwargs:
+            local_destination_cidr = kwargs['localDestinationCidr']
+        if 'localNextHopInstanceId' in kwargs:
+            local_next_hop_instance_id = kwargs['localNextHopInstanceId']
+
         _setter("local_destination_cidr", local_destination_cidr)
         _setter("local_next_hop_instance_id", local_next_hop_instance_id)
 
@@ -910,7 +998,23 @@ class FirewallVpcFirewallPeerVpc(dict):
              eni_private_ip_address: Optional[str] = None,
              router_interface_id: Optional[str] = None,
              vpc_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'peerVpcCidrTableLists' in kwargs:
+            peer_vpc_cidr_table_lists = kwargs['peerVpcCidrTableLists']
+        if 'regionNo' in kwargs:
+            region_no = kwargs['regionNo']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'eniId' in kwargs:
+            eni_id = kwargs['eniId']
+        if 'eniPrivateIpAddress' in kwargs:
+            eni_private_ip_address = kwargs['eniPrivateIpAddress']
+        if 'routerInterfaceId' in kwargs:
+            router_interface_id = kwargs['routerInterfaceId']
+        if 'vpcName' in kwargs:
+            vpc_name = kwargs['vpcName']
+
         _setter("peer_vpc_cidr_table_lists", peer_vpc_cidr_table_lists)
         _setter("region_no", region_no)
         _setter("vpc_id", vpc_id)
@@ -1018,7 +1122,13 @@ class FirewallVpcFirewallPeerVpcPeerVpcCidrTableList(dict):
              _setter: Callable[[Any, Any], None],
              peer_route_entry_lists: Sequence['outputs.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList'],
              peer_route_table_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'peerRouteEntryLists' in kwargs:
+            peer_route_entry_lists = kwargs['peerRouteEntryLists']
+        if 'peerRouteTableId' in kwargs:
+            peer_route_table_id = kwargs['peerRouteTableId']
+
         _setter("peer_route_entry_lists", peer_route_entry_lists)
         _setter("peer_route_table_id", peer_route_table_id)
 
@@ -1077,7 +1187,13 @@ class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList(dict):
              _setter: Callable[[Any, Any], None],
              peer_destination_cidr: str,
              peer_next_hop_instance_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'peerDestinationCidr' in kwargs:
+            peer_destination_cidr = kwargs['peerDestinationCidr']
+        if 'peerNextHopInstanceId' in kwargs:
+            peer_next_hop_instance_id = kwargs['peerNextHopInstanceId']
+
         _setter("peer_destination_cidr", peer_destination_cidr)
         _setter("peer_next_hop_instance_id", peer_next_hop_instance_id)
 
@@ -1104,34 +1220,34 @@ class GetAddressBooksBookResult(dict):
                  address_lists: Sequence[str],
                  auto_add_tag_ecs: int,
                  description: str,
+                 ecs_tags: Sequence['outputs.GetAddressBooksBookEcsTagResult'],
                  group_name: str,
                  group_type: str,
                  group_uuid: str,
                  id: str,
-                 tag_relation: str,
-                 ecs_tags: Optional[Sequence['outputs.GetAddressBooksBookEcsTagResult']] = None):
+                 tag_relation: str):
         """
         :param Sequence[str] address_lists: The addresses in the Address Book.
         :param int auto_add_tag_ecs: Whether you want to automatically add new matching tags of the ECS IP address to the Address Book.
         :param str description: The description of the Address Book.
+        :param Sequence['GetAddressBooksBookEcsTagArgs'] ecs_tags: The logical relation among the ECS tags that to be matchedh.
         :param str group_name: The name of the Address Book.
-        :param str group_type: The type of the Address Book.
+        :param str group_type: The type of the Address Book. Valid values: `ip`, `tag`.
         :param str group_uuid: The ID of the Address Book.
         :param str id: The ID of the Address Book.
         :param str tag_relation: One or more tags for the relationship between.
-        :param Sequence['GetAddressBooksBookEcsTagArgs'] ecs_tags: The logical relation among the ECS tags that to be matchedh.
         """
         GetAddressBooksBookResult._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             address_lists=address_lists,
             auto_add_tag_ecs=auto_add_tag_ecs,
             description=description,
+            ecs_tags=ecs_tags,
             group_name=group_name,
             group_type=group_type,
             group_uuid=group_uuid,
             id=id,
             tag_relation=tag_relation,
-            ecs_tags=ecs_tags,
         )
     @staticmethod
     def _configure(
@@ -1139,23 +1255,38 @@ class GetAddressBooksBookResult(dict):
              address_lists: Sequence[str],
              auto_add_tag_ecs: int,
              description: str,
+             ecs_tags: Sequence['outputs.GetAddressBooksBookEcsTagResult'],
              group_name: str,
              group_type: str,
              group_uuid: str,
              id: str,
              tag_relation: str,
-             ecs_tags: Optional[Sequence['outputs.GetAddressBooksBookEcsTagResult']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addressLists' in kwargs:
+            address_lists = kwargs['addressLists']
+        if 'autoAddTagEcs' in kwargs:
+            auto_add_tag_ecs = kwargs['autoAddTagEcs']
+        if 'ecsTags' in kwargs:
+            ecs_tags = kwargs['ecsTags']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'groupType' in kwargs:
+            group_type = kwargs['groupType']
+        if 'groupUuid' in kwargs:
+            group_uuid = kwargs['groupUuid']
+        if 'tagRelation' in kwargs:
+            tag_relation = kwargs['tagRelation']
+
         _setter("address_lists", address_lists)
         _setter("auto_add_tag_ecs", auto_add_tag_ecs)
         _setter("description", description)
+        _setter("ecs_tags", ecs_tags)
         _setter("group_name", group_name)
         _setter("group_type", group_type)
         _setter("group_uuid", group_uuid)
         _setter("id", id)
         _setter("tag_relation", tag_relation)
-        if ecs_tags is not None:
-            _setter("ecs_tags", ecs_tags)
 
     @property
     @pulumi.getter(name="addressLists")
@@ -1182,6 +1313,14 @@ class GetAddressBooksBookResult(dict):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="ecsTags")
+    def ecs_tags(self) -> Sequence['outputs.GetAddressBooksBookEcsTagResult']:
+        """
+        The logical relation among the ECS tags that to be matchedh.
+        """
+        return pulumi.get(self, "ecs_tags")
+
+    @property
     @pulumi.getter(name="groupName")
     def group_name(self) -> str:
         """
@@ -1193,7 +1332,7 @@ class GetAddressBooksBookResult(dict):
     @pulumi.getter(name="groupType")
     def group_type(self) -> str:
         """
-        The type of the Address Book.
+        The type of the Address Book. Valid values: `ip`, `tag`.
         """
         return pulumi.get(self, "group_type")
 
@@ -1221,20 +1360,12 @@ class GetAddressBooksBookResult(dict):
         """
         return pulumi.get(self, "tag_relation")
 
-    @property
-    @pulumi.getter(name="ecsTags")
-    def ecs_tags(self) -> Optional[Sequence['outputs.GetAddressBooksBookEcsTagResult']]:
-        """
-        The logical relation among the ECS tags that to be matchedh.
-        """
-        return pulumi.get(self, "ecs_tags")
-
 
 @pulumi.output_type
 class GetAddressBooksBookEcsTagResult(dict):
     def __init__(__self__, *,
-                 tag_key: Optional[str] = None,
-                 tag_value: Optional[str] = None):
+                 tag_key: str,
+                 tag_value: str):
         """
         :param str tag_key: The key of ECS tag that to be matched.
         :param str tag_value: The value of ECS tag that to be matched.
@@ -1247,17 +1378,21 @@ class GetAddressBooksBookEcsTagResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             tag_key: Optional[str] = None,
-             tag_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
-        if tag_key is not None:
-            _setter("tag_key", tag_key)
-        if tag_value is not None:
-            _setter("tag_value", tag_value)
+             tag_key: str,
+             tag_value: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'tagKey' in kwargs:
+            tag_key = kwargs['tagKey']
+        if 'tagValue' in kwargs:
+            tag_value = kwargs['tagValue']
+
+        _setter("tag_key", tag_key)
+        _setter("tag_value", tag_value)
 
     @property
     @pulumi.getter(name="tagKey")
-    def tag_key(self) -> Optional[str]:
+    def tag_key(self) -> str:
         """
         The key of ECS tag that to be matched.
         """
@@ -1265,7 +1400,7 @@ class GetAddressBooksBookEcsTagResult(dict):
 
     @property
     @pulumi.getter(name="tagValue")
-    def tag_value(self) -> Optional[str]:
+    def tag_value(self) -> str:
         """
         The value of ECS tag that to be matched.
         """
@@ -1373,7 +1508,43 @@ class GetControlPoliciesPolicyResult(dict):
              source_group_cidrs: Sequence[str],
              source_group_type: str,
              source_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclAction' in kwargs:
+            acl_action = kwargs['aclAction']
+        if 'aclUuid' in kwargs:
+            acl_uuid = kwargs['aclUuid']
+        if 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if 'applicationName' in kwargs:
+            application_name = kwargs['applicationName']
+        if 'destPort' in kwargs:
+            dest_port = kwargs['destPort']
+        if 'destPortGroup' in kwargs:
+            dest_port_group = kwargs['destPortGroup']
+        if 'destPortGroupPorts' in kwargs:
+            dest_port_group_ports = kwargs['destPortGroupPorts']
+        if 'destPortType' in kwargs:
+            dest_port_type = kwargs['destPortType']
+        if 'destinationGroupCidrs' in kwargs:
+            destination_group_cidrs = kwargs['destinationGroupCidrs']
+        if 'destinationGroupType' in kwargs:
+            destination_group_type = kwargs['destinationGroupType']
+        if 'destinationType' in kwargs:
+            destination_type = kwargs['destinationType']
+        if 'dnsResult' in kwargs:
+            dns_result = kwargs['dnsResult']
+        if 'dnsResultTime' in kwargs:
+            dns_result_time = kwargs['dnsResultTime']
+        if 'hitTimes' in kwargs:
+            hit_times = kwargs['hitTimes']
+        if 'sourceGroupCidrs' in kwargs:
+            source_group_cidrs = kwargs['sourceGroupCidrs']
+        if 'sourceGroupType' in kwargs:
+            source_group_type = kwargs['sourceGroupType']
+        if 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+
         _setter("acl_action", acl_action)
         _setter("acl_uuid", acl_uuid)
         _setter("application_id", application_id)
@@ -1609,7 +1780,19 @@ class GetInstanceMembersMemberResult(dict):
              member_uid: str,
              modify_time: int,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'memberDesc' in kwargs:
+            member_desc = kwargs['memberDesc']
+        if 'memberDisplayName' in kwargs:
+            member_display_name = kwargs['memberDisplayName']
+        if 'memberUid' in kwargs:
+            member_uid = kwargs['memberUid']
+        if 'modifyTime' in kwargs:
+            modify_time = kwargs['modifyTime']
+
         _setter("create_time", create_time)
         _setter("id", id)
         _setter("member_desc", member_desc)
@@ -1715,7 +1898,21 @@ class GetInstancesInstanceResult(dict):
              renewal_duration_unit: str,
              renewal_status: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'renewalDurationUnit' in kwargs:
+            renewal_duration_unit = kwargs['renewalDurationUnit']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+
         _setter("create_time", create_time)
         _setter("end_time", end_time)
         _setter("id", id)
@@ -1833,7 +2030,21 @@ class GetVpcFirewallCensCenResult(dict):
              status: str,
              vpc_firewall_id: str,
              vpc_firewall_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'connectType' in kwargs:
+            connect_type = kwargs['connectType']
+        if 'localVpcs' in kwargs:
+            local_vpcs = kwargs['localVpcs']
+        if 'networkInstanceId' in kwargs:
+            network_instance_id = kwargs['networkInstanceId']
+        if 'vpcFirewallId' in kwargs:
+            vpc_firewall_id = kwargs['vpcFirewallId']
+        if 'vpcFirewallName' in kwargs:
+            vpc_firewall_name = kwargs['vpcFirewallName']
+
         _setter("cen_id", cen_id)
         _setter("connect_type", connect_type)
         _setter("id", id)
@@ -1982,7 +2193,43 @@ class GetVpcFirewallCensCenLocalVpcResult(dict):
              vpc_cidr_table_lists: Sequence['outputs.GetVpcFirewallCensCenLocalVpcVpcCidrTableListResult'],
              vpc_id: str,
              vpc_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'attachmentId' in kwargs:
+            attachment_id = kwargs['attachmentId']
+        if 'attachmentName' in kwargs:
+            attachment_name = kwargs['attachmentName']
+        if 'defendCidrLists' in kwargs:
+            defend_cidr_lists = kwargs['defendCidrLists']
+        if 'eniLists' in kwargs:
+            eni_lists = kwargs['eniLists']
+        if 'manualVswitchId' in kwargs:
+            manual_vswitch_id = kwargs['manualVswitchId']
+        if 'networkInstanceId' in kwargs:
+            network_instance_id = kwargs['networkInstanceId']
+        if 'networkInstanceName' in kwargs:
+            network_instance_name = kwargs['networkInstanceName']
+        if 'networkInstanceType' in kwargs:
+            network_instance_type = kwargs['networkInstanceType']
+        if 'ownerId' in kwargs:
+            owner_id = kwargs['ownerId']
+        if 'regionNo' in kwargs:
+            region_no = kwargs['regionNo']
+        if 'routeMode' in kwargs:
+            route_mode = kwargs['routeMode']
+        if 'supportManualMode' in kwargs:
+            support_manual_mode = kwargs['supportManualMode']
+        if 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+        if 'transitRouterType' in kwargs:
+            transit_router_type = kwargs['transitRouterType']
+        if 'vpcCidrTableLists' in kwargs:
+            vpc_cidr_table_lists = kwargs['vpcCidrTableLists']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vpcName' in kwargs:
+            vpc_name = kwargs['vpcName']
+
         _setter("attachment_id", attachment_id)
         _setter("attachment_name", attachment_name)
         _setter("defend_cidr_lists", defend_cidr_lists)
@@ -2138,7 +2385,13 @@ class GetVpcFirewallCensCenLocalVpcEniListResult(dict):
              _setter: Callable[[Any, Any], None],
              eni_id: str,
              eni_private_ip_address: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'eniId' in kwargs:
+            eni_id = kwargs['eniId']
+        if 'eniPrivateIpAddress' in kwargs:
+            eni_private_ip_address = kwargs['eniPrivateIpAddress']
+
         _setter("eni_id", eni_id)
         _setter("eni_private_ip_address", eni_private_ip_address)
 
@@ -2172,7 +2425,13 @@ class GetVpcFirewallCensCenLocalVpcVpcCidrTableListResult(dict):
              _setter: Callable[[Any, Any], None],
              route_entry_lists: Sequence['outputs.GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListResult'],
              route_table_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'routeEntryLists' in kwargs:
+            route_entry_lists = kwargs['routeEntryLists']
+        if 'routeTableId' in kwargs:
+            route_table_id = kwargs['routeTableId']
+
         _setter("route_entry_lists", route_entry_lists)
         _setter("route_table_id", route_table_id)
 
@@ -2212,7 +2471,13 @@ class GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListResult(dict):
              _setter: Callable[[Any, Any], None],
              destination_cidr: str,
              next_hop_instance_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destinationCidr' in kwargs:
+            destination_cidr = kwargs['destinationCidr']
+        if 'nextHopInstanceId' in kwargs:
+            next_hop_instance_id = kwargs['nextHopInstanceId']
+
         _setter("destination_cidr", destination_cidr)
         _setter("next_hop_instance_id", next_hop_instance_id)
 
@@ -2340,7 +2605,43 @@ class GetVpcFirewallControlPoliciesPolicyResult(dict):
              source_group_type: str,
              source_type: str,
              vpc_firewall_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclAction' in kwargs:
+            acl_action = kwargs['aclAction']
+        if 'aclUuid' in kwargs:
+            acl_uuid = kwargs['aclUuid']
+        if 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if 'applicationName' in kwargs:
+            application_name = kwargs['applicationName']
+        if 'destPort' in kwargs:
+            dest_port = kwargs['destPort']
+        if 'destPortGroup' in kwargs:
+            dest_port_group = kwargs['destPortGroup']
+        if 'destPortGroupPorts' in kwargs:
+            dest_port_group_ports = kwargs['destPortGroupPorts']
+        if 'destPortType' in kwargs:
+            dest_port_type = kwargs['destPortType']
+        if 'destinationGroupCidrs' in kwargs:
+            destination_group_cidrs = kwargs['destinationGroupCidrs']
+        if 'destinationGroupType' in kwargs:
+            destination_group_type = kwargs['destinationGroupType']
+        if 'destinationType' in kwargs:
+            destination_type = kwargs['destinationType']
+        if 'hitTimes' in kwargs:
+            hit_times = kwargs['hitTimes']
+        if 'memberUid' in kwargs:
+            member_uid = kwargs['memberUid']
+        if 'sourceGroupCidrs' in kwargs:
+            source_group_cidrs = kwargs['sourceGroupCidrs']
+        if 'sourceGroupType' in kwargs:
+            source_group_type = kwargs['sourceGroupType']
+        if 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+        if 'vpcFirewallId' in kwargs:
+            vpc_firewall_id = kwargs['vpcFirewallId']
+
         _setter("acl_action", acl_action)
         _setter("acl_uuid", acl_uuid)
         _setter("application_id", application_id)
@@ -2606,7 +2907,21 @@ class GetVpcFirewallsFirewallResult(dict):
              status: str,
              vpc_firewall_id: str,
              vpc_firewall_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectType' in kwargs:
+            connect_type = kwargs['connectType']
+        if 'localVpcs' in kwargs:
+            local_vpcs = kwargs['localVpcs']
+        if 'peerVpcs' in kwargs:
+            peer_vpcs = kwargs['peerVpcs']
+        if 'regionStatus' in kwargs:
+            region_status = kwargs['regionStatus']
+        if 'vpcFirewallId' in kwargs:
+            vpc_firewall_id = kwargs['vpcFirewallId']
+        if 'vpcFirewallName' in kwargs:
+            vpc_firewall_name = kwargs['vpcFirewallName']
+
         _setter("bandwidth", bandwidth)
         _setter("connect_type", connect_type)
         _setter("id", id)
@@ -2726,7 +3041,23 @@ class GetVpcFirewallsFirewallLocalVpcResult(dict):
              router_interface_id: str,
              vpc_id: str,
              vpc_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'eniId' in kwargs:
+            eni_id = kwargs['eniId']
+        if 'eniPrivateIpAddress' in kwargs:
+            eni_private_ip_address = kwargs['eniPrivateIpAddress']
+        if 'localVpcCidrTableLists' in kwargs:
+            local_vpc_cidr_table_lists = kwargs['localVpcCidrTableLists']
+        if 'regionNo' in kwargs:
+            region_no = kwargs['regionNo']
+        if 'routerInterfaceId' in kwargs:
+            router_interface_id = kwargs['routerInterfaceId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vpcName' in kwargs:
+            vpc_name = kwargs['vpcName']
+
         _setter("eni_id", eni_id)
         _setter("eni_private_ip_address", eni_private_ip_address)
         _setter("local_vpc_cidr_table_lists", local_vpc_cidr_table_lists)
@@ -2802,7 +3133,13 @@ class GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListResult(dict):
              _setter: Callable[[Any, Any], None],
              local_route_entry_lists: Sequence['outputs.GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListResult'],
              local_route_table_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'localRouteEntryLists' in kwargs:
+            local_route_entry_lists = kwargs['localRouteEntryLists']
+        if 'localRouteTableId' in kwargs:
+            local_route_table_id = kwargs['localRouteTableId']
+
         _setter("local_route_entry_lists", local_route_entry_lists)
         _setter("local_route_table_id", local_route_table_id)
 
@@ -2842,7 +3179,13 @@ class GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListRes
              _setter: Callable[[Any, Any], None],
              local_destination_cidr: str,
              local_next_hop_instance_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'localDestinationCidr' in kwargs:
+            local_destination_cidr = kwargs['localDestinationCidr']
+        if 'localNextHopInstanceId' in kwargs:
+            local_next_hop_instance_id = kwargs['localNextHopInstanceId']
+
         _setter("local_destination_cidr", local_destination_cidr)
         _setter("local_next_hop_instance_id", local_next_hop_instance_id)
 
@@ -2899,7 +3242,23 @@ class GetVpcFirewallsFirewallPeerVpcResult(dict):
              router_interface_id: str,
              vpc_id: str,
              vpc_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'eniId' in kwargs:
+            eni_id = kwargs['eniId']
+        if 'eniPrivateIpAddress' in kwargs:
+            eni_private_ip_address = kwargs['eniPrivateIpAddress']
+        if 'peerVpcCidrTableLists' in kwargs:
+            peer_vpc_cidr_table_lists = kwargs['peerVpcCidrTableLists']
+        if 'regionNo' in kwargs:
+            region_no = kwargs['regionNo']
+        if 'routerInterfaceId' in kwargs:
+            router_interface_id = kwargs['routerInterfaceId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vpcName' in kwargs:
+            vpc_name = kwargs['vpcName']
+
         _setter("eni_id", eni_id)
         _setter("eni_private_ip_address", eni_private_ip_address)
         _setter("peer_vpc_cidr_table_lists", peer_vpc_cidr_table_lists)
@@ -2975,7 +3334,13 @@ class GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListResult(dict):
              _setter: Callable[[Any, Any], None],
              peer_route_entry_lists: Sequence['outputs.GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListResult'],
              peer_route_table_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'peerRouteEntryLists' in kwargs:
+            peer_route_entry_lists = kwargs['peerRouteEntryLists']
+        if 'peerRouteTableId' in kwargs:
+            peer_route_table_id = kwargs['peerRouteTableId']
+
         _setter("peer_route_entry_lists", peer_route_entry_lists)
         _setter("peer_route_table_id", peer_route_table_id)
 
@@ -3015,7 +3380,13 @@ class GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListResult
              _setter: Callable[[Any, Any], None],
              peer_destination_cidr: str,
              peer_next_hop_instance_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'peerDestinationCidr' in kwargs:
+            peer_destination_cidr = kwargs['peerDestinationCidr']
+        if 'peerNextHopInstanceId' in kwargs:
+            peer_next_hop_instance_id = kwargs['peerNextHopInstanceId']
+
         _setter("peer_destination_cidr", peer_destination_cidr)
         _setter("peer_next_hop_instance_id", peer_next_hop_instance_id)
 

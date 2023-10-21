@@ -31,7 +31,13 @@ class NetworkAttachmentArgs:
              _setter: Callable[[Any, Any], None],
              ccn_id: pulumi.Input[str],
              sag_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ccnId' in kwargs:
+            ccn_id = kwargs['ccnId']
+        if 'sagId' in kwargs:
+            sag_id = kwargs['sagId']
+
         _setter("ccn_id", ccn_id)
         _setter("sag_id", sag_id)
 
@@ -80,7 +86,13 @@ class _NetworkAttachmentState:
              _setter: Callable[[Any, Any], None],
              ccn_id: Optional[pulumi.Input[str]] = None,
              sag_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ccnId' in kwargs:
+            ccn_id = kwargs['ccnId']
+        if 'sagId' in kwargs:
+            sag_id = kwargs['sagId']
+
         if ccn_id is not None:
             _setter("ccn_id", ccn_id)
         if sag_id is not None:

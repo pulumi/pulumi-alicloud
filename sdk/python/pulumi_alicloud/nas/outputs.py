@@ -63,7 +63,17 @@ class GetAccessGroupsGroupResult(dict):
              mount_target_count: int,
              rule_count: int,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessGroupName' in kwargs:
+            access_group_name = kwargs['accessGroupName']
+        if 'accessGroupType' in kwargs:
+            access_group_type = kwargs['accessGroupType']
+        if 'mountTargetCount' in kwargs:
+            mount_target_count = kwargs['mountTargetCount']
+        if 'ruleCount' in kwargs:
+            rule_count = kwargs['ruleCount']
+
         _setter("access_group_name", access_group_name)
         _setter("access_group_type", access_group_type)
         _setter("description", description)
@@ -160,7 +170,17 @@ class GetAccessRulesRuleResult(dict):
              rw_access: str,
              source_cidr_ip: str,
              user_access: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessRuleId' in kwargs:
+            access_rule_id = kwargs['accessRuleId']
+        if 'rwAccess' in kwargs:
+            rw_access = kwargs['rwAccess']
+        if 'sourceCidrIp' in kwargs:
+            source_cidr_ip = kwargs['sourceCidrIp']
+        if 'userAccess' in kwargs:
+            user_access = kwargs['userAccess']
+
         _setter("access_rule_id", access_rule_id)
         _setter("priority", priority)
         _setter("rw_access", rw_access)
@@ -255,7 +275,23 @@ class GetAutoSnapshotPoliciesPolicyResult(dict):
              retention_days: int,
              status: str,
              time_points: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoSnapshotPolicyId' in kwargs:
+            auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
+        if 'autoSnapshotPolicyName' in kwargs:
+            auto_snapshot_policy_name = kwargs['autoSnapshotPolicyName']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'fileSystemNums' in kwargs:
+            file_system_nums = kwargs['fileSystemNums']
+        if 'repeatWeekdays' in kwargs:
+            repeat_weekdays = kwargs['repeatWeekdays']
+        if 'retentionDays' in kwargs:
+            retention_days = kwargs['retentionDays']
+        if 'timePoints' in kwargs:
+            time_points = kwargs['timePoints']
+
         _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
         _setter("auto_snapshot_policy_name", auto_snapshot_policy_name)
         _setter("create_time", create_time)
@@ -402,7 +438,27 @@ class GetDataFlowsFlowResult(dict):
              source_storage: str,
              status: str,
              throughput: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dataFlowId' in kwargs:
+            data_flow_id = kwargs['dataFlowId']
+        if 'errorMessage' in kwargs:
+            error_message = kwargs['errorMessage']
+        if 'fileSystemId' in kwargs:
+            file_system_id = kwargs['fileSystemId']
+        if 'fileSystemPath' in kwargs:
+            file_system_path = kwargs['fileSystemPath']
+        if 'fsetDescription' in kwargs:
+            fset_description = kwargs['fsetDescription']
+        if 'fsetId' in kwargs:
+            fset_id = kwargs['fsetId']
+        if 'sourceSecurityType' in kwargs:
+            source_security_type = kwargs['sourceSecurityType']
+        if 'sourceStorage' in kwargs:
+            source_storage = kwargs['sourceStorage']
+
         _setter("create_time", create_time)
         _setter("data_flow_id", data_flow_id)
         _setter("description", description)
@@ -589,7 +645,27 @@ class GetFileSystemsSystemResult(dict):
              region_id: str,
              storage_type: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'encryptType' in kwargs:
+            encrypt_type = kwargs['encryptType']
+        if 'fileSystemType' in kwargs:
+            file_system_type = kwargs['fileSystemType']
+        if 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if 'meteredSize' in kwargs:
+            metered_size = kwargs['meteredSize']
+        if 'protocolType' in kwargs:
+            protocol_type = kwargs['protocolType']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'storageType' in kwargs:
+            storage_type = kwargs['storageType']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("capacity", capacity)
         _setter("create_time", create_time)
         _setter("description", description)
@@ -751,7 +827,19 @@ class GetFilesetsFilesetResult(dict):
              id: str,
              status: str,
              update_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'fileSystemId' in kwargs:
+            file_system_id = kwargs['fileSystemId']
+        if 'fileSystemPath' in kwargs:
+            file_system_path = kwargs['fileSystemPath']
+        if 'filesetId' in kwargs:
+            fileset_id = kwargs['filesetId']
+        if 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         _setter("create_time", create_time)
         _setter("description", description)
         _setter("file_system_id", file_system_id)
@@ -865,7 +953,19 @@ class GetLifecyclePoliciesPolicyResult(dict):
              lifecycle_rule_name: str,
              paths: Sequence[str],
              storage_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'fileSystemId' in kwargs:
+            file_system_id = kwargs['fileSystemId']
+        if 'lifecyclePolicyName' in kwargs:
+            lifecycle_policy_name = kwargs['lifecyclePolicyName']
+        if 'lifecycleRuleName' in kwargs:
+            lifecycle_rule_name = kwargs['lifecycleRuleName']
+        if 'storageType' in kwargs:
+            storage_type = kwargs['storageType']
+
         _setter("create_time", create_time)
         _setter("file_system_id", file_system_id)
         _setter("id", id)
@@ -974,7 +1074,19 @@ class GetMountTargetsTargetResult(dict):
              type: str,
              vpc_id: str,
              vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessGroupName' in kwargs:
+            access_group_name = kwargs['accessGroupName']
+        if 'mountTargetDomain' in kwargs:
+            mount_target_domain = kwargs['mountTargetDomain']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("access_group_name", access_group_name)
         _setter("id", id)
         _setter("mount_target_domain", mount_target_domain)
@@ -1112,7 +1224,27 @@ class GetSnapshotsSnapshotResult(dict):
              source_file_system_size: str,
              source_file_system_version: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'encryptType' in kwargs:
+            encrypt_type = kwargs['encryptType']
+        if 'remainTime' in kwargs:
+            remain_time = kwargs['remainTime']
+        if 'retentionDays' in kwargs:
+            retention_days = kwargs['retentionDays']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+        if 'snapshotName' in kwargs:
+            snapshot_name = kwargs['snapshotName']
+        if 'sourceFileSystemId' in kwargs:
+            source_file_system_id = kwargs['sourceFileSystemId']
+        if 'sourceFileSystemSize' in kwargs:
+            source_file_system_size = kwargs['sourceFileSystemSize']
+        if 'sourceFileSystemVersion' in kwargs:
+            source_file_system_version = kwargs['sourceFileSystemVersion']
+
         _setter("create_time", create_time)
         _setter("description", description)
         _setter("encrypt_type", encrypt_type)
@@ -1251,7 +1383,13 @@ class GetZonesZoneResult(dict):
              _setter: Callable[[Any, Any], None],
              instance_types: Sequence['outputs.GetZonesZoneInstanceTypeResult'],
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceTypes' in kwargs:
+            instance_types = kwargs['instanceTypes']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("instance_types", instance_types)
         _setter("zone_id", zone_id)
 
@@ -1291,7 +1429,13 @@ class GetZonesZoneInstanceTypeResult(dict):
              _setter: Callable[[Any, Any], None],
              protocol_type: str,
              storage_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'protocolType' in kwargs:
+            protocol_type = kwargs['protocolType']
+        if 'storageType' in kwargs:
+            storage_type = kwargs['storageType']
+
         _setter("protocol_type", protocol_type)
         _setter("storage_type", storage_type)
 

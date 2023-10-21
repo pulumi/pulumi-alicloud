@@ -27,7 +27,7 @@ class ZoneAttachmentArgs:
         :param pulumi.Input[str] lang: The language of code.
         :param pulumi.Input[str] user_client_ip: The user custom IP address.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vpc_ids: The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
-        :param pulumi.Input[Sequence[pulumi.Input['ZoneAttachmentVpcArgs']]] vpcs: The List of the VPC:
+        :param pulumi.Input[Sequence[pulumi.Input['ZoneAttachmentVpcArgs']]] vpcs: See `vpcs` below.Recommend to use `vpcs`.
         """
         ZoneAttachmentArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -45,7 +45,15 @@ class ZoneAttachmentArgs:
              user_client_ip: Optional[pulumi.Input[str]] = None,
              vpc_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneAttachmentVpcArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'userClientIp' in kwargs:
+            user_client_ip = kwargs['userClientIp']
+        if 'vpcIds' in kwargs:
+            vpc_ids = kwargs['vpcIds']
+
         _setter("zone_id", zone_id)
         if lang is not None:
             _setter("lang", lang)
@@ -108,7 +116,7 @@ class ZoneAttachmentArgs:
     @pulumi.getter
     def vpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZoneAttachmentVpcArgs']]]]:
         """
-        The List of the VPC:
+        See `vpcs` below.Recommend to use `vpcs`.
         """
         return pulumi.get(self, "vpcs")
 
@@ -130,7 +138,7 @@ class _ZoneAttachmentState:
         :param pulumi.Input[str] lang: The language of code.
         :param pulumi.Input[str] user_client_ip: The user custom IP address.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vpc_ids: The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
-        :param pulumi.Input[Sequence[pulumi.Input['ZoneAttachmentVpcArgs']]] vpcs: The List of the VPC:
+        :param pulumi.Input[Sequence[pulumi.Input['ZoneAttachmentVpcArgs']]] vpcs: See `vpcs` below.Recommend to use `vpcs`.
         :param pulumi.Input[str] zone_id: The name of the Private Zone Record.
         """
         _ZoneAttachmentState._configure(
@@ -149,7 +157,15 @@ class _ZoneAttachmentState:
              vpc_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneAttachmentVpcArgs']]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'userClientIp' in kwargs:
+            user_client_ip = kwargs['userClientIp']
+        if 'vpcIds' in kwargs:
+            vpc_ids = kwargs['vpcIds']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if lang is not None:
             _setter("lang", lang)
         if user_client_ip is not None:
@@ -201,7 +217,7 @@ class _ZoneAttachmentState:
     @pulumi.getter
     def vpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZoneAttachmentVpcArgs']]]]:
         """
-        The List of the VPC:
+        See `vpcs` below.Recommend to use `vpcs`.
         """
         return pulumi.get(self, "vpcs")
 
@@ -242,9 +258,13 @@ class ZoneAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        zone = alicloud.pvtz.Zone("zone")
-        first = alicloud.vpc.Network("first", cidr_block="172.16.0.0/12")
-        second = alicloud.vpc.Network("second", cidr_block="172.16.0.0/16")
+        zone = alicloud.pvtz.Zone("zone", zone_name="foo.example.com")
+        first = alicloud.vpc.Network("first",
+            vpc_name="the-first-vpc",
+            cidr_block="172.16.0.0/12")
+        second = alicloud.vpc.Network("second",
+            vpc_name="the-second-vpc",
+            cidr_block="172.16.0.0/16")
         zone_attachment = alicloud.pvtz.ZoneAttachment("zone-attachment",
             zone_id=zone.id,
             vpc_ids=[
@@ -259,9 +279,13 @@ class ZoneAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        zone = alicloud.pvtz.Zone("zone")
-        first = alicloud.vpc.Network("first", cidr_block="172.16.0.0/12")
-        second = alicloud.vpc.Network("second", cidr_block="172.16.0.0/16")
+        zone = alicloud.pvtz.Zone("zone", zone_name="foo.example.com")
+        first = alicloud.vpc.Network("first",
+            vpc_name="the-first-vpc",
+            cidr_block="172.16.0.0/12")
+        second = alicloud.vpc.Network("second",
+            vpc_name="the-second-vpc",
+            cidr_block="172.16.0.0/16")
         zone_attachment = alicloud.pvtz.ZoneAttachment("zone-attachment",
             zone_id=zone.id,
             vpcs=[
@@ -280,12 +304,18 @@ class ZoneAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        zone = alicloud.pvtz.Zone("zone")
-        first = alicloud.vpc.Network("first", cidr_block="172.16.0.0/12")
-        second = alicloud.vpc.Network("second", cidr_block="172.16.0.0/16")
+        zone = alicloud.pvtz.Zone("zone", zone_name="foo.example.com")
+        first = alicloud.vpc.Network("first",
+            vpc_name="the-first-vpc",
+            cidr_block="172.16.0.0/12")
+        second = alicloud.vpc.Network("second",
+            vpc_name="the-second-vpc",
+            cidr_block="172.16.0.0/16")
         eu = alicloud.Provider("eu", region="eu-central-1")
-        third = alicloud.vpc.Network("third", cidr_block="172.16.0.0/16",
-        opts=pulumi.ResourceOptions(provider=alicloud["eu"]))
+        third = alicloud.vpc.Network("third",
+            vpc_name="the-third-vpc",
+            cidr_block="172.16.0.0/16",
+            opts=pulumi.ResourceOptions(provider=alicloud["eu"]))
         zone_attachment = alicloud.pvtz.ZoneAttachment("zone-attachment",
             zone_id=zone.id,
             vpcs=[
@@ -315,7 +345,7 @@ class ZoneAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] lang: The language of code.
         :param pulumi.Input[str] user_client_ip: The user custom IP address.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vpc_ids: The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneAttachmentVpcArgs']]]] vpcs: The List of the VPC:
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneAttachmentVpcArgs']]]] vpcs: See `vpcs` below.Recommend to use `vpcs`.
         :param pulumi.Input[str] zone_id: The name of the Private Zone Record.
         """
         ...
@@ -333,9 +363,13 @@ class ZoneAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        zone = alicloud.pvtz.Zone("zone")
-        first = alicloud.vpc.Network("first", cidr_block="172.16.0.0/12")
-        second = alicloud.vpc.Network("second", cidr_block="172.16.0.0/16")
+        zone = alicloud.pvtz.Zone("zone", zone_name="foo.example.com")
+        first = alicloud.vpc.Network("first",
+            vpc_name="the-first-vpc",
+            cidr_block="172.16.0.0/12")
+        second = alicloud.vpc.Network("second",
+            vpc_name="the-second-vpc",
+            cidr_block="172.16.0.0/16")
         zone_attachment = alicloud.pvtz.ZoneAttachment("zone-attachment",
             zone_id=zone.id,
             vpc_ids=[
@@ -350,9 +384,13 @@ class ZoneAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        zone = alicloud.pvtz.Zone("zone")
-        first = alicloud.vpc.Network("first", cidr_block="172.16.0.0/12")
-        second = alicloud.vpc.Network("second", cidr_block="172.16.0.0/16")
+        zone = alicloud.pvtz.Zone("zone", zone_name="foo.example.com")
+        first = alicloud.vpc.Network("first",
+            vpc_name="the-first-vpc",
+            cidr_block="172.16.0.0/12")
+        second = alicloud.vpc.Network("second",
+            vpc_name="the-second-vpc",
+            cidr_block="172.16.0.0/16")
         zone_attachment = alicloud.pvtz.ZoneAttachment("zone-attachment",
             zone_id=zone.id,
             vpcs=[
@@ -371,12 +409,18 @@ class ZoneAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        zone = alicloud.pvtz.Zone("zone")
-        first = alicloud.vpc.Network("first", cidr_block="172.16.0.0/12")
-        second = alicloud.vpc.Network("second", cidr_block="172.16.0.0/16")
+        zone = alicloud.pvtz.Zone("zone", zone_name="foo.example.com")
+        first = alicloud.vpc.Network("first",
+            vpc_name="the-first-vpc",
+            cidr_block="172.16.0.0/12")
+        second = alicloud.vpc.Network("second",
+            vpc_name="the-second-vpc",
+            cidr_block="172.16.0.0/16")
         eu = alicloud.Provider("eu", region="eu-central-1")
-        third = alicloud.vpc.Network("third", cidr_block="172.16.0.0/16",
-        opts=pulumi.ResourceOptions(provider=alicloud["eu"]))
+        third = alicloud.vpc.Network("third",
+            vpc_name="the-third-vpc",
+            cidr_block="172.16.0.0/16",
+            opts=pulumi.ResourceOptions(provider=alicloud["eu"]))
         zone_attachment = alicloud.pvtz.ZoneAttachment("zone-attachment",
             zone_id=zone.id,
             vpcs=[
@@ -466,7 +510,7 @@ class ZoneAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] lang: The language of code.
         :param pulumi.Input[str] user_client_ip: The user custom IP address.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vpc_ids: The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneAttachmentVpcArgs']]]] vpcs: The List of the VPC:
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneAttachmentVpcArgs']]]] vpcs: See `vpcs` below.Recommend to use `vpcs`.
         :param pulumi.Input[str] zone_id: The name of the Private Zone Record.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -508,7 +552,7 @@ class ZoneAttachment(pulumi.CustomResource):
     @pulumi.getter
     def vpcs(self) -> pulumi.Output[Sequence['outputs.ZoneAttachmentVpc']]:
         """
-        The List of the VPC:
+        See `vpcs` below.Recommend to use `vpcs`.
         """
         return pulumi.get(self, "vpcs")
 

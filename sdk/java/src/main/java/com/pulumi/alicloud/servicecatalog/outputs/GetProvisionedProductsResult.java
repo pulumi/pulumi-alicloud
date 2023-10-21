@@ -38,6 +38,8 @@ public final class GetProvisionedProductsResult {
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
     /**
+     * @return (Deprecated since v1.197.0) A list of Provisioned Product Entries. Each element contains the following attributes:
+     * 
      * @deprecated
      * Field &#39;products&#39; has been deprecated from provider version 1.197.0.
      * 
@@ -45,7 +47,7 @@ public final class GetProvisionedProductsResult {
     @Deprecated /* Field 'products' has been deprecated from provider version 1.197.0. */
     private List<GetProvisionedProductsProduct> products;
     /**
-     * @return A list of Provisioned Product Entries. Each element contains the following attributes:
+     * @return (Available since v1.197.0) A list of Provisioned Product Entries. Each element contains the following attributes:
      * 
      */
     private List<GetProvisionedProductsProvisionedProduct> provisionedProducts;
@@ -93,6 +95,8 @@ public final class GetProvisionedProductsResult {
         return Optional.ofNullable(this.pageSize);
     }
     /**
+     * @return (Deprecated since v1.197.0) A list of Provisioned Product Entries. Each element contains the following attributes:
+     * 
      * @deprecated
      * Field &#39;products&#39; has been deprecated from provider version 1.197.0.
      * 
@@ -102,7 +106,7 @@ public final class GetProvisionedProductsResult {
         return this.products;
     }
     /**
-     * @return A list of Provisioned Product Entries. Each element contains the following attributes:
+     * @return (Available since v1.197.0) A list of Provisioned Product Entries. Each element contains the following attributes:
      * 
      */
     public List<GetProvisionedProductsProvisionedProduct> provisionedProducts() {

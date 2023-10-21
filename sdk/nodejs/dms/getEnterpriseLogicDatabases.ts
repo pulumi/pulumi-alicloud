@@ -7,9 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides DMS Enterprise Logic Database available to the user.[What is Logic Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createlogicdatabase)
+ * This data source provides DMS Enterprise Logic Database available to the user. [What is Logic Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-createlogicdatabase).
  *
- * > **NOTE:** Available in 1.195.0+
+ * > **NOTE:** Available since v1.195.0.
  */
 export function getEnterpriseLogicDatabases(args?: GetEnterpriseLogicDatabasesArgs, opts?: pulumi.InvokeOptions): Promise<GetEnterpriseLogicDatabasesResult> {
     args = args || {};
@@ -54,9 +54,9 @@ export interface GetEnterpriseLogicDatabasesResult {
     readonly outputFile?: string;
 }
 /**
- * This data source provides DMS Enterprise Logic Database available to the user.[What is Logic Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createlogicdatabase)
+ * This data source provides DMS Enterprise Logic Database available to the user. [What is Logic Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-createlogicdatabase).
  *
- * > **NOTE:** Available in 1.195.0+
+ * > **NOTE:** Available since v1.195.0.
  */
 export function getEnterpriseLogicDatabasesOutput(args?: GetEnterpriseLogicDatabasesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnterpriseLogicDatabasesResult> {
     return pulumi.output(args).apply((a: any) => getEnterpriseLogicDatabases(a, opts))

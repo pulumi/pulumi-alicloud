@@ -62,7 +62,33 @@ class ScheduleArgs:
              scheduled_action: Optional[pulumi.Input[str]] = None,
              scheduled_task_name: Optional[pulumi.Input[str]] = None,
              task_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'desiredCapacity' in kwargs:
+            desired_capacity = kwargs['desiredCapacity']
+        if 'launchExpirationTime' in kwargs:
+            launch_expiration_time = kwargs['launchExpirationTime']
+        if 'launchTime' in kwargs:
+            launch_time = kwargs['launchTime']
+        if 'maxValue' in kwargs:
+            max_value = kwargs['maxValue']
+        if 'minValue' in kwargs:
+            min_value = kwargs['minValue']
+        if 'recurrenceEndTime' in kwargs:
+            recurrence_end_time = kwargs['recurrenceEndTime']
+        if 'recurrenceType' in kwargs:
+            recurrence_type = kwargs['recurrenceType']
+        if 'recurrenceValue' in kwargs:
+            recurrence_value = kwargs['recurrenceValue']
+        if 'scalingGroupId' in kwargs:
+            scaling_group_id = kwargs['scalingGroupId']
+        if 'scheduledAction' in kwargs:
+            scheduled_action = kwargs['scheduledAction']
+        if 'scheduledTaskName' in kwargs:
+            scheduled_task_name = kwargs['scheduledTaskName']
+        if 'taskEnabled' in kwargs:
+            task_enabled = kwargs['taskEnabled']
+
         if description is not None:
             _setter("description", description)
         if desired_capacity is not None:
@@ -259,7 +285,33 @@ class _ScheduleState:
              scheduled_action: Optional[pulumi.Input[str]] = None,
              scheduled_task_name: Optional[pulumi.Input[str]] = None,
              task_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'desiredCapacity' in kwargs:
+            desired_capacity = kwargs['desiredCapacity']
+        if 'launchExpirationTime' in kwargs:
+            launch_expiration_time = kwargs['launchExpirationTime']
+        if 'launchTime' in kwargs:
+            launch_time = kwargs['launchTime']
+        if 'maxValue' in kwargs:
+            max_value = kwargs['maxValue']
+        if 'minValue' in kwargs:
+            min_value = kwargs['minValue']
+        if 'recurrenceEndTime' in kwargs:
+            recurrence_end_time = kwargs['recurrenceEndTime']
+        if 'recurrenceType' in kwargs:
+            recurrence_type = kwargs['recurrenceType']
+        if 'recurrenceValue' in kwargs:
+            recurrence_value = kwargs['recurrenceValue']
+        if 'scalingGroupId' in kwargs:
+            scaling_group_id = kwargs['scalingGroupId']
+        if 'scheduledAction' in kwargs:
+            scheduled_action = kwargs['scheduledAction']
+        if 'scheduledTaskName' in kwargs:
+            scheduled_task_name = kwargs['scheduledTaskName']
+        if 'taskEnabled' in kwargs:
+            task_enabled = kwargs['taskEnabled']
+
         if description is not None:
             _setter("description", description)
         if desired_capacity is not None:

@@ -39,7 +39,17 @@ class ConsumerChannelArgs:
              consumer_group_password: pulumi.Input[str],
              consumer_group_user_name: pulumi.Input[str],
              dts_instance_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'consumerGroupName' in kwargs:
+            consumer_group_name = kwargs['consumerGroupName']
+        if 'consumerGroupPassword' in kwargs:
+            consumer_group_password = kwargs['consumerGroupPassword']
+        if 'consumerGroupUserName' in kwargs:
+            consumer_group_user_name = kwargs['consumerGroupUserName']
+        if 'dtsInstanceId' in kwargs:
+            dts_instance_id = kwargs['dtsInstanceId']
+
         _setter("consumer_group_name", consumer_group_name)
         _setter("consumer_group_password", consumer_group_password)
         _setter("consumer_group_user_name", consumer_group_user_name)
@@ -126,7 +136,19 @@ class _ConsumerChannelState:
              consumer_group_password: Optional[pulumi.Input[str]] = None,
              consumer_group_user_name: Optional[pulumi.Input[str]] = None,
              dts_instance_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'consumerGroupId' in kwargs:
+            consumer_group_id = kwargs['consumerGroupId']
+        if 'consumerGroupName' in kwargs:
+            consumer_group_name = kwargs['consumerGroupName']
+        if 'consumerGroupPassword' in kwargs:
+            consumer_group_password = kwargs['consumerGroupPassword']
+        if 'consumerGroupUserName' in kwargs:
+            consumer_group_user_name = kwargs['consumerGroupUserName']
+        if 'dtsInstanceId' in kwargs:
+            dts_instance_id = kwargs['dtsInstanceId']
+
         if consumer_group_id is not None:
             _setter("consumer_group_id", consumer_group_id)
         if consumer_group_name is not None:

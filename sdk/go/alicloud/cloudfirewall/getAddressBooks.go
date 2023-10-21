@@ -14,7 +14,7 @@ import (
 
 // This data source provides the Cloud Firewall Address Books of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.178.0+.
+// > **NOTE:** Available since v1.178.0.
 //
 // ## Example Usage
 //
@@ -27,16 +27,38 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := cloudfirewall.GetAddressBooks(ctx, nil, nil)
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := cloudfirewall.NewAddressBook(ctx, "default", &cloudfirewall.AddressBookArgs{
+//				GroupName:     pulumi.String(name),
+//				GroupType:     pulumi.String("ip"),
+//				Description:   pulumi.String("tf-description"),
+//				AutoAddTagEcs: pulumi.Int(0),
+//				AddressLists: pulumi.StringArray{
+//					pulumi.String("10.21.0.0/16"),
+//					pulumi.String("10.168.0.0/16"),
+//				},
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("cloudFirewallAddressBookId1", ids.Books[0].Id)
+//			ids := cloudfirewall.GetAddressBooksOutput(ctx, cloudfirewall.GetAddressBooksOutputArgs{
+//				Ids: pulumi.StringArray{
+//					_default.ID(),
+//				},
+//			}, nil)
+//			ctx.Export("cloudFirewallAddressBookId1", ids.ApplyT(func(ids cloudfirewall.GetAddressBooksResult) (*string, error) {
+//				return &ids.Books[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}
@@ -54,7 +76,7 @@ func GetAddressBooks(ctx *pulumi.Context, args *GetAddressBooksArgs, opts ...pul
 
 // A collection of arguments for invoking getAddressBooks.
 type GetAddressBooksArgs struct {
-	// The type of the Address Book.
+	// The type of the Address Book. Valid values: `ip`, `tag`.
 	GroupType *string `pulumi:"groupType"`
 	// A list of Address Book IDs.
 	Ids []string `pulumi:"ids"`
@@ -66,12 +88,15 @@ type GetAddressBooksArgs struct {
 
 // A collection of values returned by getAddressBooks.
 type GetAddressBooksResult struct {
-	Books     []GetAddressBooksBook `pulumi:"books"`
-	GroupType *string               `pulumi:"groupType"`
+	// A list of Cloud Firewall Address Books. Each element contains the following attributes:
+	Books []GetAddressBooksBook `pulumi:"books"`
+	// The type of the Address Book.
+	GroupType *string `pulumi:"groupType"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Address Book names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 }
@@ -91,7 +116,7 @@ func GetAddressBooksOutput(ctx *pulumi.Context, args GetAddressBooksOutputArgs, 
 
 // A collection of arguments for invoking getAddressBooks.
 type GetAddressBooksOutputArgs struct {
-	// The type of the Address Book.
+	// The type of the Address Book. Valid values: `ip`, `tag`.
 	GroupType pulumi.StringPtrInput `pulumi:"groupType"`
 	// A list of Address Book IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -126,10 +151,12 @@ func (o GetAddressBooksResultOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
+// A list of Cloud Firewall Address Books. Each element contains the following attributes:
 func (o GetAddressBooksResultOutput) Books() GetAddressBooksBookArrayOutput {
 	return o.ApplyT(func(v GetAddressBooksResult) []GetAddressBooksBook { return v.Books }).(GetAddressBooksBookArrayOutput)
 }
 
+// The type of the Address Book.
 func (o GetAddressBooksResultOutput) GroupType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAddressBooksResult) *string { return v.GroupType }).(pulumi.StringPtrOutput)
 }
@@ -147,6 +174,7 @@ func (o GetAddressBooksResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAddressBooksResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Address Book names.
 func (o GetAddressBooksResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAddressBooksResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

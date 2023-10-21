@@ -26,7 +26,11 @@ class SlrArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              product_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'productName' in kwargs:
+            product_name = kwargs['productName']
+
         _setter("product_name", product_name)
 
     @property
@@ -54,7 +58,11 @@ class _SlrState:
     def _configure(
              _setter: Callable[[Any, Any], None],
              product_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'productName' in kwargs:
+            product_name = kwargs['productName']
+
         if product_name is not None:
             _setter("product_name", product_name)
 

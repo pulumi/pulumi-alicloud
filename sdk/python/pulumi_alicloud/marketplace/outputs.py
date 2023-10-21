@@ -45,7 +45,9 @@ class GetProductProductResult(dict):
              description: str,
              name: str,
              skuses: Sequence['outputs.GetProductProductSkusResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("code", code)
         _setter("description", description)
         _setter("name", name)
@@ -111,7 +113,15 @@ class GetProductProductSkusResult(dict):
              package_versions: Sequence['outputs.GetProductProductSkusPackageVersionResult'],
              sku_code: str,
              sku_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'packageVersions' in kwargs:
+            package_versions = kwargs['packageVersions']
+        if 'skuCode' in kwargs:
+            sku_code = kwargs['skuCode']
+        if 'skuName' in kwargs:
+            sku_name = kwargs['skuName']
+
         _setter("images", images)
         _setter("package_versions", package_versions)
         _setter("sku_code", sku_code)
@@ -173,7 +183,15 @@ class GetProductProductSkusImageResult(dict):
              image_id: str,
              image_name: str,
              region_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+
         _setter("image_id", image_id)
         _setter("image_name", image_name)
         _setter("region_id", region_id)
@@ -222,7 +240,13 @@ class GetProductProductSkusPackageVersionResult(dict):
              _setter: Callable[[Any, Any], None],
              package_name: str,
              package_version: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'packageName' in kwargs:
+            package_name = kwargs['packageName']
+        if 'packageVersion' in kwargs:
+            package_version = kwargs['packageVersion']
+
         _setter("package_name", package_name)
         _setter("package_version", package_version)
 
@@ -262,7 +286,7 @@ class GetProductsProductResult(dict):
                  target_url: str,
                  warranty_date: str):
         """
-        :param int category_id: The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
+        :param int category_id: The Category ID of products.
         :param str code: The code of the product.
         :param str delivery_date: The delivery date of the product.
         :param str delivery_way: The delivery way of the product.
@@ -314,7 +338,31 @@ class GetProductsProductResult(dict):
              tags: str,
              target_url: str,
              warranty_date: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'categoryId' in kwargs:
+            category_id = kwargs['categoryId']
+        if 'deliveryDate' in kwargs:
+            delivery_date = kwargs['deliveryDate']
+        if 'deliveryWay' in kwargs:
+            delivery_way = kwargs['deliveryWay']
+        if 'imageUrl' in kwargs:
+            image_url = kwargs['imageUrl']
+        if 'operationSystem' in kwargs:
+            operation_system = kwargs['operationSystem']
+        if 'shortDescription' in kwargs:
+            short_description = kwargs['shortDescription']
+        if 'suggestedPrice' in kwargs:
+            suggested_price = kwargs['suggestedPrice']
+        if 'supplierId' in kwargs:
+            supplier_id = kwargs['supplierId']
+        if 'supplierName' in kwargs:
+            supplier_name = kwargs['supplierName']
+        if 'targetUrl' in kwargs:
+            target_url = kwargs['targetUrl']
+        if 'warrantyDate' in kwargs:
+            warranty_date = kwargs['warrantyDate']
+
         _setter("category_id", category_id)
         _setter("code", code)
         _setter("delivery_date", delivery_date)
@@ -335,7 +383,7 @@ class GetProductsProductResult(dict):
     @pulumi.getter(name="categoryId")
     def category_id(self) -> int:
         """
-        The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
+        The Category ID of products.
         """
         return pulumi.get(self, "category_id")
 

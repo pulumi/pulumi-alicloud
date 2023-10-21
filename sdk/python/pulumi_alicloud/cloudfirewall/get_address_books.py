@@ -48,11 +48,17 @@ class GetAddressBooksResult:
     @property
     @pulumi.getter
     def books(self) -> Sequence['outputs.GetAddressBooksBookResult']:
+        """
+        A list of Cloud Firewall Address Books. Each element contains the following attributes:
+        """
         return pulumi.get(self, "books")
 
     @property
     @pulumi.getter(name="groupType")
     def group_type(self) -> Optional[str]:
+        """
+        The type of the Address Book.
+        """
         return pulumi.get(self, "group_type")
 
     @property
@@ -76,6 +82,9 @@ class GetAddressBooksResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Address Book names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -107,7 +116,7 @@ def get_address_books(group_type: Optional[str] = None,
     """
     This data source provides the Cloud Firewall Address Books of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.178.0+.
+    > **NOTE:** Available since v1.178.0.
 
     ## Example Usage
 
@@ -117,12 +126,25 @@ def get_address_books(group_type: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ids = alicloud.cloudfirewall.get_address_books()
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "tf-example"
+    default = alicloud.cloudfirewall.AddressBook("default",
+        group_name=name,
+        group_type="ip",
+        description="tf-description",
+        auto_add_tag_ecs=0,
+        address_lists=[
+            "10.21.0.0/16",
+            "10.168.0.0/16",
+        ])
+    ids = alicloud.cloudfirewall.get_address_books_output(ids=[default.id])
     pulumi.export("cloudFirewallAddressBookId1", ids.books[0].id)
     ```
 
 
-    :param str group_type: The type of the Address Book.
+    :param str group_type: The type of the Address Book. Valid values: `ip`, `tag`.
     :param Sequence[str] ids: A list of Address Book IDs.
     :param str name_regex: A regex string to filter results Address Book name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -154,7 +176,7 @@ def get_address_books_output(group_type: Optional[pulumi.Input[Optional[str]]] =
     """
     This data source provides the Cloud Firewall Address Books of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.178.0+.
+    > **NOTE:** Available since v1.178.0.
 
     ## Example Usage
 
@@ -164,12 +186,25 @@ def get_address_books_output(group_type: Optional[pulumi.Input[Optional[str]]] =
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ids = alicloud.cloudfirewall.get_address_books()
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "tf-example"
+    default = alicloud.cloudfirewall.AddressBook("default",
+        group_name=name,
+        group_type="ip",
+        description="tf-description",
+        auto_add_tag_ecs=0,
+        address_lists=[
+            "10.21.0.0/16",
+            "10.168.0.0/16",
+        ])
+    ids = alicloud.cloudfirewall.get_address_books_output(ids=[default.id])
     pulumi.export("cloudFirewallAddressBookId1", ids.books[0].id)
     ```
 
 
-    :param str group_type: The type of the Address Book.
+    :param str group_type: The type of the Address Book. Valid values: `ip`, `tag`.
     :param Sequence[str] ids: A list of Address Book IDs.
     :param str name_regex: A regex string to filter results Address Book name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

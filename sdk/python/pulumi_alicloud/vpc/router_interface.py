@@ -73,7 +73,23 @@ class RouterInterfaceArgs:
              opposite_access_point_id: Optional[pulumi.Input[str]] = None,
              period: Optional[pulumi.Input[int]] = None,
              specification: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'oppositeRegion' in kwargs:
+            opposite_region = kwargs['oppositeRegion']
+        if 'routerId' in kwargs:
+            router_id = kwargs['routerId']
+        if 'routerType' in kwargs:
+            router_type = kwargs['routerType']
+        if 'healthCheckSourceIp' in kwargs:
+            health_check_source_ip = kwargs['healthCheckSourceIp']
+        if 'healthCheckTargetIp' in kwargs:
+            health_check_target_ip = kwargs['healthCheckTargetIp']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'oppositeAccessPointId' in kwargs:
+            opposite_access_point_id = kwargs['oppositeAccessPointId']
+
         _setter("opposite_region", opposite_region)
         _setter("role", role)
         _setter("router_id", router_id)
@@ -330,7 +346,33 @@ class _RouterInterfaceState:
              router_id: Optional[pulumi.Input[str]] = None,
              router_type: Optional[pulumi.Input[str]] = None,
              specification: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessPointId' in kwargs:
+            access_point_id = kwargs['accessPointId']
+        if 'healthCheckSourceIp' in kwargs:
+            health_check_source_ip = kwargs['healthCheckSourceIp']
+        if 'healthCheckTargetIp' in kwargs:
+            health_check_target_ip = kwargs['healthCheckTargetIp']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'oppositeAccessPointId' in kwargs:
+            opposite_access_point_id = kwargs['oppositeAccessPointId']
+        if 'oppositeInterfaceId' in kwargs:
+            opposite_interface_id = kwargs['oppositeInterfaceId']
+        if 'oppositeInterfaceOwnerId' in kwargs:
+            opposite_interface_owner_id = kwargs['oppositeInterfaceOwnerId']
+        if 'oppositeRegion' in kwargs:
+            opposite_region = kwargs['oppositeRegion']
+        if 'oppositeRouterId' in kwargs:
+            opposite_router_id = kwargs['oppositeRouterId']
+        if 'oppositeRouterType' in kwargs:
+            opposite_router_type = kwargs['oppositeRouterType']
+        if 'routerId' in kwargs:
+            router_id = kwargs['routerId']
+        if 'routerType' in kwargs:
+            router_type = kwargs['routerType']
+
         if access_point_id is not None:
             warnings.warn("""Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.""", DeprecationWarning)
             pulumi.log.warn("""access_point_id is deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.""")

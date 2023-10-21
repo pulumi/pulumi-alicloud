@@ -35,7 +35,15 @@ class ShortUrlArgs:
              effective_days: pulumi.Input[int],
              short_url_name: pulumi.Input[str],
              source_url: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'effectiveDays' in kwargs:
+            effective_days = kwargs['effectiveDays']
+        if 'shortUrlName' in kwargs:
+            short_url_name = kwargs['shortUrlName']
+        if 'sourceUrl' in kwargs:
+            source_url = kwargs['sourceUrl']
+
         _setter("effective_days", effective_days)
         _setter("short_url_name", short_url_name)
         _setter("source_url", source_url)
@@ -105,7 +113,15 @@ class _ShortUrlState:
              short_url_name: Optional[pulumi.Input[str]] = None,
              source_url: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'effectiveDays' in kwargs:
+            effective_days = kwargs['effectiveDays']
+        if 'shortUrlName' in kwargs:
+            short_url_name = kwargs['shortUrlName']
+        if 'sourceUrl' in kwargs:
+            source_url = kwargs['sourceUrl']
+
         if effective_days is not None:
             _setter("effective_days", effective_days)
         if short_url_name is not None:
@@ -176,7 +192,7 @@ class ShortUrl(pulumi.CustomResource):
         """
         Provides a SMS Short Url resource.
 
-        For information about SMS Short Url and how to use it, see [What is Short Url](https://help.aliyun.com/document_detail/419291.html).
+        For information about SMS Short Url and how to use it, see [What is Short Url](https://next.api.alibabacloud.com/api/Dysmsapi/2017-05-25/AddShortUrl).
 
         > **NOTE:** Available in v1.178.0+.
 
@@ -217,7 +233,7 @@ class ShortUrl(pulumi.CustomResource):
         """
         Provides a SMS Short Url resource.
 
-        For information about SMS Short Url and how to use it, see [What is Short Url](https://help.aliyun.com/document_detail/419291.html).
+        For information about SMS Short Url and how to use it, see [What is Short Url](https://next.api.alibabacloud.com/api/Dysmsapi/2017-05-25/AddShortUrl).
 
         > **NOTE:** Available in v1.178.0+.
 

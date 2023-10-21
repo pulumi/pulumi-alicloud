@@ -54,7 +54,23 @@ class TransitRouterRouteEntryArgs:
              transit_router_route_entry_description: Optional[pulumi.Input[str]] = None,
              transit_router_route_entry_name: Optional[pulumi.Input[str]] = None,
              transit_router_route_entry_next_hop_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'transitRouterRouteEntryDestinationCidrBlock' in kwargs:
+            transit_router_route_entry_destination_cidr_block = kwargs['transitRouterRouteEntryDestinationCidrBlock']
+        if 'transitRouterRouteEntryNextHopType' in kwargs:
+            transit_router_route_entry_next_hop_type = kwargs['transitRouterRouteEntryNextHopType']
+        if 'transitRouterRouteTableId' in kwargs:
+            transit_router_route_table_id = kwargs['transitRouterRouteTableId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'transitRouterRouteEntryDescription' in kwargs:
+            transit_router_route_entry_description = kwargs['transitRouterRouteEntryDescription']
+        if 'transitRouterRouteEntryName' in kwargs:
+            transit_router_route_entry_name = kwargs['transitRouterRouteEntryName']
+        if 'transitRouterRouteEntryNextHopId' in kwargs:
+            transit_router_route_entry_next_hop_id = kwargs['transitRouterRouteEntryNextHopId']
+
         _setter("transit_router_route_entry_destination_cidr_block", transit_router_route_entry_destination_cidr_block)
         _setter("transit_router_route_entry_next_hop_type", transit_router_route_entry_next_hop_type)
         _setter("transit_router_route_table_id", transit_router_route_table_id)
@@ -206,7 +222,25 @@ class _TransitRouterRouteEntryState:
              transit_router_route_entry_next_hop_id: Optional[pulumi.Input[str]] = None,
              transit_router_route_entry_next_hop_type: Optional[pulumi.Input[str]] = None,
              transit_router_route_table_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'transitRouterRouteEntryDescription' in kwargs:
+            transit_router_route_entry_description = kwargs['transitRouterRouteEntryDescription']
+        if 'transitRouterRouteEntryDestinationCidrBlock' in kwargs:
+            transit_router_route_entry_destination_cidr_block = kwargs['transitRouterRouteEntryDestinationCidrBlock']
+        if 'transitRouterRouteEntryId' in kwargs:
+            transit_router_route_entry_id = kwargs['transitRouterRouteEntryId']
+        if 'transitRouterRouteEntryName' in kwargs:
+            transit_router_route_entry_name = kwargs['transitRouterRouteEntryName']
+        if 'transitRouterRouteEntryNextHopId' in kwargs:
+            transit_router_route_entry_next_hop_id = kwargs['transitRouterRouteEntryNextHopId']
+        if 'transitRouterRouteEntryNextHopType' in kwargs:
+            transit_router_route_entry_next_hop_type = kwargs['transitRouterRouteEntryNextHopType']
+        if 'transitRouterRouteTableId' in kwargs:
+            transit_router_route_table_id = kwargs['transitRouterRouteTableId']
+
         if dry_run is not None:
             _setter("dry_run", dry_run)
         if status is not None:
@@ -352,7 +386,7 @@ class TransitRouterRouteEntry(pulumi.CustomResource):
                  transit_router_route_table_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a CEN transit router route entry resource.[What is Cen Transit Router Route Entry](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitrouterrouteentry)
+        Provides a CEN transit router route entry resource.[What is Cen Transit Router Route Entry](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-cbn-2017-09-12-createtransitrouterrouteentry)
 
         > **NOTE:** Available since v1.126.0.
 
@@ -434,7 +468,7 @@ class TransitRouterRouteEntry(pulumi.CustomResource):
                  args: TransitRouterRouteEntryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a CEN transit router route entry resource.[What is Cen Transit Router Route Entry](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitrouterrouteentry)
+        Provides a CEN transit router route entry resource.[What is Cen Transit Router Route Entry](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-cbn-2017-09-12-createtransitrouterrouteentry)
 
         > **NOTE:** Available since v1.126.0.
 

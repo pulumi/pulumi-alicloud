@@ -79,7 +79,41 @@ class DomainArgs:
              source_type: Optional[pulumi.Input[str]] = None,
              sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              video_seek_enable: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cdnType' in kwargs:
+            cdn_type = kwargs['cdnType']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'authConfig' in kwargs:
+            auth_config = kwargs['authConfig']
+        if 'blockIps' in kwargs:
+            block_ips = kwargs['blockIps']
+        if 'cacheConfigs' in kwargs:
+            cache_configs = kwargs['cacheConfigs']
+        if 'certificateConfig' in kwargs:
+            certificate_config = kwargs['certificateConfig']
+        if 'httpHeaderConfigs' in kwargs:
+            http_header_configs = kwargs['httpHeaderConfigs']
+        if 'optimizeEnable' in kwargs:
+            optimize_enable = kwargs['optimizeEnable']
+        if 'page404Config' in kwargs:
+            page404_config = kwargs['page404Config']
+        if 'pageCompressEnable' in kwargs:
+            page_compress_enable = kwargs['pageCompressEnable']
+        if 'parameterFilterConfig' in kwargs:
+            parameter_filter_config = kwargs['parameterFilterConfig']
+        if 'rangeEnable' in kwargs:
+            range_enable = kwargs['rangeEnable']
+        if 'referConfig' in kwargs:
+            refer_config = kwargs['referConfig']
+        if 'sourcePort' in kwargs:
+            source_port = kwargs['sourcePort']
+        if 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+        if 'videoSeekEnable' in kwargs:
+            video_seek_enable = kwargs['videoSeekEnable']
+
         _setter("cdn_type", cdn_type)
         _setter("domain_name", domain_name)
         if auth_config is not None:
@@ -434,7 +468,41 @@ class _DomainState:
              source_type: Optional[pulumi.Input[str]] = None,
              sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              video_seek_enable: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authConfig' in kwargs:
+            auth_config = kwargs['authConfig']
+        if 'blockIps' in kwargs:
+            block_ips = kwargs['blockIps']
+        if 'cacheConfigs' in kwargs:
+            cache_configs = kwargs['cacheConfigs']
+        if 'cdnType' in kwargs:
+            cdn_type = kwargs['cdnType']
+        if 'certificateConfig' in kwargs:
+            certificate_config = kwargs['certificateConfig']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'httpHeaderConfigs' in kwargs:
+            http_header_configs = kwargs['httpHeaderConfigs']
+        if 'optimizeEnable' in kwargs:
+            optimize_enable = kwargs['optimizeEnable']
+        if 'page404Config' in kwargs:
+            page404_config = kwargs['page404Config']
+        if 'pageCompressEnable' in kwargs:
+            page_compress_enable = kwargs['pageCompressEnable']
+        if 'parameterFilterConfig' in kwargs:
+            parameter_filter_config = kwargs['parameterFilterConfig']
+        if 'rangeEnable' in kwargs:
+            range_enable = kwargs['rangeEnable']
+        if 'referConfig' in kwargs:
+            refer_config = kwargs['referConfig']
+        if 'sourcePort' in kwargs:
+            source_port = kwargs['sourcePort']
+        if 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+        if 'videoSeekEnable' in kwargs:
+            video_seek_enable = kwargs['videoSeekEnable']
+
         if auth_config is not None:
             warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
             pulumi.log.warn("""auth_config is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")

@@ -31,7 +31,13 @@ class InstanceClusterAttachmentArgs:
              _setter: Callable[[Any, Any], None],
              cluster_id: pulumi.Input[str],
              instance_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'instanceIds' in kwargs:
+            instance_ids = kwargs['instanceIds']
+
         _setter("cluster_id", cluster_id)
         _setter("instance_ids", instance_ids)
 
@@ -92,7 +98,19 @@ class _InstanceClusterAttachmentState:
              ecu_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              status_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'clusterMemberIds' in kwargs:
+            cluster_member_ids = kwargs['clusterMemberIds']
+        if 'ecuMap' in kwargs:
+            ecu_map = kwargs['ecuMap']
+        if 'instanceIds' in kwargs:
+            instance_ids = kwargs['instanceIds']
+        if 'statusMap' in kwargs:
+            status_map = kwargs['statusMap']
+
         if cluster_id is not None:
             _setter("cluster_id", cluster_id)
         if cluster_member_ids is not None:

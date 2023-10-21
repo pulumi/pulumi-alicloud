@@ -33,7 +33,13 @@ class K8sSlbAttachmentArgs:
              _setter: Callable[[Any, Any], None],
              app_id: pulumi.Input[str],
              slb_configs: Optional[pulumi.Input[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if 'slbConfigs' in kwargs:
+            slb_configs = kwargs['slbConfigs']
+
         _setter("app_id", app_id)
         if slb_configs is not None:
             _setter("slb_configs", slb_configs)
@@ -83,7 +89,13 @@ class _K8sSlbAttachmentState:
              _setter: Callable[[Any, Any], None],
              app_id: Optional[pulumi.Input[str]] = None,
              slb_configs: Optional[pulumi.Input[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if 'slbConfigs' in kwargs:
+            slb_configs = kwargs['slbConfigs']
+
         if app_id is not None:
             _setter("app_id", app_id)
         if slb_configs is not None:

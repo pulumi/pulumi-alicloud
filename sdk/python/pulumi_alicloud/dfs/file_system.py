@@ -55,7 +55,23 @@ class FileSystemArgs:
              description: Optional[pulumi.Input[str]] = None,
              provisioned_throughput_in_mi_bps: Optional[pulumi.Input[int]] = None,
              throughput_mode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fileSystemName' in kwargs:
+            file_system_name = kwargs['fileSystemName']
+        if 'protocolType' in kwargs:
+            protocol_type = kwargs['protocolType']
+        if 'spaceCapacity' in kwargs:
+            space_capacity = kwargs['spaceCapacity']
+        if 'storageType' in kwargs:
+            storage_type = kwargs['storageType']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'provisionedThroughputInMiBps' in kwargs:
+            provisioned_throughput_in_mi_bps = kwargs['provisionedThroughputInMiBps']
+        if 'throughputMode' in kwargs:
+            throughput_mode = kwargs['throughputMode']
+
         _setter("file_system_name", file_system_name)
         _setter("protocol_type", protocol_type)
         _setter("space_capacity", space_capacity)
@@ -209,7 +225,23 @@ class _FileSystemState:
              storage_type: Optional[pulumi.Input[str]] = None,
              throughput_mode: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fileSystemName' in kwargs:
+            file_system_name = kwargs['fileSystemName']
+        if 'protocolType' in kwargs:
+            protocol_type = kwargs['protocolType']
+        if 'provisionedThroughputInMiBps' in kwargs:
+            provisioned_throughput_in_mi_bps = kwargs['provisionedThroughputInMiBps']
+        if 'spaceCapacity' in kwargs:
+            space_capacity = kwargs['spaceCapacity']
+        if 'storageType' in kwargs:
+            storage_type = kwargs['storageType']
+        if 'throughputMode' in kwargs:
+            throughput_mode = kwargs['throughputMode']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if description is not None:
             _setter("description", description)
         if file_system_name is not None:

@@ -31,7 +31,13 @@ class K8sClusterArgs:
              _setter: Callable[[Any, Any], None],
              cs_cluster_id: pulumi.Input[str],
              namespace_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'csClusterId' in kwargs:
+            cs_cluster_id = kwargs['csClusterId']
+        if 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+
         _setter("cs_cluster_id", cs_cluster_id)
         if namespace_id is not None:
             _setter("namespace_id", namespace_id)
@@ -105,7 +111,23 @@ class _K8sClusterState:
              namespace_id: Optional[pulumi.Input[str]] = None,
              network_mode: Optional[pulumi.Input[int]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterImportStatus' in kwargs:
+            cluster_import_status = kwargs['clusterImportStatus']
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'clusterType' in kwargs:
+            cluster_type = kwargs['clusterType']
+        if 'csClusterId' in kwargs:
+            cs_cluster_id = kwargs['csClusterId']
+        if 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+        if 'networkMode' in kwargs:
+            network_mode = kwargs['networkMode']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if cluster_import_status is not None:
             _setter("cluster_import_status", cluster_import_status)
         if cluster_name is not None:

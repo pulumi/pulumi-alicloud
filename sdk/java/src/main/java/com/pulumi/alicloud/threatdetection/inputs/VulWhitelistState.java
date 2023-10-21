@@ -31,14 +31,14 @@ public final class VulWhitelistState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+     * Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
      * 
      */
     @Import(name="targetInfo")
     private @Nullable Output<String> targetInfo;
 
     /**
-     * @return Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+     * @return Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
      * 
      */
     public Optional<Output<String>> targetInfo() {
@@ -46,14 +46,14 @@ public final class VulWhitelistState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+     * Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
      * 
      */
     @Import(name="whitelist")
     private @Nullable Output<String> whitelist;
 
     /**
-     * @return Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+     * @return Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
      * 
      */
     public Optional<Output<String>> whitelist() {
@@ -108,7 +108,7 @@ public final class VulWhitelistState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetInfo Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+         * @param targetInfo Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class VulWhitelistState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetInfo Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+         * @param targetInfo Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class VulWhitelistState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param whitelist Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+         * @param whitelist Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class VulWhitelistState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param whitelist Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+         * @param whitelist Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
          * 
          * @return builder
          * 

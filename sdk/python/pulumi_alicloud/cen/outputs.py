@@ -89,7 +89,13 @@ class TransitRouterVpcAttachmentZoneMapping(dict):
              _setter: Callable[[Any, Any], None],
              vswitch_id: Optional[str] = None,
              zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if vswitch_id is not None:
             _setter("vswitch_id", vswitch_id)
         if zone_id is not None:
@@ -144,7 +150,11 @@ class TransitRouterVpnAttachmentZone(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("zone_id", zone_id)
 
     @property
@@ -187,7 +197,17 @@ class GetBandwidthLimitsLimitResult(dict):
              local_region_id: str,
              opposite_region_id: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bandwidthLimit' in kwargs:
+            bandwidth_limit = kwargs['bandwidthLimit']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'localRegionId' in kwargs:
+            local_region_id = kwargs['localRegionId']
+        if 'oppositeRegionId' in kwargs:
+            opposite_region_id = kwargs['oppositeRegionId']
+
         _setter("bandwidth_limit", bandwidth_limit)
         _setter("instance_id", instance_id)
         _setter("local_region_id", local_region_id)
@@ -333,7 +353,43 @@ class GetBandwidthPackagesPackageResult(dict):
              reservation_internet_charge_type: str,
              reservation_order_type: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bandwidthPackageChargeType' in kwargs:
+            bandwidth_package_charge_type = kwargs['bandwidthPackageChargeType']
+        if 'businessStatus' in kwargs:
+            business_status = kwargs['businessStatus']
+        if 'cenBandwidthPackageId' in kwargs:
+            cen_bandwidth_package_id = kwargs['cenBandwidthPackageId']
+        if 'cenBandwidthPackageName' in kwargs:
+            cen_bandwidth_package_name = kwargs['cenBandwidthPackageName']
+        if 'cenIds' in kwargs:
+            cen_ids = kwargs['cenIds']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'geographicRegionAId' in kwargs:
+            geographic_region_a_id = kwargs['geographicRegionAId']
+        if 'geographicRegionBId' in kwargs:
+            geographic_region_b_id = kwargs['geographicRegionBId']
+        if 'geographicSpanId' in kwargs:
+            geographic_span_id = kwargs['geographicSpanId']
+        if 'hasReservationData' in kwargs:
+            has_reservation_data = kwargs['hasReservationData']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'isCrossBorder' in kwargs:
+            is_cross_border = kwargs['isCrossBorder']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'reservationActiveTime' in kwargs:
+            reservation_active_time = kwargs['reservationActiveTime']
+        if 'reservationBandwidth' in kwargs:
+            reservation_bandwidth = kwargs['reservationBandwidth']
+        if 'reservationInternetChargeType' in kwargs:
+            reservation_internet_charge_type = kwargs['reservationInternetChargeType']
+        if 'reservationOrderType' in kwargs:
+            reservation_order_type = kwargs['reservationOrderType']
+
         _setter("bandwidth", bandwidth)
         _setter("bandwidth_package_charge_type", bandwidth_package_charge_type)
         _setter("business_status", business_status)
@@ -570,7 +626,19 @@ class GetChildInstanceRouteEntryToAttachmentsAttachmentResult(dict):
              service_type: str,
              status: str,
              transit_router_attachment_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'childInstanceRouteTableId' in kwargs:
+            child_instance_route_table_id = kwargs['childInstanceRouteTableId']
+        if 'destinationCidrBlock' in kwargs:
+            destination_cidr_block = kwargs['destinationCidrBlock']
+        if 'serviceType' in kwargs:
+            service_type = kwargs['serviceType']
+        if 'transitRouterAttachmentId' in kwargs:
+            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
+
         _setter("cen_id", cen_id)
         _setter("child_instance_route_table_id", child_instance_route_table_id)
         _setter("destination_cidr_block", destination_cidr_block)
@@ -679,7 +747,19 @@ class GetFlowlogsFlowlogResult(dict):
              log_store_name: str,
              project_name: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'flowLogId' in kwargs:
+            flow_log_id = kwargs['flowLogId']
+        if 'flowLogName' in kwargs:
+            flow_log_name = kwargs['flowLogName']
+        if 'logStoreName' in kwargs:
+            log_store_name = kwargs['logStoreName']
+        if 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+
         _setter("cen_id", cen_id)
         _setter("description", description)
         _setter("flow_log_id", flow_log_id)
@@ -797,7 +877,21 @@ class GetInstanceAttachmentsAttachmentResult(dict):
              id: str,
              instance_id: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'childInstanceAttachTime' in kwargs:
+            child_instance_attach_time = kwargs['childInstanceAttachTime']
+        if 'childInstanceId' in kwargs:
+            child_instance_id = kwargs['childInstanceId']
+        if 'childInstanceOwnerId' in kwargs:
+            child_instance_owner_id = kwargs['childInstanceOwnerId']
+        if 'childInstanceRegionId' in kwargs:
+            child_instance_region_id = kwargs['childInstanceRegionId']
+        if 'childInstanceType' in kwargs:
+            child_instance_type = kwargs['childInstanceType']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("child_instance_attach_time", child_instance_attach_time)
         _setter("child_instance_id", child_instance_id)
         _setter("child_instance_owner_id", child_instance_owner_id)
@@ -923,7 +1017,19 @@ class GetInstancesInstanceResult(dict):
              protection_level: str,
              status: str,
              tags: Mapping[str, Any],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cenBandwidthPackageIds' in kwargs:
+            cen_bandwidth_package_ids = kwargs['cenBandwidthPackageIds']
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'cenInstanceName' in kwargs:
+            cen_instance_name = kwargs['cenInstanceName']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'protectionLevel' in kwargs:
+            protection_level = kwargs['protectionLevel']
+
         _setter("cen_bandwidth_package_ids", cen_bandwidth_package_ids)
         _setter("cen_id", cen_id)
         _setter("cen_instance_name", cen_instance_name)
@@ -1055,7 +1161,19 @@ class GetInterRegionTrafficQosPoliciesPolicyResult(dict):
              status: str,
              transit_router_attachment_id: str,
              transit_router_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'interRegionTrafficQosPolicyDescription' in kwargs:
+            inter_region_traffic_qos_policy_description = kwargs['interRegionTrafficQosPolicyDescription']
+        if 'interRegionTrafficQosPolicyId' in kwargs:
+            inter_region_traffic_qos_policy_id = kwargs['interRegionTrafficQosPolicyId']
+        if 'interRegionTrafficQosPolicyName' in kwargs:
+            inter_region_traffic_qos_policy_name = kwargs['interRegionTrafficQosPolicyName']
+        if 'transitRouterAttachmentId' in kwargs:
+            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
+        if 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+
         _setter("id", id)
         _setter("inter_region_traffic_qos_policy_description", inter_region_traffic_qos_policy_description)
         _setter("inter_region_traffic_qos_policy_id", inter_region_traffic_qos_policy_id)
@@ -1163,7 +1281,19 @@ class GetInterRegionTrafficQosQueuesQueueResult(dict):
              remain_bandwidth_percent: int,
              status: str,
              traffic_qos_policy_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'interRegionTrafficQosQueueDescription' in kwargs:
+            inter_region_traffic_qos_queue_description = kwargs['interRegionTrafficQosQueueDescription']
+        if 'interRegionTrafficQosQueueId' in kwargs:
+            inter_region_traffic_qos_queue_id = kwargs['interRegionTrafficQosQueueId']
+        if 'interRegionTrafficQosQueueName' in kwargs:
+            inter_region_traffic_qos_queue_name = kwargs['interRegionTrafficQosQueueName']
+        if 'remainBandwidthPercent' in kwargs:
+            remain_bandwidth_percent = kwargs['remainBandwidthPercent']
+        if 'trafficQosPolicyId' in kwargs:
+            traffic_qos_policy_id = kwargs['trafficQosPolicyId']
+
         _setter("dscps", dscps)
         _setter("id", id)
         _setter("inter_region_traffic_qos_queue_description", inter_region_traffic_qos_queue_description)
@@ -1274,7 +1404,19 @@ class GetPrivateZonesZoneResult(dict):
              id: str,
              private_zone_dns_servers: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessRegionId' in kwargs:
+            access_region_id = kwargs['accessRegionId']
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'hostRegionId' in kwargs:
+            host_region_id = kwargs['hostRegionId']
+        if 'hostVpcId' in kwargs:
+            host_vpc_id = kwargs['hostVpcId']
+        if 'privateZoneDnsServers' in kwargs:
+            private_zone_dns_servers = kwargs['privateZoneDnsServers']
+
         _setter("access_region_id", access_region_id)
         _setter("cen_id", cen_id)
         _setter("host_region_id", host_region_id)
@@ -1371,7 +1513,17 @@ class GetRegionRouteEntriesEntryResult(dict):
              next_hop_region_id: str,
              next_hop_type: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if 'nextHopId' in kwargs:
+            next_hop_id = kwargs['nextHopId']
+        if 'nextHopRegionId' in kwargs:
+            next_hop_region_id = kwargs['nextHopRegionId']
+        if 'nextHopType' in kwargs:
+            next_hop_type = kwargs['nextHopType']
+
         _setter("cidr_block", cidr_block)
         _setter("next_hop_id", next_hop_id)
         _setter("next_hop_region_id", next_hop_region_id)
@@ -1462,7 +1614,23 @@ class GetRouteEntriesEntryResult(dict):
              publish_status: str,
              route_table_id: str,
              route_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if 'nextHopId' in kwargs:
+            next_hop_id = kwargs['nextHopId']
+        if 'nextHopType' in kwargs:
+            next_hop_type = kwargs['nextHopType']
+        if 'operationalMode' in kwargs:
+            operational_mode = kwargs['operationalMode']
+        if 'publishStatus' in kwargs:
+            publish_status = kwargs['publishStatus']
+        if 'routeTableId' in kwargs:
+            route_table_id = kwargs['routeTableId']
+        if 'routeType' in kwargs:
+            route_type = kwargs['routeType']
+
         _setter("cidr_block", cidr_block)
         _setter("conflicts", conflicts)
         _setter("next_hop_id", next_hop_id)
@@ -1568,7 +1736,17 @@ class GetRouteEntriesEntryConflictResult(dict):
              instance_type: str,
              region_id: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+
         _setter("cidr_block", cidr_block)
         _setter("instance_id", instance_id)
         _setter("instance_type", instance_type)
@@ -1747,7 +1925,59 @@ class GetRouteMapsMapResult(dict):
              source_route_table_ids: Sequence[str],
              status: str,
              transmit_direction: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'asPathMatchMode' in kwargs:
+            as_path_match_mode = kwargs['asPathMatchMode']
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'cenRegionId' in kwargs:
+            cen_region_id = kwargs['cenRegionId']
+        if 'cidrMatchMode' in kwargs:
+            cidr_match_mode = kwargs['cidrMatchMode']
+        if 'communityMatchMode' in kwargs:
+            community_match_mode = kwargs['communityMatchMode']
+        if 'communityOperateMode' in kwargs:
+            community_operate_mode = kwargs['communityOperateMode']
+        if 'destinationChildInstanceTypes' in kwargs:
+            destination_child_instance_types = kwargs['destinationChildInstanceTypes']
+        if 'destinationCidrBlocks' in kwargs:
+            destination_cidr_blocks = kwargs['destinationCidrBlocks']
+        if 'destinationInstanceIds' in kwargs:
+            destination_instance_ids = kwargs['destinationInstanceIds']
+        if 'destinationInstanceIdsReverseMatch' in kwargs:
+            destination_instance_ids_reverse_match = kwargs['destinationInstanceIdsReverseMatch']
+        if 'destinationRouteTableIds' in kwargs:
+            destination_route_table_ids = kwargs['destinationRouteTableIds']
+        if 'mapResult' in kwargs:
+            map_result = kwargs['mapResult']
+        if 'matchAsns' in kwargs:
+            match_asns = kwargs['matchAsns']
+        if 'matchCommunitySets' in kwargs:
+            match_community_sets = kwargs['matchCommunitySets']
+        if 'nextPriority' in kwargs:
+            next_priority = kwargs['nextPriority']
+        if 'operateCommunitySets' in kwargs:
+            operate_community_sets = kwargs['operateCommunitySets']
+        if 'prependAsPaths' in kwargs:
+            prepend_as_paths = kwargs['prependAsPaths']
+        if 'routeMapId' in kwargs:
+            route_map_id = kwargs['routeMapId']
+        if 'routeTypes' in kwargs:
+            route_types = kwargs['routeTypes']
+        if 'sourceChildInstanceTypes' in kwargs:
+            source_child_instance_types = kwargs['sourceChildInstanceTypes']
+        if 'sourceInstanceIds' in kwargs:
+            source_instance_ids = kwargs['sourceInstanceIds']
+        if 'sourceInstanceIdsReverseMatch' in kwargs:
+            source_instance_ids_reverse_match = kwargs['sourceInstanceIdsReverseMatch']
+        if 'sourceRegionIds' in kwargs:
+            source_region_ids = kwargs['sourceRegionIds']
+        if 'sourceRouteTableIds' in kwargs:
+            source_route_table_ids = kwargs['sourceRouteTableIds']
+        if 'transmitDirection' in kwargs:
+            transmit_direction = kwargs['transmitDirection']
+
         _setter("as_path_match_mode", as_path_match_mode)
         _setter("cen_id", cen_id)
         _setter("cen_region_id", cen_region_id)
@@ -2071,7 +2301,19 @@ class GetRouteServicesServiceResult(dict):
              id: str,
              status: str,
              update_interval: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessRegionId' in kwargs:
+            access_region_id = kwargs['accessRegionId']
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'hostRegionId' in kwargs:
+            host_region_id = kwargs['hostRegionId']
+        if 'hostVpcId' in kwargs:
+            host_vpc_id = kwargs['hostVpcId']
+        if 'updateInterval' in kwargs:
+            update_interval = kwargs['updateInterval']
+
         _setter("access_region_id", access_region_id)
         _setter("cen_id", cen_id)
         _setter("cidrs", cidrs)
@@ -2207,7 +2449,17 @@ class GetTrafficMarkingPoliciesPolicyResult(dict):
              traffic_marking_policy_id: str,
              traffic_marking_policy_name: str,
              transit_router_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'markingDscp' in kwargs:
+            marking_dscp = kwargs['markingDscp']
+        if 'trafficMarkingPolicyId' in kwargs:
+            traffic_marking_policy_id = kwargs['trafficMarkingPolicyId']
+        if 'trafficMarkingPolicyName' in kwargs:
+            traffic_marking_policy_name = kwargs['trafficMarkingPolicyName']
+        if 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+
         _setter("description", description)
         _setter("id", id)
         _setter("marking_dscp", marking_dscp)
@@ -2325,7 +2577,21 @@ class GetTransitRouteTableAggregationsTransitRouteTableAggregationResult(dict):
              transit_route_table_aggregation_name: str,
              transit_route_table_aggregation_scope: str,
              transit_route_table_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'routeType' in kwargs:
+            route_type = kwargs['routeType']
+        if 'transitRouteTableAggregationCidr' in kwargs:
+            transit_route_table_aggregation_cidr = kwargs['transitRouteTableAggregationCidr']
+        if 'transitRouteTableAggregationDescription' in kwargs:
+            transit_route_table_aggregation_description = kwargs['transitRouteTableAggregationDescription']
+        if 'transitRouteTableAggregationName' in kwargs:
+            transit_route_table_aggregation_name = kwargs['transitRouteTableAggregationName']
+        if 'transitRouteTableAggregationScope' in kwargs:
+            transit_route_table_aggregation_scope = kwargs['transitRouteTableAggregationScope']
+        if 'transitRouteTableId' in kwargs:
+            transit_route_table_id = kwargs['transitRouteTableId']
+
         _setter("id", id)
         _setter("route_type", route_type)
         _setter("status", status)
@@ -2419,7 +2685,13 @@ class GetTransitRouterAvailableResourcesResourceResult(dict):
              _setter: Callable[[Any, Any], None],
              master_zones: Sequence[str],
              slave_zones: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'masterZones' in kwargs:
+            master_zones = kwargs['masterZones']
+        if 'slaveZones' in kwargs:
+            slave_zones = kwargs['slaveZones']
+
         _setter("master_zones", master_zones)
         _setter("slave_zones", slave_zones)
 
@@ -2483,7 +2755,17 @@ class GetTransitRouterCidrsCidrResult(dict):
              transit_router_cidr_id: str,
              transit_router_cidr_name: str,
              transit_router_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'publishCidrRoute' in kwargs:
+            publish_cidr_route = kwargs['publishCidrRoute']
+        if 'transitRouterCidrId' in kwargs:
+            transit_router_cidr_id = kwargs['transitRouterCidrId']
+        if 'transitRouterCidrName' in kwargs:
+            transit_router_cidr_name = kwargs['transitRouterCidrName']
+        if 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+
         _setter("cidr", cidr)
         _setter("description", description)
         _setter("family", family)
@@ -2601,7 +2883,21 @@ class GetTransitRouterMulticastDomainAssociationsAssociationResult(dict):
              transit_router_attachment_id: str,
              transit_router_multicast_domain_id: str,
              vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+        if 'resourceOwnerId' in kwargs:
+            resource_owner_id = kwargs['resourceOwnerId']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+        if 'transitRouterAttachmentId' in kwargs:
+            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
+        if 'transitRouterMulticastDomainId' in kwargs:
+            transit_router_multicast_domain_id = kwargs['transitRouterMulticastDomainId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("id", id)
         _setter("resource_id", resource_id)
         _setter("resource_owner_id", resource_owner_id)
@@ -2711,7 +3007,17 @@ class GetTransitRouterMulticastDomainMembersMemberResult(dict):
              status: str,
              transit_router_multicast_domain_id: str,
              vpc_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupIpAddress' in kwargs:
+            group_ip_address = kwargs['groupIpAddress']
+        if 'networkInterfaceId' in kwargs:
+            network_interface_id = kwargs['networkInterfaceId']
+        if 'transitRouterMulticastDomainId' in kwargs:
+            transit_router_multicast_domain_id = kwargs['transitRouterMulticastDomainId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         _setter("group_ip_address", group_ip_address)
         _setter("id", id)
         _setter("network_interface_id", network_interface_id)
@@ -2799,7 +3105,15 @@ class GetTransitRouterMulticastDomainPeerMembersMemberResult(dict):
              peer_transit_router_multicast_domain_id: str,
              status: str,
              transit_router_multicast_domain_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupIpAddress' in kwargs:
+            group_ip_address = kwargs['groupIpAddress']
+        if 'peerTransitRouterMulticastDomainId' in kwargs:
+            peer_transit_router_multicast_domain_id = kwargs['peerTransitRouterMulticastDomainId']
+        if 'transitRouterMulticastDomainId' in kwargs:
+            transit_router_multicast_domain_id = kwargs['transitRouterMulticastDomainId']
+
         _setter("group_ip_address", group_ip_address)
         _setter("id", id)
         _setter("peer_transit_router_multicast_domain_id", peer_transit_router_multicast_domain_id)
@@ -2858,6 +3172,7 @@ class GetTransitRouterMulticastDomainSourcesSourceResult(dict):
                  vpc_id: str):
         """
         :param str group_ip_address: The IP address of the multicast group to which the multicast source belongs. Value range: **224.0.0.1** to **239.255.255.254**. If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you.
+        :param str id: The id of the resource.
         :param str network_interface_id: ENI ID of the multicast source.
         :param str status: The status of the resource.
         :param str transit_router_multicast_domain_id: The ID of the multicast domain to which the multicast source belongs.
@@ -2881,7 +3196,17 @@ class GetTransitRouterMulticastDomainSourcesSourceResult(dict):
              status: str,
              transit_router_multicast_domain_id: str,
              vpc_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupIpAddress' in kwargs:
+            group_ip_address = kwargs['groupIpAddress']
+        if 'networkInterfaceId' in kwargs:
+            network_interface_id = kwargs['networkInterfaceId']
+        if 'transitRouterMulticastDomainId' in kwargs:
+            transit_router_multicast_domain_id = kwargs['transitRouterMulticastDomainId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         _setter("group_ip_address", group_ip_address)
         _setter("id", id)
         _setter("network_interface_id", network_interface_id)
@@ -2900,6 +3225,9 @@ class GetTransitRouterMulticastDomainSourcesSourceResult(dict):
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The id of the resource.
+        """
         return pulumi.get(self, "id")
 
     @property
@@ -2970,7 +3298,17 @@ class GetTransitRouterMulticastDomainsDomainResult(dict):
              transit_router_multicast_domain_description: str,
              transit_router_multicast_domain_id: str,
              transit_router_multicast_domain_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+        if 'transitRouterMulticastDomainDescription' in kwargs:
+            transit_router_multicast_domain_description = kwargs['transitRouterMulticastDomainDescription']
+        if 'transitRouterMulticastDomainId' in kwargs:
+            transit_router_multicast_domain_id = kwargs['transitRouterMulticastDomainId']
+        if 'transitRouterMulticastDomainName' in kwargs:
+            transit_router_multicast_domain_name = kwargs['transitRouterMulticastDomainName']
+
         _setter("id", id)
         _setter("status", status)
         _setter("transit_router_id", transit_router_id)
@@ -3094,7 +3432,31 @@ class GetTransitRouterPeerAttachmentsAttachmentResult(dict):
              transit_router_attachment_id: str,
              transit_router_attachment_name: str,
              transit_router_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoPublishRouteEnabled' in kwargs:
+            auto_publish_route_enabled = kwargs['autoPublishRouteEnabled']
+        if 'cenBandwidthPackageId' in kwargs:
+            cen_bandwidth_package_id = kwargs['cenBandwidthPackageId']
+        if 'geographicSpanId' in kwargs:
+            geographic_span_id = kwargs['geographicSpanId']
+        if 'peerTransitRouterId' in kwargs:
+            peer_transit_router_id = kwargs['peerTransitRouterId']
+        if 'peerTransitRouterOwnerId' in kwargs:
+            peer_transit_router_owner_id = kwargs['peerTransitRouterOwnerId']
+        if 'peerTransitRouterRegionId' in kwargs:
+            peer_transit_router_region_id = kwargs['peerTransitRouterRegionId']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+        if 'transitRouterAttachmentDescription' in kwargs:
+            transit_router_attachment_description = kwargs['transitRouterAttachmentDescription']
+        if 'transitRouterAttachmentId' in kwargs:
+            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
+        if 'transitRouterAttachmentName' in kwargs:
+            transit_router_attachment_name = kwargs['transitRouterAttachmentName']
+        if 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+
         _setter("auto_publish_route_enabled", auto_publish_route_enabled)
         _setter("bandwidth", bandwidth)
         _setter("cen_bandwidth_package_id", cen_bandwidth_package_id)
@@ -3270,7 +3632,23 @@ class GetTransitRouterPrefixListAssociationsAssociationResult(dict):
              status: str,
              transit_router_id: str,
              transit_router_table_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nextHop' in kwargs:
+            next_hop = kwargs['nextHop']
+        if 'nextHopInstanceId' in kwargs:
+            next_hop_instance_id = kwargs['nextHopInstanceId']
+        if 'nextHopType' in kwargs:
+            next_hop_type = kwargs['nextHopType']
+        if 'ownerUid' in kwargs:
+            owner_uid = kwargs['ownerUid']
+        if 'prefixListId' in kwargs:
+            prefix_list_id = kwargs['prefixListId']
+        if 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+        if 'transitRouterTableId' in kwargs:
+            transit_router_table_id = kwargs['transitRouterTableId']
+
         _setter("id", id)
         _setter("next_hop", next_hop)
         _setter("next_hop_instance_id", next_hop_instance_id)
@@ -3396,7 +3774,23 @@ class GetTransitRouterRouteEntriesEntryResult(dict):
              transit_router_route_entry_next_hop_id: str,
              transit_router_route_entry_next_hop_type: str,
              transit_router_route_entry_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'transitRouterRouteEntryDescription' in kwargs:
+            transit_router_route_entry_description = kwargs['transitRouterRouteEntryDescription']
+        if 'transitRouterRouteEntryDestinationCidrBlock' in kwargs:
+            transit_router_route_entry_destination_cidr_block = kwargs['transitRouterRouteEntryDestinationCidrBlock']
+        if 'transitRouterRouteEntryId' in kwargs:
+            transit_router_route_entry_id = kwargs['transitRouterRouteEntryId']
+        if 'transitRouterRouteEntryName' in kwargs:
+            transit_router_route_entry_name = kwargs['transitRouterRouteEntryName']
+        if 'transitRouterRouteEntryNextHopId' in kwargs:
+            transit_router_route_entry_next_hop_id = kwargs['transitRouterRouteEntryNextHopId']
+        if 'transitRouterRouteEntryNextHopType' in kwargs:
+            transit_router_route_entry_next_hop_type = kwargs['transitRouterRouteEntryNextHopType']
+        if 'transitRouterRouteEntryType' in kwargs:
+            transit_router_route_entry_type = kwargs['transitRouterRouteEntryType']
+
         _setter("id", id)
         _setter("status", status)
         _setter("transit_router_route_entry_description", transit_router_route_entry_description)
@@ -3499,7 +3893,17 @@ class GetTransitRouterRouteTableAssociationsAssociationResult(dict):
              status: str,
              transit_router_attachment_id: str,
              transit_router_route_table_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+        if 'transitRouterAttachmentId' in kwargs:
+            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
+        if 'transitRouterRouteTableId' in kwargs:
+            transit_router_route_table_id = kwargs['transitRouterRouteTableId']
+
         _setter("id", id)
         _setter("resource_id", resource_id)
         _setter("resource_type", resource_type)
@@ -3583,7 +3987,15 @@ class GetTransitRouterRouteTablePropagationsPropagationResult(dict):
              resource_type: str,
              status: str,
              transit_router_attachment_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+        if 'transitRouterAttachmentId' in kwargs:
+            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
+
         _setter("id", id)
         _setter("resource_id", resource_id)
         _setter("resource_type", resource_type)
@@ -3662,7 +4074,17 @@ class GetTransitRouterRouteTablesTableResult(dict):
              transit_router_route_table_id: str,
              transit_router_route_table_name: str,
              transit_router_route_table_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'transitRouterRouteTableDescription' in kwargs:
+            transit_router_route_table_description = kwargs['transitRouterRouteTableDescription']
+        if 'transitRouterRouteTableId' in kwargs:
+            transit_router_route_table_id = kwargs['transitRouterRouteTableId']
+        if 'transitRouterRouteTableName' in kwargs:
+            transit_router_route_table_name = kwargs['transitRouterRouteTableName']
+        if 'transitRouterRouteTableType' in kwargs:
+            transit_router_route_table_type = kwargs['transitRouterRouteTableType']
+
         _setter("id", id)
         _setter("status", status)
         _setter("transit_router_route_table_description", transit_router_route_table_description)
@@ -3761,7 +4183,23 @@ class GetTransitRouterVbrAttachmentsAttachmentResult(dict):
              transit_router_attachment_name: str,
              vbr_id: str,
              vbr_owner_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoPublishRouteEnabled' in kwargs:
+            auto_publish_route_enabled = kwargs['autoPublishRouteEnabled']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+        if 'transitRouterAttachmentDescription' in kwargs:
+            transit_router_attachment_description = kwargs['transitRouterAttachmentDescription']
+        if 'transitRouterAttachmentId' in kwargs:
+            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
+        if 'transitRouterAttachmentName' in kwargs:
+            transit_router_attachment_name = kwargs['transitRouterAttachmentName']
+        if 'vbrId' in kwargs:
+            vbr_id = kwargs['vbrId']
+        if 'vbrOwnerId' in kwargs:
+            vbr_owner_id = kwargs['vbrOwnerId']
+
         _setter("auto_publish_route_enabled", auto_publish_route_enabled)
         _setter("id", id)
         _setter("resource_type", resource_type)
@@ -3890,7 +4328,25 @@ class GetTransitRouterVpcAttachmentsAttachmentResult(dict):
              vpc_id: str,
              vpc_owner_id: str,
              zone_mappings: Sequence['outputs.GetTransitRouterVpcAttachmentsAttachmentZoneMappingResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+        if 'transitRouterAttachmentDescription' in kwargs:
+            transit_router_attachment_description = kwargs['transitRouterAttachmentDescription']
+        if 'transitRouterAttachmentId' in kwargs:
+            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
+        if 'transitRouterAttachmentName' in kwargs:
+            transit_router_attachment_name = kwargs['transitRouterAttachmentName']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vpcOwnerId' in kwargs:
+            vpc_owner_id = kwargs['vpcOwnerId']
+        if 'zoneMappings' in kwargs:
+            zone_mappings = kwargs['zoneMappings']
+
         _setter("id", id)
         _setter("payment_type", payment_type)
         _setter("resource_type", resource_type)
@@ -4002,7 +4458,13 @@ class GetTransitRouterVpcAttachmentsAttachmentZoneMappingResult(dict):
              _setter: Callable[[Any, Any], None],
              vswitch_id: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("vswitch_id", vswitch_id)
         _setter("zone_id", zone_id)
 
@@ -4080,7 +4542,27 @@ class GetTransitRouterVpnAttachmentsAttachmentResult(dict):
              vpn_id: str,
              vpn_owner_id: str,
              zones: Sequence['outputs.GetTransitRouterVpnAttachmentsAttachmentZoneResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoPublishRouteEnabled' in kwargs:
+            auto_publish_route_enabled = kwargs['autoPublishRouteEnabled']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+        if 'transitRouterAttachmentDescription' in kwargs:
+            transit_router_attachment_description = kwargs['transitRouterAttachmentDescription']
+        if 'transitRouterAttachmentId' in kwargs:
+            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
+        if 'transitRouterAttachmentName' in kwargs:
+            transit_router_attachment_name = kwargs['transitRouterAttachmentName']
+        if 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+        if 'vpnId' in kwargs:
+            vpn_id = kwargs['vpnId']
+        if 'vpnOwnerId' in kwargs:
+            vpn_owner_id = kwargs['vpnOwnerId']
+
         _setter("auto_publish_route_enabled", auto_publish_route_enabled)
         _setter("create_time", create_time)
         _setter("id", id)
@@ -4200,7 +4682,11 @@ class GetTransitRouterVpnAttachmentsAttachmentZoneResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("zone_id", zone_id)
 
     @property
@@ -4259,7 +4745,21 @@ class GetTransitRoutersTransitRouterResult(dict):
              transit_router_name: str,
              type: str,
              xgw_vip: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aliUid' in kwargs:
+            ali_uid = kwargs['aliUid']
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'transitRouterDescription' in kwargs:
+            transit_router_description = kwargs['transitRouterDescription']
+        if 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+        if 'transitRouterName' in kwargs:
+            transit_router_name = kwargs['transitRouterName']
+        if 'xgwVip' in kwargs:
+            xgw_vip = kwargs['xgwVip']
+
         _setter("ali_uid", ali_uid)
         _setter("cen_id", cen_id)
         _setter("id", id)
@@ -4386,7 +4886,23 @@ class GetVbrHealthChecksCheckResult(dict):
              id: str,
              vbr_instance_id: str,
              vbr_instance_region_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'healthCheckInterval' in kwargs:
+            health_check_interval = kwargs['healthCheckInterval']
+        if 'healthCheckSourceIp' in kwargs:
+            health_check_source_ip = kwargs['healthCheckSourceIp']
+        if 'healthCheckTargetIp' in kwargs:
+            health_check_target_ip = kwargs['healthCheckTargetIp']
+        if 'healthyThreshold' in kwargs:
+            healthy_threshold = kwargs['healthyThreshold']
+        if 'vbrInstanceId' in kwargs:
+            vbr_instance_id = kwargs['vbrInstanceId']
+        if 'vbrInstanceRegionId' in kwargs:
+            vbr_instance_region_id = kwargs['vbrInstanceRegionId']
+
         _setter("cen_id", cen_id)
         _setter("health_check_interval", health_check_interval)
         _setter("health_check_source_ip", health_check_source_ip)

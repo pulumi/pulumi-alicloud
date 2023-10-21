@@ -39,7 +39,17 @@ class ApplicationScaleArgs:
              deploy_group: pulumi.Input[str],
              ecu_infos: pulumi.Input[Sequence[pulumi.Input[str]]],
              force_status: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if 'deployGroup' in kwargs:
+            deploy_group = kwargs['deployGroup']
+        if 'ecuInfos' in kwargs:
+            ecu_infos = kwargs['ecuInfos']
+        if 'forceStatus' in kwargs:
+            force_status = kwargs['forceStatus']
+
         _setter("app_id", app_id)
         _setter("deploy_group", deploy_group)
         _setter("ecu_infos", ecu_infos)
@@ -127,7 +137,19 @@ class _ApplicationScaleState:
              ecc_info: Optional[pulumi.Input[str]] = None,
              ecu_infos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              force_status: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if 'deployGroup' in kwargs:
+            deploy_group = kwargs['deployGroup']
+        if 'eccInfo' in kwargs:
+            ecc_info = kwargs['eccInfo']
+        if 'ecuInfos' in kwargs:
+            ecu_infos = kwargs['ecuInfos']
+        if 'forceStatus' in kwargs:
+            force_status = kwargs['forceStatus']
+
         if app_id is not None:
             _setter("app_id", app_id)
         if deploy_group is not None:

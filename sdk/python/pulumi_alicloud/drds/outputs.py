@@ -64,7 +64,17 @@ class GetInstancesInstanceResult(dict):
              type: str,
              version: int,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("connection_string", connection_string)
         _setter("create_time", create_time)
         _setter("description", description)

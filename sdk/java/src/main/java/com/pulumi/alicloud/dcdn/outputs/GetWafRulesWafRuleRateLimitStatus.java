@@ -10,6 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetWafRulesWafRuleRateLimitStatus {
+    /**
+     * @return The HTTP status code returned.
+     * 
+     */
     private String code;
     /**
      * @return The number of times that the HTTP status code that was returned.
@@ -23,6 +27,10 @@ public final class GetWafRulesWafRuleRateLimitStatus {
     private Integer ratio;
 
     private GetWafRulesWafRuleRateLimitStatus() {}
+    /**
+     * @return The HTTP status code returned.
+     * 
+     */
     public String code() {
         return this.code;
     }

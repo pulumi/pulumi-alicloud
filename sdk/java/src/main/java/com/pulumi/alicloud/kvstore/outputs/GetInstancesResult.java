@@ -38,7 +38,7 @@ public final class GetInstancesResult {
     private List<String> ids;
     /**
      * @return (Optional) Type of the applied ApsaraDB for instance.
-     * For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+     * For more information, see [Instance type table](https://www.alibabacloud.com/help/en/redis/product-overview/overview-4).
      * 
      */
     private @Nullable String instanceClass;
@@ -132,7 +132,7 @@ public final class GetInstancesResult {
     }
     /**
      * @return (Optional) Type of the applied ApsaraDB for instance.
-     * For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+     * For more information, see [Instance type table](https://www.alibabacloud.com/help/en/redis/product-overview/overview-4).
      * 
      */
     public Optional<String> instanceClass() {

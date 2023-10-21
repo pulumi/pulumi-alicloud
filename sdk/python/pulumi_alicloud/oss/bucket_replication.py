@@ -61,7 +61,19 @@ class BucketReplicationArgs:
              progress: Optional[pulumi.Input['BucketReplicationProgressArgs']] = None,
              source_selection_criteria: Optional[pulumi.Input['BucketReplicationSourceSelectionCriteriaArgs']] = None,
              sync_role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'encryptionConfiguration' in kwargs:
+            encryption_configuration = kwargs['encryptionConfiguration']
+        if 'historicalObjectReplication' in kwargs:
+            historical_object_replication = kwargs['historicalObjectReplication']
+        if 'prefixSet' in kwargs:
+            prefix_set = kwargs['prefixSet']
+        if 'sourceSelectionCriteria' in kwargs:
+            source_selection_criteria = kwargs['sourceSelectionCriteria']
+        if 'syncRole' in kwargs:
+            sync_role = kwargs['syncRole']
+
         _setter("bucket", bucket)
         _setter("destination", destination)
         if action is not None:
@@ -244,7 +256,21 @@ class _BucketReplicationState:
              source_selection_criteria: Optional[pulumi.Input['BucketReplicationSourceSelectionCriteriaArgs']] = None,
              status: Optional[pulumi.Input[str]] = None,
              sync_role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'encryptionConfiguration' in kwargs:
+            encryption_configuration = kwargs['encryptionConfiguration']
+        if 'historicalObjectReplication' in kwargs:
+            historical_object_replication = kwargs['historicalObjectReplication']
+        if 'prefixSet' in kwargs:
+            prefix_set = kwargs['prefixSet']
+        if 'ruleId' in kwargs:
+            rule_id = kwargs['ruleId']
+        if 'sourceSelectionCriteria' in kwargs:
+            source_selection_criteria = kwargs['sourceSelectionCriteria']
+        if 'syncRole' in kwargs:
+            sync_role = kwargs['syncRole']
+
         if action is not None:
             _setter("action", action)
         if bucket is not None:

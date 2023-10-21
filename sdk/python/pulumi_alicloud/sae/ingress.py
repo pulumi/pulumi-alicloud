@@ -65,7 +65,25 @@ class IngressArgs:
              description: Optional[pulumi.Input[str]] = None,
              listener_protocol: Optional[pulumi.Input[str]] = None,
              load_balance_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'listenerPort' in kwargs:
+            listener_port = kwargs['listenerPort']
+        if 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+        if 'slbId' in kwargs:
+            slb_id = kwargs['slbId']
+        if 'certId' in kwargs:
+            cert_id = kwargs['certId']
+        if 'certIds' in kwargs:
+            cert_ids = kwargs['certIds']
+        if 'defaultRule' in kwargs:
+            default_rule = kwargs['defaultRule']
+        if 'listenerProtocol' in kwargs:
+            listener_protocol = kwargs['listenerProtocol']
+        if 'loadBalanceType' in kwargs:
+            load_balance_type = kwargs['loadBalanceType']
+
         _setter("listener_port", listener_port)
         _setter("namespace_id", namespace_id)
         _setter("rules", rules)
@@ -256,7 +274,25 @@ class _IngressState:
              namespace_id: Optional[pulumi.Input[str]] = None,
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['IngressRuleArgs']]]] = None,
              slb_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'certId' in kwargs:
+            cert_id = kwargs['certId']
+        if 'certIds' in kwargs:
+            cert_ids = kwargs['certIds']
+        if 'defaultRule' in kwargs:
+            default_rule = kwargs['defaultRule']
+        if 'listenerPort' in kwargs:
+            listener_port = kwargs['listenerPort']
+        if 'listenerProtocol' in kwargs:
+            listener_protocol = kwargs['listenerProtocol']
+        if 'loadBalanceType' in kwargs:
+            load_balance_type = kwargs['loadBalanceType']
+        if 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+        if 'slbId' in kwargs:
+            slb_id = kwargs['slbId']
+
         if cert_id is not None:
             _setter("cert_id", cert_id)
         if cert_ids is not None:

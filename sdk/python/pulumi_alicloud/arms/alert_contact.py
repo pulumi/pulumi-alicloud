@@ -43,7 +43,17 @@ class AlertContactArgs:
              email: Optional[pulumi.Input[str]] = None,
              phone_num: Optional[pulumi.Input[str]] = None,
              system_noc: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alertContactName' in kwargs:
+            alert_contact_name = kwargs['alertContactName']
+        if 'dingRobotWebhookUrl' in kwargs:
+            ding_robot_webhook_url = kwargs['dingRobotWebhookUrl']
+        if 'phoneNum' in kwargs:
+            phone_num = kwargs['phoneNum']
+        if 'systemNoc' in kwargs:
+            system_noc = kwargs['systemNoc']
+
         if alert_contact_name is not None:
             _setter("alert_contact_name", alert_contact_name)
         if ding_robot_webhook_url is not None:
@@ -148,7 +158,17 @@ class _AlertContactState:
              email: Optional[pulumi.Input[str]] = None,
              phone_num: Optional[pulumi.Input[str]] = None,
              system_noc: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alertContactName' in kwargs:
+            alert_contact_name = kwargs['alertContactName']
+        if 'dingRobotWebhookUrl' in kwargs:
+            ding_robot_webhook_url = kwargs['dingRobotWebhookUrl']
+        if 'phoneNum' in kwargs:
+            phone_num = kwargs['phoneNum']
+        if 'systemNoc' in kwargs:
+            system_noc = kwargs['systemNoc']
+
         if alert_contact_name is not None:
             _setter("alert_contact_name", alert_contact_name)
         if ding_robot_webhook_url is not None:

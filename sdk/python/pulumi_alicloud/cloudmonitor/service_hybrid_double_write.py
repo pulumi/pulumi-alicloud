@@ -39,7 +39,15 @@ class ServiceHybridDoubleWriteArgs:
              source_namespace: pulumi.Input[str],
              source_user_id: pulumi.Input[str],
              user_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'sourceNamespace' in kwargs:
+            source_namespace = kwargs['sourceNamespace']
+        if 'sourceUserId' in kwargs:
+            source_user_id = kwargs['sourceUserId']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         _setter("namespace", namespace)
         _setter("source_namespace", source_namespace)
         _setter("source_user_id", source_user_id)
@@ -122,7 +130,15 @@ class _ServiceHybridDoubleWriteState:
              source_namespace: Optional[pulumi.Input[str]] = None,
              source_user_id: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'sourceNamespace' in kwargs:
+            source_namespace = kwargs['sourceNamespace']
+        if 'sourceUserId' in kwargs:
+            source_user_id = kwargs['sourceUserId']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if namespace is not None:
             _setter("namespace", namespace)
         if source_namespace is not None:

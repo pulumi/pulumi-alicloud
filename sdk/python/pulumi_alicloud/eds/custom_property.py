@@ -33,7 +33,13 @@ class CustomPropertyArgs:
              _setter: Callable[[Any, Any], None],
              property_key: pulumi.Input[str],
              property_values: Optional[pulumi.Input[Sequence[pulumi.Input['CustomPropertyPropertyValueArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'propertyKey' in kwargs:
+            property_key = kwargs['propertyKey']
+        if 'propertyValues' in kwargs:
+            property_values = kwargs['propertyValues']
+
         _setter("property_key", property_key)
         if property_values is not None:
             _setter("property_values", property_values)
@@ -83,7 +89,13 @@ class _CustomPropertyState:
              _setter: Callable[[Any, Any], None],
              property_key: Optional[pulumi.Input[str]] = None,
              property_values: Optional[pulumi.Input[Sequence[pulumi.Input['CustomPropertyPropertyValueArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'propertyKey' in kwargs:
+            property_key = kwargs['propertyKey']
+        if 'propertyValues' in kwargs:
+            property_values = kwargs['propertyValues']
+
         if property_key is not None:
             _setter("property_key", property_key)
         if property_values is not None:
@@ -125,7 +137,7 @@ class CustomProperty(pulumi.CustomResource):
         """
         Provides a ECD Custom Property resource.
 
-        For information about ECD Custom Property and how to use it, see [What is Custom Property](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-eds-user-2021-03-08-api-doc-createproperty-desktop).
+        For information about ECD Custom Property and how to use it, see [What is Custom Property](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-eds-user-2021-03-08-createproperty-desktop).
 
         > **NOTE:** Available since v1.176.0.
 
@@ -168,7 +180,7 @@ class CustomProperty(pulumi.CustomResource):
         """
         Provides a ECD Custom Property resource.
 
-        For information about ECD Custom Property and how to use it, see [What is Custom Property](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-eds-user-2021-03-08-api-doc-createproperty-desktop).
+        For information about ECD Custom Property and how to use it, see [What is Custom Property](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-eds-user-2021-03-08-createproperty-desktop).
 
         > **NOTE:** Available since v1.176.0.
 

@@ -86,7 +86,27 @@ class GetSystemGroupsGroupResult(dict):
              play_domain: str,
              push_domain: str,
              stats: Sequence['outputs.GetSystemGroupsGroupStatResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'gbId' in kwargs:
+            gb_id = kwargs['gbId']
+        if 'gbIp' in kwargs:
+            gb_ip = kwargs['gbIp']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'inProtocol' in kwargs:
+            in_protocol = kwargs['inProtocol']
+        if 'outProtocol' in kwargs:
+            out_protocol = kwargs['outProtocol']
+        if 'playDomain' in kwargs:
+            play_domain = kwargs['playDomain']
+        if 'pushDomain' in kwargs:
+            push_domain = kwargs['pushDomain']
+
         _setter("app", app)
         _setter("callback", callback)
         _setter("create_time", create_time)
@@ -251,7 +271,17 @@ class GetSystemGroupsGroupStatResult(dict):
              ied_num: str,
              ipc_num: str,
              platform_num: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deviceNum' in kwargs:
+            device_num = kwargs['deviceNum']
+        if 'iedNum' in kwargs:
+            ied_num = kwargs['iedNum']
+        if 'ipcNum' in kwargs:
+            ipc_num = kwargs['ipcNum']
+        if 'platformNum' in kwargs:
+            platform_num = kwargs['platformNum']
+
         _setter("device_num", device_num)
         _setter("ied_num", ied_num)
         _setter("ipc_num", ipc_num)

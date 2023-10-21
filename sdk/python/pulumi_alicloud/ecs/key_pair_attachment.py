@@ -38,7 +38,15 @@ class KeyPairAttachmentArgs:
              force: Optional[pulumi.Input[bool]] = None,
              key_name: Optional[pulumi.Input[str]] = None,
              key_pair_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceIds' in kwargs:
+            instance_ids = kwargs['instanceIds']
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+
         _setter("instance_ids", instance_ids)
         if force is not None:
             _setter("force", force)
@@ -126,7 +134,15 @@ class _KeyPairAttachmentState:
              instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              key_name: Optional[pulumi.Input[str]] = None,
              key_pair_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceIds' in kwargs:
+            instance_ids = kwargs['instanceIds']
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+
         if force is not None:
             _setter("force", force)
         if instance_ids is not None:

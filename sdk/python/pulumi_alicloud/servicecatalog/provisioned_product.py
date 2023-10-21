@@ -57,7 +57,21 @@ class ProvisionedProductArgs:
              portfolio_id: Optional[pulumi.Input[str]] = None,
              provisioned_product_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'productId' in kwargs:
+            product_id = kwargs['productId']
+        if 'productVersionId' in kwargs:
+            product_version_id = kwargs['productVersionId']
+        if 'provisionedProductName' in kwargs:
+            provisioned_product_name = kwargs['provisionedProductName']
+        if 'stackRegionId' in kwargs:
+            stack_region_id = kwargs['stackRegionId']
+        if 'portfolioId' in kwargs:
+            portfolio_id = kwargs['portfolioId']
+        if 'provisionedProductId' in kwargs:
+            provisioned_product_id = kwargs['provisionedProductId']
+
         _setter("product_id", product_id)
         _setter("product_version_id", product_version_id)
         _setter("provisioned_product_name", provisioned_product_name)
@@ -268,7 +282,45 @@ class _ProvisionedProductState:
              status: Optional[pulumi.Input[str]] = None,
              status_message: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'lastProvisioningTaskId' in kwargs:
+            last_provisioning_task_id = kwargs['lastProvisioningTaskId']
+        if 'lastSuccessfulProvisioningTaskId' in kwargs:
+            last_successful_provisioning_task_id = kwargs['lastSuccessfulProvisioningTaskId']
+        if 'lastTaskId' in kwargs:
+            last_task_id = kwargs['lastTaskId']
+        if 'ownerPrincipalId' in kwargs:
+            owner_principal_id = kwargs['ownerPrincipalId']
+        if 'ownerPrincipalType' in kwargs:
+            owner_principal_type = kwargs['ownerPrincipalType']
+        if 'portfolioId' in kwargs:
+            portfolio_id = kwargs['portfolioId']
+        if 'productId' in kwargs:
+            product_id = kwargs['productId']
+        if 'productName' in kwargs:
+            product_name = kwargs['productName']
+        if 'productVersionId' in kwargs:
+            product_version_id = kwargs['productVersionId']
+        if 'productVersionName' in kwargs:
+            product_version_name = kwargs['productVersionName']
+        if 'provisionedProductArn' in kwargs:
+            provisioned_product_arn = kwargs['provisionedProductArn']
+        if 'provisionedProductId' in kwargs:
+            provisioned_product_id = kwargs['provisionedProductId']
+        if 'provisionedProductName' in kwargs:
+            provisioned_product_name = kwargs['provisionedProductName']
+        if 'provisionedProductType' in kwargs:
+            provisioned_product_type = kwargs['provisionedProductType']
+        if 'stackId' in kwargs:
+            stack_id = kwargs['stackId']
+        if 'stackRegionId' in kwargs:
+            stack_region_id = kwargs['stackRegionId']
+        if 'statusMessage' in kwargs:
+            status_message = kwargs['statusMessage']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if last_provisioning_task_id is not None:
@@ -596,7 +648,7 @@ class ProvisionedProduct(pulumi.CustomResource):
         """
         Provides a Service Catalog Provisioned Product resource.
 
-        For information about Service Catalog Provisioned Product and how to use it, see [What is Provisioned Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-launchproduct).
+        For information about Service Catalog Provisioned Product and how to use it, see [What is Provisioned Product](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-launchproduct).
 
         > **NOTE:** Available in v1.196.0+.
 
@@ -655,7 +707,7 @@ class ProvisionedProduct(pulumi.CustomResource):
         """
         Provides a Service Catalog Provisioned Product resource.
 
-        For information about Service Catalog Provisioned Product and how to use it, see [What is Provisioned Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-launchproduct).
+        For information about Service Catalog Provisioned Product and how to use it, see [What is Provisioned Product](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-launchproduct).
 
         > **NOTE:** Available in v1.196.0+.
 

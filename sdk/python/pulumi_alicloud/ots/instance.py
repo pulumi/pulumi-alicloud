@@ -43,7 +43,13 @@ class InstanceArgs:
              instance_type: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessedBy' in kwargs:
+            accessed_by = kwargs['accessedBy']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+
         if accessed_by is not None:
             _setter("accessed_by", accessed_by)
         if description is not None:
@@ -148,7 +154,13 @@ class _InstanceState:
              instance_type: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessedBy' in kwargs:
+            accessed_by = kwargs['accessedBy']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+
         if accessed_by is not None:
             _setter("accessed_by", accessed_by)
         if description is not None:

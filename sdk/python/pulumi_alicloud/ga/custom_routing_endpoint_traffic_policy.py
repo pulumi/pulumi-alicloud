@@ -37,7 +37,13 @@ class CustomRoutingEndpointTrafficPolicyArgs:
              address: pulumi.Input[str],
              endpoint_id: pulumi.Input[str],
              port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['CustomRoutingEndpointTrafficPolicyPortRangeArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'endpointId' in kwargs:
+            endpoint_id = kwargs['endpointId']
+        if 'portRanges' in kwargs:
+            port_ranges = kwargs['portRanges']
+
         _setter("address", address)
         _setter("endpoint_id", endpoint_id)
         if port_ranges is not None:
@@ -124,7 +130,21 @@ class _CustomRoutingEndpointTrafficPolicyState:
              listener_id: Optional[pulumi.Input[str]] = None,
              port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['CustomRoutingEndpointTrafficPolicyPortRangeArgs']]]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'customRoutingEndpointTrafficPolicyId' in kwargs:
+            custom_routing_endpoint_traffic_policy_id = kwargs['customRoutingEndpointTrafficPolicyId']
+        if 'endpointGroupId' in kwargs:
+            endpoint_group_id = kwargs['endpointGroupId']
+        if 'endpointId' in kwargs:
+            endpoint_id = kwargs['endpointId']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if 'portRanges' in kwargs:
+            port_ranges = kwargs['portRanges']
+
         if accelerator_id is not None:
             _setter("accelerator_id", accelerator_id)
         if address is not None:

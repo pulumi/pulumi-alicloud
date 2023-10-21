@@ -99,7 +99,33 @@ class InstanceArgs:
              resolution: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              vnc_password: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'autoPay' in kwargs:
+            auto_pay = kwargs['autoPay']
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'eipBandwidth' in kwargs:
+            eip_bandwidth = kwargs['eipBandwidth']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'periodUnit' in kwargs:
+            period_unit = kwargs['periodUnit']
+        if 'vncPassword' in kwargs:
+            vnc_password = kwargs['vncPassword']
+
         _setter("image_id", image_id)
         _setter("instance_type", instance_type)
         _setter("security_group_id", security_group_id)
@@ -432,7 +458,33 @@ class _InstanceState:
              status: Optional[pulumi.Input[str]] = None,
              vnc_password: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoPay' in kwargs:
+            auto_pay = kwargs['autoPay']
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'eipBandwidth' in kwargs:
+            eip_bandwidth = kwargs['eipBandwidth']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'periodUnit' in kwargs:
+            period_unit = kwargs['periodUnit']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'vncPassword' in kwargs:
+            vnc_password = kwargs['vncPassword']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if auto_pay is not None:
             _setter("auto_pay", auto_pay)
         if auto_renew is not None:

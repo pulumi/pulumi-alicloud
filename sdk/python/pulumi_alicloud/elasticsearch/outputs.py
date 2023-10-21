@@ -62,7 +62,25 @@ class GetInstancesInstanceResult(dict):
              updated_at: str,
              version: str,
              vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if 'dataNodeAmount' in kwargs:
+            data_node_amount = kwargs['dataNodeAmount']
+        if 'dataNodeDiskSize' in kwargs:
+            data_node_disk_size = kwargs['dataNodeDiskSize']
+        if 'dataNodeDiskType' in kwargs:
+            data_node_disk_type = kwargs['dataNodeDiskType']
+        if 'dataNodeSpec' in kwargs:
+            data_node_spec = kwargs['dataNodeSpec']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("created_at", created_at)
         _setter("data_node_amount", data_node_amount)
         _setter("data_node_disk_size", data_node_disk_size)
@@ -162,7 +180,11 @@ class GetZonesZoneResult(dict):
              _setter: Callable[[Any, Any], None],
              id: str,
              multi_zone_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'multiZoneIds' in kwargs:
+            multi_zone_ids = kwargs['multiZoneIds']
+
         _setter("id", id)
         _setter("multi_zone_ids", multi_zone_ids)
 

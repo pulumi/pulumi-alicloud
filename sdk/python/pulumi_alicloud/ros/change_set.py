@@ -97,7 +97,41 @@ class ChangeSetArgs:
              template_url: Optional[pulumi.Input[str]] = None,
              timeout_in_minutes: Optional[pulumi.Input[int]] = None,
              use_previous_parameters: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'changeSetName' in kwargs:
+            change_set_name = kwargs['changeSetName']
+        if 'changeSetType' in kwargs:
+            change_set_type = kwargs['changeSetType']
+        if 'disableRollback' in kwargs:
+            disable_rollback = kwargs['disableRollback']
+        if 'notificationUrls' in kwargs:
+            notification_urls = kwargs['notificationUrls']
+        if 'ramRoleName' in kwargs:
+            ram_role_name = kwargs['ramRoleName']
+        if 'replacementOption' in kwargs:
+            replacement_option = kwargs['replacementOption']
+        if 'stackId' in kwargs:
+            stack_id = kwargs['stackId']
+        if 'stackName' in kwargs:
+            stack_name = kwargs['stackName']
+        if 'stackPolicyBody' in kwargs:
+            stack_policy_body = kwargs['stackPolicyBody']
+        if 'stackPolicyDuringUpdateBody' in kwargs:
+            stack_policy_during_update_body = kwargs['stackPolicyDuringUpdateBody']
+        if 'stackPolicyDuringUpdateUrl' in kwargs:
+            stack_policy_during_update_url = kwargs['stackPolicyDuringUpdateUrl']
+        if 'stackPolicyUrl' in kwargs:
+            stack_policy_url = kwargs['stackPolicyUrl']
+        if 'templateBody' in kwargs:
+            template_body = kwargs['templateBody']
+        if 'templateUrl' in kwargs:
+            template_url = kwargs['templateUrl']
+        if 'timeoutInMinutes' in kwargs:
+            timeout_in_minutes = kwargs['timeoutInMinutes']
+        if 'usePreviousParameters' in kwargs:
+            use_previous_parameters = kwargs['usePreviousParameters']
+
         _setter("change_set_name", change_set_name)
         if change_set_type is not None:
             _setter("change_set_type", change_set_type)
@@ -439,7 +473,41 @@ class _ChangeSetState:
              template_url: Optional[pulumi.Input[str]] = None,
              timeout_in_minutes: Optional[pulumi.Input[int]] = None,
              use_previous_parameters: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'changeSetName' in kwargs:
+            change_set_name = kwargs['changeSetName']
+        if 'changeSetType' in kwargs:
+            change_set_type = kwargs['changeSetType']
+        if 'disableRollback' in kwargs:
+            disable_rollback = kwargs['disableRollback']
+        if 'notificationUrls' in kwargs:
+            notification_urls = kwargs['notificationUrls']
+        if 'ramRoleName' in kwargs:
+            ram_role_name = kwargs['ramRoleName']
+        if 'replacementOption' in kwargs:
+            replacement_option = kwargs['replacementOption']
+        if 'stackId' in kwargs:
+            stack_id = kwargs['stackId']
+        if 'stackName' in kwargs:
+            stack_name = kwargs['stackName']
+        if 'stackPolicyBody' in kwargs:
+            stack_policy_body = kwargs['stackPolicyBody']
+        if 'stackPolicyDuringUpdateBody' in kwargs:
+            stack_policy_during_update_body = kwargs['stackPolicyDuringUpdateBody']
+        if 'stackPolicyDuringUpdateUrl' in kwargs:
+            stack_policy_during_update_url = kwargs['stackPolicyDuringUpdateUrl']
+        if 'stackPolicyUrl' in kwargs:
+            stack_policy_url = kwargs['stackPolicyUrl']
+        if 'templateBody' in kwargs:
+            template_body = kwargs['templateBody']
+        if 'templateUrl' in kwargs:
+            template_url = kwargs['templateUrl']
+        if 'timeoutInMinutes' in kwargs:
+            timeout_in_minutes = kwargs['timeoutInMinutes']
+        if 'usePreviousParameters' in kwargs:
+            use_previous_parameters = kwargs['usePreviousParameters']
+
         if change_set_name is not None:
             _setter("change_set_name", change_set_name)
         if change_set_type is not None:

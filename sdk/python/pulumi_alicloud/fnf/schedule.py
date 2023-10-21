@@ -47,7 +47,15 @@ class ScheduleArgs:
              description: Optional[pulumi.Input[str]] = None,
              enable: Optional[pulumi.Input[bool]] = None,
              payload: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cronExpression' in kwargs:
+            cron_expression = kwargs['cronExpression']
+        if 'flowName' in kwargs:
+            flow_name = kwargs['flowName']
+        if 'scheduleName' in kwargs:
+            schedule_name = kwargs['scheduleName']
+
         _setter("cron_expression", cron_expression)
         _setter("flow_name", flow_name)
         _setter("schedule_name", schedule_name)
@@ -175,7 +183,19 @@ class _ScheduleState:
              payload: Optional[pulumi.Input[str]] = None,
              schedule_id: Optional[pulumi.Input[str]] = None,
              schedule_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cronExpression' in kwargs:
+            cron_expression = kwargs['cronExpression']
+        if 'flowName' in kwargs:
+            flow_name = kwargs['flowName']
+        if 'lastModifiedTime' in kwargs:
+            last_modified_time = kwargs['lastModifiedTime']
+        if 'scheduleId' in kwargs:
+            schedule_id = kwargs['scheduleId']
+        if 'scheduleName' in kwargs:
+            schedule_name = kwargs['scheduleName']
+
         if cron_expression is not None:
             _setter("cron_expression", cron_expression)
         if description is not None:

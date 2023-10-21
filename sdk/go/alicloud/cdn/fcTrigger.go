@@ -15,7 +15,7 @@ import (
 
 // Provides a CDN Fc Trigger resource.
 //
-// For information about CDN Fc Trigger and how to use it, see [What is Fc Trigger](https://www.alibabacloud.com/help/zh/alibaba-cloud-cdn/latest/add-function-calculation-trigger).
+// For information about CDN Fc Trigger and how to use it, see [What is Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger).
 //
 // > **NOTE:** Available in v1.165.0+.
 //
@@ -89,7 +89,7 @@ type FcTrigger struct {
 	RoleArn pulumi.StringOutput `pulumi:"roleArn"`
 	// Resources and filters for event listening. The value formats as `acs:cdn:{RegionID}:{AccountID}:{Filter}`.
 	SourceArn pulumi.StringOutput `pulumi:"sourceArn"`
-	// The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/zh/alibaba-cloud-cdn/latest/add-function-calculation-trigger) for more details.
+	// The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger) for more details.
 	TriggerArn pulumi.StringOutput `pulumi:"triggerArn"`
 }
 
@@ -153,7 +153,7 @@ type fcTriggerState struct {
 	RoleArn *string `pulumi:"roleArn"`
 	// Resources and filters for event listening. The value formats as `acs:cdn:{RegionID}:{AccountID}:{Filter}`.
 	SourceArn *string `pulumi:"sourceArn"`
-	// The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/zh/alibaba-cloud-cdn/latest/add-function-calculation-trigger) for more details.
+	// The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger) for more details.
 	TriggerArn *string `pulumi:"triggerArn"`
 }
 
@@ -170,7 +170,7 @@ type FcTriggerState struct {
 	RoleArn pulumi.StringPtrInput
 	// Resources and filters for event listening. The value formats as `acs:cdn:{RegionID}:{AccountID}:{Filter}`.
 	SourceArn pulumi.StringPtrInput
-	// The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/zh/alibaba-cloud-cdn/latest/add-function-calculation-trigger) for more details.
+	// The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger) for more details.
 	TriggerArn pulumi.StringPtrInput
 }
 
@@ -191,7 +191,7 @@ type fcTriggerArgs struct {
 	RoleArn string `pulumi:"roleArn"`
 	// Resources and filters for event listening. The value formats as `acs:cdn:{RegionID}:{AccountID}:{Filter}`.
 	SourceArn string `pulumi:"sourceArn"`
-	// The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/zh/alibaba-cloud-cdn/latest/add-function-calculation-trigger) for more details.
+	// The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger) for more details.
 	TriggerArn string `pulumi:"triggerArn"`
 }
 
@@ -209,7 +209,7 @@ type FcTriggerArgs struct {
 	RoleArn pulumi.StringInput
 	// Resources and filters for event listening. The value formats as `acs:cdn:{RegionID}:{AccountID}:{Filter}`.
 	SourceArn pulumi.StringInput
-	// The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/zh/alibaba-cloud-cdn/latest/add-function-calculation-trigger) for more details.
+	// The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger) for more details.
 	TriggerArn pulumi.StringInput
 }
 
@@ -354,7 +354,7 @@ func (o FcTriggerOutput) SourceArn() pulumi.StringOutput {
 	return o.ApplyT(func(v *FcTrigger) pulumi.StringOutput { return v.SourceArn }).(pulumi.StringOutput)
 }
 
-// The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/zh/alibaba-cloud-cdn/latest/add-function-calculation-trigger) for more details.
+// The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger) for more details.
 func (o FcTriggerOutput) TriggerArn() pulumi.StringOutput {
 	return o.ApplyT(func(v *FcTrigger) pulumi.StringOutput { return v.TriggerArn }).(pulumi.StringOutput)
 }

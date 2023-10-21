@@ -39,7 +39,13 @@ class ExtensionProviderArgs:
              extension_provider_name: pulumi.Input[str],
              service_mesh_id: pulumi.Input[str],
              type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'extensionProviderName' in kwargs:
+            extension_provider_name = kwargs['extensionProviderName']
+        if 'serviceMeshId' in kwargs:
+            service_mesh_id = kwargs['serviceMeshId']
+
         _setter("config", config)
         _setter("extension_provider_name", extension_provider_name)
         _setter("service_mesh_id", service_mesh_id)
@@ -122,7 +128,13 @@ class _ExtensionProviderState:
              extension_provider_name: Optional[pulumi.Input[str]] = None,
              service_mesh_id: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'extensionProviderName' in kwargs:
+            extension_provider_name = kwargs['extensionProviderName']
+        if 'serviceMeshId' in kwargs:
+            service_mesh_id = kwargs['serviceMeshId']
+
         if config is not None:
             _setter("config", config)
         if extension_provider_name is not None:

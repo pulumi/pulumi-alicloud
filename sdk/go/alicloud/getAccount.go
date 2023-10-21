@@ -4,8 +4,12 @@
 package alicloud
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides information about the current account.
@@ -48,4 +52,45 @@ func GetAccount(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAccountRe
 type GetAccountResult struct {
 	// Account ID (e.g. "1239306421830812"). It can be used to construct an ARN.
 	Id string `pulumi:"id"`
+}
+
+func GetAccountOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetAccountResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetAccountResult, error) {
+		r, err := GetAccount(ctx, opts...)
+		var s GetAccountResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetAccountResultOutput)
+}
+
+// A collection of values returned by getAccount.
+type GetAccountResultOutput struct{ *pulumi.OutputState }
+
+func (GetAccountResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountResult)(nil)).Elem()
+}
+
+func (o GetAccountResultOutput) ToGetAccountResultOutput() GetAccountResultOutput {
+	return o
+}
+
+func (o GetAccountResultOutput) ToGetAccountResultOutputWithContext(ctx context.Context) GetAccountResultOutput {
+	return o
+}
+
+func (o GetAccountResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccountResult] {
+	return pulumix.Output[GetAccountResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Account ID (e.g. "1239306421830812"). It can be used to construct an ARN.
+func (o GetAccountResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAccountResultOutput{})
 }

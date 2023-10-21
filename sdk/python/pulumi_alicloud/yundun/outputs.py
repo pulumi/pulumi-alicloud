@@ -88,7 +88,21 @@ class BastionHostInstanceAdAuthServer(dict):
              mobile_mapping: Optional[str] = None,
              name_mapping: Optional[str] = None,
              standby_server: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'baseDn' in kwargs:
+            base_dn = kwargs['baseDn']
+        if 'isSsl' in kwargs:
+            is_ssl = kwargs['isSsl']
+        if 'emailMapping' in kwargs:
+            email_mapping = kwargs['emailMapping']
+        if 'mobileMapping' in kwargs:
+            mobile_mapping = kwargs['mobileMapping']
+        if 'nameMapping' in kwargs:
+            name_mapping = kwargs['nameMapping']
+        if 'standbyServer' in kwargs:
+            standby_server = kwargs['standbyServer']
+
         _setter("account", account)
         _setter("base_dn", base_dn)
         _setter("domain", domain)
@@ -242,7 +256,23 @@ class BastionHostInstanceLdapAuthServer(dict):
              mobile_mapping: Optional[str] = None,
              name_mapping: Optional[str] = None,
              standby_server: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'baseDn' in kwargs:
+            base_dn = kwargs['baseDn']
+        if 'emailMapping' in kwargs:
+            email_mapping = kwargs['emailMapping']
+        if 'isSsl' in kwargs:
+            is_ssl = kwargs['isSsl']
+        if 'loginNameMapping' in kwargs:
+            login_name_mapping = kwargs['loginNameMapping']
+        if 'mobileMapping' in kwargs:
+            mobile_mapping = kwargs['mobileMapping']
+        if 'nameMapping' in kwargs:
+            name_mapping = kwargs['nameMapping']
+        if 'standbyServer' in kwargs:
+            standby_server = kwargs['standbyServer']
+
         _setter("account", account)
         _setter("base_dn", base_dn)
         _setter("password", password)
@@ -363,7 +393,23 @@ class GetBastionHostInstancesInstanceResult(dict):
              security_group_ids: Sequence[str],
              user_vswitch_id: str,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceStatus' in kwargs:
+            instance_status = kwargs['instanceStatus']
+        if 'licenseCode' in kwargs:
+            license_code = kwargs['licenseCode']
+        if 'privateDomain' in kwargs:
+            private_domain = kwargs['privateDomain']
+        if 'publicDomain' in kwargs:
+            public_domain = kwargs['publicDomain']
+        if 'publicNetworkAccess' in kwargs:
+            public_network_access = kwargs['publicNetworkAccess']
+        if 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if 'userVswitchId' in kwargs:
+            user_vswitch_id = kwargs['userVswitchId']
+
         _setter("description", description)
         _setter("id", id)
         _setter("instance_status", instance_status)
@@ -463,7 +509,21 @@ class GetDBAuditInstanceInstanceResult(dict):
              public_network_access: bool,
              user_vswitch_id: str,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceStatus' in kwargs:
+            instance_status = kwargs['instanceStatus']
+        if 'licenseCode' in kwargs:
+            license_code = kwargs['licenseCode']
+        if 'privateDomain' in kwargs:
+            private_domain = kwargs['privateDomain']
+        if 'publicDomain' in kwargs:
+            public_domain = kwargs['publicDomain']
+        if 'publicNetworkAccess' in kwargs:
+            public_network_access = kwargs['publicNetworkAccess']
+        if 'userVswitchId' in kwargs:
+            user_vswitch_id = kwargs['userVswitchId']
+
         _setter("description", description)
         _setter("id", id)
         _setter("instance_status", instance_status)

@@ -39,7 +39,17 @@ class TransitRouterMulticastDomainSourceArgs:
              network_interface_id: pulumi.Input[str],
              transit_router_multicast_domain_id: pulumi.Input[str],
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupIpAddress' in kwargs:
+            group_ip_address = kwargs['groupIpAddress']
+        if 'networkInterfaceId' in kwargs:
+            network_interface_id = kwargs['networkInterfaceId']
+        if 'transitRouterMulticastDomainId' in kwargs:
+            transit_router_multicast_domain_id = kwargs['transitRouterMulticastDomainId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         _setter("group_ip_address", group_ip_address)
         _setter("network_interface_id", network_interface_id)
         _setter("transit_router_multicast_domain_id", transit_router_multicast_domain_id)
@@ -127,7 +137,17 @@ class _TransitRouterMulticastDomainSourceState:
              status: Optional[pulumi.Input[str]] = None,
              transit_router_multicast_domain_id: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupIpAddress' in kwargs:
+            group_ip_address = kwargs['groupIpAddress']
+        if 'networkInterfaceId' in kwargs:
+            network_interface_id = kwargs['networkInterfaceId']
+        if 'transitRouterMulticastDomainId' in kwargs:
+            transit_router_multicast_domain_id = kwargs['transitRouterMulticastDomainId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if group_ip_address is not None:
             _setter("group_ip_address", group_ip_address)
         if network_interface_id is not None:
@@ -213,7 +233,7 @@ class TransitRouterMulticastDomainSource(pulumi.CustomResource):
         """
         Provides a Cen Transit Router Multicast Domain Source resource.
 
-        For information about Cen Transit Router Multicast Domain Source and how to use it, see [What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupsources).
+        For information about Cen Transit Router Multicast Domain Source and how to use it, see [What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-cbn-2017-09-12-registertransitroutermulticastgroupsources).
 
         > **NOTE:** Available since v1.195.0.
 
@@ -241,7 +261,7 @@ class TransitRouterMulticastDomainSource(pulumi.CustomResource):
         """
         Provides a Cen Transit Router Multicast Domain Source resource.
 
-        For information about Cen Transit Router Multicast Domain Source and how to use it, see [What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupsources).
+        For information about Cen Transit Router Multicast Domain Source and how to use it, see [What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-cbn-2017-09-12-registertransitroutermulticastgroupsources).
 
         > **NOTE:** Available since v1.195.0.
 

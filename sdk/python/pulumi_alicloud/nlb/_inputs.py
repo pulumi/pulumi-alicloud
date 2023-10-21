@@ -53,7 +53,23 @@ class LoadBalancerZoneMappingArgs:
              ipv6_address: Optional[pulumi.Input[str]] = None,
              private_ipv4_address: Optional[pulumi.Input[str]] = None,
              public_ipv4_address: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'allocationId' in kwargs:
+            allocation_id = kwargs['allocationId']
+        if 'eniId' in kwargs:
+            eni_id = kwargs['eniId']
+        if 'ipv6Address' in kwargs:
+            ipv6_address = kwargs['ipv6Address']
+        if 'privateIpv4Address' in kwargs:
+            private_ipv4_address = kwargs['privateIpv4Address']
+        if 'publicIpv4Address' in kwargs:
+            public_ipv4_address = kwargs['publicIpv4Address']
+
         _setter("vswitch_id", vswitch_id)
         _setter("zone_id", zone_id)
         if allocation_id is not None:
@@ -208,7 +224,31 @@ class ServerGroupHealthCheckArgs:
              healthy_threshold: Optional[pulumi.Input[int]] = None,
              http_check_method: Optional[pulumi.Input[str]] = None,
              unhealthy_threshold: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'healthCheckConnectPort' in kwargs:
+            health_check_connect_port = kwargs['healthCheckConnectPort']
+        if 'healthCheckConnectTimeout' in kwargs:
+            health_check_connect_timeout = kwargs['healthCheckConnectTimeout']
+        if 'healthCheckDomain' in kwargs:
+            health_check_domain = kwargs['healthCheckDomain']
+        if 'healthCheckEnabled' in kwargs:
+            health_check_enabled = kwargs['healthCheckEnabled']
+        if 'healthCheckHttpCodes' in kwargs:
+            health_check_http_codes = kwargs['healthCheckHttpCodes']
+        if 'healthCheckInterval' in kwargs:
+            health_check_interval = kwargs['healthCheckInterval']
+        if 'healthCheckType' in kwargs:
+            health_check_type = kwargs['healthCheckType']
+        if 'healthCheckUrl' in kwargs:
+            health_check_url = kwargs['healthCheckUrl']
+        if 'healthyThreshold' in kwargs:
+            healthy_threshold = kwargs['healthyThreshold']
+        if 'httpCheckMethod' in kwargs:
+            http_check_method = kwargs['httpCheckMethod']
+        if 'unhealthyThreshold' in kwargs:
+            unhealthy_threshold = kwargs['unhealthyThreshold']
+
         if health_check_connect_port is not None:
             _setter("health_check_connect_port", health_check_connect_port)
         if health_check_connect_timeout is not None:

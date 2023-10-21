@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
+        /// The name for the alarm's associated metric.
         /// </summary>
         public readonly string MetricName;
         /// <summary>

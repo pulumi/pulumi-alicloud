@@ -36,7 +36,13 @@ class GetOrganizationsOrganizationResult(dict):
              id: str,
              organization_id: str,
              organization_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+        if 'organizationName' in kwargs:
+            organization_name = kwargs['organizationName']
+
         _setter("id", id)
         _setter("organization_id", organization_id)
         _setter("organization_name", organization_name)

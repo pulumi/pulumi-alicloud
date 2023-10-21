@@ -48,7 +48,17 @@ class AutoSnapshotPolicyArgs:
              time_points: pulumi.Input[Sequence[pulumi.Input[str]]],
              auto_snapshot_policy_name: Optional[pulumi.Input[str]] = None,
              retention_days: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'repeatWeekdays' in kwargs:
+            repeat_weekdays = kwargs['repeatWeekdays']
+        if 'timePoints' in kwargs:
+            time_points = kwargs['timePoints']
+        if 'autoSnapshotPolicyName' in kwargs:
+            auto_snapshot_policy_name = kwargs['autoSnapshotPolicyName']
+        if 'retentionDays' in kwargs:
+            retention_days = kwargs['retentionDays']
+
         _setter("repeat_weekdays", repeat_weekdays)
         _setter("time_points", time_points)
         if auto_snapshot_policy_name is not None:
@@ -155,7 +165,17 @@ class _AutoSnapshotPolicyState:
              retention_days: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[str]] = None,
              time_points: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoSnapshotPolicyName' in kwargs:
+            auto_snapshot_policy_name = kwargs['autoSnapshotPolicyName']
+        if 'repeatWeekdays' in kwargs:
+            repeat_weekdays = kwargs['repeatWeekdays']
+        if 'retentionDays' in kwargs:
+            retention_days = kwargs['retentionDays']
+        if 'timePoints' in kwargs:
+            time_points = kwargs['timePoints']
+
         if auto_snapshot_policy_name is not None:
             _setter("auto_snapshot_policy_name", auto_snapshot_policy_name)
         if repeat_weekdays is not None:

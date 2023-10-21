@@ -39,7 +39,9 @@ class ConfigArgs:
              description: Optional[pulumi.Input[str]] = None,
              lang: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if code is not None:
             _setter("code", code)
         if description is not None:
@@ -126,7 +128,9 @@ class _ConfigState:
              description: Optional[pulumi.Input[str]] = None,
              lang: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if code is not None:
             _setter("code", code)
         if description is not None:

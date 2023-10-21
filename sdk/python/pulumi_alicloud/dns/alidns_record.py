@@ -32,7 +32,7 @@ class AlidnsRecordArgs:
         :param pulumi.Input[str] type: The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
         :param pulumi.Input[str] value: The value of domain record, When the `type` is `MX`,`NS`,`CNAME`,`SRV`, the server will treat the `value` as a fully qualified domain name, so it's no need to add a `.` at the end.
         :param pulumi.Input[str] lang: User language.
-        :param pulumi.Input[str] line: The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using dns_get_resolution_lines in data source to get the value.
+        :param pulumi.Input[str] line: The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/adding-a-dns-record) or using dns_get_resolution_lines in data source to get the value.
         :param pulumi.Input[int] priority: The priority of domain record. Valid values: `[1-10]`. When the `type` is `MX`, this parameter is required.
         :param pulumi.Input[str] remark: The remark of the domain record.
         :param pulumi.Input[str] status: The status of the domain record. Valid values: `ENABLE`,`DISABLE`.
@@ -67,7 +67,13 @@ class AlidnsRecordArgs:
              status: Optional[pulumi.Input[str]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
              user_client_ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'userClientIp' in kwargs:
+            user_client_ip = kwargs['userClientIp']
+
         _setter("domain_name", domain_name)
         _setter("rr", rr)
         _setter("type", type)
@@ -151,7 +157,7 @@ class AlidnsRecordArgs:
     @pulumi.getter
     def line(self) -> Optional[pulumi.Input[str]]:
         """
-        The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using dns_get_resolution_lines in data source to get the value.
+        The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/adding-a-dns-record) or using dns_get_resolution_lines in data source to get the value.
         """
         return pulumi.get(self, "line")
 
@@ -238,7 +244,7 @@ class _AlidnsRecordState:
         Input properties used for looking up and filtering AlidnsRecord resources.
         :param pulumi.Input[str] domain_name: Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[str] lang: User language.
-        :param pulumi.Input[str] line: The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using dns_get_resolution_lines in data source to get the value.
+        :param pulumi.Input[str] line: The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/adding-a-dns-record) or using dns_get_resolution_lines in data source to get the value.
         :param pulumi.Input[int] priority: The priority of domain record. Valid values: `[1-10]`. When the `type` is `MX`, this parameter is required.
         :param pulumi.Input[str] remark: The remark of the domain record.
         :param pulumi.Input[str] rr: Host record for the domain record. This host_record can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `@`, and must not begin or end with `-`.
@@ -276,7 +282,13 @@ class _AlidnsRecordState:
              type: Optional[pulumi.Input[str]] = None,
              user_client_ip: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'userClientIp' in kwargs:
+            user_client_ip = kwargs['userClientIp']
+
         if domain_name is not None:
             _setter("domain_name", domain_name)
         if lang is not None:
@@ -328,7 +340,7 @@ class _AlidnsRecordState:
     @pulumi.getter
     def line(self) -> Optional[pulumi.Input[str]]:
         """
-        The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using dns_get_resolution_lines in data source to get the value.
+        The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/adding-a-dns-record) or using dns_get_resolution_lines in data source to get the value.
         """
         return pulumi.get(self, "line")
 
@@ -451,7 +463,7 @@ class AlidnsRecord(pulumi.CustomResource):
                  value: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Alidns Record resource. For information about Alidns Domain Record and how to use it, see [What is Resource Alidns Record](https://www.alibabacloud.com/help/en/doc-detail/29772.htm).
+        Provides a Alidns Record resource. For information about Alidns Domain Record and how to use it, see [What is Resource Alidns Record](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/adding-a-dns-record).
 
         > **NOTE:** Available since v1.85.0.
 
@@ -492,7 +504,7 @@ class AlidnsRecord(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain_name: Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[str] lang: User language.
-        :param pulumi.Input[str] line: The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using dns_get_resolution_lines in data source to get the value.
+        :param pulumi.Input[str] line: The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/adding-a-dns-record) or using dns_get_resolution_lines in data source to get the value.
         :param pulumi.Input[int] priority: The priority of domain record. Valid values: `[1-10]`. When the `type` is `MX`, this parameter is required.
         :param pulumi.Input[str] remark: The remark of the domain record.
         :param pulumi.Input[str] rr: Host record for the domain record. This host_record can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `@`, and must not begin or end with `-`.
@@ -509,7 +521,7 @@ class AlidnsRecord(pulumi.CustomResource):
                  args: AlidnsRecordArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Alidns Record resource. For information about Alidns Domain Record and how to use it, see [What is Resource Alidns Record](https://www.alibabacloud.com/help/en/doc-detail/29772.htm).
+        Provides a Alidns Record resource. For information about Alidns Domain Record and how to use it, see [What is Resource Alidns Record](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/adding-a-dns-record).
 
         > **NOTE:** Available since v1.85.0.
 
@@ -634,7 +646,7 @@ class AlidnsRecord(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain_name: Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[str] lang: User language.
-        :param pulumi.Input[str] line: The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using dns_get_resolution_lines in data source to get the value.
+        :param pulumi.Input[str] line: The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/adding-a-dns-record) or using dns_get_resolution_lines in data source to get the value.
         :param pulumi.Input[int] priority: The priority of domain record. Valid values: `[1-10]`. When the `type` is `MX`, this parameter is required.
         :param pulumi.Input[str] remark: The remark of the domain record.
         :param pulumi.Input[str] rr: Host record for the domain record. This host_record can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `@`, and must not begin or end with `-`.
@@ -681,7 +693,7 @@ class AlidnsRecord(pulumi.CustomResource):
     @pulumi.getter
     def line(self) -> pulumi.Output[Optional[str]]:
         """
-        The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using dns_get_resolution_lines in data source to get the value.
+        The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/adding-a-dns-record) or using dns_get_resolution_lines in data source to get the value.
         """
         return pulumi.get(self, "line")
 

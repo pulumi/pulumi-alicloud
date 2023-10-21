@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// <summary>
     /// Provides a Threat Detection Vul Whitelist resource.
     /// 
-    /// For information about Threat Detection Vul Whitelist and how to use it, see [What is Vul Whitelist](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+    /// For information about Threat Detection Vul Whitelist and how to use it, see [What is Vul Whitelist](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
     /// 
     /// &gt; **NOTE:** Available in v1.195.0+.
     /// 
@@ -56,13 +56,13 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Output<string?> Reason { get; private set; } = null!;
 
         /// <summary>
-        /// Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+        /// Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
         /// </summary>
         [Output("targetInfo")]
         public Output<string?> TargetInfo { get; private set; } = null!;
 
         /// <summary>
-        /// Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+        /// Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
         /// </summary>
         [Output("whitelist")]
         public Output<string> Whitelist { get; private set; } = null!;
@@ -120,13 +120,13 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<string>? Reason { get; set; }
 
         /// <summary>
-        /// Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+        /// Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
         /// </summary>
         [Input("targetInfo")]
         public Input<string>? TargetInfo { get; set; }
 
         /// <summary>
-        /// Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+        /// Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
         /// </summary>
         [Input("whitelist", required: true)]
         public Input<string> Whitelist { get; set; } = null!;
@@ -146,13 +146,13 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<string>? Reason { get; set; }
 
         /// <summary>
-        /// Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+        /// Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
         /// </summary>
         [Input("targetInfo")]
         public Input<string>? TargetInfo { get; set; }
 
         /// <summary>
-        /// Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+        /// Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
         /// </summary>
         [Input("whitelist")]
         public Input<string>? Whitelist { get; set; }

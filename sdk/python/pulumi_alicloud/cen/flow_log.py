@@ -47,7 +47,17 @@ class FlowLogArgs:
              description: Optional[pulumi.Input[str]] = None,
              flow_log_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'logStoreName' in kwargs:
+            log_store_name = kwargs['logStoreName']
+        if 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if 'flowLogName' in kwargs:
+            flow_log_name = kwargs['flowLogName']
+
         _setter("cen_id", cen_id)
         _setter("log_store_name", log_store_name)
         _setter("project_name", project_name)
@@ -167,7 +177,17 @@ class _FlowLogState:
              log_store_name: Optional[pulumi.Input[str]] = None,
              project_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'flowLogName' in kwargs:
+            flow_log_name = kwargs['flowLogName']
+        if 'logStoreName' in kwargs:
+            log_store_name = kwargs['logStoreName']
+        if 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+
         if cen_id is not None:
             _setter("cen_id", cen_id)
         if description is not None:
@@ -271,9 +291,9 @@ class FlowLog(pulumi.CustomResource):
         By using the flow log function, you can capture the traffic data of the network instances in different regions of a CEN.
         You can also use the data aggregated in flow logs to analyze cross-region traffic flows, minimize traffic costs, and troubleshoot network faults.
 
-        For information about CEN flow log and how to use it, see [Manage CEN flowlog](https://www.alibabacloud.com/help/doc-detail/123006.htm).
+        For information about CEN flow log and how to use it, see [Manage CEN flowlog](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createflowlog).
 
-        > **NOTE:** Available in 1.73.0+
+        > **NOTE:** Available since v1.73.0.
 
         ## Example Usage
 
@@ -328,9 +348,9 @@ class FlowLog(pulumi.CustomResource):
         By using the flow log function, you can capture the traffic data of the network instances in different regions of a CEN.
         You can also use the data aggregated in flow logs to analyze cross-region traffic flows, minimize traffic costs, and troubleshoot network faults.
 
-        For information about CEN flow log and how to use it, see [Manage CEN flowlog](https://www.alibabacloud.com/help/doc-detail/123006.htm).
+        For information about CEN flow log and how to use it, see [Manage CEN flowlog](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createflowlog).
 
-        > **NOTE:** Available in 1.73.0+
+        > **NOTE:** Available since v1.73.0.
 
         ## Example Usage
 

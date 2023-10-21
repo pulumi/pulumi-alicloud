@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Slb
 {
     /// <summary>
+    /// &gt; **NOTE:** Deprecated since v1.123.1.
+    /// 
     /// &gt; **DEPRECATED:** This resource has been renamed to alicloud.slb.ApplicationLoadBalancer from version 1.123.1.
     /// 
     /// Provides an Application Load Balancer resource.
@@ -17,7 +19,7 @@ namespace Pulumi.AliCloud.Slb
     /// &gt; **NOTE:** At present, to avoid some unnecessary regulation confusion, SLB can not support alicloud international account to create "paybybandwidth" instance.
     /// 
     /// &gt; **NOTE:** The supported specifications vary by region. Currently not all regions support guaranteed-performance instances.
-    /// For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/doc-detail/27657.htm).
+    /// For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/en/slb/classic-load-balancer/developer-reference/api-createloadbalancer-2#t4182.html).
     /// 
     /// ## Example Usage
     /// 
@@ -30,7 +32,7 @@ namespace Pulumi.AliCloud.Slb
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraformtestslbconfig";
+    ///     var name = config.Get("name") ?? "terraformslbconfig";
     ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
@@ -38,6 +40,7 @@ namespace Pulumi.AliCloud.Slb
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
+    ///         VpcName = name,
     ///         CidrBlock = "172.16.0.0/12",
     ///     });
     /// 
@@ -51,7 +54,8 @@ namespace Pulumi.AliCloud.Slb
     /// 
     ///     var defaultLoadBalancer = new AliCloud.Slb.LoadBalancer("defaultLoadBalancer", new()
     ///     {
-    ///         Specification = "slb.s2.small",
+    ///         LoadBalancerName = name,
+    ///         LoadBalancerSpec = "slb.s2.small",
     ///         VswitchId = defaultSwitch.Id,
     ///         Tags = 
     ///         {
@@ -133,6 +137,9 @@ namespace Pulumi.AliCloud.Slb
         [Output("loadBalancerName")]
         public Output<string> LoadBalancerName { get; private set; } = null!;
 
+        /// <summary>
+        /// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance. Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`.
+        /// </summary>
         [Output("loadBalancerSpec")]
         public Output<string> LoadBalancerSpec { get; private set; } = null!;
 
@@ -142,15 +149,27 @@ namespace Pulumi.AliCloud.Slb
         [Output("masterZoneId")]
         public Output<string> MasterZoneId { get; private set; } = null!;
 
+        /// <summary>
+        /// The reason of modification protection. It's effective when `modification_protection_status` is `ConsoleProtection`.
+        /// </summary>
         [Output("modificationProtectionReason")]
         public Output<string?> ModificationProtectionReason { get; private set; } = null!;
 
+        /// <summary>
+        /// The status of modification protection. Valid values: `ConsoleProtection` and `NonProtection`. Default value: `NonProtection`.
+        /// </summary>
         [Output("modificationProtectionStatus")]
         public Output<string> ModificationProtectionStatus { get; private set; } = null!;
 
+        /// <summary>
+        /// Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+        /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
 
@@ -163,12 +182,6 @@ namespace Pulumi.AliCloud.Slb
 
         /// <summary>
         /// The Id of resource group which the SLB belongs.
-        /// 
-        /// &gt; **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
-        /// 
-        /// &gt; **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
-        /// 
-        /// &gt; **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
@@ -181,12 +194,21 @@ namespace Pulumi.AliCloud.Slb
 
         /// <summary>
         /// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-        /// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
+        /// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/en/slb/product-overview/announcements-and-updates)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
         /// "slb.s3.small", "slb.s3.medium", "slb.s3.large" and "slb.s4.large".
         /// </summary>
         [Output("specification")]
         public Output<string> Specification { get; private set; } = null!;
 
+        /// <summary>
+        /// The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
+        /// 
+        /// &gt; **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
+        /// 
+        /// &gt; **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+        /// 
+        /// &gt; **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
@@ -298,6 +320,9 @@ namespace Pulumi.AliCloud.Slb
         [Input("loadBalancerName")]
         public Input<string>? LoadBalancerName { get; set; }
 
+        /// <summary>
+        /// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance. Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`.
+        /// </summary>
         [Input("loadBalancerSpec")]
         public Input<string>? LoadBalancerSpec { get; set; }
 
@@ -307,15 +332,27 @@ namespace Pulumi.AliCloud.Slb
         [Input("masterZoneId")]
         public Input<string>? MasterZoneId { get; set; }
 
+        /// <summary>
+        /// The reason of modification protection. It's effective when `modification_protection_status` is `ConsoleProtection`.
+        /// </summary>
         [Input("modificationProtectionReason")]
         public Input<string>? ModificationProtectionReason { get; set; }
 
+        /// <summary>
+        /// The status of modification protection. Valid values: `ConsoleProtection` and `NonProtection`. Default value: `NonProtection`.
+        /// </summary>
         [Input("modificationProtectionStatus")]
         public Input<string>? ModificationProtectionStatus { get; set; }
 
+        /// <summary>
+        /// Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+        /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
@@ -328,12 +365,6 @@ namespace Pulumi.AliCloud.Slb
 
         /// <summary>
         /// The Id of resource group which the SLB belongs.
-        /// 
-        /// &gt; **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
-        /// 
-        /// &gt; **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
-        /// 
-        /// &gt; **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -346,12 +377,21 @@ namespace Pulumi.AliCloud.Slb
 
         /// <summary>
         /// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-        /// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
+        /// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/en/slb/product-overview/announcements-and-updates)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
         /// "slb.s3.small", "slb.s3.medium", "slb.s3.large" and "slb.s4.large".
         /// </summary>
         [Input("specification")]
         public Input<string>? Specification { get; set; }
 
+        /// <summary>
+        /// The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
+        /// 
+        /// &gt; **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
+        /// 
+        /// &gt; **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+        /// 
+        /// &gt; **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
@@ -431,6 +471,9 @@ namespace Pulumi.AliCloud.Slb
         [Input("loadBalancerName")]
         public Input<string>? LoadBalancerName { get; set; }
 
+        /// <summary>
+        /// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance. Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`.
+        /// </summary>
         [Input("loadBalancerSpec")]
         public Input<string>? LoadBalancerSpec { get; set; }
 
@@ -440,15 +483,27 @@ namespace Pulumi.AliCloud.Slb
         [Input("masterZoneId")]
         public Input<string>? MasterZoneId { get; set; }
 
+        /// <summary>
+        /// The reason of modification protection. It's effective when `modification_protection_status` is `ConsoleProtection`.
+        /// </summary>
         [Input("modificationProtectionReason")]
         public Input<string>? ModificationProtectionReason { get; set; }
 
+        /// <summary>
+        /// The status of modification protection. Valid values: `ConsoleProtection` and `NonProtection`. Default value: `NonProtection`.
+        /// </summary>
         [Input("modificationProtectionStatus")]
         public Input<string>? ModificationProtectionStatus { get; set; }
 
+        /// <summary>
+        /// Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+        /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
@@ -461,12 +516,6 @@ namespace Pulumi.AliCloud.Slb
 
         /// <summary>
         /// The Id of resource group which the SLB belongs.
-        /// 
-        /// &gt; **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
-        /// 
-        /// &gt; **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
-        /// 
-        /// &gt; **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -479,12 +528,21 @@ namespace Pulumi.AliCloud.Slb
 
         /// <summary>
         /// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-        /// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
+        /// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/en/slb/product-overview/announcements-and-updates)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
         /// "slb.s3.small", "slb.s3.medium", "slb.s3.large" and "slb.s4.large".
         /// </summary>
         [Input("specification")]
         public Input<string>? Specification { get; set; }
 
+        /// <summary>
+        /// The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
+        /// 
+        /// &gt; **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
+        /// 
+        /// &gt; **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+        /// 
+        /// &gt; **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 

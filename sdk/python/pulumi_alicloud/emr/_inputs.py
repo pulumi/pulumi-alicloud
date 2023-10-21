@@ -52,7 +52,15 @@ class ClusterBootstrapActionArgs:
              execution_target: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'executionFailStrategy' in kwargs:
+            execution_fail_strategy = kwargs['executionFailStrategy']
+        if 'executionMoment' in kwargs:
+            execution_moment = kwargs['executionMoment']
+        if 'executionTarget' in kwargs:
+            execution_target = kwargs['executionTarget']
+
         if arg is not None:
             _setter("arg", arg)
         if execution_fail_strategy is not None:
@@ -166,7 +174,17 @@ class ClusterConfigArgs:
              config_value: pulumi.Input[str],
              file_name: pulumi.Input[str],
              service_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configKey' in kwargs:
+            config_key = kwargs['configKey']
+        if 'configValue' in kwargs:
+            config_value = kwargs['configValue']
+        if 'fileName' in kwargs:
+            file_name = kwargs['fileName']
+        if 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         _setter("config_key", config_key)
         _setter("config_value", config_value)
         _setter("file_name", file_name)
@@ -295,7 +313,39 @@ class ClusterHostGroupArgs:
              period: Optional[pulumi.Input[int]] = None,
              sys_disk_capacity: Optional[pulumi.Input[str]] = None,
              sys_disk_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'chargeType' in kwargs:
+            charge_type = kwargs['chargeType']
+        if 'decommissionTimeout' in kwargs:
+            decommission_timeout = kwargs['decommissionTimeout']
+        if 'diskCapacity' in kwargs:
+            disk_capacity = kwargs['diskCapacity']
+        if 'diskCount' in kwargs:
+            disk_count = kwargs['diskCount']
+        if 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if 'enableGracefulDecommission' in kwargs:
+            enable_graceful_decommission = kwargs['enableGracefulDecommission']
+        if 'gpuDriver' in kwargs:
+            gpu_driver = kwargs['gpuDriver']
+        if 'hostGroupName' in kwargs:
+            host_group_name = kwargs['hostGroupName']
+        if 'hostGroupType' in kwargs:
+            host_group_type = kwargs['hostGroupType']
+        if 'instanceList' in kwargs:
+            instance_list = kwargs['instanceList']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+        if 'sysDiskCapacity' in kwargs:
+            sys_disk_capacity = kwargs['sysDiskCapacity']
+        if 'sysDiskType' in kwargs:
+            sys_disk_type = kwargs['sysDiskType']
+
         if auto_renew is not None:
             _setter("auto_renew", auto_renew)
         if charge_type is not None:
@@ -542,7 +592,15 @@ class ClusterMetaStoreConfArgs:
              db_password: pulumi.Input[str],
              db_url: pulumi.Input[str],
              db_user_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbPassword' in kwargs:
+            db_password = kwargs['dbPassword']
+        if 'dbUrl' in kwargs:
+            db_url = kwargs['dbUrl']
+        if 'dbUserName' in kwargs:
+            db_user_name = kwargs['dbUserName']
+
         _setter("db_password", db_password)
         _setter("db_url", db_url)
         _setter("db_user_name", db_user_name)
@@ -631,7 +689,25 @@ class ClusterModifyClusterServiceConfigArgs:
              group_id: Optional[pulumi.Input[str]] = None,
              host_instance_id: Optional[pulumi.Input[str]] = None,
              refresh_host_config: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configParams' in kwargs:
+            config_params = kwargs['configParams']
+        if 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if 'configType' in kwargs:
+            config_type = kwargs['configType']
+        if 'customConfigParams' in kwargs:
+            custom_config_params = kwargs['customConfigParams']
+        if 'gatewayClusterIdLists' in kwargs:
+            gateway_cluster_id_lists = kwargs['gatewayClusterIdLists']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'hostInstanceId' in kwargs:
+            host_instance_id = kwargs['hostInstanceId']
+        if 'refreshHostConfig' in kwargs:
+            refresh_host_config = kwargs['refreshHostConfig']
+
         _setter("config_params", config_params)
         _setter("service_name", service_name)
         if comment is not None:

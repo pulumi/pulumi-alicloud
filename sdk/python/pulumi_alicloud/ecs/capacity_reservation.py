@@ -71,7 +71,27 @@ class CapacityReservationArgs:
              platform: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceAmount' in kwargs:
+            instance_amount = kwargs['instanceAmount']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'zoneIds' in kwargs:
+            zone_ids = kwargs['zoneIds']
+        if 'capacityReservationName' in kwargs:
+            capacity_reservation_name = kwargs['capacityReservationName']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if 'endTimeType' in kwargs:
+            end_time_type = kwargs['endTimeType']
+        if 'matchCriteria' in kwargs:
+            match_criteria = kwargs['matchCriteria']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("instance_amount", instance_amount)
         _setter("instance_type", instance_type)
         _setter("zone_ids", zone_ids)
@@ -319,7 +339,35 @@ class _CapacityReservationState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              time_slot: Optional[pulumi.Input[str]] = None,
              zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'capacityReservationName' in kwargs:
+            capacity_reservation_name = kwargs['capacityReservationName']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if 'endTimeType' in kwargs:
+            end_time_type = kwargs['endTimeType']
+        if 'instanceAmount' in kwargs:
+            instance_amount = kwargs['instanceAmount']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'matchCriteria' in kwargs:
+            match_criteria = kwargs['matchCriteria']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if 'startTimeType' in kwargs:
+            start_time_type = kwargs['startTimeType']
+        if 'timeSlot' in kwargs:
+            time_slot = kwargs['timeSlot']
+        if 'zoneIds' in kwargs:
+            zone_ids = kwargs['zoneIds']
+
         if capacity_reservation_name is not None:
             _setter("capacity_reservation_name", capacity_reservation_name)
         if description is not None:

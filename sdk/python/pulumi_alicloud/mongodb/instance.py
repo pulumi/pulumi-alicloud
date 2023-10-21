@@ -161,7 +161,65 @@ class InstanceArgs:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbInstanceClass' in kwargs:
+            db_instance_class = kwargs['dbInstanceClass']
+        if 'dbInstanceStorage' in kwargs:
+            db_instance_storage = kwargs['dbInstanceStorage']
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'accountPassword' in kwargs:
+            account_password = kwargs['accountPassword']
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'backupPeriods' in kwargs:
+            backup_periods = kwargs['backupPeriods']
+        if 'backupTime' in kwargs:
+            backup_time = kwargs['backupTime']
+        if 'hiddenZoneId' in kwargs:
+            hidden_zone_id = kwargs['hiddenZoneId']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'kmsEncryptedPassword' in kwargs:
+            kms_encrypted_password = kwargs['kmsEncryptedPassword']
+        if 'kmsEncryptionContext' in kwargs:
+            kms_encryption_context = kwargs['kmsEncryptionContext']
+        if 'maintainEndTime' in kwargs:
+            maintain_end_time = kwargs['maintainEndTime']
+        if 'maintainStartTime' in kwargs:
+            maintain_start_time = kwargs['maintainStartTime']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'orderType' in kwargs:
+            order_type = kwargs['orderType']
+        if 'readonlyReplicas' in kwargs:
+            readonly_replicas = kwargs['readonlyReplicas']
+        if 'replicationFactor' in kwargs:
+            replication_factor = kwargs['replicationFactor']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'secondaryZoneId' in kwargs:
+            secondary_zone_id = kwargs['secondaryZoneId']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'securityIpLists' in kwargs:
+            security_ip_lists = kwargs['securityIpLists']
+        if 'sslAction' in kwargs:
+            ssl_action = kwargs['sslAction']
+        if 'storageEngine' in kwargs:
+            storage_engine = kwargs['storageEngine']
+        if 'storageType' in kwargs:
+            storage_type = kwargs['storageType']
+        if 'tdeStatus' in kwargs:
+            tde_status = kwargs['tdeStatus']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("db_instance_class", db_instance_class)
         _setter("db_instance_storage", db_instance_storage)
         _setter("engine_version", engine_version)
@@ -781,7 +839,73 @@ class _InstanceState:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountPassword' in kwargs:
+            account_password = kwargs['accountPassword']
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'backupPeriods' in kwargs:
+            backup_periods = kwargs['backupPeriods']
+        if 'backupTime' in kwargs:
+            backup_time = kwargs['backupTime']
+        if 'dbInstanceClass' in kwargs:
+            db_instance_class = kwargs['dbInstanceClass']
+        if 'dbInstanceStorage' in kwargs:
+            db_instance_storage = kwargs['dbInstanceStorage']
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'hiddenZoneId' in kwargs:
+            hidden_zone_id = kwargs['hiddenZoneId']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'kmsEncryptedPassword' in kwargs:
+            kms_encrypted_password = kwargs['kmsEncryptedPassword']
+        if 'kmsEncryptionContext' in kwargs:
+            kms_encryption_context = kwargs['kmsEncryptionContext']
+        if 'maintainEndTime' in kwargs:
+            maintain_end_time = kwargs['maintainEndTime']
+        if 'maintainStartTime' in kwargs:
+            maintain_start_time = kwargs['maintainStartTime']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'orderType' in kwargs:
+            order_type = kwargs['orderType']
+        if 'readonlyReplicas' in kwargs:
+            readonly_replicas = kwargs['readonlyReplicas']
+        if 'replicaSetName' in kwargs:
+            replica_set_name = kwargs['replicaSetName']
+        if 'replicaSets' in kwargs:
+            replica_sets = kwargs['replicaSets']
+        if 'replicationFactor' in kwargs:
+            replication_factor = kwargs['replicationFactor']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'retentionPeriod' in kwargs:
+            retention_period = kwargs['retentionPeriod']
+        if 'secondaryZoneId' in kwargs:
+            secondary_zone_id = kwargs['secondaryZoneId']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'securityIpLists' in kwargs:
+            security_ip_lists = kwargs['securityIpLists']
+        if 'sslAction' in kwargs:
+            ssl_action = kwargs['sslAction']
+        if 'sslStatus' in kwargs:
+            ssl_status = kwargs['sslStatus']
+        if 'storageEngine' in kwargs:
+            storage_engine = kwargs['storageEngine']
+        if 'storageType' in kwargs:
+            storage_type = kwargs['storageType']
+        if 'tdeStatus' in kwargs:
+            tde_status = kwargs['tdeStatus']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if account_password is not None:
             _setter("account_password", account_password)
         if auto_renew is not None:

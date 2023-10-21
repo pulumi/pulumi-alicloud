@@ -47,7 +47,13 @@ class ServerGroupServerAttachmentArgs:
              description: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverGroupId' in kwargs:
+            server_group_id = kwargs['serverGroupId']
+        if 'serverId' in kwargs:
+            server_id = kwargs['serverId']
+
         _setter("port", port)
         _setter("server_group_id", server_group_id)
         _setter("server_id", server_id)
@@ -167,7 +173,13 @@ class _ServerGroupServerAttachmentState:
              server_id: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverGroupId' in kwargs:
+            server_group_id = kwargs['serverGroupId']
+        if 'serverId' in kwargs:
+            server_id = kwargs['serverId']
+
         if description is not None:
             _setter("description", description)
         if port is not None:

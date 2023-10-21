@@ -64,7 +64,25 @@ class DedicatedPropreHostEcsClassListArgs:
              disk_count: Optional[pulumi.Input[int]] = None,
              disk_type: Optional[pulumi.Input[str]] = None,
              system_disk_performance_level: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'sysDiskCapacity' in kwargs:
+            sys_disk_capacity = kwargs['sysDiskCapacity']
+        if 'sysDiskType' in kwargs:
+            sys_disk_type = kwargs['sysDiskType']
+        if 'dataDiskPerformanceLevel' in kwargs:
+            data_disk_performance_level = kwargs['dataDiskPerformanceLevel']
+        if 'diskCapacity' in kwargs:
+            disk_capacity = kwargs['diskCapacity']
+        if 'diskCount' in kwargs:
+            disk_count = kwargs['diskCount']
+        if 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if 'systemDiskPerformanceLevel' in kwargs:
+            system_disk_performance_level = kwargs['systemDiskPerformanceLevel']
+
         _setter("instance_type", instance_type)
         _setter("sys_disk_capacity", sys_disk_capacity)
         _setter("sys_disk_type", sys_disk_type)

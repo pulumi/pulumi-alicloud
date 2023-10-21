@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
         /// </summary>
         public readonly string GroupName;
         /// <summary>
-        /// The type of the Address Book.
+        /// The type of the Address Book. Valid values: `ip`, `tag`.
         /// </summary>
         public readonly string GroupType;
         /// <summary>

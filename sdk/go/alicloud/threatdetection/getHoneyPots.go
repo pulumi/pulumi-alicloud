@@ -12,11 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypot)
+// This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypot)
 //
-// > **NOTE:** Available in 1.195.0+
+// > **NOTE:** Available since v1.195.0.
 //
 // ## Example Usage
+//
+// # Basic Usage
 //
 // ```go
 // package main
@@ -34,7 +36,7 @@ import (
 //				Ids: []string{
 //					"xxxx",
 //				},
-//				HoneypotName: pulumi.StringRef("tf-test"),
+//				HoneypotName: pulumi.StringRef("tf-example"),
 //				NodeId:       pulumi.StringRef("a44e1ab3-6945-444c-889d-5bacee7056e8"),
 //			}, nil)
 //			if err != nil {
@@ -67,7 +69,8 @@ type GetHoneyPotsArgs struct {
 	// A regex string to filter results by honey pot name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// The ID of the honeypot management node.
-	NodeId   *string `pulumi:"nodeId"`
+	NodeId *string `pulumi:"nodeId"`
+	// The name of the honeypot management node.
 	NodeName *string `pulumi:"nodeName"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
@@ -116,7 +119,8 @@ type GetHoneyPotsOutputArgs struct {
 	// A regex string to filter results by honey pot name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// The ID of the honeypot management node.
-	NodeId   pulumi.StringPtrInput `pulumi:"nodeId"`
+	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
+	// The name of the honeypot management node.
 	NodeName pulumi.StringPtrInput `pulumi:"nodeName"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`

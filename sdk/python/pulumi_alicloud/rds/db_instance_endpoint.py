@@ -53,7 +53,21 @@ class DbInstanceEndpointArgs:
              vpc_id: pulumi.Input[str],
              vswitch_id: pulumi.Input[str],
              db_instance_endpoint_description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectionStringPrefix' in kwargs:
+            connection_string_prefix = kwargs['connectionStringPrefix']
+        if 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+        if 'nodeItems' in kwargs:
+            node_items = kwargs['nodeItems']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'dbInstanceEndpointDescription' in kwargs:
+            db_instance_endpoint_description = kwargs['dbInstanceEndpointDescription']
+
         _setter("connection_string_prefix", connection_string_prefix)
         _setter("db_instance_id", db_instance_id)
         _setter("node_items", node_items)
@@ -208,7 +222,31 @@ class _DbInstanceEndpointState:
              private_ip_address: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if 'connectionStringPrefix' in kwargs:
+            connection_string_prefix = kwargs['connectionStringPrefix']
+        if 'dbInstanceEndpointDescription' in kwargs:
+            db_instance_endpoint_description = kwargs['dbInstanceEndpointDescription']
+        if 'dbInstanceEndpointId' in kwargs:
+            db_instance_endpoint_id = kwargs['dbInstanceEndpointId']
+        if 'dbInstanceEndpointType' in kwargs:
+            db_instance_endpoint_type = kwargs['dbInstanceEndpointType']
+        if 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+        if 'ipType' in kwargs:
+            ip_type = kwargs['ipType']
+        if 'nodeItems' in kwargs:
+            node_items = kwargs['nodeItems']
+        if 'privateIpAddress' in kwargs:
+            private_ip_address = kwargs['privateIpAddress']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if connection_string is not None:
             _setter("connection_string", connection_string)
         if connection_string_prefix is not None:

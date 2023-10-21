@@ -43,7 +43,17 @@ class RouteEntryArgs:
              route_dest: pulumi.Input[str],
              vpn_gateway_id: pulumi.Input[str],
              weight: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nextHop' in kwargs:
+            next_hop = kwargs['nextHop']
+        if 'publishVpc' in kwargs:
+            publish_vpc = kwargs['publishVpc']
+        if 'routeDest' in kwargs:
+            route_dest = kwargs['routeDest']
+        if 'vpnGatewayId' in kwargs:
+            vpn_gateway_id = kwargs['vpnGatewayId']
+
         _setter("next_hop", next_hop)
         _setter("publish_vpc", publish_vpc)
         _setter("route_dest", route_dest)
@@ -151,7 +161,19 @@ class _RouteEntryState:
              status: Optional[pulumi.Input[str]] = None,
              vpn_gateway_id: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nextHop' in kwargs:
+            next_hop = kwargs['nextHop']
+        if 'publishVpc' in kwargs:
+            publish_vpc = kwargs['publishVpc']
+        if 'routeDest' in kwargs:
+            route_dest = kwargs['routeDest']
+        if 'routeEntryType' in kwargs:
+            route_entry_type = kwargs['routeEntryType']
+        if 'vpnGatewayId' in kwargs:
+            vpn_gateway_id = kwargs['vpnGatewayId']
+
         if next_hop is not None:
             _setter("next_hop", next_hop)
         if publish_vpc is not None:

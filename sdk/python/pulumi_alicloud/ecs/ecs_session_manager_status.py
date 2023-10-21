@@ -31,7 +31,11 @@ class EcsSessionManagerStatusArgs:
              _setter: Callable[[Any, Any], None],
              session_manager_status_name: pulumi.Input[str],
              status: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'sessionManagerStatusName' in kwargs:
+            session_manager_status_name = kwargs['sessionManagerStatusName']
+
         _setter("session_manager_status_name", session_manager_status_name)
         _setter("status", status)
 
@@ -80,7 +84,11 @@ class _EcsSessionManagerStatusState:
              _setter: Callable[[Any, Any], None],
              session_manager_status_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'sessionManagerStatusName' in kwargs:
+            session_manager_status_name = kwargs['sessionManagerStatusName']
+
         if session_manager_status_name is not None:
             _setter("session_manager_status_name", session_manager_status_name)
         if status is not None:

@@ -61,7 +61,19 @@ class ServerBackupPlanArgs:
              cross_account_type: Optional[pulumi.Input[str]] = None,
              cross_account_user_id: Optional[pulumi.Input[int]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ecsServerBackupPlanName' in kwargs:
+            ecs_server_backup_plan_name = kwargs['ecsServerBackupPlanName']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'crossAccountRoleName' in kwargs:
+            cross_account_role_name = kwargs['crossAccountRoleName']
+        if 'crossAccountType' in kwargs:
+            cross_account_type = kwargs['crossAccountType']
+        if 'crossAccountUserId' in kwargs:
+            cross_account_user_id = kwargs['crossAccountUserId']
+
         _setter("details", details)
         _setter("ecs_server_backup_plan_name", ecs_server_backup_plan_name)
         _setter("instance_id", instance_id)
@@ -233,7 +245,19 @@ class _ServerBackupPlanState:
              instance_id: Optional[pulumi.Input[str]] = None,
              retention: Optional[pulumi.Input[int]] = None,
              schedule: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'crossAccountRoleName' in kwargs:
+            cross_account_role_name = kwargs['crossAccountRoleName']
+        if 'crossAccountType' in kwargs:
+            cross_account_type = kwargs['crossAccountType']
+        if 'crossAccountUserId' in kwargs:
+            cross_account_user_id = kwargs['crossAccountUserId']
+        if 'ecsServerBackupPlanName' in kwargs:
+            ecs_server_backup_plan_name = kwargs['ecsServerBackupPlanName']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if cross_account_role_name is not None:
             _setter("cross_account_role_name", cross_account_role_name)
         if cross_account_type is not None:

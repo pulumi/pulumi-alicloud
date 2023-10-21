@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Dcdn.Outputs
     [OutputType]
     public sealed class GetWafRulesWafRuleRateLimitStatusResult
     {
+        /// <summary>
+        /// The HTTP status code returned.
+        /// </summary>
         public readonly string Code;
         /// <summary>
         /// The number of times that the HTTP status code that was returned.

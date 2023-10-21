@@ -34,7 +34,13 @@ class NestServiceInstanceCommodityArgs:
              _setter: Callable[[Any, Any], None],
              pay_period: Optional[pulumi.Input[int]] = None,
              pay_period_unit: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'payPeriod' in kwargs:
+            pay_period = kwargs['payPeriod']
+        if 'payPeriodUnit' in kwargs:
+            pay_period_unit = kwargs['payPeriodUnit']
+
         if pay_period is not None:
             _setter("pay_period", pay_period)
         if pay_period_unit is not None:
@@ -92,7 +98,15 @@ class NestServiceInstanceOperationMetadataArgs:
              operation_end_time: Optional[pulumi.Input[str]] = None,
              operation_start_time: Optional[pulumi.Input[str]] = None,
              resources: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'operatedServiceInstanceId' in kwargs:
+            operated_service_instance_id = kwargs['operatedServiceInstanceId']
+        if 'operationEndTime' in kwargs:
+            operation_end_time = kwargs['operationEndTime']
+        if 'operationStartTime' in kwargs:
+            operation_start_time = kwargs['operationStartTime']
+
         if operated_service_instance_id is not None:
             _setter("operated_service_instance_id", operated_service_instance_id)
         if operation_end_time is not None:
@@ -170,7 +184,9 @@ class GetNestServiceInstancesFilterArgs:
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if values is not None:

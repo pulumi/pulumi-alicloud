@@ -39,7 +39,13 @@ class EcsNetworkInterfacePermissionArgs:
              network_interface_id: pulumi.Input[str],
              permission: pulumi.Input[str],
              force: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'networkInterfaceId' in kwargs:
+            network_interface_id = kwargs['networkInterfaceId']
+
         _setter("account_id", account_id)
         _setter("network_interface_id", network_interface_id)
         _setter("permission", permission)
@@ -127,7 +133,13 @@ class _EcsNetworkInterfacePermissionState:
              network_interface_id: Optional[pulumi.Input[str]] = None,
              permission: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'networkInterfaceId' in kwargs:
+            network_interface_id = kwargs['networkInterfaceId']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if force is not None:

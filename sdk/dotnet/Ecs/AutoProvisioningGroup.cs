@@ -85,14 +85,6 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// });
     /// ```
-    /// ## Block config
-    /// 
-    /// The config mapping supports the following:
-    /// * `instance_type` - (Optional) The instance type of the Nth extended configurations of the launch template.
-    /// * `max_price` - (Required) The maximum price of the instance type specified in the Nth extended configurations of the launch template.
-    /// * `vswitch_id` - (Required) The ID of the VSwitch in the Nth extended configurations of the launch template.
-    /// * `weighted_capacity` - (Required) The weight of the instance type specified in the Nth extended configurations of the launch template.
-    /// * `priority` - (Optional) The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
     /// 
     /// ## Import
     /// 
@@ -136,7 +128,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> ExcessCapacityTerminationPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// DataDisk mappings to attach to ecs instance. See Block config below for details.
+        /// DataDisk mappings to attach to ecs instance. See `block-config` below for details.
         /// </summary>
         [Output("launchTemplateConfigs")]
         public Output<ImmutableArray<Outputs.AutoProvisioningGroupLaunchTemplateConfig>> LaunchTemplateConfigs { get; private set; } = null!;
@@ -305,7 +297,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.AutoProvisioningGroupLaunchTemplateConfigArgs>? _launchTemplateConfigs;
 
         /// <summary>
-        /// DataDisk mappings to attach to ecs instance. See Block config below for details.
+        /// DataDisk mappings to attach to ecs instance. See `block-config` below for details.
         /// </summary>
         public InputList<Inputs.AutoProvisioningGroupLaunchTemplateConfigArgs> LaunchTemplateConfigs
         {
@@ -439,7 +431,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.AutoProvisioningGroupLaunchTemplateConfigGetArgs>? _launchTemplateConfigs;
 
         /// <summary>
-        /// DataDisk mappings to attach to ecs instance. See Block config below for details.
+        /// DataDisk mappings to attach to ecs instance. See `block-config` below for details.
         /// </summary>
         public InputList<Inputs.AutoProvisioningGroupLaunchTemplateConfigGetArgs> LaunchTemplateConfigs
         {

@@ -12,17 +12,17 @@ namespace Pulumi.AliCloud.Dms
     public static class GetEnterpriseLogicDatabases
     {
         /// <summary>
-        /// This data source provides DMS Enterprise Logic Database available to the user.[What is Logic Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createlogicdatabase)
+        /// This data source provides DMS Enterprise Logic Database available to the user. [What is Logic Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-createlogicdatabase).
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// </summary>
         public static Task<GetEnterpriseLogicDatabasesResult> InvokeAsync(GetEnterpriseLogicDatabasesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEnterpriseLogicDatabasesResult>("alicloud:dms/getEnterpriseLogicDatabases:getEnterpriseLogicDatabases", args ?? new GetEnterpriseLogicDatabasesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides DMS Enterprise Logic Database available to the user.[What is Logic Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createlogicdatabase)
+        /// This data source provides DMS Enterprise Logic Database available to the user. [What is Logic Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-createlogicdatabase).
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// </summary>
         public static Output<GetEnterpriseLogicDatabasesResult> Invoke(GetEnterpriseLogicDatabasesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEnterpriseLogicDatabasesResult>("alicloud:dms/getEnterpriseLogicDatabases:getEnterpriseLogicDatabases", args ?? new GetEnterpriseLogicDatabasesInvokeArgs(), options.WithDefaults());

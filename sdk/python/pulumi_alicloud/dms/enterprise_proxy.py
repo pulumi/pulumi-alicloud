@@ -39,7 +39,11 @@ class EnterpriseProxyArgs:
              password: pulumi.Input[str],
              username: pulumi.Input[str],
              tid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("instance_id", instance_id)
         _setter("password", password)
         _setter("username", username)
@@ -123,7 +127,11 @@ class _EnterpriseProxyState:
              password: Optional[pulumi.Input[str]] = None,
              tid: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if instance_id is not None:
             _setter("instance_id", instance_id)
         if password is not None:
@@ -195,7 +203,7 @@ class EnterpriseProxy(pulumi.CustomResource):
         """
         Provides a DMS Enterprise Proxy resource.
 
-        For information about DMS Enterprise Proxy and how to use it, see [What is Proxy](https://www.alibabacloud.com/help/en/data-management-service/latest/createproxy).
+        For information about DMS Enterprise Proxy and how to use it, see [What is Proxy](https://next.api.alibabacloud.com/document/dms-enterprise/2018-11-01/CreateProxy).
 
         > **NOTE:** Available since v1.188.0.
 
@@ -302,7 +310,7 @@ class EnterpriseProxy(pulumi.CustomResource):
         """
         Provides a DMS Enterprise Proxy resource.
 
-        For information about DMS Enterprise Proxy and how to use it, see [What is Proxy](https://www.alibabacloud.com/help/en/data-management-service/latest/createproxy).
+        For information about DMS Enterprise Proxy and how to use it, see [What is Proxy](https://next.api.alibabacloud.com/document/dms-enterprise/2018-11-01/CreateProxy).
 
         > **NOTE:** Available since v1.188.0.
 

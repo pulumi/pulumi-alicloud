@@ -39,7 +39,13 @@ class ZnodeArgs:
              path: pulumi.Input[str],
              accept_language: Optional[pulumi.Input[str]] = None,
              data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'acceptLanguage' in kwargs:
+            accept_language = kwargs['acceptLanguage']
+
         _setter("cluster_id", cluster_id)
         _setter("path", path)
         if accept_language is not None:
@@ -124,7 +130,13 @@ class _ZnodeState:
              cluster_id: Optional[pulumi.Input[str]] = None,
              data: Optional[pulumi.Input[str]] = None,
              path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceptLanguage' in kwargs:
+            accept_language = kwargs['acceptLanguage']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+
         if accept_language is not None:
             _setter("accept_language", accept_language)
         if cluster_id is not None:

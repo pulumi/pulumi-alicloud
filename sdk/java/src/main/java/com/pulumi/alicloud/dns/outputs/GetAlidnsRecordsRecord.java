@@ -22,7 +22,7 @@ public final class GetAlidnsRecordsRecord {
      */
     private String id;
     /**
-     * @return ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+     * @return ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/dns-lines)
      * 
      */
     private String line;
@@ -88,7 +88,7 @@ public final class GetAlidnsRecordsRecord {
         return this.id;
     }
     /**
-     * @return ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+     * @return ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/dns-lines)
      * 
      */
     public String line() {

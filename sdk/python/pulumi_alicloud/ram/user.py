@@ -47,7 +47,11 @@ class UserArgs:
              force: Optional[pulumi.Input[bool]] = None,
              mobile: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if comments is not None:
             _setter("comments", comments)
         if display_name is not None:
@@ -170,7 +174,11 @@ class _UserState:
              force: Optional[pulumi.Input[bool]] = None,
              mobile: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if comments is not None:
             _setter("comments", comments)
         if display_name is not None:

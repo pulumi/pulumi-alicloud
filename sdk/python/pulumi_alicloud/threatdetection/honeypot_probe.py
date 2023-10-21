@@ -69,7 +69,25 @@ class HoneypotProbeArgs:
              service_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              uuid: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'controlNodeId' in kwargs:
+            control_node_id = kwargs['controlNodeId']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'probeType' in kwargs:
+            probe_type = kwargs['probeType']
+        if 'honeypotBindLists' in kwargs:
+            honeypot_bind_lists = kwargs['honeypotBindLists']
+        if 'probeVersion' in kwargs:
+            probe_version = kwargs['probeVersion']
+        if 'proxyIp' in kwargs:
+            proxy_ip = kwargs['proxyIp']
+        if 'serviceIpLists' in kwargs:
+            service_ip_lists = kwargs['serviceIpLists']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         _setter("control_node_id", control_node_id)
         _setter("display_name", display_name)
         _setter("probe_type", probe_type)
@@ -287,7 +305,27 @@ class _HoneypotProbeState:
              status: Optional[pulumi.Input[str]] = None,
              uuid: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'controlNodeId' in kwargs:
+            control_node_id = kwargs['controlNodeId']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'honeypotBindLists' in kwargs:
+            honeypot_bind_lists = kwargs['honeypotBindLists']
+        if 'honeypotProbeId' in kwargs:
+            honeypot_probe_id = kwargs['honeypotProbeId']
+        if 'probeType' in kwargs:
+            probe_type = kwargs['probeType']
+        if 'probeVersion' in kwargs:
+            probe_version = kwargs['probeVersion']
+        if 'proxyIp' in kwargs:
+            proxy_ip = kwargs['proxyIp']
+        if 'serviceIpLists' in kwargs:
+            service_ip_lists = kwargs['serviceIpLists']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if arp is not None:
             _setter("arp", arp)
         if control_node_id is not None:
@@ -492,7 +530,7 @@ class HoneypotProbe(pulumi.CustomResource):
         """
         Provides a Threat Detection Honeypot Probe resource.
 
-        For information about Threat Detection Honeypot Probe and how to use it, see [What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypotprobe).
+        For information about Threat Detection Honeypot Probe and how to use it, see [What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe).
 
         > **NOTE:** Available in v1.195.0+.
 
@@ -551,7 +589,7 @@ class HoneypotProbe(pulumi.CustomResource):
         """
         Provides a Threat Detection Honeypot Probe resource.
 
-        For information about Threat Detection Honeypot Probe and how to use it, see [What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypotprobe).
+        For information about Threat Detection Honeypot Probe and how to use it, see [What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe).
 
         > **NOTE:** Available in v1.195.0+.
 

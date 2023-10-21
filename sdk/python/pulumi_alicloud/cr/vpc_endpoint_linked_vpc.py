@@ -43,7 +43,19 @@ class VpcEndpointLinkedVpcArgs:
              vpc_id: pulumi.Input[str],
              vswitch_id: pulumi.Input[str],
              enable_create_dns_record_in_pvzt: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'moduleName' in kwargs:
+            module_name = kwargs['moduleName']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'enableCreateDnsRecordInPvzt' in kwargs:
+            enable_create_dns_record_in_pvzt = kwargs['enableCreateDnsRecordInPvzt']
+
         _setter("instance_id", instance_id)
         _setter("module_name", module_name)
         _setter("vpc_id", vpc_id)
@@ -148,7 +160,19 @@ class _VpcEndpointLinkedVpcState:
              status: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'enableCreateDnsRecordInPvzt' in kwargs:
+            enable_create_dns_record_in_pvzt = kwargs['enableCreateDnsRecordInPvzt']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'moduleName' in kwargs:
+            module_name = kwargs['moduleName']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if enable_create_dns_record_in_pvzt is not None:
             _setter("enable_create_dns_record_in_pvzt", enable_create_dns_record_in_pvzt)
         if instance_id is not None:

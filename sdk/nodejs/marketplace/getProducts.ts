@@ -34,7 +34,7 @@ export function getProducts(args?: GetProductsArgs, opts?: pulumi.InvokeOptions)
  */
 export interface GetProductsArgs {
     /**
-     * The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
+     * The Category ID of products.
      */
     categoryId?: string;
     /**
@@ -124,7 +124,7 @@ export function getProductsOutput(args?: GetProductsOutputArgs, opts?: pulumi.In
  */
 export interface GetProductsOutputArgs {
     /**
-     * The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
+     * The Category ID of products.
      */
     categoryId?: pulumi.Input<string>;
     /**

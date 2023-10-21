@@ -15,7 +15,7 @@ import (
 
 // Provides a DNS Monitor Config resource.
 //
-// For information about DNS Monitor Config and how to use it, see [What is Monitor Config](https://www.alibabacloud.com/help/en/doc-detail/198064.html).
+// For information about DNS Monitor Config and how to use it, see [What is Monitor Config](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
 //
 // > **NOTE:** Available since v1.153.0.
 //
@@ -148,7 +148,7 @@ type MonitorConfig struct {
 	IspCityNodes MonitorConfigIspCityNodeArrayOutput `pulumi:"ispCityNodes"`
 	// The lang.
 	Lang pulumi.StringPtrOutput `pulumi:"lang"`
-	// The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/doc-detail/198064.html).
+	// The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
 	MonitorExtendInfo pulumi.StringOutput `pulumi:"monitorExtendInfo"`
 	// The health check protocol. Valid values: `HTTP`, `HTTPS`, `PING`, `TCP`.
 	ProtocolType pulumi.StringOutput `pulumi:"protocolType"`
@@ -217,7 +217,7 @@ type monitorConfigState struct {
 	IspCityNodes []MonitorConfigIspCityNode `pulumi:"ispCityNodes"`
 	// The lang.
 	Lang *string `pulumi:"lang"`
-	// The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/doc-detail/198064.html).
+	// The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
 	MonitorExtendInfo *string `pulumi:"monitorExtendInfo"`
 	// The health check protocol. Valid values: `HTTP`, `HTTPS`, `PING`, `TCP`.
 	ProtocolType *string `pulumi:"protocolType"`
@@ -236,7 +236,7 @@ type MonitorConfigState struct {
 	IspCityNodes MonitorConfigIspCityNodeArrayInput
 	// The lang.
 	Lang pulumi.StringPtrInput
-	// The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/doc-detail/198064.html).
+	// The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
 	MonitorExtendInfo pulumi.StringPtrInput
 	// The health check protocol. Valid values: `HTTP`, `HTTPS`, `PING`, `TCP`.
 	ProtocolType pulumi.StringPtrInput
@@ -259,7 +259,7 @@ type monitorConfigArgs struct {
 	IspCityNodes []MonitorConfigIspCityNode `pulumi:"ispCityNodes"`
 	// The lang.
 	Lang *string `pulumi:"lang"`
-	// The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/doc-detail/198064.html).
+	// The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
 	MonitorExtendInfo string `pulumi:"monitorExtendInfo"`
 	// The health check protocol. Valid values: `HTTP`, `HTTPS`, `PING`, `TCP`.
 	ProtocolType string `pulumi:"protocolType"`
@@ -279,7 +279,7 @@ type MonitorConfigArgs struct {
 	IspCityNodes MonitorConfigIspCityNodeArrayInput
 	// The lang.
 	Lang pulumi.StringPtrInput
-	// The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/doc-detail/198064.html).
+	// The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
 	MonitorExtendInfo pulumi.StringInput
 	// The health check protocol. Valid values: `HTTP`, `HTTPS`, `PING`, `TCP`.
 	ProtocolType pulumi.StringInput
@@ -423,7 +423,7 @@ func (o MonitorConfigOutput) Lang() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MonitorConfig) pulumi.StringPtrOutput { return v.Lang }).(pulumi.StringPtrOutput)
 }
 
-// The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/doc-detail/198064.html).
+// The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
 func (o MonitorConfigOutput) MonitorExtendInfo() pulumi.StringOutput {
 	return o.ApplyT(func(v *MonitorConfig) pulumi.StringOutput { return v.MonitorExtendInfo }).(pulumi.StringOutput)
 }

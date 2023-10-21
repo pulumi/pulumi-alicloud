@@ -35,7 +35,15 @@ class GatewayCacheDiskArgs:
              cache_disk_size_in_gb: pulumi.Input[int],
              gateway_id: pulumi.Input[str],
              cache_disk_category: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cacheDiskSizeInGb' in kwargs:
+            cache_disk_size_in_gb = kwargs['cacheDiskSizeInGb']
+        if 'gatewayId' in kwargs:
+            gateway_id = kwargs['gatewayId']
+        if 'cacheDiskCategory' in kwargs:
+            cache_disk_category = kwargs['cacheDiskCategory']
+
         _setter("cache_disk_size_in_gb", cache_disk_size_in_gb)
         _setter("gateway_id", gateway_id)
         if cache_disk_category is not None:
@@ -114,7 +122,19 @@ class _GatewayCacheDiskState:
              gateway_id: Optional[pulumi.Input[str]] = None,
              local_file_path: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cacheDiskCategory' in kwargs:
+            cache_disk_category = kwargs['cacheDiskCategory']
+        if 'cacheDiskSizeInGb' in kwargs:
+            cache_disk_size_in_gb = kwargs['cacheDiskSizeInGb']
+        if 'cacheId' in kwargs:
+            cache_id = kwargs['cacheId']
+        if 'gatewayId' in kwargs:
+            gateway_id = kwargs['gatewayId']
+        if 'localFilePath' in kwargs:
+            local_file_path = kwargs['localFilePath']
+
         if cache_disk_category is not None:
             _setter("cache_disk_category", cache_disk_category)
         if cache_disk_size_in_gb is not None:

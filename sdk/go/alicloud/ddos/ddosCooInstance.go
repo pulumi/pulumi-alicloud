@@ -85,7 +85,7 @@ type DdosCooInstance struct {
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
 	PortCount pulumi.StringOutput `pulumi:"portCount"`
-	// The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+	// The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
 	// - ddoscoo: Only supports domestic account.
 	// - ddoscoo_intl: Only supports to international account.
 	//   Default to ddoscoo.
@@ -157,7 +157,7 @@ type ddosCooInstanceState struct {
 	Period *int `pulumi:"period"`
 	// Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
 	PortCount *string `pulumi:"portCount"`
-	// The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+	// The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
 	// - ddoscoo: Only supports domestic account.
 	// - ddoscoo_intl: Only supports to international account.
 	//   Default to ddoscoo.
@@ -179,7 +179,7 @@ type DdosCooInstanceState struct {
 	Period pulumi.IntPtrInput
 	// Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
 	PortCount pulumi.StringPtrInput
-	// The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+	// The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
 	// - ddoscoo: Only supports domestic account.
 	// - ddoscoo_intl: Only supports to international account.
 	//   Default to ddoscoo.
@@ -205,7 +205,7 @@ type ddosCooInstanceArgs struct {
 	Period *int `pulumi:"period"`
 	// Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
 	PortCount string `pulumi:"portCount"`
-	// The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+	// The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
 	// - ddoscoo: Only supports domestic account.
 	// - ddoscoo_intl: Only supports to international account.
 	//   Default to ddoscoo.
@@ -228,7 +228,7 @@ type DdosCooInstanceArgs struct {
 	Period pulumi.IntPtrInput
 	// Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
 	PortCount pulumi.StringInput
-	// The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+	// The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
 	// - ddoscoo: Only supports domestic account.
 	// - ddoscoo_intl: Only supports to international account.
 	//   Default to ddoscoo.
@@ -378,7 +378,7 @@ func (o DdosCooInstanceOutput) PortCount() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdosCooInstance) pulumi.StringOutput { return v.PortCount }).(pulumi.StringOutput)
 }
 
-// The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+// The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
 //   - ddoscoo: Only supports domestic account.
 //   - ddoscoo_intl: Only supports to international account.
 //     Default to ddoscoo.

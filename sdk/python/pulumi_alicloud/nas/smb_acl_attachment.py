@@ -69,7 +69,23 @@ class SmbAclAttachmentArgs:
              home_dir_path: Optional[pulumi.Input[str]] = None,
              reject_unencrypted_access: Optional[pulumi.Input[bool]] = None,
              super_admin_sid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fileSystemId' in kwargs:
+            file_system_id = kwargs['fileSystemId']
+        if 'keytabMd5' in kwargs:
+            keytab_md5 = kwargs['keytabMd5']
+        if 'enableAnonymousAccess' in kwargs:
+            enable_anonymous_access = kwargs['enableAnonymousAccess']
+        if 'encryptData' in kwargs:
+            encrypt_data = kwargs['encryptData']
+        if 'homeDirPath' in kwargs:
+            home_dir_path = kwargs['homeDirPath']
+        if 'rejectUnencryptedAccess' in kwargs:
+            reject_unencrypted_access = kwargs['rejectUnencryptedAccess']
+        if 'superAdminSid' in kwargs:
+            super_admin_sid = kwargs['superAdminSid']
+
         _setter("file_system_id", file_system_id)
         _setter("keytab", keytab)
         _setter("keytab_md5", keytab_md5)
@@ -263,7 +279,25 @@ class _SmbAclAttachmentState:
              keytab_md5: Optional[pulumi.Input[str]] = None,
              reject_unencrypted_access: Optional[pulumi.Input[bool]] = None,
              super_admin_sid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authMethod' in kwargs:
+            auth_method = kwargs['authMethod']
+        if 'enableAnonymousAccess' in kwargs:
+            enable_anonymous_access = kwargs['enableAnonymousAccess']
+        if 'encryptData' in kwargs:
+            encrypt_data = kwargs['encryptData']
+        if 'fileSystemId' in kwargs:
+            file_system_id = kwargs['fileSystemId']
+        if 'homeDirPath' in kwargs:
+            home_dir_path = kwargs['homeDirPath']
+        if 'keytabMd5' in kwargs:
+            keytab_md5 = kwargs['keytabMd5']
+        if 'rejectUnencryptedAccess' in kwargs:
+            reject_unencrypted_access = kwargs['rejectUnencryptedAccess']
+        if 'superAdminSid' in kwargs:
+            super_admin_sid = kwargs['superAdminSid']
+
         if auth_method is not None:
             _setter("auth_method", auth_method)
         if enable_anonymous_access is not None:

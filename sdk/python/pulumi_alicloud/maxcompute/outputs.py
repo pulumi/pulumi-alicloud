@@ -64,7 +64,13 @@ class ProjectIpWhiteList(dict):
              _setter: Callable[[Any, Any], None],
              ip_list: Optional[str] = None,
              vpc_ip_list: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipList' in kwargs:
+            ip_list = kwargs['ipList']
+        if 'vpcIpList' in kwargs:
+            vpc_ip_list = kwargs['vpcIpList']
+
         if ip_list is not None:
             _setter("ip_list", ip_list)
         if vpc_ip_list is not None:
@@ -157,7 +163,21 @@ class ProjectProperties(dict):
              table_lifecycle: Optional['outputs.ProjectPropertiesTableLifecycle'] = None,
              timezone: Optional[str] = None,
              type_system: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowFullScan' in kwargs:
+            allow_full_scan = kwargs['allowFullScan']
+        if 'enableDecimal2' in kwargs:
+            enable_decimal2 = kwargs['enableDecimal2']
+        if 'retentionDays' in kwargs:
+            retention_days = kwargs['retentionDays']
+        if 'sqlMeteringMax' in kwargs:
+            sql_metering_max = kwargs['sqlMeteringMax']
+        if 'tableLifecycle' in kwargs:
+            table_lifecycle = kwargs['tableLifecycle']
+        if 'typeSystem' in kwargs:
+            type_system = kwargs['typeSystem']
+
         if allow_full_scan is not None:
             _setter("allow_full_scan", allow_full_scan)
         if enable_decimal2 is not None:
@@ -263,7 +283,9 @@ class ProjectPropertiesEncryption(dict):
              algorithm: Optional[str] = None,
              enable: Optional[bool] = None,
              key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if algorithm is not None:
             _setter("algorithm", algorithm)
         if enable is not None:
@@ -315,7 +337,9 @@ class ProjectPropertiesTableLifecycle(dict):
              _setter: Callable[[Any, Any], None],
              type: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if type is not None:
             _setter("type", type)
         if value is not None:
@@ -406,7 +430,23 @@ class ProjectSecurityProperties(dict):
              project_protection: Optional['outputs.ProjectSecurityPropertiesProjectProtection'] = None,
              using_acl: Optional[bool] = None,
              using_policy: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'enableDownloadPrivilege' in kwargs:
+            enable_download_privilege = kwargs['enableDownloadPrivilege']
+        if 'labelSecurity' in kwargs:
+            label_security = kwargs['labelSecurity']
+        if 'objectCreatorHasAccessPermission' in kwargs:
+            object_creator_has_access_permission = kwargs['objectCreatorHasAccessPermission']
+        if 'objectCreatorHasGrantPermission' in kwargs:
+            object_creator_has_grant_permission = kwargs['objectCreatorHasGrantPermission']
+        if 'projectProtection' in kwargs:
+            project_protection = kwargs['projectProtection']
+        if 'usingAcl' in kwargs:
+            using_acl = kwargs['usingAcl']
+        if 'usingPolicy' in kwargs:
+            using_policy = kwargs['usingPolicy']
+
         if enable_download_privilege is not None:
             _setter("enable_download_privilege", enable_download_privilege)
         if label_security is not None:
@@ -515,7 +555,11 @@ class ProjectSecurityPropertiesProjectProtection(dict):
              _setter: Callable[[Any, Any], None],
              exception_policy: Optional[str] = None,
              protected: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'exceptionPolicy' in kwargs:
+            exception_policy = kwargs['exceptionPolicy']
+
         if exception_policy is not None:
             _setter("exception_policy", exception_policy)
         if protected is not None:
@@ -588,7 +632,17 @@ class GetProjectsProjectResult(dict):
              security_properties: 'outputs.GetProjectsProjectSecurityPropertiesResult',
              status: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defaultQuota' in kwargs:
+            default_quota = kwargs['defaultQuota']
+        if 'ipWhiteList' in kwargs:
+            ip_white_list = kwargs['ipWhiteList']
+        if 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if 'securityProperties' in kwargs:
+            security_properties = kwargs['securityProperties']
+
         _setter("comment", comment)
         _setter("default_quota", default_quota)
         _setter("id", id)
@@ -697,7 +751,13 @@ class GetProjectsProjectIpWhiteListResult(dict):
              _setter: Callable[[Any, Any], None],
              ip_list: str,
              vpc_ip_list: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipList' in kwargs:
+            ip_list = kwargs['ipList']
+        if 'vpcIpList' in kwargs:
+            vpc_ip_list = kwargs['vpcIpList']
+
         _setter("ip_list", ip_list)
         _setter("vpc_ip_list", vpc_ip_list)
 
@@ -761,7 +821,21 @@ class GetProjectsProjectPropertiesResult(dict):
              table_lifecycle: 'outputs.GetProjectsProjectPropertiesTableLifecycleResult',
              timezone: str,
              type_system: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowFullScan' in kwargs:
+            allow_full_scan = kwargs['allowFullScan']
+        if 'enableDecimal2' in kwargs:
+            enable_decimal2 = kwargs['enableDecimal2']
+        if 'retentionDays' in kwargs:
+            retention_days = kwargs['retentionDays']
+        if 'sqlMeteringMax' in kwargs:
+            sql_metering_max = kwargs['sqlMeteringMax']
+        if 'tableLifecycle' in kwargs:
+            table_lifecycle = kwargs['tableLifecycle']
+        if 'typeSystem' in kwargs:
+            type_system = kwargs['typeSystem']
+
         _setter("allow_full_scan", allow_full_scan)
         _setter("enable_decimal2", enable_decimal2)
         _setter("encryption", encryption)
@@ -859,7 +933,9 @@ class GetProjectsProjectPropertiesEncryptionResult(dict):
              algorithm: str,
              enable: bool,
              key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("algorithm", algorithm)
         _setter("enable", enable)
         _setter("key", key)
@@ -908,7 +984,9 @@ class GetProjectsProjectPropertiesTableLifecycleResult(dict):
              _setter: Callable[[Any, Any], None],
              type: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("type", type)
         _setter("value", value)
 
@@ -968,7 +1046,23 @@ class GetProjectsProjectSecurityPropertiesResult(dict):
              project_protection: 'outputs.GetProjectsProjectSecurityPropertiesProjectProtectionResult',
              using_acl: bool,
              using_policy: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'enableDownloadPrivilege' in kwargs:
+            enable_download_privilege = kwargs['enableDownloadPrivilege']
+        if 'labelSecurity' in kwargs:
+            label_security = kwargs['labelSecurity']
+        if 'objectCreatorHasAccessPermission' in kwargs:
+            object_creator_has_access_permission = kwargs['objectCreatorHasAccessPermission']
+        if 'objectCreatorHasGrantPermission' in kwargs:
+            object_creator_has_grant_permission = kwargs['objectCreatorHasGrantPermission']
+        if 'projectProtection' in kwargs:
+            project_protection = kwargs['projectProtection']
+        if 'usingAcl' in kwargs:
+            using_acl = kwargs['usingAcl']
+        if 'usingPolicy' in kwargs:
+            using_policy = kwargs['usingPolicy']
+
         _setter("enable_download_privilege", enable_download_privilege)
         _setter("label_security", label_security)
         _setter("object_creator_has_access_permission", object_creator_has_access_permission)
@@ -1053,7 +1147,11 @@ class GetProjectsProjectSecurityPropertiesProjectProtectionResult(dict):
              _setter: Callable[[Any, Any], None],
              exception_policy: str,
              protected: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'exceptionPolicy' in kwargs:
+            exception_policy = kwargs['exceptionPolicy']
+
         _setter("exception_policy", exception_policy)
         _setter("protected", protected)
 

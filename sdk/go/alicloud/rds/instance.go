@@ -62,6 +62,8 @@ type Instance struct {
 	// * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.200.0+)
 	// * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.204.0+)
 	// * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available in 1.204.0+)
+	//
+	// > **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "zone-c", `zoneIdSlaveB` = "zone-b", then the `vswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "Auto",`zoneIdSlaveB` = "Auto", then the `vswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
 	Category pulumi.StringOutput `pulumi:"category"`
 	// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
 	ClientCaCert pulumi.StringPtrOutput `pulumi:"clientCaCert"`
@@ -115,7 +117,7 @@ type Instance struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	//
-	// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+	// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: `MySQL`, `PostgreSQL`, `MariaDB`, `MSSQL`.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// The instance configuration type. Valid values: ["Up", "Down", "TempUpgrade", "Serverless"]
 	Direction pulumi.StringPtrOutput `pulumi:"direction"`
@@ -288,8 +290,6 @@ type Instance struct {
 	// The availability check method of the instance. Valid values:
 	// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
 	// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
-	//
-	// > **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "zone-c", `zoneIdSlaveB` = "zone-b", then the `vswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "Auto",`zoneIdSlaveB` = "Auto", then the `vswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
 	TcpConnectionType pulumi.StringOutput `pulumi:"tcpConnectionType"`
 	// The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
 	TdeStatus pulumi.StringOutput `pulumi:"tdeStatus"`
@@ -406,6 +406,8 @@ type instanceState struct {
 	// * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.200.0+)
 	// * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.204.0+)
 	// * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available in 1.204.0+)
+	//
+	// > **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "zone-c", `zoneIdSlaveB` = "zone-b", then the `vswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "Auto",`zoneIdSlaveB` = "Auto", then the `vswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
 	Category *string `pulumi:"category"`
 	// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
 	ClientCaCert *string `pulumi:"clientCaCert"`
@@ -459,7 +461,7 @@ type instanceState struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	//
-	// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+	// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: `MySQL`, `PostgreSQL`, `MariaDB`, `MSSQL`.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The instance configuration type. Valid values: ["Up", "Down", "TempUpgrade", "Serverless"]
 	Direction *string `pulumi:"direction"`
@@ -632,8 +634,6 @@ type instanceState struct {
 	// The availability check method of the instance. Valid values:
 	// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
 	// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
-	//
-	// > **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "zone-c", `zoneIdSlaveB` = "zone-b", then the `vswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "Auto",`zoneIdSlaveB` = "Auto", then the `vswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
 	TcpConnectionType *string `pulumi:"tcpConnectionType"`
 	// The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
 	TdeStatus *string `pulumi:"tdeStatus"`
@@ -709,6 +709,8 @@ type InstanceState struct {
 	// * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.200.0+)
 	// * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.204.0+)
 	// * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available in 1.204.0+)
+	//
+	// > **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "zone-c", `zoneIdSlaveB` = "zone-b", then the `vswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "Auto",`zoneIdSlaveB` = "Auto", then the `vswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
 	Category pulumi.StringPtrInput
 	// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
 	ClientCaCert pulumi.StringPtrInput
@@ -762,7 +764,7 @@ type InstanceState struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	//
-	// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+	// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: `MySQL`, `PostgreSQL`, `MariaDB`, `MSSQL`.
 	DeletionProtection pulumi.BoolPtrInput
 	// The instance configuration type. Valid values: ["Up", "Down", "TempUpgrade", "Serverless"]
 	Direction pulumi.StringPtrInput
@@ -935,8 +937,6 @@ type InstanceState struct {
 	// The availability check method of the instance. Valid values:
 	// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
 	// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
-	//
-	// > **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "zone-c", `zoneIdSlaveB` = "zone-b", then the `vswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "Auto",`zoneIdSlaveB` = "Auto", then the `vswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
 	TcpConnectionType pulumi.StringPtrInput
 	// The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
 	TdeStatus pulumi.StringPtrInput
@@ -1016,6 +1016,8 @@ type instanceArgs struct {
 	// * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.200.0+)
 	// * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.204.0+)
 	// * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available in 1.204.0+)
+	//
+	// > **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "zone-c", `zoneIdSlaveB` = "zone-b", then the `vswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "Auto",`zoneIdSlaveB` = "Auto", then the `vswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
 	Category *string `pulumi:"category"`
 	// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
 	ClientCaCert *string `pulumi:"clientCaCert"`
@@ -1063,7 +1065,7 @@ type instanceArgs struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	//
-	// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+	// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: `MySQL`, `PostgreSQL`, `MariaDB`, `MSSQL`.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The instance configuration type. Valid values: ["Up", "Down", "TempUpgrade", "Serverless"]
 	Direction *string `pulumi:"direction"`
@@ -1232,8 +1234,6 @@ type instanceArgs struct {
 	// The availability check method of the instance. Valid values:
 	// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
 	// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
-	//
-	// > **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "zone-c", `zoneIdSlaveB` = "zone-b", then the `vswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "Auto",`zoneIdSlaveB` = "Auto", then the `vswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
 	TcpConnectionType *string `pulumi:"tcpConnectionType"`
 	// The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
 	TdeStatus *string `pulumi:"tdeStatus"`
@@ -1310,6 +1310,8 @@ type InstanceArgs struct {
 	// * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.200.0+)
 	// * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.204.0+)
 	// * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available in 1.204.0+)
+	//
+	// > **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "zone-c", `zoneIdSlaveB` = "zone-b", then the `vswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "Auto",`zoneIdSlaveB` = "Auto", then the `vswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
 	Category pulumi.StringPtrInput
 	// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
 	ClientCaCert pulumi.StringPtrInput
@@ -1357,7 +1359,7 @@ type InstanceArgs struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	//
-	// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+	// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: `MySQL`, `PostgreSQL`, `MariaDB`, `MSSQL`.
 	DeletionProtection pulumi.BoolPtrInput
 	// The instance configuration type. Valid values: ["Up", "Down", "TempUpgrade", "Serverless"]
 	Direction pulumi.StringPtrInput
@@ -1526,8 +1528,6 @@ type InstanceArgs struct {
 	// The availability check method of the instance. Valid values:
 	// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
 	// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
-	//
-	// > **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "zone-c", `zoneIdSlaveB` = "zone-b", then the `vswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "Auto",`zoneIdSlaveB` = "Auto", then the `vswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
 	TcpConnectionType pulumi.StringPtrInput
 	// The TDE(Transparent Data Encryption) status. After TDE is turned on, it cannot be turned off. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
 	TdeStatus pulumi.StringPtrInput
@@ -1734,6 +1734,8 @@ func (o InstanceOutput) CaType() pulumi.StringOutput {
 // * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.200.0+)
 // * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.204.0+)
 // * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available in 1.204.0+)
+//
+// > **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "zone-c", `zoneIdSlaveB` = "zone-b", then the `vswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "Auto",`zoneIdSlaveB` = "Auto", then the `vswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
 func (o InstanceOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Category }).(pulumi.StringOutput)
 }
@@ -1829,7 +1831,7 @@ func (o InstanceOutput) DbTimeZone() pulumi.StringOutput {
 // - true: delete protect.
 // - false: no delete protect.
 //
-// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: `MySQL`, `PostgreSQL`, `MariaDB`, `MSSQL`.
 func (o InstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
@@ -2140,8 +2142,6 @@ func (o InstanceOutput) TargetMinorVersion() pulumi.StringOutput {
 // The availability check method of the instance. Valid values:
 // - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
 // - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
-//
-// > **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "zone-c", `zoneIdSlaveB` = "zone-b", then the `vswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "Auto",`zoneIdSlaveB` = "Auto", then the `vswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
 func (o InstanceOutput) TcpConnectionType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.TcpConnectionType }).(pulumi.StringOutput)
 }

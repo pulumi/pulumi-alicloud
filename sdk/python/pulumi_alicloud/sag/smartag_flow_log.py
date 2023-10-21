@@ -71,7 +71,29 @@ class SmartagFlowLogArgs:
              project_name: Optional[pulumi.Input[str]] = None,
              sls_region_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'outputType' in kwargs:
+            output_type = kwargs['outputType']
+        if 'activeAging' in kwargs:
+            active_aging = kwargs['activeAging']
+        if 'flowLogName' in kwargs:
+            flow_log_name = kwargs['flowLogName']
+        if 'inactiveAging' in kwargs:
+            inactive_aging = kwargs['inactiveAging']
+        if 'logstoreName' in kwargs:
+            logstore_name = kwargs['logstoreName']
+        if 'netflowServerIp' in kwargs:
+            netflow_server_ip = kwargs['netflowServerIp']
+        if 'netflowServerPort' in kwargs:
+            netflow_server_port = kwargs['netflowServerPort']
+        if 'netflowVersion' in kwargs:
+            netflow_version = kwargs['netflowVersion']
+        if 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if 'slsRegionId' in kwargs:
+            sls_region_id = kwargs['slsRegionId']
+
         _setter("output_type", output_type)
         if active_aging is not None:
             _setter("active_aging", active_aging)
@@ -301,7 +323,29 @@ class _SmartagFlowLogState:
              project_name: Optional[pulumi.Input[str]] = None,
              sls_region_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'activeAging' in kwargs:
+            active_aging = kwargs['activeAging']
+        if 'flowLogName' in kwargs:
+            flow_log_name = kwargs['flowLogName']
+        if 'inactiveAging' in kwargs:
+            inactive_aging = kwargs['inactiveAging']
+        if 'logstoreName' in kwargs:
+            logstore_name = kwargs['logstoreName']
+        if 'netflowServerIp' in kwargs:
+            netflow_server_ip = kwargs['netflowServerIp']
+        if 'netflowServerPort' in kwargs:
+            netflow_server_port = kwargs['netflowServerPort']
+        if 'netflowVersion' in kwargs:
+            netflow_version = kwargs['netflowVersion']
+        if 'outputType' in kwargs:
+            output_type = kwargs['outputType']
+        if 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if 'slsRegionId' in kwargs:
+            sls_region_id = kwargs['slsRegionId']
+
         if active_aging is not None:
             _setter("active_aging", active_aging)
         if description is not None:

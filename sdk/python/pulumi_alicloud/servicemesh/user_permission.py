@@ -33,7 +33,11 @@ class UserPermissionArgs:
              _setter: Callable[[Any, Any], None],
              sub_account_user_id: pulumi.Input[str],
              permissions: Optional[pulumi.Input[Sequence[pulumi.Input['UserPermissionPermissionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'subAccountUserId' in kwargs:
+            sub_account_user_id = kwargs['subAccountUserId']
+
         _setter("sub_account_user_id", sub_account_user_id)
         if permissions is not None:
             _setter("permissions", permissions)
@@ -83,7 +87,11 @@ class _UserPermissionState:
              _setter: Callable[[Any, Any], None],
              permissions: Optional[pulumi.Input[Sequence[pulumi.Input['UserPermissionPermissionArgs']]]] = None,
              sub_account_user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'subAccountUserId' in kwargs:
+            sub_account_user_id = kwargs['subAccountUserId']
+
         if permissions is not None:
             _setter("permissions", permissions)
         if sub_account_user_id is not None:

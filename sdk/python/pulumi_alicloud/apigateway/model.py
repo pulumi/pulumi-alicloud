@@ -39,7 +39,13 @@ class ModelArgs:
              model_name: pulumi.Input[str],
              schema: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'modelName' in kwargs:
+            model_name = kwargs['modelName']
+
         _setter("group_id", group_id)
         _setter("model_name", model_name)
         _setter("schema", schema)
@@ -123,7 +129,13 @@ class _ModelState:
              group_id: Optional[pulumi.Input[str]] = None,
              model_name: Optional[pulumi.Input[str]] = None,
              schema: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'modelName' in kwargs:
+            model_name = kwargs['modelName']
+
         if description is not None:
             _setter("description", description)
         if group_id is not None:

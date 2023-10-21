@@ -43,7 +43,13 @@ class DhcpOptionsSetAssociateVpcArgs:
              _setter: Callable[[Any, Any], None],
              vpc_id: pulumi.Input[str],
              associate_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'associateStatus' in kwargs:
+            associate_status = kwargs['associateStatus']
+
         _setter("vpc_id", vpc_id)
         if associate_status is not None:
             _setter("associate_status", associate_status)
@@ -92,7 +98,13 @@ class NetworkAclAttachmentResourceArgs:
              _setter: Callable[[Any, Any], None],
              resource_id: pulumi.Input[str],
              resource_type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+
         _setter("resource_id", resource_id)
         _setter("resource_type", resource_type)
 
@@ -163,7 +175,13 @@ class NetworkAclEgressAclEntryArgs:
              policy: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[str]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destinationCidrIp' in kwargs:
+            destination_cidr_ip = kwargs['destinationCidrIp']
+        if 'networkAclEntryName' in kwargs:
+            network_acl_entry_name = kwargs['networkAclEntryName']
+
         if description is not None:
             _setter("description", description)
         if destination_cidr_ip is not None:
@@ -296,7 +314,13 @@ class NetworkAclEntriesEgressArgs:
              policy: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[str]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destinationCidrIp' in kwargs:
+            destination_cidr_ip = kwargs['destinationCidrIp']
+        if 'entryType' in kwargs:
+            entry_type = kwargs['entryType']
+
         if description is not None:
             _setter("description", description)
         if destination_cidr_ip is not None:
@@ -436,7 +460,13 @@ class NetworkAclEntriesIngressArgs:
              port: Optional[pulumi.Input[str]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
              source_cidr_ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'entryType' in kwargs:
+            entry_type = kwargs['entryType']
+        if 'sourceCidrIp' in kwargs:
+            source_cidr_ip = kwargs['sourceCidrIp']
+
         if description is not None:
             _setter("description", description)
         if entry_type is not None:
@@ -579,7 +609,13 @@ class NetworkAclIngressAclEntryArgs:
              port: Optional[pulumi.Input[str]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
              source_cidr_ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'networkAclEntryName' in kwargs:
+            network_acl_entry_name = kwargs['networkAclEntryName']
+        if 'sourceCidrIp' in kwargs:
+            source_cidr_ip = kwargs['sourceCidrIp']
+
         if description is not None:
             _setter("description", description)
         if network_acl_entry_name is not None:
@@ -696,7 +732,13 @@ class NetworkAclResourceArgs:
              resource_id: pulumi.Input[str],
              resource_type: pulumi.Input[str],
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+
         _setter("resource_id", resource_id)
         _setter("resource_type", resource_type)
         if status is not None:
@@ -763,7 +805,13 @@ class NetworkIpv6CidrBlockArgs:
              _setter: Callable[[Any, Any], None],
              ipv6_cidr_block: Optional[pulumi.Input[str]] = None,
              ipv6_isp: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipv6CidrBlock' in kwargs:
+            ipv6_cidr_block = kwargs['ipv6CidrBlock']
+        if 'ipv6Isp' in kwargs:
+            ipv6_isp = kwargs['ipv6Isp']
+
         if ipv6_cidr_block is not None:
             _setter("ipv6_cidr_block", ipv6_cidr_block)
         if ipv6_isp is not None:
@@ -818,7 +866,9 @@ class PrefixListEntryArgs:
              _setter: Callable[[Any, Any], None],
              cidr: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if cidr is not None:
             _setter("cidr", cidr)
         if description is not None:
@@ -892,7 +942,21 @@ class PrefixListPrefixListAssociationArgs:
              resource_type: Optional[pulumi.Input[str]] = None,
              resource_uid: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ownerId' in kwargs:
+            owner_id = kwargs['ownerId']
+        if 'prefixListId' in kwargs:
+            prefix_list_id = kwargs['prefixListId']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+        if 'resourceUid' in kwargs:
+            resource_uid = kwargs['resourceUid']
+
         if owner_id is not None:
             _setter("owner_id", owner_id)
         if prefix_list_id is not None:
@@ -1057,7 +1121,19 @@ class TrafficMirrorFilterEgressRuleArgs:
              source_cidr_block: Optional[pulumi.Input[str]] = None,
              source_port_range: Optional[pulumi.Input[str]] = None,
              traffic_mirror_filter_rule_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destinationCidrBlock' in kwargs:
+            destination_cidr_block = kwargs['destinationCidrBlock']
+        if 'destinationPortRange' in kwargs:
+            destination_port_range = kwargs['destinationPortRange']
+        if 'sourceCidrBlock' in kwargs:
+            source_cidr_block = kwargs['sourceCidrBlock']
+        if 'sourcePortRange' in kwargs:
+            source_port_range = kwargs['sourcePortRange']
+        if 'trafficMirrorFilterRuleStatus' in kwargs:
+            traffic_mirror_filter_rule_status = kwargs['trafficMirrorFilterRuleStatus']
+
         _setter("action", action)
         _setter("protocol", protocol)
         if destination_cidr_block is not None:
@@ -1225,7 +1301,19 @@ class TrafficMirrorFilterIngressRuleArgs:
              source_cidr_block: Optional[pulumi.Input[str]] = None,
              source_port_range: Optional[pulumi.Input[str]] = None,
              traffic_mirror_filter_rule_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destinationCidrBlock' in kwargs:
+            destination_cidr_block = kwargs['destinationCidrBlock']
+        if 'destinationPortRange' in kwargs:
+            destination_port_range = kwargs['destinationPortRange']
+        if 'sourceCidrBlock' in kwargs:
+            source_cidr_block = kwargs['sourceCidrBlock']
+        if 'sourcePortRange' in kwargs:
+            source_port_range = kwargs['sourcePortRange']
+        if 'trafficMirrorFilterRuleStatus' in kwargs:
+            traffic_mirror_filter_rule_status = kwargs['trafficMirrorFilterRuleStatus']
+
         _setter("action", action)
         _setter("protocol", protocol)
         if destination_cidr_block is not None:

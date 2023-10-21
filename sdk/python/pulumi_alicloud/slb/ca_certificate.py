@@ -43,7 +43,15 @@ class CaCertificateArgs:
              name: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'caCertificate' in kwargs:
+            ca_certificate = kwargs['caCertificate']
+        if 'caCertificateName' in kwargs:
+            ca_certificate_name = kwargs['caCertificateName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("ca_certificate", ca_certificate)
         if ca_certificate_name is not None:
             _setter("ca_certificate_name", ca_certificate_name)
@@ -153,7 +161,15 @@ class _CaCertificateState:
              name: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'caCertificate' in kwargs:
+            ca_certificate = kwargs['caCertificate']
+        if 'caCertificateName' in kwargs:
+            ca_certificate_name = kwargs['caCertificateName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         if ca_certificate is not None:
             _setter("ca_certificate", ca_certificate)
         if ca_certificate_name is not None:

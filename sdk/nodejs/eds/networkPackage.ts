@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a ECD Network Package resource.
  *
- * For information about ECD Network Package and how to use it, see [What is Network Package](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createnetworkpackage).
+ * For information about ECD Network Package and how to use it, see [What is Network Package](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createnetworkpackage).
  *
  * > **NOTE:** Available since v1.142.0.
  *

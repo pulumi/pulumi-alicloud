@@ -64,7 +64,21 @@ class ZoneArgs:
              user_client_ip: Optional[pulumi.Input[str]] = None,
              user_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneUserInfoArgs']]]] = None,
              zone_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'proxyPattern' in kwargs:
+            proxy_pattern = kwargs['proxyPattern']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'syncStatus' in kwargs:
+            sync_status = kwargs['syncStatus']
+        if 'userClientIp' in kwargs:
+            user_client_ip = kwargs['userClientIp']
+        if 'userInfos' in kwargs:
+            user_infos = kwargs['userInfos']
+        if 'zoneName' in kwargs:
+            zone_name = kwargs['zoneName']
+
         if lang is not None:
             _setter("lang", lang)
         if name is not None:
@@ -261,7 +275,25 @@ class _ZoneState:
              user_client_ip: Optional[pulumi.Input[str]] = None,
              user_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneUserInfoArgs']]]] = None,
              zone_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'isPtr' in kwargs:
+            is_ptr = kwargs['isPtr']
+        if 'proxyPattern' in kwargs:
+            proxy_pattern = kwargs['proxyPattern']
+        if 'recordCount' in kwargs:
+            record_count = kwargs['recordCount']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'syncStatus' in kwargs:
+            sync_status = kwargs['syncStatus']
+        if 'userClientIp' in kwargs:
+            user_client_ip = kwargs['userClientIp']
+        if 'userInfos' in kwargs:
+            user_infos = kwargs['userInfos']
+        if 'zoneName' in kwargs:
+            zone_name = kwargs['zoneName']
+
         if is_ptr is not None:
             _setter("is_ptr", is_ptr)
         if lang is not None:

@@ -264,14 +264,14 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Id of resource group which the disk belongs.
+     * The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The Id of resource group which the disk belongs.
+     * @return The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -763,7 +763,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The Id of resource group which the disk belongs.
+         * @param resourceGroupId The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
          * 
          * @return builder
          * 
@@ -774,7 +774,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The Id of resource group which the disk belongs.
+         * @param resourceGroupId The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
          * 
          * @return builder
          * 

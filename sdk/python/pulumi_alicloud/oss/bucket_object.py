@@ -78,7 +78,23 @@ class BucketObjectArgs:
              kms_key_id: Optional[pulumi.Input[str]] = None,
              server_side_encryption: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cacheControl' in kwargs:
+            cache_control = kwargs['cacheControl']
+        if 'contentDisposition' in kwargs:
+            content_disposition = kwargs['contentDisposition']
+        if 'contentEncoding' in kwargs:
+            content_encoding = kwargs['contentEncoding']
+        if 'contentMd5' in kwargs:
+            content_md5 = kwargs['contentMd5']
+        if 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if 'serverSideEncryption' in kwargs:
+            server_side_encryption = kwargs['serverSideEncryption']
+
         _setter("bucket", bucket)
         _setter("key", key)
         if acl is not None:
@@ -343,7 +359,27 @@ class _BucketObjectState:
              server_side_encryption: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input[str]] = None,
              version_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cacheControl' in kwargs:
+            cache_control = kwargs['cacheControl']
+        if 'contentDisposition' in kwargs:
+            content_disposition = kwargs['contentDisposition']
+        if 'contentEncoding' in kwargs:
+            content_encoding = kwargs['contentEncoding']
+        if 'contentLength' in kwargs:
+            content_length = kwargs['contentLength']
+        if 'contentMd5' in kwargs:
+            content_md5 = kwargs['contentMd5']
+        if 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if 'serverSideEncryption' in kwargs:
+            server_side_encryption = kwargs['serverSideEncryption']
+        if 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+
         if acl is not None:
             _setter("acl", acl)
         if bucket is not None:

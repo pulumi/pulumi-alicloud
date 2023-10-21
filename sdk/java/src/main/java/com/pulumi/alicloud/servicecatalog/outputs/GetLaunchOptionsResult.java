@@ -21,12 +21,14 @@ public final class GetLaunchOptionsResult {
     private String id;
     private List<String> ids;
     /**
-     * @return A list of Launch Option Entries. Each element contains the following attributes:
+     * @return (Available since v1.197.0) A list of Launch Option Entries. Each element contains the following attributes:
      * 
      */
     private List<GetLaunchOptionsLaunchOption> launchOptions;
     private @Nullable String nameRegex;
     /**
+     * @return (Deprecated since v1.197.0) A list of Launch Option Entries. Each element contains the following attributes:
+     * 
      * @deprecated
      * Field &#39;options&#39; has been deprecated from provider version 1.197.0.
      * 
@@ -48,7 +50,7 @@ public final class GetLaunchOptionsResult {
         return this.ids;
     }
     /**
-     * @return A list of Launch Option Entries. Each element contains the following attributes:
+     * @return (Available since v1.197.0) A list of Launch Option Entries. Each element contains the following attributes:
      * 
      */
     public List<GetLaunchOptionsLaunchOption> launchOptions() {
@@ -58,6 +60,8 @@ public final class GetLaunchOptionsResult {
         return Optional.ofNullable(this.nameRegex);
     }
     /**
+     * @return (Deprecated since v1.197.0) A list of Launch Option Entries. Each element contains the following attributes:
+     * 
      * @deprecated
      * Field &#39;options&#39; has been deprecated from provider version 1.197.0.
      * 

@@ -41,7 +41,11 @@ class InstanceArgs:
              name: Optional[pulumi.Input[str]] = None,
              remark: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+
         if instance_name is not None:
             _setter("instance_name", instance_name)
         if name is not None:
@@ -154,7 +158,17 @@ class _InstanceState:
              remark: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[int]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'instanceStatus' in kwargs:
+            instance_status = kwargs['instanceStatus']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'releaseTime' in kwargs:
+            release_time = kwargs['releaseTime']
+
         if instance_name is not None:
             _setter("instance_name", instance_name)
         if instance_status is not None:

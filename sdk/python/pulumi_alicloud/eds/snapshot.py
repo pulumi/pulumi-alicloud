@@ -39,7 +39,15 @@ class SnapshotArgs:
              snapshot_name: pulumi.Input[str],
              source_disk_type: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'desktopId' in kwargs:
+            desktop_id = kwargs['desktopId']
+        if 'snapshotName' in kwargs:
+            snapshot_name = kwargs['snapshotName']
+        if 'sourceDiskType' in kwargs:
+            source_disk_type = kwargs['sourceDiskType']
+
         _setter("desktop_id", desktop_id)
         _setter("snapshot_name", snapshot_name)
         _setter("source_disk_type", source_disk_type)
@@ -127,7 +135,15 @@ class _SnapshotState:
              snapshot_name: Optional[pulumi.Input[str]] = None,
              source_disk_type: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'desktopId' in kwargs:
+            desktop_id = kwargs['desktopId']
+        if 'snapshotName' in kwargs:
+            snapshot_name = kwargs['snapshotName']
+        if 'sourceDiskType' in kwargs:
+            source_disk_type = kwargs['sourceDiskType']
+
         if description is not None:
             _setter("description", description)
         if desktop_id is not None:
@@ -213,7 +229,7 @@ class Snapshot(pulumi.CustomResource):
         """
         Provides a ECD Snapshot resource.
 
-        For information about ECD Snapshot and how to use it, see [What is Snapshot](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/createsnapshot).
+        For information about ECD Snapshot and how to use it, see [What is Snapshot](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createsnapshot).
 
         > **NOTE:** Available since v1.169.0.
 
@@ -290,7 +306,7 @@ class Snapshot(pulumi.CustomResource):
         """
         Provides a ECD Snapshot resource.
 
-        For information about ECD Snapshot and how to use it, see [What is Snapshot](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/createsnapshot).
+        For information about ECD Snapshot and how to use it, see [What is Snapshot](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createsnapshot).
 
         > **NOTE:** Available since v1.169.0.
 

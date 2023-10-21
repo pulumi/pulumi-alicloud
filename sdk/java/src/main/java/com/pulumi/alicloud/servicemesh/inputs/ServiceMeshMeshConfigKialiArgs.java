@@ -6,6 +6,7 @@ package com.pulumi.alicloud.servicemesh.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,24 +17,40 @@ public final class ServiceMeshMeshConfigKialiArgs extends com.pulumi.resources.R
     public static final ServiceMeshMeshConfigKialiArgs Empty = new ServiceMeshMeshConfigKialiArgs();
 
     /**
-     * Whether to enable Service grid audit.
+     * Enable CNI.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether to enable Service grid audit.
+     * @return Enable CNI.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * Grid topology service address.
+     * 
+     */
+    @Import(name="url")
+    private @Nullable Output<String> url;
+
+    /**
+     * @return Grid topology service address.
+     * 
+     */
+    public Optional<Output<String>> url() {
+        return Optional.ofNullable(this.url);
+    }
+
     private ServiceMeshMeshConfigKialiArgs() {}
 
     private ServiceMeshMeshConfigKialiArgs(ServiceMeshMeshConfigKialiArgs $) {
         this.enabled = $.enabled;
+        this.url = $.url;
     }
 
     public static Builder builder() {
@@ -55,7 +72,7 @@ public final class ServiceMeshMeshConfigKialiArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param enabled Whether to enable Service grid audit.
+         * @param enabled Enable CNI.
          * 
          * @return builder
          * 
@@ -66,13 +83,34 @@ public final class ServiceMeshMeshConfigKialiArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param enabled Whether to enable Service grid audit.
+         * @param enabled Enable CNI.
          * 
          * @return builder
          * 
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param url Grid topology service address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder url(@Nullable Output<String> url) {
+            $.url = url;
+            return this;
+        }
+
+        /**
+         * @param url Grid topology service address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder url(String url) {
+            return url(Output.of(url));
         }
 
         public ServiceMeshMeshConfigKialiArgs build() {

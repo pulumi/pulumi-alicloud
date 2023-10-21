@@ -82,9 +82,9 @@ def get_enterprise_logic_databases(ids: Optional[Sequence[str]] = None,
                                    output_file: Optional[str] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEnterpriseLogicDatabasesResult:
     """
-    This data source provides DMS Enterprise Logic Database available to the user.[What is Logic Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createlogicdatabase)
+    This data source provides DMS Enterprise Logic Database available to the user. [What is Logic Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-createlogicdatabase).
 
-    > **NOTE:** Available in 1.195.0+
+    > **NOTE:** Available since v1.195.0.
 
 
     :param Sequence[str] ids: A list of Logic Database IDs.
@@ -108,9 +108,9 @@ def get_enterprise_logic_databases_output(ids: Optional[pulumi.Input[Optional[Se
                                           output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEnterpriseLogicDatabasesResult]:
     """
-    This data source provides DMS Enterprise Logic Database available to the user.[What is Logic Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createlogicdatabase)
+    This data source provides DMS Enterprise Logic Database available to the user. [What is Logic Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-createlogicdatabase).
 
-    > **NOTE:** Available in 1.195.0+
+    > **NOTE:** Available since v1.195.0.
 
 
     :param Sequence[str] ids: A list of Logic Database IDs.

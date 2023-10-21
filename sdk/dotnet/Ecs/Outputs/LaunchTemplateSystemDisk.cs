@@ -34,6 +34,12 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// The description of the data disk.
         /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// Encrypted the data in this disk.
+        /// 
+        /// Default to false
+        /// </summary>
+        public readonly bool? Encrypted;
         public readonly string? Iops;
         /// <summary>
         /// The name of the data disk.
@@ -58,6 +64,8 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string? description,
 
+            bool? encrypted,
+
             string? iops,
 
             string? name,
@@ -69,6 +77,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
             Category = category;
             DeleteWithInstance = deleteWithInstance;
             Description = description;
+            Encrypted = encrypted;
             Iops = iops;
             Name = name;
             PerformanceLevel = performanceLevel;

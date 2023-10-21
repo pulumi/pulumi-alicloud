@@ -43,7 +43,11 @@ class ResourceArgs:
              description: Optional[pulumi.Input[str]] = None,
              ext_info: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'extInfo' in kwargs:
+            ext_info = kwargs['extInfo']
+
         _setter("schema", schema)
         _setter("type", type)
         if description is not None:
@@ -146,7 +150,11 @@ class _ResourceState:
              name: Optional[pulumi.Input[str]] = None,
              schema: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'extInfo' in kwargs:
+            ext_info = kwargs['extInfo']
+
         if description is not None:
             _setter("description", description)
         if ext_info is not None:

@@ -60,7 +60,15 @@ class DbInstanceDbInstanceIpArray(dict):
              db_instance_ip_array_attribute: Optional[str] = None,
              db_instance_ip_array_name: Optional[str] = None,
              security_ips: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbInstanceIpArrayAttribute' in kwargs:
+            db_instance_ip_array_attribute = kwargs['dbInstanceIpArrayAttribute']
+        if 'dbInstanceIpArrayName' in kwargs:
+            db_instance_ip_array_name = kwargs['dbInstanceIpArrayName']
+        if 'securityIps' in kwargs:
+            security_ips = kwargs['securityIps']
+
         if db_instance_ip_array_attribute is not None:
             _setter("db_instance_ip_array_attribute", db_instance_ip_array_attribute)
         if db_instance_ip_array_name is not None:
@@ -236,7 +244,67 @@ class GetDbInstancesInstanceResult(dict):
              vpc_id: str,
              vswitch_id: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'currentMinorVersion' in kwargs:
+            current_minor_version = kwargs['currentMinorVersion']
+        if 'dbInstanceCategory' in kwargs:
+            db_instance_category = kwargs['dbInstanceCategory']
+        if 'dbInstanceCpu' in kwargs:
+            db_instance_cpu = kwargs['dbInstanceCpu']
+        if 'dbInstanceDescription' in kwargs:
+            db_instance_description = kwargs['dbInstanceDescription']
+        if 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+        if 'dbInstanceIpArrays' in kwargs:
+            db_instance_ip_arrays = kwargs['dbInstanceIpArrays']
+        if 'dbInstanceMemory' in kwargs:
+            db_instance_memory = kwargs['dbInstanceMemory']
+        if 'dbInstanceNetworkType' in kwargs:
+            db_instance_network_type = kwargs['dbInstanceNetworkType']
+        if 'dbInstanceStorageType' in kwargs:
+            db_instance_storage_type = kwargs['dbInstanceStorageType']
+        if 'dbInstanceType' in kwargs:
+            db_instance_type = kwargs['dbInstanceType']
+        if 'dbNodeClass' in kwargs:
+            db_node_class = kwargs['dbNodeClass']
+        if 'dbNodeCount' in kwargs:
+            db_node_count = kwargs['dbNodeCount']
+        if 'dbNodeStorage' in kwargs:
+            db_node_storage = kwargs['dbNodeStorage']
+        if 'dbVersion' in kwargs:
+            db_version = kwargs['dbVersion']
+        if 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if 'latestMinorVersion' in kwargs:
+            latest_minor_version = kwargs['latestMinorVersion']
+        if 'lockMode' in kwargs:
+            lock_mode = kwargs['lockMode']
+        if 'lockReason' in kwargs:
+            lock_reason = kwargs['lockReason']
+        if 'maintainTime' in kwargs:
+            maintain_time = kwargs['maintainTime']
+        if 'masterDbInstanceId' in kwargs:
+            master_db_instance_id = kwargs['masterDbInstanceId']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'publicConnectionString' in kwargs:
+            public_connection_string = kwargs['publicConnectionString']
+        if 'publicPort' in kwargs:
+            public_port = kwargs['publicPort']
+        if 'readOnlyDbInstanceIds' in kwargs:
+            read_only_db_instance_ids = kwargs['readOnlyDbInstanceIds']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("connection_string", connection_string)
         _setter("create_time", create_time)
         _setter("current_minor_version", current_minor_version)
@@ -559,7 +627,15 @@ class GetDbInstancesInstanceDbInstanceIpArrayResult(dict):
              db_instance_ip_array_attribute: Optional[str] = None,
              db_instance_ip_array_name: Optional[str] = None,
              security_ips: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbInstanceIpArrayAttribute' in kwargs:
+            db_instance_ip_array_attribute = kwargs['dbInstanceIpArrayAttribute']
+        if 'dbInstanceIpArrayName' in kwargs:
+            db_instance_ip_array_name = kwargs['dbInstanceIpArrayName']
+        if 'securityIps' in kwargs:
+            security_ips = kwargs['securityIps']
+
         if db_instance_ip_array_attribute is not None:
             _setter("db_instance_ip_array_attribute", db_instance_ip_array_attribute)
         if db_instance_ip_array_name is not None:

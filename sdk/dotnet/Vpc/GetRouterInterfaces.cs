@@ -12,10 +12,10 @@ namespace Pulumi.AliCloud.Vpc
     public static class GetRouterInterfaces
     {
         /// <summary>
-        /// This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
+        /// This data source provides information about [router interfaces](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
         /// that connect VPCs together.
         /// 
-        /// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.199.0`. Please use new resource alicloud_express_connect_router_interfaces.
+        /// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.199.0`. Please use new data source alicloud_express_connect_router_interfaces.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -48,10 +48,10 @@ namespace Pulumi.AliCloud.Vpc
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRouterInterfacesResult>("alicloud:vpc/getRouterInterfaces:getRouterInterfaces", args ?? new GetRouterInterfacesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
+        /// This data source provides information about [router interfaces](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
         /// that connect VPCs together.
         /// 
-        /// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.199.0`. Please use new resource alicloud_express_connect_router_interfaces.
+        /// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.199.0`. Please use new data source alicloud_express_connect_router_interfaces.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

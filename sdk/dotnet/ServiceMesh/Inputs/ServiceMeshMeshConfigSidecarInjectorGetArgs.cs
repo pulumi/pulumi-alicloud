@@ -25,28 +25,40 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
         public Input<bool>? EnableNamespacesByDefault { get; set; }
 
         /// <summary>
-        /// The CPU resource  of the limitsOPA proxy container.
+        /// CNI configuration. See `mesh_config-sidecar_injector-init_cni_configuration` below.
+        /// </summary>
+        [Input("initCniConfiguration")]
+        public Input<Inputs.ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationGetArgs>? InitCniConfiguration { get; set; }
+
+        /// <summary>
+        /// Sidecar injector Pods on the throttle.
         /// </summary>
         [Input("limitCpu")]
         public Input<string>? LimitCpu { get; set; }
 
         /// <summary>
-        /// The memory resource limit of the OPA proxy container.
+        /// Sidecar injector Pods on the throttle.
         /// </summary>
         [Input("limitMemory")]
         public Input<string>? LimitMemory { get; set; }
 
         /// <summary>
-        /// The CPU resource request of the OPA proxy container.
+        /// Sidecar injector Pods on the requested resource.
         /// </summary>
         [Input("requestCpu")]
         public Input<string>? RequestCpu { get; set; }
 
         /// <summary>
-        /// The memory resource request of the OPA proxy container.
+        /// Sidecar injector Pods on the requested resource.
         /// </summary>
         [Input("requestMemory")]
         public Input<string>? RequestMemory { get; set; }
+
+        /// <summary>
+        /// Other configurations of automatically injected sidecar (in YAML format).
+        /// </summary>
+        [Input("sidecarInjectorWebhookAsYaml")]
+        public Input<string>? SidecarInjectorWebhookAsYaml { get; set; }
 
         public ServiceMeshMeshConfigSidecarInjectorGetArgs()
         {

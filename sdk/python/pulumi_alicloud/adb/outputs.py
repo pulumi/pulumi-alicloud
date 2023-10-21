@@ -175,7 +175,79 @@ class GetClustersClusterResult(dict):
              vpc_id: str,
              vswitch_id: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if 'chargeType' in kwargs:
+            charge_type = kwargs['chargeType']
+        if 'commodityCode' in kwargs:
+            commodity_code = kwargs['commodityCode']
+        if 'computeResource' in kwargs:
+            compute_resource = kwargs['computeResource']
+        if 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dbClusterCategory' in kwargs:
+            db_cluster_category = kwargs['dbClusterCategory']
+        if 'dbClusterId' in kwargs:
+            db_cluster_id = kwargs['dbClusterId']
+        if 'dbClusterNetworkType' in kwargs:
+            db_cluster_network_type = kwargs['dbClusterNetworkType']
+        if 'dbClusterType' in kwargs:
+            db_cluster_type = kwargs['dbClusterType']
+        if 'dbClusterVersion' in kwargs:
+            db_cluster_version = kwargs['dbClusterVersion']
+        if 'dbNodeClass' in kwargs:
+            db_node_class = kwargs['dbNodeClass']
+        if 'dbNodeCount' in kwargs:
+            db_node_count = kwargs['dbNodeCount']
+        if 'dbNodeStorage' in kwargs:
+            db_node_storage = kwargs['dbNodeStorage']
+        if 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if 'dtsJobId' in kwargs:
+            dts_job_id = kwargs['dtsJobId']
+        if 'elasticIoResource' in kwargs:
+            elastic_io_resource = kwargs['elasticIoResource']
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'executorCount' in kwargs:
+            executor_count = kwargs['executorCount']
+        if 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if 'lockMode' in kwargs:
+            lock_mode = kwargs['lockMode']
+        if 'lockReason' in kwargs:
+            lock_reason = kwargs['lockReason']
+        if 'maintainTime' in kwargs:
+            maintain_time = kwargs['maintainTime']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'rdsInstanceId' in kwargs:
+            rds_instance_id = kwargs['rdsInstanceId']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityIps' in kwargs:
+            security_ips = kwargs['securityIps']
+        if 'storageResource' in kwargs:
+            storage_resource = kwargs['storageResource']
+        if 'vpcCloudInstanceId' in kwargs:
+            vpc_cloud_instance_id = kwargs['vpcCloudInstanceId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("auto_renew_period", auto_renew_period)
         _setter("charge_type", charge_type)
         _setter("commodity_code", commodity_code)
@@ -581,7 +653,41 @@ class GetDBClusterLakeVersionsVersionResult(dict):
              vpc_id: str,
              vswitch_id: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'commodityCode' in kwargs:
+            commodity_code = kwargs['commodityCode']
+        if 'computeResource' in kwargs:
+            compute_resource = kwargs['computeResource']
+        if 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dbClusterId' in kwargs:
+            db_cluster_id = kwargs['dbClusterId']
+        if 'dbClusterVersion' in kwargs:
+            db_cluster_version = kwargs['dbClusterVersion']
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if 'lockMode' in kwargs:
+            lock_mode = kwargs['lockMode']
+        if 'lockReason' in kwargs:
+            lock_reason = kwargs['lockReason']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'storageResource' in kwargs:
+            storage_resource = kwargs['storageResource']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("commodity_code", commodity_code)
         _setter("compute_resource", compute_resource)
         _setter("connection_string", connection_string)
@@ -823,7 +929,7 @@ class GetDBClustersClusterResult(dict):
         :param int auto_renew_period: Auto-renewal period of an cluster, in the unit of the month.
         :param str charge_type: The payment type of the resource.
         :param str commodity_code: The name of the service.
-        :param str compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
+        :param str compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources.
         :param str connection_string: The endpoint of the cluster.
         :param str create_time: The CreateTime of the ADB cluster.
         :param str db_cluster_category: The db cluster category.
@@ -857,7 +963,7 @@ class GetDBClustersClusterResult(dict):
         :param str resource_group_id: The ID of the resource group.
         :param Sequence[str] security_ips: List of IP addresses allowed to access all databases of an cluster.
         :param str status: The status of the resource.
-        :param str storage_resource: The specifications of storage resources in elastic mode. The resources are used for data read and write operations. The increase of resources can improve the read and write performance of your cluster. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
+        :param str storage_resource: The specifications of storage resources in elastic mode. The resources are used for data read and write operations. The increase of resources can improve the read and write performance of your cluster.
         :param Mapping[str, Any] tags: A map of tags assigned to the cluster.
         :param str vpc_cloud_instance_id: The vpc cloud instance id.
         :param str vpc_id: The vpc id.
@@ -956,7 +1062,79 @@ class GetDBClustersClusterResult(dict):
              vpc_id: str,
              vswitch_id: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if 'chargeType' in kwargs:
+            charge_type = kwargs['chargeType']
+        if 'commodityCode' in kwargs:
+            commodity_code = kwargs['commodityCode']
+        if 'computeResource' in kwargs:
+            compute_resource = kwargs['computeResource']
+        if 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dbClusterCategory' in kwargs:
+            db_cluster_category = kwargs['dbClusterCategory']
+        if 'dbClusterId' in kwargs:
+            db_cluster_id = kwargs['dbClusterId']
+        if 'dbClusterNetworkType' in kwargs:
+            db_cluster_network_type = kwargs['dbClusterNetworkType']
+        if 'dbClusterType' in kwargs:
+            db_cluster_type = kwargs['dbClusterType']
+        if 'dbClusterVersion' in kwargs:
+            db_cluster_version = kwargs['dbClusterVersion']
+        if 'dbNodeClass' in kwargs:
+            db_node_class = kwargs['dbNodeClass']
+        if 'dbNodeCount' in kwargs:
+            db_node_count = kwargs['dbNodeCount']
+        if 'dbNodeStorage' in kwargs:
+            db_node_storage = kwargs['dbNodeStorage']
+        if 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if 'dtsJobId' in kwargs:
+            dts_job_id = kwargs['dtsJobId']
+        if 'elasticIoResource' in kwargs:
+            elastic_io_resource = kwargs['elasticIoResource']
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'executorCount' in kwargs:
+            executor_count = kwargs['executorCount']
+        if 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if 'lockMode' in kwargs:
+            lock_mode = kwargs['lockMode']
+        if 'lockReason' in kwargs:
+            lock_reason = kwargs['lockReason']
+        if 'maintainTime' in kwargs:
+            maintain_time = kwargs['maintainTime']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'rdsInstanceId' in kwargs:
+            rds_instance_id = kwargs['rdsInstanceId']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityIps' in kwargs:
+            security_ips = kwargs['securityIps']
+        if 'storageResource' in kwargs:
+            storage_resource = kwargs['storageResource']
+        if 'vpcCloudInstanceId' in kwargs:
+            vpc_cloud_instance_id = kwargs['vpcCloudInstanceId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("auto_renew_period", auto_renew_period)
         _setter("charge_type", charge_type)
         _setter("commodity_code", commodity_code)
@@ -1029,7 +1207,7 @@ class GetDBClustersClusterResult(dict):
     @pulumi.getter(name="computeResource")
     def compute_resource(self) -> str:
         """
-        The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
+        The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources.
         """
         return pulumi.get(self, "compute_resource")
 
@@ -1301,7 +1479,7 @@ class GetDBClustersClusterResult(dict):
     @pulumi.getter(name="storageResource")
     def storage_resource(self) -> str:
         """
-        The specifications of storage resources in elastic mode. The resources are used for data read and write operations. The increase of resources can improve the read and write performance of your cluster. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
+        The specifications of storage resources in elastic mode. The resources are used for data read and write operations. The increase of resources can improve the read and write performance of your cluster.
         """
         return pulumi.get(self, "storage_resource")
 
@@ -1388,7 +1566,19 @@ class GetResourceGroupsGroupResult(dict):
              id: str,
              node_num: int,
              user: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dbClusterId' in kwargs:
+            db_cluster_id = kwargs['dbClusterId']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'groupType' in kwargs:
+            group_type = kwargs['groupType']
+        if 'nodeNum' in kwargs:
+            node_num = kwargs['nodeNum']
+
         _setter("create_time", create_time)
         _setter("db_cluster_id", db_cluster_id)
         _setter("group_name", group_name)
@@ -1476,7 +1666,11 @@ class GetZonesZoneResult(dict):
              _setter: Callable[[Any, Any], None],
              id: str,
              multi_zone_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'multiZoneIds' in kwargs:
+            multi_zone_ids = kwargs['multiZoneIds']
+
         _setter("id", id)
         _setter("multi_zone_ids", multi_zone_ids)
 

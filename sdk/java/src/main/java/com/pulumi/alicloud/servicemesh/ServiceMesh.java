@@ -15,165 +15,19 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * Provides a Service Mesh Service Mesh resource.
  * 
- * For information about Service Mesh Service Mesh and how to use it, see [What is Service Mesh](https://www.alibabacloud.com/help/en/alibaba-cloud-service-mesh/latest/api-servicemesh-2020-01-11-createservicemesh).
+ * For information about Service Mesh Service Mesh and how to use it, see [What is Service Mesh](https://www.alibabacloud.com/help/en/asm/developer-reference/api-servicemesh-2020-01-11-createservicemesh).
  * 
  * &gt; **NOTE:** Available since v1.138.0.
- * 
- * ## Example Usage
- * 
- * creating a standard cluster
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.servicemesh.ServicemeshFunctions;
- * import com.pulumi.alicloud.servicemesh.inputs.GetVersionsArgs;
- * import com.pulumi.alicloud.vpc.Network;
- * import com.pulumi.alicloud.vpc.NetworkArgs;
- * import com.pulumi.alicloud.vpc.Switch;
- * import com.pulumi.alicloud.vpc.SwitchArgs;
- * import com.pulumi.alicloud.servicemesh.ServiceMesh;
- * import com.pulumi.alicloud.servicemesh.ServiceMeshArgs;
- * import com.pulumi.alicloud.servicemesh.inputs.ServiceMeshNetworkArgs;
- * import com.pulumi.alicloud.servicemesh.inputs.ServiceMeshLoadBalancerArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
- *             .build());
- * 
- *         final var defaultVersions = ServicemeshFunctions.getVersions(GetVersionsArgs.builder()
- *             .edition(&#34;Default&#34;)
- *             .build());
- * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(name)
- *             .cidrBlock(&#34;10.0.0.0/8&#34;)
- *             .build());
- * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
- *             .vswitchName(name)
- *             .cidrBlock(&#34;10.1.0.0/16&#34;)
- *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .build());
- * 
- *         var defaultServiceMesh = new ServiceMesh(&#34;defaultServiceMesh&#34;, ServiceMeshArgs.builder()        
- *             .serviceMeshName(name)
- *             .edition(&#34;Default&#34;)
- *             .version(defaultVersions.applyValue(getVersionsResult -&gt; getVersionsResult.versions()[0].version()))
- *             .clusterSpec(&#34;standard&#34;)
- *             .network(ServiceMeshNetworkArgs.builder()
- *                 .vpcId(defaultNetwork.id())
- *                 .vswitcheList(defaultSwitch.id())
- *                 .build())
- *             .loadBalancer(ServiceMeshLoadBalancerArgs.builder()
- *                 .pilotPublicEip(false)
- *                 .apiServerPublicEip(false)
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
- * creating an enterprise cluster
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.servicemesh.ServicemeshFunctions;
- * import com.pulumi.alicloud.servicemesh.inputs.GetVersionsArgs;
- * import com.pulumi.alicloud.vpc.Network;
- * import com.pulumi.alicloud.vpc.NetworkArgs;
- * import com.pulumi.alicloud.vpc.Switch;
- * import com.pulumi.alicloud.vpc.SwitchArgs;
- * import com.pulumi.alicloud.servicemesh.ServiceMesh;
- * import com.pulumi.alicloud.servicemesh.ServiceMeshArgs;
- * import com.pulumi.alicloud.servicemesh.inputs.ServiceMeshNetworkArgs;
- * import com.pulumi.alicloud.servicemesh.inputs.ServiceMeshLoadBalancerArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
- *             .build());
- * 
- *         final var defaultVersions = ServicemeshFunctions.getVersions(GetVersionsArgs.builder()
- *             .edition(&#34;Default&#34;)
- *             .build());
- * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(name)
- *             .cidrBlock(&#34;10.0.0.0/8&#34;)
- *             .build());
- * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
- *             .vswitchName(name)
- *             .cidrBlock(&#34;10.1.0.0/16&#34;)
- *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .build());
- * 
- *         var defaultServiceMesh = new ServiceMesh(&#34;defaultServiceMesh&#34;, ServiceMeshArgs.builder()        
- *             .serviceMeshName(name)
- *             .edition(&#34;Pro&#34;)
- *             .version(defaultVersions.applyValue(getVersionsResult -&gt; getVersionsResult.versions()[0].version()))
- *             .clusterSpec(&#34;enterprise&#34;)
- *             .network(ServiceMeshNetworkArgs.builder()
- *                 .vpcId(defaultNetwork.id())
- *                 .vswitcheList(defaultSwitch.id())
- *                 .build())
- *             .loadBalancer(ServiceMeshLoadBalancerArgs.builder()
- *                 .pilotPublicEip(false)
- *                 .apiServerPublicEip(false)
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Import
  * 
@@ -187,160 +41,222 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:servicemesh/serviceMesh:ServiceMesh")
 public class ServiceMesh extends com.pulumi.resources.CustomResource {
     /**
-     * The array of the cluster ids.
+     * List of clusters.
      * 
      */
     @Export(name="clusterIds", type=List.class, parameters={String.class})
-    private Output<List<String>> clusterIds;
+    private Output</* @Nullable */ List<String>> clusterIds;
 
     /**
-     * @return The array of the cluster ids.
+     * @return List of clusters.
      * 
      */
-    public Output<List<String>> clusterIds() {
-        return this.clusterIds;
+    public Output<Optional<List<String>>> clusterIds() {
+        return Codegen.optional(this.clusterIds);
     }
     /**
-     * The service mesh instance specification.
-     * Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
+     * Cluster specification. The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
      * 
      */
     @Export(name="clusterSpec", type=String.class, parameters={})
     private Output<String> clusterSpec;
 
     /**
-     * @return The service mesh instance specification.
-     * Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
+     * @return Cluster specification. The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
      * 
      */
     public Output<String> clusterSpec() {
         return this.clusterSpec;
     }
     /**
-     * The type  of the resource. Valid values: `Default` and `Pro`. `Default`: the standard. `Pro`: the Pro version.
+     * Service grid creation time.
+     * 
+     */
+    @Export(name="createTime", type=String.class, parameters={})
+    private Output<String> createTime;
+
+    /**
+     * @return Service grid creation time.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * Whether to customize Prometheus. Value:
+     * -&#39;true&#39;: custom Prometheus.
+     * -&#39;false&#39;: Do not customize Prometheus. Default value: &#39;false &#39;.
+     * 
+     */
+    @Export(name="customizedPrometheus", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> customizedPrometheus;
+
+    /**
+     * @return Whether to customize Prometheus. Value:
+     * -&#39;true&#39;: custom Prometheus.
+     * -&#39;false&#39;: Do not customize Prometheus. Default value: &#39;false &#39;.
+     * 
+     */
+    public Output<Optional<Boolean>> customizedPrometheus() {
+        return Codegen.optional(this.customizedPrometheus);
+    }
+    /**
+     * Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
      * 
      */
     @Export(name="edition", type=String.class, parameters={})
-    private Output<String> edition;
+    private Output</* @Nullable */ String> edition;
 
     /**
-     * @return The type  of the resource. Valid values: `Default` and `Pro`. `Default`: the standard. `Pro`: the Pro version.
+     * @return Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
      * 
      */
-    public Output<String> edition() {
-        return this.edition;
+    public Output<Optional<String>> edition() {
+        return Codegen.optional(this.edition);
     }
     /**
-     * The configurations of additional features for the ASM instance. See `extra_configuration` below.
+     * Data plane KubeAPI access capability. See `extra_configuration` below.
      * 
      */
     @Export(name="extraConfiguration", type=ServiceMeshExtraConfiguration.class, parameters={})
     private Output<ServiceMeshExtraConfiguration> extraConfiguration;
 
     /**
-     * @return The configurations of additional features for the ASM instance. See `extra_configuration` below.
+     * @return Data plane KubeAPI access capability. See `extra_configuration` below.
      * 
      */
     public Output<ServiceMeshExtraConfiguration> extraConfiguration() {
         return this.extraConfiguration;
     }
     /**
-     * This parameter is used for resource destroy. Default value is `false`.
+     * Whether to forcibly delete the ASM instance. Value:
+     * -&#39;true&#39;: force deletion of ASM instance
+     * -&#39;false&#39;: no forced deletion of ASM instance. Default value: false.
      * 
      */
     @Export(name="force", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> force;
 
     /**
-     * @return This parameter is used for resource destroy. Default value is `false`.
+     * @return Whether to forcibly delete the ASM instance. Value:
+     * -&#39;true&#39;: force deletion of ASM instance
+     * -&#39;false&#39;: no forced deletion of ASM instance. Default value: false.
      * 
      */
     public Output<Optional<Boolean>> force() {
         return Codegen.optional(this.force);
     }
     /**
-     * The configuration of the Load Balancer. See `load_balancer` below.
+     * Load balancing information. See `load_balancer` below.
      * 
      */
     @Export(name="loadBalancer", type=ServiceMeshLoadBalancer.class, parameters={})
-    private Output<ServiceMeshLoadBalancer> loadBalancer;
+    private Output</* @Nullable */ ServiceMeshLoadBalancer> loadBalancer;
 
     /**
-     * @return The configuration of the Load Balancer. See `load_balancer` below.
+     * @return Load balancing information. See `load_balancer` below.
      * 
      */
-    public Output<ServiceMeshLoadBalancer> loadBalancer() {
-        return this.loadBalancer;
+    public Output<Optional<ServiceMeshLoadBalancer>> loadBalancer() {
+        return Codegen.optional(this.loadBalancer);
     }
     /**
-     * The configuration of the Service grid. See `mesh_config` below.
+     * Service grid configuration information. See `mesh_config` below.
      * 
      */
     @Export(name="meshConfig", type=ServiceMeshMeshConfig.class, parameters={})
-    private Output<ServiceMeshMeshConfig> meshConfig;
+    private Output</* @Nullable */ ServiceMeshMeshConfig> meshConfig;
 
     /**
-     * @return The configuration of the Service grid. See `mesh_config` below.
+     * @return Service grid configuration information. See `mesh_config` below.
      * 
      */
-    public Output<ServiceMeshMeshConfig> meshConfig() {
-        return this.meshConfig;
+    public Output<Optional<ServiceMeshMeshConfig>> meshConfig() {
+        return Codegen.optional(this.meshConfig);
     }
     /**
-     * The network configuration of the Service grid. See `network` below.
+     * Service grid network configuration information. See `network` below.
      * 
      */
     @Export(name="network", type=ServiceMeshNetwork.class, parameters={})
     private Output<ServiceMeshNetwork> network;
 
     /**
-     * @return The network configuration of the Service grid. See `network` below.
+     * @return Service grid network configuration information. See `network` below.
      * 
      */
     public Output<ServiceMeshNetwork> network() {
         return this.network;
     }
     /**
-     * The name of the resource.
+     * The Prometheus service address (in non-custom cases, use the ARMS address format).
+     * 
+     */
+    @Export(name="prometheusUrl", type=String.class, parameters={})
+    private Output</* @Nullable */ String> prometheusUrl;
+
+    /**
+     * @return The Prometheus service address (in non-custom cases, use the ARMS address format).
+     * 
+     */
+    public Output<Optional<String>> prometheusUrl() {
+        return Codegen.optional(this.prometheusUrl);
+    }
+    /**
+     * ServiceMeshName.
      * 
      */
     @Export(name="serviceMeshName", type=String.class, parameters={})
-    private Output<String> serviceMeshName;
+    private Output</* @Nullable */ String> serviceMeshName;
 
     /**
-     * @return The name of the resource.
+     * @return ServiceMeshName.
      * 
      */
-    public Output<String> serviceMeshName() {
-        return this.serviceMeshName;
+    public Output<Optional<String>> serviceMeshName() {
+        return Codegen.optional(this.serviceMeshName);
     }
     /**
-     * The status of the resource. Valid values: `running` or `initial`.
+     * The status of the resource.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return The status of the resource. Valid values: `running` or `initial`.
+     * @return The status of the resource.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The version of the resource. you can look up the version using `alicloud.servicemesh.getVersions`. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istio_operator_version` in `alicloud.servicemesh.getServiceMeshes`.
+     * The tag of the resource.
+     * 
+     */
+    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return The tag of the resource.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
+     * Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istio_operator_version in `alicloud.servicemesh.getServiceMeshes`.
      * 
      */
     @Export(name="version", type=String.class, parameters={})
-    private Output<String> version;
+    private Output</* @Nullable */ String> version;
 
     /**
-     * @return The version of the resource. you can look up the version using `alicloud.servicemesh.getVersions`. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istio_operator_version` in `alicloud.servicemesh.getServiceMeshes`.
+     * @return Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istio_operator_version in `alicloud.servicemesh.getServiceMeshes`.
      * 
      */
-    public Output<String> version() {
-        return this.version;
+    public Output<Optional<String>> version() {
+        return Codegen.optional(this.version);
     }
 
     /**

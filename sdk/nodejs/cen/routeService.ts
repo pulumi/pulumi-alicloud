@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a CEN Route Service resource. The virtual border routers (VBRs) and Cloud Connect Network (CCN) instances attached to Cloud Enterprise Network (CEN) instances can access the cloud services deployed in VPCs through the CEN instances.
  *
- * For information about CEN Route Service and how to use it, see [What is Route Service](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-resolveandrouteserviceincen).
+ * For information about CEN Route Service and how to use it, see [What is Route Service](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-resolveandrouteserviceincen).
  *
  * > **NOTE:** Available since v1.99.0.
  *

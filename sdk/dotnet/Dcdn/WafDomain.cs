@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Dcdn
     /// <summary>
     /// Provides a DCDN Waf Domain resource.
     /// 
-    /// For information about DCDN Waf Domain and how to use it, see [What is Waf Domain](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/batch-configure-domain-name-protection).
+    /// For information about DCDN Waf Domain and how to use it, see [What is Waf Domain](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchsetdcdnwafdomainconfigs).
     /// 
     /// &gt; **NOTE:** Available since v1.185.0.
     /// 

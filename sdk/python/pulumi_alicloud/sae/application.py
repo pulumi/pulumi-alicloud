@@ -306,7 +306,121 @@ class ApplicationArgs:
              vswitch_id: Optional[pulumi.Input[str]] = None,
              war_start_options: Optional[pulumi.Input[str]] = None,
              web_container: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appName' in kwargs:
+            app_name = kwargs['appName']
+        if 'packageType' in kwargs:
+            package_type = kwargs['packageType']
+        if 'acrAssumeRoleArn' in kwargs:
+            acr_assume_role_arn = kwargs['acrAssumeRoleArn']
+        if 'acrInstanceId' in kwargs:
+            acr_instance_id = kwargs['acrInstanceId']
+        if 'appDescription' in kwargs:
+            app_description = kwargs['appDescription']
+        if 'autoConfig' in kwargs:
+            auto_config = kwargs['autoConfig']
+        if 'autoEnableApplicationScalingRule' in kwargs:
+            auto_enable_application_scaling_rule = kwargs['autoEnableApplicationScalingRule']
+        if 'batchWaitTime' in kwargs:
+            batch_wait_time = kwargs['batchWaitTime']
+        if 'changeOrderDesc' in kwargs:
+            change_order_desc = kwargs['changeOrderDesc']
+        if 'commandArgs' in kwargs:
+            command_args = kwargs['commandArgs']
+        if 'commandArgsV2s' in kwargs:
+            command_args_v2s = kwargs['commandArgsV2s']
+        if 'configMapMountDesc' in kwargs:
+            config_map_mount_desc = kwargs['configMapMountDesc']
+        if 'configMapMountDescV2s' in kwargs:
+            config_map_mount_desc_v2s = kwargs['configMapMountDescV2s']
+        if 'customHostAlias' in kwargs:
+            custom_host_alias = kwargs['customHostAlias']
+        if 'customHostAliasV2s' in kwargs:
+            custom_host_alias_v2s = kwargs['customHostAliasV2s']
+        if 'edasContainerVersion' in kwargs:
+            edas_container_version = kwargs['edasContainerVersion']
+        if 'enableAhas' in kwargs:
+            enable_ahas = kwargs['enableAhas']
+        if 'enableGreyTagRoute' in kwargs:
+            enable_grey_tag_route = kwargs['enableGreyTagRoute']
+        if 'imagePullSecrets' in kwargs:
+            image_pull_secrets = kwargs['imagePullSecrets']
+        if 'imageUrl' in kwargs:
+            image_url = kwargs['imageUrl']
+        if 'jarStartArgs' in kwargs:
+            jar_start_args = kwargs['jarStartArgs']
+        if 'jarStartOptions' in kwargs:
+            jar_start_options = kwargs['jarStartOptions']
+        if 'kafkaConfigs' in kwargs:
+            kafka_configs = kwargs['kafkaConfigs']
+        if 'livenessV2' in kwargs:
+            liveness_v2 = kwargs['livenessV2']
+        if 'microRegistration' in kwargs:
+            micro_registration = kwargs['microRegistration']
+        if 'minReadyInstanceRatio' in kwargs:
+            min_ready_instance_ratio = kwargs['minReadyInstanceRatio']
+        if 'minReadyInstances' in kwargs:
+            min_ready_instances = kwargs['minReadyInstances']
+        if 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+        if 'nasConfigs' in kwargs:
+            nas_configs = kwargs['nasConfigs']
+        if 'ossAkId' in kwargs:
+            oss_ak_id = kwargs['ossAkId']
+        if 'ossAkSecret' in kwargs:
+            oss_ak_secret = kwargs['ossAkSecret']
+        if 'ossMountDescs' in kwargs:
+            oss_mount_descs = kwargs['ossMountDescs']
+        if 'ossMountDescsV2s' in kwargs:
+            oss_mount_descs_v2s = kwargs['ossMountDescsV2s']
+        if 'packageUrl' in kwargs:
+            package_url = kwargs['packageUrl']
+        if 'packageVersion' in kwargs:
+            package_version = kwargs['packageVersion']
+        if 'phpArmsConfigLocation' in kwargs:
+            php_arms_config_location = kwargs['phpArmsConfigLocation']
+        if 'phpConfig' in kwargs:
+            php_config = kwargs['phpConfig']
+        if 'phpConfigLocation' in kwargs:
+            php_config_location = kwargs['phpConfigLocation']
+        if 'postStart' in kwargs:
+            post_start = kwargs['postStart']
+        if 'postStartV2' in kwargs:
+            post_start_v2 = kwargs['postStartV2']
+        if 'preStop' in kwargs:
+            pre_stop = kwargs['preStop']
+        if 'preStopV2' in kwargs:
+            pre_stop_v2 = kwargs['preStopV2']
+        if 'programmingLanguage' in kwargs:
+            programming_language = kwargs['programmingLanguage']
+        if 'pvtzDiscoverySvc' in kwargs:
+            pvtz_discovery_svc = kwargs['pvtzDiscoverySvc']
+        if 'readinessV2' in kwargs:
+            readiness_v2 = kwargs['readinessV2']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'slsConfigs' in kwargs:
+            sls_configs = kwargs['slsConfigs']
+        if 'terminationGracePeriodSeconds' in kwargs:
+            termination_grace_period_seconds = kwargs['terminationGracePeriodSeconds']
+        if 'tomcatConfig' in kwargs:
+            tomcat_config = kwargs['tomcatConfig']
+        if 'tomcatConfigV2' in kwargs:
+            tomcat_config_v2 = kwargs['tomcatConfigV2']
+        if 'updateStrategy' in kwargs:
+            update_strategy = kwargs['updateStrategy']
+        if 'updateStrategyV2' in kwargs:
+            update_strategy_v2 = kwargs['updateStrategyV2']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'warStartOptions' in kwargs:
+            war_start_options = kwargs['warStartOptions']
+        if 'webContainer' in kwargs:
+            web_container = kwargs['webContainer']
+
         _setter("app_name", app_name)
         _setter("package_type", package_type)
         _setter("replicas", replicas)
@@ -1630,7 +1744,121 @@ class _ApplicationState:
              vswitch_id: Optional[pulumi.Input[str]] = None,
              war_start_options: Optional[pulumi.Input[str]] = None,
              web_container: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acrAssumeRoleArn' in kwargs:
+            acr_assume_role_arn = kwargs['acrAssumeRoleArn']
+        if 'acrInstanceId' in kwargs:
+            acr_instance_id = kwargs['acrInstanceId']
+        if 'appDescription' in kwargs:
+            app_description = kwargs['appDescription']
+        if 'appName' in kwargs:
+            app_name = kwargs['appName']
+        if 'autoConfig' in kwargs:
+            auto_config = kwargs['autoConfig']
+        if 'autoEnableApplicationScalingRule' in kwargs:
+            auto_enable_application_scaling_rule = kwargs['autoEnableApplicationScalingRule']
+        if 'batchWaitTime' in kwargs:
+            batch_wait_time = kwargs['batchWaitTime']
+        if 'changeOrderDesc' in kwargs:
+            change_order_desc = kwargs['changeOrderDesc']
+        if 'commandArgs' in kwargs:
+            command_args = kwargs['commandArgs']
+        if 'commandArgsV2s' in kwargs:
+            command_args_v2s = kwargs['commandArgsV2s']
+        if 'configMapMountDesc' in kwargs:
+            config_map_mount_desc = kwargs['configMapMountDesc']
+        if 'configMapMountDescV2s' in kwargs:
+            config_map_mount_desc_v2s = kwargs['configMapMountDescV2s']
+        if 'customHostAlias' in kwargs:
+            custom_host_alias = kwargs['customHostAlias']
+        if 'customHostAliasV2s' in kwargs:
+            custom_host_alias_v2s = kwargs['customHostAliasV2s']
+        if 'edasContainerVersion' in kwargs:
+            edas_container_version = kwargs['edasContainerVersion']
+        if 'enableAhas' in kwargs:
+            enable_ahas = kwargs['enableAhas']
+        if 'enableGreyTagRoute' in kwargs:
+            enable_grey_tag_route = kwargs['enableGreyTagRoute']
+        if 'imagePullSecrets' in kwargs:
+            image_pull_secrets = kwargs['imagePullSecrets']
+        if 'imageUrl' in kwargs:
+            image_url = kwargs['imageUrl']
+        if 'jarStartArgs' in kwargs:
+            jar_start_args = kwargs['jarStartArgs']
+        if 'jarStartOptions' in kwargs:
+            jar_start_options = kwargs['jarStartOptions']
+        if 'kafkaConfigs' in kwargs:
+            kafka_configs = kwargs['kafkaConfigs']
+        if 'livenessV2' in kwargs:
+            liveness_v2 = kwargs['livenessV2']
+        if 'microRegistration' in kwargs:
+            micro_registration = kwargs['microRegistration']
+        if 'minReadyInstanceRatio' in kwargs:
+            min_ready_instance_ratio = kwargs['minReadyInstanceRatio']
+        if 'minReadyInstances' in kwargs:
+            min_ready_instances = kwargs['minReadyInstances']
+        if 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+        if 'nasConfigs' in kwargs:
+            nas_configs = kwargs['nasConfigs']
+        if 'ossAkId' in kwargs:
+            oss_ak_id = kwargs['ossAkId']
+        if 'ossAkSecret' in kwargs:
+            oss_ak_secret = kwargs['ossAkSecret']
+        if 'ossMountDescs' in kwargs:
+            oss_mount_descs = kwargs['ossMountDescs']
+        if 'ossMountDescsV2s' in kwargs:
+            oss_mount_descs_v2s = kwargs['ossMountDescsV2s']
+        if 'packageType' in kwargs:
+            package_type = kwargs['packageType']
+        if 'packageUrl' in kwargs:
+            package_url = kwargs['packageUrl']
+        if 'packageVersion' in kwargs:
+            package_version = kwargs['packageVersion']
+        if 'phpArmsConfigLocation' in kwargs:
+            php_arms_config_location = kwargs['phpArmsConfigLocation']
+        if 'phpConfig' in kwargs:
+            php_config = kwargs['phpConfig']
+        if 'phpConfigLocation' in kwargs:
+            php_config_location = kwargs['phpConfigLocation']
+        if 'postStart' in kwargs:
+            post_start = kwargs['postStart']
+        if 'postStartV2' in kwargs:
+            post_start_v2 = kwargs['postStartV2']
+        if 'preStop' in kwargs:
+            pre_stop = kwargs['preStop']
+        if 'preStopV2' in kwargs:
+            pre_stop_v2 = kwargs['preStopV2']
+        if 'programmingLanguage' in kwargs:
+            programming_language = kwargs['programmingLanguage']
+        if 'pvtzDiscoverySvc' in kwargs:
+            pvtz_discovery_svc = kwargs['pvtzDiscoverySvc']
+        if 'readinessV2' in kwargs:
+            readiness_v2 = kwargs['readinessV2']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'slsConfigs' in kwargs:
+            sls_configs = kwargs['slsConfigs']
+        if 'terminationGracePeriodSeconds' in kwargs:
+            termination_grace_period_seconds = kwargs['terminationGracePeriodSeconds']
+        if 'tomcatConfig' in kwargs:
+            tomcat_config = kwargs['tomcatConfig']
+        if 'tomcatConfigV2' in kwargs:
+            tomcat_config_v2 = kwargs['tomcatConfigV2']
+        if 'updateStrategy' in kwargs:
+            update_strategy = kwargs['updateStrategy']
+        if 'updateStrategyV2' in kwargs:
+            update_strategy_v2 = kwargs['updateStrategyV2']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'warStartOptions' in kwargs:
+            war_start_options = kwargs['warStartOptions']
+        if 'webContainer' in kwargs:
+            web_container = kwargs['webContainer']
+
         if acr_assume_role_arn is not None:
             _setter("acr_assume_role_arn", acr_assume_role_arn)
         if acr_instance_id is not None:

@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Dns
     /// <summary>
     /// Provides a DNS Monitor Config resource.
     /// 
-    /// For information about DNS Monitor Config and how to use it, see [What is Monitor Config](https://www.alibabacloud.com/help/en/doc-detail/198064.html).
+    /// For information about DNS Monitor Config and how to use it, see [What is Monitor Config](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
     /// 
     /// &gt; **NOTE:** Available since v1.153.0.
     /// 
@@ -150,7 +150,7 @@ namespace Pulumi.AliCloud.Dns
         public Output<string?> Lang { get; private set; } = null!;
 
         /// <summary>
-        /// The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/doc-detail/198064.html).
+        /// The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
         /// </summary>
         [Output("monitorExtendInfo")]
         public Output<string> MonitorExtendInfo { get; private set; } = null!;
@@ -250,7 +250,7 @@ namespace Pulumi.AliCloud.Dns
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/doc-detail/198064.html).
+        /// The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
         /// </summary>
         [Input("monitorExtendInfo", required: true)]
         public Input<string> MonitorExtendInfo { get; set; } = null!;
@@ -312,7 +312,7 @@ namespace Pulumi.AliCloud.Dns
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/doc-detail/198064.html).
+        /// The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
         /// </summary>
         [Input("monitorExtendInfo")]
         public Input<string>? MonitorExtendInfo { get; set; }

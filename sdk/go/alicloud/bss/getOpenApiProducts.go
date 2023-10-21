@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/zh/bss-openapi/latest/api-doc-bssopenapi-2017-12-14-api-doc-queryproductlist)
+// This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/bss-openapi/latest/api-bssopenapi-2017-12-14-queryproductlist)
 //
 // > **NOTE:** Available in 1.195.0+
 func GetOpenApiProducts(ctx *pulumi.Context, args *GetOpenApiProductsArgs, opts ...pulumi.InvokeOption) (*GetOpenApiProductsResult, error) {

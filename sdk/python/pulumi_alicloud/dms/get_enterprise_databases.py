@@ -105,11 +105,13 @@ def get_enterprise_databases(ids: Optional[Sequence[str]] = None,
                              output_file: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEnterpriseDatabasesResult:
     """
-    This data source provides DMS Enterprise Database available to the user.[What is Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-listdatabases)
+    This data source provides DMS Enterprise Database available to the user. [What is Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-listdatabases).
 
-    > **NOTE:** Available in 1.195.0+
+    > **NOTE:** Available since v1.195.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
@@ -150,11 +152,13 @@ def get_enterprise_databases_output(ids: Optional[pulumi.Input[Optional[Sequence
                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEnterpriseDatabasesResult]:
     """
-    This data source provides DMS Enterprise Database available to the user.[What is Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-listdatabases)
+    This data source provides DMS Enterprise Database available to the user. [What is Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-listdatabases).
 
-    > **NOTE:** Available in 1.195.0+
+    > **NOTE:** Available since v1.195.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi

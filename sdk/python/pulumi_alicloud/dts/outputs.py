@@ -58,7 +58,21 @@ class GetConsumerChannelsChannelResult(dict):
              id: str,
              message_delay: int,
              unconsumed_data: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'consumerGroupId' in kwargs:
+            consumer_group_id = kwargs['consumerGroupId']
+        if 'consumerGroupName' in kwargs:
+            consumer_group_name = kwargs['consumerGroupName']
+        if 'consumerGroupUserName' in kwargs:
+            consumer_group_user_name = kwargs['consumerGroupUserName']
+        if 'consumptionCheckpoint' in kwargs:
+            consumption_checkpoint = kwargs['consumptionCheckpoint']
+        if 'messageDelay' in kwargs:
+            message_delay = kwargs['messageDelay']
+        if 'unconsumedData' in kwargs:
+            unconsumed_data = kwargs['unconsumedData']
+
         _setter("consumer_group_id", consumer_group_id)
         _setter("consumer_group_name", consumer_group_name)
         _setter("consumer_group_user_name", consumer_group_user_name)
@@ -190,7 +204,29 @@ class GetInstancesInstanceResult(dict):
              status: str,
              type: str,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'destinationEndpointEngineName' in kwargs:
+            destination_endpoint_engine_name = kwargs['destinationEndpointEngineName']
+        if 'destinationRegion' in kwargs:
+            destination_region = kwargs['destinationRegion']
+        if 'dtsInstanceId' in kwargs:
+            dts_instance_id = kwargs['dtsInstanceId']
+        if 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'sourceEndpointEngineName' in kwargs:
+            source_endpoint_engine_name = kwargs['sourceEndpointEngineName']
+        if 'sourceRegion' in kwargs:
+            source_region = kwargs['sourceRegion']
+
         _setter("create_time", create_time)
         _setter("destination_endpoint_engine_name", destination_endpoint_engine_name)
         _setter("destination_region", destination_region)
@@ -448,7 +484,65 @@ class GetMigrationJobsJobResult(dict):
              source_endpoint_user_name: str,
              status: str,
              structure_initialization: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dataInitialization' in kwargs:
+            data_initialization = kwargs['dataInitialization']
+        if 'dataSynchronization' in kwargs:
+            data_synchronization = kwargs['dataSynchronization']
+        if 'dbList' in kwargs:
+            db_list = kwargs['dbList']
+        if 'destinationEndpointDataBaseName' in kwargs:
+            destination_endpoint_data_base_name = kwargs['destinationEndpointDataBaseName']
+        if 'destinationEndpointEngineName' in kwargs:
+            destination_endpoint_engine_name = kwargs['destinationEndpointEngineName']
+        if 'destinationEndpointInstanceId' in kwargs:
+            destination_endpoint_instance_id = kwargs['destinationEndpointInstanceId']
+        if 'destinationEndpointInstanceType' in kwargs:
+            destination_endpoint_instance_type = kwargs['destinationEndpointInstanceType']
+        if 'destinationEndpointIp' in kwargs:
+            destination_endpoint_ip = kwargs['destinationEndpointIp']
+        if 'destinationEndpointOracleSid' in kwargs:
+            destination_endpoint_oracle_sid = kwargs['destinationEndpointOracleSid']
+        if 'destinationEndpointPort' in kwargs:
+            destination_endpoint_port = kwargs['destinationEndpointPort']
+        if 'destinationEndpointRegion' in kwargs:
+            destination_endpoint_region = kwargs['destinationEndpointRegion']
+        if 'destinationEndpointUserName' in kwargs:
+            destination_endpoint_user_name = kwargs['destinationEndpointUserName']
+        if 'dtsInstanceId' in kwargs:
+            dts_instance_id = kwargs['dtsInstanceId']
+        if 'dtsJobId' in kwargs:
+            dts_job_id = kwargs['dtsJobId']
+        if 'dtsJobName' in kwargs:
+            dts_job_name = kwargs['dtsJobName']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'sourceEndpointDatabaseName' in kwargs:
+            source_endpoint_database_name = kwargs['sourceEndpointDatabaseName']
+        if 'sourceEndpointEngineName' in kwargs:
+            source_endpoint_engine_name = kwargs['sourceEndpointEngineName']
+        if 'sourceEndpointInstanceId' in kwargs:
+            source_endpoint_instance_id = kwargs['sourceEndpointInstanceId']
+        if 'sourceEndpointInstanceType' in kwargs:
+            source_endpoint_instance_type = kwargs['sourceEndpointInstanceType']
+        if 'sourceEndpointIp' in kwargs:
+            source_endpoint_ip = kwargs['sourceEndpointIp']
+        if 'sourceEndpointOracleSid' in kwargs:
+            source_endpoint_oracle_sid = kwargs['sourceEndpointOracleSid']
+        if 'sourceEndpointOwnerId' in kwargs:
+            source_endpoint_owner_id = kwargs['sourceEndpointOwnerId']
+        if 'sourceEndpointPort' in kwargs:
+            source_endpoint_port = kwargs['sourceEndpointPort']
+        if 'sourceEndpointRegion' in kwargs:
+            source_endpoint_region = kwargs['sourceEndpointRegion']
+        if 'sourceEndpointRole' in kwargs:
+            source_endpoint_role = kwargs['sourceEndpointRole']
+        if 'sourceEndpointUserName' in kwargs:
+            source_endpoint_user_name = kwargs['sourceEndpointUserName']
+        if 'structureInitialization' in kwargs:
+            structure_initialization = kwargs['structureInitialization']
+
         _setter("data_initialization", data_initialization)
         _setter("data_synchronization", data_synchronization)
         _setter("db_list", db_list)
@@ -844,7 +938,57 @@ class GetSubscriptionJobsJobResult(dict):
              subscription_instance_vpc_id: str,
              subscription_instance_vswitch_id: str,
              tags: Mapping[str, Any],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dbList' in kwargs:
+            db_list = kwargs['dbList']
+        if 'dtsInstanceId' in kwargs:
+            dts_instance_id = kwargs['dtsInstanceId']
+        if 'dtsJobId' in kwargs:
+            dts_job_id = kwargs['dtsJobId']
+        if 'dtsJobName' in kwargs:
+            dts_job_name = kwargs['dtsJobName']
+        if 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'sourceEndpointDatabaseName' in kwargs:
+            source_endpoint_database_name = kwargs['sourceEndpointDatabaseName']
+        if 'sourceEndpointEngineName' in kwargs:
+            source_endpoint_engine_name = kwargs['sourceEndpointEngineName']
+        if 'sourceEndpointInstanceId' in kwargs:
+            source_endpoint_instance_id = kwargs['sourceEndpointInstanceId']
+        if 'sourceEndpointInstanceType' in kwargs:
+            source_endpoint_instance_type = kwargs['sourceEndpointInstanceType']
+        if 'sourceEndpointIp' in kwargs:
+            source_endpoint_ip = kwargs['sourceEndpointIp']
+        if 'sourceEndpointOracleSid' in kwargs:
+            source_endpoint_oracle_sid = kwargs['sourceEndpointOracleSid']
+        if 'sourceEndpointOwnerId' in kwargs:
+            source_endpoint_owner_id = kwargs['sourceEndpointOwnerId']
+        if 'sourceEndpointPort' in kwargs:
+            source_endpoint_port = kwargs['sourceEndpointPort']
+        if 'sourceEndpointRegion' in kwargs:
+            source_endpoint_region = kwargs['sourceEndpointRegion']
+        if 'sourceEndpointRole' in kwargs:
+            source_endpoint_role = kwargs['sourceEndpointRole']
+        if 'sourceEndpointUserName' in kwargs:
+            source_endpoint_user_name = kwargs['sourceEndpointUserName']
+        if 'subscriptionDataTypeDdl' in kwargs:
+            subscription_data_type_ddl = kwargs['subscriptionDataTypeDdl']
+        if 'subscriptionDataTypeDml' in kwargs:
+            subscription_data_type_dml = kwargs['subscriptionDataTypeDml']
+        if 'subscriptionHosts' in kwargs:
+            subscription_hosts = kwargs['subscriptionHosts']
+        if 'subscriptionInstanceNetworkType' in kwargs:
+            subscription_instance_network_type = kwargs['subscriptionInstanceNetworkType']
+        if 'subscriptionInstanceVpcId' in kwargs:
+            subscription_instance_vpc_id = kwargs['subscriptionInstanceVpcId']
+        if 'subscriptionInstanceVswitchId' in kwargs:
+            subscription_instance_vswitch_id = kwargs['subscriptionInstanceVswitchId']
+
         _setter("checkpoint", checkpoint)
         _setter("create_time", create_time)
         _setter("db_list", db_list)
@@ -1122,7 +1266,15 @@ class GetSubscriptionJobsJobSubscriptionHostResult(dict):
              private_host: str,
              public_host: str,
              vpc_host: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'privateHost' in kwargs:
+            private_host = kwargs['privateHost']
+        if 'publicHost' in kwargs:
+            public_host = kwargs['publicHost']
+        if 'vpcHost' in kwargs:
+            vpc_host = kwargs['vpcHost']
+
         _setter("private_host", private_host)
         _setter("public_host", public_host)
         _setter("vpc_host", vpc_host)
@@ -1291,7 +1443,69 @@ class GetSynchronizationJobsJobResult(dict):
              status: str,
              structure_initialization: bool,
              synchronization_direction: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dataInitialization' in kwargs:
+            data_initialization = kwargs['dataInitialization']
+        if 'dataSynchronization' in kwargs:
+            data_synchronization = kwargs['dataSynchronization']
+        if 'dbList' in kwargs:
+            db_list = kwargs['dbList']
+        if 'destinationEndpointDataBaseName' in kwargs:
+            destination_endpoint_data_base_name = kwargs['destinationEndpointDataBaseName']
+        if 'destinationEndpointEngineName' in kwargs:
+            destination_endpoint_engine_name = kwargs['destinationEndpointEngineName']
+        if 'destinationEndpointInstanceId' in kwargs:
+            destination_endpoint_instance_id = kwargs['destinationEndpointInstanceId']
+        if 'destinationEndpointInstanceType' in kwargs:
+            destination_endpoint_instance_type = kwargs['destinationEndpointInstanceType']
+        if 'destinationEndpointIp' in kwargs:
+            destination_endpoint_ip = kwargs['destinationEndpointIp']
+        if 'destinationEndpointOracleSid' in kwargs:
+            destination_endpoint_oracle_sid = kwargs['destinationEndpointOracleSid']
+        if 'destinationEndpointPort' in kwargs:
+            destination_endpoint_port = kwargs['destinationEndpointPort']
+        if 'destinationEndpointRegion' in kwargs:
+            destination_endpoint_region = kwargs['destinationEndpointRegion']
+        if 'destinationEndpointUserName' in kwargs:
+            destination_endpoint_user_name = kwargs['destinationEndpointUserName']
+        if 'dtsInstanceId' in kwargs:
+            dts_instance_id = kwargs['dtsInstanceId']
+        if 'dtsJobId' in kwargs:
+            dts_job_id = kwargs['dtsJobId']
+        if 'dtsJobName' in kwargs:
+            dts_job_name = kwargs['dtsJobName']
+        if 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if 'sourceEndpointDatabaseName' in kwargs:
+            source_endpoint_database_name = kwargs['sourceEndpointDatabaseName']
+        if 'sourceEndpointEngineName' in kwargs:
+            source_endpoint_engine_name = kwargs['sourceEndpointEngineName']
+        if 'sourceEndpointInstanceId' in kwargs:
+            source_endpoint_instance_id = kwargs['sourceEndpointInstanceId']
+        if 'sourceEndpointInstanceType' in kwargs:
+            source_endpoint_instance_type = kwargs['sourceEndpointInstanceType']
+        if 'sourceEndpointIp' in kwargs:
+            source_endpoint_ip = kwargs['sourceEndpointIp']
+        if 'sourceEndpointOracleSid' in kwargs:
+            source_endpoint_oracle_sid = kwargs['sourceEndpointOracleSid']
+        if 'sourceEndpointOwnerId' in kwargs:
+            source_endpoint_owner_id = kwargs['sourceEndpointOwnerId']
+        if 'sourceEndpointPort' in kwargs:
+            source_endpoint_port = kwargs['sourceEndpointPort']
+        if 'sourceEndpointRegion' in kwargs:
+            source_endpoint_region = kwargs['sourceEndpointRegion']
+        if 'sourceEndpointRole' in kwargs:
+            source_endpoint_role = kwargs['sourceEndpointRole']
+        if 'sourceEndpointUserName' in kwargs:
+            source_endpoint_user_name = kwargs['sourceEndpointUserName']
+        if 'structureInitialization' in kwargs:
+            structure_initialization = kwargs['structureInitialization']
+        if 'synchronizationDirection' in kwargs:
+            synchronization_direction = kwargs['synchronizationDirection']
+
         _setter("checkpoint", checkpoint)
         _setter("create_time", create_time)
         _setter("data_initialization", data_initialization)

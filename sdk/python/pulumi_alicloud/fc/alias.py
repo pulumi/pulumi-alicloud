@@ -45,7 +45,17 @@ class AliasArgs:
              service_version: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
              routing_config: Optional[pulumi.Input['AliasRoutingConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aliasName' in kwargs:
+            alias_name = kwargs['aliasName']
+        if 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if 'serviceVersion' in kwargs:
+            service_version = kwargs['serviceVersion']
+        if 'routingConfig' in kwargs:
+            routing_config = kwargs['routingConfig']
+
         _setter("alias_name", alias_name)
         _setter("service_name", service_name)
         _setter("service_version", service_version)
@@ -147,7 +157,17 @@ class _AliasState:
              routing_config: Optional[pulumi.Input['AliasRoutingConfigArgs']] = None,
              service_name: Optional[pulumi.Input[str]] = None,
              service_version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aliasName' in kwargs:
+            alias_name = kwargs['aliasName']
+        if 'routingConfig' in kwargs:
+            routing_config = kwargs['routingConfig']
+        if 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if 'serviceVersion' in kwargs:
+            service_version = kwargs['serviceVersion']
+
         if alias_name is not None:
             _setter("alias_name", alias_name)
         if description is not None:
@@ -233,7 +253,7 @@ class Alias(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a Function Compute service alias. Creates an alias that points to the specified Function Compute service version.
-         For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-createalias).
+         For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/fc/developer-reference/api-createalias).
 
         > **NOTE:** Available since v1.104.0.
 
@@ -283,7 +303,7 @@ class Alias(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a Function Compute service alias. Creates an alias that points to the specified Function Compute service version.
-         For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-createalias).
+         For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/fc/developer-reference/api-createalias).
 
         > **NOTE:** Available since v1.104.0.
 

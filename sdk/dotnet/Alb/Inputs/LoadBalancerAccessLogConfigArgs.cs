@@ -13,16 +13,16 @@ namespace Pulumi.AliCloud.Alb.Inputs
     public sealed class LoadBalancerAccessLogConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The log service that access logs are shipped to.
+        /// This Log Storage Project.
         /// </summary>
-        [Input("logProject")]
-        public Input<string>? LogProject { get; set; }
+        [Input("logProject", required: true)]
+        public Input<string> LogProject { get; set; } = null!;
 
         /// <summary>
-        /// The log service that access logs are shipped to.
+        /// This Log Storage Method Is Increased.
         /// </summary>
-        [Input("logStore")]
-        public Input<string>? LogStore { get; set; }
+        [Input("logStore", required: true)]
+        public Input<string> LogStore { get; set; } = null!;
 
         public LoadBalancerAccessLogConfigArgs()
         {

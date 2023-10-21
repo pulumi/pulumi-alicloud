@@ -39,7 +39,15 @@ class AdditionalCertificateArgs:
              certificate_id: pulumi.Input[str],
              domain: pulumi.Input[str],
              listener_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'certificateId' in kwargs:
+            certificate_id = kwargs['certificateId']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+
         _setter("accelerator_id", accelerator_id)
         _setter("certificate_id", certificate_id)
         _setter("domain", domain)
@@ -122,7 +130,15 @@ class _AdditionalCertificateState:
              certificate_id: Optional[pulumi.Input[str]] = None,
              domain: Optional[pulumi.Input[str]] = None,
              listener_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'certificateId' in kwargs:
+            certificate_id = kwargs['certificateId']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+
         if accelerator_id is not None:
             _setter("accelerator_id", accelerator_id)
         if certificate_id is not None:

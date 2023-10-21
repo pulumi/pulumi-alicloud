@@ -40,7 +40,13 @@ class GetNamespacesNamespaceResult(dict):
              id: str,
              namespace_id: str,
              namespace_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+        if 'namespaceName' in kwargs:
+            namespace_name = kwargs['namespaceName']
+
         _setter("description", description)
         _setter("id", id)
         _setter("namespace_id", namespace_id)

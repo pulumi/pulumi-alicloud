@@ -44,7 +44,17 @@ class IpSetArgs:
              bandwidth: Optional[pulumi.Input[int]] = None,
              ip_version: Optional[pulumi.Input[str]] = None,
              isp_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accelerateRegionId' in kwargs:
+            accelerate_region_id = kwargs['accelerateRegionId']
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if 'ispType' in kwargs:
+            isp_type = kwargs['ispType']
+
         _setter("accelerate_region_id", accelerate_region_id)
         _setter("accelerator_id", accelerator_id)
         if bandwidth is not None:
@@ -157,7 +167,19 @@ class _IpSetState:
              ip_version: Optional[pulumi.Input[str]] = None,
              isp_type: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accelerateRegionId' in kwargs:
+            accelerate_region_id = kwargs['accelerateRegionId']
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'ipAddressLists' in kwargs:
+            ip_address_lists = kwargs['ipAddressLists']
+        if 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if 'ispType' in kwargs:
+            isp_type = kwargs['ispType']
+
         if accelerate_region_id is not None:
             _setter("accelerate_region_id", accelerate_region_id)
         if accelerator_id is not None:

@@ -37,7 +37,11 @@ class NetworkAclEntriesArgs:
              network_acl_id: pulumi.Input[str],
              egresses: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesEgressArgs']]]] = None,
              ingresses: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesIngressArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'networkAclId' in kwargs:
+            network_acl_id = kwargs['networkAclId']
+
         _setter("network_acl_id", network_acl_id)
         if egresses is not None:
             _setter("egresses", egresses)
@@ -105,7 +109,11 @@ class _NetworkAclEntriesState:
              egresses: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesEgressArgs']]]] = None,
              ingresses: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesIngressArgs']]]] = None,
              network_acl_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'networkAclId' in kwargs:
+            network_acl_id = kwargs['networkAclId']
+
         if egresses is not None:
             _setter("egresses", egresses)
         if ingresses is not None:

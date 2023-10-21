@@ -59,7 +59,13 @@ class DomainResourceProxyType(dict):
              _setter: Callable[[Any, Any], None],
              proxy_ports: Optional[Sequence[int]] = None,
              proxy_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'proxyPorts' in kwargs:
+            proxy_ports = kwargs['proxyPorts']
+        if 'proxyType' in kwargs:
+            proxy_type = kwargs['proxyType']
+
         if proxy_ports is not None:
             _setter("proxy_ports", proxy_ports)
         if proxy_type is not None:
@@ -142,7 +148,13 @@ class SchedulerRuleRule(dict):
              type: Optional[str] = None,
              value: Optional[str] = None,
              value_type: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'valueType' in kwargs:
+            value_type = kwargs['valueType']
+
         if priority is not None:
             _setter("priority", priority)
         if region_id is not None:
@@ -258,7 +270,17 @@ class GetDdosBgpInstancesInstanceResult(dict):
              normal_bandwidth: int,
              region: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'baseBandwidth' in kwargs:
+            base_bandwidth = kwargs['baseBandwidth']
+        if 'ipCount' in kwargs:
+            ip_count = kwargs['ipCount']
+        if 'ipType' in kwargs:
+            ip_type = kwargs['ipType']
+        if 'normalBandwidth' in kwargs:
+            normal_bandwidth = kwargs['normalBandwidth']
+
         _setter("bandwidth", bandwidth)
         _setter("base_bandwidth", base_bandwidth)
         _setter("id", id)
@@ -373,7 +395,11 @@ class GetDdosBgpIpsIpResult(dict):
              ip: str,
              product: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("id", id)
         _setter("instance_id", instance_id)
         _setter("ip", ip)
@@ -504,7 +530,41 @@ class GetDdosCooDomainResourcesResourceResult(dict):
              ssl_ciphers: str,
              ssl_protocols: str,
              white_lists: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'blackLists' in kwargs:
+            black_lists = kwargs['blackLists']
+        if 'ccEnabled' in kwargs:
+            cc_enabled = kwargs['ccEnabled']
+        if 'ccRuleEnabled' in kwargs:
+            cc_rule_enabled = kwargs['ccRuleEnabled']
+        if 'ccTemplate' in kwargs:
+            cc_template = kwargs['ccTemplate']
+        if 'certName' in kwargs:
+            cert_name = kwargs['certName']
+        if 'http2Enable' in kwargs:
+            http2_enable = kwargs['http2Enable']
+        if 'httpsExt' in kwargs:
+            https_ext = kwargs['httpsExt']
+        if 'instanceIds' in kwargs:
+            instance_ids = kwargs['instanceIds']
+        if 'policyMode' in kwargs:
+            policy_mode = kwargs['policyMode']
+        if 'proxyEnabled' in kwargs:
+            proxy_enabled = kwargs['proxyEnabled']
+        if 'proxyTypes' in kwargs:
+            proxy_types = kwargs['proxyTypes']
+        if 'realServers' in kwargs:
+            real_servers = kwargs['realServers']
+        if 'rsType' in kwargs:
+            rs_type = kwargs['rsType']
+        if 'sslCiphers' in kwargs:
+            ssl_ciphers = kwargs['sslCiphers']
+        if 'sslProtocols' in kwargs:
+            ssl_protocols = kwargs['sslProtocols']
+        if 'whiteLists' in kwargs:
+            white_lists = kwargs['whiteLists']
+
         _setter("black_lists", black_lists)
         _setter("cc_enabled", cc_enabled)
         _setter("cc_rule_enabled", cc_rule_enabled)
@@ -688,7 +748,13 @@ class GetDdosCooDomainResourcesResourceProxyTypeResult(dict):
              _setter: Callable[[Any, Any], None],
              proxy_ports: Sequence[int],
              proxy_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'proxyPorts' in kwargs:
+            proxy_ports = kwargs['proxyPorts']
+        if 'proxyType' in kwargs:
+            proxy_type = kwargs['proxyType']
+
         _setter("proxy_ports", proxy_ports)
         _setter("proxy_type", proxy_type)
 
@@ -784,7 +850,27 @@ class GetDdosCooInstancesInstanceResult(dict):
              remark: str,
              service_bandwidth: int,
              status: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'baseBandwidth' in kwargs:
+            base_bandwidth = kwargs['baseBandwidth']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'debtStatus' in kwargs:
+            debt_status = kwargs['debtStatus']
+        if 'domainCount' in kwargs:
+            domain_count = kwargs['domainCount']
+        if 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if 'ipMode' in kwargs:
+            ip_mode = kwargs['ipMode']
+        if 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if 'portCount' in kwargs:
+            port_count = kwargs['portCount']
+        if 'serviceBandwidth' in kwargs:
+            service_bandwidth = kwargs['serviceBandwidth']
+
         _setter("bandwidth", bandwidth)
         _setter("base_bandwidth", base_bandwidth)
         _setter("create_time", create_time)
@@ -966,7 +1052,19 @@ class GetDdosCooPortsPortResult(dict):
              id: str,
              instance_id: str,
              real_servers: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backendPort' in kwargs:
+            backend_port = kwargs['backendPort']
+        if 'frontendPort' in kwargs:
+            frontend_port = kwargs['frontendPort']
+        if 'frontendProtocol' in kwargs:
+            frontend_protocol = kwargs['frontendProtocol']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'realServers' in kwargs:
+            real_servers = kwargs['realServers']
+
         _setter("backend_port", backend_port)
         _setter("frontend_port", frontend_port)
         _setter("frontend_protocol", frontend_protocol)

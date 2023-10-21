@@ -132,7 +132,51 @@ class ScalingGroupArgs:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxSize' in kwargs:
+            max_size = kwargs['maxSize']
+        if 'minSize' in kwargs:
+            min_size = kwargs['minSize']
+        if 'dbInstanceIds' in kwargs:
+            db_instance_ids = kwargs['dbInstanceIds']
+        if 'defaultCooldown' in kwargs:
+            default_cooldown = kwargs['defaultCooldown']
+        if 'desiredCapacity' in kwargs:
+            desired_capacity = kwargs['desiredCapacity']
+        if 'groupDeletionProtection' in kwargs:
+            group_deletion_protection = kwargs['groupDeletionProtection']
+        if 'groupType' in kwargs:
+            group_type = kwargs['groupType']
+        if 'healthCheckType' in kwargs:
+            health_check_type = kwargs['healthCheckType']
+        if 'launchTemplateId' in kwargs:
+            launch_template_id = kwargs['launchTemplateId']
+        if 'launchTemplateVersion' in kwargs:
+            launch_template_version = kwargs['launchTemplateVersion']
+        if 'loadbalancerIds' in kwargs:
+            loadbalancer_ids = kwargs['loadbalancerIds']
+        if 'multiAzPolicy' in kwargs:
+            multi_az_policy = kwargs['multiAzPolicy']
+        if 'onDemandBaseCapacity' in kwargs:
+            on_demand_base_capacity = kwargs['onDemandBaseCapacity']
+        if 'onDemandPercentageAboveBaseCapacity' in kwargs:
+            on_demand_percentage_above_base_capacity = kwargs['onDemandPercentageAboveBaseCapacity']
+        if 'protectedInstances' in kwargs:
+            protected_instances = kwargs['protectedInstances']
+        if 'removalPolicies' in kwargs:
+            removal_policies = kwargs['removalPolicies']
+        if 'scalingGroupName' in kwargs:
+            scaling_group_name = kwargs['scalingGroupName']
+        if 'spotInstancePools' in kwargs:
+            spot_instance_pools = kwargs['spotInstancePools']
+        if 'spotInstanceRemedy' in kwargs:
+            spot_instance_remedy = kwargs['spotInstanceRemedy']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'vswitchIds' in kwargs:
+            vswitch_ids = kwargs['vswitchIds']
+
         _setter("max_size", max_size)
         _setter("min_size", min_size)
         if db_instance_ids is not None:
@@ -589,7 +633,51 @@ class _ScalingGroupState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbInstanceIds' in kwargs:
+            db_instance_ids = kwargs['dbInstanceIds']
+        if 'defaultCooldown' in kwargs:
+            default_cooldown = kwargs['defaultCooldown']
+        if 'desiredCapacity' in kwargs:
+            desired_capacity = kwargs['desiredCapacity']
+        if 'groupDeletionProtection' in kwargs:
+            group_deletion_protection = kwargs['groupDeletionProtection']
+        if 'groupType' in kwargs:
+            group_type = kwargs['groupType']
+        if 'healthCheckType' in kwargs:
+            health_check_type = kwargs['healthCheckType']
+        if 'launchTemplateId' in kwargs:
+            launch_template_id = kwargs['launchTemplateId']
+        if 'launchTemplateVersion' in kwargs:
+            launch_template_version = kwargs['launchTemplateVersion']
+        if 'loadbalancerIds' in kwargs:
+            loadbalancer_ids = kwargs['loadbalancerIds']
+        if 'maxSize' in kwargs:
+            max_size = kwargs['maxSize']
+        if 'minSize' in kwargs:
+            min_size = kwargs['minSize']
+        if 'multiAzPolicy' in kwargs:
+            multi_az_policy = kwargs['multiAzPolicy']
+        if 'onDemandBaseCapacity' in kwargs:
+            on_demand_base_capacity = kwargs['onDemandBaseCapacity']
+        if 'onDemandPercentageAboveBaseCapacity' in kwargs:
+            on_demand_percentage_above_base_capacity = kwargs['onDemandPercentageAboveBaseCapacity']
+        if 'protectedInstances' in kwargs:
+            protected_instances = kwargs['protectedInstances']
+        if 'removalPolicies' in kwargs:
+            removal_policies = kwargs['removalPolicies']
+        if 'scalingGroupName' in kwargs:
+            scaling_group_name = kwargs['scalingGroupName']
+        if 'spotInstancePools' in kwargs:
+            spot_instance_pools = kwargs['spotInstancePools']
+        if 'spotInstanceRemedy' in kwargs:
+            spot_instance_remedy = kwargs['spotInstanceRemedy']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'vswitchIds' in kwargs:
+            vswitch_ids = kwargs['vswitchIds']
+
         if db_instance_ids is not None:
             _setter("db_instance_ids", db_instance_ids)
         if default_cooldown is not None:

@@ -44,7 +44,15 @@ class AlbServerGroupAttachmentArgs:
              scaling_group_id: pulumi.Input[str],
              weight: pulumi.Input[int],
              force_attach: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'albServerGroupId' in kwargs:
+            alb_server_group_id = kwargs['albServerGroupId']
+        if 'scalingGroupId' in kwargs:
+            scaling_group_id = kwargs['scalingGroupId']
+        if 'forceAttach' in kwargs:
+            force_attach = kwargs['forceAttach']
+
         _setter("alb_server_group_id", alb_server_group_id)
         _setter("port", port)
         _setter("scaling_group_id", scaling_group_id)
@@ -147,7 +155,15 @@ class _AlbServerGroupAttachmentState:
              port: Optional[pulumi.Input[int]] = None,
              scaling_group_id: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'albServerGroupId' in kwargs:
+            alb_server_group_id = kwargs['albServerGroupId']
+        if 'forceAttach' in kwargs:
+            force_attach = kwargs['forceAttach']
+        if 'scalingGroupId' in kwargs:
+            scaling_group_id = kwargs['scalingGroupId']
+
         if alb_server_group_id is not None:
             _setter("alb_server_group_id", alb_server_group_id)
         if force_attach is not None:

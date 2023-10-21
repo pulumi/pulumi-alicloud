@@ -14,6 +14,10 @@ public final class GetTransitRouterMulticastDomainSourcesSource {
      * 
      */
     private String groupIpAddress;
+    /**
+     * @return The id of the resource.
+     * 
+     */
     private String id;
     /**
      * @return ENI ID of the multicast source.
@@ -44,6 +48,10 @@ public final class GetTransitRouterMulticastDomainSourcesSource {
     public String groupIpAddress() {
         return this.groupIpAddress;
     }
+    /**
+     * @return The id of the resource.
+     * 
+     */
     public String id() {
         return this.id;
     }

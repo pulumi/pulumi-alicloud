@@ -82,7 +82,19 @@ class CommonBandwithPackageArgs:
              security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bandwidthPackageName' in kwargs:
+            bandwidth_package_name = kwargs['bandwidthPackageName']
+        if 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityProtectionTypes' in kwargs:
+            security_protection_types = kwargs['securityProtectionTypes']
+
         _setter("bandwidth", bandwidth)
         if bandwidth_package_name is not None:
             _setter("bandwidth_package_name", bandwidth_package_name)
@@ -362,7 +374,23 @@ class _CommonBandwithPackageState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bandwidthPackageName' in kwargs:
+            bandwidth_package_name = kwargs['bandwidthPackageName']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityProtectionTypes' in kwargs:
+            security_protection_types = kwargs['securityProtectionTypes']
+
         if bandwidth is not None:
             _setter("bandwidth", bandwidth)
         if bandwidth_package_name is not None:

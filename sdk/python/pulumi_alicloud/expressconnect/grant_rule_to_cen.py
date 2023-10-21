@@ -35,7 +35,15 @@ class GrantRuleToCenArgs:
              cen_id: pulumi.Input[str],
              cen_owner_id: pulumi.Input[int],
              instance_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'cenOwnerId' in kwargs:
+            cen_owner_id = kwargs['cenOwnerId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("cen_id", cen_id)
         _setter("cen_owner_id", cen_owner_id)
         _setter("instance_id", instance_id)
@@ -101,7 +109,15 @@ class _GrantRuleToCenState:
              cen_id: Optional[pulumi.Input[str]] = None,
              cen_owner_id: Optional[pulumi.Input[int]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'cenOwnerId' in kwargs:
+            cen_owner_id = kwargs['cenOwnerId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if cen_id is not None:
             _setter("cen_id", cen_id)
         if cen_owner_id is not None:

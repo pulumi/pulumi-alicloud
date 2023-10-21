@@ -76,7 +76,23 @@ class GetSubnetsSubnetResult(dict):
              type: str,
              vpd_id: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'gmtModified' in kwargs:
+            gmt_modified = kwargs['gmtModified']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+        if 'subnetName' in kwargs:
+            subnet_name = kwargs['subnetName']
+        if 'vpdId' in kwargs:
+            vpd_id = kwargs['vpdId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("cidr", cidr)
         _setter("create_time", create_time)
         _setter("gmt_modified", gmt_modified)
@@ -233,7 +249,19 @@ class GetVpdsVpdResult(dict):
              status: str,
              vpd_id: str,
              vpd_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'gmtModified' in kwargs:
+            gmt_modified = kwargs['gmtModified']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'vpdId' in kwargs:
+            vpd_id = kwargs['vpdId']
+        if 'vpdName' in kwargs:
+            vpd_name = kwargs['vpdName']
+
         _setter("cidr", cidr)
         _setter("create_time", create_time)
         _setter("gmt_modified", gmt_modified)

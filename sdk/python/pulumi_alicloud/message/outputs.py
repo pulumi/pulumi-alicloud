@@ -86,7 +86,37 @@ class GetServiceQueuesQueueResult(dict):
              queue_name: str,
              queue_url: str,
              visibility_timeout: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'activeMessages' in kwargs:
+            active_messages = kwargs['activeMessages']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'delayMessages' in kwargs:
+            delay_messages = kwargs['delayMessages']
+        if 'delaySeconds' in kwargs:
+            delay_seconds = kwargs['delaySeconds']
+        if 'inactiveMessages' in kwargs:
+            inactive_messages = kwargs['inactiveMessages']
+        if 'lastModifyTime' in kwargs:
+            last_modify_time = kwargs['lastModifyTime']
+        if 'loggingEnabled' in kwargs:
+            logging_enabled = kwargs['loggingEnabled']
+        if 'maximumMessageSize' in kwargs:
+            maximum_message_size = kwargs['maximumMessageSize']
+        if 'messageRetentionPeriod' in kwargs:
+            message_retention_period = kwargs['messageRetentionPeriod']
+        if 'pollingWaitSeconds' in kwargs:
+            polling_wait_seconds = kwargs['pollingWaitSeconds']
+        if 'queueInternalUrl' in kwargs:
+            queue_internal_url = kwargs['queueInternalUrl']
+        if 'queueName' in kwargs:
+            queue_name = kwargs['queueName']
+        if 'queueUrl' in kwargs:
+            queue_url = kwargs['queueUrl']
+        if 'visibilityTimeout' in kwargs:
+            visibility_timeout = kwargs['visibilityTimeout']
+
         _setter("active_messages", active_messages)
         _setter("create_time", create_time)
         _setter("delay_messages", delay_messages)
@@ -279,7 +309,27 @@ class GetServiceSubscriptionsSubscriptionResult(dict):
              subscription_url: str,
              topic_name: str,
              topic_owner: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'filterTag' in kwargs:
+            filter_tag = kwargs['filterTag']
+        if 'lastModifyTime' in kwargs:
+            last_modify_time = kwargs['lastModifyTime']
+        if 'notifyContentFormat' in kwargs:
+            notify_content_format = kwargs['notifyContentFormat']
+        if 'notifyStrategy' in kwargs:
+            notify_strategy = kwargs['notifyStrategy']
+        if 'subscriptionName' in kwargs:
+            subscription_name = kwargs['subscriptionName']
+        if 'subscriptionUrl' in kwargs:
+            subscription_url = kwargs['subscriptionUrl']
+        if 'topicName' in kwargs:
+            topic_name = kwargs['topicName']
+        if 'topicOwner' in kwargs:
+            topic_owner = kwargs['topicOwner']
+
         _setter("create_time", create_time)
         _setter("endpoint", endpoint)
         _setter("filter_tag", filter_tag)
@@ -432,7 +482,27 @@ class GetServiceTopicsTopicResult(dict):
              topic_inner_url: str,
              topic_name: str,
              topic_url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'lastModifyTime' in kwargs:
+            last_modify_time = kwargs['lastModifyTime']
+        if 'loggingEnabled' in kwargs:
+            logging_enabled = kwargs['loggingEnabled']
+        if 'maxMessageSize' in kwargs:
+            max_message_size = kwargs['maxMessageSize']
+        if 'messageCount' in kwargs:
+            message_count = kwargs['messageCount']
+        if 'messageRetentionPeriod' in kwargs:
+            message_retention_period = kwargs['messageRetentionPeriod']
+        if 'topicInnerUrl' in kwargs:
+            topic_inner_url = kwargs['topicInnerUrl']
+        if 'topicName' in kwargs:
+            topic_name = kwargs['topicName']
+        if 'topicUrl' in kwargs:
+            topic_url = kwargs['topicUrl']
+
         _setter("create_time", create_time)
         _setter("id", id)
         _setter("last_modify_time", last_modify_time)

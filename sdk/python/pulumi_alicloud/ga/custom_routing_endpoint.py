@@ -39,7 +39,13 @@ class CustomRoutingEndpointArgs:
              endpoint_group_id: pulumi.Input[str],
              type: pulumi.Input[str],
              traffic_to_endpoint_policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'endpointGroupId' in kwargs:
+            endpoint_group_id = kwargs['endpointGroupId']
+        if 'trafficToEndpointPolicy' in kwargs:
+            traffic_to_endpoint_policy = kwargs['trafficToEndpointPolicy']
+
         _setter("endpoint", endpoint)
         _setter("endpoint_group_id", endpoint_group_id)
         _setter("type", type)
@@ -139,7 +145,19 @@ class _CustomRoutingEndpointState:
              status: Optional[pulumi.Input[str]] = None,
              traffic_to_endpoint_policy: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'customRoutingEndpointId' in kwargs:
+            custom_routing_endpoint_id = kwargs['customRoutingEndpointId']
+        if 'endpointGroupId' in kwargs:
+            endpoint_group_id = kwargs['endpointGroupId']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if 'trafficToEndpointPolicy' in kwargs:
+            traffic_to_endpoint_policy = kwargs['trafficToEndpointPolicy']
+
         if accelerator_id is not None:
             _setter("accelerator_id", accelerator_id)
         if custom_routing_endpoint_id is not None:

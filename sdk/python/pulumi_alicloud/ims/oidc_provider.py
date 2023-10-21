@@ -47,7 +47,17 @@ class OidcProviderArgs:
              description: Optional[pulumi.Input[str]] = None,
              fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              issuance_limit_time: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'issuerUrl' in kwargs:
+            issuer_url = kwargs['issuerUrl']
+        if 'oidcProviderName' in kwargs:
+            oidc_provider_name = kwargs['oidcProviderName']
+        if 'clientIds' in kwargs:
+            client_ids = kwargs['clientIds']
+        if 'issuanceLimitTime' in kwargs:
+            issuance_limit_time = kwargs['issuanceLimitTime']
+
         _setter("issuer_url", issuer_url)
         _setter("oidc_provider_name", oidc_provider_name)
         if client_ids is not None:
@@ -172,7 +182,19 @@ class _OidcProviderState:
              issuance_limit_time: Optional[pulumi.Input[int]] = None,
              issuer_url: Optional[pulumi.Input[str]] = None,
              oidc_provider_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clientIds' in kwargs:
+            client_ids = kwargs['clientIds']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'issuanceLimitTime' in kwargs:
+            issuance_limit_time = kwargs['issuanceLimitTime']
+        if 'issuerUrl' in kwargs:
+            issuer_url = kwargs['issuerUrl']
+        if 'oidcProviderName' in kwargs:
+            oidc_provider_name = kwargs['oidcProviderName']
+
         if client_ids is not None:
             _setter("client_ids", client_ids)
         if create_time is not None:

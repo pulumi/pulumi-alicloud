@@ -59,7 +59,21 @@ class BastionHostInstanceAdAuthServerArgs:
              mobile_mapping: Optional[pulumi.Input[str]] = None,
              name_mapping: Optional[pulumi.Input[str]] = None,
              standby_server: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'baseDn' in kwargs:
+            base_dn = kwargs['baseDn']
+        if 'isSsl' in kwargs:
+            is_ssl = kwargs['isSsl']
+        if 'emailMapping' in kwargs:
+            email_mapping = kwargs['emailMapping']
+        if 'mobileMapping' in kwargs:
+            mobile_mapping = kwargs['mobileMapping']
+        if 'nameMapping' in kwargs:
+            name_mapping = kwargs['nameMapping']
+        if 'standbyServer' in kwargs:
+            standby_server = kwargs['standbyServer']
+
         _setter("account", account)
         _setter("base_dn", base_dn)
         _setter("domain", domain)
@@ -232,7 +246,23 @@ class BastionHostInstanceLdapAuthServerArgs:
              mobile_mapping: Optional[pulumi.Input[str]] = None,
              name_mapping: Optional[pulumi.Input[str]] = None,
              standby_server: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'baseDn' in kwargs:
+            base_dn = kwargs['baseDn']
+        if 'emailMapping' in kwargs:
+            email_mapping = kwargs['emailMapping']
+        if 'isSsl' in kwargs:
+            is_ssl = kwargs['isSsl']
+        if 'loginNameMapping' in kwargs:
+            login_name_mapping = kwargs['loginNameMapping']
+        if 'mobileMapping' in kwargs:
+            mobile_mapping = kwargs['mobileMapping']
+        if 'nameMapping' in kwargs:
+            name_mapping = kwargs['nameMapping']
+        if 'standbyServer' in kwargs:
+            standby_server = kwargs['standbyServer']
+
         _setter("account", account)
         _setter("base_dn", base_dn)
         _setter("password", password)

@@ -841,7 +841,7 @@ type GetInstancesInstance struct {
 	HasRenewChangeOrder bool `pulumi:"hasRenewChangeOrder"`
 	// The ID of the instance.
 	Id string `pulumi:"id"`
-	// Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+	// Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
 	InstanceClass             string `pulumi:"instanceClass"`
 	InstanceReleaseProtection bool   `pulumi:"instanceReleaseProtection"`
 	// The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
@@ -950,7 +950,7 @@ type GetInstancesInstanceArgs struct {
 	HasRenewChangeOrder pulumi.BoolInput `pulumi:"hasRenewChangeOrder"`
 	// The ID of the instance.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+	// Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
 	InstanceClass             pulumi.StringInput `pulumi:"instanceClass"`
 	InstanceReleaseProtection pulumi.BoolInput   `pulumi:"instanceReleaseProtection"`
 	// The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
@@ -1176,7 +1176,7 @@ func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+// Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
 func (o GetInstancesInstanceOutput) InstanceClass() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceClass }).(pulumi.StringOutput)
 }

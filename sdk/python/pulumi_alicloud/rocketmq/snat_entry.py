@@ -35,7 +35,15 @@ class SnatEntryArgs:
              cidr_block: pulumi.Input[str],
              sag_id: pulumi.Input[str],
              snat_ip: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if 'sagId' in kwargs:
+            sag_id = kwargs['sagId']
+        if 'snatIp' in kwargs:
+            snat_ip = kwargs['snatIp']
+
         _setter("cidr_block", cidr_block)
         _setter("sag_id", sag_id)
         _setter("snat_ip", snat_ip)
@@ -101,7 +109,15 @@ class _SnatEntryState:
              cidr_block: Optional[pulumi.Input[str]] = None,
              sag_id: Optional[pulumi.Input[str]] = None,
              snat_ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if 'sagId' in kwargs:
+            sag_id = kwargs['sagId']
+        if 'snatIp' in kwargs:
+            snat_ip = kwargs['snatIp']
+
         if cidr_block is not None:
             _setter("cidr_block", cidr_block)
         if sag_id is not None:

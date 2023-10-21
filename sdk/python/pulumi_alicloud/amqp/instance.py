@@ -79,7 +79,33 @@ class InstanceArgs:
              renewal_duration_unit: Optional[pulumi.Input[str]] = None,
              renewal_status: Optional[pulumi.Input[str]] = None,
              storage_size: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'maxTps' in kwargs:
+            max_tps = kwargs['maxTps']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'queueCapacity' in kwargs:
+            queue_capacity = kwargs['queueCapacity']
+        if 'supportEip' in kwargs:
+            support_eip = kwargs['supportEip']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'maxEipTps' in kwargs:
+            max_eip_tps = kwargs['maxEipTps']
+        if 'modifyType' in kwargs:
+            modify_type = kwargs['modifyType']
+        if 'renewalDuration' in kwargs:
+            renewal_duration = kwargs['renewalDuration']
+        if 'renewalDurationUnit' in kwargs:
+            renewal_duration_unit = kwargs['renewalDurationUnit']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if 'storageSize' in kwargs:
+            storage_size = kwargs['storageSize']
+
         _setter("instance_type", instance_type)
         _setter("max_tps", max_tps)
         _setter("payment_type", payment_type)
@@ -345,7 +371,33 @@ class _InstanceState:
              status: Optional[pulumi.Input[str]] = None,
              storage_size: Optional[pulumi.Input[str]] = None,
              support_eip: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'maxEipTps' in kwargs:
+            max_eip_tps = kwargs['maxEipTps']
+        if 'maxTps' in kwargs:
+            max_tps = kwargs['maxTps']
+        if 'modifyType' in kwargs:
+            modify_type = kwargs['modifyType']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'queueCapacity' in kwargs:
+            queue_capacity = kwargs['queueCapacity']
+        if 'renewalDuration' in kwargs:
+            renewal_duration = kwargs['renewalDuration']
+        if 'renewalDurationUnit' in kwargs:
+            renewal_duration_unit = kwargs['renewalDurationUnit']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if 'storageSize' in kwargs:
+            storage_size = kwargs['storageSize']
+        if 'supportEip' in kwargs:
+            support_eip = kwargs['supportEip']
+
         if instance_name is not None:
             _setter("instance_name", instance_name)
         if instance_type is not None:

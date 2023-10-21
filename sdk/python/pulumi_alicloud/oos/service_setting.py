@@ -43,7 +43,19 @@ class ServiceSettingArgs:
              delivery_oss_key_prefix: Optional[pulumi.Input[str]] = None,
              delivery_sls_enabled: Optional[pulumi.Input[bool]] = None,
              delivery_sls_project_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deliveryOssBucketName' in kwargs:
+            delivery_oss_bucket_name = kwargs['deliveryOssBucketName']
+        if 'deliveryOssEnabled' in kwargs:
+            delivery_oss_enabled = kwargs['deliveryOssEnabled']
+        if 'deliveryOssKeyPrefix' in kwargs:
+            delivery_oss_key_prefix = kwargs['deliveryOssKeyPrefix']
+        if 'deliverySlsEnabled' in kwargs:
+            delivery_sls_enabled = kwargs['deliverySlsEnabled']
+        if 'deliverySlsProjectName' in kwargs:
+            delivery_sls_project_name = kwargs['deliverySlsProjectName']
+
         if delivery_oss_bucket_name is not None:
             _setter("delivery_oss_bucket_name", delivery_oss_bucket_name)
         if delivery_oss_enabled is not None:
@@ -148,7 +160,19 @@ class _ServiceSettingState:
              delivery_oss_key_prefix: Optional[pulumi.Input[str]] = None,
              delivery_sls_enabled: Optional[pulumi.Input[bool]] = None,
              delivery_sls_project_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deliveryOssBucketName' in kwargs:
+            delivery_oss_bucket_name = kwargs['deliveryOssBucketName']
+        if 'deliveryOssEnabled' in kwargs:
+            delivery_oss_enabled = kwargs['deliveryOssEnabled']
+        if 'deliveryOssKeyPrefix' in kwargs:
+            delivery_oss_key_prefix = kwargs['deliveryOssKeyPrefix']
+        if 'deliverySlsEnabled' in kwargs:
+            delivery_sls_enabled = kwargs['deliverySlsEnabled']
+        if 'deliverySlsProjectName' in kwargs:
+            delivery_sls_project_name = kwargs['deliverySlsProjectName']
+
         if delivery_oss_bucket_name is not None:
             _setter("delivery_oss_bucket_name", delivery_oss_bucket_name)
         if delivery_oss_enabled is not None:

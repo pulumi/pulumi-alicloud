@@ -109,9 +109,9 @@ def get_waf_rules(ids: Optional[Sequence[str]] = None,
                   query_args: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWafRulesResult:
     """
-    This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/configure-protection-rules)
+    This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchcreatedcdnwafrules)
 
-    > **NOTE:** Available in 1.201.0+
+    > **NOTE:** Available since v1.201.0.
 
     ## Example Usage
 
@@ -155,9 +155,9 @@ def get_waf_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
                          query_args: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWafRulesResult]:
     """
-    This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/configure-protection-rules)
+    This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchcreatedcdnwafrules)
 
-    > **NOTE:** Available in 1.201.0+
+    > **NOTE:** Available since v1.201.0.
 
     ## Example Usage
 

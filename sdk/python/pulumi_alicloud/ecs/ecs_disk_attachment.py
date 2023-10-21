@@ -47,7 +47,17 @@ class EcsDiskAttachmentArgs:
              delete_with_instance: Optional[pulumi.Input[bool]] = None,
              key_pair_name: Optional[pulumi.Input[str]] = None,
              password: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'deleteWithInstance' in kwargs:
+            delete_with_instance = kwargs['deleteWithInstance']
+        if 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+
         _setter("disk_id", disk_id)
         _setter("instance_id", instance_id)
         if bootable is not None:
@@ -171,7 +181,17 @@ class _EcsDiskAttachmentState:
              instance_id: Optional[pulumi.Input[str]] = None,
              key_pair_name: Optional[pulumi.Input[str]] = None,
              password: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deleteWithInstance' in kwargs:
+            delete_with_instance = kwargs['deleteWithInstance']
+        if 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+
         if bootable is not None:
             _setter("bootable", bootable)
         if delete_with_instance is not None:

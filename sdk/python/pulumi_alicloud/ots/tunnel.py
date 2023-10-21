@@ -41,7 +41,17 @@ class TunnelArgs:
              table_name: pulumi.Input[str],
              tunnel_name: pulumi.Input[str],
              tunnel_type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'tableName' in kwargs:
+            table_name = kwargs['tableName']
+        if 'tunnelName' in kwargs:
+            tunnel_name = kwargs['tunnelName']
+        if 'tunnelType' in kwargs:
+            tunnel_type = kwargs['tunnelType']
+
         _setter("instance_name", instance_name)
         _setter("table_name", table_name)
         _setter("tunnel_name", tunnel_name)
@@ -148,7 +158,25 @@ class _TunnelState:
              tunnel_rpo: Optional[pulumi.Input[int]] = None,
              tunnel_stage: Optional[pulumi.Input[str]] = None,
              tunnel_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'tableName' in kwargs:
+            table_name = kwargs['tableName']
+        if 'tunnelId' in kwargs:
+            tunnel_id = kwargs['tunnelId']
+        if 'tunnelName' in kwargs:
+            tunnel_name = kwargs['tunnelName']
+        if 'tunnelRpo' in kwargs:
+            tunnel_rpo = kwargs['tunnelRpo']
+        if 'tunnelStage' in kwargs:
+            tunnel_stage = kwargs['tunnelStage']
+        if 'tunnelType' in kwargs:
+            tunnel_type = kwargs['tunnelType']
+
         if channels is not None:
             _setter("channels", channels)
         if create_time is not None:

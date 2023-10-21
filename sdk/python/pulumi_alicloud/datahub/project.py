@@ -31,7 +31,9 @@ class ProjectArgs:
              _setter: Callable[[Any, Any], None],
              comment: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if comment is not None:
             _setter("comment", comment)
         if name is not None:
@@ -90,7 +92,13 @@ class _ProjectState:
              create_time: Optional[pulumi.Input[str]] = None,
              last_modify_time: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'lastModifyTime' in kwargs:
+            last_modify_time = kwargs['lastModifyTime']
+
         if comment is not None:
             _setter("comment", comment)
         if create_time is not None:

@@ -43,7 +43,19 @@ class TransitRouterMulticastDomainMemberArgs:
              transit_router_multicast_domain_id: pulumi.Input[str],
              dry_run: Optional[pulumi.Input[bool]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupIpAddress' in kwargs:
+            group_ip_address = kwargs['groupIpAddress']
+        if 'networkInterfaceId' in kwargs:
+            network_interface_id = kwargs['networkInterfaceId']
+        if 'transitRouterMulticastDomainId' in kwargs:
+            transit_router_multicast_domain_id = kwargs['transitRouterMulticastDomainId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         _setter("group_ip_address", group_ip_address)
         _setter("network_interface_id", network_interface_id)
         _setter("transit_router_multicast_domain_id", transit_router_multicast_domain_id)
@@ -149,7 +161,19 @@ class _TransitRouterMulticastDomainMemberState:
              status: Optional[pulumi.Input[str]] = None,
              transit_router_multicast_domain_id: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'groupIpAddress' in kwargs:
+            group_ip_address = kwargs['groupIpAddress']
+        if 'networkInterfaceId' in kwargs:
+            network_interface_id = kwargs['networkInterfaceId']
+        if 'transitRouterMulticastDomainId' in kwargs:
+            transit_router_multicast_domain_id = kwargs['transitRouterMulticastDomainId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if dry_run is not None:
             _setter("dry_run", dry_run)
         if group_ip_address is not None:
@@ -250,7 +274,7 @@ class TransitRouterMulticastDomainMember(pulumi.CustomResource):
         """
         Provides a Cen Transit Router Multicast Domain Member resource.
 
-        For information about Cen Transit Router Multicast Domain Member and how to use it, see [What is Transit Router Multicast Domain Member](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupmembers).
+        For information about Cen Transit Router Multicast Domain Member and how to use it, see [What is Transit Router Multicast Domain Member](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupmembers).
 
         > **NOTE:** Available since v1.195.0.
 
@@ -279,7 +303,7 @@ class TransitRouterMulticastDomainMember(pulumi.CustomResource):
         """
         Provides a Cen Transit Router Multicast Domain Member resource.
 
-        For information about Cen Transit Router Multicast Domain Member and how to use it, see [What is Transit Router Multicast Domain Member](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupmembers).
+        For information about Cen Transit Router Multicast Domain Member and how to use it, see [What is Transit Router Multicast Domain Member](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupmembers).
 
         > **NOTE:** Available since v1.195.0.
 

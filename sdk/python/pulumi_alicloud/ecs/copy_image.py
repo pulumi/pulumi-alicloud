@@ -53,7 +53,19 @@ class CopyImageArgs:
              kms_key_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'sourceImageId' in kwargs:
+            source_image_id = kwargs['sourceImageId']
+        if 'sourceRegionId' in kwargs:
+            source_region_id = kwargs['sourceRegionId']
+        if 'deleteAutoSnapshot' in kwargs:
+            delete_auto_snapshot = kwargs['deleteAutoSnapshot']
+        if 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+        if 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+
         _setter("source_image_id", source_image_id)
         _setter("source_region_id", source_region_id)
         if delete_auto_snapshot is not None:
@@ -212,7 +224,19 @@ class _CopyImageState:
              source_image_id: Optional[pulumi.Input[str]] = None,
              source_region_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deleteAutoSnapshot' in kwargs:
+            delete_auto_snapshot = kwargs['deleteAutoSnapshot']
+        if 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+        if 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if 'sourceImageId' in kwargs:
+            source_image_id = kwargs['sourceImageId']
+        if 'sourceRegionId' in kwargs:
+            source_region_id = kwargs['sourceRegionId']
+
         if delete_auto_snapshot is not None:
             _setter("delete_auto_snapshot", delete_auto_snapshot)
         if description is not None:

@@ -189,7 +189,87 @@ class InstanceArgs:
              time_serires_engine_specification: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'diskCategory' in kwargs:
+            disk_category = kwargs['diskCategory']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'arbiterVswitchId' in kwargs:
+            arbiter_vswitch_id = kwargs['arbiterVswitchId']
+        if 'arbiterZoneId' in kwargs:
+            arbiter_zone_id = kwargs['arbiterZoneId']
+        if 'archVersion' in kwargs:
+            arch_version = kwargs['archVersion']
+        if 'coldStorage' in kwargs:
+            cold_storage = kwargs['coldStorage']
+        if 'coreSingleStorage' in kwargs:
+            core_single_storage = kwargs['coreSingleStorage']
+        if 'coreSpec' in kwargs:
+            core_spec = kwargs['coreSpec']
+        if 'deletionProection' in kwargs:
+            deletion_proection = kwargs['deletionProection']
+        if 'fileEngineNodeCount' in kwargs:
+            file_engine_node_count = kwargs['fileEngineNodeCount']
+        if 'fileEngineSpecification' in kwargs:
+            file_engine_specification = kwargs['fileEngineSpecification']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'instanceStorage' in kwargs:
+            instance_storage = kwargs['instanceStorage']
+        if 'ipWhiteLists' in kwargs:
+            ip_white_lists = kwargs['ipWhiteLists']
+        if 'logDiskCategory' in kwargs:
+            log_disk_category = kwargs['logDiskCategory']
+        if 'logNum' in kwargs:
+            log_num = kwargs['logNum']
+        if 'logSingleStorage' in kwargs:
+            log_single_storage = kwargs['logSingleStorage']
+        if 'logSpec' in kwargs:
+            log_spec = kwargs['logSpec']
+        if 'ltsNodeCount' in kwargs:
+            lts_node_count = kwargs['ltsNodeCount']
+        if 'ltsNodeSpecification' in kwargs:
+            lts_node_specification = kwargs['ltsNodeSpecification']
+        if 'multiZoneCombination' in kwargs:
+            multi_zone_combination = kwargs['multiZoneCombination']
+        if 'pricingCycle' in kwargs:
+            pricing_cycle = kwargs['pricingCycle']
+        if 'primaryVswitchId' in kwargs:
+            primary_vswitch_id = kwargs['primaryVswitchId']
+        if 'primaryZoneId' in kwargs:
+            primary_zone_id = kwargs['primaryZoneId']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'searchEngineNodeCount' in kwargs:
+            search_engine_node_count = kwargs['searchEngineNodeCount']
+        if 'searchEngineSpecification' in kwargs:
+            search_engine_specification = kwargs['searchEngineSpecification']
+        if 'standbyVswitchId' in kwargs:
+            standby_vswitch_id = kwargs['standbyVswitchId']
+        if 'standbyZoneId' in kwargs:
+            standby_zone_id = kwargs['standbyZoneId']
+        if 'streamEngineNodeCount' in kwargs:
+            stream_engine_node_count = kwargs['streamEngineNodeCount']
+        if 'streamEngineSpecification' in kwargs:
+            stream_engine_specification = kwargs['streamEngineSpecification']
+        if 'tableEngineNodeCount' in kwargs:
+            table_engine_node_count = kwargs['tableEngineNodeCount']
+        if 'tableEngineSpecification' in kwargs:
+            table_engine_specification = kwargs['tableEngineSpecification']
+        if 'timeSeriesEngineNodeCount' in kwargs:
+            time_series_engine_node_count = kwargs['timeSeriesEngineNodeCount']
+        if 'timeSeriesEngineSpecification' in kwargs:
+            time_series_engine_specification = kwargs['timeSeriesEngineSpecification']
+        if 'timeSeriresEngineSpecification' in kwargs:
+            time_serires_engine_specification = kwargs['timeSeriresEngineSpecification']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("disk_category", disk_category)
         _setter("payment_type", payment_type)
         _setter("vswitch_id", vswitch_id)
@@ -981,7 +1061,101 @@ class _InstanceState:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'arbiterVswitchId' in kwargs:
+            arbiter_vswitch_id = kwargs['arbiterVswitchId']
+        if 'arbiterZoneId' in kwargs:
+            arbiter_zone_id = kwargs['arbiterZoneId']
+        if 'archVersion' in kwargs:
+            arch_version = kwargs['archVersion']
+        if 'coldStorage' in kwargs:
+            cold_storage = kwargs['coldStorage']
+        if 'coreSingleStorage' in kwargs:
+            core_single_storage = kwargs['coreSingleStorage']
+        if 'coreSpec' in kwargs:
+            core_spec = kwargs['coreSpec']
+        if 'deletionProection' in kwargs:
+            deletion_proection = kwargs['deletionProection']
+        if 'diskCategory' in kwargs:
+            disk_category = kwargs['diskCategory']
+        if 'enabledFileEngine' in kwargs:
+            enabled_file_engine = kwargs['enabledFileEngine']
+        if 'enabledLtsEngine' in kwargs:
+            enabled_lts_engine = kwargs['enabledLtsEngine']
+        if 'enabledSearchEngine' in kwargs:
+            enabled_search_engine = kwargs['enabledSearchEngine']
+        if 'enabledStreamEngine' in kwargs:
+            enabled_stream_engine = kwargs['enabledStreamEngine']
+        if 'enabledTableEngine' in kwargs:
+            enabled_table_engine = kwargs['enabledTableEngine']
+        if 'enabledTimeSeriresEngine' in kwargs:
+            enabled_time_serires_engine = kwargs['enabledTimeSeriresEngine']
+        if 'fileEngineNodeCount' in kwargs:
+            file_engine_node_count = kwargs['fileEngineNodeCount']
+        if 'fileEngineSpecification' in kwargs:
+            file_engine_specification = kwargs['fileEngineSpecification']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'instanceStorage' in kwargs:
+            instance_storage = kwargs['instanceStorage']
+        if 'ipWhiteLists' in kwargs:
+            ip_white_lists = kwargs['ipWhiteLists']
+        if 'logDiskCategory' in kwargs:
+            log_disk_category = kwargs['logDiskCategory']
+        if 'logNum' in kwargs:
+            log_num = kwargs['logNum']
+        if 'logSingleStorage' in kwargs:
+            log_single_storage = kwargs['logSingleStorage']
+        if 'logSpec' in kwargs:
+            log_spec = kwargs['logSpec']
+        if 'ltsNodeCount' in kwargs:
+            lts_node_count = kwargs['ltsNodeCount']
+        if 'ltsNodeSpecification' in kwargs:
+            lts_node_specification = kwargs['ltsNodeSpecification']
+        if 'multiZoneCombination' in kwargs:
+            multi_zone_combination = kwargs['multiZoneCombination']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'pricingCycle' in kwargs:
+            pricing_cycle = kwargs['pricingCycle']
+        if 'primaryVswitchId' in kwargs:
+            primary_vswitch_id = kwargs['primaryVswitchId']
+        if 'primaryZoneId' in kwargs:
+            primary_zone_id = kwargs['primaryZoneId']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'searchEngineNodeCount' in kwargs:
+            search_engine_node_count = kwargs['searchEngineNodeCount']
+        if 'searchEngineSpecification' in kwargs:
+            search_engine_specification = kwargs['searchEngineSpecification']
+        if 'serviceType' in kwargs:
+            service_type = kwargs['serviceType']
+        if 'standbyVswitchId' in kwargs:
+            standby_vswitch_id = kwargs['standbyVswitchId']
+        if 'standbyZoneId' in kwargs:
+            standby_zone_id = kwargs['standbyZoneId']
+        if 'streamEngineNodeCount' in kwargs:
+            stream_engine_node_count = kwargs['streamEngineNodeCount']
+        if 'streamEngineSpecification' in kwargs:
+            stream_engine_specification = kwargs['streamEngineSpecification']
+        if 'tableEngineNodeCount' in kwargs:
+            table_engine_node_count = kwargs['tableEngineNodeCount']
+        if 'tableEngineSpecification' in kwargs:
+            table_engine_specification = kwargs['tableEngineSpecification']
+        if 'timeSeriesEngineNodeCount' in kwargs:
+            time_series_engine_node_count = kwargs['timeSeriesEngineNodeCount']
+        if 'timeSeriesEngineSpecification' in kwargs:
+            time_series_engine_specification = kwargs['timeSeriesEngineSpecification']
+        if 'timeSeriresEngineSpecification' in kwargs:
+            time_serires_engine_specification = kwargs['timeSeriresEngineSpecification']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if arbiter_vswitch_id is not None:
             _setter("arbiter_vswitch_id", arbiter_vswitch_id)
         if arbiter_zone_id is not None:

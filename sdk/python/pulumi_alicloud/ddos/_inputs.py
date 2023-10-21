@@ -33,7 +33,13 @@ class DomainResourceProxyTypeArgs:
              _setter: Callable[[Any, Any], None],
              proxy_ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
              proxy_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'proxyPorts' in kwargs:
+            proxy_ports = kwargs['proxyPorts']
+        if 'proxyType' in kwargs:
+            proxy_type = kwargs['proxyType']
+
         if proxy_ports is not None:
             _setter("proxy_ports", proxy_ports)
         if proxy_type is not None:
@@ -105,7 +111,13 @@ class SchedulerRuleRuleArgs:
              type: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
              value_type: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'valueType' in kwargs:
+            value_type = kwargs['valueType']
+
         if priority is not None:
             _setter("priority", priority)
         if region_id is not None:

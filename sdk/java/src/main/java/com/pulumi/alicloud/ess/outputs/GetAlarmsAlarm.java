@@ -55,7 +55,7 @@ public final class GetAlarmsAlarm {
      */
     private String id;
     /**
-     * @return The name for the alarm&#39;s associated metric. See Block_metricNames_and_dimensions below for details.
+     * @return The name for the alarm&#39;s associated metric.
      * 
      */
     private String metricName;
@@ -153,7 +153,7 @@ public final class GetAlarmsAlarm {
         return this.id;
     }
     /**
-     * @return The name for the alarm&#39;s associated metric. See Block_metricNames_and_dimensions below for details.
+     * @return The name for the alarm&#39;s associated metric.
      * 
      */
     public String metricName() {

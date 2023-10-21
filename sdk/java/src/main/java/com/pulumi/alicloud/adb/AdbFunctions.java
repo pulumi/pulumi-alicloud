@@ -795,9 +795,9 @@ public final class AdbFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:adb/getDBClusters:getDBClusters", TypeShape.of(GetDBClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Adb Resource Group available to the user.[What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/describe-db-resource-group)
+     * This data source provides Adb Resource Group available to the user.[What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describedbresourcegroup)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * ```java
@@ -836,9 +836,9 @@ public final class AdbFunctions {
         return getResourceGroups(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Adb Resource Group available to the user.[What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/describe-db-resource-group)
+     * This data source provides Adb Resource Group available to the user.[What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describedbresourcegroup)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * ```java
@@ -877,9 +877,9 @@ public final class AdbFunctions {
         return getResourceGroupsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Adb Resource Group available to the user.[What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/describe-db-resource-group)
+     * This data source provides Adb Resource Group available to the user.[What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describedbresourcegroup)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * ```java
@@ -918,9 +918,9 @@ public final class AdbFunctions {
         return Deployment.getInstance().invoke("alicloud:adb/getResourceGroups:getResourceGroups", TypeShape.of(GetResourceGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Adb Resource Group available to the user.[What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/describe-db-resource-group)
+     * This data source provides Adb Resource Group available to the user.[What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describedbresourcegroup)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * ```java

@@ -35,7 +35,15 @@ class ImageExportArgs:
              image_id: pulumi.Input[str],
              oss_bucket: pulumi.Input[str],
              oss_prefix: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'ossBucket' in kwargs:
+            oss_bucket = kwargs['ossBucket']
+        if 'ossPrefix' in kwargs:
+            oss_prefix = kwargs['ossPrefix']
+
         _setter("image_id", image_id)
         _setter("oss_bucket", oss_bucket)
         if oss_prefix is not None:
@@ -102,7 +110,15 @@ class _ImageExportState:
              image_id: Optional[pulumi.Input[str]] = None,
              oss_bucket: Optional[pulumi.Input[str]] = None,
              oss_prefix: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'ossBucket' in kwargs:
+            oss_bucket = kwargs['ossBucket']
+        if 'ossPrefix' in kwargs:
+            oss_prefix = kwargs['ossPrefix']
+
         if image_id is not None:
             _setter("image_id", image_id)
         if oss_bucket is not None:

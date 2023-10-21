@@ -57,7 +57,21 @@ class DomainArgs:
              force_set: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'bizName' in kwargs:
+            biz_name = kwargs['bizName']
+        if 'certInfos' in kwargs:
+            cert_infos = kwargs['certInfos']
+        if 'checkUrl' in kwargs:
+            check_url = kwargs['checkUrl']
+        if 'forceSet' in kwargs:
+            force_set = kwargs['forceSet']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("domain_name", domain_name)
         _setter("sources", sources)
         if biz_name is not None:
@@ -220,7 +234,21 @@ class _DomainState:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              sources: Optional[pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bizName' in kwargs:
+            biz_name = kwargs['bizName']
+        if 'certInfos' in kwargs:
+            cert_infos = kwargs['certInfos']
+        if 'checkUrl' in kwargs:
+            check_url = kwargs['checkUrl']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'forceSet' in kwargs:
+            force_set = kwargs['forceSet']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         if biz_name is not None:
             warnings.warn("""Attribute biz_name has been deprecated and suggest removing it from your template.""", DeprecationWarning)
             pulumi.log.warn("""biz_name is deprecated: Attribute biz_name has been deprecated and suggest removing it from your template.""")
@@ -362,6 +390,8 @@ class Domain(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.131.0+.
 
+        > **NOTE:** Alibaba Cloud SCDN has stopped new customer purchases from January 26, 2023, and you can choose to buy Alibaba Cloud DCDN products with more comprehensive acceleration and protection capabilities. If you are already a SCDN customer, you can submit a work order at any time to apply for a smooth migration to Alibaba Cloud DCDN products. In the future, we will provide better acceleration and security protection services in Alibaba Cloud DCDN, thank you for your understanding and cooperation.
+
         ## Example Usage
 
         Basic Usage
@@ -412,6 +442,8 @@ class Domain(pulumi.CustomResource):
         For information about SCDN Domain and how to use it, see [What is Domain](https://help.aliyun.com/document_detail/63672.html).
 
         > **NOTE:** Available in v1.131.0+.
+
+        > **NOTE:** Alibaba Cloud SCDN has stopped new customer purchases from January 26, 2023, and you can choose to buy Alibaba Cloud DCDN products with more comprehensive acceleration and protection capabilities. If you are already a SCDN customer, you can submit a work order at any time to apply for a smooth migration to Alibaba Cloud DCDN products. In the future, we will provide better acceleration and security protection services in Alibaba Cloud DCDN, thank you for your understanding and cooperation.
 
         ## Example Usage
 

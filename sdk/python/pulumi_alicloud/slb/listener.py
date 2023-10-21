@@ -204,7 +204,85 @@ class ListenerArgs:
              tls_cipher_policy: Optional[pulumi.Input[str]] = None,
              unhealthy_threshold: Optional[pulumi.Input[int]] = None,
              x_forwarded_for: Optional[pulumi.Input['ListenerXForwardedForArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'frontendPort' in kwargs:
+            frontend_port = kwargs['frontendPort']
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+        if 'aclId' in kwargs:
+            acl_id = kwargs['aclId']
+        if 'aclStatus' in kwargs:
+            acl_status = kwargs['aclStatus']
+        if 'aclType' in kwargs:
+            acl_type = kwargs['aclType']
+        if 'backendPort' in kwargs:
+            backend_port = kwargs['backendPort']
+        if 'caCertificateId' in kwargs:
+            ca_certificate_id = kwargs['caCertificateId']
+        if 'cookieTimeout' in kwargs:
+            cookie_timeout = kwargs['cookieTimeout']
+        if 'deleteProtectionValidation' in kwargs:
+            delete_protection_validation = kwargs['deleteProtectionValidation']
+        if 'enableHttp2' in kwargs:
+            enable_http2 = kwargs['enableHttp2']
+        if 'establishedTimeout' in kwargs:
+            established_timeout = kwargs['establishedTimeout']
+        if 'forwardPort' in kwargs:
+            forward_port = kwargs['forwardPort']
+        if 'healthCheck' in kwargs:
+            health_check = kwargs['healthCheck']
+        if 'healthCheckConnectPort' in kwargs:
+            health_check_connect_port = kwargs['healthCheckConnectPort']
+        if 'healthCheckDomain' in kwargs:
+            health_check_domain = kwargs['healthCheckDomain']
+        if 'healthCheckHttpCode' in kwargs:
+            health_check_http_code = kwargs['healthCheckHttpCode']
+        if 'healthCheckInterval' in kwargs:
+            health_check_interval = kwargs['healthCheckInterval']
+        if 'healthCheckMethod' in kwargs:
+            health_check_method = kwargs['healthCheckMethod']
+        if 'healthCheckTimeout' in kwargs:
+            health_check_timeout = kwargs['healthCheckTimeout']
+        if 'healthCheckType' in kwargs:
+            health_check_type = kwargs['healthCheckType']
+        if 'healthCheckUri' in kwargs:
+            health_check_uri = kwargs['healthCheckUri']
+        if 'healthyThreshold' in kwargs:
+            healthy_threshold = kwargs['healthyThreshold']
+        if 'idleTimeout' in kwargs:
+            idle_timeout = kwargs['idleTimeout']
+        if 'lbPort' in kwargs:
+            lb_port = kwargs['lbPort']
+        if 'lbProtocol' in kwargs:
+            lb_protocol = kwargs['lbProtocol']
+        if 'listenerForward' in kwargs:
+            listener_forward = kwargs['listenerForward']
+        if 'masterSlaveServerGroupId' in kwargs:
+            master_slave_server_group_id = kwargs['masterSlaveServerGroupId']
+        if 'persistenceTimeout' in kwargs:
+            persistence_timeout = kwargs['persistenceTimeout']
+        if 'proxyProtocolV2Enabled' in kwargs:
+            proxy_protocol_v2_enabled = kwargs['proxyProtocolV2Enabled']
+        if 'requestTimeout' in kwargs:
+            request_timeout = kwargs['requestTimeout']
+        if 'serverCertificateId' in kwargs:
+            server_certificate_id = kwargs['serverCertificateId']
+        if 'serverGroupId' in kwargs:
+            server_group_id = kwargs['serverGroupId']
+        if 'sslCertificateId' in kwargs:
+            ssl_certificate_id = kwargs['sslCertificateId']
+        if 'stickySession' in kwargs:
+            sticky_session = kwargs['stickySession']
+        if 'stickySessionType' in kwargs:
+            sticky_session_type = kwargs['stickySessionType']
+        if 'tlsCipherPolicy' in kwargs:
+            tls_cipher_policy = kwargs['tlsCipherPolicy']
+        if 'unhealthyThreshold' in kwargs:
+            unhealthy_threshold = kwargs['unhealthyThreshold']
+        if 'xForwardedFor' in kwargs:
+            x_forwarded_for = kwargs['xForwardedFor']
+
         _setter("frontend_port", frontend_port)
         _setter("load_balancer_id", load_balancer_id)
         _setter("protocol", protocol)
@@ -1028,7 +1106,85 @@ class _ListenerState:
              tls_cipher_policy: Optional[pulumi.Input[str]] = None,
              unhealthy_threshold: Optional[pulumi.Input[int]] = None,
              x_forwarded_for: Optional[pulumi.Input['ListenerXForwardedForArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclId' in kwargs:
+            acl_id = kwargs['aclId']
+        if 'aclStatus' in kwargs:
+            acl_status = kwargs['aclStatus']
+        if 'aclType' in kwargs:
+            acl_type = kwargs['aclType']
+        if 'backendPort' in kwargs:
+            backend_port = kwargs['backendPort']
+        if 'caCertificateId' in kwargs:
+            ca_certificate_id = kwargs['caCertificateId']
+        if 'cookieTimeout' in kwargs:
+            cookie_timeout = kwargs['cookieTimeout']
+        if 'deleteProtectionValidation' in kwargs:
+            delete_protection_validation = kwargs['deleteProtectionValidation']
+        if 'enableHttp2' in kwargs:
+            enable_http2 = kwargs['enableHttp2']
+        if 'establishedTimeout' in kwargs:
+            established_timeout = kwargs['establishedTimeout']
+        if 'forwardPort' in kwargs:
+            forward_port = kwargs['forwardPort']
+        if 'frontendPort' in kwargs:
+            frontend_port = kwargs['frontendPort']
+        if 'healthCheck' in kwargs:
+            health_check = kwargs['healthCheck']
+        if 'healthCheckConnectPort' in kwargs:
+            health_check_connect_port = kwargs['healthCheckConnectPort']
+        if 'healthCheckDomain' in kwargs:
+            health_check_domain = kwargs['healthCheckDomain']
+        if 'healthCheckHttpCode' in kwargs:
+            health_check_http_code = kwargs['healthCheckHttpCode']
+        if 'healthCheckInterval' in kwargs:
+            health_check_interval = kwargs['healthCheckInterval']
+        if 'healthCheckMethod' in kwargs:
+            health_check_method = kwargs['healthCheckMethod']
+        if 'healthCheckTimeout' in kwargs:
+            health_check_timeout = kwargs['healthCheckTimeout']
+        if 'healthCheckType' in kwargs:
+            health_check_type = kwargs['healthCheckType']
+        if 'healthCheckUri' in kwargs:
+            health_check_uri = kwargs['healthCheckUri']
+        if 'healthyThreshold' in kwargs:
+            healthy_threshold = kwargs['healthyThreshold']
+        if 'idleTimeout' in kwargs:
+            idle_timeout = kwargs['idleTimeout']
+        if 'lbPort' in kwargs:
+            lb_port = kwargs['lbPort']
+        if 'lbProtocol' in kwargs:
+            lb_protocol = kwargs['lbProtocol']
+        if 'listenerForward' in kwargs:
+            listener_forward = kwargs['listenerForward']
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+        if 'masterSlaveServerGroupId' in kwargs:
+            master_slave_server_group_id = kwargs['masterSlaveServerGroupId']
+        if 'persistenceTimeout' in kwargs:
+            persistence_timeout = kwargs['persistenceTimeout']
+        if 'proxyProtocolV2Enabled' in kwargs:
+            proxy_protocol_v2_enabled = kwargs['proxyProtocolV2Enabled']
+        if 'requestTimeout' in kwargs:
+            request_timeout = kwargs['requestTimeout']
+        if 'serverCertificateId' in kwargs:
+            server_certificate_id = kwargs['serverCertificateId']
+        if 'serverGroupId' in kwargs:
+            server_group_id = kwargs['serverGroupId']
+        if 'sslCertificateId' in kwargs:
+            ssl_certificate_id = kwargs['sslCertificateId']
+        if 'stickySession' in kwargs:
+            sticky_session = kwargs['stickySession']
+        if 'stickySessionType' in kwargs:
+            sticky_session_type = kwargs['stickySessionType']
+        if 'tlsCipherPolicy' in kwargs:
+            tls_cipher_policy = kwargs['tlsCipherPolicy']
+        if 'unhealthyThreshold' in kwargs:
+            unhealthy_threshold = kwargs['unhealthyThreshold']
+        if 'xForwardedFor' in kwargs:
+            x_forwarded_for = kwargs['xForwardedFor']
+
         if acl_id is not None:
             _setter("acl_id", acl_id)
         if acl_status is not None:

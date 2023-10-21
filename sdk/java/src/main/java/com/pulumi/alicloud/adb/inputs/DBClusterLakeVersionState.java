@@ -17,6 +17,21 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
     public static final DBClusterLakeVersionState Empty = new DBClusterLakeVersionState();
 
     /**
+     * The ID of the backup set that you want to use to restore data.
+     * 
+     */
+    @Import(name="backupSetId")
+    private @Nullable Output<String> backupSetId;
+
+    /**
+     * @return The ID of the backup set that you want to use to restore data.
+     * 
+     */
+    public Optional<Output<String>> backupSetId() {
+        return Optional.ofNullable(this.backupSetId);
+    }
+
+    /**
      * The name of the service.
      * 
      */
@@ -92,14 +107,14 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The version of the cluster. Value options: `5.0`.
+     * The version of the cluster. Valid values: `5.0`.
      * 
      */
     @Import(name="dbClusterVersion")
     private @Nullable Output<String> dbClusterVersion;
 
     /**
-     * @return The version of the cluster. Value options: `5.0`.
+     * @return The version of the cluster. Valid values: `5.0`.
      * 
      */
     public Optional<Output<String>> dbClusterVersion() {
@@ -212,14 +227,14 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The payment type of the resource. Valid values are `PayAsYouGo`.
+     * The payment type of the resource. Valid values: `PayAsYouGo`.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource. Valid values are `PayAsYouGo`.
+     * @return The payment type of the resource. Valid values: `PayAsYouGo`.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -257,6 +272,36 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
     }
 
     /**
+     * The point in time to which you want to restore data from the backup set.
+     * 
+     */
+    @Import(name="restoreToTime")
+    private @Nullable Output<String> restoreToTime;
+
+    /**
+     * @return The point in time to which you want to restore data from the backup set.
+     * 
+     */
+    public Optional<Output<String>> restoreToTime() {
+        return Optional.ofNullable(this.restoreToTime);
+    }
+
+    /**
+     * The method that you want to use to restore data. Valid values:
+     * 
+     */
+    @Import(name="restoreType")
+    private @Nullable Output<String> restoreType;
+
+    /**
+     * @return The method that you want to use to restore data. Valid values:
+     * 
+     */
+    public Optional<Output<String>> restoreType() {
+        return Optional.ofNullable(this.restoreType);
+    }
+
+    /**
      * The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
      * - IP addresses, such as 10.23.XX.XX.
      * - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
@@ -273,6 +318,21 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
      */
     public Optional<Output<String>> securityIps() {
         return Optional.ofNullable(this.securityIps);
+    }
+
+    /**
+     * The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
+     * 
+     */
+    @Import(name="sourceDbClusterId")
+    private @Nullable Output<String> sourceDbClusterId;
+
+    /**
+     * @return The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
+     * 
+     */
+    public Optional<Output<String>> sourceDbClusterId() {
+        return Optional.ofNullable(this.sourceDbClusterId);
     }
 
     /**
@@ -353,6 +413,7 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
     private DBClusterLakeVersionState() {}
 
     private DBClusterLakeVersionState(DBClusterLakeVersionState $) {
+        this.backupSetId = $.backupSetId;
         this.commodityCode = $.commodityCode;
         this.computeResource = $.computeResource;
         this.connectionString = $.connectionString;
@@ -369,7 +430,10 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
         this.paymentType = $.paymentType;
         this.port = $.port;
         this.resourceGroupId = $.resourceGroupId;
+        this.restoreToTime = $.restoreToTime;
+        this.restoreType = $.restoreType;
         this.securityIps = $.securityIps;
+        this.sourceDbClusterId = $.sourceDbClusterId;
         this.status = $.status;
         this.storageResource = $.storageResource;
         this.vpcId = $.vpcId;
@@ -393,6 +457,27 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
 
         public Builder(DBClusterLakeVersionState defaults) {
             $ = new DBClusterLakeVersionState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param backupSetId The ID of the backup set that you want to use to restore data.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupSetId(@Nullable Output<String> backupSetId) {
+            $.backupSetId = backupSetId;
+            return this;
+        }
+
+        /**
+         * @param backupSetId The ID of the backup set that you want to use to restore data.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupSetId(String backupSetId) {
+            return backupSetId(Output.of(backupSetId));
         }
 
         /**
@@ -501,7 +586,7 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param dbClusterVersion The version of the cluster. Value options: `5.0`.
+         * @param dbClusterVersion The version of the cluster. Valid values: `5.0`.
          * 
          * @return builder
          * 
@@ -512,7 +597,7 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param dbClusterVersion The version of the cluster. Value options: `5.0`.
+         * @param dbClusterVersion The version of the cluster. Valid values: `5.0`.
          * 
          * @return builder
          * 
@@ -669,7 +754,7 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param paymentType The payment type of the resource. Valid values are `PayAsYouGo`.
+         * @param paymentType The payment type of the resource. Valid values: `PayAsYouGo`.
          * 
          * @return builder
          * 
@@ -680,7 +765,7 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param paymentType The payment type of the resource. Valid values are `PayAsYouGo`.
+         * @param paymentType The payment type of the resource. Valid values: `PayAsYouGo`.
          * 
          * @return builder
          * 
@@ -732,6 +817,48 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param restoreToTime The point in time to which you want to restore data from the backup set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restoreToTime(@Nullable Output<String> restoreToTime) {
+            $.restoreToTime = restoreToTime;
+            return this;
+        }
+
+        /**
+         * @param restoreToTime The point in time to which you want to restore data from the backup set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restoreToTime(String restoreToTime) {
+            return restoreToTime(Output.of(restoreToTime));
+        }
+
+        /**
+         * @param restoreType The method that you want to use to restore data. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restoreType(@Nullable Output<String> restoreType) {
+            $.restoreType = restoreType;
+            return this;
+        }
+
+        /**
+         * @param restoreType The method that you want to use to restore data. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restoreType(String restoreType) {
+            return restoreType(Output.of(restoreType));
+        }
+
+        /**
          * @param securityIps The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
          * - IP addresses, such as 10.23.XX.XX.
          * - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
@@ -754,6 +881,27 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
          */
         public Builder securityIps(String securityIps) {
             return securityIps(Output.of(securityIps));
+        }
+
+        /**
+         * @param sourceDbClusterId The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceDbClusterId(@Nullable Output<String> sourceDbClusterId) {
+            $.sourceDbClusterId = sourceDbClusterId;
+            return this;
+        }
+
+        /**
+         * @param sourceDbClusterId The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceDbClusterId(String sourceDbClusterId) {
+            return sourceDbClusterId(Output.of(sourceDbClusterId));
         }
 
         /**

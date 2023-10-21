@@ -60,7 +60,23 @@ class GetInstancesInstanceResult(dict):
              instance_type: str,
              status: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clientInstanceId' in kwargs:
+            client_instance_id = kwargs['clientInstanceId']
+        if 'clientInstanceName' in kwargs:
+            client_instance_name = kwargs['clientInstanceName']
+        if 'clientInstanceType' in kwargs:
+            client_instance_type = kwargs['clientInstanceType']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("client_instance_id", client_instance_id)
         _setter("client_instance_name", client_instance_name)
         _setter("client_instance_type", client_instance_type)

@@ -75,7 +75,13 @@ class ChangeSetParameter(dict):
              _setter: Callable[[Any, Any], None],
              parameter_key: str,
              parameter_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'parameterKey' in kwargs:
+            parameter_key = kwargs['parameterKey']
+        if 'parameterValue' in kwargs:
+            parameter_value = kwargs['parameterValue']
+
         _setter("parameter_key", parameter_key)
         _setter("parameter_value", parameter_value)
 
@@ -134,7 +140,13 @@ class StackGroupParameter(dict):
              _setter: Callable[[Any, Any], None],
              parameter_key: Optional[str] = None,
              parameter_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'parameterKey' in kwargs:
+            parameter_key = kwargs['parameterKey']
+        if 'parameterValue' in kwargs:
+            parameter_value = kwargs['parameterValue']
+
         if parameter_key is not None:
             _setter("parameter_key", parameter_key)
         if parameter_value is not None:
@@ -195,7 +207,13 @@ class StackInstanceParameterOverride(dict):
              _setter: Callable[[Any, Any], None],
              parameter_key: Optional[str] = None,
              parameter_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'parameterKey' in kwargs:
+            parameter_key = kwargs['parameterKey']
+        if 'parameterValue' in kwargs:
+            parameter_value = kwargs['parameterValue']
+
         if parameter_key is not None:
             _setter("parameter_key", parameter_key)
         if parameter_value is not None:
@@ -256,7 +274,13 @@ class StackParameter(dict):
              _setter: Callable[[Any, Any], None],
              parameter_value: str,
              parameter_key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'parameterValue' in kwargs:
+            parameter_value = kwargs['parameterValue']
+        if 'parameterKey' in kwargs:
+            parameter_key = kwargs['parameterKey']
+
         _setter("parameter_value", parameter_value)
         if parameter_key is not None:
             _setter("parameter_key", parameter_key)
@@ -316,7 +340,13 @@ class TemplateScratchPreferenceParameter(dict):
              _setter: Callable[[Any, Any], None],
              parameter_key: str,
              parameter_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'parameterKey' in kwargs:
+            parameter_key = kwargs['parameterKey']
+        if 'parameterValue' in kwargs:
+            parameter_value = kwargs['parameterValue']
+
         _setter("parameter_key", parameter_key)
         _setter("parameter_value", parameter_value)
 
@@ -375,7 +405,13 @@ class TemplateScratchSourceResource(dict):
              _setter: Callable[[Any, Any], None],
              resource_id: str,
              resource_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+
         _setter("resource_id", resource_id)
         _setter("resource_type", resource_type)
 
@@ -434,7 +470,13 @@ class TemplateScratchSourceResourceGroup(dict):
              _setter: Callable[[Any, Any], None],
              resource_group_id: str,
              resource_type_filters: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'resourceTypeFilters' in kwargs:
+            resource_type_filters = kwargs['resourceTypeFilters']
+
         _setter("resource_group_id", resource_group_id)
         if resource_type_filters is not None:
             _setter("resource_type_filters", resource_type_filters)
@@ -494,7 +536,13 @@ class TemplateScratchSourceTag(dict):
              _setter: Callable[[Any, Any], None],
              resource_tags: Mapping[str, Any],
              resource_type_filters: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceTags' in kwargs:
+            resource_tags = kwargs['resourceTags']
+        if 'resourceTypeFilters' in kwargs:
+            resource_type_filters = kwargs['resourceTypeFilters']
+
         _setter("resource_tags", resource_tags)
         if resource_type_filters is not None:
             _setter("resource_type_filters", resource_type_filters)
@@ -579,7 +627,27 @@ class GetChangeSetsSetResult(dict):
              status: str,
              template_body: str,
              timeout_in_minutes: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'changeSetId' in kwargs:
+            change_set_id = kwargs['changeSetId']
+        if 'changeSetName' in kwargs:
+            change_set_name = kwargs['changeSetName']
+        if 'changeSetType' in kwargs:
+            change_set_type = kwargs['changeSetType']
+        if 'disableRollback' in kwargs:
+            disable_rollback = kwargs['disableRollback']
+        if 'executionStatus' in kwargs:
+            execution_status = kwargs['executionStatus']
+        if 'stackId' in kwargs:
+            stack_id = kwargs['stackId']
+        if 'stackName' in kwargs:
+            stack_name = kwargs['stackName']
+        if 'templateBody' in kwargs:
+            template_body = kwargs['templateBody']
+        if 'timeoutInMinutes' in kwargs:
+            timeout_in_minutes = kwargs['timeoutInMinutes']
+
         _setter("change_set_id", change_set_id)
         _setter("change_set_name", change_set_name)
         _setter("change_set_type", change_set_type)
@@ -718,7 +786,13 @@ class GetChangeSetsSetParameterResult(dict):
              _setter: Callable[[Any, Any], None],
              parameter_key: str,
              parameter_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'parameterKey' in kwargs:
+            parameter_key = kwargs['parameterKey']
+        if 'parameterValue' in kwargs:
+            parameter_value = kwargs['parameterValue']
+
         _setter("parameter_key", parameter_key)
         _setter("parameter_value", parameter_value)
 
@@ -762,7 +836,15 @@ class GetRegionsRegionResult(dict):
              local_name: str,
              region_endpoint: str,
              region_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'localName' in kwargs:
+            local_name = kwargs['localName']
+        if 'regionEndpoint' in kwargs:
+            region_endpoint = kwargs['regionEndpoint']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+
         _setter("local_name", local_name)
         _setter("region_endpoint", region_endpoint)
         _setter("region_id", region_id)
@@ -839,7 +921,19 @@ class GetStackGroupsGroupResult(dict):
              stack_group_name: str,
              status: str,
              template_body: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'administrationRoleName' in kwargs:
+            administration_role_name = kwargs['administrationRoleName']
+        if 'executionRoleName' in kwargs:
+            execution_role_name = kwargs['executionRoleName']
+        if 'stackGroupId' in kwargs:
+            stack_group_id = kwargs['stackGroupId']
+        if 'stackGroupName' in kwargs:
+            stack_group_name = kwargs['stackGroupName']
+        if 'templateBody' in kwargs:
+            template_body = kwargs['templateBody']
+
         _setter("administration_role_name", administration_role_name)
         _setter("description", description)
         _setter("execution_role_name", execution_role_name)
@@ -942,7 +1036,13 @@ class GetStackGroupsGroupParameterResult(dict):
              _setter: Callable[[Any, Any], None],
              parameter_key: str,
              parameter_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'parameterKey' in kwargs:
+            parameter_key = kwargs['parameterKey']
+        if 'parameterValue' in kwargs:
+            parameter_value = kwargs['parameterValue']
+
         _setter("parameter_key", parameter_key)
         _setter("parameter_value", parameter_value)
 
@@ -1010,7 +1110,23 @@ class GetStackInstancesInstanceResult(dict):
              stack_instance_region_id: str,
              status: str,
              status_reason: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'parameterOverrides' in kwargs:
+            parameter_overrides = kwargs['parameterOverrides']
+        if 'stackGroupId' in kwargs:
+            stack_group_id = kwargs['stackGroupId']
+        if 'stackGroupName' in kwargs:
+            stack_group_name = kwargs['stackGroupName']
+        if 'stackId' in kwargs:
+            stack_id = kwargs['stackId']
+        if 'stackInstanceAccountId' in kwargs:
+            stack_instance_account_id = kwargs['stackInstanceAccountId']
+        if 'stackInstanceRegionId' in kwargs:
+            stack_instance_region_id = kwargs['stackInstanceRegionId']
+        if 'statusReason' in kwargs:
+            status_reason = kwargs['statusReason']
+
         _setter("id", id)
         _setter("parameter_overrides", parameter_overrides)
         _setter("stack_group_id", stack_group_id)
@@ -1113,7 +1229,13 @@ class GetStackInstancesInstanceParameterOverrideResult(dict):
              _setter: Callable[[Any, Any], None],
              parameter_key: str,
              parameter_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'parameterKey' in kwargs:
+            parameter_key = kwargs['parameterKey']
+        if 'parameterValue' in kwargs:
+            parameter_value = kwargs['parameterValue']
+
         _setter("parameter_key", parameter_key)
         _setter("parameter_value", parameter_value)
 
@@ -1217,7 +1339,35 @@ class GetStacksStackResult(dict):
              tags: Mapping[str, Any],
              template_description: str,
              timeout_in_minutes: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if 'disableRollback' in kwargs:
+            disable_rollback = kwargs['disableRollback']
+        if 'driftDetectionTime' in kwargs:
+            drift_detection_time = kwargs['driftDetectionTime']
+        if 'parentStackId' in kwargs:
+            parent_stack_id = kwargs['parentStackId']
+        if 'ramRoleName' in kwargs:
+            ram_role_name = kwargs['ramRoleName']
+        if 'rootStackId' in kwargs:
+            root_stack_id = kwargs['rootStackId']
+        if 'stackDriftStatus' in kwargs:
+            stack_drift_status = kwargs['stackDriftStatus']
+        if 'stackId' in kwargs:
+            stack_id = kwargs['stackId']
+        if 'stackName' in kwargs:
+            stack_name = kwargs['stackName']
+        if 'stackPolicyBody' in kwargs:
+            stack_policy_body = kwargs['stackPolicyBody']
+        if 'statusReason' in kwargs:
+            status_reason = kwargs['statusReason']
+        if 'templateDescription' in kwargs:
+            template_description = kwargs['templateDescription']
+        if 'timeoutInMinutes' in kwargs:
+            timeout_in_minutes = kwargs['timeoutInMinutes']
+
         _setter("deletion_protection", deletion_protection)
         _setter("description", description)
         _setter("disable_rollback", disable_rollback)
@@ -1401,7 +1551,13 @@ class GetStacksStackParameterResult(dict):
              _setter: Callable[[Any, Any], None],
              parameter_key: str,
              parameter_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'parameterKey' in kwargs:
+            parameter_key = kwargs['parameterKey']
+        if 'parameterValue' in kwargs:
+            parameter_value = kwargs['parameterValue']
+
         _setter("parameter_key", parameter_key)
         _setter("parameter_value", parameter_value)
 
@@ -1481,7 +1637,25 @@ class GetTemplateScratchesScratchResult(dict):
              status: str,
              template_scratch_id: str,
              template_scratch_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'logicalIdStrategy' in kwargs:
+            logical_id_strategy = kwargs['logicalIdStrategy']
+        if 'preferenceParameters' in kwargs:
+            preference_parameters = kwargs['preferenceParameters']
+        if 'sourceResourceGroups' in kwargs:
+            source_resource_groups = kwargs['sourceResourceGroups']
+        if 'sourceResources' in kwargs:
+            source_resources = kwargs['sourceResources']
+        if 'sourceTags' in kwargs:
+            source_tags = kwargs['sourceTags']
+        if 'templateScratchId' in kwargs:
+            template_scratch_id = kwargs['templateScratchId']
+        if 'templateScratchType' in kwargs:
+            template_scratch_type = kwargs['templateScratchType']
+
         _setter("create_time", create_time)
         _setter("description", description)
         _setter("id", id)
@@ -1611,7 +1785,13 @@ class GetTemplateScratchesScratchPreferenceParameterResult(dict):
              _setter: Callable[[Any, Any], None],
              parameter_key: str,
              parameter_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'parameterKey' in kwargs:
+            parameter_key = kwargs['parameterKey']
+        if 'parameterValue' in kwargs:
+            parameter_value = kwargs['parameterValue']
+
         _setter("parameter_key", parameter_key)
         _setter("parameter_value", parameter_value)
 
@@ -1651,7 +1831,13 @@ class GetTemplateScratchesScratchSourceResourceResult(dict):
              _setter: Callable[[Any, Any], None],
              resource_id: str,
              resource_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+
         _setter("resource_id", resource_id)
         _setter("resource_type", resource_type)
 
@@ -1691,7 +1877,13 @@ class GetTemplateScratchesScratchSourceResourceGroupResult(dict):
              _setter: Callable[[Any, Any], None],
              resource_group_id: str,
              resource_type_filters: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'resourceTypeFilters' in kwargs:
+            resource_type_filters = kwargs['resourceTypeFilters']
+
         _setter("resource_group_id", resource_group_id)
         _setter("resource_type_filters", resource_type_filters)
 
@@ -1731,7 +1923,13 @@ class GetTemplateScratchesScratchSourceTagResult(dict):
              _setter: Callable[[Any, Any], None],
              resource_tags: Mapping[str, Any],
              resource_type_filters: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceTags' in kwargs:
+            resource_tags = kwargs['resourceTags']
+        if 'resourceTypeFilters' in kwargs:
+            resource_type_filters = kwargs['resourceTypeFilters']
+
         _setter("resource_tags", resource_tags)
         _setter("resource_type_filters", resource_type_filters)
 
@@ -1767,7 +1965,11 @@ class GetTemplateScratchesScratchStackResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              stack_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'stackId' in kwargs:
+            stack_id = kwargs['stackId']
+
         _setter("stack_id", stack_id)
 
     @property
@@ -1834,7 +2036,25 @@ class GetTemplatesTemplateResult(dict):
              template_id: str,
              template_name: str,
              template_version: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'changeSetId' in kwargs:
+            change_set_id = kwargs['changeSetId']
+        if 'shareType' in kwargs:
+            share_type = kwargs['shareType']
+        if 'stackGroupName' in kwargs:
+            stack_group_name = kwargs['stackGroupName']
+        if 'stackId' in kwargs:
+            stack_id = kwargs['stackId']
+        if 'templateBody' in kwargs:
+            template_body = kwargs['templateBody']
+        if 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+        if 'templateName' in kwargs:
+            template_name = kwargs['templateName']
+        if 'templateVersion' in kwargs:
+            template_version = kwargs['templateVersion']
+
         _setter("change_set_id", change_set_id)
         _setter("description", description)
         _setter("id", id)

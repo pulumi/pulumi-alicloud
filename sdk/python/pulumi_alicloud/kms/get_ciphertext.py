@@ -90,6 +90,8 @@ def get_ciphertext(encryption_context: Optional[Mapping[str, str]] = None,
     """
     ## Example Usage
 
+    Basic Usage
+
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -102,7 +104,7 @@ def get_ciphertext(encryption_context: Optional[Mapping[str, str]] = None,
     ```
 
 
-    :param Mapping[str, str] encryption_context: (Optional) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+    :param Mapping[str, str] encryption_context: The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
     :param str key_id: The globally unique ID of the CMK.
     :param str plaintext: The plaintext to be encrypted which must be encoded in Base64.
     """
@@ -129,6 +131,8 @@ def get_ciphertext_output(encryption_context: Optional[pulumi.Input[Optional[Map
     """
     ## Example Usage
 
+    Basic Usage
+
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -141,7 +145,7 @@ def get_ciphertext_output(encryption_context: Optional[pulumi.Input[Optional[Map
     ```
 
 
-    :param Mapping[str, str] encryption_context: (Optional) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+    :param Mapping[str, str] encryption_context: The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
     :param str key_id: The globally unique ID of the CMK.
     :param str plaintext: The plaintext to be encrypted which must be encoded in Base64.
     """

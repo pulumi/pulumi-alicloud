@@ -270,14 +270,14 @@ public class Alarm extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.evaluationCount);
     }
     /**
-     * The name for the alarm&#39;s associated metric. See Block_metricNames_and_dimensions below for details.
+     * The name for the alarm&#39;s associated metric. See `dimensions` below for details.
      * 
      */
     @Export(name="metricName", type=String.class, parameters={})
     private Output<String> metricName;
 
     /**
-     * @return The name for the alarm&#39;s associated metric. See Block_metricNames_and_dimensions below for details.
+     * @return The name for the alarm&#39;s associated metric. See `dimensions` below for details.
      * 
      */
     public Output<String> metricName() {

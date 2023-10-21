@@ -59,7 +59,17 @@ class NetworkAclArgs:
              network_acl_name: Optional[pulumi.Input[str]] = None,
              resources: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'egressAclEntries' in kwargs:
+            egress_acl_entries = kwargs['egressAclEntries']
+        if 'ingressAclEntries' in kwargs:
+            ingress_acl_entries = kwargs['ingressAclEntries']
+        if 'networkAclName' in kwargs:
+            network_acl_name = kwargs['networkAclName']
+
         _setter("vpc_id", vpc_id)
         if description is not None:
             _setter("description", description)
@@ -235,7 +245,19 @@ class _NetworkAclState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'egressAclEntries' in kwargs:
+            egress_acl_entries = kwargs['egressAclEntries']
+        if 'ingressAclEntries' in kwargs:
+            ingress_acl_entries = kwargs['ingressAclEntries']
+        if 'networkAclName' in kwargs:
+            network_acl_name = kwargs['networkAclName']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:

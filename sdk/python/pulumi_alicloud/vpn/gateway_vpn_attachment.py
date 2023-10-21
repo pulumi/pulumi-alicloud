@@ -73,7 +73,33 @@ class GatewayVpnAttachmentArgs:
              ipsec_config: Optional[pulumi.Input['GatewayVpnAttachmentIpsecConfigArgs']] = None,
              network_type: Optional[pulumi.Input[str]] = None,
              vpn_attachment_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'customerGatewayId' in kwargs:
+            customer_gateway_id = kwargs['customerGatewayId']
+        if 'localSubnet' in kwargs:
+            local_subnet = kwargs['localSubnet']
+        if 'remoteSubnet' in kwargs:
+            remote_subnet = kwargs['remoteSubnet']
+        if 'bgpConfig' in kwargs:
+            bgp_config = kwargs['bgpConfig']
+        if 'effectImmediately' in kwargs:
+            effect_immediately = kwargs['effectImmediately']
+        if 'enableDpd' in kwargs:
+            enable_dpd = kwargs['enableDpd']
+        if 'enableNatTraversal' in kwargs:
+            enable_nat_traversal = kwargs['enableNatTraversal']
+        if 'healthCheckConfig' in kwargs:
+            health_check_config = kwargs['healthCheckConfig']
+        if 'ikeConfig' in kwargs:
+            ike_config = kwargs['ikeConfig']
+        if 'ipsecConfig' in kwargs:
+            ipsec_config = kwargs['ipsecConfig']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'vpnAttachmentName' in kwargs:
+            vpn_attachment_name = kwargs['vpnAttachmentName']
+
         _setter("customer_gateway_id", customer_gateway_id)
         _setter("local_subnet", local_subnet)
         _setter("remote_subnet", remote_subnet)
@@ -309,7 +335,35 @@ class _GatewayVpnAttachmentState:
              remote_subnet: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              vpn_attachment_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bgpConfig' in kwargs:
+            bgp_config = kwargs['bgpConfig']
+        if 'customerGatewayId' in kwargs:
+            customer_gateway_id = kwargs['customerGatewayId']
+        if 'effectImmediately' in kwargs:
+            effect_immediately = kwargs['effectImmediately']
+        if 'enableDpd' in kwargs:
+            enable_dpd = kwargs['enableDpd']
+        if 'enableNatTraversal' in kwargs:
+            enable_nat_traversal = kwargs['enableNatTraversal']
+        if 'healthCheckConfig' in kwargs:
+            health_check_config = kwargs['healthCheckConfig']
+        if 'ikeConfig' in kwargs:
+            ike_config = kwargs['ikeConfig']
+        if 'internetIp' in kwargs:
+            internet_ip = kwargs['internetIp']
+        if 'ipsecConfig' in kwargs:
+            ipsec_config = kwargs['ipsecConfig']
+        if 'localSubnet' in kwargs:
+            local_subnet = kwargs['localSubnet']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'remoteSubnet' in kwargs:
+            remote_subnet = kwargs['remoteSubnet']
+        if 'vpnAttachmentName' in kwargs:
+            vpn_attachment_name = kwargs['vpnAttachmentName']
+
         if bgp_config is not None:
             _setter("bgp_config", bgp_config)
         if customer_gateway_id is not None:

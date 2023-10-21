@@ -77,7 +77,27 @@ class InstanceArgs:
              raid_stripe_unit_number: Optional[pulumi.Input[str]] = None,
              snapshot_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'deleteSnapshot' in kwargs:
+            delete_snapshot = kwargs['deleteSnapshot']
+        if 'ecsLists' in kwargs:
+            ecs_lists = kwargs['ecsLists']
+        if 'enableRaid' in kwargs:
+            enable_raid = kwargs['enableRaid']
+        if 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+        if 'raidStripeUnitNumber' in kwargs:
+            raid_stripe_unit_number = kwargs['raidStripeUnitNumber']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+
         _setter("instance_name", instance_name)
         _setter("size", size)
         _setter("zone_id", zone_id)
@@ -333,7 +353,27 @@ class _InstanceState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deleteSnapshot' in kwargs:
+            delete_snapshot = kwargs['deleteSnapshot']
+        if 'ecsLists' in kwargs:
+            ecs_lists = kwargs['ecsLists']
+        if 'enableRaid' in kwargs:
+            enable_raid = kwargs['enableRaid']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+        if 'raidStripeUnitNumber' in kwargs:
+            raid_stripe_unit_number = kwargs['raidStripeUnitNumber']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if category is not None:
             _setter("category", category)
         if delete_snapshot is not None:

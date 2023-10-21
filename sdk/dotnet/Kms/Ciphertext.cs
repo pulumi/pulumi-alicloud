@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.Kms
         public Output<string> CiphertextBlob { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+        /// The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
         /// </summary>
         [Output("encryptionContext")]
         public Output<ImmutableDictionary<string, string>?> EncryptionContext { get; private set; } = null!;
@@ -116,7 +116,7 @@ namespace Pulumi.AliCloud.Kms
         private InputMap<string>? _encryptionContext;
 
         /// <summary>
-        /// (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+        /// The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
         /// </summary>
         public InputMap<string> EncryptionContext
         {
@@ -164,7 +164,7 @@ namespace Pulumi.AliCloud.Kms
         private InputMap<string>? _encryptionContext;
 
         /// <summary>
-        /// (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+        /// The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
         /// </summary>
         public InputMap<string> EncryptionContext
         {

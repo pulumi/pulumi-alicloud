@@ -40,14 +40,14 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The list of data disks created with instance.
+     * The list of data disks created with instance. See `data_disks` below.
      * 
      */
     @Import(name="dataDisks")
     private @Nullable Output<List<EcsLaunchTemplateDataDiskArgs>> dataDisks;
 
     /**
-     * @return The list of data disks created with instance.
+     * @return The list of data disks created with instance. See `data_disks` below.
      * 
      */
     public Optional<Output<List<EcsLaunchTemplateDataDiskArgs>>> dataDisks() {
@@ -307,14 +307,14 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The list of network interfaces created with instance.
+     * The list of network interfaces created with instance. See `network_interfaces` below.
      * 
      */
     @Import(name="networkInterfaces")
     private @Nullable Output<EcsLaunchTemplateNetworkInterfacesArgs> networkInterfaces;
 
     /**
-     * @return The list of network interfaces created with instance.
+     * @return The list of network interfaces created with instance. See `network_interfaces` below.
      * 
      */
     public Optional<Output<EcsLaunchTemplateNetworkInterfacesArgs>> networkInterfaces() {
@@ -506,14 +506,14 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The System Disk.
+     * The System Disk. See `system_disk` below.
      * 
      */
     @Import(name="systemDisk")
     private @Nullable Output<EcsLaunchTemplateSystemDiskArgs> systemDisk;
 
     /**
-     * @return The System Disk.
+     * @return The System Disk. See `system_disk` below.
      * 
      */
     public Optional<Output<EcsLaunchTemplateSystemDiskArgs>> systemDisk() {
@@ -849,7 +849,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dataDisks The list of data disks created with instance.
+         * @param dataDisks The list of data disks created with instance. See `data_disks` below.
          * 
          * @return builder
          * 
@@ -860,7 +860,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dataDisks The list of data disks created with instance.
+         * @param dataDisks The list of data disks created with instance. See `data_disks` below.
          * 
          * @return builder
          * 
@@ -870,7 +870,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dataDisks The list of data disks created with instance.
+         * @param dataDisks The list of data disks created with instance. See `data_disks` below.
          * 
          * @return builder
          * 
@@ -1228,7 +1228,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param networkInterfaces The list of network interfaces created with instance.
+         * @param networkInterfaces The list of network interfaces created with instance. See `network_interfaces` below.
          * 
          * @return builder
          * 
@@ -1239,7 +1239,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param networkInterfaces The list of network interfaces created with instance.
+         * @param networkInterfaces The list of network interfaces created with instance. See `network_interfaces` below.
          * 
          * @return builder
          * 
@@ -1515,7 +1515,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param systemDisk The System Disk.
+         * @param systemDisk The System Disk. See `system_disk` below.
          * 
          * @return builder
          * 
@@ -1526,7 +1526,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param systemDisk The System Disk.
+         * @param systemDisk The System Disk. See `system_disk` below.
          * 
          * @return builder
          * 

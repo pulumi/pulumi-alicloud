@@ -31,7 +31,11 @@ class KeyPairArgs:
              _setter: Callable[[Any, Any], None],
              key_pair_name: pulumi.Input[str],
              version: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+
         _setter("key_pair_name", key_pair_name)
         _setter("version", version)
 
@@ -80,7 +84,11 @@ class _KeyPairState:
              _setter: Callable[[Any, Any], None],
              key_pair_name: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+
         if key_pair_name is not None:
             _setter("key_pair_name", key_pair_name)
         if version is not None:

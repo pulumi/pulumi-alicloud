@@ -47,7 +47,21 @@ class AccountArgs:
              account_password: Optional[pulumi.Input[str]] = None,
              kms_encrypted_password: Optional[pulumi.Input[str]] = None,
              kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'dbClusterId' in kwargs:
+            db_cluster_id = kwargs['dbClusterId']
+        if 'accountDescription' in kwargs:
+            account_description = kwargs['accountDescription']
+        if 'accountPassword' in kwargs:
+            account_password = kwargs['accountPassword']
+        if 'kmsEncryptedPassword' in kwargs:
+            kms_encrypted_password = kwargs['kmsEncryptedPassword']
+        if 'kmsEncryptionContext' in kwargs:
+            kms_encryption_context = kwargs['kmsEncryptionContext']
+
         _setter("account_name", account_name)
         _setter("db_cluster_id", db_cluster_id)
         if account_description is not None:
@@ -168,7 +182,21 @@ class _AccountState:
              db_cluster_id: Optional[pulumi.Input[str]] = None,
              kms_encrypted_password: Optional[pulumi.Input[str]] = None,
              kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountDescription' in kwargs:
+            account_description = kwargs['accountDescription']
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'accountPassword' in kwargs:
+            account_password = kwargs['accountPassword']
+        if 'dbClusterId' in kwargs:
+            db_cluster_id = kwargs['dbClusterId']
+        if 'kmsEncryptedPassword' in kwargs:
+            kms_encrypted_password = kwargs['kmsEncryptedPassword']
+        if 'kmsEncryptionContext' in kwargs:
+            kms_encryption_context = kwargs['kmsEncryptionContext']
+
         if account_description is not None:
             _setter("account_description", account_description)
         if account_name is not None:

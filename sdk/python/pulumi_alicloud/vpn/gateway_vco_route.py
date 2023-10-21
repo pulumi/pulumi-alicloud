@@ -39,7 +39,15 @@ class GatewayVcoRouteArgs:
              route_dest: pulumi.Input[str],
              vpn_connection_id: pulumi.Input[str],
              weight: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nextHop' in kwargs:
+            next_hop = kwargs['nextHop']
+        if 'routeDest' in kwargs:
+            route_dest = kwargs['routeDest']
+        if 'vpnConnectionId' in kwargs:
+            vpn_connection_id = kwargs['vpnConnectionId']
+
         _setter("next_hop", next_hop)
         _setter("route_dest", route_dest)
         _setter("vpn_connection_id", vpn_connection_id)
@@ -126,7 +134,15 @@ class _GatewayVcoRouteState:
              status: Optional[pulumi.Input[str]] = None,
              vpn_connection_id: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nextHop' in kwargs:
+            next_hop = kwargs['nextHop']
+        if 'routeDest' in kwargs:
+            route_dest = kwargs['routeDest']
+        if 'vpnConnectionId' in kwargs:
+            vpn_connection_id = kwargs['vpnConnectionId']
+
         if next_hop is not None:
             _setter("next_hop", next_hop)
         if route_dest is not None:

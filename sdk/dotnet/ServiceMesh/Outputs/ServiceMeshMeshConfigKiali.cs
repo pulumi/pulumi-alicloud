@@ -14,14 +14,22 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
     public sealed class ServiceMeshMeshConfigKiali
     {
         /// <summary>
-        /// Whether to enable Service grid audit.
+        /// Enable CNI.
         /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// Grid topology service address.
+        /// </summary>
+        public readonly string? Url;
 
         [OutputConstructor]
-        private ServiceMeshMeshConfigKiali(bool? enabled)
+        private ServiceMeshMeshConfigKiali(
+            bool? enabled,
+
+            string? url)
         {
             Enabled = enabled;
+            Url = url;
         }
     }
 }

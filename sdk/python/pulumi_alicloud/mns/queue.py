@@ -47,7 +47,19 @@ class QueueArgs:
              name: Optional[pulumi.Input[str]] = None,
              polling_wait_seconds: Optional[pulumi.Input[int]] = None,
              visibility_timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'delaySeconds' in kwargs:
+            delay_seconds = kwargs['delaySeconds']
+        if 'maximumMessageSize' in kwargs:
+            maximum_message_size = kwargs['maximumMessageSize']
+        if 'messageRetentionPeriod' in kwargs:
+            message_retention_period = kwargs['messageRetentionPeriod']
+        if 'pollingWaitSeconds' in kwargs:
+            polling_wait_seconds = kwargs['pollingWaitSeconds']
+        if 'visibilityTimeout' in kwargs:
+            visibility_timeout = kwargs['visibilityTimeout']
+
         if delay_seconds is not None:
             _setter("delay_seconds", delay_seconds)
         if maximum_message_size is not None:
@@ -170,7 +182,19 @@ class _QueueState:
              name: Optional[pulumi.Input[str]] = None,
              polling_wait_seconds: Optional[pulumi.Input[int]] = None,
              visibility_timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'delaySeconds' in kwargs:
+            delay_seconds = kwargs['delaySeconds']
+        if 'maximumMessageSize' in kwargs:
+            maximum_message_size = kwargs['maximumMessageSize']
+        if 'messageRetentionPeriod' in kwargs:
+            message_retention_period = kwargs['messageRetentionPeriod']
+        if 'pollingWaitSeconds' in kwargs:
+            polling_wait_seconds = kwargs['pollingWaitSeconds']
+        if 'visibilityTimeout' in kwargs:
+            visibility_timeout = kwargs['visibilityTimeout']
+
         if delay_seconds is not None:
             _setter("delay_seconds", delay_seconds)
         if maximum_message_size is not None:

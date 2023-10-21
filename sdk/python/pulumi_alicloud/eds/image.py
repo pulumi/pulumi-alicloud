@@ -35,7 +35,13 @@ class ImageArgs:
              desktop_id: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
              image_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'desktopId' in kwargs:
+            desktop_id = kwargs['desktopId']
+        if 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+
         _setter("desktop_id", desktop_id)
         if description is not None:
             _setter("description", description)
@@ -107,7 +113,13 @@ class _ImageState:
              desktop_id: Optional[pulumi.Input[str]] = None,
              image_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'desktopId' in kwargs:
+            desktop_id = kwargs['desktopId']
+        if 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+
         if description is not None:
             _setter("description", description)
         if desktop_id is not None:
@@ -178,7 +190,7 @@ class Image(pulumi.CustomResource):
         """
         Provides a ECD Image resource.
 
-        For information about ECD Image and how to use it, see [What is Image](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createimage).
+        For information about ECD Image and how to use it, see [What is Image](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createimage).
 
         > **NOTE:** Available since v1.146.0.
 
@@ -253,7 +265,7 @@ class Image(pulumi.CustomResource):
         """
         Provides a ECD Image resource.
 
-        For information about ECD Image and how to use it, see [What is Image](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createimage).
+        For information about ECD Image and how to use it, see [What is Image](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createimage).
 
         > **NOTE:** Available since v1.146.0.
 

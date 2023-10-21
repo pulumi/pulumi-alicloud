@@ -61,7 +61,19 @@ class AppGroupArgs:
              description: Optional[pulumi.Input[str]] = None,
              order_type: Optional[pulumi.Input[str]] = None,
              orders: Optional[pulumi.Input[Sequence[pulumi.Input['AppGroupOrderArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appGroupName' in kwargs:
+            app_group_name = kwargs['appGroupName']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'chargeWay' in kwargs:
+            charge_way = kwargs['chargeWay']
+        if 'currentVersion' in kwargs:
+            current_version = kwargs['currentVersion']
+        if 'orderType' in kwargs:
+            order_type = kwargs['orderType']
+
         _setter("app_group_name", app_group_name)
         _setter("payment_type", payment_type)
         _setter("quota", quota)
@@ -242,7 +254,21 @@ class _AppGroupState:
              quota: Optional[pulumi.Input['AppGroupQuotaArgs']] = None,
              status: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appGroupName' in kwargs:
+            app_group_name = kwargs['appGroupName']
+        if 'chargeWay' in kwargs:
+            charge_way = kwargs['chargeWay']
+        if 'currentVersion' in kwargs:
+            current_version = kwargs['currentVersion']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'orderType' in kwargs:
+            order_type = kwargs['orderType']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+
         if app_group_name is not None:
             _setter("app_group_name", app_group_name)
         if charge_way is not None:

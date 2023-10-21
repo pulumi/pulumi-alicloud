@@ -65,7 +65,29 @@ class VbrPconnAssociationArgs:
              peer_ipv6_gateway_ip: Optional[pulumi.Input[str]] = None,
              peering_ipv6_subnet_mask: Optional[pulumi.Input[str]] = None,
              peering_subnet_mask: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'physicalConnectionId' in kwargs:
+            physical_connection_id = kwargs['physicalConnectionId']
+        if 'vbrId' in kwargs:
+            vbr_id = kwargs['vbrId']
+        if 'vlanId' in kwargs:
+            vlan_id = kwargs['vlanId']
+        if 'enableIpv6' in kwargs:
+            enable_ipv6 = kwargs['enableIpv6']
+        if 'localGatewayIp' in kwargs:
+            local_gateway_ip = kwargs['localGatewayIp']
+        if 'localIpv6GatewayIp' in kwargs:
+            local_ipv6_gateway_ip = kwargs['localIpv6GatewayIp']
+        if 'peerGatewayIp' in kwargs:
+            peer_gateway_ip = kwargs['peerGatewayIp']
+        if 'peerIpv6GatewayIp' in kwargs:
+            peer_ipv6_gateway_ip = kwargs['peerIpv6GatewayIp']
+        if 'peeringIpv6SubnetMask' in kwargs:
+            peering_ipv6_subnet_mask = kwargs['peeringIpv6SubnetMask']
+        if 'peeringSubnetMask' in kwargs:
+            peering_subnet_mask = kwargs['peeringSubnetMask']
+
         _setter("physical_connection_id", physical_connection_id)
         _setter("vbr_id", vbr_id)
         _setter("vlan_id", vlan_id)
@@ -269,7 +291,31 @@ class _VbrPconnAssociationState:
              status: Optional[pulumi.Input[str]] = None,
              vbr_id: Optional[pulumi.Input[str]] = None,
              vlan_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'circuitCode' in kwargs:
+            circuit_code = kwargs['circuitCode']
+        if 'enableIpv6' in kwargs:
+            enable_ipv6 = kwargs['enableIpv6']
+        if 'localGatewayIp' in kwargs:
+            local_gateway_ip = kwargs['localGatewayIp']
+        if 'localIpv6GatewayIp' in kwargs:
+            local_ipv6_gateway_ip = kwargs['localIpv6GatewayIp']
+        if 'peerGatewayIp' in kwargs:
+            peer_gateway_ip = kwargs['peerGatewayIp']
+        if 'peerIpv6GatewayIp' in kwargs:
+            peer_ipv6_gateway_ip = kwargs['peerIpv6GatewayIp']
+        if 'peeringIpv6SubnetMask' in kwargs:
+            peering_ipv6_subnet_mask = kwargs['peeringIpv6SubnetMask']
+        if 'peeringSubnetMask' in kwargs:
+            peering_subnet_mask = kwargs['peeringSubnetMask']
+        if 'physicalConnectionId' in kwargs:
+            physical_connection_id = kwargs['physicalConnectionId']
+        if 'vbrId' in kwargs:
+            vbr_id = kwargs['vbrId']
+        if 'vlanId' in kwargs:
+            vlan_id = kwargs['vlanId']
+
         if circuit_code is not None:
             _setter("circuit_code", circuit_code)
         if enable_ipv6 is not None:

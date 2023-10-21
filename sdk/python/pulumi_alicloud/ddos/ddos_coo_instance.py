@@ -31,7 +31,7 @@ class DdosCooInstanceArgs:
         :param pulumi.Input[str] service_bandwidth: Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
         :param pulumi.Input[str] name: Name of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[int] period: The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
-        :param pulumi.Input[str] product_type: The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+        :param pulumi.Input[str] product_type: The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
                - ddoscoo: Only supports domestic account.
                - ddoscoo_intl: Only supports to international account.
                Default to ddoscoo.
@@ -58,7 +58,19 @@ class DdosCooInstanceArgs:
              name: Optional[pulumi.Input[str]] = None,
              period: Optional[pulumi.Input[int]] = None,
              product_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'baseBandwidth' in kwargs:
+            base_bandwidth = kwargs['baseBandwidth']
+        if 'domainCount' in kwargs:
+            domain_count = kwargs['domainCount']
+        if 'portCount' in kwargs:
+            port_count = kwargs['portCount']
+        if 'serviceBandwidth' in kwargs:
+            service_bandwidth = kwargs['serviceBandwidth']
+        if 'productType' in kwargs:
+            product_type = kwargs['productType']
+
         _setter("bandwidth", bandwidth)
         _setter("base_bandwidth", base_bandwidth)
         _setter("domain_count", domain_count)
@@ -159,7 +171,7 @@ class DdosCooInstanceArgs:
     @pulumi.getter(name="productType")
     def product_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+        The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
         - ddoscoo: Only supports domestic account.
         - ddoscoo_intl: Only supports to international account.
         Default to ddoscoo.
@@ -190,7 +202,7 @@ class _DdosCooInstanceState:
         :param pulumi.Input[str] name: Name of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[int] period: The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
         :param pulumi.Input[str] port_count: Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
-        :param pulumi.Input[str] product_type: The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+        :param pulumi.Input[str] product_type: The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
                - ddoscoo: Only supports domestic account.
                - ddoscoo_intl: Only supports to international account.
                Default to ddoscoo.
@@ -218,7 +230,19 @@ class _DdosCooInstanceState:
              port_count: Optional[pulumi.Input[str]] = None,
              product_type: Optional[pulumi.Input[str]] = None,
              service_bandwidth: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'baseBandwidth' in kwargs:
+            base_bandwidth = kwargs['baseBandwidth']
+        if 'domainCount' in kwargs:
+            domain_count = kwargs['domainCount']
+        if 'portCount' in kwargs:
+            port_count = kwargs['portCount']
+        if 'productType' in kwargs:
+            product_type = kwargs['productType']
+        if 'serviceBandwidth' in kwargs:
+            service_bandwidth = kwargs['serviceBandwidth']
+
         if bandwidth is not None:
             _setter("bandwidth", bandwidth)
         if base_bandwidth is not None:
@@ -312,7 +336,7 @@ class _DdosCooInstanceState:
     @pulumi.getter(name="productType")
     def product_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+        The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
         - ddoscoo: Only supports domestic account.
         - ddoscoo_intl: Only supports to international account.
         Default to ddoscoo.
@@ -397,7 +421,7 @@ class DdosCooInstance(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[int] period: The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
         :param pulumi.Input[str] port_count: Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
-        :param pulumi.Input[str] product_type: The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+        :param pulumi.Input[str] product_type: The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
                - ddoscoo: Only supports domestic account.
                - ddoscoo_intl: Only supports to international account.
                Default to ddoscoo.
@@ -535,7 +559,7 @@ class DdosCooInstance(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[int] period: The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
         :param pulumi.Input[str] port_count: Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
-        :param pulumi.Input[str] product_type: The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+        :param pulumi.Input[str] product_type: The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
                - ddoscoo: Only supports domestic account.
                - ddoscoo_intl: Only supports to international account.
                Default to ddoscoo.
@@ -607,7 +631,7 @@ class DdosCooInstance(pulumi.CustomResource):
     @pulumi.getter(name="productType")
     def product_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+        The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
         - ddoscoo: Only supports domestic account.
         - ddoscoo_intl: Only supports to international account.
         Default to ddoscoo.

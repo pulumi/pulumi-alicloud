@@ -14,8 +14,6 @@ public final class ZoneAttachmentVpc {
     /**
      * @return The region of the vpc. If not set, the current region will instead of.
      * 
-     * Recommend to use `vpcs`.
-     * 
      */
     private @Nullable String regionId;
     /**
@@ -27,8 +25,6 @@ public final class ZoneAttachmentVpc {
     private ZoneAttachmentVpc() {}
     /**
      * @return The region of the vpc. If not set, the current region will instead of.
-     * 
-     * Recommend to use `vpcs`.
      * 
      */
     public Optional<String> regionId() {

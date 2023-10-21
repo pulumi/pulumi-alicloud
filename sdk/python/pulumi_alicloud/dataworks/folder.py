@@ -34,7 +34,15 @@ class FolderArgs:
              folder_path: pulumi.Input[str],
              project_id: Optional[pulumi.Input[str]] = None,
              project_identifier: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'folderPath' in kwargs:
+            folder_path = kwargs['folderPath']
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'projectIdentifier' in kwargs:
+            project_identifier = kwargs['projectIdentifier']
+
         _setter("folder_path", folder_path)
         if project_id is not None:
             _setter("project_id", project_id)
@@ -101,7 +109,17 @@ class _FolderState:
              folder_path: Optional[pulumi.Input[str]] = None,
              project_id: Optional[pulumi.Input[str]] = None,
              project_identifier: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'folderId' in kwargs:
+            folder_id = kwargs['folderId']
+        if 'folderPath' in kwargs:
+            folder_path = kwargs['folderPath']
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'projectIdentifier' in kwargs:
+            project_identifier = kwargs['projectIdentifier']
+
         if folder_id is not None:
             _setter("folder_id", folder_id)
         if folder_path is not None:

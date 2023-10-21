@@ -69,7 +69,23 @@ class ServerGroupArgs:
              sticky_session_config: Optional[pulumi.Input['ServerGroupStickySessionConfigArgs']] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'healthCheckConfig' in kwargs:
+            health_check_config = kwargs['healthCheckConfig']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'serverGroupName' in kwargs:
+            server_group_name = kwargs['serverGroupName']
+        if 'serverGroupType' in kwargs:
+            server_group_type = kwargs['serverGroupType']
+        if 'stickySessionConfig' in kwargs:
+            sticky_session_config = kwargs['stickySessionConfig']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if dry_run is not None:
             _setter("dry_run", dry_run)
         if health_check_config is not None:
@@ -286,7 +302,23 @@ class _ServerGroupState:
              sticky_session_config: Optional[pulumi.Input['ServerGroupStickySessionConfigArgs']] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'healthCheckConfig' in kwargs:
+            health_check_config = kwargs['healthCheckConfig']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'serverGroupName' in kwargs:
+            server_group_name = kwargs['serverGroupName']
+        if 'serverGroupType' in kwargs:
+            server_group_type = kwargs['serverGroupType']
+        if 'stickySessionConfig' in kwargs:
+            sticky_session_config = kwargs['stickySessionConfig']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if dry_run is not None:
             _setter("dry_run", dry_run)
         if health_check_config is not None:
@@ -478,7 +510,7 @@ class ServerGroup(pulumi.CustomResource):
         Provides a ALB Server Group resource.
 
         For information about ALB Server Group and how to use it,
-        see [What is Server Group](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createservergroup).
+        see [What is Server Group](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createservergroup).
 
         > **NOTE:** Available since v1.131.0.
 
@@ -592,7 +624,7 @@ class ServerGroup(pulumi.CustomResource):
         Provides a ALB Server Group resource.
 
         For information about ALB Server Group and how to use it,
-        see [What is Server Group](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createservergroup).
+        see [What is Server Group](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createservergroup).
 
         > **NOTE:** Available since v1.131.0.
 

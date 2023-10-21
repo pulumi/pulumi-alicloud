@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cloud Firewall Address Books of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.178.0+.
+ * > **NOTE:** Available since v1.178.0.
  *
  * ## Example Usage
  *
@@ -19,8 +19,22 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const ids = alicloud.cloudfirewall.getAddressBooks({});
- * export const cloudFirewallAddressBookId1 = ids.then(ids => ids.books?.[0]?.id);
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const _default = new alicloud.cloudfirewall.AddressBook("default", {
+ *     groupName: name,
+ *     groupType: "ip",
+ *     description: "tf-description",
+ *     autoAddTagEcs: 0,
+ *     addressLists: [
+ *         "10.21.0.0/16",
+ *         "10.168.0.0/16",
+ *     ],
+ * });
+ * const ids = alicloud.cloudfirewall.getAddressBooksOutput({
+ *     ids: [_default.id],
+ * });
+ * export const cloudFirewallAddressBookId1 = ids.apply(ids => ids.books?.[0]?.id);
  * ```
  */
 export function getAddressBooks(args?: GetAddressBooksArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressBooksResult> {
@@ -40,7 +54,7 @@ export function getAddressBooks(args?: GetAddressBooksArgs, opts?: pulumi.Invoke
  */
 export interface GetAddressBooksArgs {
     /**
-     * The type of the Address Book.
+     * The type of the Address Book. Valid values: `ip`, `tag`.
      */
     groupType?: string;
     /**
@@ -61,7 +75,13 @@ export interface GetAddressBooksArgs {
  * A collection of values returned by getAddressBooks.
  */
 export interface GetAddressBooksResult {
+    /**
+     * A list of Cloud Firewall Address Books. Each element contains the following attributes:
+     */
     readonly books: outputs.cloudfirewall.GetAddressBooksBook[];
+    /**
+     * The type of the Address Book.
+     */
     readonly groupType?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -69,13 +89,16 @@ export interface GetAddressBooksResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Address Book names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
 }
 /**
  * This data source provides the Cloud Firewall Address Books of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.178.0+.
+ * > **NOTE:** Available since v1.178.0.
  *
  * ## Example Usage
  *
@@ -85,8 +108,22 @@ export interface GetAddressBooksResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const ids = alicloud.cloudfirewall.getAddressBooks({});
- * export const cloudFirewallAddressBookId1 = ids.then(ids => ids.books?.[0]?.id);
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const _default = new alicloud.cloudfirewall.AddressBook("default", {
+ *     groupName: name,
+ *     groupType: "ip",
+ *     description: "tf-description",
+ *     autoAddTagEcs: 0,
+ *     addressLists: [
+ *         "10.21.0.0/16",
+ *         "10.168.0.0/16",
+ *     ],
+ * });
+ * const ids = alicloud.cloudfirewall.getAddressBooksOutput({
+ *     ids: [_default.id],
+ * });
+ * export const cloudFirewallAddressBookId1 = ids.apply(ids => ids.books?.[0]?.id);
  * ```
  */
 export function getAddressBooksOutput(args?: GetAddressBooksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAddressBooksResult> {
@@ -98,7 +135,7 @@ export function getAddressBooksOutput(args?: GetAddressBooksOutputArgs, opts?: p
  */
 export interface GetAddressBooksOutputArgs {
     /**
-     * The type of the Address Book.
+     * The type of the Address Book. Valid values: `ip`, `tag`.
      */
     groupType?: pulumi.Input<string>;
     /**

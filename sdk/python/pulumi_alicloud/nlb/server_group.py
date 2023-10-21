@@ -73,7 +73,27 @@ class ServerGroupArgs:
              scheduler: Optional[pulumi.Input[str]] = None,
              server_group_type: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'healthCheck' in kwargs:
+            health_check = kwargs['healthCheck']
+        if 'serverGroupName' in kwargs:
+            server_group_name = kwargs['serverGroupName']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'addressIpVersion' in kwargs:
+            address_ip_version = kwargs['addressIpVersion']
+        if 'connectionDrain' in kwargs:
+            connection_drain = kwargs['connectionDrain']
+        if 'connectionDrainTimeout' in kwargs:
+            connection_drain_timeout = kwargs['connectionDrainTimeout']
+        if 'preserveClientIpEnabled' in kwargs:
+            preserve_client_ip_enabled = kwargs['preserveClientIpEnabled']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'serverGroupType' in kwargs:
+            server_group_type = kwargs['serverGroupType']
+
         _setter("health_check", health_check)
         _setter("server_group_name", server_group_name)
         _setter("vpc_id", vpc_id)
@@ -305,7 +325,27 @@ class _ServerGroupState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addressIpVersion' in kwargs:
+            address_ip_version = kwargs['addressIpVersion']
+        if 'connectionDrain' in kwargs:
+            connection_drain = kwargs['connectionDrain']
+        if 'connectionDrainTimeout' in kwargs:
+            connection_drain_timeout = kwargs['connectionDrainTimeout']
+        if 'healthCheck' in kwargs:
+            health_check = kwargs['healthCheck']
+        if 'preserveClientIpEnabled' in kwargs:
+            preserve_client_ip_enabled = kwargs['preserveClientIpEnabled']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'serverGroupName' in kwargs:
+            server_group_name = kwargs['serverGroupName']
+        if 'serverGroupType' in kwargs:
+            server_group_type = kwargs['serverGroupType']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if address_ip_version is not None:
             _setter("address_ip_version", address_ip_version)
         if connection_drain is not None:

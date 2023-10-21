@@ -43,7 +43,11 @@ class UserArgs:
              password: Optional[pulumi.Input[str]] = None,
              phone: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'endUserId' in kwargs:
+            end_user_id = kwargs['endUserId']
+
         _setter("email", email)
         _setter("end_user_id", end_user_id)
         if password is not None:
@@ -146,7 +150,11 @@ class _UserState:
              password: Optional[pulumi.Input[str]] = None,
              phone: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'endUserId' in kwargs:
+            end_user_id = kwargs['endUserId']
+
         if email is not None:
             _setter("email", email)
         if end_user_id is not None:
@@ -233,7 +241,7 @@ class User(pulumi.CustomResource):
         """
         Provides a Elastic Desktop Service (ECD) User resource.
 
-        For information about Elastic Desktop Service (ECD) User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-eds-user-2021-03-08-api-doc-createusers-desktop).
+        For information about Elastic Desktop Service (ECD) User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-eds-user-2021-03-08-createusers-desktop).
 
         > **NOTE:** Available since v1.142.0.
 
@@ -277,7 +285,7 @@ class User(pulumi.CustomResource):
         """
         Provides a Elastic Desktop Service (ECD) User resource.
 
-        For information about Elastic Desktop Service (ECD) User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-eds-user-2021-03-08-api-doc-createusers-desktop).
+        For information about Elastic Desktop Service (ECD) User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-eds-user-2021-03-08-createusers-desktop).
 
         > **NOTE:** Available since v1.142.0.
 

@@ -35,7 +35,13 @@ class IntegrationExporterArgs:
              cluster_id: pulumi.Input[str],
              integration_type: pulumi.Input[str],
              param: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'integrationType' in kwargs:
+            integration_type = kwargs['integrationType']
+
         _setter("cluster_id", cluster_id)
         _setter("integration_type", integration_type)
         _setter("param", param)
@@ -105,7 +111,15 @@ class _IntegrationExporterState:
              instance_id: Optional[pulumi.Input[int]] = None,
              integration_type: Optional[pulumi.Input[str]] = None,
              param: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'integrationType' in kwargs:
+            integration_type = kwargs['integrationType']
+
         if cluster_id is not None:
             _setter("cluster_id", cluster_id)
         if instance_id is not None:
@@ -176,7 +190,7 @@ class IntegrationExporter(pulumi.CustomResource):
         """
         Provides a Application Real-Time Monitoring Service (ARMS) Integration Exporter resource.
 
-        For information about Application Real-Time Monitoring Service (ARMS) Integration Exporter and how to use it, see [What is Integration Exporter](https://www.alibabacloud.com/help/en/application-real-time-monitoring-service/latest/api-doc-arms-2019-08-08-api-doc-addprometheusintegration).
+        For information about Application Real-Time Monitoring Service (ARMS) Integration Exporter and how to use it, see [What is Integration Exporter](https://www.alibabacloud.com/help/en/arms/developer-reference/api-arms-2019-08-08-addprometheusintegration).
 
         > **NOTE:** Available since v1.203.0.
 
@@ -244,7 +258,7 @@ class IntegrationExporter(pulumi.CustomResource):
         """
         Provides a Application Real-Time Monitoring Service (ARMS) Integration Exporter resource.
 
-        For information about Application Real-Time Monitoring Service (ARMS) Integration Exporter and how to use it, see [What is Integration Exporter](https://www.alibabacloud.com/help/en/application-real-time-monitoring-service/latest/api-doc-arms-2019-08-08-api-doc-addprometheusintegration).
+        For information about Application Real-Time Monitoring Service (ARMS) Integration Exporter and how to use it, see [What is Integration Exporter](https://www.alibabacloud.com/help/en/arms/developer-reference/api-arms-2019-08-08-addprometheusintegration).
 
         > **NOTE:** Available since v1.203.0.
 

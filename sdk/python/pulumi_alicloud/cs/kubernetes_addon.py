@@ -39,7 +39,11 @@ class KubernetesAddonInitArgs:
              version: pulumi.Input[str],
              config: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+
         _setter("cluster_id", cluster_id)
         _setter("version", version)
         if config is not None:
@@ -136,7 +140,15 @@ class _KubernetesAddonState:
              next_version: Optional[pulumi.Input[str]] = None,
              required: Optional[pulumi.Input[bool]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'canUpgrade' in kwargs:
+            can_upgrade = kwargs['canUpgrade']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'nextVersion' in kwargs:
+            next_version = kwargs['nextVersion']
+
         if can_upgrade is not None:
             _setter("can_upgrade", can_upgrade)
         if cluster_id is not None:

@@ -43,7 +43,19 @@ class PortArgs:
              instance_id: pulumi.Input[str],
              real_servers: pulumi.Input[Sequence[pulumi.Input[str]]],
              backend_port: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'frontendPort' in kwargs:
+            frontend_port = kwargs['frontendPort']
+        if 'frontendProtocol' in kwargs:
+            frontend_protocol = kwargs['frontendProtocol']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'realServers' in kwargs:
+            real_servers = kwargs['realServers']
+        if 'backendPort' in kwargs:
+            backend_port = kwargs['backendPort']
+
         _setter("frontend_port", frontend_port)
         _setter("frontend_protocol", frontend_protocol)
         _setter("instance_id", instance_id)
@@ -144,7 +156,19 @@ class _PortState:
              frontend_protocol: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
              real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backendPort' in kwargs:
+            backend_port = kwargs['backendPort']
+        if 'frontendPort' in kwargs:
+            frontend_port = kwargs['frontendPort']
+        if 'frontendProtocol' in kwargs:
+            frontend_protocol = kwargs['frontendProtocol']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'realServers' in kwargs:
+            real_servers = kwargs['realServers']
+
         if backend_port is not None:
             _setter("backend_port", backend_port)
         if frontend_port is not None:

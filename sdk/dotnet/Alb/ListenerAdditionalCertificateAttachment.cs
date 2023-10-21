@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Alb
     /// <summary>
     /// Provides a Application Load Balancer (ALB) Listener Additional Certificate Attachment resource.
     /// 
-    /// For information about Application Load Balancer (ALB) Listener Additional Certificate Attachment and how to use it, see [What is Listener Additional Certificate Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-associateadditionalcertificateswithlistener).
+    /// For information about Application Load Balancer (ALB) Listener Additional Certificate Attachment and how to use it, see [What is Listener Additional Certificate Attachment](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-associateadditionalcertificateswithlistener).
     /// 
     /// &gt; **NOTE:** Available since v1.161.0.
     /// 

@@ -47,7 +47,19 @@ class RouteEntryArgs:
              nexthop_id: Optional[pulumi.Input[str]] = None,
              nexthop_type: Optional[pulumi.Input[str]] = None,
              router_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'routeTableId' in kwargs:
+            route_table_id = kwargs['routeTableId']
+        if 'destinationCidrblock' in kwargs:
+            destination_cidrblock = kwargs['destinationCidrblock']
+        if 'nexthopId' in kwargs:
+            nexthop_id = kwargs['nexthopId']
+        if 'nexthopType' in kwargs:
+            nexthop_type = kwargs['nexthopType']
+        if 'routerId' in kwargs:
+            router_id = kwargs['routerId']
+
         _setter("route_table_id", route_table_id)
         if destination_cidrblock is not None:
             _setter("destination_cidrblock", destination_cidrblock)
@@ -175,7 +187,19 @@ class _RouteEntryState:
              nexthop_type: Optional[pulumi.Input[str]] = None,
              route_table_id: Optional[pulumi.Input[str]] = None,
              router_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destinationCidrblock' in kwargs:
+            destination_cidrblock = kwargs['destinationCidrblock']
+        if 'nexthopId' in kwargs:
+            nexthop_id = kwargs['nexthopId']
+        if 'nexthopType' in kwargs:
+            nexthop_type = kwargs['nexthopType']
+        if 'routeTableId' in kwargs:
+            route_table_id = kwargs['routeTableId']
+        if 'routerId' in kwargs:
+            router_id = kwargs['routerId']
+
         if destination_cidrblock is not None:
             _setter("destination_cidrblock", destination_cidrblock)
         if name is not None:

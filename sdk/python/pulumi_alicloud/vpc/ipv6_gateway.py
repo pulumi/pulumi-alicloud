@@ -47,7 +47,15 @@ class Ipv6GatewayArgs:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              spec: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'ipv6GatewayName' in kwargs:
+            ipv6_gateway_name = kwargs['ipv6GatewayName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("vpc_id", vpc_id)
         if description is not None:
             _setter("description", description)
@@ -199,7 +207,25 @@ class _Ipv6GatewayState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'businessStatus' in kwargs:
+            business_status = kwargs['businessStatus']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'ipv6GatewayId' in kwargs:
+            ipv6_gateway_id = kwargs['ipv6GatewayId']
+        if 'ipv6GatewayName' in kwargs:
+            ipv6_gateway_name = kwargs['ipv6GatewayName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if business_status is not None:
             _setter("business_status", business_status)
         if create_time is not None:

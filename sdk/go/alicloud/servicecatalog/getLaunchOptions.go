@@ -12,11 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// This data source provides Service Catalog Launch Option available to the user.[What is Launch Option](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listlaunchoptions)
+// This data source provides Service Catalog Launch Option available to the user. [What is Launch Option](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listlaunchoptions).
 //
-// > **NOTE:** Available in 1.196.0+
+// > **NOTE:** Available since v1.196.0.
 //
 // ## Example Usage
+//
+// # Basic Usage
 //
 // ```go
 // package main
@@ -60,6 +62,7 @@ func GetLaunchOptions(ctx *pulumi.Context, args *GetLaunchOptionsArgs, opts ...p
 
 // A collection of arguments for invoking getLaunchOptions.
 type GetLaunchOptionsArgs struct {
+	// A list of Launch Option IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by portfolio name.
 	NameRegex *string `pulumi:"nameRegex"`
@@ -74,9 +77,11 @@ type GetLaunchOptionsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id  string   `pulumi:"id"`
 	Ids []string `pulumi:"ids"`
-	// A list of Launch Option Entries. Each element contains the following attributes:
+	// (Available since v1.197.0) A list of Launch Option Entries. Each element contains the following attributes:
 	LaunchOptions []GetLaunchOptionsLaunchOption `pulumi:"launchOptions"`
 	NameRegex     *string                        `pulumi:"nameRegex"`
+	// (Deprecated since v1.197.0) A list of Launch Option Entries. Each element contains the following attributes:
+	//
 	// Deprecated: Field 'options' has been deprecated from provider version 1.197.0.
 	Options    []GetLaunchOptionsOption `pulumi:"options"`
 	OutputFile *string                  `pulumi:"outputFile"`
@@ -98,6 +103,7 @@ func GetLaunchOptionsOutput(ctx *pulumi.Context, args GetLaunchOptionsOutputArgs
 
 // A collection of arguments for invoking getLaunchOptions.
 type GetLaunchOptionsOutputArgs struct {
+	// A list of Launch Option IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by portfolio name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
@@ -141,7 +147,7 @@ func (o GetLaunchOptionsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetLaunchOptionsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
-// A list of Launch Option Entries. Each element contains the following attributes:
+// (Available since v1.197.0) A list of Launch Option Entries. Each element contains the following attributes:
 func (o GetLaunchOptionsResultOutput) LaunchOptions() GetLaunchOptionsLaunchOptionArrayOutput {
 	return o.ApplyT(func(v GetLaunchOptionsResult) []GetLaunchOptionsLaunchOption { return v.LaunchOptions }).(GetLaunchOptionsLaunchOptionArrayOutput)
 }
@@ -150,6 +156,8 @@ func (o GetLaunchOptionsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLaunchOptionsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// (Deprecated since v1.197.0) A list of Launch Option Entries. Each element contains the following attributes:
+//
 // Deprecated: Field 'options' has been deprecated from provider version 1.197.0.
 func (o GetLaunchOptionsResultOutput) Options() GetLaunchOptionsOptionArrayOutput {
 	return o.ApplyT(func(v GetLaunchOptionsResult) []GetLaunchOptionsOption { return v.Options }).(GetLaunchOptionsOptionArrayOutput)

@@ -59,7 +59,23 @@ class EcsSnapshotGroupArgs:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              snapshot_group_name: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'diskIds' in kwargs:
+            disk_ids = kwargs['diskIds']
+        if 'excludeDiskIds' in kwargs:
+            exclude_disk_ids = kwargs['excludeDiskIds']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instantAccess' in kwargs:
+            instant_access = kwargs['instantAccess']
+        if 'instantAccessRetentionDays' in kwargs:
+            instant_access_retention_days = kwargs['instantAccessRetentionDays']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'snapshotGroupName' in kwargs:
+            snapshot_group_name = kwargs['snapshotGroupName']
+
         if description is not None:
             _setter("description", description)
         if disk_ids is not None:
@@ -240,7 +256,23 @@ class _EcsSnapshotGroupState:
              snapshot_group_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'diskIds' in kwargs:
+            disk_ids = kwargs['diskIds']
+        if 'excludeDiskIds' in kwargs:
+            exclude_disk_ids = kwargs['excludeDiskIds']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instantAccess' in kwargs:
+            instant_access = kwargs['instantAccess']
+        if 'instantAccessRetentionDays' in kwargs:
+            instant_access_retention_days = kwargs['instantAccessRetentionDays']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'snapshotGroupName' in kwargs:
+            snapshot_group_name = kwargs['snapshotGroupName']
+
         if description is not None:
             _setter("description", description)
         if disk_ids is not None:

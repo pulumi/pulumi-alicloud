@@ -78,7 +78,27 @@ class SecurityGroupRuleArgs:
              priority: Optional[pulumi.Input[int]] = None,
              source_group_owner_account: Optional[pulumi.Input[str]] = None,
              source_security_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'cidrIp' in kwargs:
+            cidr_ip = kwargs['cidrIp']
+        if 'ipv6CidrIp' in kwargs:
+            ipv6_cidr_ip = kwargs['ipv6CidrIp']
+        if 'nicType' in kwargs:
+            nic_type = kwargs['nicType']
+        if 'portRange' in kwargs:
+            port_range = kwargs['portRange']
+        if 'prefixListId' in kwargs:
+            prefix_list_id = kwargs['prefixListId']
+        if 'sourceGroupOwnerAccount' in kwargs:
+            source_group_owner_account = kwargs['sourceGroupOwnerAccount']
+        if 'sourceSecurityGroupId' in kwargs:
+            source_security_group_id = kwargs['sourceSecurityGroupId']
+
         _setter("ip_protocol", ip_protocol)
         _setter("security_group_id", security_group_id)
         _setter("type", type)
@@ -330,7 +350,27 @@ class _SecurityGroupRuleState:
              source_group_owner_account: Optional[pulumi.Input[str]] = None,
              source_security_group_id: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cidrIp' in kwargs:
+            cidr_ip = kwargs['cidrIp']
+        if 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if 'ipv6CidrIp' in kwargs:
+            ipv6_cidr_ip = kwargs['ipv6CidrIp']
+        if 'nicType' in kwargs:
+            nic_type = kwargs['nicType']
+        if 'portRange' in kwargs:
+            port_range = kwargs['portRange']
+        if 'prefixListId' in kwargs:
+            prefix_list_id = kwargs['prefixListId']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'sourceGroupOwnerAccount' in kwargs:
+            source_group_owner_account = kwargs['sourceGroupOwnerAccount']
+        if 'sourceSecurityGroupId' in kwargs:
+            source_security_group_id = kwargs['sourceSecurityGroupId']
+
         if cidr_ip is not None:
             _setter("cidr_ip", cidr_ip)
         if description is not None:

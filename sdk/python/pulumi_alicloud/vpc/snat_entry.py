@@ -43,7 +43,19 @@ class SnatEntryArgs:
              snat_entry_name: Optional[pulumi.Input[str]] = None,
              source_cidr: Optional[pulumi.Input[str]] = None,
              source_vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'snatIp' in kwargs:
+            snat_ip = kwargs['snatIp']
+        if 'snatTableId' in kwargs:
+            snat_table_id = kwargs['snatTableId']
+        if 'snatEntryName' in kwargs:
+            snat_entry_name = kwargs['snatEntryName']
+        if 'sourceCidr' in kwargs:
+            source_cidr = kwargs['sourceCidr']
+        if 'sourceVswitchId' in kwargs:
+            source_vswitch_id = kwargs['sourceVswitchId']
+
         _setter("snat_ip", snat_ip)
         _setter("snat_table_id", snat_table_id)
         if snat_entry_name is not None:
@@ -154,7 +166,21 @@ class _SnatEntryState:
              source_cidr: Optional[pulumi.Input[str]] = None,
              source_vswitch_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'snatEntryId' in kwargs:
+            snat_entry_id = kwargs['snatEntryId']
+        if 'snatEntryName' in kwargs:
+            snat_entry_name = kwargs['snatEntryName']
+        if 'snatIp' in kwargs:
+            snat_ip = kwargs['snatIp']
+        if 'snatTableId' in kwargs:
+            snat_table_id = kwargs['snatTableId']
+        if 'sourceCidr' in kwargs:
+            source_cidr = kwargs['sourceCidr']
+        if 'sourceVswitchId' in kwargs:
+            source_vswitch_id = kwargs['sourceVswitchId']
+
         if snat_entry_id is not None:
             _setter("snat_entry_id", snat_entry_id)
         if snat_entry_name is not None:

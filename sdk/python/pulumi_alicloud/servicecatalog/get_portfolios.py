@@ -164,7 +164,7 @@ def get_portfolios(ids: Optional[Sequence[str]] = None,
                    sort_order: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPortfoliosResult:
     """
-    This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-createportfolio)
+    This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createportfolio)
 
     > **NOTE:** Available in 1.204.0+
 
@@ -228,7 +228,7 @@ def get_portfolios_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] =
                           sort_order: Optional[pulumi.Input[Optional[str]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPortfoliosResult]:
     """
-    This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-createportfolio)
+    This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createportfolio)
 
     > **NOTE:** Available in 1.204.0+
 

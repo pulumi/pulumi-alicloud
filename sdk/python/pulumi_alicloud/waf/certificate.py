@@ -47,7 +47,17 @@ class CertificateArgs:
              certificate_id: Optional[pulumi.Input[str]] = None,
              certificate_name: Optional[pulumi.Input[str]] = None,
              private_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'certificateId' in kwargs:
+            certificate_id = kwargs['certificateId']
+        if 'certificateName' in kwargs:
+            certificate_name = kwargs['certificateName']
+        if 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+
         _setter("domain", domain)
         _setter("instance_id", instance_id)
         if certificate is not None:
@@ -168,7 +178,17 @@ class _CertificateState:
              domain: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
              private_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'certificateId' in kwargs:
+            certificate_id = kwargs['certificateId']
+        if 'certificateName' in kwargs:
+            certificate_name = kwargs['certificateName']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+
         if certificate is not None:
             _setter("certificate", certificate)
         if certificate_id is not None:

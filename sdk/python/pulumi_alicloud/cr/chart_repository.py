@@ -43,7 +43,17 @@ class ChartRepositoryArgs:
              repo_namespace_name: pulumi.Input[str],
              repo_type: Optional[pulumi.Input[str]] = None,
              summary: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'repoName' in kwargs:
+            repo_name = kwargs['repoName']
+        if 'repoNamespaceName' in kwargs:
+            repo_namespace_name = kwargs['repoNamespaceName']
+        if 'repoType' in kwargs:
+            repo_type = kwargs['repoType']
+
         _setter("instance_id", instance_id)
         _setter("repo_name", repo_name)
         _setter("repo_namespace_name", repo_namespace_name)
@@ -145,7 +155,17 @@ class _ChartRepositoryState:
              repo_namespace_name: Optional[pulumi.Input[str]] = None,
              repo_type: Optional[pulumi.Input[str]] = None,
              summary: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'repoName' in kwargs:
+            repo_name = kwargs['repoName']
+        if 'repoNamespaceName' in kwargs:
+            repo_namespace_name = kwargs['repoNamespaceName']
+        if 'repoType' in kwargs:
+            repo_type = kwargs['repoType']
+
         if instance_id is not None:
             _setter("instance_id", instance_id)
         if repo_name is not None:

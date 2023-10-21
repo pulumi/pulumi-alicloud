@@ -35,7 +35,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides the Cloud Firewall Address Books of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.178.0+.
+     * &gt; **NOTE:** Available since v1.178.0.
      * 
      * ## Example Usage
      * 
@@ -46,6 +46,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudfirewall.AddressBook;
+     * import com.pulumi.alicloud.cloudfirewall.AddressBookArgs;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetAddressBooksArgs;
      * import java.util.List;
@@ -61,9 +63,23 @@ public final class CloudfirewallFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = CloudfirewallFunctions.getAddressBooks();
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         var default_ = new AddressBook(&#34;default&#34;, AddressBookArgs.builder()        
+     *             .groupName(name)
+     *             .groupType(&#34;ip&#34;)
+     *             .description(&#34;tf-description&#34;)
+     *             .autoAddTagEcs(0)
+     *             .addressLists(            
+     *                 &#34;10.21.0.0/16&#34;,
+     *                 &#34;10.168.0.0/16&#34;)
+     *             .build());
      * 
-     *         ctx.export(&#34;cloudFirewallAddressBookId1&#34;, ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult.books()[0].id()));
+     *         final var ids = CloudfirewallFunctions.getAddressBooks(GetAddressBooksArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudFirewallAddressBookId1&#34;, ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult).applyValue(ids -&gt; ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult.books()[0].id())));
      *     }
      * }
      * ```
@@ -75,7 +91,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides the Cloud Firewall Address Books of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.178.0+.
+     * &gt; **NOTE:** Available since v1.178.0.
      * 
      * ## Example Usage
      * 
@@ -86,6 +102,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudfirewall.AddressBook;
+     * import com.pulumi.alicloud.cloudfirewall.AddressBookArgs;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetAddressBooksArgs;
      * import java.util.List;
@@ -101,9 +119,23 @@ public final class CloudfirewallFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = CloudfirewallFunctions.getAddressBooks();
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         var default_ = new AddressBook(&#34;default&#34;, AddressBookArgs.builder()        
+     *             .groupName(name)
+     *             .groupType(&#34;ip&#34;)
+     *             .description(&#34;tf-description&#34;)
+     *             .autoAddTagEcs(0)
+     *             .addressLists(            
+     *                 &#34;10.21.0.0/16&#34;,
+     *                 &#34;10.168.0.0/16&#34;)
+     *             .build());
      * 
-     *         ctx.export(&#34;cloudFirewallAddressBookId1&#34;, ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult.books()[0].id()));
+     *         final var ids = CloudfirewallFunctions.getAddressBooks(GetAddressBooksArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudFirewallAddressBookId1&#34;, ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult).applyValue(ids -&gt; ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult.books()[0].id())));
      *     }
      * }
      * ```
@@ -115,7 +147,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides the Cloud Firewall Address Books of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.178.0+.
+     * &gt; **NOTE:** Available since v1.178.0.
      * 
      * ## Example Usage
      * 
@@ -126,6 +158,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudfirewall.AddressBook;
+     * import com.pulumi.alicloud.cloudfirewall.AddressBookArgs;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetAddressBooksArgs;
      * import java.util.List;
@@ -141,9 +175,23 @@ public final class CloudfirewallFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = CloudfirewallFunctions.getAddressBooks();
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         var default_ = new AddressBook(&#34;default&#34;, AddressBookArgs.builder()        
+     *             .groupName(name)
+     *             .groupType(&#34;ip&#34;)
+     *             .description(&#34;tf-description&#34;)
+     *             .autoAddTagEcs(0)
+     *             .addressLists(            
+     *                 &#34;10.21.0.0/16&#34;,
+     *                 &#34;10.168.0.0/16&#34;)
+     *             .build());
      * 
-     *         ctx.export(&#34;cloudFirewallAddressBookId1&#34;, ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult.books()[0].id()));
+     *         final var ids = CloudfirewallFunctions.getAddressBooks(GetAddressBooksArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudFirewallAddressBookId1&#34;, ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult).applyValue(ids -&gt; ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult.books()[0].id())));
      *     }
      * }
      * ```
@@ -155,7 +203,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides the Cloud Firewall Address Books of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.178.0+.
+     * &gt; **NOTE:** Available since v1.178.0.
      * 
      * ## Example Usage
      * 
@@ -166,6 +214,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudfirewall.AddressBook;
+     * import com.pulumi.alicloud.cloudfirewall.AddressBookArgs;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetAddressBooksArgs;
      * import java.util.List;
@@ -181,9 +231,23 @@ public final class CloudfirewallFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = CloudfirewallFunctions.getAddressBooks();
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         var default_ = new AddressBook(&#34;default&#34;, AddressBookArgs.builder()        
+     *             .groupName(name)
+     *             .groupType(&#34;ip&#34;)
+     *             .description(&#34;tf-description&#34;)
+     *             .autoAddTagEcs(0)
+     *             .addressLists(            
+     *                 &#34;10.21.0.0/16&#34;,
+     *                 &#34;10.168.0.0/16&#34;)
+     *             .build());
      * 
-     *         ctx.export(&#34;cloudFirewallAddressBookId1&#34;, ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult.books()[0].id()));
+     *         final var ids = CloudfirewallFunctions.getAddressBooks(GetAddressBooksArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudFirewallAddressBookId1&#34;, ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult).applyValue(ids -&gt; ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult.books()[0].id())));
      *     }
      * }
      * ```
@@ -195,7 +259,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides the Cloud Firewall Address Books of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.178.0+.
+     * &gt; **NOTE:** Available since v1.178.0.
      * 
      * ## Example Usage
      * 
@@ -206,6 +270,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudfirewall.AddressBook;
+     * import com.pulumi.alicloud.cloudfirewall.AddressBookArgs;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetAddressBooksArgs;
      * import java.util.List;
@@ -221,9 +287,23 @@ public final class CloudfirewallFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = CloudfirewallFunctions.getAddressBooks();
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         var default_ = new AddressBook(&#34;default&#34;, AddressBookArgs.builder()        
+     *             .groupName(name)
+     *             .groupType(&#34;ip&#34;)
+     *             .description(&#34;tf-description&#34;)
+     *             .autoAddTagEcs(0)
+     *             .addressLists(            
+     *                 &#34;10.21.0.0/16&#34;,
+     *                 &#34;10.168.0.0/16&#34;)
+     *             .build());
      * 
-     *         ctx.export(&#34;cloudFirewallAddressBookId1&#34;, ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult.books()[0].id()));
+     *         final var ids = CloudfirewallFunctions.getAddressBooks(GetAddressBooksArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudFirewallAddressBookId1&#34;, ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult).applyValue(ids -&gt; ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult.books()[0].id())));
      *     }
      * }
      * ```
@@ -235,7 +315,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides the Cloud Firewall Address Books of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.178.0+.
+     * &gt; **NOTE:** Available since v1.178.0.
      * 
      * ## Example Usage
      * 
@@ -246,6 +326,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudfirewall.AddressBook;
+     * import com.pulumi.alicloud.cloudfirewall.AddressBookArgs;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetAddressBooksArgs;
      * import java.util.List;
@@ -261,9 +343,23 @@ public final class CloudfirewallFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = CloudfirewallFunctions.getAddressBooks();
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         var default_ = new AddressBook(&#34;default&#34;, AddressBookArgs.builder()        
+     *             .groupName(name)
+     *             .groupType(&#34;ip&#34;)
+     *             .description(&#34;tf-description&#34;)
+     *             .autoAddTagEcs(0)
+     *             .addressLists(            
+     *                 &#34;10.21.0.0/16&#34;,
+     *                 &#34;10.168.0.0/16&#34;)
+     *             .build());
      * 
-     *         ctx.export(&#34;cloudFirewallAddressBookId1&#34;, ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult.books()[0].id()));
+     *         final var ids = CloudfirewallFunctions.getAddressBooks(GetAddressBooksArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudFirewallAddressBookId1&#34;, ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult).applyValue(ids -&gt; ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult.books()[0].id())));
      *     }
      * }
      * ```

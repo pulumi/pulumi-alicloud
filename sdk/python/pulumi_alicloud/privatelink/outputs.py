@@ -45,7 +45,11 @@ class GetVpcEndpointConnectionsConnectionResult(dict):
              endpoint_id: str,
              id: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'endpointId' in kwargs:
+            endpoint_id = kwargs['endpointId']
+
         _setter("bandwidth", bandwidth)
         _setter("endpoint_id", endpoint_id)
         _setter("id", id)
@@ -107,7 +111,13 @@ class GetVpcEndpointServiceResourcesResourceResult(dict):
              id: str,
              resource_id: str,
              resource_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+
         _setter("id", id)
         _setter("resource_id", resource_id)
         _setter("resource_type", resource_type)
@@ -156,7 +166,11 @@ class GetVpcEndpointServiceUsersUserResult(dict):
              _setter: Callable[[Any, Any], None],
              id: str,
              user_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         _setter("id", id)
         _setter("user_id", user_id)
 
@@ -224,7 +238,23 @@ class GetVpcEndpointServicesServiceResult(dict):
              service_id: str,
              status: str,
              vpc_endpoint_service_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoAcceptConnection' in kwargs:
+            auto_accept_connection = kwargs['autoAcceptConnection']
+        if 'connectBandwidth' in kwargs:
+            connect_bandwidth = kwargs['connectBandwidth']
+        if 'serviceBusinessStatus' in kwargs:
+            service_business_status = kwargs['serviceBusinessStatus']
+        if 'serviceDescription' in kwargs:
+            service_description = kwargs['serviceDescription']
+        if 'serviceDomain' in kwargs:
+            service_domain = kwargs['serviceDomain']
+        if 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if 'vpcEndpointServiceName' in kwargs:
+            vpc_endpoint_service_name = kwargs['vpcEndpointServiceName']
+
         _setter("auto_accept_connection", auto_accept_connection)
         _setter("connect_bandwidth", connect_bandwidth)
         _setter("id", id)
@@ -347,7 +377,19 @@ class GetVpcEndpointZonesZoneResult(dict):
              vswitch_id: str,
              zone_domain: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'eniId' in kwargs:
+            eni_id = kwargs['eniId']
+        if 'eniIp' in kwargs:
+            eni_ip = kwargs['eniIp']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneDomain' in kwargs:
+            zone_domain = kwargs['zoneDomain']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("eni_id", eni_id)
         _setter("eni_ip", eni_ip)
         _setter("id", id)
@@ -476,7 +518,29 @@ class GetVpcEndpointsEndpointResult(dict):
              status: str,
              vpc_endpoint_name: str,
              vpc_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectionStatus' in kwargs:
+            connection_status = kwargs['connectionStatus']
+        if 'endpointBusinessStatus' in kwargs:
+            endpoint_business_status = kwargs['endpointBusinessStatus']
+        if 'endpointDescription' in kwargs:
+            endpoint_description = kwargs['endpointDescription']
+        if 'endpointDomain' in kwargs:
+            endpoint_domain = kwargs['endpointDomain']
+        if 'endpointId' in kwargs:
+            endpoint_id = kwargs['endpointId']
+        if 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if 'vpcEndpointName' in kwargs:
+            vpc_endpoint_name = kwargs['vpcEndpointName']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         _setter("bandwidth", bandwidth)
         _setter("connection_status", connection_status)
         _setter("endpoint_business_status", endpoint_business_status)

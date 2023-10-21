@@ -110,14 +110,6 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ## Block config
- * 
- * The config mapping supports the following:
- * * `instance_type` - (Optional) The instance type of the Nth extended configurations of the launch template.
- * * `max_price` - (Required) The maximum price of the instance type specified in the Nth extended configurations of the launch template.
- * * `vswitch_id` - (Required) The ID of the VSwitch in the Nth extended configurations of the launch template.
- * * `weighted_capacity` - (Required) The weight of the instance type specified in the Nth extended configurations of the launch template.
- * * `priority` - (Optional) The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
  * 
  * ## Import
  * 
@@ -201,14 +193,14 @@ public class AutoProvisioningGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.excessCapacityTerminationPolicy);
     }
     /**
-     * DataDisk mappings to attach to ecs instance. See Block config below for details.
+     * DataDisk mappings to attach to ecs instance. See `block-config` below for details.
      * 
      */
     @Export(name="launchTemplateConfigs", type=List.class, parameters={AutoProvisioningGroupLaunchTemplateConfig.class})
     private Output<List<AutoProvisioningGroupLaunchTemplateConfig>> launchTemplateConfigs;
 
     /**
-     * @return DataDisk mappings to attach to ecs instance. See Block config below for details.
+     * @return DataDisk mappings to attach to ecs instance. See `block-config` below for details.
      * 
      */
     public Output<List<AutoProvisioningGroupLaunchTemplateConfig>> launchTemplateConfigs() {

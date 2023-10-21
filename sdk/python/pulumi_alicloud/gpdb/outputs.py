@@ -75,7 +75,13 @@ class DbInstancePlanPlanConfig(dict):
              resume: Optional['outputs.DbInstancePlanPlanConfigResume'] = None,
              scale_in: Optional['outputs.DbInstancePlanPlanConfigScaleIn'] = None,
              scale_out: Optional['outputs.DbInstancePlanPlanConfigScaleOut'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'scaleIn' in kwargs:
+            scale_in = kwargs['scaleIn']
+        if 'scaleOut' in kwargs:
+            scale_out = kwargs['scaleOut']
+
         if pause is not None:
             _setter("pause", pause)
         if resume is not None:
@@ -156,7 +162,13 @@ class DbInstancePlanPlanConfigPause(dict):
              _setter: Callable[[Any, Any], None],
              execute_time: Optional[str] = None,
              plan_cron_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'executeTime' in kwargs:
+            execute_time = kwargs['executeTime']
+        if 'planCronTime' in kwargs:
+            plan_cron_time = kwargs['planCronTime']
+
         if execute_time is not None:
             _setter("execute_time", execute_time)
         if plan_cron_time is not None:
@@ -217,7 +229,13 @@ class DbInstancePlanPlanConfigResume(dict):
              _setter: Callable[[Any, Any], None],
              execute_time: Optional[str] = None,
              plan_cron_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'executeTime' in kwargs:
+            execute_time = kwargs['executeTime']
+        if 'planCronTime' in kwargs:
+            plan_cron_time = kwargs['planCronTime']
+
         if execute_time is not None:
             _setter("execute_time", execute_time)
         if plan_cron_time is not None:
@@ -284,7 +302,15 @@ class DbInstancePlanPlanConfigScaleIn(dict):
              execute_time: Optional[str] = None,
              plan_cron_time: Optional[str] = None,
              segment_node_num: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'executeTime' in kwargs:
+            execute_time = kwargs['executeTime']
+        if 'planCronTime' in kwargs:
+            plan_cron_time = kwargs['planCronTime']
+        if 'segmentNodeNum' in kwargs:
+            segment_node_num = kwargs['segmentNodeNum']
+
         if execute_time is not None:
             _setter("execute_time", execute_time)
         if plan_cron_time is not None:
@@ -361,7 +387,15 @@ class DbInstancePlanPlanConfigScaleOut(dict):
              execute_time: Optional[str] = None,
              plan_cron_time: Optional[str] = None,
              segment_node_num: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'executeTime' in kwargs:
+            execute_time = kwargs['executeTime']
+        if 'planCronTime' in kwargs:
+            plan_cron_time = kwargs['planCronTime']
+        if 'segmentNodeNum' in kwargs:
+            segment_node_num = kwargs['segmentNodeNum']
+
         if execute_time is not None:
             _setter("execute_time", execute_time)
         if plan_cron_time is not None:
@@ -439,7 +473,15 @@ class InstanceIpWhitelist(dict):
              ip_group_attribute: Optional[str] = None,
              ip_group_name: Optional[str] = None,
              security_ip_list: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipGroupAttribute' in kwargs:
+            ip_group_attribute = kwargs['ipGroupAttribute']
+        if 'ipGroupName' in kwargs:
+            ip_group_name = kwargs['ipGroupName']
+        if 'securityIpList' in kwargs:
+            security_ip_list = kwargs['securityIpList']
+
         if ip_group_attribute is not None:
             _setter("ip_group_attribute", ip_group_attribute)
         if ip_group_name is not None:
@@ -504,7 +546,15 @@ class GetAccountsAccountResult(dict):
              db_instance_id: str,
              id: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountDescription' in kwargs:
+            account_description = kwargs['accountDescription']
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+
         _setter("account_description", account_description)
         _setter("account_name", account_name)
         _setter("db_instance_id", db_instance_id)
@@ -602,7 +652,25 @@ class GetDbInstancePlansPlanResult(dict):
              plan_start_date: str,
              plan_type: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbInstancePlanName' in kwargs:
+            db_instance_plan_name = kwargs['dbInstancePlanName']
+        if 'planConfigs' in kwargs:
+            plan_configs = kwargs['planConfigs']
+        if 'planDesc' in kwargs:
+            plan_desc = kwargs['planDesc']
+        if 'planEndDate' in kwargs:
+            plan_end_date = kwargs['planEndDate']
+        if 'planId' in kwargs:
+            plan_id = kwargs['planId']
+        if 'planScheduleType' in kwargs:
+            plan_schedule_type = kwargs['planScheduleType']
+        if 'planStartDate' in kwargs:
+            plan_start_date = kwargs['planStartDate']
+        if 'planType' in kwargs:
+            plan_type = kwargs['planType']
+
         _setter("db_instance_plan_name", db_instance_plan_name)
         _setter("id", id)
         _setter("plan_configs", plan_configs)
@@ -719,7 +787,13 @@ class GetDbInstancePlansPlanPlanConfigResult(dict):
              resumes: Sequence['outputs.GetDbInstancePlansPlanPlanConfigResumeResult'],
              scale_ins: Sequence['outputs.GetDbInstancePlansPlanPlanConfigScaleInResult'],
              scale_outs: Sequence['outputs.GetDbInstancePlansPlanPlanConfigScaleOutResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'scaleIns' in kwargs:
+            scale_ins = kwargs['scaleIns']
+        if 'scaleOuts' in kwargs:
+            scale_outs = kwargs['scaleOuts']
+
         _setter("pauses", pauses)
         _setter("resumes", resumes)
         _setter("scale_ins", scale_ins)
@@ -781,7 +855,15 @@ class GetDbInstancePlansPlanPlanConfigPauseResult(dict):
              execute_time: str,
              plan_cron_time: str,
              plan_task_status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'executeTime' in kwargs:
+            execute_time = kwargs['executeTime']
+        if 'planCronTime' in kwargs:
+            plan_cron_time = kwargs['planCronTime']
+        if 'planTaskStatus' in kwargs:
+            plan_task_status = kwargs['planTaskStatus']
+
         _setter("execute_time", execute_time)
         _setter("plan_cron_time", plan_cron_time)
         _setter("plan_task_status", plan_task_status)
@@ -834,7 +916,15 @@ class GetDbInstancePlansPlanPlanConfigResumeResult(dict):
              execute_time: str,
              plan_cron_time: str,
              plan_task_status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'executeTime' in kwargs:
+            execute_time = kwargs['executeTime']
+        if 'planCronTime' in kwargs:
+            plan_cron_time = kwargs['planCronTime']
+        if 'planTaskStatus' in kwargs:
+            plan_task_status = kwargs['planTaskStatus']
+
         _setter("execute_time", execute_time)
         _setter("plan_cron_time", plan_cron_time)
         _setter("plan_task_status", plan_task_status)
@@ -891,7 +981,17 @@ class GetDbInstancePlansPlanPlanConfigScaleInResult(dict):
              plan_cron_time: str,
              plan_task_status: str,
              segment_node_num: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'executeTime' in kwargs:
+            execute_time = kwargs['executeTime']
+        if 'planCronTime' in kwargs:
+            plan_cron_time = kwargs['planCronTime']
+        if 'planTaskStatus' in kwargs:
+            plan_task_status = kwargs['planTaskStatus']
+        if 'segmentNodeNum' in kwargs:
+            segment_node_num = kwargs['segmentNodeNum']
+
         _setter("execute_time", execute_time)
         _setter("plan_cron_time", plan_cron_time)
         _setter("plan_task_status", plan_task_status)
@@ -957,7 +1057,17 @@ class GetDbInstancePlansPlanPlanConfigScaleOutResult(dict):
              plan_cron_time: str,
              plan_task_status: str,
              segment_node_num: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'executeTime' in kwargs:
+            execute_time = kwargs['executeTime']
+        if 'planCronTime' in kwargs:
+            plan_cron_time = kwargs['planCronTime']
+        if 'planTaskStatus' in kwargs:
+            plan_task_status = kwargs['planTaskStatus']
+        if 'segmentNodeNum' in kwargs:
+            segment_node_num = kwargs['segmentNodeNum']
+
         _setter("execute_time", execute_time)
         _setter("plan_cron_time", plan_cron_time)
         _setter("plan_task_status", plan_task_status)
@@ -1125,7 +1235,59 @@ class GetInstancesInstanceResult(dict):
              vpc_id: str,
              vswitch_id: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'chargeType' in kwargs:
+            charge_type = kwargs['chargeType']
+        if 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if 'cpuCores' in kwargs:
+            cpu_cores = kwargs['cpuCores']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'dbInstanceCategory' in kwargs:
+            db_instance_category = kwargs['dbInstanceCategory']
+        if 'dbInstanceClass' in kwargs:
+            db_instance_class = kwargs['dbInstanceClass']
+        if 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+        if 'dbInstanceMode' in kwargs:
+            db_instance_mode = kwargs['dbInstanceMode']
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'instanceNetworkType' in kwargs:
+            instance_network_type = kwargs['instanceNetworkType']
+        if 'ipWhitelists' in kwargs:
+            ip_whitelists = kwargs['ipWhitelists']
+        if 'maintainEndTime' in kwargs:
+            maintain_end_time = kwargs['maintainEndTime']
+        if 'maintainStartTime' in kwargs:
+            maintain_start_time = kwargs['maintainStartTime']
+        if 'masterNodeNum' in kwargs:
+            master_node_num = kwargs['masterNodeNum']
+        if 'memorySize' in kwargs:
+            memory_size = kwargs['memorySize']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'segNodeNum' in kwargs:
+            seg_node_num = kwargs['segNodeNum']
+        if 'storageSize' in kwargs:
+            storage_size = kwargs['storageSize']
+        if 'storageType' in kwargs:
+            storage_type = kwargs['storageType']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("availability_zone", availability_zone)
         _setter("charge_type", charge_type)
         _setter("connection_string", connection_string)
@@ -1415,7 +1577,15 @@ class GetInstancesInstanceIpWhitelistResult(dict):
              ip_group_attribute: str,
              ip_group_name: str,
              security_ip_list: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipGroupAttribute' in kwargs:
+            ip_group_attribute = kwargs['ipGroupAttribute']
+        if 'ipGroupName' in kwargs:
+            ip_group_name = kwargs['ipGroupName']
+        if 'securityIpList' in kwargs:
+            security_ip_list = kwargs['securityIpList']
+
         _setter("ip_group_attribute", ip_group_attribute)
         _setter("ip_group_name", ip_group_name)
         _setter("security_ip_list", security_ip_list)
@@ -1464,7 +1634,11 @@ class GetZonesZoneResult(dict):
              _setter: Callable[[Any, Any], None],
              id: str,
              multi_zone_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'multiZoneIds' in kwargs:
+            multi_zone_ids = kwargs['multiZoneIds']
+
         _setter("id", id)
         _setter("multi_zone_ids", multi_zone_ids)
 

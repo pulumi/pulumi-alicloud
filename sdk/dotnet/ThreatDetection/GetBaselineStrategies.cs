@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     public static class GetBaselineStrategies
     {
         /// <summary>
-        /// This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/zh/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifystrategy)
+        /// This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
         /// 
         /// &gt; **NOTE:** Available in 1.195.0+
         /// </summary>
@@ -20,7 +20,7 @@ namespace Pulumi.AliCloud.ThreatDetection
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBaselineStrategiesResult>("alicloud:threatdetection/getBaselineStrategies:getBaselineStrategies", args ?? new GetBaselineStrategiesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/zh/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifystrategy)
+        /// This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
         /// 
         /// &gt; **NOTE:** Available in 1.195.0+
         /// </summary>

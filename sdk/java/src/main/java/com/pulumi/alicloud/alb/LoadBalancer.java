@@ -25,13 +25,13 @@ import javax.annotation.Nullable;
 /**
  * Provides a ALB Load Balancer resource.
  * 
- * For information about ALB Load Balancer and how to use it, see [What is Load Balancer](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createloadbalancer).
+ * For information about ALB Load Balancer and how to use it, see [What is Load Balancer](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createloadbalancer).
  * 
  * &gt; **NOTE:** Available since v1.132.0.
  * 
  * ## Import
  * 
- * ALB Load Balancer can be imported using the id, e.g.
+ * Alb Load Balancer can be imported using the id, e.g.
  * 
  * ```sh
  *  $ pulumi import alicloud:alb/loadBalancer:LoadBalancer example &lt;id&gt;
@@ -41,70 +41,102 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:alb/loadBalancer:LoadBalancer")
 public class LoadBalancer extends com.pulumi.resources.CustomResource {
     /**
-     * The Access Logging Configuration Structure. See `access_log_config` below for details.
+     * The Access Logging Configuration Structure. See `access_log_config` below.
      * 
      */
     @Export(name="accessLogConfig", type=LoadBalancerAccessLogConfig.class, parameters={})
     private Output</* @Nullable */ LoadBalancerAccessLogConfig> accessLogConfig;
 
     /**
-     * @return The Access Logging Configuration Structure. See `access_log_config` below for details.
+     * @return The Access Logging Configuration Structure. See `access_log_config` below.
      * 
      */
     public Output<Optional<LoadBalancerAccessLogConfig>> accessLogConfig() {
         return Codegen.optional(this.accessLogConfig);
     }
     /**
-     * The method in which IP addresses are assigned. Valid values: `Fixed` and `Dynamic`. Default value: `Dynamic`.
+     * The method in which IP addresses are assigned. Valid values:  Fixed: The ALB instance uses a fixed IP address. Dynamic (default): An IP address is dynamically assigned to each zone of the ALB instance.
      * 
      */
     @Export(name="addressAllocatedMode", type=String.class, parameters={})
     private Output</* @Nullable */ String> addressAllocatedMode;
 
     /**
-     * @return The method in which IP addresses are assigned. Valid values: `Fixed` and `Dynamic`. Default value: `Dynamic`.
+     * @return The method in which IP addresses are assigned. Valid values:  Fixed: The ALB instance uses a fixed IP address. Dynamic (default): An IP address is dynamically assigned to each zone of the ALB instance.
      * 
      */
     public Output<Optional<String>> addressAllocatedMode() {
         return Codegen.optional(this.addressAllocatedMode);
     }
     /**
-     * The IP version. Valid values: `Ipv4`, `DualStack`.
+     * The protocol version. Value:
+     * - **IPv4**:IPv4 type.
+     * - **DualStack**: the dual-stack type.
      * 
      */
     @Export(name="addressIpVersion", type=String.class, parameters={})
     private Output<String> addressIpVersion;
 
     /**
-     * @return The IP version. Valid values: `Ipv4`, `DualStack`.
+     * @return The protocol version. Value:
+     * - **IPv4**:IPv4 type.
+     * - **DualStack**: the dual-stack type.
      * 
      */
     public Output<String> addressIpVersion() {
         return this.addressIpVersion;
     }
     /**
-     * The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`. **NOTE:** From version 1.193.1, `address_type` can be modified.
+     * The type of IP address that the SLB instance uses to provide services.
      * 
      */
     @Export(name="addressType", type=String.class, parameters={})
     private Output<String> addressType;
 
     /**
-     * @return The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`. **NOTE:** From version 1.193.1, `address_type` can be modified.
+     * @return The type of IP address that the SLB instance uses to provide services.
      * 
      */
     public Output<String> addressType() {
         return this.addressType;
     }
     /**
-     * The deletion protection enabled. Valid values: `true` and `false`. Default value: `false`.
+     * The ID of the EIP bandwidth plan which is associated with an ALB instance that uses a public IP address.
+     * 
+     */
+    @Export(name="bandwidthPackageId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> bandwidthPackageId;
+
+    /**
+     * @return The ID of the EIP bandwidth plan which is associated with an ALB instance that uses a public IP address.
+     * 
+     */
+    public Output<Optional<String>> bandwidthPackageId() {
+        return Codegen.optional(this.bandwidthPackageId);
+    }
+    /**
+     * The creation time of the resource.
+     * 
+     */
+    @Export(name="createTime", type=String.class, parameters={})
+    private Output<String> createTime;
+
+    /**
+     * @return The creation time of the resource.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * Whether to enable delete protection. Value:true: on.false (default): Off.
      * 
      */
     @Export(name="deletionProtectionEnabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> deletionProtectionEnabled;
 
     /**
-     * @return The deletion protection enabled. Valid values: `true` and `false`. Default value: `false`.
+     * @return Whether to enable delete protection. Value:true: on.false (default): Off.
      * 
      */
     public Output<Optional<Boolean>> deletionProtectionEnabled() {
@@ -125,42 +157,56 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.dnsName;
     }
     /**
-     * Specifies whether to precheck the API request. Valid values: `true` and `false`.
+     * Whether to PreCheck only this request, value:true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
      * 
      */
     @Export(name="dryRun", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return Specifies whether to precheck the API request. Valid values: `true` and `false`.
+     * @return Whether to PreCheck only this request, value:true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * The configuration of the billing method. See `load_balancer_billing_config` below for details.
+     * The address type of Ipv6.
+     * 
+     */
+    @Export(name="ipv6AddressType", type=String.class, parameters={})
+    private Output<String> ipv6AddressType;
+
+    /**
+     * @return The address type of Ipv6.
+     * 
+     */
+    public Output<String> ipv6AddressType() {
+        return this.ipv6AddressType;
+    }
+    /**
+     * The configuration of the billing method. See `load_balancer_billing_config` below.
      * 
      */
     @Export(name="loadBalancerBillingConfig", type=LoadBalancerLoadBalancerBillingConfig.class, parameters={})
     private Output<LoadBalancerLoadBalancerBillingConfig> loadBalancerBillingConfig;
 
     /**
-     * @return The configuration of the billing method. See `load_balancer_billing_config` below for details.
+     * @return The configuration of the billing method. See `load_balancer_billing_config` below.
      * 
      */
     public Output<LoadBalancerLoadBalancerBillingConfig> loadBalancerBillingConfig() {
         return this.loadBalancerBillingConfig;
     }
     /**
-     * The edition of the ALB instance. Different editions have different limits and billing methods. Valid values: `Basic`, `Standard` and `StandardWithWaf`(Available in v1.193.1+).
+     * The edition of the ALB instance.
      * 
      */
     @Export(name="loadBalancerEdition", type=String.class, parameters={})
     private Output<String> loadBalancerEdition;
 
     /**
-     * @return The edition of the ALB instance. Different editions have different limits and billing methods. Valid values: `Basic`, `Standard` and `StandardWithWaf`(Available in v1.193.1+).
+     * @return The edition of the ALB instance.
      * 
      */
     public Output<String> loadBalancerEdition() {
@@ -171,24 +217,24 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="loadBalancerName", type=String.class, parameters={})
-    private Output<String> loadBalancerName;
+    private Output</* @Nullable */ String> loadBalancerName;
 
     /**
      * @return The name of the resource.
      * 
      */
-    public Output<String> loadBalancerName() {
-        return this.loadBalancerName;
+    public Output<Optional<String>> loadBalancerName() {
+        return Codegen.optional(this.loadBalancerName);
     }
     /**
-     * Modify the Protection Configuration. See `modification_protection_config` below for details.
+     * Modify the Protection Configuration. See `modification_protection_config` below.
      * 
      */
     @Export(name="modificationProtectionConfig", type=LoadBalancerModificationProtectionConfig.class, parameters={})
     private Output<LoadBalancerModificationProtectionConfig> modificationProtectionConfig;
 
     /**
-     * @return Modify the Protection Configuration. See `modification_protection_config` below for details.
+     * @return Modify the Protection Configuration. See `modification_protection_config` below.
      * 
      */
     public Output<LoadBalancerModificationProtectionConfig> modificationProtectionConfig() {
@@ -209,56 +255,56 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
+     * Load Balancing Modify the Protection Status.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
+     * @return Load Balancing Modify the Protection Status.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * A mapping of tags to assign to the resource. **NOTE:** The Key of `tags` cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, &#34;https://&#34;, &#34;ack&#34; or &#34;ingress&#34;.
+     * The tag of the resource.
      * 
      */
     @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource. **NOTE:** The Key of `tags` cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, &#34;https://&#34;, &#34;ack&#34; or &#34;ingress&#34;.
+     * @return The tag of the resource.
      * 
      */
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
+     * The ID of the virtual private cloud (VPC) where the SLB instance is deployed.
      * 
      */
     @Export(name="vpcId", type=String.class, parameters={})
     private Output<String> vpcId;
 
     /**
-     * @return The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
+     * @return The ID of the virtual private cloud (VPC) where the SLB instance is deployed.
      * 
      */
     public Output<String> vpcId() {
         return this.vpcId;
     }
     /**
-     * The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below for details.
+     * The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below.
      * 
      */
     @Export(name="zoneMappings", type=List.class, parameters={LoadBalancerZoneMapping.class})
     private Output<List<LoadBalancerZoneMapping>> zoneMappings;
 
     /**
-     * @return The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below for details.
+     * @return The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below.
      * 
      */
     public Output<List<LoadBalancerZoneMapping>> zoneMappings() {

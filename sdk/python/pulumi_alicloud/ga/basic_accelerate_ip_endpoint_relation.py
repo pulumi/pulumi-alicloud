@@ -35,7 +35,15 @@ class BasicAccelerateIpEndpointRelationArgs:
              accelerate_ip_id: pulumi.Input[str],
              accelerator_id: pulumi.Input[str],
              endpoint_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accelerateIpId' in kwargs:
+            accelerate_ip_id = kwargs['accelerateIpId']
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'endpointId' in kwargs:
+            endpoint_id = kwargs['endpointId']
+
         _setter("accelerate_ip_id", accelerate_ip_id)
         _setter("accelerator_id", accelerator_id)
         _setter("endpoint_id", endpoint_id)
@@ -105,7 +113,15 @@ class _BasicAccelerateIpEndpointRelationState:
              accelerator_id: Optional[pulumi.Input[str]] = None,
              endpoint_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accelerateIpId' in kwargs:
+            accelerate_ip_id = kwargs['accelerateIpId']
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'endpointId' in kwargs:
+            endpoint_id = kwargs['endpointId']
+
         if accelerate_ip_id is not None:
             _setter("accelerate_ip_id", accelerate_ip_id)
         if accelerator_id is not None:

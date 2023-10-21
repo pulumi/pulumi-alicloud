@@ -35,7 +35,15 @@ class VpcNetworkAclAttachmentArgs:
              network_acl_id: pulumi.Input[str],
              resource_id: pulumi.Input[str],
              resource_type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'networkAclId' in kwargs:
+            network_acl_id = kwargs['networkAclId']
+        if 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+
         _setter("network_acl_id", network_acl_id)
         _setter("resource_id", resource_id)
         _setter("resource_type", resource_type)
@@ -105,7 +113,15 @@ class _VpcNetworkAclAttachmentState:
              resource_id: Optional[pulumi.Input[str]] = None,
              resource_type: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'networkAclId' in kwargs:
+            network_acl_id = kwargs['networkAclId']
+        if 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+
         if network_acl_id is not None:
             _setter("network_acl_id", network_acl_id)
         if resource_id is not None:

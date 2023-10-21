@@ -38,7 +38,9 @@ class InstanceDataDisk(dict):
              _setter: Callable[[Any, Any], None],
              category: Optional[str] = None,
              size: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if category is not None:
             _setter("category", category)
         if size is not None:
@@ -80,7 +82,9 @@ class InstanceSystemDisk(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              size: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if size is not None:
             _setter("size", size)
 
@@ -124,7 +128,15 @@ class GetKeyPairsPairResult(dict):
              key_pair_finger_print: str,
              key_pair_name: str,
              version: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'keyPairFingerPrint' in kwargs:
+            key_pair_finger_print = kwargs['keyPairFingerPrint']
+        if 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+
         _setter("create_time", create_time)
         _setter("id", id)
         _setter("key_pair_finger_print", key_pair_finger_print)

@@ -91,7 +91,37 @@ class InstanceArgs:
              renewal_duration: Optional[pulumi.Input[int]] = None,
              renewal_duration_unit: Optional[pulumi.Input[str]] = None,
              renewal_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bandWidth' in kwargs:
+            band_width = kwargs['bandWidth']
+        if 'cfwLog' in kwargs:
+            cfw_log = kwargs['cfwLog']
+        if 'ipNumber' in kwargs:
+            ip_number = kwargs['ipNumber']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'accountNumber' in kwargs:
+            account_number = kwargs['accountNumber']
+        if 'cfwAccount' in kwargs:
+            cfw_account = kwargs['cfwAccount']
+        if 'cfwLogStorage' in kwargs:
+            cfw_log_storage = kwargs['cfwLogStorage']
+        if 'fwVpcNumber' in kwargs:
+            fw_vpc_number = kwargs['fwVpcNumber']
+        if 'instanceCount' in kwargs:
+            instance_count = kwargs['instanceCount']
+        if 'modifyType' in kwargs:
+            modify_type = kwargs['modifyType']
+        if 'renewPeriod' in kwargs:
+            renew_period = kwargs['renewPeriod']
+        if 'renewalDuration' in kwargs:
+            renewal_duration = kwargs['renewalDuration']
+        if 'renewalDurationUnit' in kwargs:
+            renewal_duration_unit = kwargs['renewalDurationUnit']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+
         _setter("band_width", band_width)
         _setter("cfw_log", cfw_log)
         _setter("ip_number", ip_number)
@@ -428,7 +458,43 @@ class _InstanceState:
              renewal_status: Optional[pulumi.Input[str]] = None,
              spec: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountNumber' in kwargs:
+            account_number = kwargs['accountNumber']
+        if 'bandWidth' in kwargs:
+            band_width = kwargs['bandWidth']
+        if 'cfwAccount' in kwargs:
+            cfw_account = kwargs['cfwAccount']
+        if 'cfwLog' in kwargs:
+            cfw_log = kwargs['cfwLog']
+        if 'cfwLogStorage' in kwargs:
+            cfw_log_storage = kwargs['cfwLogStorage']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if 'fwVpcNumber' in kwargs:
+            fw_vpc_number = kwargs['fwVpcNumber']
+        if 'instanceCount' in kwargs:
+            instance_count = kwargs['instanceCount']
+        if 'ipNumber' in kwargs:
+            ip_number = kwargs['ipNumber']
+        if 'modifyType' in kwargs:
+            modify_type = kwargs['modifyType']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'releaseTime' in kwargs:
+            release_time = kwargs['releaseTime']
+        if 'renewPeriod' in kwargs:
+            renew_period = kwargs['renewPeriod']
+        if 'renewalDuration' in kwargs:
+            renewal_duration = kwargs['renewalDuration']
+        if 'renewalDurationUnit' in kwargs:
+            renewal_duration_unit = kwargs['renewalDurationUnit']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+
         if account_number is not None:
             _setter("account_number", account_number)
         if band_width is not None:

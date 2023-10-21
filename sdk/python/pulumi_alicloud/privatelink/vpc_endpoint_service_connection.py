@@ -39,7 +39,15 @@ class VpcEndpointServiceConnectionArgs:
              service_id: pulumi.Input[str],
              bandwidth: Optional[pulumi.Input[int]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'endpointId' in kwargs:
+            endpoint_id = kwargs['endpointId']
+        if 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+
         _setter("endpoint_id", endpoint_id)
         _setter("service_id", service_id)
         if bandwidth is not None:
@@ -128,7 +136,15 @@ class _VpcEndpointServiceConnectionState:
              endpoint_id: Optional[pulumi.Input[str]] = None,
              service_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'endpointId' in kwargs:
+            endpoint_id = kwargs['endpointId']
+        if 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+
         if bandwidth is not None:
             _setter("bandwidth", bandwidth)
         if dry_run is not None:

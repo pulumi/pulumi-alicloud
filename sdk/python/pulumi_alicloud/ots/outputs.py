@@ -74,7 +74,15 @@ class SearchIndexSchema(dict):
              field_schemas: Sequence['outputs.SearchIndexSchemaFieldSchema'],
              index_settings: Optional[Sequence['outputs.SearchIndexSchemaIndexSetting']] = None,
              index_sorts: Optional[Sequence['outputs.SearchIndexSchemaIndexSort']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fieldSchemas' in kwargs:
+            field_schemas = kwargs['fieldSchemas']
+        if 'indexSettings' in kwargs:
+            index_settings = kwargs['indexSettings']
+        if 'indexSorts' in kwargs:
+            index_sorts = kwargs['indexSorts']
+
         _setter("field_schemas", field_schemas)
         if index_settings is not None:
             _setter("index_settings", index_settings)
@@ -168,7 +176,17 @@ class SearchIndexSchemaFieldSchema(dict):
              index: Optional[bool] = None,
              is_array: Optional[bool] = None,
              store: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fieldName' in kwargs:
+            field_name = kwargs['fieldName']
+        if 'fieldType' in kwargs:
+            field_type = kwargs['fieldType']
+        if 'enableSortAndAgg' in kwargs:
+            enable_sort_and_agg = kwargs['enableSortAndAgg']
+        if 'isArray' in kwargs:
+            is_array = kwargs['isArray']
+
         _setter("field_name", field_name)
         _setter("field_type", field_type)
         if analyzer is not None:
@@ -271,7 +289,11 @@ class SearchIndexSchemaIndexSetting(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              routing_fields: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'routingFields' in kwargs:
+            routing_fields = kwargs['routingFields']
+
         if routing_fields is not None:
             _setter("routing_fields", routing_fields)
 
@@ -299,7 +321,9 @@ class SearchIndexSchemaIndexSort(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              sorters: Sequence['outputs.SearchIndexSchemaIndexSortSorter'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("sorters", sorters)
 
     @property
@@ -357,7 +381,13 @@ class SearchIndexSchemaIndexSortSorter(dict):
              mode: Optional[str] = None,
              order: Optional[str] = None,
              sorter_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fieldName' in kwargs:
+            field_name = kwargs['fieldName']
+        if 'sorterType' in kwargs:
+            sorter_type = kwargs['sorterType']
+
         if field_name is not None:
             _setter("field_name", field_name)
         if mode is not None:
@@ -419,7 +449,9 @@ class TableDefinedColumn(dict):
              _setter: Callable[[Any, Any], None],
              name: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         _setter("type", type)
 
@@ -459,7 +491,9 @@ class TablePrimaryKey(dict):
              _setter: Callable[[Any, Any], None],
              name: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         _setter("type", type)
 
@@ -536,7 +570,19 @@ class TunnelChannel(dict):
              channel_status: Optional[str] = None,
              channel_type: Optional[str] = None,
              client_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'channelId' in kwargs:
+            channel_id = kwargs['channelId']
+        if 'channelRpo' in kwargs:
+            channel_rpo = kwargs['channelRpo']
+        if 'channelStatus' in kwargs:
+            channel_status = kwargs['channelStatus']
+        if 'channelType' in kwargs:
+            channel_type = kwargs['channelType']
+        if 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+
         if channel_id is not None:
             _setter("channel_id", channel_id)
         if channel_rpo is not None:
@@ -628,7 +674,15 @@ class GetInstanceAttachmentsAttachmentResult(dict):
              region: str,
              vpc_id: str,
              vpc_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vpcName' in kwargs:
+            vpc_name = kwargs['vpcName']
+
         _setter("domain", domain)
         _setter("endpoint", endpoint)
         _setter("id", id)
@@ -762,7 +816,21 @@ class GetInstancesInstanceResult(dict):
              tags: Mapping[str, Any],
              user_id: str,
              write_capacity: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterType' in kwargs:
+            cluster_type = kwargs['clusterType']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'entityQuota' in kwargs:
+            entity_quota = kwargs['entityQuota']
+        if 'readCapacity' in kwargs:
+            read_capacity = kwargs['readCapacity']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if 'writeCapacity' in kwargs:
+            write_capacity = kwargs['writeCapacity']
+
         _setter("cluster_type", cluster_type)
         _setter("create_time", create_time)
         _setter("description", description)
@@ -945,7 +1013,31 @@ class GetSearchIndexesIndexResult(dict):
              sync_phase: str,
              table_name: str,
              time_to_live: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'currentSyncTimestamp' in kwargs:
+            current_sync_timestamp = kwargs['currentSyncTimestamp']
+        if 'indexName' in kwargs:
+            index_name = kwargs['indexName']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'meteringLastUpdateTime' in kwargs:
+            metering_last_update_time = kwargs['meteringLastUpdateTime']
+        if 'reservedReadCu' in kwargs:
+            reserved_read_cu = kwargs['reservedReadCu']
+        if 'rowCount' in kwargs:
+            row_count = kwargs['rowCount']
+        if 'storageSize' in kwargs:
+            storage_size = kwargs['storageSize']
+        if 'syncPhase' in kwargs:
+            sync_phase = kwargs['syncPhase']
+        if 'tableName' in kwargs:
+            table_name = kwargs['tableName']
+        if 'timeToLive' in kwargs:
+            time_to_live = kwargs['timeToLive']
+
         _setter("create_time", create_time)
         _setter("current_sync_timestamp", current_sync_timestamp)
         _setter("id", id)
@@ -1104,7 +1196,21 @@ class GetSecondaryIndexesIndexResult(dict):
              instance_name: str,
              primary_keys: Sequence[str],
              table_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'definedColumns' in kwargs:
+            defined_columns = kwargs['definedColumns']
+        if 'indexName' in kwargs:
+            index_name = kwargs['indexName']
+        if 'indexType' in kwargs:
+            index_type = kwargs['indexType']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'primaryKeys' in kwargs:
+            primary_keys = kwargs['primaryKeys']
+        if 'tableName' in kwargs:
+            table_name = kwargs['tableName']
+
         _setter("defined_columns", defined_columns)
         _setter("id", id)
         _setter("index_name", index_name)
@@ -1208,7 +1314,21 @@ class GetTablesTableResult(dict):
              primary_keys: Sequence['outputs.GetTablesTablePrimaryKeyResult'],
              table_name: str,
              time_to_live: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'definedColumns' in kwargs:
+            defined_columns = kwargs['definedColumns']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'maxVersion' in kwargs:
+            max_version = kwargs['maxVersion']
+        if 'primaryKeys' in kwargs:
+            primary_keys = kwargs['primaryKeys']
+        if 'tableName' in kwargs:
+            table_name = kwargs['tableName']
+        if 'timeToLive' in kwargs:
+            time_to_live = kwargs['timeToLive']
+
         _setter("defined_columns", defined_columns)
         _setter("id", id)
         _setter("instance_name", instance_name)
@@ -1286,7 +1406,9 @@ class GetTablesTableDefinedColumnResult(dict):
              _setter: Callable[[Any, Any], None],
              name: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         _setter("type", type)
 
@@ -1316,7 +1438,9 @@ class GetTablesTablePrimaryKeyResult(dict):
              _setter: Callable[[Any, Any], None],
              name: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         _setter("type", type)
 
@@ -1386,7 +1510,25 @@ class GetTunnelsTunnelResult(dict):
              tunnel_rpo: int,
              tunnel_stage: str,
              tunnel_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'tableName' in kwargs:
+            table_name = kwargs['tableName']
+        if 'tunnelId' in kwargs:
+            tunnel_id = kwargs['tunnelId']
+        if 'tunnelName' in kwargs:
+            tunnel_name = kwargs['tunnelName']
+        if 'tunnelRpo' in kwargs:
+            tunnel_rpo = kwargs['tunnelRpo']
+        if 'tunnelStage' in kwargs:
+            tunnel_stage = kwargs['tunnelStage']
+        if 'tunnelType' in kwargs:
+            tunnel_type = kwargs['tunnelType']
+
         _setter("channels", channels)
         _setter("create_time", create_time)
         _setter("expired", expired)
@@ -1519,7 +1661,19 @@ class GetTunnelsTunnelChannelResult(dict):
              channel_status: str,
              channel_type: str,
              client_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'channelId' in kwargs:
+            channel_id = kwargs['channelId']
+        if 'channelRpo' in kwargs:
+            channel_rpo = kwargs['channelRpo']
+        if 'channelStatus' in kwargs:
+            channel_status = kwargs['channelStatus']
+        if 'channelType' in kwargs:
+            channel_type = kwargs['channelType']
+        if 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+
         _setter("channel_id", channel_id)
         _setter("channel_rpo", channel_rpo)
         _setter("channel_status", channel_status)

@@ -31,7 +31,13 @@ class EcsAutoSnapshotPolicyAttachmentArgs:
              _setter: Callable[[Any, Any], None],
              auto_snapshot_policy_id: pulumi.Input[str],
              disk_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoSnapshotPolicyId' in kwargs:
+            auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
+        if 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+
         _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
         _setter("disk_id", disk_id)
 
@@ -80,7 +86,13 @@ class _EcsAutoSnapshotPolicyAttachmentState:
              _setter: Callable[[Any, Any], None],
              auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
              disk_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoSnapshotPolicyId' in kwargs:
+            auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
+        if 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+
         if auto_snapshot_policy_id is not None:
             _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
         if disk_id is not None:

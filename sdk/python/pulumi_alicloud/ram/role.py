@@ -55,7 +55,13 @@ class RoleArgs:
              ram_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxSessionDuration' in kwargs:
+            max_session_duration = kwargs['maxSessionDuration']
+        if 'ramUsers' in kwargs:
+            ram_users = kwargs['ramUsers']
+
         if description is not None:
             _setter("description", description)
         if document is not None:
@@ -240,7 +246,15 @@ class _RoleState:
              role_id: Optional[pulumi.Input[str]] = None,
              services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxSessionDuration' in kwargs:
+            max_session_duration = kwargs['maxSessionDuration']
+        if 'ramUsers' in kwargs:
+            ram_users = kwargs['ramUsers']
+        if 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+
         if arn is not None:
             _setter("arn", arn)
         if description is not None:

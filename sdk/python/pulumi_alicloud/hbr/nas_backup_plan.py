@@ -77,7 +77,25 @@ class NasBackupPlanArgs:
              cross_account_user_id: Optional[pulumi.Input[int]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
              options: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupType' in kwargs:
+            backup_type = kwargs['backupType']
+        if 'fileSystemId' in kwargs:
+            file_system_id = kwargs['fileSystemId']
+        if 'nasBackupPlanName' in kwargs:
+            nas_backup_plan_name = kwargs['nasBackupPlanName']
+        if 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'crossAccountRoleName' in kwargs:
+            cross_account_role_name = kwargs['crossAccountRoleName']
+        if 'crossAccountType' in kwargs:
+            cross_account_type = kwargs['crossAccountType']
+        if 'crossAccountUserId' in kwargs:
+            cross_account_user_id = kwargs['crossAccountUserId']
+
         _setter("backup_type", backup_type)
         _setter("file_system_id", file_system_id)
         _setter("nas_backup_plan_name", nas_backup_plan_name)
@@ -329,7 +347,25 @@ class _NasBackupPlanState:
              retention: Optional[pulumi.Input[str]] = None,
              schedule: Optional[pulumi.Input[str]] = None,
              vault_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupType' in kwargs:
+            backup_type = kwargs['backupType']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'crossAccountRoleName' in kwargs:
+            cross_account_role_name = kwargs['crossAccountRoleName']
+        if 'crossAccountType' in kwargs:
+            cross_account_type = kwargs['crossAccountType']
+        if 'crossAccountUserId' in kwargs:
+            cross_account_user_id = kwargs['crossAccountUserId']
+        if 'fileSystemId' in kwargs:
+            file_system_id = kwargs['fileSystemId']
+        if 'nasBackupPlanName' in kwargs:
+            nas_backup_plan_name = kwargs['nasBackupPlanName']
+        if 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+
         if backup_type is not None:
             _setter("backup_type", backup_type)
         if create_time is not None:

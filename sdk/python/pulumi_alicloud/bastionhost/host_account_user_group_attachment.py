@@ -39,7 +39,17 @@ class HostAccountUserGroupAttachmentArgs:
              host_id: pulumi.Input[str],
              instance_id: pulumi.Input[str],
              user_group_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'hostAccountIds' in kwargs:
+            host_account_ids = kwargs['hostAccountIds']
+        if 'hostId' in kwargs:
+            host_id = kwargs['hostId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'userGroupId' in kwargs:
+            user_group_id = kwargs['userGroupId']
+
         _setter("host_account_ids", host_account_ids)
         _setter("host_id", host_id)
         _setter("instance_id", instance_id)
@@ -122,7 +132,17 @@ class _HostAccountUserGroupAttachmentState:
              host_id: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
              user_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'hostAccountIds' in kwargs:
+            host_account_ids = kwargs['hostAccountIds']
+        if 'hostId' in kwargs:
+            host_id = kwargs['hostId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'userGroupId' in kwargs:
+            user_group_id = kwargs['userGroupId']
+
         if host_account_ids is not None:
             _setter("host_account_ids", host_account_ids)
         if host_id is not None:

@@ -147,7 +147,7 @@ class GetInstancesResult:
     def instance_class(self) -> Optional[str]:
         """
         (Optional) Type of the applied ApsaraDB for instance.
-        For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+        For more information, see [Instance type table](https://www.alibabacloud.com/help/en/redis/product-overview/overview-4).
         """
         return pulumi.get(self, "instance_class")
 
@@ -323,7 +323,7 @@ def get_instances(architecture_type: Optional[str] = None,
     :param str expired: The expiration status of the instance.
     :param bool global_instance: Whether to create a distributed cache.
     :param Sequence[str] ids: A list of KVStore DBInstance IDs.
-    :param str instance_class: Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+    :param str instance_class: Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
     :param str instance_type: The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
     :param str name_regex: A regex string to apply to the instance name.
     :param str network_type: The type of the network. Valid values: `CLASSIC`, `VPC`.
@@ -431,7 +431,7 @@ def get_instances_output(architecture_type: Optional[pulumi.Input[Optional[str]]
     :param str expired: The expiration status of the instance.
     :param bool global_instance: Whether to create a distributed cache.
     :param Sequence[str] ids: A list of KVStore DBInstance IDs.
-    :param str instance_class: Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+    :param str instance_class: Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
     :param str instance_type: The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
     :param str name_regex: A regex string to apply to the instance name.
     :param str network_type: The type of the network. Valid values: `CLASSIC`, `VPC`.

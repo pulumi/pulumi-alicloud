@@ -43,7 +43,17 @@ class Ipv6EgressRuleArgs:
              description: Optional[pulumi.Input[str]] = None,
              instance_type: Optional[pulumi.Input[str]] = None,
              ipv6_egress_rule_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'ipv6GatewayId' in kwargs:
+            ipv6_gateway_id = kwargs['ipv6GatewayId']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'ipv6EgressRuleName' in kwargs:
+            ipv6_egress_rule_name = kwargs['ipv6EgressRuleName']
+
         _setter("instance_id", instance_id)
         _setter("ipv6_gateway_id", ipv6_gateway_id)
         if description is not None:
@@ -150,7 +160,17 @@ class _Ipv6EgressRuleState:
              ipv6_egress_rule_name: Optional[pulumi.Input[str]] = None,
              ipv6_gateway_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'ipv6EgressRuleName' in kwargs:
+            ipv6_egress_rule_name = kwargs['ipv6EgressRuleName']
+        if 'ipv6GatewayId' in kwargs:
+            ipv6_gateway_id = kwargs['ipv6GatewayId']
+
         if description is not None:
             _setter("description", description)
         if instance_id is not None:

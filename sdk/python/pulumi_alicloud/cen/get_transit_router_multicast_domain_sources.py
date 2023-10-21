@@ -92,9 +92,9 @@ def get_transit_router_multicast_domain_sources(ids: Optional[Sequence[str]] = N
                                                 transit_router_multicast_domain_id: Optional[str] = None,
                                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTransitRouterMulticastDomainSourcesResult:
     """
-    This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupsources)
+    This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupsources)
 
-    > **NOTE:** Available in 1.195.0+
+    > **NOTE:** Available since v1.195.0.
 
     ## Example Usage
 
@@ -107,6 +107,7 @@ def get_transit_router_multicast_domain_sources(ids: Optional[Sequence[str]] = N
     ```
 
 
+    :param Sequence[str] ids: A list of the multicast domain IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str transit_router_multicast_domain_id: The ID of the multicast domain to which the multicast source belongs.
     """
@@ -131,9 +132,9 @@ def get_transit_router_multicast_domain_sources_output(ids: Optional[pulumi.Inpu
                                                        transit_router_multicast_domain_id: Optional[pulumi.Input[str]] = None,
                                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransitRouterMulticastDomainSourcesResult]:
     """
-    This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupsources)
+    This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupsources)
 
-    > **NOTE:** Available in 1.195.0+
+    > **NOTE:** Available since v1.195.0.
 
     ## Example Usage
 
@@ -146,6 +147,7 @@ def get_transit_router_multicast_domain_sources_output(ids: Optional[pulumi.Inpu
     ```
 
 
+    :param Sequence[str] ids: A list of the multicast domain IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str transit_router_multicast_domain_id: The ID of the multicast domain to which the multicast source belongs.
     """

@@ -71,7 +71,25 @@ class GetApplicationGroupsGroupResult(dict):
              import_tag_key: str,
              import_tag_value: str,
              update_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applicationGroupName' in kwargs:
+            application_group_name = kwargs['applicationGroupName']
+        if 'applicationName' in kwargs:
+            application_name = kwargs['applicationName']
+        if 'cmsGroupId' in kwargs:
+            cms_group_id = kwargs['cmsGroupId']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'deployRegionId' in kwargs:
+            deploy_region_id = kwargs['deployRegionId']
+        if 'importTagKey' in kwargs:
+            import_tag_key = kwargs['importTagKey']
+        if 'importTagValue' in kwargs:
+            import_tag_value = kwargs['importTagValue']
+        if 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         _setter("application_group_name", application_group_name)
         _setter("application_name", application_name)
         _setter("cms_group_id", cms_group_id)
@@ -203,7 +221,17 @@ class GetApplicationsApplicationResult(dict):
              resource_group_id: str,
              tags: Mapping[str, Any],
              update_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applicationName' in kwargs:
+            application_name = kwargs['applicationName']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         _setter("application_name", application_name)
         _setter("create_time", create_time)
         _setter("description", description)
@@ -364,7 +392,37 @@ class GetExecutionsExecutionResult(dict):
              template_name: str,
              template_version: str,
              update_date: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createDate' in kwargs:
+            create_date = kwargs['createDate']
+        if 'endDate' in kwargs:
+            end_date = kwargs['endDate']
+        if 'executedBy' in kwargs:
+            executed_by = kwargs['executedBy']
+        if 'executionId' in kwargs:
+            execution_id = kwargs['executionId']
+        if 'isParent' in kwargs:
+            is_parent = kwargs['isParent']
+        if 'parentExecutionId' in kwargs:
+            parent_execution_id = kwargs['parentExecutionId']
+        if 'ramRole' in kwargs:
+            ram_role = kwargs['ramRole']
+        if 'startDate' in kwargs:
+            start_date = kwargs['startDate']
+        if 'statusMessage' in kwargs:
+            status_message = kwargs['statusMessage']
+        if 'statusReason' in kwargs:
+            status_reason = kwargs['statusReason']
+        if 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+        if 'templateName' in kwargs:
+            template_name = kwargs['templateName']
+        if 'templateVersion' in kwargs:
+            template_version = kwargs['templateVersion']
+        if 'updateDate' in kwargs:
+            update_date = kwargs['updateDate']
+
         _setter("category", category)
         _setter("counters", counters)
         _setter("create_date", create_date)
@@ -627,7 +685,27 @@ class GetParametersParameterResult(dict):
              updated_by: str,
              updated_date: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if 'parameterId' in kwargs:
+            parameter_id = kwargs['parameterId']
+        if 'parameterName' in kwargs:
+            parameter_name = kwargs['parameterName']
+        if 'parameterVersion' in kwargs:
+            parameter_version = kwargs['parameterVersion']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'shareType' in kwargs:
+            share_type = kwargs['shareType']
+        if 'updatedBy' in kwargs:
+            updated_by = kwargs['updatedBy']
+        if 'updatedDate' in kwargs:
+            updated_date = kwargs['updatedDate']
+
         _setter("constraints", constraints)
         _setter("create_time", create_time)
         _setter("created_by", created_by)
@@ -824,7 +902,29 @@ class GetPatchBaselinesBaselineResult(dict):
              share_type: str,
              updated_by: str,
              updated_date: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'approvalRules' in kwargs:
+            approval_rules = kwargs['approvalRules']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if 'isDefault' in kwargs:
+            is_default = kwargs['isDefault']
+        if 'operationSystem' in kwargs:
+            operation_system = kwargs['operationSystem']
+        if 'patchBaselineId' in kwargs:
+            patch_baseline_id = kwargs['patchBaselineId']
+        if 'patchBaselineName' in kwargs:
+            patch_baseline_name = kwargs['patchBaselineName']
+        if 'shareType' in kwargs:
+            share_type = kwargs['shareType']
+        if 'updatedBy' in kwargs:
+            updated_by = kwargs['updatedBy']
+        if 'updatedDate' in kwargs:
+            updated_date = kwargs['updatedDate']
+
         _setter("approval_rules", approval_rules)
         _setter("create_time", create_time)
         _setter("created_by", created_by)
@@ -1006,7 +1106,29 @@ class GetSecretParametersParameterResult(dict):
              type: str,
              updated_by: str,
              updated_date: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+        if 'parameterVersion' in kwargs:
+            parameter_version = kwargs['parameterVersion']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'secretParameterId' in kwargs:
+            secret_parameter_id = kwargs['secretParameterId']
+        if 'secretParameterName' in kwargs:
+            secret_parameter_name = kwargs['secretParameterName']
+        if 'shareType' in kwargs:
+            share_type = kwargs['shareType']
+        if 'updatedBy' in kwargs:
+            updated_by = kwargs['updatedBy']
+        if 'updatedDate' in kwargs:
+            updated_date = kwargs['updatedDate']
+
         _setter("constraints", constraints)
         _setter("create_time", create_time)
         _setter("created_by", created_by)
@@ -1215,7 +1337,29 @@ class GetStateConfigurationsConfigurationResult(dict):
              template_name: str,
              template_version: str,
              update_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configureMode' in kwargs:
+            configure_mode = kwargs['configureMode']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'scheduleExpression' in kwargs:
+            schedule_expression = kwargs['scheduleExpression']
+        if 'scheduleType' in kwargs:
+            schedule_type = kwargs['scheduleType']
+        if 'stateConfigurationId' in kwargs:
+            state_configuration_id = kwargs['stateConfigurationId']
+        if 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+        if 'templateName' in kwargs:
+            template_name = kwargs['templateName']
+        if 'templateVersion' in kwargs:
+            template_version = kwargs['templateVersion']
+        if 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         _setter("configure_mode", configure_mode)
         _setter("create_time", create_time)
         _setter("description", description)
@@ -1424,7 +1568,31 @@ class GetTemplatesTemplateResult(dict):
              template_version: str,
              updated_by: str,
              updated_date: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if 'createdDate' in kwargs:
+            created_date = kwargs['createdDate']
+        if 'hasTrigger' in kwargs:
+            has_trigger = kwargs['hasTrigger']
+        if 'shareType' in kwargs:
+            share_type = kwargs['shareType']
+        if 'templateFormat' in kwargs:
+            template_format = kwargs['templateFormat']
+        if 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+        if 'templateName' in kwargs:
+            template_name = kwargs['templateName']
+        if 'templateType' in kwargs:
+            template_type = kwargs['templateType']
+        if 'templateVersion' in kwargs:
+            template_version = kwargs['templateVersion']
+        if 'updatedBy' in kwargs:
+            updated_by = kwargs['updatedBy']
+        if 'updatedDate' in kwargs:
+            updated_date = kwargs['updatedDate']
+
         _setter("category", category)
         _setter("created_by", created_by)
         _setter("created_date", created_date)

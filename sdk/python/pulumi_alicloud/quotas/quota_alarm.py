@@ -59,7 +59,23 @@ class QuotaAlarmArgs:
              threshold_percent: Optional[pulumi.Input[float]] = None,
              threshold_type: Optional[pulumi.Input[str]] = None,
              web_hook: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'productCode' in kwargs:
+            product_code = kwargs['productCode']
+        if 'quotaActionCode' in kwargs:
+            quota_action_code = kwargs['quotaActionCode']
+        if 'quotaAlarmName' in kwargs:
+            quota_alarm_name = kwargs['quotaAlarmName']
+        if 'quotaDimensions' in kwargs:
+            quota_dimensions = kwargs['quotaDimensions']
+        if 'thresholdPercent' in kwargs:
+            threshold_percent = kwargs['thresholdPercent']
+        if 'thresholdType' in kwargs:
+            threshold_type = kwargs['thresholdType']
+        if 'webHook' in kwargs:
+            web_hook = kwargs['webHook']
+
         _setter("product_code", product_code)
         _setter("quota_action_code", quota_action_code)
         _setter("quota_alarm_name", quota_alarm_name)
@@ -223,7 +239,25 @@ class _QuotaAlarmState:
              threshold_percent: Optional[pulumi.Input[float]] = None,
              threshold_type: Optional[pulumi.Input[str]] = None,
              web_hook: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'productCode' in kwargs:
+            product_code = kwargs['productCode']
+        if 'quotaActionCode' in kwargs:
+            quota_action_code = kwargs['quotaActionCode']
+        if 'quotaAlarmName' in kwargs:
+            quota_alarm_name = kwargs['quotaAlarmName']
+        if 'quotaDimensions' in kwargs:
+            quota_dimensions = kwargs['quotaDimensions']
+        if 'thresholdPercent' in kwargs:
+            threshold_percent = kwargs['thresholdPercent']
+        if 'thresholdType' in kwargs:
+            threshold_type = kwargs['thresholdType']
+        if 'webHook' in kwargs:
+            web_hook = kwargs['webHook']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if product_code is not None:
@@ -371,7 +405,7 @@ class QuotaAlarm(pulumi.CustomResource):
         """
         Provides a Quotas Quota Alarm resource.
 
-        For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://www.alibabacloud.com/help/en/quota-center/latest/api-doc-quotas-2020-05-10-api-doc-createquotaalarm).
+        For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createquotaalarm).
 
         > **NOTE:** Available since v1.116.0.
 
@@ -429,7 +463,7 @@ class QuotaAlarm(pulumi.CustomResource):
         """
         Provides a Quotas Quota Alarm resource.
 
-        For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://www.alibabacloud.com/help/en/quota-center/latest/api-doc-quotas-2020-05-10-api-doc-createquotaalarm).
+        For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createquotaalarm).
 
         > **NOTE:** Available since v1.116.0.
 

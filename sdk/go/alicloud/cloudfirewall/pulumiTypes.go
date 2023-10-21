@@ -2102,7 +2102,7 @@ type GetAddressBooksBook struct {
 	EcsTags []GetAddressBooksBookEcsTag `pulumi:"ecsTags"`
 	// The name of the Address Book.
 	GroupName string `pulumi:"groupName"`
-	// The type of the Address Book.
+	// The type of the Address Book. Valid values: `ip`, `tag`.
 	GroupType string `pulumi:"groupType"`
 	// The ID of the Address Book.
 	GroupUuid string `pulumi:"groupUuid"`
@@ -2134,7 +2134,7 @@ type GetAddressBooksBookArgs struct {
 	EcsTags GetAddressBooksBookEcsTagArrayInput `pulumi:"ecsTags"`
 	// The name of the Address Book.
 	GroupName pulumi.StringInput `pulumi:"groupName"`
-	// The type of the Address Book.
+	// The type of the Address Book. Valid values: `ip`, `tag`.
 	GroupType pulumi.StringInput `pulumi:"groupType"`
 	// The ID of the Address Book.
 	GroupUuid pulumi.StringInput `pulumi:"groupUuid"`
@@ -2238,7 +2238,7 @@ func (o GetAddressBooksBookOutput) GroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddressBooksBook) string { return v.GroupName }).(pulumi.StringOutput)
 }
 
-// The type of the Address Book.
+// The type of the Address Book. Valid values: `ip`, `tag`.
 func (o GetAddressBooksBookOutput) GroupType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddressBooksBook) string { return v.GroupType }).(pulumi.StringOutput)
 }
@@ -2286,9 +2286,9 @@ func (o GetAddressBooksBookArrayOutput) Index(i pulumi.IntInput) GetAddressBooks
 
 type GetAddressBooksBookEcsTag struct {
 	// The key of ECS tag that to be matched.
-	TagKey *string `pulumi:"tagKey"`
+	TagKey string `pulumi:"tagKey"`
 	// The value of ECS tag that to be matched.
-	TagValue *string `pulumi:"tagValue"`
+	TagValue string `pulumi:"tagValue"`
 }
 
 // GetAddressBooksBookEcsTagInput is an input type that accepts GetAddressBooksBookEcsTagArgs and GetAddressBooksBookEcsTagOutput values.
@@ -2304,9 +2304,9 @@ type GetAddressBooksBookEcsTagInput interface {
 
 type GetAddressBooksBookEcsTagArgs struct {
 	// The key of ECS tag that to be matched.
-	TagKey pulumi.StringPtrInput `pulumi:"tagKey"`
+	TagKey pulumi.StringInput `pulumi:"tagKey"`
 	// The value of ECS tag that to be matched.
-	TagValue pulumi.StringPtrInput `pulumi:"tagValue"`
+	TagValue pulumi.StringInput `pulumi:"tagValue"`
 }
 
 func (GetAddressBooksBookEcsTagArgs) ElementType() reflect.Type {
@@ -2379,13 +2379,13 @@ func (o GetAddressBooksBookEcsTagOutput) ToOutput(ctx context.Context) pulumix.O
 }
 
 // The key of ECS tag that to be matched.
-func (o GetAddressBooksBookEcsTagOutput) TagKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAddressBooksBookEcsTag) *string { return v.TagKey }).(pulumi.StringPtrOutput)
+func (o GetAddressBooksBookEcsTagOutput) TagKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressBooksBookEcsTag) string { return v.TagKey }).(pulumi.StringOutput)
 }
 
 // The value of ECS tag that to be matched.
-func (o GetAddressBooksBookEcsTagOutput) TagValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAddressBooksBookEcsTag) *string { return v.TagValue }).(pulumi.StringPtrOutput)
+func (o GetAddressBooksBookEcsTagOutput) TagValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressBooksBookEcsTag) string { return v.TagValue }).(pulumi.StringOutput)
 }
 
 type GetAddressBooksBookEcsTagArrayOutput struct{ *pulumi.OutputState }

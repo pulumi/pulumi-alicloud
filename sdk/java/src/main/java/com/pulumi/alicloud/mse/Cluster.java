@@ -179,14 +179,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.clusterType;
     }
     /**
-     * The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
+     * The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
      * 
      */
     @Export(name="clusterVersion", type=String.class, parameters={})
     private Output<String> clusterVersion;
 
     /**
-     * @return The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
+     * @return The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
      * 
      */
     public Output<String> clusterVersion() {

@@ -41,7 +41,15 @@ class NamespaceArgs:
              namespace_name: pulumi.Input[str],
              debug_enable: Optional[pulumi.Input[bool]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'namespaceLogicalId' in kwargs:
+            namespace_logical_id = kwargs['namespaceLogicalId']
+        if 'namespaceName' in kwargs:
+            namespace_name = kwargs['namespaceName']
+        if 'debugEnable' in kwargs:
+            debug_enable = kwargs['debugEnable']
+
         _setter("namespace_logical_id", namespace_logical_id)
         _setter("namespace_name", namespace_name)
         if debug_enable is not None:
@@ -130,7 +138,15 @@ class _NamespaceState:
              description: Optional[pulumi.Input[str]] = None,
              namespace_logical_id: Optional[pulumi.Input[str]] = None,
              namespace_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'debugEnable' in kwargs:
+            debug_enable = kwargs['debugEnable']
+        if 'namespaceLogicalId' in kwargs:
+            namespace_logical_id = kwargs['namespaceLogicalId']
+        if 'namespaceName' in kwargs:
+            namespace_name = kwargs['namespaceName']
+
         if debug_enable is not None:
             _setter("debug_enable", debug_enable)
         if description is not None:

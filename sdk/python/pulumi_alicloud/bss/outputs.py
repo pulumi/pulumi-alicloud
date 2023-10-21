@@ -61,7 +61,17 @@ class GetOpenApiPricingModulesModuleResult(dict):
              subscription_type: str,
              unit: str,
              values: Sequence['outputs.GetOpenApiPricingModulesModuleValueResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'pricingModuleName' in kwargs:
+            pricing_module_name = kwargs['pricingModuleName']
+        if 'productCode' in kwargs:
+            product_code = kwargs['productCode']
+        if 'productType' in kwargs:
+            product_type = kwargs['productType']
+        if 'subscriptionType' in kwargs:
+            subscription_type = kwargs['subscriptionType']
+
         _setter("code", code)
         _setter("id", id)
         _setter("pricing_module_name", pricing_module_name)
@@ -168,7 +178,9 @@ class GetOpenApiPricingModulesModuleValueResult(dict):
              remark: str,
              type: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         _setter("remark", remark)
         _setter("type", type)
@@ -243,7 +255,17 @@ class GetOpenApiProductsProductResult(dict):
              product_name: str,
              product_type: str,
              subscription_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'productCode' in kwargs:
+            product_code = kwargs['productCode']
+        if 'productName' in kwargs:
+            product_name = kwargs['productName']
+        if 'productType' in kwargs:
+            product_type = kwargs['productType']
+        if 'subscriptionType' in kwargs:
+            subscription_type = kwargs['subscriptionType']
+
         _setter("id", id)
         _setter("product_code", product_code)
         _setter("product_name", product_name)

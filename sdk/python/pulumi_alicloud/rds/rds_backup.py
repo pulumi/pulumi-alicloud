@@ -51,7 +51,21 @@ class RdsBackupArgs:
              backup_type: Optional[pulumi.Input[str]] = None,
              db_name: Optional[pulumi.Input[str]] = None,
              remove_from_state: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+        if 'backupMethod' in kwargs:
+            backup_method = kwargs['backupMethod']
+        if 'backupStrategy' in kwargs:
+            backup_strategy = kwargs['backupStrategy']
+        if 'backupType' in kwargs:
+            backup_type = kwargs['backupType']
+        if 'dbName' in kwargs:
+            db_name = kwargs['dbName']
+        if 'removeFromState' in kwargs:
+            remove_from_state = kwargs['removeFromState']
+
         _setter("db_instance_id", db_instance_id)
         if backup_method is not None:
             _setter("backup_method", backup_method)
@@ -189,7 +203,25 @@ class _RdsBackupState:
              db_name: Optional[pulumi.Input[str]] = None,
              remove_from_state: Optional[pulumi.Input[bool]] = None,
              store_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupId' in kwargs:
+            backup_id = kwargs['backupId']
+        if 'backupMethod' in kwargs:
+            backup_method = kwargs['backupMethod']
+        if 'backupStrategy' in kwargs:
+            backup_strategy = kwargs['backupStrategy']
+        if 'backupType' in kwargs:
+            backup_type = kwargs['backupType']
+        if 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+        if 'dbName' in kwargs:
+            db_name = kwargs['dbName']
+        if 'removeFromState' in kwargs:
+            remove_from_state = kwargs['removeFromState']
+        if 'storeStatus' in kwargs:
+            store_status = kwargs['storeStatus']
+
         if backup_id is not None:
             _setter("backup_id", backup_id)
         if backup_method is not None:

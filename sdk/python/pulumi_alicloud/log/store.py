@@ -73,7 +73,27 @@ class StoreArgs:
              retention_period: Optional[pulumi.Input[int]] = None,
              shard_count: Optional[pulumi.Input[int]] = None,
              telemetry_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appendMeta' in kwargs:
+            append_meta = kwargs['appendMeta']
+        if 'autoSplit' in kwargs:
+            auto_split = kwargs['autoSplit']
+        if 'enableWebTracking' in kwargs:
+            enable_web_tracking = kwargs['enableWebTracking']
+        if 'encryptConf' in kwargs:
+            encrypt_conf = kwargs['encryptConf']
+        if 'hotTtl' in kwargs:
+            hot_ttl = kwargs['hotTtl']
+        if 'maxSplitShardCount' in kwargs:
+            max_split_shard_count = kwargs['maxSplitShardCount']
+        if 'retentionPeriod' in kwargs:
+            retention_period = kwargs['retentionPeriod']
+        if 'shardCount' in kwargs:
+            shard_count = kwargs['shardCount']
+        if 'telemetryType' in kwargs:
+            telemetry_type = kwargs['telemetryType']
+
         _setter("project", project)
         if append_meta is not None:
             _setter("append_meta", append_meta)
@@ -307,7 +327,27 @@ class _StoreState:
              shard_count: Optional[pulumi.Input[int]] = None,
              shards: Optional[pulumi.Input[Sequence[pulumi.Input['StoreShardArgs']]]] = None,
              telemetry_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appendMeta' in kwargs:
+            append_meta = kwargs['appendMeta']
+        if 'autoSplit' in kwargs:
+            auto_split = kwargs['autoSplit']
+        if 'enableWebTracking' in kwargs:
+            enable_web_tracking = kwargs['enableWebTracking']
+        if 'encryptConf' in kwargs:
+            encrypt_conf = kwargs['encryptConf']
+        if 'hotTtl' in kwargs:
+            hot_ttl = kwargs['hotTtl']
+        if 'maxSplitShardCount' in kwargs:
+            max_split_shard_count = kwargs['maxSplitShardCount']
+        if 'retentionPeriod' in kwargs:
+            retention_period = kwargs['retentionPeriod']
+        if 'shardCount' in kwargs:
+            shard_count = kwargs['shardCount']
+        if 'telemetryType' in kwargs:
+            telemetry_type = kwargs['telemetryType']
+
         if append_meta is not None:
             _setter("append_meta", append_meta)
         if auto_split is not None:

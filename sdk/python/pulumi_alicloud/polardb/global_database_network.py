@@ -31,7 +31,11 @@ class GlobalDatabaseNetworkArgs:
              _setter: Callable[[Any, Any], None],
              db_cluster_id: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbClusterId' in kwargs:
+            db_cluster_id = kwargs['dbClusterId']
+
         _setter("db_cluster_id", db_cluster_id)
         if description is not None:
             _setter("description", description)
@@ -85,7 +89,11 @@ class _GlobalDatabaseNetworkState:
              db_cluster_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbClusterId' in kwargs:
+            db_cluster_id = kwargs['dbClusterId']
+
         if db_cluster_id is not None:
             _setter("db_cluster_id", db_cluster_id)
         if description is not None:
@@ -141,7 +149,7 @@ class GlobalDatabaseNetwork(pulumi.CustomResource):
         """
         Provides a PolarDB Global Database Network resource.
 
-        For information about PolarDB Global Database Network and how to use it, see [What is Global Database Network](https://www.alibabacloud.com/help/en/polardb-for-mysql/latest/createglobaldatabasenetwork).
+        For information about PolarDB Global Database Network and how to use it, see [What is Global Database Network](https://www.alibabacloud.com/help/en/polardb/api-polardb-2017-08-01-createglobaldatabasenetwork).
 
         > **NOTE:** Available since v1.181.0+.
 
@@ -199,7 +207,7 @@ class GlobalDatabaseNetwork(pulumi.CustomResource):
         """
         Provides a PolarDB Global Database Network resource.
 
-        For information about PolarDB Global Database Network and how to use it, see [What is Global Database Network](https://www.alibabacloud.com/help/en/polardb-for-mysql/latest/createglobaldatabasenetwork).
+        For information about PolarDB Global Database Network and how to use it, see [What is Global Database Network](https://www.alibabacloud.com/help/en/polardb/api-polardb-2017-08-01-createglobaldatabasenetwork).
 
         > **NOTE:** Available since v1.181.0+.
 

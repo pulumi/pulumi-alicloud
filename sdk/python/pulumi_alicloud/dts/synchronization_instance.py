@@ -79,7 +79,35 @@ class SynchronizationInstanceArgs:
              payment_duration_unit: Optional[pulumi.Input[str]] = None,
              quantity: Optional[pulumi.Input[int]] = None,
              sync_architecture: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destinationEndpointEngineName' in kwargs:
+            destination_endpoint_engine_name = kwargs['destinationEndpointEngineName']
+        if 'destinationEndpointRegion' in kwargs:
+            destination_endpoint_region = kwargs['destinationEndpointRegion']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'sourceEndpointEngineName' in kwargs:
+            source_endpoint_engine_name = kwargs['sourceEndpointEngineName']
+        if 'sourceEndpointRegion' in kwargs:
+            source_endpoint_region = kwargs['sourceEndpointRegion']
+        if 'autoPay' in kwargs:
+            auto_pay = kwargs['autoPay']
+        if 'autoStart' in kwargs:
+            auto_start = kwargs['autoStart']
+        if 'computeUnit' in kwargs:
+            compute_unit = kwargs['computeUnit']
+        if 'databaseCount' in kwargs:
+            database_count = kwargs['databaseCount']
+        if 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if 'paymentDuration' in kwargs:
+            payment_duration = kwargs['paymentDuration']
+        if 'paymentDurationUnit' in kwargs:
+            payment_duration_unit = kwargs['paymentDurationUnit']
+        if 'syncArchitecture' in kwargs:
+            sync_architecture = kwargs['syncArchitecture']
+
         _setter("destination_endpoint_engine_name", destination_endpoint_engine_name)
         _setter("destination_endpoint_region", destination_endpoint_region)
         _setter("payment_type", payment_type)
@@ -345,7 +373,35 @@ class _SynchronizationInstanceState:
              source_endpoint_region: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              sync_architecture: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoPay' in kwargs:
+            auto_pay = kwargs['autoPay']
+        if 'autoStart' in kwargs:
+            auto_start = kwargs['autoStart']
+        if 'computeUnit' in kwargs:
+            compute_unit = kwargs['computeUnit']
+        if 'databaseCount' in kwargs:
+            database_count = kwargs['databaseCount']
+        if 'destinationEndpointEngineName' in kwargs:
+            destination_endpoint_engine_name = kwargs['destinationEndpointEngineName']
+        if 'destinationEndpointRegion' in kwargs:
+            destination_endpoint_region = kwargs['destinationEndpointRegion']
+        if 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if 'paymentDuration' in kwargs:
+            payment_duration = kwargs['paymentDuration']
+        if 'paymentDurationUnit' in kwargs:
+            payment_duration_unit = kwargs['paymentDurationUnit']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'sourceEndpointEngineName' in kwargs:
+            source_endpoint_engine_name = kwargs['sourceEndpointEngineName']
+        if 'sourceEndpointRegion' in kwargs:
+            source_endpoint_region = kwargs['sourceEndpointRegion']
+        if 'syncArchitecture' in kwargs:
+            sync_architecture = kwargs['syncArchitecture']
+
         if auto_pay is not None:
             _setter("auto_pay", auto_pay)
         if auto_start is not None:

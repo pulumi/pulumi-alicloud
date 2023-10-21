@@ -35,7 +35,15 @@ class ExpressSyncShareAttachmentArgs:
              express_sync_id: pulumi.Input[str],
              gateway_id: pulumi.Input[str],
              share_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'expressSyncId' in kwargs:
+            express_sync_id = kwargs['expressSyncId']
+        if 'gatewayId' in kwargs:
+            gateway_id = kwargs['gatewayId']
+        if 'shareName' in kwargs:
+            share_name = kwargs['shareName']
+
         _setter("express_sync_id", express_sync_id)
         _setter("gateway_id", gateway_id)
         _setter("share_name", share_name)
@@ -101,7 +109,15 @@ class _ExpressSyncShareAttachmentState:
              express_sync_id: Optional[pulumi.Input[str]] = None,
              gateway_id: Optional[pulumi.Input[str]] = None,
              share_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'expressSyncId' in kwargs:
+            express_sync_id = kwargs['expressSyncId']
+        if 'gatewayId' in kwargs:
+            gateway_id = kwargs['gatewayId']
+        if 'shareName' in kwargs:
+            share_name = kwargs['shareName']
+
         if express_sync_id is not None:
             _setter("express_sync_id", express_sync_id)
         if gateway_id is not None:

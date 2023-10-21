@@ -35,7 +35,15 @@ class DhcpOptionsSetAttachmentArgs:
              dhcp_options_set_id: pulumi.Input[str],
              vpc_id: pulumi.Input[str],
              dry_run: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dhcpOptionsSetId' in kwargs:
+            dhcp_options_set_id = kwargs['dhcpOptionsSetId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+
         _setter("dhcp_options_set_id", dhcp_options_set_id)
         _setter("vpc_id", vpc_id)
         if dry_run is not None:
@@ -106,7 +114,15 @@ class _DhcpOptionsSetAttachmentState:
              dry_run: Optional[pulumi.Input[bool]] = None,
              status: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dhcpOptionsSetId' in kwargs:
+            dhcp_options_set_id = kwargs['dhcpOptionsSetId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if dhcp_options_set_id is not None:
             _setter("dhcp_options_set_id", dhcp_options_set_id)
         if dry_run is not None:

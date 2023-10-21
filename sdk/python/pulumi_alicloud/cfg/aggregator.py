@@ -41,7 +41,15 @@ class AggregatorArgs:
              description: pulumi.Input[str],
              aggregator_accounts: Optional[pulumi.Input[Sequence[pulumi.Input['AggregatorAggregatorAccountArgs']]]] = None,
              aggregator_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aggregatorName' in kwargs:
+            aggregator_name = kwargs['aggregatorName']
+        if 'aggregatorAccounts' in kwargs:
+            aggregator_accounts = kwargs['aggregatorAccounts']
+        if 'aggregatorType' in kwargs:
+            aggregator_type = kwargs['aggregatorType']
+
         _setter("aggregator_name", aggregator_name)
         _setter("description", description)
         if aggregator_accounts is not None:
@@ -130,7 +138,15 @@ class _AggregatorState:
              aggregator_type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aggregatorAccounts' in kwargs:
+            aggregator_accounts = kwargs['aggregatorAccounts']
+        if 'aggregatorName' in kwargs:
+            aggregator_name = kwargs['aggregatorName']
+        if 'aggregatorType' in kwargs:
+            aggregator_type = kwargs['aggregatorType']
+
         if aggregator_accounts is not None:
             _setter("aggregator_accounts", aggregator_accounts)
         if aggregator_name is not None:

@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Threat Detection Vul Whitelist resource.
  * 
- * For information about Threat Detection Vul Whitelist and how to use it, see [What is Vul Whitelist](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+ * For information about Threat Detection Vul Whitelist and how to use it, see [What is Vul Whitelist](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
  * 
  * &gt; **NOTE:** Available in v1.195.0+.
  * 
@@ -81,28 +81,28 @@ public class VulWhitelist extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.reason);
     }
     /**
-     * Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+     * Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
      * 
      */
     @Export(name="targetInfo", type=String.class, parameters={})
     private Output</* @Nullable */ String> targetInfo;
 
     /**
-     * @return Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+     * @return Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
      * 
      */
     public Output<Optional<String>> targetInfo() {
         return Codegen.optional(this.targetInfo);
     }
     /**
-     * Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+     * Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
      * 
      */
     @Export(name="whitelist", type=String.class, parameters={})
     private Output<String> whitelist;
 
     /**
-     * @return Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+     * @return Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
      * 
      */
     public Output<String> whitelist() {

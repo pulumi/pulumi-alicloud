@@ -67,7 +67,27 @@ class DhcpOptionsSetArgs:
              lease_time: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'associateVpcs' in kwargs:
+            associate_vpcs = kwargs['associateVpcs']
+        if 'dhcpOptionsSetDescription' in kwargs:
+            dhcp_options_set_description = kwargs['dhcpOptionsSetDescription']
+        if 'dhcpOptionsSetName' in kwargs:
+            dhcp_options_set_name = kwargs['dhcpOptionsSetName']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'domainNameServers' in kwargs:
+            domain_name_servers = kwargs['domainNameServers']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'ipv6LeaseTime' in kwargs:
+            ipv6_lease_time = kwargs['ipv6LeaseTime']
+        if 'leaseTime' in kwargs:
+            lease_time = kwargs['leaseTime']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         if associate_vpcs is not None:
             warnings.warn("""Field 'associate_vpcs' has been deprecated from provider version 1.211.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""", DeprecationWarning)
             pulumi.log.warn("""associate_vpcs is deprecated: Field 'associate_vpcs' has been deprecated from provider version 1.211.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""")
@@ -280,7 +300,29 @@ class _DhcpOptionsSetState:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'associateVpcs' in kwargs:
+            associate_vpcs = kwargs['associateVpcs']
+        if 'dhcpOptionsSetDescription' in kwargs:
+            dhcp_options_set_description = kwargs['dhcpOptionsSetDescription']
+        if 'dhcpOptionsSetName' in kwargs:
+            dhcp_options_set_name = kwargs['dhcpOptionsSetName']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'domainNameServers' in kwargs:
+            domain_name_servers = kwargs['domainNameServers']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'ipv6LeaseTime' in kwargs:
+            ipv6_lease_time = kwargs['ipv6LeaseTime']
+        if 'leaseTime' in kwargs:
+            lease_time = kwargs['leaseTime']
+        if 'ownerId' in kwargs:
+            owner_id = kwargs['ownerId']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         if associate_vpcs is not None:
             warnings.warn("""Field 'associate_vpcs' has been deprecated from provider version 1.211.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""", DeprecationWarning)
             pulumi.log.warn("""associate_vpcs is deprecated: Field 'associate_vpcs' has been deprecated from provider version 1.211.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""")

@@ -15,7 +15,7 @@ import (
 
 // Provides a ECD Image resource.
 //
-// For information about ECD Image and how to use it, see [What is Image](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createimage).
+// For information about ECD Image and how to use it, see [What is Image](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createimage).
 //
 // > **NOTE:** Available since v1.146.0.
 //

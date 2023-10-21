@@ -79,7 +79,35 @@ class TransitRouterPeerAttachmentArgs:
              transit_router_attachment_description: Optional[pulumi.Input[str]] = None,
              transit_router_attachment_name: Optional[pulumi.Input[str]] = None,
              transit_router_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'peerTransitRouterId' in kwargs:
+            peer_transit_router_id = kwargs['peerTransitRouterId']
+        if 'peerTransitRouterRegionId' in kwargs:
+            peer_transit_router_region_id = kwargs['peerTransitRouterRegionId']
+        if 'autoPublishRouteEnabled' in kwargs:
+            auto_publish_route_enabled = kwargs['autoPublishRouteEnabled']
+        if 'bandwidthType' in kwargs:
+            bandwidth_type = kwargs['bandwidthType']
+        if 'cenBandwidthPackageId' in kwargs:
+            cen_bandwidth_package_id = kwargs['cenBandwidthPackageId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+        if 'routeTableAssociationEnabled' in kwargs:
+            route_table_association_enabled = kwargs['routeTableAssociationEnabled']
+        if 'routeTablePropagationEnabled' in kwargs:
+            route_table_propagation_enabled = kwargs['routeTablePropagationEnabled']
+        if 'transitRouterAttachmentDescription' in kwargs:
+            transit_router_attachment_description = kwargs['transitRouterAttachmentDescription']
+        if 'transitRouterAttachmentName' in kwargs:
+            transit_router_attachment_name = kwargs['transitRouterAttachmentName']
+        if 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+
         _setter("cen_id", cen_id)
         _setter("peer_transit_router_id", peer_transit_router_id)
         _setter("peer_transit_router_region_id", peer_transit_router_region_id)
@@ -351,7 +379,37 @@ class _TransitRouterPeerAttachmentState:
              transit_router_attachment_id: Optional[pulumi.Input[str]] = None,
              transit_router_attachment_name: Optional[pulumi.Input[str]] = None,
              transit_router_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoPublishRouteEnabled' in kwargs:
+            auto_publish_route_enabled = kwargs['autoPublishRouteEnabled']
+        if 'bandwidthType' in kwargs:
+            bandwidth_type = kwargs['bandwidthType']
+        if 'cenBandwidthPackageId' in kwargs:
+            cen_bandwidth_package_id = kwargs['cenBandwidthPackageId']
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'peerTransitRouterId' in kwargs:
+            peer_transit_router_id = kwargs['peerTransitRouterId']
+        if 'peerTransitRouterRegionId' in kwargs:
+            peer_transit_router_region_id = kwargs['peerTransitRouterRegionId']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+        if 'routeTableAssociationEnabled' in kwargs:
+            route_table_association_enabled = kwargs['routeTableAssociationEnabled']
+        if 'routeTablePropagationEnabled' in kwargs:
+            route_table_propagation_enabled = kwargs['routeTablePropagationEnabled']
+        if 'transitRouterAttachmentDescription' in kwargs:
+            transit_router_attachment_description = kwargs['transitRouterAttachmentDescription']
+        if 'transitRouterAttachmentId' in kwargs:
+            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
+        if 'transitRouterAttachmentName' in kwargs:
+            transit_router_attachment_name = kwargs['transitRouterAttachmentName']
+        if 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+
         if auto_publish_route_enabled is not None:
             _setter("auto_publish_route_enabled", auto_publish_route_enabled)
         if bandwidth is not None:
@@ -599,7 +657,7 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
                  transit_router_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a CEN transit router peer attachment resource that associate the transit router with the CEN instance. [What is CEN transit router peer attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitrouterpeerattachment)
+        Provides a CEN transit router peer attachment resource that associate the transit router with the CEN instance. [What is CEN transit router peer attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitrouterpeerattachment)
 
         > **NOTE:** Available since v1.128.0.
 
@@ -685,7 +743,7 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
                  args: TransitRouterPeerAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a CEN transit router peer attachment resource that associate the transit router with the CEN instance. [What is CEN transit router peer attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitrouterpeerattachment)
+        Provides a CEN transit router peer attachment resource that associate the transit router with the CEN instance. [What is CEN transit router peer attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitrouterpeerattachment)
 
         > **NOTE:** Available since v1.128.0.
 

@@ -41,7 +41,17 @@ class InstanceAllowedIpAttachmentArgs:
              allowed_type: pulumi.Input[str],
              instance_id: pulumi.Input[str],
              port_range: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedIp' in kwargs:
+            allowed_ip = kwargs['allowedIp']
+        if 'allowedType' in kwargs:
+            allowed_type = kwargs['allowedType']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'portRange' in kwargs:
+            port_range = kwargs['portRange']
+
         _setter("allowed_ip", allowed_ip)
         _setter("allowed_type", allowed_type)
         _setter("instance_id", instance_id)
@@ -128,7 +138,17 @@ class _InstanceAllowedIpAttachmentState:
              allowed_type: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
              port_range: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedIp' in kwargs:
+            allowed_ip = kwargs['allowedIp']
+        if 'allowedType' in kwargs:
+            allowed_type = kwargs['allowedType']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'portRange' in kwargs:
+            port_range = kwargs['portRange']
+
         if allowed_ip is not None:
             _setter("allowed_ip", allowed_ip)
         if allowed_type is not None:
@@ -202,7 +222,7 @@ class InstanceAllowedIpAttachment(pulumi.CustomResource):
         """
         Provides a AliKafka Instance Allowed Ip Attachment resource.
 
-        For information about Ali Kafka Instance Allowed Ip Attachment and how to use it, see [What is Instance Allowed Ip Attachment](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-updateallowedip).
+        For information about Ali Kafka Instance Allowed Ip Attachment and how to use it, see [What is Instance Allowed Ip Attachment](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-updateallowedip).
 
         > **NOTE:** Available since v1.163.0.
 
@@ -269,7 +289,7 @@ class InstanceAllowedIpAttachment(pulumi.CustomResource):
         """
         Provides a AliKafka Instance Allowed Ip Attachment resource.
 
-        For information about Ali Kafka Instance Allowed Ip Attachment and how to use it, see [What is Instance Allowed Ip Attachment](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-updateallowedip).
+        For information about Ali Kafka Instance Allowed Ip Attachment and how to use it, see [What is Instance Allowed Ip Attachment](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-updateallowedip).
 
         > **NOTE:** Available since v1.163.0.
 

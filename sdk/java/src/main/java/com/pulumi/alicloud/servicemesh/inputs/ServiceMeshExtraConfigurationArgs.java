@@ -16,14 +16,14 @@ public final class ServiceMeshExtraConfigurationArgs extends com.pulumi.resource
     public static final ServiceMeshExtraConfigurationArgs Empty = new ServiceMeshExtraConfigurationArgs();
 
     /**
-     * Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of `true` indicates that the Kubernetes API is used.
+     * Whether the data plane KubeAPI access capability is enabled. Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of true indicates that the Kubernetes API is used.
      * 
      */
     @Import(name="crAggregationEnabled")
     private @Nullable Output<Boolean> crAggregationEnabled;
 
     /**
-     * @return Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of `true` indicates that the Kubernetes API is used.
+     * @return Whether the data plane KubeAPI access capability is enabled. Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of true indicates that the Kubernetes API is used.
      * 
      */
     public Optional<Output<Boolean>> crAggregationEnabled() {
@@ -55,7 +55,7 @@ public final class ServiceMeshExtraConfigurationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param crAggregationEnabled Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of `true` indicates that the Kubernetes API is used.
+         * @param crAggregationEnabled Whether the data plane KubeAPI access capability is enabled. Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of true indicates that the Kubernetes API is used.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ServiceMeshExtraConfigurationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param crAggregationEnabled Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of `true` indicates that the Kubernetes API is used.
+         * @param crAggregationEnabled Whether the data plane KubeAPI access capability is enabled. Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of true indicates that the Kubernetes API is used.
          * 
          * @return builder
          * 

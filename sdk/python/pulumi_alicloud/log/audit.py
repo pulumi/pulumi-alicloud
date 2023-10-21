@@ -43,7 +43,17 @@ class AuditArgs:
              multi_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              resource_directory_type: Optional[pulumi.Input[str]] = None,
              variable_map: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'multiAccounts' in kwargs:
+            multi_accounts = kwargs['multiAccounts']
+        if 'resourceDirectoryType' in kwargs:
+            resource_directory_type = kwargs['resourceDirectoryType']
+        if 'variableMap' in kwargs:
+            variable_map = kwargs['variableMap']
+
         _setter("aliuid", aliuid)
         _setter("display_name", display_name)
         if multi_accounts is not None:
@@ -146,7 +156,17 @@ class _AuditState:
              multi_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              resource_directory_type: Optional[pulumi.Input[str]] = None,
              variable_map: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'multiAccounts' in kwargs:
+            multi_accounts = kwargs['multiAccounts']
+        if 'resourceDirectoryType' in kwargs:
+            resource_directory_type = kwargs['resourceDirectoryType']
+        if 'variableMap' in kwargs:
+            variable_map = kwargs['variableMap']
+
         if aliuid is not None:
             _setter("aliuid", aliuid)
         if display_name is not None:
@@ -235,7 +255,7 @@ class Audit(pulumi.CustomResource):
 
         In addition to inheriting all SLS functions, it also enhances the real-time automatic centralized collection of audit related logs across multi cloud products under multi accounts, and provides support for storage, query and information summary required by audit. It covers actiontrail, OSS, NAS, SLB, API gateway, RDS, WAF, cloud firewall, cloud security center and other products.
 
-        > **NOTE:** Available in 1.81.0
+        > **NOTE:** Available since v1.81.0
 
         ## Example Usage
 
@@ -245,80 +265,64 @@ class Audit(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        default = alicloud.get_account()
         example = alicloud.log.Audit("example",
-            aliuid="12345678",
-            display_name="tf-audit-test",
+            display_name="tf-audit-example",
+            aliuid=default.id,
             variable_map={
                 "actiontrail_enabled": "true",
-                "actiontrail_ti_enabled": "false",
                 "actiontrail_ttl": "180",
-                "apigateway_enabled": "true",
-                "apigateway_ti_enabled": "false",
-                "apigateway_ttl": "180",
-                "appconnect_enabled": "false",
-                "appconnect_ttl": "180",
-                "bastion_enabled": "true",
-                "bastion_ti_enabled": "false",
-                "bastion_ttl": "180",
-                "cloudfirewall_enabled": "true",
-                "cloudfirewall_ti_enabled": "false",
-                "cloudfirewall_ttl": "180",
-                "cps_enabled": "true",
-                "cps_ti_enabled": "false",
-                "cps_ttl": "180",
-                "ddos_bgp_access_enabled": "false",
-                "ddos_bgp_access_ttl": "180",
-                "ddos_coo_access_enabled": "false",
-                "ddos_coo_access_ti_enabled": "false",
-                "ddos_coo_access_ttl": "180",
-                "ddos_dip_access_enabled": "false",
-                "ddos_dip_access_ti_enabled": "false",
-                "ddos_dip_access_ttl": "180",
-                "drds_audit_collection_policy": "",
+                "oss_access_enabled": "true",
+                "oss_access_ttl": "7",
+                "oss_sync_enabled": "true",
+                "oss_sync_ttl": "180",
+                "oss_metering_enabled": "true",
+                "oss_metering_ttl": "180",
+                "rds_enabled": "true",
+                "rds_audit_collection_policy": "",
+                "rds_ttl": "180",
+                "rds_slow_enabled": "false",
+                "rds_slow_collection_policy": "",
+                "rds_slow_ttl": "180",
+                "rds_perf_enabled": "false",
+                "rds_perf_collection_policy": "",
+                "rds_perf_ttl": "180",
+                "vpc_flow_enabled": "false",
+                "vpc_flow_ttl": "7",
+                "vpc_flow_collection_policy": "",
+                "vpc_sync_enabled": "true",
+                "vpc_sync_ttl": "180",
+                "polardb_enabled": "true",
+                "polardb_audit_collection_policy": "",
+                "polardb_ttl": "180",
+                "polardb_slow_enabled": "false",
+                "polardb_slow_collection_policy": "",
+                "polardb_slow_ttl": "180",
+                "polardb_perf_enabled": "false",
+                "polardb_perf_collection_policy": "",
+                "polardb_perf_ttl": "180",
                 "drds_audit_enabled": "true",
-                "drds_audit_ti_enabled": "false",
+                "drds_audit_collection_policy": "",
                 "drds_audit_ttl": "7",
                 "drds_sync_enabled": "true",
                 "drds_sync_ttl": "180",
-                "k8s_audit_collection_policy": "",
-                "k8s_audit_enabled": "true",
-                "k8s_audit_ttl": "180",
-                "k8s_event_collection_policy": "",
-                "k8s_event_enabled": "true",
-                "k8s_event_ttl": "180",
-                "k8s_ingress_collection_policy": "",
-                "k8s_ingress_enabled": "true",
-                "k8s_ingress_ttl": "180",
-                "nas_enabled": "true",
-                "nas_ti_enabled": "false",
-                "nas_ttl": "180",
-                "oss_access_enabled": "true",
-                "oss_access_ti_enabled": "false",
-                "oss_access_ttl": "7",
-                "oss_metering_enabled": "true",
-                "oss_metering_ttl": "180",
-                "oss_sync_enabled": "true",
-                "oss_sync_ttl": "180",
-                "polardb_audit_collection_policy": "",
-                "polardb_enabled": "true",
-                "polardb_perf_collection_policy": "",
-                "polardb_perf_enabled": "false",
-                "polardb_perf_ttl": "180",
-                "polardb_slow_collection_policy": "",
-                "polardb_slow_enabled": "false",
-                "polardb_slow_ttl": "180",
-                "polardb_ti_enabled": "false",
-                "polardb_ttl": "180",
-                "rds_audit_collection_policy": "",
-                "rds_enabled": "true",
-                "rds_perf_collection_policy": "",
-                "rds_perf_enabled": "false",
-                "rds_perf_ttl": "180",
-                "rds_slow_collection_policy": "",
-                "rds_slow_enabled": "false",
-                "rds_slow_ttl": "180",
-                "rds_ti_enabled": "false",
-                "rds_ttl": "180",
+                "slb_access_enabled": "true",
+                "slb_access_collection_policy": "",
+                "slb_access_ttl": "7",
+                "slb_sync_enabled": "true",
+                "slb_sync_ttl": "180",
+                "bastion_enabled": "true",
+                "bastion_ttl": "180",
+                "waf_enabled": "true",
+                "waf_ttl": "180",
+                "cloudfirewall_enabled": "true",
+                "cloudfirewall_ttl": "180",
+                "ddos_coo_access_enabled": "false",
+                "ddos_coo_access_ttl": "180",
+                "ddos_bgp_access_enabled": "false",
+                "ddos_bgp_access_ttl": "180",
+                "ddos_dip_access_enabled": "false",
+                "ddos_dip_access_ttl": "180",
                 "sas_crack_enabled": "true",
                 "sas_dns_enabled": "true",
                 "sas_http_enabled": "true",
@@ -333,22 +337,24 @@ class Audit(pulumi.CustomResource):
                 "sas_snapshot_account_enabled": "true",
                 "sas_snapshot_port_enabled": "true",
                 "sas_snapshot_process_enabled": "true",
-                "sas_ti_enabled": "false",
                 "sas_ttl": "180",
-                "slb_access_collection_policy": "",
-                "slb_access_enabled": "true",
-                "slb_access_ti_enabled": "false",
-                "slb_access_ttl": "7",
-                "slb_sync_enabled": "true",
-                "slb_sync_ttl": "180",
-                "vpc_flow_collection_policy": "",
-                "vpc_flow_enabled": "false",
-                "vpc_flow_ttl": "7",
-                "vpc_sync_enabled": "true",
-                "vpc_sync_ttl": "180",
-                "waf_enabled": "true",
-                "waf_ti_enabled": "false",
-                "waf_ttl": "180",
+                "apigateway_enabled": "true",
+                "apigateway_ttl": "180",
+                "nas_enabled": "true",
+                "nas_ttl": "180",
+                "appconnect_enabled": "false",
+                "appconnect_ttl": "180",
+                "cps_enabled": "true",
+                "cps_ttl": "180",
+                "k8s_audit_enabled": "true",
+                "k8s_audit_collection_policy": "",
+                "k8s_audit_ttl": "180",
+                "k8s_event_enabled": "true",
+                "k8s_event_collection_policy": "",
+                "k8s_event_ttl": "180",
+                "k8s_ingress_enabled": "true",
+                "k8s_ingress_collection_policy": "",
+                "k8s_ingress_ttl": "180",
             })
         ```
         Multiple accounts Usage
@@ -357,19 +363,20 @@ class Audit(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        default = alicloud.get_account()
         example = alicloud.log.Audit("example",
-            aliuid="12345678",
-            display_name="tf-audit-test",
-            multi_accounts=[
-                "123456789123",
-                "12345678912300123",
-            ],
+            display_name="tf-audit-example",
+            aliuid=default.id,
             variable_map={
                 "actiontrail_enabled": "true",
                 "actiontrail_ttl": "180",
                 "oss_access_enabled": "true",
                 "oss_access_ttl": "180",
-            })
+            },
+            multi_accounts=[
+                "123456789123",
+                "12345678912300123",
+            ])
         ```
         Resource Directory Usage
 
@@ -377,35 +384,34 @@ class Audit(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        default = alicloud.get_account()
         example = alicloud.log.Audit("example",
-            aliuid="12345678",
-            display_name="tf-audit-test",
-            resource_directory_type="all",
+            display_name="tf-audit-example",
+            aliuid=default.id,
             variable_map={
                 "actiontrail_enabled": "true",
                 "actiontrail_ttl": "180",
                 "oss_access_enabled": "true",
                 "oss_access_ttl": "180",
-            })
+            },
+            resource_directory_type="all")
         ```
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
+        default = alicloud.get_account()
         example = alicloud.log.Audit("example",
-            aliuid="12345678",
-            display_name="tf-audit-test",
-            multi_accounts=[
-                "123456789123",
-                "12345678912300123",
-            ],
-            resource_directory_type="custom",
+            display_name="tf-audit-example",
+            aliuid=default.id,
             variable_map={
                 "actiontrail_enabled": "true",
                 "actiontrail_ttl": "180",
                 "oss_access_enabled": "true",
                 "oss_access_ttl": "180",
-            })
+            },
+            multi_accounts=[],
+            resource_directory_type="custom")
         ```
 
         ## Import
@@ -413,7 +419,7 @@ class Audit(pulumi.CustomResource):
         Log audit can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:log/audit:Audit example tf-audit-test
+         $ pulumi import alicloud:log/audit:Audit example tf-audit-example
         ```
 
         :param str resource_name: The name of the resource.
@@ -435,7 +441,7 @@ class Audit(pulumi.CustomResource):
 
         In addition to inheriting all SLS functions, it also enhances the real-time automatic centralized collection of audit related logs across multi cloud products under multi accounts, and provides support for storage, query and information summary required by audit. It covers actiontrail, OSS, NAS, SLB, API gateway, RDS, WAF, cloud firewall, cloud security center and other products.
 
-        > **NOTE:** Available in 1.81.0
+        > **NOTE:** Available since v1.81.0
 
         ## Example Usage
 
@@ -445,80 +451,64 @@ class Audit(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        default = alicloud.get_account()
         example = alicloud.log.Audit("example",
-            aliuid="12345678",
-            display_name="tf-audit-test",
+            display_name="tf-audit-example",
+            aliuid=default.id,
             variable_map={
                 "actiontrail_enabled": "true",
-                "actiontrail_ti_enabled": "false",
                 "actiontrail_ttl": "180",
-                "apigateway_enabled": "true",
-                "apigateway_ti_enabled": "false",
-                "apigateway_ttl": "180",
-                "appconnect_enabled": "false",
-                "appconnect_ttl": "180",
-                "bastion_enabled": "true",
-                "bastion_ti_enabled": "false",
-                "bastion_ttl": "180",
-                "cloudfirewall_enabled": "true",
-                "cloudfirewall_ti_enabled": "false",
-                "cloudfirewall_ttl": "180",
-                "cps_enabled": "true",
-                "cps_ti_enabled": "false",
-                "cps_ttl": "180",
-                "ddos_bgp_access_enabled": "false",
-                "ddos_bgp_access_ttl": "180",
-                "ddos_coo_access_enabled": "false",
-                "ddos_coo_access_ti_enabled": "false",
-                "ddos_coo_access_ttl": "180",
-                "ddos_dip_access_enabled": "false",
-                "ddos_dip_access_ti_enabled": "false",
-                "ddos_dip_access_ttl": "180",
-                "drds_audit_collection_policy": "",
+                "oss_access_enabled": "true",
+                "oss_access_ttl": "7",
+                "oss_sync_enabled": "true",
+                "oss_sync_ttl": "180",
+                "oss_metering_enabled": "true",
+                "oss_metering_ttl": "180",
+                "rds_enabled": "true",
+                "rds_audit_collection_policy": "",
+                "rds_ttl": "180",
+                "rds_slow_enabled": "false",
+                "rds_slow_collection_policy": "",
+                "rds_slow_ttl": "180",
+                "rds_perf_enabled": "false",
+                "rds_perf_collection_policy": "",
+                "rds_perf_ttl": "180",
+                "vpc_flow_enabled": "false",
+                "vpc_flow_ttl": "7",
+                "vpc_flow_collection_policy": "",
+                "vpc_sync_enabled": "true",
+                "vpc_sync_ttl": "180",
+                "polardb_enabled": "true",
+                "polardb_audit_collection_policy": "",
+                "polardb_ttl": "180",
+                "polardb_slow_enabled": "false",
+                "polardb_slow_collection_policy": "",
+                "polardb_slow_ttl": "180",
+                "polardb_perf_enabled": "false",
+                "polardb_perf_collection_policy": "",
+                "polardb_perf_ttl": "180",
                 "drds_audit_enabled": "true",
-                "drds_audit_ti_enabled": "false",
+                "drds_audit_collection_policy": "",
                 "drds_audit_ttl": "7",
                 "drds_sync_enabled": "true",
                 "drds_sync_ttl": "180",
-                "k8s_audit_collection_policy": "",
-                "k8s_audit_enabled": "true",
-                "k8s_audit_ttl": "180",
-                "k8s_event_collection_policy": "",
-                "k8s_event_enabled": "true",
-                "k8s_event_ttl": "180",
-                "k8s_ingress_collection_policy": "",
-                "k8s_ingress_enabled": "true",
-                "k8s_ingress_ttl": "180",
-                "nas_enabled": "true",
-                "nas_ti_enabled": "false",
-                "nas_ttl": "180",
-                "oss_access_enabled": "true",
-                "oss_access_ti_enabled": "false",
-                "oss_access_ttl": "7",
-                "oss_metering_enabled": "true",
-                "oss_metering_ttl": "180",
-                "oss_sync_enabled": "true",
-                "oss_sync_ttl": "180",
-                "polardb_audit_collection_policy": "",
-                "polardb_enabled": "true",
-                "polardb_perf_collection_policy": "",
-                "polardb_perf_enabled": "false",
-                "polardb_perf_ttl": "180",
-                "polardb_slow_collection_policy": "",
-                "polardb_slow_enabled": "false",
-                "polardb_slow_ttl": "180",
-                "polardb_ti_enabled": "false",
-                "polardb_ttl": "180",
-                "rds_audit_collection_policy": "",
-                "rds_enabled": "true",
-                "rds_perf_collection_policy": "",
-                "rds_perf_enabled": "false",
-                "rds_perf_ttl": "180",
-                "rds_slow_collection_policy": "",
-                "rds_slow_enabled": "false",
-                "rds_slow_ttl": "180",
-                "rds_ti_enabled": "false",
-                "rds_ttl": "180",
+                "slb_access_enabled": "true",
+                "slb_access_collection_policy": "",
+                "slb_access_ttl": "7",
+                "slb_sync_enabled": "true",
+                "slb_sync_ttl": "180",
+                "bastion_enabled": "true",
+                "bastion_ttl": "180",
+                "waf_enabled": "true",
+                "waf_ttl": "180",
+                "cloudfirewall_enabled": "true",
+                "cloudfirewall_ttl": "180",
+                "ddos_coo_access_enabled": "false",
+                "ddos_coo_access_ttl": "180",
+                "ddos_bgp_access_enabled": "false",
+                "ddos_bgp_access_ttl": "180",
+                "ddos_dip_access_enabled": "false",
+                "ddos_dip_access_ttl": "180",
                 "sas_crack_enabled": "true",
                 "sas_dns_enabled": "true",
                 "sas_http_enabled": "true",
@@ -533,22 +523,24 @@ class Audit(pulumi.CustomResource):
                 "sas_snapshot_account_enabled": "true",
                 "sas_snapshot_port_enabled": "true",
                 "sas_snapshot_process_enabled": "true",
-                "sas_ti_enabled": "false",
                 "sas_ttl": "180",
-                "slb_access_collection_policy": "",
-                "slb_access_enabled": "true",
-                "slb_access_ti_enabled": "false",
-                "slb_access_ttl": "7",
-                "slb_sync_enabled": "true",
-                "slb_sync_ttl": "180",
-                "vpc_flow_collection_policy": "",
-                "vpc_flow_enabled": "false",
-                "vpc_flow_ttl": "7",
-                "vpc_sync_enabled": "true",
-                "vpc_sync_ttl": "180",
-                "waf_enabled": "true",
-                "waf_ti_enabled": "false",
-                "waf_ttl": "180",
+                "apigateway_enabled": "true",
+                "apigateway_ttl": "180",
+                "nas_enabled": "true",
+                "nas_ttl": "180",
+                "appconnect_enabled": "false",
+                "appconnect_ttl": "180",
+                "cps_enabled": "true",
+                "cps_ttl": "180",
+                "k8s_audit_enabled": "true",
+                "k8s_audit_collection_policy": "",
+                "k8s_audit_ttl": "180",
+                "k8s_event_enabled": "true",
+                "k8s_event_collection_policy": "",
+                "k8s_event_ttl": "180",
+                "k8s_ingress_enabled": "true",
+                "k8s_ingress_collection_policy": "",
+                "k8s_ingress_ttl": "180",
             })
         ```
         Multiple accounts Usage
@@ -557,19 +549,20 @@ class Audit(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        default = alicloud.get_account()
         example = alicloud.log.Audit("example",
-            aliuid="12345678",
-            display_name="tf-audit-test",
-            multi_accounts=[
-                "123456789123",
-                "12345678912300123",
-            ],
+            display_name="tf-audit-example",
+            aliuid=default.id,
             variable_map={
                 "actiontrail_enabled": "true",
                 "actiontrail_ttl": "180",
                 "oss_access_enabled": "true",
                 "oss_access_ttl": "180",
-            })
+            },
+            multi_accounts=[
+                "123456789123",
+                "12345678912300123",
+            ])
         ```
         Resource Directory Usage
 
@@ -577,35 +570,34 @@ class Audit(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        default = alicloud.get_account()
         example = alicloud.log.Audit("example",
-            aliuid="12345678",
-            display_name="tf-audit-test",
-            resource_directory_type="all",
+            display_name="tf-audit-example",
+            aliuid=default.id,
             variable_map={
                 "actiontrail_enabled": "true",
                 "actiontrail_ttl": "180",
                 "oss_access_enabled": "true",
                 "oss_access_ttl": "180",
-            })
+            },
+            resource_directory_type="all")
         ```
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
+        default = alicloud.get_account()
         example = alicloud.log.Audit("example",
-            aliuid="12345678",
-            display_name="tf-audit-test",
-            multi_accounts=[
-                "123456789123",
-                "12345678912300123",
-            ],
-            resource_directory_type="custom",
+            display_name="tf-audit-example",
+            aliuid=default.id,
             variable_map={
                 "actiontrail_enabled": "true",
                 "actiontrail_ttl": "180",
                 "oss_access_enabled": "true",
                 "oss_access_ttl": "180",
-            })
+            },
+            multi_accounts=[],
+            resource_directory_type="custom")
         ```
 
         ## Import
@@ -613,7 +605,7 @@ class Audit(pulumi.CustomResource):
         Log audit can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:log/audit:Audit example tf-audit-test
+         $ pulumi import alicloud:log/audit:Audit example tf-audit-example
         ```
 
         :param str resource_name: The name of the resource.

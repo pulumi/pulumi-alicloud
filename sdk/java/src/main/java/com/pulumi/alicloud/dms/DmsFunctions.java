@@ -33,11 +33,13 @@ import java.util.concurrent.CompletableFuture;
 
 public final class DmsFunctions {
     /**
-     * This data source provides DMS Enterprise Database available to the user.[What is Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-listdatabases)
+     * This data source provides DMS Enterprise Database available to the user. [What is Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-listdatabases).
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -74,11 +76,13 @@ public final class DmsFunctions {
         return getEnterpriseDatabases(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides DMS Enterprise Database available to the user.[What is Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-listdatabases)
+     * This data source provides DMS Enterprise Database available to the user. [What is Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-listdatabases).
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -115,11 +119,13 @@ public final class DmsFunctions {
         return getEnterpriseDatabasesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides DMS Enterprise Database available to the user.[What is Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-listdatabases)
+     * This data source provides DMS Enterprise Database available to the user. [What is Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-listdatabases).
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -156,11 +162,13 @@ public final class DmsFunctions {
         return Deployment.getInstance().invoke("alicloud:dms/getEnterpriseDatabases:getEnterpriseDatabases", TypeShape.of(GetEnterpriseDatabasesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides DMS Enterprise Database available to the user.[What is Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-listdatabases)
+     * This data source provides DMS Enterprise Database available to the user. [What is Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-listdatabases).
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -461,11 +469,13 @@ public final class DmsFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:dms/getEnterpriseInstances:getEnterpriseInstances", TypeShape.of(GetEnterpriseInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides DMS Enterprise Logic Database available to the user.[What is Logic Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createlogicdatabase)
+     * This data source provides DMS Enterprise Logic Database available to the user. [What is Logic Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-createlogicdatabase).
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * ```java
      * package generated_program;
@@ -508,11 +518,13 @@ public final class DmsFunctions {
         return getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides DMS Enterprise Logic Database available to the user.[What is Logic Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createlogicdatabase)
+     * This data source provides DMS Enterprise Logic Database available to the user. [What is Logic Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-createlogicdatabase).
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * ```java
      * package generated_program;
@@ -555,11 +567,13 @@ public final class DmsFunctions {
         return getEnterpriseLogicDatabasesPlain(GetEnterpriseLogicDatabasesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides DMS Enterprise Logic Database available to the user.[What is Logic Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createlogicdatabase)
+     * This data source provides DMS Enterprise Logic Database available to the user. [What is Logic Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-createlogicdatabase).
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * ```java
      * package generated_program;
@@ -602,11 +616,13 @@ public final class DmsFunctions {
         return getEnterpriseLogicDatabases(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides DMS Enterprise Logic Database available to the user.[What is Logic Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createlogicdatabase)
+     * This data source provides DMS Enterprise Logic Database available to the user. [What is Logic Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-createlogicdatabase).
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * ```java
      * package generated_program;
@@ -649,11 +665,13 @@ public final class DmsFunctions {
         return getEnterpriseLogicDatabasesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides DMS Enterprise Logic Database available to the user.[What is Logic Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createlogicdatabase)
+     * This data source provides DMS Enterprise Logic Database available to the user. [What is Logic Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-createlogicdatabase).
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * ```java
      * package generated_program;
@@ -696,11 +714,13 @@ public final class DmsFunctions {
         return Deployment.getInstance().invoke("alicloud:dms/getEnterpriseLogicDatabases:getEnterpriseLogicDatabases", TypeShape.of(GetEnterpriseLogicDatabasesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides DMS Enterprise Logic Database available to the user.[What is Logic Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createlogicdatabase)
+     * This data source provides DMS Enterprise Logic Database available to the user. [What is Logic Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-createlogicdatabase).
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * ```java
      * package generated_program;
@@ -983,9 +1003,9 @@ public final class DmsFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:dms/getEnterpriseProxies:getEnterpriseProxies", TypeShape.of(GetEnterpriseProxiesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides DMS Enterprise Proxy Access available to the user.[What is Proxy Access](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createproxyaccess)
+     * This data source provides DMS Enterprise Proxy Access available to the user.[What is Proxy Access](https://next.api.alibabacloud.com/document/dms-enterprise/2018-11-01/CreateProxyAccess)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * ```java
@@ -1033,9 +1053,9 @@ public final class DmsFunctions {
         return getEnterpriseProxyAccesses(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides DMS Enterprise Proxy Access available to the user.[What is Proxy Access](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createproxyaccess)
+     * This data source provides DMS Enterprise Proxy Access available to the user.[What is Proxy Access](https://next.api.alibabacloud.com/document/dms-enterprise/2018-11-01/CreateProxyAccess)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * ```java
@@ -1083,9 +1103,9 @@ public final class DmsFunctions {
         return getEnterpriseProxyAccessesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides DMS Enterprise Proxy Access available to the user.[What is Proxy Access](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createproxyaccess)
+     * This data source provides DMS Enterprise Proxy Access available to the user.[What is Proxy Access](https://next.api.alibabacloud.com/document/dms-enterprise/2018-11-01/CreateProxyAccess)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * ```java
@@ -1133,9 +1153,9 @@ public final class DmsFunctions {
         return Deployment.getInstance().invoke("alicloud:dms/getEnterpriseProxyAccesses:getEnterpriseProxyAccesses", TypeShape.of(GetEnterpriseProxyAccessesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides DMS Enterprise Proxy Access available to the user.[What is Proxy Access](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createproxyaccess)
+     * This data source provides DMS Enterprise Proxy Access available to the user.[What is Proxy Access](https://next.api.alibabacloud.com/document/dms-enterprise/2018-11-01/CreateProxyAccess)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * ```java

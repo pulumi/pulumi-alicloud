@@ -17,6 +17,9 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// The IP address of the multicast group to which the multicast source belongs. Value range: **224.0.0.1** to **239.255.255.254**. If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you.
         /// </summary>
         public readonly string GroupIpAddress;
+        /// <summary>
+        /// The id of the resource.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// ENI ID of the multicast source.

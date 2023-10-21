@@ -304,7 +304,129 @@ class ManagedKubernetesArgs:
              worker_number: Optional[pulumi.Input[int]] = None,
              worker_period: Optional[pulumi.Input[int]] = None,
              worker_period_unit: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'workerVswitchIds' in kwargs:
+            worker_vswitch_ids = kwargs['workerVswitchIds']
+        if 'apiAudiences' in kwargs:
+            api_audiences = kwargs['apiAudiences']
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'clientCert' in kwargs:
+            client_cert = kwargs['clientCert']
+        if 'clientKey' in kwargs:
+            client_key = kwargs['clientKey']
+        if 'clusterCaCert' in kwargs:
+            cluster_ca_cert = kwargs['clusterCaCert']
+        if 'clusterDomain' in kwargs:
+            cluster_domain = kwargs['clusterDomain']
+        if 'clusterSpec' in kwargs:
+            cluster_spec = kwargs['clusterSpec']
+        if 'controlPlaneLogComponents' in kwargs:
+            control_plane_log_components = kwargs['controlPlaneLogComponents']
+        if 'controlPlaneLogProject' in kwargs:
+            control_plane_log_project = kwargs['controlPlaneLogProject']
+        if 'controlPlaneLogTtl' in kwargs:
+            control_plane_log_ttl = kwargs['controlPlaneLogTtl']
+        if 'cpuPolicy' in kwargs:
+            cpu_policy = kwargs['cpuPolicy']
+        if 'customSan' in kwargs:
+            custom_san = kwargs['customSan']
+        if 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if 'enableRrsa' in kwargs:
+            enable_rrsa = kwargs['enableRrsa']
+        if 'enableSsh' in kwargs:
+            enable_ssh = kwargs['enableSsh']
+        if 'encryptionProviderKey' in kwargs:
+            encryption_provider_key = kwargs['encryptionProviderKey']
+        if 'excludeAutoscalerNodes' in kwargs:
+            exclude_autoscaler_nodes = kwargs['excludeAutoscalerNodes']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'installCloudMonitor' in kwargs:
+            install_cloud_monitor = kwargs['installCloudMonitor']
+        if 'isEnterpriseSecurityGroup' in kwargs:
+            is_enterprise_security_group = kwargs['isEnterpriseSecurityGroup']
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if 'kmsEncryptedPassword' in kwargs:
+            kms_encrypted_password = kwargs['kmsEncryptedPassword']
+        if 'kmsEncryptionContext' in kwargs:
+            kms_encryption_context = kwargs['kmsEncryptionContext']
+        if 'kubeConfig' in kwargs:
+            kube_config = kwargs['kubeConfig']
+        if 'loadBalancerSpec' in kwargs:
+            load_balancer_spec = kwargs['loadBalancerSpec']
+        if 'maintenanceWindow' in kwargs:
+            maintenance_window = kwargs['maintenanceWindow']
+        if 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+        if 'newNatGateway' in kwargs:
+            new_nat_gateway = kwargs['newNatGateway']
+        if 'nodeCidrMask' in kwargs:
+            node_cidr_mask = kwargs['nodeCidrMask']
+        if 'nodeNameMode' in kwargs:
+            node_name_mode = kwargs['nodeNameMode']
+        if 'nodePortRange' in kwargs:
+            node_port_range = kwargs['nodePortRange']
+        if 'osType' in kwargs:
+            os_type = kwargs['osType']
+        if 'podCidr' in kwargs:
+            pod_cidr = kwargs['podCidr']
+        if 'podVswitchIds' in kwargs:
+            pod_vswitch_ids = kwargs['podVswitchIds']
+        if 'proxyMode' in kwargs:
+            proxy_mode = kwargs['proxyMode']
+        if 'rdsInstances' in kwargs:
+            rds_instances = kwargs['rdsInstances']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'retainResources' in kwargs:
+            retain_resources = kwargs['retainResources']
+        if 'rrsaMetadata' in kwargs:
+            rrsa_metadata = kwargs['rrsaMetadata']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'serviceAccountIssuer' in kwargs:
+            service_account_issuer = kwargs['serviceAccountIssuer']
+        if 'serviceCidr' in kwargs:
+            service_cidr = kwargs['serviceCidr']
+        if 'slbInternetEnabled' in kwargs:
+            slb_internet_enabled = kwargs['slbInternetEnabled']
+        if 'userCa' in kwargs:
+            user_ca = kwargs['userCa']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if 'workerAutoRenew' in kwargs:
+            worker_auto_renew = kwargs['workerAutoRenew']
+        if 'workerAutoRenewPeriod' in kwargs:
+            worker_auto_renew_period = kwargs['workerAutoRenewPeriod']
+        if 'workerDataDiskCategory' in kwargs:
+            worker_data_disk_category = kwargs['workerDataDiskCategory']
+        if 'workerDataDiskSize' in kwargs:
+            worker_data_disk_size = kwargs['workerDataDiskSize']
+        if 'workerDataDisks' in kwargs:
+            worker_data_disks = kwargs['workerDataDisks']
+        if 'workerDiskCategory' in kwargs:
+            worker_disk_category = kwargs['workerDiskCategory']
+        if 'workerDiskPerformanceLevel' in kwargs:
+            worker_disk_performance_level = kwargs['workerDiskPerformanceLevel']
+        if 'workerDiskSize' in kwargs:
+            worker_disk_size = kwargs['workerDiskSize']
+        if 'workerDiskSnapshotPolicyId' in kwargs:
+            worker_disk_snapshot_policy_id = kwargs['workerDiskSnapshotPolicyId']
+        if 'workerInstanceChargeType' in kwargs:
+            worker_instance_charge_type = kwargs['workerInstanceChargeType']
+        if 'workerInstanceTypes' in kwargs:
+            worker_instance_types = kwargs['workerInstanceTypes']
+        if 'workerNumber' in kwargs:
+            worker_number = kwargs['workerNumber']
+        if 'workerPeriod' in kwargs:
+            worker_period = kwargs['workerPeriod']
+        if 'workerPeriodUnit' in kwargs:
+            worker_period_unit = kwargs['workerPeriodUnit']
+
         _setter("worker_vswitch_ids", worker_vswitch_ids)
         if addons is not None:
             _setter("addons", addons)
@@ -1790,7 +1912,145 @@ class _ManagedKubernetesState:
              worker_period_unit: Optional[pulumi.Input[str]] = None,
              worker_ram_role_name: Optional[pulumi.Input[str]] = None,
              worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiAudiences' in kwargs:
+            api_audiences = kwargs['apiAudiences']
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'certificateAuthority' in kwargs:
+            certificate_authority = kwargs['certificateAuthority']
+        if 'clientCert' in kwargs:
+            client_cert = kwargs['clientCert']
+        if 'clientKey' in kwargs:
+            client_key = kwargs['clientKey']
+        if 'clusterCaCert' in kwargs:
+            cluster_ca_cert = kwargs['clusterCaCert']
+        if 'clusterDomain' in kwargs:
+            cluster_domain = kwargs['clusterDomain']
+        if 'clusterSpec' in kwargs:
+            cluster_spec = kwargs['clusterSpec']
+        if 'controlPlaneLogComponents' in kwargs:
+            control_plane_log_components = kwargs['controlPlaneLogComponents']
+        if 'controlPlaneLogProject' in kwargs:
+            control_plane_log_project = kwargs['controlPlaneLogProject']
+        if 'controlPlaneLogTtl' in kwargs:
+            control_plane_log_ttl = kwargs['controlPlaneLogTtl']
+        if 'cpuPolicy' in kwargs:
+            cpu_policy = kwargs['cpuPolicy']
+        if 'customSan' in kwargs:
+            custom_san = kwargs['customSan']
+        if 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if 'enableRrsa' in kwargs:
+            enable_rrsa = kwargs['enableRrsa']
+        if 'enableSsh' in kwargs:
+            enable_ssh = kwargs['enableSsh']
+        if 'encryptionProviderKey' in kwargs:
+            encryption_provider_key = kwargs['encryptionProviderKey']
+        if 'excludeAutoscalerNodes' in kwargs:
+            exclude_autoscaler_nodes = kwargs['excludeAutoscalerNodes']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'installCloudMonitor' in kwargs:
+            install_cloud_monitor = kwargs['installCloudMonitor']
+        if 'isEnterpriseSecurityGroup' in kwargs:
+            is_enterprise_security_group = kwargs['isEnterpriseSecurityGroup']
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if 'kmsEncryptedPassword' in kwargs:
+            kms_encrypted_password = kwargs['kmsEncryptedPassword']
+        if 'kmsEncryptionContext' in kwargs:
+            kms_encryption_context = kwargs['kmsEncryptionContext']
+        if 'kubeConfig' in kwargs:
+            kube_config = kwargs['kubeConfig']
+        if 'loadBalancerSpec' in kwargs:
+            load_balancer_spec = kwargs['loadBalancerSpec']
+        if 'maintenanceWindow' in kwargs:
+            maintenance_window = kwargs['maintenanceWindow']
+        if 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+        if 'natGatewayId' in kwargs:
+            nat_gateway_id = kwargs['natGatewayId']
+        if 'newNatGateway' in kwargs:
+            new_nat_gateway = kwargs['newNatGateway']
+        if 'nodeCidrMask' in kwargs:
+            node_cidr_mask = kwargs['nodeCidrMask']
+        if 'nodeNameMode' in kwargs:
+            node_name_mode = kwargs['nodeNameMode']
+        if 'nodePortRange' in kwargs:
+            node_port_range = kwargs['nodePortRange']
+        if 'osType' in kwargs:
+            os_type = kwargs['osType']
+        if 'podCidr' in kwargs:
+            pod_cidr = kwargs['podCidr']
+        if 'podVswitchIds' in kwargs:
+            pod_vswitch_ids = kwargs['podVswitchIds']
+        if 'proxyMode' in kwargs:
+            proxy_mode = kwargs['proxyMode']
+        if 'rdsInstances' in kwargs:
+            rds_instances = kwargs['rdsInstances']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'retainResources' in kwargs:
+            retain_resources = kwargs['retainResources']
+        if 'rrsaMetadata' in kwargs:
+            rrsa_metadata = kwargs['rrsaMetadata']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'serviceAccountIssuer' in kwargs:
+            service_account_issuer = kwargs['serviceAccountIssuer']
+        if 'serviceCidr' in kwargs:
+            service_cidr = kwargs['serviceCidr']
+        if 'slbId' in kwargs:
+            slb_id = kwargs['slbId']
+        if 'slbInternet' in kwargs:
+            slb_internet = kwargs['slbInternet']
+        if 'slbInternetEnabled' in kwargs:
+            slb_internet_enabled = kwargs['slbInternetEnabled']
+        if 'slbIntranet' in kwargs:
+            slb_intranet = kwargs['slbIntranet']
+        if 'userCa' in kwargs:
+            user_ca = kwargs['userCa']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'workerAutoRenew' in kwargs:
+            worker_auto_renew = kwargs['workerAutoRenew']
+        if 'workerAutoRenewPeriod' in kwargs:
+            worker_auto_renew_period = kwargs['workerAutoRenewPeriod']
+        if 'workerDataDiskCategory' in kwargs:
+            worker_data_disk_category = kwargs['workerDataDiskCategory']
+        if 'workerDataDiskSize' in kwargs:
+            worker_data_disk_size = kwargs['workerDataDiskSize']
+        if 'workerDataDisks' in kwargs:
+            worker_data_disks = kwargs['workerDataDisks']
+        if 'workerDiskCategory' in kwargs:
+            worker_disk_category = kwargs['workerDiskCategory']
+        if 'workerDiskPerformanceLevel' in kwargs:
+            worker_disk_performance_level = kwargs['workerDiskPerformanceLevel']
+        if 'workerDiskSize' in kwargs:
+            worker_disk_size = kwargs['workerDiskSize']
+        if 'workerDiskSnapshotPolicyId' in kwargs:
+            worker_disk_snapshot_policy_id = kwargs['workerDiskSnapshotPolicyId']
+        if 'workerInstanceChargeType' in kwargs:
+            worker_instance_charge_type = kwargs['workerInstanceChargeType']
+        if 'workerInstanceTypes' in kwargs:
+            worker_instance_types = kwargs['workerInstanceTypes']
+        if 'workerNodes' in kwargs:
+            worker_nodes = kwargs['workerNodes']
+        if 'workerNumber' in kwargs:
+            worker_number = kwargs['workerNumber']
+        if 'workerPeriod' in kwargs:
+            worker_period = kwargs['workerPeriod']
+        if 'workerPeriodUnit' in kwargs:
+            worker_period_unit = kwargs['workerPeriodUnit']
+        if 'workerRamRoleName' in kwargs:
+            worker_ram_role_name = kwargs['workerRamRoleName']
+        if 'workerVswitchIds' in kwargs:
+            worker_vswitch_ids = kwargs['workerVswitchIds']
+
         if addons is not None:
             _setter("addons", addons)
         if api_audiences is not None:
@@ -3164,6 +3424,33 @@ class ManagedKubernetes(pulumi.CustomResource):
                  worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
+        This resource will help you to manage a ManagedKubernetes Cluster in Alibaba Cloud Kubernetes Service.
+
+        > **NOTE:** It is recommended to create a cluster with zero worker nodes, and then use a node pool to manage the cluster nodes.
+
+        > **NOTE:** Kubernetes cluster only supports VPC network and it can access internet while creating kubernetes cluster.
+        A Nat Gateway and configuring a SNAT for it can ensure one VPC network access internet. If there is no nat gateway in the
+        VPC, you can set `new_nat_gateway` to "true" to create one automatically.
+
+        > **NOTE:** Creating kubernetes cluster need to install several packages and it will cost about 15 minutes. Please be patient.
+
+        > **NOTE:** From version 1.9.4, the provider supports to download kube config, client certificate, client key and cluster ca certificate
+        after creating cluster successfully, and you can put them into the specified location, like '~/.kube/config'.
+
+        > **NOTE:** From version 1.20.0, the provider supports disabling internet load balancer for API Server by setting `false` to `slb_internet_enabled`.
+
+        > **NOTE:** If you want to manage Kubernetes, you can use Kubernetes Provider.
+
+        > **NOTE:** You need to activate several other products and confirm Authorization Policy used by Container Service before using this resource.
+        Please refer to the `Authorization management` and `Cluster management` sections in the [Document Center](https://www.alibabacloud.com/help/doc-detail/86488.htm).
+
+        > **NOTE:** From version 1.72.0, Some parameters have been removed from resource,You can check them below and re-import the cluster if necessary.
+
+        > **NOTE:** From version 1.120.0, Support for cluster migration from Standard cluster to professional.
+
+        > **NOTE:** From version 1.177.0+, `runtime`,`enable_ssh`,`rds_instances`,`exclude_autoscaler_nodes`,`worker_number`,`worker_instance_types`,`password`,`key_name`,`kms_encrypted_password`,`kms_encryption_context`,`worker_instance_charge_type`,`worker_period`,`worker_period_unit`,`worker_auto_renew`,`worker_auto_renew_period`,`worker_disk_category`,`worker_disk_size`,`worker_data_disks`,`node_name_mode`,`node_port_range`,`os_type`,`platform`,`image_id`,`cpu_policy`,`user_data`,`taints`,`worker_disk_performance_level`,`worker_disk_snapshot_policy_id`,`install_cloud_monitor` are deprecated.
+        We Suggest you using resource **`cs.NodePool`** to manage your cluster worker nodes.
+
         ## Import
 
         Kubernetes managed cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
@@ -3254,6 +3541,33 @@ class ManagedKubernetes(pulumi.CustomResource):
                  args: ManagedKubernetesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        This resource will help you to manage a ManagedKubernetes Cluster in Alibaba Cloud Kubernetes Service.
+
+        > **NOTE:** It is recommended to create a cluster with zero worker nodes, and then use a node pool to manage the cluster nodes.
+
+        > **NOTE:** Kubernetes cluster only supports VPC network and it can access internet while creating kubernetes cluster.
+        A Nat Gateway and configuring a SNAT for it can ensure one VPC network access internet. If there is no nat gateway in the
+        VPC, you can set `new_nat_gateway` to "true" to create one automatically.
+
+        > **NOTE:** Creating kubernetes cluster need to install several packages and it will cost about 15 minutes. Please be patient.
+
+        > **NOTE:** From version 1.9.4, the provider supports to download kube config, client certificate, client key and cluster ca certificate
+        after creating cluster successfully, and you can put them into the specified location, like '~/.kube/config'.
+
+        > **NOTE:** From version 1.20.0, the provider supports disabling internet load balancer for API Server by setting `false` to `slb_internet_enabled`.
+
+        > **NOTE:** If you want to manage Kubernetes, you can use Kubernetes Provider.
+
+        > **NOTE:** You need to activate several other products and confirm Authorization Policy used by Container Service before using this resource.
+        Please refer to the `Authorization management` and `Cluster management` sections in the [Document Center](https://www.alibabacloud.com/help/doc-detail/86488.htm).
+
+        > **NOTE:** From version 1.72.0, Some parameters have been removed from resource,You can check them below and re-import the cluster if necessary.
+
+        > **NOTE:** From version 1.120.0, Support for cluster migration from Standard cluster to professional.
+
+        > **NOTE:** From version 1.177.0+, `runtime`,`enable_ssh`,`rds_instances`,`exclude_autoscaler_nodes`,`worker_number`,`worker_instance_types`,`password`,`key_name`,`kms_encrypted_password`,`kms_encryption_context`,`worker_instance_charge_type`,`worker_period`,`worker_period_unit`,`worker_auto_renew`,`worker_auto_renew_period`,`worker_disk_category`,`worker_disk_size`,`worker_data_disks`,`node_name_mode`,`node_port_range`,`os_type`,`platform`,`image_id`,`cpu_policy`,`user_data`,`taints`,`worker_disk_performance_level`,`worker_disk_snapshot_policy_id`,`install_cloud_monitor` are deprecated.
+        We Suggest you using resource **`cs.NodePool`** to manage your cluster worker nodes.
+
         ## Import
 
         Kubernetes managed cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.

@@ -43,7 +43,15 @@ class SnapshotArgs:
              force: Optional[pulumi.Input[bool]] = None,
              retention_days: Optional[pulumi.Input[int]] = None,
              snapshot_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'retentionDays' in kwargs:
+            retention_days = kwargs['retentionDays']
+        if 'snapshotName' in kwargs:
+            snapshot_name = kwargs['snapshotName']
+
         _setter("instance_id", instance_id)
         if description is not None:
             _setter("description", description)
@@ -151,7 +159,15 @@ class _SnapshotState:
              retention_days: Optional[pulumi.Input[int]] = None,
              snapshot_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'retentionDays' in kwargs:
+            retention_days = kwargs['retentionDays']
+        if 'snapshotName' in kwargs:
+            snapshot_name = kwargs['snapshotName']
+
         if description is not None:
             _setter("description", description)
         if force is not None:

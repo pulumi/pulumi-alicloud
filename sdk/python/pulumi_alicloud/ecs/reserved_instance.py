@@ -90,7 +90,27 @@ class ReservedInstanceArgs:
              scope: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if 'instanceAmount' in kwargs:
+            instance_amount = kwargs['instanceAmount']
+        if 'offeringType' in kwargs:
+            offering_type = kwargs['offeringType']
+        if 'periodUnit' in kwargs:
+            period_unit = kwargs['periodUnit']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if 'reservedInstanceName' in kwargs:
+            reserved_instance_name = kwargs['reservedInstanceName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("instance_type", instance_type)
         if auto_renew_period is not None:
             _setter("auto_renew_period", auto_renew_period)
@@ -414,7 +434,37 @@ class _ReservedInstanceState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allocationStatus' in kwargs:
+            allocation_status = kwargs['allocationStatus']
+        if 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'instanceAmount' in kwargs:
+            instance_amount = kwargs['instanceAmount']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'offeringType' in kwargs:
+            offering_type = kwargs['offeringType']
+        if 'operationLocks' in kwargs:
+            operation_locks = kwargs['operationLocks']
+        if 'periodUnit' in kwargs:
+            period_unit = kwargs['periodUnit']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if 'reservedInstanceName' in kwargs:
+            reserved_instance_name = kwargs['reservedInstanceName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if allocation_status is not None:
             _setter("allocation_status", allocation_status)
         if auto_renew_period is not None:

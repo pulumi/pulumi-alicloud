@@ -3,15 +3,34 @@
 
 package com.pulumi.alicloud.alb.inputs;
 
+import com.pulumi.alicloud.alb.inputs.LoadBalancerZoneMappingLoadBalancerAddressArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final LoadBalancerZoneMappingArgs Empty = new LoadBalancerZoneMappingArgs();
+
+    /**
+     * The SLB Instance Address.
+     * 
+     */
+    @Import(name="loadBalancerAddresses")
+    private @Nullable Output<List<LoadBalancerZoneMappingLoadBalancerAddressArgs>> loadBalancerAddresses;
+
+    /**
+     * @return The SLB Instance Address.
+     * 
+     */
+    public Optional<Output<List<LoadBalancerZoneMappingLoadBalancerAddressArgs>>> loadBalancerAddresses() {
+        return Optional.ofNullable(this.loadBalancerAddresses);
+    }
 
     /**
      * The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
@@ -29,14 +48,14 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The ID of the zone to which the ALB instance belongs.
+     * The ID of the zone to which the SLB instance belongs.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The ID of the zone to which the ALB instance belongs.
+     * @return The ID of the zone to which the SLB instance belongs.
      * 
      */
     public Output<String> zoneId() {
@@ -46,6 +65,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
     private LoadBalancerZoneMappingArgs() {}
 
     private LoadBalancerZoneMappingArgs(LoadBalancerZoneMappingArgs $) {
+        this.loadBalancerAddresses = $.loadBalancerAddresses;
         this.vswitchId = $.vswitchId;
         this.zoneId = $.zoneId;
     }
@@ -66,6 +86,37 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
 
         public Builder(LoadBalancerZoneMappingArgs defaults) {
             $ = new LoadBalancerZoneMappingArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param loadBalancerAddresses The SLB Instance Address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loadBalancerAddresses(@Nullable Output<List<LoadBalancerZoneMappingLoadBalancerAddressArgs>> loadBalancerAddresses) {
+            $.loadBalancerAddresses = loadBalancerAddresses;
+            return this;
+        }
+
+        /**
+         * @param loadBalancerAddresses The SLB Instance Address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loadBalancerAddresses(List<LoadBalancerZoneMappingLoadBalancerAddressArgs> loadBalancerAddresses) {
+            return loadBalancerAddresses(Output.of(loadBalancerAddresses));
+        }
+
+        /**
+         * @param loadBalancerAddresses The SLB Instance Address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loadBalancerAddresses(LoadBalancerZoneMappingLoadBalancerAddressArgs... loadBalancerAddresses) {
+            return loadBalancerAddresses(List.of(loadBalancerAddresses));
         }
 
         /**
@@ -90,7 +141,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param zoneId The ID of the zone to which the ALB instance belongs.
+         * @param zoneId The ID of the zone to which the SLB instance belongs.
          * 
          * @return builder
          * 
@@ -101,7 +152,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param zoneId The ID of the zone to which the ALB instance belongs.
+         * @param zoneId The ID of the zone to which the SLB instance belongs.
          * 
          * @return builder
          * 

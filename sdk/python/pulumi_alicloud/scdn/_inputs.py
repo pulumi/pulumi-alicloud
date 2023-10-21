@@ -49,7 +49,19 @@ class DomainCertInfoArgs:
              ssl_pri: Optional[pulumi.Input[str]] = None,
              ssl_protocol: Optional[pulumi.Input[str]] = None,
              ssl_pub: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'certName' in kwargs:
+            cert_name = kwargs['certName']
+        if 'certType' in kwargs:
+            cert_type = kwargs['certType']
+        if 'sslPri' in kwargs:
+            ssl_pri = kwargs['sslPri']
+        if 'sslProtocol' in kwargs:
+            ssl_protocol = kwargs['sslProtocol']
+        if 'sslPub' in kwargs:
+            ssl_pub = kwargs['sslPub']
+
         if cert_name is not None:
             _setter("cert_name", cert_name)
         if cert_type is not None:
@@ -144,7 +156,13 @@ class DomainConfigFunctionArgArgs:
              _setter: Callable[[Any, Any], None],
              arg_name: pulumi.Input[str],
              arg_value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'argName' in kwargs:
+            arg_name = kwargs['argName']
+        if 'argValue' in kwargs:
+            arg_value = kwargs['argValue']
+
         _setter("arg_name", arg_name)
         _setter("arg_value", arg_value)
 
@@ -207,7 +225,9 @@ class DomainSourceArgs:
              priority: pulumi.Input[str],
              type: pulumi.Input[str],
              enabled: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("content", content)
         _setter("port", port)
         _setter("priority", priority)

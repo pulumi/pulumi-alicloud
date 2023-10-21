@@ -53,7 +53,21 @@ class FunctionAsyncInvokeConfigArgs:
              maximum_retry_attempts: Optional[pulumi.Input[int]] = None,
              qualifier: Optional[pulumi.Input[str]] = None,
              stateful_invocation: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'functionName' in kwargs:
+            function_name = kwargs['functionName']
+        if 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if 'destinationConfig' in kwargs:
+            destination_config = kwargs['destinationConfig']
+        if 'maximumEventAgeInSeconds' in kwargs:
+            maximum_event_age_in_seconds = kwargs['maximumEventAgeInSeconds']
+        if 'maximumRetryAttempts' in kwargs:
+            maximum_retry_attempts = kwargs['maximumRetryAttempts']
+        if 'statefulInvocation' in kwargs:
+            stateful_invocation = kwargs['statefulInvocation']
+
         _setter("function_name", function_name)
         _setter("service_name", service_name)
         if destination_config is not None:
@@ -200,7 +214,25 @@ class _FunctionAsyncInvokeConfigState:
              qualifier: Optional[pulumi.Input[str]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
              stateful_invocation: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createdTime' in kwargs:
+            created_time = kwargs['createdTime']
+        if 'destinationConfig' in kwargs:
+            destination_config = kwargs['destinationConfig']
+        if 'functionName' in kwargs:
+            function_name = kwargs['functionName']
+        if 'lastModifiedTime' in kwargs:
+            last_modified_time = kwargs['lastModifiedTime']
+        if 'maximumEventAgeInSeconds' in kwargs:
+            maximum_event_age_in_seconds = kwargs['maximumEventAgeInSeconds']
+        if 'maximumRetryAttempts' in kwargs:
+            maximum_retry_attempts = kwargs['maximumRetryAttempts']
+        if 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if 'statefulInvocation' in kwargs:
+            stateful_invocation = kwargs['statefulInvocation']
+
         if created_time is not None:
             _setter("created_time", created_time)
         if destination_config is not None:
@@ -344,7 +376,7 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
                  __props__=None):
         """
         Manages an asynchronous invocation configuration for a FC Function or Alias.\\
-         For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-putfunctionasyncinvokeconfig).
+         For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/fc/developer-reference/api-fc-open-2021-04-06-putfunctionasyncinvokeconfig).
 
         > **NOTE:** Available since v1.100.0.
 
@@ -465,7 +497,7 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages an asynchronous invocation configuration for a FC Function or Alias.\\
-         For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-putfunctionasyncinvokeconfig).
+         For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/fc/developer-reference/api-fc-open-2021-04-06-putfunctionasyncinvokeconfig).
 
         > **NOTE:** Available since v1.100.0.
 

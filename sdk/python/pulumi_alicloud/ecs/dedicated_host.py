@@ -105,7 +105,45 @@ class DedicatedHostArgs:
              sale_cycle: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dedicatedHostType' in kwargs:
+            dedicated_host_type = kwargs['dedicatedHostType']
+        if 'actionOnMaintenance' in kwargs:
+            action_on_maintenance = kwargs['actionOnMaintenance']
+        if 'autoPlacement' in kwargs:
+            auto_placement = kwargs['autoPlacement']
+        if 'autoReleaseTime' in kwargs:
+            auto_release_time = kwargs['autoReleaseTime']
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if 'cpuOverCommitRatio' in kwargs:
+            cpu_over_commit_ratio = kwargs['cpuOverCommitRatio']
+        if 'dedicatedHostClusterId' in kwargs:
+            dedicated_host_cluster_id = kwargs['dedicatedHostClusterId']
+        if 'dedicatedHostName' in kwargs:
+            dedicated_host_name = kwargs['dedicatedHostName']
+        if 'detailFee' in kwargs:
+            detail_fee = kwargs['detailFee']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'minQuantity' in kwargs:
+            min_quantity = kwargs['minQuantity']
+        if 'networkAttributes' in kwargs:
+            network_attributes = kwargs['networkAttributes']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'saleCycle' in kwargs:
+            sale_cycle = kwargs['saleCycle']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("dedicated_host_type", dedicated_host_type)
         if action_on_maintenance is not None:
             _setter("action_on_maintenance", action_on_maintenance)
@@ -483,7 +521,45 @@ class _DedicatedHostState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'actionOnMaintenance' in kwargs:
+            action_on_maintenance = kwargs['actionOnMaintenance']
+        if 'autoPlacement' in kwargs:
+            auto_placement = kwargs['autoPlacement']
+        if 'autoReleaseTime' in kwargs:
+            auto_release_time = kwargs['autoReleaseTime']
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if 'cpuOverCommitRatio' in kwargs:
+            cpu_over_commit_ratio = kwargs['cpuOverCommitRatio']
+        if 'dedicatedHostClusterId' in kwargs:
+            dedicated_host_cluster_id = kwargs['dedicatedHostClusterId']
+        if 'dedicatedHostName' in kwargs:
+            dedicated_host_name = kwargs['dedicatedHostName']
+        if 'dedicatedHostType' in kwargs:
+            dedicated_host_type = kwargs['dedicatedHostType']
+        if 'detailFee' in kwargs:
+            detail_fee = kwargs['detailFee']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'minQuantity' in kwargs:
+            min_quantity = kwargs['minQuantity']
+        if 'networkAttributes' in kwargs:
+            network_attributes = kwargs['networkAttributes']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'saleCycle' in kwargs:
+            sale_cycle = kwargs['saleCycle']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if action_on_maintenance is not None:
             _setter("action_on_maintenance", action_on_maintenance)
         if auto_placement is not None:

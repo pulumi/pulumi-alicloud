@@ -67,7 +67,29 @@ class EcsBackupClientArgs:
              proxy_user: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              use_https: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'dataNetworkType' in kwargs:
+            data_network_type = kwargs['dataNetworkType']
+        if 'dataProxySetting' in kwargs:
+            data_proxy_setting = kwargs['dataProxySetting']
+        if 'maxCpuCore' in kwargs:
+            max_cpu_core = kwargs['maxCpuCore']
+        if 'maxWorker' in kwargs:
+            max_worker = kwargs['maxWorker']
+        if 'proxyHost' in kwargs:
+            proxy_host = kwargs['proxyHost']
+        if 'proxyPassword' in kwargs:
+            proxy_password = kwargs['proxyPassword']
+        if 'proxyPort' in kwargs:
+            proxy_port = kwargs['proxyPort']
+        if 'proxyUser' in kwargs:
+            proxy_user = kwargs['proxyUser']
+        if 'useHttps' in kwargs:
+            use_https = kwargs['useHttps']
+
         _setter("instance_id", instance_id)
         if data_network_type is not None:
             _setter("data_network_type", data_network_type)
@@ -279,7 +301,29 @@ class _EcsBackupClientState:
              proxy_user: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              use_https: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dataNetworkType' in kwargs:
+            data_network_type = kwargs['dataNetworkType']
+        if 'dataProxySetting' in kwargs:
+            data_proxy_setting = kwargs['dataProxySetting']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'maxCpuCore' in kwargs:
+            max_cpu_core = kwargs['maxCpuCore']
+        if 'maxWorker' in kwargs:
+            max_worker = kwargs['maxWorker']
+        if 'proxyHost' in kwargs:
+            proxy_host = kwargs['proxyHost']
+        if 'proxyPassword' in kwargs:
+            proxy_password = kwargs['proxyPassword']
+        if 'proxyPort' in kwargs:
+            proxy_port = kwargs['proxyPort']
+        if 'proxyUser' in kwargs:
+            proxy_user = kwargs['proxyUser']
+        if 'useHttps' in kwargs:
+            use_https = kwargs['useHttps']
+
         if data_network_type is not None:
             _setter("data_network_type", data_network_type)
         if data_proxy_setting is not None:

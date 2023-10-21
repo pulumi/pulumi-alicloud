@@ -17,14 +17,14 @@ public final class GetProductsPlainArgs extends com.pulumi.resources.InvokeArgs 
     public static final GetProductsPlainArgs Empty = new GetProductsPlainArgs();
 
     /**
-     * The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
+     * The Category ID of products.
      * 
      */
     @Import(name="categoryId")
     private @Nullable String categoryId;
 
     /**
-     * @return The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
+     * @return The Category ID of products.
      * 
      */
     public Optional<String> categoryId() {
@@ -200,7 +200,7 @@ public final class GetProductsPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param categoryId The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
+         * @param categoryId The Category ID of products.
          * 
          * @return builder
          * 

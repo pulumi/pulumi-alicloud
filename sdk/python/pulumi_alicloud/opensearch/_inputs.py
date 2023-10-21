@@ -37,7 +37,13 @@ class AppGroupOrderArgs:
              auto_renew: Optional[pulumi.Input[bool]] = None,
              duration: Optional[pulumi.Input[int]] = None,
              pricing_cycle: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'pricingCycle' in kwargs:
+            pricing_cycle = kwargs['pricingCycle']
+
         if auto_renew is not None:
             _setter("auto_renew", auto_renew)
         if duration is not None:
@@ -116,7 +122,13 @@ class AppGroupQuotaArgs:
              doc_size: pulumi.Input[int],
              spec: pulumi.Input[str],
              qps: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'computeResource' in kwargs:
+            compute_resource = kwargs['computeResource']
+        if 'docSize' in kwargs:
+            doc_size = kwargs['docSize']
+
         _setter("compute_resource", compute_resource)
         _setter("doc_size", doc_size)
         _setter("spec", spec)

@@ -73,7 +73,27 @@ class ElasticityAssuranceArgs:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              start_time: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceAmount' in kwargs:
+            instance_amount = kwargs['instanceAmount']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'zoneIds' in kwargs:
+            zone_ids = kwargs['zoneIds']
+        if 'assuranceTimes' in kwargs:
+            assurance_times = kwargs['assuranceTimes']
+        if 'periodUnit' in kwargs:
+            period_unit = kwargs['periodUnit']
+        if 'privatePoolOptionsMatchCriteria' in kwargs:
+            private_pool_options_match_criteria = kwargs['privatePoolOptionsMatchCriteria']
+        if 'privatePoolOptionsName' in kwargs:
+            private_pool_options_name = kwargs['privatePoolOptionsName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+
         _setter("instance_amount", instance_amount)
         _setter("instance_type", instance_type)
         _setter("zone_ids", zone_ids)
@@ -329,7 +349,37 @@ class _ElasticityAssuranceState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              used_assurance_times: Optional[pulumi.Input[int]] = None,
              zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'assuranceTimes' in kwargs:
+            assurance_times = kwargs['assuranceTimes']
+        if 'elasticityAssuranceId' in kwargs:
+            elasticity_assurance_id = kwargs['elasticityAssuranceId']
+        if 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if 'instanceAmount' in kwargs:
+            instance_amount = kwargs['instanceAmount']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'periodUnit' in kwargs:
+            period_unit = kwargs['periodUnit']
+        if 'privatePoolOptionsMatchCriteria' in kwargs:
+            private_pool_options_match_criteria = kwargs['privatePoolOptionsMatchCriteria']
+        if 'privatePoolOptionsName' in kwargs:
+            private_pool_options_name = kwargs['privatePoolOptionsName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if 'startTimeType' in kwargs:
+            start_time_type = kwargs['startTimeType']
+        if 'usedAssuranceTimes' in kwargs:
+            used_assurance_times = kwargs['usedAssuranceTimes']
+        if 'zoneIds' in kwargs:
+            zone_ids = kwargs['zoneIds']
+
         if assurance_times is not None:
             _setter("assurance_times", assurance_times)
         if description is not None:

@@ -43,7 +43,19 @@ class ClusterArgs:
              network_mode: pulumi.Input[int],
              logical_region_id: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'clusterType' in kwargs:
+            cluster_type = kwargs['clusterType']
+        if 'networkMode' in kwargs:
+            network_mode = kwargs['networkMode']
+        if 'logicalRegionId' in kwargs:
+            logical_region_id = kwargs['logicalRegionId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         _setter("cluster_name", cluster_name)
         _setter("cluster_type", cluster_type)
         _setter("network_mode", network_mode)
@@ -145,7 +157,19 @@ class _ClusterState:
              logical_region_id: Optional[pulumi.Input[str]] = None,
              network_mode: Optional[pulumi.Input[int]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'clusterType' in kwargs:
+            cluster_type = kwargs['clusterType']
+        if 'logicalRegionId' in kwargs:
+            logical_region_id = kwargs['logicalRegionId']
+        if 'networkMode' in kwargs:
+            network_mode = kwargs['networkMode']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if cluster_name is not None:
             _setter("cluster_name", cluster_name)
         if cluster_type is not None:

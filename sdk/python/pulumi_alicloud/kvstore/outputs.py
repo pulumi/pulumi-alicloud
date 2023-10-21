@@ -38,7 +38,9 @@ class InstanceParameter(dict):
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if value is not None:
@@ -106,7 +108,17 @@ class GetAccountsAccountResult(dict):
              id: str,
              instance_id: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'accountPrivilege' in kwargs:
+            account_privilege = kwargs['accountPrivilege']
+        if 'accountType' in kwargs:
+            account_type = kwargs['accountType']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("account_name", account_name)
         _setter("account_privilege", account_privilege)
         _setter("account_type", account_type)
@@ -225,7 +237,25 @@ class GetConnectionsConnectionResult(dict):
              vpc_id: str,
              vpc_instance_id: str,
              vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if 'dbInstanceNetType' in kwargs:
+            db_instance_net_type = kwargs['dbInstanceNetType']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vpcInstanceId' in kwargs:
+            vpc_instance_id = kwargs['vpcInstanceId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("connection_string", connection_string)
         _setter("db_instance_net_type", db_instance_net_type)
         _setter("expired_time", expired_time)
@@ -339,7 +369,11 @@ class GetInstanceClassesClassResult(dict):
              _setter: Callable[[Any, Any], None],
              instance_class: str,
              price: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+
         _setter("instance_class", instance_class)
         _setter("price", price)
 
@@ -380,7 +414,13 @@ class GetInstanceEnginesInstanceEngineResult(dict):
              engine: str,
              engine_version: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("engine", engine)
         _setter("engine_version", engine_version)
         _setter("zone_id", zone_id)
@@ -485,7 +525,7 @@ class GetInstancesInstanceResult(dict):
         :param str expire_time: It has been deprecated from provider version 1.101.0 and `end_time` instead.
         :param bool has_renew_change_order: Indicates whether there was an order of renewal with configuration change that had not taken effect.
         :param str id: The ID of the instance.
-        :param str instance_class: Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+        :param str instance_class: Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
         :param str instance_type: The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
         :param bool is_rds: Indicates whether the instance is managed by Relational Database Service (RDS).
         :param int max_connections: Instance connection quantity limit. Unit: count.
@@ -622,7 +662,95 @@ class GetInstancesInstanceResult(dict):
              vpc_id: str,
              vswitch_id: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'architectureType' in kwargs:
+            architecture_type = kwargs['architectureType']
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'chargeType' in kwargs:
+            charge_type = kwargs['chargeType']
+        if 'connectionDomain' in kwargs:
+            connection_domain = kwargs['connectionDomain']
+        if 'connectionMode' in kwargs:
+            connection_mode = kwargs['connectionMode']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+        if 'dbInstanceName' in kwargs:
+            db_instance_name = kwargs['dbInstanceName']
+        if 'destroyTime' in kwargs:
+            destroy_time = kwargs['destroyTime']
+        if 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if 'hasRenewChangeOrder' in kwargs:
+            has_renew_change_order = kwargs['hasRenewChangeOrder']
+        if 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if 'instanceReleaseProtection' in kwargs:
+            instance_release_protection = kwargs['instanceReleaseProtection']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'isRds' in kwargs:
+            is_rds = kwargs['isRds']
+        if 'maintainEndTime' in kwargs:
+            maintain_end_time = kwargs['maintainEndTime']
+        if 'maintainStartTime' in kwargs:
+            maintain_start_time = kwargs['maintainStartTime']
+        if 'maxConnections' in kwargs:
+            max_connections = kwargs['maxConnections']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'nodeType' in kwargs:
+            node_type = kwargs['nodeType']
+        if 'packageType' in kwargs:
+            package_type = kwargs['packageType']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'replacateId' in kwargs:
+            replacate_id = kwargs['replacateId']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'searchKey' in kwargs:
+            search_key = kwargs['searchKey']
+        if 'secondaryZoneId' in kwargs:
+            secondary_zone_id = kwargs['secondaryZoneId']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'securityIpGroupAttribute' in kwargs:
+            security_ip_group_attribute = kwargs['securityIpGroupAttribute']
+        if 'securityIpGroupName' in kwargs:
+            security_ip_group_name = kwargs['securityIpGroupName']
+        if 'securityIps' in kwargs:
+            security_ips = kwargs['securityIps']
+        if 'sslEnable' in kwargs:
+            ssl_enable = kwargs['sslEnable']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+        if 'vpcAuthMode' in kwargs:
+            vpc_auth_mode = kwargs['vpcAuthMode']
+        if 'vpcCloudInstanceId' in kwargs:
+            vpc_cloud_instance_id = kwargs['vpcCloudInstanceId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("architecture_type", architecture_type)
         _setter("auto_renew", auto_renew)
         _setter("auto_renew_period", auto_renew_period)
@@ -835,7 +963,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="instanceClass")
     def instance_class(self) -> str:
         """
-        Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+        Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
         """
         return pulumi.get(self, "instance_class")
 
@@ -1088,7 +1216,11 @@ class GetZonesZoneResult(dict):
              _setter: Callable[[Any, Any], None],
              id: str,
              multi_zone_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'multiZoneIds' in kwargs:
+            multi_zone_ids = kwargs['multiZoneIds']
+
         _setter("id", id)
         _setter("multi_zone_ids", multi_zone_ids)
 

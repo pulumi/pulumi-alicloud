@@ -15,7 +15,7 @@ import (
 
 // Provides a Resource Manager Control Policy Attachment resource.
 //
-// For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/latest/api-doc-resourcedirectorymaster-2022-04-19-api-doc-attachcontrolpolicy).
+// For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/latest/api-resourcedirectorymaster-2022-04-19-attachcontrolpolicy).
 //
 // > **NOTE:** Available since v1.120.0.
 //

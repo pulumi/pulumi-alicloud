@@ -40,7 +40,15 @@ class GetGroupsGroupResult(dict):
              group_id: str,
              group_name: str,
              id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupFlag' in kwargs:
+            group_flag = kwargs['groupFlag']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+
         _setter("group_flag", group_flag)
         _setter("group_id", group_id)
         _setter("group_name", group_name)

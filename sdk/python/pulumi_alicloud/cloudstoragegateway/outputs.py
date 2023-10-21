@@ -62,7 +62,21 @@ class GetExpressSyncsSyncResult(dict):
              express_sync_name: str,
              id: str,
              mns_topic: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if 'bucketPrefix' in kwargs:
+            bucket_prefix = kwargs['bucketPrefix']
+        if 'bucketRegion' in kwargs:
+            bucket_region = kwargs['bucketRegion']
+        if 'expressSyncId' in kwargs:
+            express_sync_id = kwargs['expressSyncId']
+        if 'expressSyncName' in kwargs:
+            express_sync_name = kwargs['expressSyncName']
+        if 'mnsTopic' in kwargs:
+            mns_topic = kwargs['mnsTopic']
+
         _setter("bucket_name", bucket_name)
         _setter("bucket_prefix", bucket_prefix)
         _setter("bucket_region", bucket_region)
@@ -248,7 +262,43 @@ class GetGatewayBlockVolumesVolumeResult(dict):
              total_download: int,
              total_upload: int,
              volume_state: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cacheMode' in kwargs:
+            cache_mode = kwargs['cacheMode']
+        if 'chapEnabled' in kwargs:
+            chap_enabled = kwargs['chapEnabled']
+        if 'chapInUser' in kwargs:
+            chap_in_user = kwargs['chapInUser']
+        if 'chunkSize' in kwargs:
+            chunk_size = kwargs['chunkSize']
+        if 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+        if 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if 'gatewayBlockVolumeName' in kwargs:
+            gateway_block_volume_name = kwargs['gatewayBlockVolumeName']
+        if 'gatewayId' in kwargs:
+            gateway_id = kwargs['gatewayId']
+        if 'indexId' in kwargs:
+            index_id = kwargs['indexId']
+        if 'localPath' in kwargs:
+            local_path = kwargs['localPath']
+        if 'lunId' in kwargs:
+            lun_id = kwargs['lunId']
+        if 'ossBucketName' in kwargs:
+            oss_bucket_name = kwargs['ossBucketName']
+        if 'ossBucketSsl' in kwargs:
+            oss_bucket_ssl = kwargs['ossBucketSsl']
+        if 'ossEndpoint' in kwargs:
+            oss_endpoint = kwargs['ossEndpoint']
+        if 'totalDownload' in kwargs:
+            total_download = kwargs['totalDownload']
+        if 'totalUpload' in kwargs:
+            total_upload = kwargs['totalUpload']
+        if 'volumeState' in kwargs:
+            volume_state = kwargs['volumeState']
+
         _setter("address", address)
         _setter("cache_mode", cache_mode)
         _setter("chap_enabled", chap_enabled)
@@ -537,7 +587,25 @@ class GetGatewayCacheDisksDiskResult(dict):
              local_file_path: str,
              renew_url: str,
              status: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cacheDiskCategory' in kwargs:
+            cache_disk_category = kwargs['cacheDiskCategory']
+        if 'cacheDiskSizeInGb' in kwargs:
+            cache_disk_size_in_gb = kwargs['cacheDiskSizeInGb']
+        if 'cacheId' in kwargs:
+            cache_id = kwargs['cacheId']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'gatewayId' in kwargs:
+            gateway_id = kwargs['gatewayId']
+        if 'isUsed' in kwargs:
+            is_used = kwargs['isUsed']
+        if 'localFilePath' in kwargs:
+            local_file_path = kwargs['localFilePath']
+        if 'renewUrl' in kwargs:
+            renew_url = kwargs['renewUrl']
+
         _setter("cache_disk_category", cache_disk_category)
         _setter("cache_disk_size_in_gb", cache_disk_size_in_gb)
         _setter("cache_id", cache_id)
@@ -898,7 +966,115 @@ class GetGatewayFileSharesShareResult(dict):
              transfer_acceleration: bool,
              used: str,
              windows_acl: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessBasedEnumeration' in kwargs:
+            access_based_enumeration = kwargs['accessBasedEnumeration']
+        if 'backendLimit' in kwargs:
+            backend_limit = kwargs['backendLimit']
+        if 'bucketInfos' in kwargs:
+            bucket_infos = kwargs['bucketInfos']
+        if 'bucketsStub' in kwargs:
+            buckets_stub = kwargs['bucketsStub']
+        if 'bypassCacheRead' in kwargs:
+            bypass_cache_read = kwargs['bypassCacheRead']
+        if 'cacheMode' in kwargs:
+            cache_mode = kwargs['cacheMode']
+        if 'clientSideCmk' in kwargs:
+            client_side_cmk = kwargs['clientSideCmk']
+        if 'clientSideEncryption' in kwargs:
+            client_side_encryption = kwargs['clientSideEncryption']
+        if 'directIo' in kwargs:
+            direct_io = kwargs['directIo']
+        if 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+        if 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if 'downloadLimit' in kwargs:
+            download_limit = kwargs['downloadLimit']
+        if 'expressSyncId' in kwargs:
+            express_sync_id = kwargs['expressSyncId']
+        if 'fastReclaim' in kwargs:
+            fast_reclaim = kwargs['fastReclaim']
+        if 'feLimit' in kwargs:
+            fe_limit = kwargs['feLimit']
+        if 'fileNumLimit' in kwargs:
+            file_num_limit = kwargs['fileNumLimit']
+        if 'fsSizeLimit' in kwargs:
+            fs_size_limit = kwargs['fsSizeLimit']
+        if 'gatewayFileShareName' in kwargs:
+            gateway_file_share_name = kwargs['gatewayFileShareName']
+        if 'gatewayId' in kwargs:
+            gateway_id = kwargs['gatewayId']
+        if 'ignoreDelete' in kwargs:
+            ignore_delete = kwargs['ignoreDelete']
+        if 'inPlace' in kwargs:
+            in_place = kwargs['inPlace']
+        if 'inRate' in kwargs:
+            in_rate = kwargs['inRate']
+        if 'indexId' in kwargs:
+            index_id = kwargs['indexId']
+        if 'kmsRotatePeriod' in kwargs:
+            kms_rotate_period = kwargs['kmsRotatePeriod']
+        if 'lagPeriod' in kwargs:
+            lag_period = kwargs['lagPeriod']
+        if 'localPath' in kwargs:
+            local_path = kwargs['localPath']
+        if 'mnsHealth' in kwargs:
+            mns_health = kwargs['mnsHealth']
+        if 'nfsV4Optimization' in kwargs:
+            nfs_v4_optimization = kwargs['nfsV4Optimization']
+        if 'obsoleteBuckets' in kwargs:
+            obsolete_buckets = kwargs['obsoleteBuckets']
+        if 'ossBucketName' in kwargs:
+            oss_bucket_name = kwargs['ossBucketName']
+        if 'ossBucketSsl' in kwargs:
+            oss_bucket_ssl = kwargs['ossBucketSsl']
+        if 'ossEndpoint' in kwargs:
+            oss_endpoint = kwargs['ossEndpoint']
+        if 'ossHealth' in kwargs:
+            oss_health = kwargs['ossHealth']
+        if 'ossUsed' in kwargs:
+            oss_used = kwargs['ossUsed']
+        if 'outRate' in kwargs:
+            out_rate = kwargs['outRate']
+        if 'partialSyncPaths' in kwargs:
+            partial_sync_paths = kwargs['partialSyncPaths']
+        if 'pathPrefix' in kwargs:
+            path_prefix = kwargs['pathPrefix']
+        if 'pollingInterval' in kwargs:
+            polling_interval = kwargs['pollingInterval']
+        if 'remainingMetaSpace' in kwargs:
+            remaining_meta_space = kwargs['remainingMetaSpace']
+        if 'remoteSync' in kwargs:
+            remote_sync = kwargs['remoteSync']
+        if 'remoteSyncDownload' in kwargs:
+            remote_sync_download = kwargs['remoteSyncDownload']
+        if 'roClientList' in kwargs:
+            ro_client_list = kwargs['roClientList']
+        if 'roUserList' in kwargs:
+            ro_user_list = kwargs['roUserList']
+        if 'rwClientList' in kwargs:
+            rw_client_list = kwargs['rwClientList']
+        if 'rwUserList' in kwargs:
+            rw_user_list = kwargs['rwUserList']
+        if 'serverSideCmk' in kwargs:
+            server_side_cmk = kwargs['serverSideCmk']
+        if 'serverSideEncryption' in kwargs:
+            server_side_encryption = kwargs['serverSideEncryption']
+        if 'supportArchive' in kwargs:
+            support_archive = kwargs['supportArchive']
+        if 'syncProgress' in kwargs:
+            sync_progress = kwargs['syncProgress']
+        if 'totalDownload' in kwargs:
+            total_download = kwargs['totalDownload']
+        if 'totalUpload' in kwargs:
+            total_upload = kwargs['totalUpload']
+        if 'transferAcceleration' in kwargs:
+            transfer_acceleration = kwargs['transferAcceleration']
+        if 'windowsAcl' in kwargs:
+            windows_acl = kwargs['windowsAcl']
+
         _setter("access_based_enumeration", access_based_enumeration)
         _setter("address", address)
         _setter("backend_limit", backend_limit)
@@ -1482,7 +1658,11 @@ class GetGatewaySmbUsersUserResult(dict):
              gateway_id: str,
              id: str,
              username: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'gatewayId' in kwargs:
+            gateway_id = kwargs['gatewayId']
+
         _setter("gateway_id", gateway_id)
         _setter("id", id)
         _setter("username", username)
@@ -1625,7 +1805,47 @@ class GetGatewaysGatewayResult(dict):
              type: str,
              vpc_id: str,
              vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'activatedTime' in kwargs:
+            activated_time = kwargs['activatedTime']
+        if 'buyUrl' in kwargs:
+            buy_url = kwargs['buyUrl']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'ecsInstanceId' in kwargs:
+            ecs_instance_id = kwargs['ecsInstanceId']
+        if 'expireStatus' in kwargs:
+            expire_status = kwargs['expireStatus']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'gatewayClass' in kwargs:
+            gateway_class = kwargs['gatewayClass']
+        if 'gatewayId' in kwargs:
+            gateway_id = kwargs['gatewayId']
+        if 'gatewayName' in kwargs:
+            gateway_name = kwargs['gatewayName']
+        if 'gatewayVersion' in kwargs:
+            gateway_version = kwargs['gatewayVersion']
+        if 'innerIp' in kwargs:
+            inner_ip = kwargs['innerIp']
+        if 'isReleaseAfterExpiration' in kwargs:
+            is_release_after_expiration = kwargs['isReleaseAfterExpiration']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'publicNetworkBandwidth' in kwargs:
+            public_network_bandwidth = kwargs['publicNetworkBandwidth']
+        if 'renewUrl' in kwargs:
+            renew_url = kwargs['renewUrl']
+        if 'storageBundleId' in kwargs:
+            storage_bundle_id = kwargs['storageBundleId']
+        if 'taskId' in kwargs:
+            task_id = kwargs['taskId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("activated_time", activated_time)
         _setter("buy_url", buy_url)
         _setter("category", category)
@@ -1875,7 +2095,13 @@ class GetStocksStockResult(dict):
              _setter: Callable[[Any, Any], None],
              available_gateway_classes: Sequence[str],
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availableGatewayClasses' in kwargs:
+            available_gateway_classes = kwargs['availableGatewayClasses']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("available_gateway_classes", available_gateway_classes)
         _setter("zone_id", zone_id)
 
@@ -1923,7 +2149,15 @@ class GetStorageBundlesBundleResult(dict):
              location: str,
              storage_bundle_id: str,
              storage_bundle_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'storageBundleId' in kwargs:
+            storage_bundle_id = kwargs['storageBundleId']
+        if 'storageBundleName' in kwargs:
+            storage_bundle_name = kwargs['storageBundleName']
+
         _setter("create_time", create_time)
         _setter("description", description)
         _setter("id", id)

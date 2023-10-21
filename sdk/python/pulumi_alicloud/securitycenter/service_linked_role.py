@@ -21,8 +21,10 @@ class ServiceLinkedRoleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
         pass
+
 
 
 @pulumi.input_type
@@ -41,7 +43,9 @@ class _ServiceLinkedRoleState:
     def _configure(
              _setter: Callable[[Any, Any], None],
              status: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if status is not None:
             _setter("status", status)
 

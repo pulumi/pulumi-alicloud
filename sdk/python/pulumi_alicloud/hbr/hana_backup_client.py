@@ -39,7 +39,17 @@ class HanaBackupClientArgs:
              alert_setting: Optional[pulumi.Input[str]] = None,
              client_info: Optional[pulumi.Input[str]] = None,
              use_https: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+        if 'alertSetting' in kwargs:
+            alert_setting = kwargs['alertSetting']
+        if 'clientInfo' in kwargs:
+            client_info = kwargs['clientInfo']
+        if 'useHttps' in kwargs:
+            use_https = kwargs['useHttps']
+
         _setter("vault_id", vault_id)
         if alert_setting is not None:
             _setter("alert_setting", alert_setting)
@@ -141,7 +151,23 @@ class _HanaBackupClientState:
              status: Optional[pulumi.Input[str]] = None,
              use_https: Optional[pulumi.Input[bool]] = None,
              vault_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alertSetting' in kwargs:
+            alert_setting = kwargs['alertSetting']
+        if 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if 'clientInfo' in kwargs:
+            client_info = kwargs['clientInfo']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'useHttps' in kwargs:
+            use_https = kwargs['useHttps']
+        if 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+
         if alert_setting is not None:
             _setter("alert_setting", alert_setting)
         if client_id is not None:
@@ -269,7 +295,7 @@ class HanaBackupClient(pulumi.CustomResource):
         """
         Provides a Hybrid Backup Recovery (HBR) Hana Backup Client resource.
 
-        For information about Hybrid Backup Recovery (HBR) Hana Backup Client and how to use it, see [What is Hana Backup Client](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-doc-hbr-2017-09-08-api-doc-createclients).
+        For information about Hybrid Backup Recovery (HBR) Hana Backup Client and how to use it, see [What is Hana Backup Client](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createclients).
 
         > **NOTE:** Available in v1.198.0+.
 
@@ -349,7 +375,7 @@ class HanaBackupClient(pulumi.CustomResource):
         """
         Provides a Hybrid Backup Recovery (HBR) Hana Backup Client resource.
 
-        For information about Hybrid Backup Recovery (HBR) Hana Backup Client and how to use it, see [What is Hana Backup Client](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-doc-hbr-2017-09-08-api-doc-createclients).
+        For information about Hybrid Backup Recovery (HBR) Hana Backup Client and how to use it, see [What is Hana Backup Client](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createclients).
 
         > **NOTE:** Available in v1.198.0+.
 

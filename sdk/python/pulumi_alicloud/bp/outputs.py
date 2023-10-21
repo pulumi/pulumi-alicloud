@@ -56,7 +56,13 @@ class StudioApplicationInstance(dict):
              id: Optional[str] = None,
              node_name: Optional[str] = None,
              node_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+        if 'nodeType' in kwargs:
+            node_type = kwargs['nodeType']
+
         if id is not None:
             _setter("id", id)
         if node_name is not None:
@@ -132,7 +138,21 @@ class GetStudioApplicationsApplicationResult(dict):
              resource_group_id: str,
              status: str,
              topo_url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if 'applicationName' in kwargs:
+            application_name = kwargs['applicationName']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'imageUrl' in kwargs:
+            image_url = kwargs['imageUrl']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'topoUrl' in kwargs:
+            topo_url = kwargs['topoUrl']
+
         _setter("application_id", application_id)
         _setter("application_name", application_name)
         _setter("create_time", create_time)

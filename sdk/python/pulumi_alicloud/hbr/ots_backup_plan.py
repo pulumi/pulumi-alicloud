@@ -73,7 +73,25 @@ class OtsBackupPlanArgs:
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['OtsBackupPlanRuleArgs']]]] = None,
              schedule: Optional[pulumi.Input[str]] = None,
              vault_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupType' in kwargs:
+            backup_type = kwargs['backupType']
+        if 'otsBackupPlanName' in kwargs:
+            ots_backup_plan_name = kwargs['otsBackupPlanName']
+        if 'crossAccountRoleName' in kwargs:
+            cross_account_role_name = kwargs['crossAccountRoleName']
+        if 'crossAccountType' in kwargs:
+            cross_account_type = kwargs['crossAccountType']
+        if 'crossAccountUserId' in kwargs:
+            cross_account_user_id = kwargs['crossAccountUserId']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'otsDetails' in kwargs:
+            ots_details = kwargs['otsDetails']
+        if 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+
         _setter("backup_type", backup_type)
         _setter("ots_backup_plan_name", ots_backup_plan_name)
         _setter("retention", retention)
@@ -307,7 +325,25 @@ class _OtsBackupPlanState:
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['OtsBackupPlanRuleArgs']]]] = None,
              schedule: Optional[pulumi.Input[str]] = None,
              vault_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupType' in kwargs:
+            backup_type = kwargs['backupType']
+        if 'crossAccountRoleName' in kwargs:
+            cross_account_role_name = kwargs['crossAccountRoleName']
+        if 'crossAccountType' in kwargs:
+            cross_account_type = kwargs['crossAccountType']
+        if 'crossAccountUserId' in kwargs:
+            cross_account_user_id = kwargs['crossAccountUserId']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'otsBackupPlanName' in kwargs:
+            ots_backup_plan_name = kwargs['otsBackupPlanName']
+        if 'otsDetails' in kwargs:
+            ots_details = kwargs['otsDetails']
+        if 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+
         if backup_type is not None:
             _setter("backup_type", backup_type)
         if cross_account_role_name is not None:

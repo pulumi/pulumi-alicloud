@@ -153,7 +153,63 @@ class ServerlessKubernetesArgs:
              vswitch_id: Optional[pulumi.Input[str]] = None,
              vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'clientCert' in kwargs:
+            client_cert = kwargs['clientCert']
+        if 'clientKey' in kwargs:
+            client_key = kwargs['clientKey']
+        if 'clusterCaCert' in kwargs:
+            cluster_ca_cert = kwargs['clusterCaCert']
+        if 'clusterSpec' in kwargs:
+            cluster_spec = kwargs['clusterSpec']
+        if 'createV2Cluster' in kwargs:
+            create_v2_cluster = kwargs['createV2Cluster']
+        if 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if 'enableRrsa' in kwargs:
+            enable_rrsa = kwargs['enableRrsa']
+        if 'endpointPublicAccessEnabled' in kwargs:
+            endpoint_public_access_enabled = kwargs['endpointPublicAccessEnabled']
+        if 'forceUpdate' in kwargs:
+            force_update = kwargs['forceUpdate']
+        if 'kubeConfig' in kwargs:
+            kube_config = kwargs['kubeConfig']
+        if 'loadBalancerSpec' in kwargs:
+            load_balancer_spec = kwargs['loadBalancerSpec']
+        if 'loggingType' in kwargs:
+            logging_type = kwargs['loggingType']
+        if 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+        if 'newNatGateway' in kwargs:
+            new_nat_gateway = kwargs['newNatGateway']
+        if 'privateZone' in kwargs:
+            private_zone = kwargs['privateZone']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'retainResources' in kwargs:
+            retain_resources = kwargs['retainResources']
+        if 'rrsaMetadata' in kwargs:
+            rrsa_metadata = kwargs['rrsaMetadata']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'serviceCidr' in kwargs:
+            service_cidr = kwargs['serviceCidr']
+        if 'serviceDiscoveryTypes' in kwargs:
+            service_discovery_types = kwargs['serviceDiscoveryTypes']
+        if 'slsProjectName' in kwargs:
+            sls_project_name = kwargs['slsProjectName']
+        if 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'vswitchIds' in kwargs:
+            vswitch_ids = kwargs['vswitchIds']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("vpc_id", vpc_id)
         if addons is not None:
             _setter("addons", addons)
@@ -747,7 +803,63 @@ class _ServerlessKubernetesState:
              vswitch_id: Optional[pulumi.Input[str]] = None,
              vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clientCert' in kwargs:
+            client_cert = kwargs['clientCert']
+        if 'clientKey' in kwargs:
+            client_key = kwargs['clientKey']
+        if 'clusterCaCert' in kwargs:
+            cluster_ca_cert = kwargs['clusterCaCert']
+        if 'clusterSpec' in kwargs:
+            cluster_spec = kwargs['clusterSpec']
+        if 'createV2Cluster' in kwargs:
+            create_v2_cluster = kwargs['createV2Cluster']
+        if 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if 'enableRrsa' in kwargs:
+            enable_rrsa = kwargs['enableRrsa']
+        if 'endpointPublicAccessEnabled' in kwargs:
+            endpoint_public_access_enabled = kwargs['endpointPublicAccessEnabled']
+        if 'forceUpdate' in kwargs:
+            force_update = kwargs['forceUpdate']
+        if 'kubeConfig' in kwargs:
+            kube_config = kwargs['kubeConfig']
+        if 'loadBalancerSpec' in kwargs:
+            load_balancer_spec = kwargs['loadBalancerSpec']
+        if 'loggingType' in kwargs:
+            logging_type = kwargs['loggingType']
+        if 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+        if 'newNatGateway' in kwargs:
+            new_nat_gateway = kwargs['newNatGateway']
+        if 'privateZone' in kwargs:
+            private_zone = kwargs['privateZone']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'retainResources' in kwargs:
+            retain_resources = kwargs['retainResources']
+        if 'rrsaMetadata' in kwargs:
+            rrsa_metadata = kwargs['rrsaMetadata']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'serviceCidr' in kwargs:
+            service_cidr = kwargs['serviceCidr']
+        if 'serviceDiscoveryTypes' in kwargs:
+            service_discovery_types = kwargs['serviceDiscoveryTypes']
+        if 'slsProjectName' in kwargs:
+            sls_project_name = kwargs['slsProjectName']
+        if 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'vswitchIds' in kwargs:
+            vswitch_ids = kwargs['vswitchIds']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if addons is not None:
             _setter("addons", addons)
         if client_cert is not None:

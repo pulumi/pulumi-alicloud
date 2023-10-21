@@ -64,7 +64,23 @@ class GetUsersUserResult(dict):
              phone: str,
              user_id: str,
              user_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'adminUser' in kwargs:
+            admin_user = kwargs['adminUser']
+        if 'authAdminUser' in kwargs:
+            auth_admin_user = kwargs['authAdminUser']
+        if 'nickName' in kwargs:
+            nick_name = kwargs['nickName']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if 'userType' in kwargs:
+            user_type = kwargs['userType']
+
         _setter("account_id", account_id)
         _setter("account_name", account_name)
         _setter("admin_user", admin_user)

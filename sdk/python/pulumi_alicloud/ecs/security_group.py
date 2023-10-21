@@ -59,7 +59,19 @@ class SecurityGroupArgs:
              security_group_type: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'innerAccess' in kwargs:
+            inner_access = kwargs['innerAccess']
+        if 'innerAccessPolicy' in kwargs:
+            inner_access_policy = kwargs['innerAccessPolicy']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityGroupType' in kwargs:
+            security_group_type = kwargs['securityGroupType']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if description is not None:
             _setter("description", description)
         if inner_access is not None:
@@ -232,7 +244,19 @@ class _SecurityGroupState:
              security_group_type: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'innerAccess' in kwargs:
+            inner_access = kwargs['innerAccess']
+        if 'innerAccessPolicy' in kwargs:
+            inner_access_policy = kwargs['innerAccessPolicy']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityGroupType' in kwargs:
+            security_group_type = kwargs['securityGroupType']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if description is not None:
             _setter("description", description)
         if inner_access is not None:

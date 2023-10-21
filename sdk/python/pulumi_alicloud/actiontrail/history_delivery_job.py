@@ -27,7 +27,11 @@ class HistoryDeliveryJobArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              trail_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'trailName' in kwargs:
+            trail_name = kwargs['trailName']
+
         _setter("trail_name", trail_name)
 
     @property
@@ -63,7 +67,11 @@ class _HistoryDeliveryJobState:
              _setter: Callable[[Any, Any], None],
              status: Optional[pulumi.Input[int]] = None,
              trail_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'trailName' in kwargs:
+            trail_name = kwargs['trailName']
+
         if status is not None:
             _setter("status", status)
         if trail_name is not None:

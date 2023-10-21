@@ -7,4 +7,5 @@ import typing
 # Export this package's modules as members:
 from .get_instances import *
 from .instance import *
+from .polardbx_instance import *
 from . import outputs

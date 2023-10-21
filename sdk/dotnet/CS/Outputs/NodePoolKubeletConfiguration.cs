@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string? KubeApiQps;
         /// <summary>
-        /// Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+        /// Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
         /// </summary>
         public readonly ImmutableDictionary<string, object>? KubeReserved;
         /// <summary>
@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string? SerializeImagePulls;
         /// <summary>
-        /// Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+        /// Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
         /// </summary>
         public readonly ImmutableDictionary<string, object>? SystemReserved;
 

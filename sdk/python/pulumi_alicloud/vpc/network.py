@@ -92,7 +92,31 @@ class NetworkArgs:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              user_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              vpc_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if 'classicLinkEnabled' in kwargs:
+            classic_link_enabled = kwargs['classicLinkEnabled']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'enableIpv6' in kwargs:
+            enable_ipv6 = kwargs['enableIpv6']
+        if 'ipv6Isp' in kwargs:
+            ipv6_isp = kwargs['ipv6Isp']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'routeTableId' in kwargs:
+            route_table_id = kwargs['routeTableId']
+        if 'routerTableId' in kwargs:
+            router_table_id = kwargs['routerTableId']
+        if 'secondaryCidrBlocks' in kwargs:
+            secondary_cidr_blocks = kwargs['secondaryCidrBlocks']
+        if 'userCidrs' in kwargs:
+            user_cidrs = kwargs['userCidrs']
+        if 'vpcName' in kwargs:
+            vpc_name = kwargs['vpcName']
+
         if cidr_block is not None:
             _setter("cidr_block", cidr_block)
         if classic_link_enabled is not None:
@@ -419,7 +443,39 @@ class _NetworkState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              user_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              vpc_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if 'classicLinkEnabled' in kwargs:
+            classic_link_enabled = kwargs['classicLinkEnabled']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'enableIpv6' in kwargs:
+            enable_ipv6 = kwargs['enableIpv6']
+        if 'ipv6CidrBlock' in kwargs:
+            ipv6_cidr_block = kwargs['ipv6CidrBlock']
+        if 'ipv6CidrBlocks' in kwargs:
+            ipv6_cidr_blocks = kwargs['ipv6CidrBlocks']
+        if 'ipv6Isp' in kwargs:
+            ipv6_isp = kwargs['ipv6Isp']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'routeTableId' in kwargs:
+            route_table_id = kwargs['routeTableId']
+        if 'routerId' in kwargs:
+            router_id = kwargs['routerId']
+        if 'routerTableId' in kwargs:
+            router_table_id = kwargs['routerTableId']
+        if 'secondaryCidrBlocks' in kwargs:
+            secondary_cidr_blocks = kwargs['secondaryCidrBlocks']
+        if 'userCidrs' in kwargs:
+            user_cidrs = kwargs['userCidrs']
+        if 'vpcName' in kwargs:
+            vpc_name = kwargs['vpcName']
+
         if cidr_block is not None:
             _setter("cidr_block", cidr_block)
         if classic_link_enabled is not None:

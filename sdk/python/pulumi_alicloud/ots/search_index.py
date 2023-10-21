@@ -46,7 +46,17 @@ class SearchIndexArgs:
              schemas: pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaArgs']]],
              table_name: pulumi.Input[str],
              time_to_live: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'indexName' in kwargs:
+            index_name = kwargs['indexName']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'tableName' in kwargs:
+            table_name = kwargs['tableName']
+        if 'timeToLive' in kwargs:
+            time_to_live = kwargs['timeToLive']
+
         _setter("index_name", index_name)
         _setter("instance_name", instance_name)
         _setter("schemas", schemas)
@@ -165,7 +175,25 @@ class _SearchIndexState:
              sync_phase: Optional[pulumi.Input[str]] = None,
              table_name: Optional[pulumi.Input[str]] = None,
              time_to_live: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'currentSyncTimestamp' in kwargs:
+            current_sync_timestamp = kwargs['currentSyncTimestamp']
+        if 'indexId' in kwargs:
+            index_id = kwargs['indexId']
+        if 'indexName' in kwargs:
+            index_name = kwargs['indexName']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'syncPhase' in kwargs:
+            sync_phase = kwargs['syncPhase']
+        if 'tableName' in kwargs:
+            table_name = kwargs['tableName']
+        if 'timeToLive' in kwargs:
+            time_to_live = kwargs['timeToLive']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if current_sync_timestamp is not None:

@@ -114,10 +114,10 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> PerformanceLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The Id of resource group which the disk belongs.
+        /// The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
         /// </summary>
         [Output("resourceGroupId")]
-        public Output<string?> ResourceGroupId { get; private set; } = null!;
+        public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
         /// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
@@ -306,7 +306,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? PerformanceLevel { get; set; }
 
         /// <summary>
-        /// The Id of resource group which the disk belongs.
+        /// The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -460,7 +460,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? PerformanceLevel { get; set; }
 
         /// <summary>
-        /// The Id of resource group which the disk belongs.
+        /// The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }

@@ -35,7 +35,13 @@ class TlsCipherPolicyArgs:
              ciphers: pulumi.Input[Sequence[pulumi.Input[str]]],
              tls_cipher_policy_name: pulumi.Input[str],
              tls_versions: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'tlsCipherPolicyName' in kwargs:
+            tls_cipher_policy_name = kwargs['tlsCipherPolicyName']
+        if 'tlsVersions' in kwargs:
+            tls_versions = kwargs['tlsVersions']
+
         _setter("ciphers", ciphers)
         _setter("tls_cipher_policy_name", tls_cipher_policy_name)
         _setter("tls_versions", tls_versions)
@@ -105,7 +111,13 @@ class _TlsCipherPolicyState:
              status: Optional[pulumi.Input[str]] = None,
              tls_cipher_policy_name: Optional[pulumi.Input[str]] = None,
              tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'tlsCipherPolicyName' in kwargs:
+            tls_cipher_policy_name = kwargs['tlsCipherPolicyName']
+        if 'tlsVersions' in kwargs:
+            tls_versions = kwargs['tlsVersions']
+
         if ciphers is not None:
             _setter("ciphers", ciphers)
         if status is not None:

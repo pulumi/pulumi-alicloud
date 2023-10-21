@@ -37,7 +37,15 @@ class BandwidthLimitArgs:
              bandwidth_limit: pulumi.Input[int],
              instance_id: pulumi.Input[str],
              region_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bandwidthLimit' in kwargs:
+            bandwidth_limit = kwargs['bandwidthLimit']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'regionIds' in kwargs:
+            region_ids = kwargs['regionIds']
+
         _setter("bandwidth_limit", bandwidth_limit)
         _setter("instance_id", instance_id)
         _setter("region_ids", region_ids)
@@ -107,7 +115,15 @@ class _BandwidthLimitState:
              bandwidth_limit: Optional[pulumi.Input[int]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
              region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bandwidthLimit' in kwargs:
+            bandwidth_limit = kwargs['bandwidthLimit']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'regionIds' in kwargs:
+            region_ids = kwargs['regionIds']
+
         if bandwidth_limit is not None:
             _setter("bandwidth_limit", bandwidth_limit)
         if instance_id is not None:

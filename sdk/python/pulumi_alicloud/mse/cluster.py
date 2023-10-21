@@ -34,7 +34,7 @@ class ClusterArgs:
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input[str] cluster_specification: The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
         :param pulumi.Input[str] cluster_type: The type of MSE Cluster.
-        :param pulumi.Input[str] cluster_version: The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
+        :param pulumi.Input[str] cluster_version: The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
         :param pulumi.Input[int] instance_count: The count of instance. **NOTE:** From version 1.188.0, `instance_count` can be modified.
         :param pulumi.Input[str] net_type: The type of network. Valid values: "privatenet" and "pubnet".
         :param pulumi.Input[str] pub_network_flow: The public network bandwidth. `0` means no access to the public network.
@@ -87,7 +87,41 @@ class ClusterArgs:
              request_pars: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterSpecification' in kwargs:
+            cluster_specification = kwargs['clusterSpecification']
+        if 'clusterType' in kwargs:
+            cluster_type = kwargs['clusterType']
+        if 'clusterVersion' in kwargs:
+            cluster_version = kwargs['clusterVersion']
+        if 'instanceCount' in kwargs:
+            instance_count = kwargs['instanceCount']
+        if 'netType' in kwargs:
+            net_type = kwargs['netType']
+        if 'pubNetworkFlow' in kwargs:
+            pub_network_flow = kwargs['pubNetworkFlow']
+        if 'aclEntryLists' in kwargs:
+            acl_entry_lists = kwargs['aclEntryLists']
+        if 'clusterAliasName' in kwargs:
+            cluster_alias_name = kwargs['clusterAliasName']
+        if 'connectionType' in kwargs:
+            connection_type = kwargs['connectionType']
+        if 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if 'mseVersion' in kwargs:
+            mse_version = kwargs['mseVersion']
+        if 'privateSlbSpecification' in kwargs:
+            private_slb_specification = kwargs['privateSlbSpecification']
+        if 'pubSlbSpecification' in kwargs:
+            pub_slb_specification = kwargs['pubSlbSpecification']
+        if 'requestPars' in kwargs:
+            request_pars = kwargs['requestPars']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("cluster_specification", cluster_specification)
         _setter("cluster_type", cluster_type)
         _setter("cluster_version", cluster_version)
@@ -143,7 +177,7 @@ class ClusterArgs:
     @pulumi.getter(name="clusterVersion")
     def cluster_version(self) -> pulumi.Input[str]:
         """
-        The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
+        The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
         """
         return pulumi.get(self, "cluster_version")
 
@@ -338,7 +372,7 @@ class _ClusterState:
         :param pulumi.Input[str] cluster_id: (Available in v1.162.0+) The id of Cluster.
         :param pulumi.Input[str] cluster_specification: The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
         :param pulumi.Input[str] cluster_type: The type of MSE Cluster.
-        :param pulumi.Input[str] cluster_version: The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
+        :param pulumi.Input[str] cluster_version: The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
         :param pulumi.Input[str] connection_type: The connection type. Valid values: `slb`.
         :param pulumi.Input[str] disk_type: The type of Disk.
         :param pulumi.Input[int] instance_count: The count of instance. **NOTE:** From version 1.188.0, `instance_count` can be modified.
@@ -396,7 +430,45 @@ class _ClusterState:
              status: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclEntryLists' in kwargs:
+            acl_entry_lists = kwargs['aclEntryLists']
+        if 'appVersion' in kwargs:
+            app_version = kwargs['appVersion']
+        if 'clusterAliasName' in kwargs:
+            cluster_alias_name = kwargs['clusterAliasName']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'clusterSpecification' in kwargs:
+            cluster_specification = kwargs['clusterSpecification']
+        if 'clusterType' in kwargs:
+            cluster_type = kwargs['clusterType']
+        if 'clusterVersion' in kwargs:
+            cluster_version = kwargs['clusterVersion']
+        if 'connectionType' in kwargs:
+            connection_type = kwargs['connectionType']
+        if 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if 'instanceCount' in kwargs:
+            instance_count = kwargs['instanceCount']
+        if 'mseVersion' in kwargs:
+            mse_version = kwargs['mseVersion']
+        if 'netType' in kwargs:
+            net_type = kwargs['netType']
+        if 'privateSlbSpecification' in kwargs:
+            private_slb_specification = kwargs['privateSlbSpecification']
+        if 'pubNetworkFlow' in kwargs:
+            pub_network_flow = kwargs['pubNetworkFlow']
+        if 'pubSlbSpecification' in kwargs:
+            pub_slb_specification = kwargs['pubSlbSpecification']
+        if 'requestPars' in kwargs:
+            request_pars = kwargs['requestPars']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if acl_entry_lists is not None:
             _setter("acl_entry_lists", acl_entry_lists)
         if app_version is not None:
@@ -512,7 +584,7 @@ class _ClusterState:
     @pulumi.getter(name="clusterVersion")
     def cluster_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
+        The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
         """
         return pulumi.get(self, "cluster_version")
 
@@ -735,7 +807,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_alias_name: The alias of MSE Cluster.
         :param pulumi.Input[str] cluster_specification: The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
         :param pulumi.Input[str] cluster_type: The type of MSE Cluster.
-        :param pulumi.Input[str] cluster_version: The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
+        :param pulumi.Input[str] cluster_version: The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
         :param pulumi.Input[str] connection_type: The connection type. Valid values: `slb`.
         :param pulumi.Input[str] disk_type: The type of Disk.
         :param pulumi.Input[int] instance_count: The count of instance. **NOTE:** From version 1.188.0, `instance_count` can be modified.
@@ -913,7 +985,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_id: (Available in v1.162.0+) The id of Cluster.
         :param pulumi.Input[str] cluster_specification: The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
         :param pulumi.Input[str] cluster_type: The type of MSE Cluster.
-        :param pulumi.Input[str] cluster_version: The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
+        :param pulumi.Input[str] cluster_version: The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
         :param pulumi.Input[str] connection_type: The connection type. Valid values: `slb`.
         :param pulumi.Input[str] disk_type: The type of Disk.
         :param pulumi.Input[int] instance_count: The count of instance. **NOTE:** From version 1.188.0, `instance_count` can be modified.
@@ -1004,7 +1076,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="clusterVersion")
     def cluster_version(self) -> pulumi.Output[str]:
         """
-        The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
+        The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
         """
         return pulumi.get(self, "cluster_version")
 

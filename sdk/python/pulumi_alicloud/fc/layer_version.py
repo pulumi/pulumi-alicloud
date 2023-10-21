@@ -53,7 +53,21 @@ class LayerVersionArgs:
              oss_object_name: Optional[pulumi.Input[str]] = None,
              skip_destroy: Optional[pulumi.Input[bool]] = None,
              zip_file: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'compatibleRuntimes' in kwargs:
+            compatible_runtimes = kwargs['compatibleRuntimes']
+        if 'layerName' in kwargs:
+            layer_name = kwargs['layerName']
+        if 'ossBucketName' in kwargs:
+            oss_bucket_name = kwargs['ossBucketName']
+        if 'ossObjectName' in kwargs:
+            oss_object_name = kwargs['ossObjectName']
+        if 'skipDestroy' in kwargs:
+            skip_destroy = kwargs['skipDestroy']
+        if 'zipFile' in kwargs:
+            zip_file = kwargs['zipFile']
+
         _setter("compatible_runtimes", compatible_runtimes)
         _setter("layer_name", layer_name)
         if description is not None:
@@ -212,7 +226,23 @@ class _LayerVersionState:
              skip_destroy: Optional[pulumi.Input[bool]] = None,
              version: Optional[pulumi.Input[str]] = None,
              zip_file: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'codeCheckSum' in kwargs:
+            code_check_sum = kwargs['codeCheckSum']
+        if 'compatibleRuntimes' in kwargs:
+            compatible_runtimes = kwargs['compatibleRuntimes']
+        if 'layerName' in kwargs:
+            layer_name = kwargs['layerName']
+        if 'ossBucketName' in kwargs:
+            oss_bucket_name = kwargs['ossBucketName']
+        if 'ossObjectName' in kwargs:
+            oss_object_name = kwargs['ossObjectName']
+        if 'skipDestroy' in kwargs:
+            skip_destroy = kwargs['skipDestroy']
+        if 'zipFile' in kwargs:
+            zip_file = kwargs['zipFile']
+
         if acl is not None:
             _setter("acl", acl)
         if arn is not None:

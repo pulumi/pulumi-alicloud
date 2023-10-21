@@ -68,7 +68,15 @@ class ZoneRecordArgs:
              status: Optional[pulumi.Input[str]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
              user_client_ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'resourceRecord' in kwargs:
+            resource_record = kwargs['resourceRecord']
+        if 'userClientIp' in kwargs:
+            user_client_ip = kwargs['userClientIp']
+
         _setter("type", type)
         _setter("value", value)
         _setter("zone_id", zone_id)
@@ -288,7 +296,17 @@ class _ZoneRecordState:
              user_client_ip: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'recordId' in kwargs:
+            record_id = kwargs['recordId']
+        if 'resourceRecord' in kwargs:
+            resource_record = kwargs['resourceRecord']
+        if 'userClientIp' in kwargs:
+            user_client_ip = kwargs['userClientIp']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if lang is not None:
             _setter("lang", lang)
         if priority is not None:

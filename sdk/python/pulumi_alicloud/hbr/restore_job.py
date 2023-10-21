@@ -125,7 +125,53 @@ class RestoreJobArgs:
              target_table_name: Optional[pulumi.Input[str]] = None,
              target_time: Optional[pulumi.Input[str]] = None,
              udm_detail: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'restoreType' in kwargs:
+            restore_type = kwargs['restoreType']
+        if 'snapshotHash' in kwargs:
+            snapshot_hash = kwargs['snapshotHash']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+        if 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+        if 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+        if 'crossAccountRoleName' in kwargs:
+            cross_account_role_name = kwargs['crossAccountRoleName']
+        if 'crossAccountType' in kwargs:
+            cross_account_type = kwargs['crossAccountType']
+        if 'crossAccountUserId' in kwargs:
+            cross_account_user_id = kwargs['crossAccountUserId']
+        if 'otsDetail' in kwargs:
+            ots_detail = kwargs['otsDetail']
+        if 'restoreJobId' in kwargs:
+            restore_job_id = kwargs['restoreJobId']
+        if 'targetBucket' in kwargs:
+            target_bucket = kwargs['targetBucket']
+        if 'targetClientId' in kwargs:
+            target_client_id = kwargs['targetClientId']
+        if 'targetCreateTime' in kwargs:
+            target_create_time = kwargs['targetCreateTime']
+        if 'targetDataSourceId' in kwargs:
+            target_data_source_id = kwargs['targetDataSourceId']
+        if 'targetFileSystemId' in kwargs:
+            target_file_system_id = kwargs['targetFileSystemId']
+        if 'targetInstanceId' in kwargs:
+            target_instance_id = kwargs['targetInstanceId']
+        if 'targetInstanceName' in kwargs:
+            target_instance_name = kwargs['targetInstanceName']
+        if 'targetPath' in kwargs:
+            target_path = kwargs['targetPath']
+        if 'targetPrefix' in kwargs:
+            target_prefix = kwargs['targetPrefix']
+        if 'targetTableName' in kwargs:
+            target_table_name = kwargs['targetTableName']
+        if 'targetTime' in kwargs:
+            target_time = kwargs['targetTime']
+        if 'udmDetail' in kwargs:
+            udm_detail = kwargs['udmDetail']
+
         _setter("restore_type", restore_type)
         _setter("snapshot_hash", snapshot_hash)
         _setter("snapshot_id", snapshot_id)
@@ -589,7 +635,53 @@ class _RestoreJobState:
              target_time: Optional[pulumi.Input[str]] = None,
              udm_detail: Optional[pulumi.Input[str]] = None,
              vault_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'crossAccountRoleName' in kwargs:
+            cross_account_role_name = kwargs['crossAccountRoleName']
+        if 'crossAccountType' in kwargs:
+            cross_account_type = kwargs['crossAccountType']
+        if 'crossAccountUserId' in kwargs:
+            cross_account_user_id = kwargs['crossAccountUserId']
+        if 'otsDetail' in kwargs:
+            ots_detail = kwargs['otsDetail']
+        if 'restoreJobId' in kwargs:
+            restore_job_id = kwargs['restoreJobId']
+        if 'restoreType' in kwargs:
+            restore_type = kwargs['restoreType']
+        if 'snapshotHash' in kwargs:
+            snapshot_hash = kwargs['snapshotHash']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+        if 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+        if 'targetBucket' in kwargs:
+            target_bucket = kwargs['targetBucket']
+        if 'targetClientId' in kwargs:
+            target_client_id = kwargs['targetClientId']
+        if 'targetCreateTime' in kwargs:
+            target_create_time = kwargs['targetCreateTime']
+        if 'targetDataSourceId' in kwargs:
+            target_data_source_id = kwargs['targetDataSourceId']
+        if 'targetFileSystemId' in kwargs:
+            target_file_system_id = kwargs['targetFileSystemId']
+        if 'targetInstanceId' in kwargs:
+            target_instance_id = kwargs['targetInstanceId']
+        if 'targetInstanceName' in kwargs:
+            target_instance_name = kwargs['targetInstanceName']
+        if 'targetPath' in kwargs:
+            target_path = kwargs['targetPath']
+        if 'targetPrefix' in kwargs:
+            target_prefix = kwargs['targetPrefix']
+        if 'targetTableName' in kwargs:
+            target_table_name = kwargs['targetTableName']
+        if 'targetTime' in kwargs:
+            target_time = kwargs['targetTime']
+        if 'udmDetail' in kwargs:
+            udm_detail = kwargs['udmDetail']
+        if 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+
         if cross_account_role_name is not None:
             _setter("cross_account_role_name", cross_account_role_name)
         if cross_account_type is not None:

@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * 
  * For information about ECS Launch Template and how to use it, see [What is Launch Template](https://www.alibabacloud.com/help/en/doc-detail/74686.htm).
  * 
- * &gt; **NOTE:** Available in v1.120.0+.
+ * &gt; **NOTE:** Available since v1.120.0.
  * 
  * ## Example Usage
  * 
@@ -190,14 +190,14 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoReleaseTime);
     }
     /**
-     * The list of data disks created with instance.
+     * The list of data disks created with instance. See `data_disks` below.
      * 
      */
     @Export(name="dataDisks", type=List.class, parameters={EcsLaunchTemplateDataDisk.class})
     private Output</* @Nullable */ List<EcsLaunchTemplateDataDisk>> dataDisks;
 
     /**
-     * @return The list of data disks created with instance.
+     * @return The list of data disks created with instance. See `data_disks` below.
      * 
      */
     public Output<Optional<List<EcsLaunchTemplateDataDisk>>> dataDisks() {
@@ -436,14 +436,14 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The list of network interfaces created with instance.
+     * The list of network interfaces created with instance. See `network_interfaces` below.
      * 
      */
     @Export(name="networkInterfaces", type=EcsLaunchTemplateNetworkInterfaces.class, parameters={})
     private Output</* @Nullable */ EcsLaunchTemplateNetworkInterfaces> networkInterfaces;
 
     /**
-     * @return The list of network interfaces created with instance.
+     * @return The list of network interfaces created with instance. See `network_interfaces` below.
      * 
      */
     public Output<Optional<EcsLaunchTemplateNetworkInterfaces>> networkInterfaces() {
@@ -622,14 +622,14 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.spotStrategy);
     }
     /**
-     * The System Disk.
+     * The System Disk. See `system_disk` below.
      * 
      */
     @Export(name="systemDisk", type=EcsLaunchTemplateSystemDisk.class, parameters={})
     private Output<EcsLaunchTemplateSystemDisk> systemDisk;
 
     /**
-     * @return The System Disk.
+     * @return The System Disk. See `system_disk` below.
      * 
      */
     public Output<EcsLaunchTemplateSystemDisk> systemDisk() {

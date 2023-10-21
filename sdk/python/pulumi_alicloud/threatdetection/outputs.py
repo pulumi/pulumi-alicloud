@@ -73,7 +73,13 @@ class HoneypotPresetMeta(dict):
              burp: str,
              portrait_option: Optional[bool] = None,
              trojan_git: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'portraitOption' in kwargs:
+            portrait_option = kwargs['portraitOption']
+        if 'trojanGit' in kwargs:
+            trojan_git = kwargs['trojanGit']
+
         _setter("burp", burp)
         if portrait_option is not None:
             _setter("portrait_option", portrait_option)
@@ -143,7 +149,13 @@ class HoneypotProbeHoneypotBindList(dict):
              _setter: Callable[[Any, Any], None],
              bind_port_lists: Optional[Sequence['outputs.HoneypotProbeHoneypotBindListBindPortList']] = None,
              honeypot_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bindPortLists' in kwargs:
+            bind_port_lists = kwargs['bindPortLists']
+        if 'honeypotId' in kwargs:
+            honeypot_id = kwargs['honeypotId']
+
         if bind_port_lists is not None:
             _setter("bind_port_lists", bind_port_lists)
         if honeypot_id is not None:
@@ -220,7 +232,17 @@ class HoneypotProbeHoneypotBindListBindPortList(dict):
              fixed: Optional[bool] = None,
              start_port: Optional[int] = None,
              target_port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bindPort' in kwargs:
+            bind_port = kwargs['bindPort']
+        if 'endPort' in kwargs:
+            end_port = kwargs['endPort']
+        if 'startPort' in kwargs:
+            start_port = kwargs['startPort']
+        if 'targetPort' in kwargs:
+            target_port = kwargs['targetPort']
+
         if bind_port is not None:
             _setter("bind_port", bind_port)
         if end_port is not None:
@@ -316,7 +338,21 @@ class GetAntiBruteForceRulesRuleResult(dict):
              id: str,
              span: int,
              uuid_lists: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'antiBruteForceRuleId' in kwargs:
+            anti_brute_force_rule_id = kwargs['antiBruteForceRuleId']
+        if 'antiBruteForceRuleName' in kwargs:
+            anti_brute_force_rule_name = kwargs['antiBruteForceRuleName']
+        if 'defaultRule' in kwargs:
+            default_rule = kwargs['defaultRule']
+        if 'failCount' in kwargs:
+            fail_count = kwargs['failCount']
+        if 'forbiddenTime' in kwargs:
+            forbidden_time = kwargs['forbiddenTime']
+        if 'uuidLists' in kwargs:
+            uuid_lists = kwargs['uuidLists']
+
         _setter("anti_brute_force_rule_id", anti_brute_force_rule_id)
         _setter("anti_brute_force_rule_name", anti_brute_force_rule_name)
         _setter("default_rule", default_rule)
@@ -414,7 +450,11 @@ class GetAssetsAssetResult(dict):
              create_time: str,
              id: str,
              uuid: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+
         _setter("create_time", create_time)
         _setter("id", id)
         _setter("uuid", uuid)
@@ -487,7 +527,19 @@ class GetBackupPoliciesPolicyResult(dict):
              policy_version: str,
              status: str,
              uuid_lists: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupPolicyId' in kwargs:
+            backup_policy_id = kwargs['backupPolicyId']
+        if 'backupPolicyName' in kwargs:
+            backup_policy_name = kwargs['backupPolicyName']
+        if 'policyRegionId' in kwargs:
+            policy_region_id = kwargs['policyRegionId']
+        if 'policyVersion' in kwargs:
+            policy_version = kwargs['policyVersion']
+        if 'uuidLists' in kwargs:
+            uuid_lists = kwargs['uuidLists']
+
         _setter("backup_policy_id", backup_policy_id)
         _setter("backup_policy_name", backup_policy_name)
         _setter("id", id)
@@ -615,7 +667,27 @@ class GetBaselineStrategiesStrategyResult(dict):
              risk_sub_type_name: str,
              start_time: str,
              target_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'baselineStrategyId' in kwargs:
+            baseline_strategy_id = kwargs['baselineStrategyId']
+        if 'baselineStrategyName' in kwargs:
+            baseline_strategy_name = kwargs['baselineStrategyName']
+        if 'customType' in kwargs:
+            custom_type = kwargs['customType']
+        if 'cycleDays' in kwargs:
+            cycle_days = kwargs['cycleDays']
+        if 'cycleStartTime' in kwargs:
+            cycle_start_time = kwargs['cycleStartTime']
+        if 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if 'riskSubTypeName' in kwargs:
+            risk_sub_type_name = kwargs['riskSubTypeName']
+        if 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if 'targetType' in kwargs:
+            target_type = kwargs['targetType']
+
         _setter("baseline_strategy_id", baseline_strategy_id)
         _setter("baseline_strategy_name", baseline_strategy_name)
         _setter("custom_type", custom_type)
@@ -753,7 +825,21 @@ class GetHoneyPotsPotResult(dict):
              preset_id: str,
              states: Sequence[str],
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'honeypotId' in kwargs:
+            honeypot_id = kwargs['honeypotId']
+        if 'honeypotImageId' in kwargs:
+            honeypot_image_id = kwargs['honeypotImageId']
+        if 'honeypotImageName' in kwargs:
+            honeypot_image_name = kwargs['honeypotImageName']
+        if 'honeypotName' in kwargs:
+            honeypot_name = kwargs['honeypotName']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if 'presetId' in kwargs:
+            preset_id = kwargs['presetId']
+
         _setter("honeypot_id", honeypot_id)
         _setter("honeypot_image_id", honeypot_image_id)
         _setter("honeypot_image_name", honeypot_image_name)
@@ -888,7 +974,21 @@ class GetHoneypotImagesImageResult(dict):
              proto: str,
              service_port: str,
              template: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'honeypotImageDisplayName' in kwargs:
+            honeypot_image_display_name = kwargs['honeypotImageDisplayName']
+        if 'honeypotImageId' in kwargs:
+            honeypot_image_id = kwargs['honeypotImageId']
+        if 'honeypotImageName' in kwargs:
+            honeypot_image_name = kwargs['honeypotImageName']
+        if 'honeypotImageType' in kwargs:
+            honeypot_image_type = kwargs['honeypotImageType']
+        if 'honeypotImageVersion' in kwargs:
+            honeypot_image_version = kwargs['honeypotImageVersion']
+        if 'servicePort' in kwargs:
+            service_port = kwargs['servicePort']
+
         _setter("honeypot_image_display_name", honeypot_image_display_name)
         _setter("honeypot_image_id", honeypot_image_id)
         _setter("honeypot_image_name", honeypot_image_name)
@@ -1022,7 +1122,21 @@ class GetHoneypotNodesNodeResult(dict):
              node_name: str,
              security_group_probe_ip_lists: Sequence[str],
              status: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowHoneypotAccessInternet' in kwargs:
+            allow_honeypot_access_internet = kwargs['allowHoneypotAccessInternet']
+        if 'availableProbeNum' in kwargs:
+            available_probe_num = kwargs['availableProbeNum']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+        if 'securityGroupProbeIpLists' in kwargs:
+            security_group_probe_ip_lists = kwargs['securityGroupProbeIpLists']
+
         _setter("allow_honeypot_access_internet", allow_honeypot_access_internet)
         _setter("available_probe_num", available_probe_num)
         _setter("create_time", create_time)
@@ -1126,7 +1240,17 @@ class GetHoneypotPresetsPresetResult(dict):
              metas: Sequence['outputs.GetHoneypotPresetsPresetMetaResult'],
              node_id: str,
              preset_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'honeypotImageName' in kwargs:
+            honeypot_image_name = kwargs['honeypotImageName']
+        if 'honeypotPresetId' in kwargs:
+            honeypot_preset_id = kwargs['honeypotPresetId']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if 'presetName' in kwargs:
+            preset_name = kwargs['presetName']
+
         _setter("honeypot_image_name", honeypot_image_name)
         _setter("honeypot_preset_id", honeypot_preset_id)
         _setter("id", id)
@@ -1206,7 +1330,13 @@ class GetHoneypotPresetsPresetMetaResult(dict):
              burp: str,
              portrait_option: bool,
              trojan_git: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'portraitOption' in kwargs:
+            portrait_option = kwargs['portraitOption']
+        if 'trojanGit' in kwargs:
+            trojan_git = kwargs['trojanGit']
+
         _setter("burp", burp)
         _setter("portrait_option", portrait_option)
         _setter("trojan_git", trojan_git)
@@ -1294,7 +1424,23 @@ class GetHoneypotProbesProbeResult(dict):
              status: str,
              uuid: str,
              vpc_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'controlNodeId' in kwargs:
+            control_node_id = kwargs['controlNodeId']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'honeypotBindLists' in kwargs:
+            honeypot_bind_lists = kwargs['honeypotBindLists']
+        if 'honeypotProbeId' in kwargs:
+            honeypot_probe_id = kwargs['honeypotProbeId']
+        if 'probeType' in kwargs:
+            probe_type = kwargs['probeType']
+        if 'serviceIpLists' in kwargs:
+            service_ip_lists = kwargs['serviceIpLists']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         _setter("arp", arp)
         _setter("control_node_id", control_node_id)
         _setter("display_name", display_name)
@@ -1420,7 +1566,13 @@ class GetHoneypotProbesProbeHoneypotBindListResult(dict):
              _setter: Callable[[Any, Any], None],
              bind_port_lists: Sequence['outputs.GetHoneypotProbesProbeHoneypotBindListBindPortListResult'],
              honeypot_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bindPortLists' in kwargs:
+            bind_port_lists = kwargs['bindPortLists']
+        if 'honeypotId' in kwargs:
+            honeypot_id = kwargs['honeypotId']
+
         _setter("bind_port_lists", bind_port_lists)
         _setter("honeypot_id", honeypot_id)
 
@@ -1469,7 +1621,17 @@ class GetHoneypotProbesProbeHoneypotBindListBindPortListResult(dict):
              fixed: bool,
              start_port: int,
              target_port: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bindPort' in kwargs:
+            bind_port = kwargs['bindPort']
+        if 'endPort' in kwargs:
+            end_port = kwargs['endPort']
+        if 'startPort' in kwargs:
+            start_port = kwargs['startPort']
+        if 'targetPort' in kwargs:
+            target_port = kwargs['targetPort']
+
         _setter("bind_port", bind_port)
         _setter("end_port", end_port)
         _setter("fixed", fixed)
@@ -1548,7 +1710,15 @@ class GetInstancesInstanceResult(dict):
              instance_id: str,
              payment_type: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+
         _setter("create_time", create_time)
         _setter("id", id)
         _setter("instance_id", instance_id)
@@ -1627,7 +1797,13 @@ class GetVulWhitelistsWhitelistResult(dict):
              target_info: str,
              vul_whitelist_id: str,
              whitelist: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'targetInfo' in kwargs:
+            target_info = kwargs['targetInfo']
+        if 'vulWhitelistId' in kwargs:
+            vul_whitelist_id = kwargs['vulWhitelistId']
+
         _setter("id", id)
         _setter("reason", reason)
         _setter("target_info", target_info)
@@ -1726,7 +1902,21 @@ class GetWebLockConfigsConfigResult(dict):
              local_backup_dir: str,
              mode: str,
              uuid: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defenceMode' in kwargs:
+            defence_mode = kwargs['defenceMode']
+        if 'exclusiveDir' in kwargs:
+            exclusive_dir = kwargs['exclusiveDir']
+        if 'exclusiveFile' in kwargs:
+            exclusive_file = kwargs['exclusiveFile']
+        if 'exclusiveFileType' in kwargs:
+            exclusive_file_type = kwargs['exclusiveFileType']
+        if 'inclusiveFileType' in kwargs:
+            inclusive_file_type = kwargs['inclusiveFileType']
+        if 'localBackupDir' in kwargs:
+            local_backup_dir = kwargs['localBackupDir']
+
         _setter("defence_mode", defence_mode)
         _setter("dir", dir)
         _setter("exclusive_dir", exclusive_dir)

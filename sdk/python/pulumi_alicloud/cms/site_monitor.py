@@ -53,7 +53,19 @@ class SiteMonitorArgs:
              interval: Optional[pulumi.Input[int]] = None,
              isp_cities: Optional[pulumi.Input[Sequence[pulumi.Input['SiteMonitorIspCityArgs']]]] = None,
              options_json: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'taskName' in kwargs:
+            task_name = kwargs['taskName']
+        if 'taskType' in kwargs:
+            task_type = kwargs['taskType']
+        if 'alertIds' in kwargs:
+            alert_ids = kwargs['alertIds']
+        if 'ispCities' in kwargs:
+            isp_cities = kwargs['ispCities']
+        if 'optionsJson' in kwargs:
+            options_json = kwargs['optionsJson']
+
         _setter("address", address)
         _setter("task_name", task_name)
         _setter("task_type", task_type)
@@ -203,7 +215,25 @@ class _SiteMonitorState:
              task_state: Optional[pulumi.Input[str]] = None,
              task_type: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alertIds' in kwargs:
+            alert_ids = kwargs['alertIds']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'ispCities' in kwargs:
+            isp_cities = kwargs['ispCities']
+        if 'optionsJson' in kwargs:
+            options_json = kwargs['optionsJson']
+        if 'taskName' in kwargs:
+            task_name = kwargs['taskName']
+        if 'taskState' in kwargs:
+            task_state = kwargs['taskState']
+        if 'taskType' in kwargs:
+            task_type = kwargs['taskType']
+        if 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if address is not None:
             _setter("address", address)
         if alert_ids is not None:

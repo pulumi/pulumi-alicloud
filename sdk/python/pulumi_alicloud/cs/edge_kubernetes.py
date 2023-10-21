@@ -194,7 +194,77 @@ class EdgeKubernetesArgs:
              worker_disk_size: Optional[pulumi.Input[int]] = None,
              worker_disk_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
              worker_instance_charge_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'workerInstanceTypes' in kwargs:
+            worker_instance_types = kwargs['workerInstanceTypes']
+        if 'workerNumber' in kwargs:
+            worker_number = kwargs['workerNumber']
+        if 'workerVswitchIds' in kwargs:
+            worker_vswitch_ids = kwargs['workerVswitchIds']
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'clientCert' in kwargs:
+            client_cert = kwargs['clientCert']
+        if 'clientKey' in kwargs:
+            client_key = kwargs['clientKey']
+        if 'clusterCaCert' in kwargs:
+            cluster_ca_cert = kwargs['clusterCaCert']
+        if 'clusterSpec' in kwargs:
+            cluster_spec = kwargs['clusterSpec']
+        if 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if 'forceUpdate' in kwargs:
+            force_update = kwargs['forceUpdate']
+        if 'installCloudMonitor' in kwargs:
+            install_cloud_monitor = kwargs['installCloudMonitor']
+        if 'isEnterpriseSecurityGroup' in kwargs:
+            is_enterprise_security_group = kwargs['isEnterpriseSecurityGroup']
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if 'kubeConfig' in kwargs:
+            kube_config = kwargs['kubeConfig']
+        if 'loadBalancerSpec' in kwargs:
+            load_balancer_spec = kwargs['loadBalancerSpec']
+        if 'logConfig' in kwargs:
+            log_config = kwargs['logConfig']
+        if 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+        if 'newNatGateway' in kwargs:
+            new_nat_gateway = kwargs['newNatGateway']
+        if 'nodeCidrMask' in kwargs:
+            node_cidr_mask = kwargs['nodeCidrMask']
+        if 'podCidr' in kwargs:
+            pod_cidr = kwargs['podCidr']
+        if 'proxyMode' in kwargs:
+            proxy_mode = kwargs['proxyMode']
+        if 'rdsInstances' in kwargs:
+            rds_instances = kwargs['rdsInstances']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'retainResources' in kwargs:
+            retain_resources = kwargs['retainResources']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'serviceCidr' in kwargs:
+            service_cidr = kwargs['serviceCidr']
+        if 'slbInternetEnabled' in kwargs:
+            slb_internet_enabled = kwargs['slbInternetEnabled']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if 'workerDataDisks' in kwargs:
+            worker_data_disks = kwargs['workerDataDisks']
+        if 'workerDiskCategory' in kwargs:
+            worker_disk_category = kwargs['workerDiskCategory']
+        if 'workerDiskPerformanceLevel' in kwargs:
+            worker_disk_performance_level = kwargs['workerDiskPerformanceLevel']
+        if 'workerDiskSize' in kwargs:
+            worker_disk_size = kwargs['workerDiskSize']
+        if 'workerDiskSnapshotPolicyId' in kwargs:
+            worker_disk_snapshot_policy_id = kwargs['workerDiskSnapshotPolicyId']
+        if 'workerInstanceChargeType' in kwargs:
+            worker_instance_charge_type = kwargs['workerInstanceChargeType']
+
         _setter("worker_instance_types", worker_instance_types)
         _setter("worker_number", worker_number)
         _setter("worker_vswitch_ids", worker_vswitch_ids)
@@ -984,7 +1054,91 @@ class _EdgeKubernetesState:
              worker_number: Optional[pulumi.Input[int]] = None,
              worker_ram_role_name: Optional[pulumi.Input[str]] = None,
              worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'certificateAuthority' in kwargs:
+            certificate_authority = kwargs['certificateAuthority']
+        if 'clientCert' in kwargs:
+            client_cert = kwargs['clientCert']
+        if 'clientKey' in kwargs:
+            client_key = kwargs['clientKey']
+        if 'clusterCaCert' in kwargs:
+            cluster_ca_cert = kwargs['clusterCaCert']
+        if 'clusterSpec' in kwargs:
+            cluster_spec = kwargs['clusterSpec']
+        if 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if 'forceUpdate' in kwargs:
+            force_update = kwargs['forceUpdate']
+        if 'installCloudMonitor' in kwargs:
+            install_cloud_monitor = kwargs['installCloudMonitor']
+        if 'isEnterpriseSecurityGroup' in kwargs:
+            is_enterprise_security_group = kwargs['isEnterpriseSecurityGroup']
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if 'kubeConfig' in kwargs:
+            kube_config = kwargs['kubeConfig']
+        if 'loadBalancerSpec' in kwargs:
+            load_balancer_spec = kwargs['loadBalancerSpec']
+        if 'logConfig' in kwargs:
+            log_config = kwargs['logConfig']
+        if 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+        if 'natGatewayId' in kwargs:
+            nat_gateway_id = kwargs['natGatewayId']
+        if 'newNatGateway' in kwargs:
+            new_nat_gateway = kwargs['newNatGateway']
+        if 'nodeCidrMask' in kwargs:
+            node_cidr_mask = kwargs['nodeCidrMask']
+        if 'podCidr' in kwargs:
+            pod_cidr = kwargs['podCidr']
+        if 'proxyMode' in kwargs:
+            proxy_mode = kwargs['proxyMode']
+        if 'rdsInstances' in kwargs:
+            rds_instances = kwargs['rdsInstances']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'retainResources' in kwargs:
+            retain_resources = kwargs['retainResources']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'serviceCidr' in kwargs:
+            service_cidr = kwargs['serviceCidr']
+        if 'slbInternet' in kwargs:
+            slb_internet = kwargs['slbInternet']
+        if 'slbInternetEnabled' in kwargs:
+            slb_internet_enabled = kwargs['slbInternetEnabled']
+        if 'slbIntranet' in kwargs:
+            slb_intranet = kwargs['slbIntranet']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'workerDataDisks' in kwargs:
+            worker_data_disks = kwargs['workerDataDisks']
+        if 'workerDiskCategory' in kwargs:
+            worker_disk_category = kwargs['workerDiskCategory']
+        if 'workerDiskPerformanceLevel' in kwargs:
+            worker_disk_performance_level = kwargs['workerDiskPerformanceLevel']
+        if 'workerDiskSize' in kwargs:
+            worker_disk_size = kwargs['workerDiskSize']
+        if 'workerDiskSnapshotPolicyId' in kwargs:
+            worker_disk_snapshot_policy_id = kwargs['workerDiskSnapshotPolicyId']
+        if 'workerInstanceChargeType' in kwargs:
+            worker_instance_charge_type = kwargs['workerInstanceChargeType']
+        if 'workerInstanceTypes' in kwargs:
+            worker_instance_types = kwargs['workerInstanceTypes']
+        if 'workerNodes' in kwargs:
+            worker_nodes = kwargs['workerNodes']
+        if 'workerNumber' in kwargs:
+            worker_number = kwargs['workerNumber']
+        if 'workerRamRoleName' in kwargs:
+            worker_ram_role_name = kwargs['workerRamRoleName']
+        if 'workerVswitchIds' in kwargs:
+            worker_vswitch_ids = kwargs['workerVswitchIds']
+
         if addons is not None:
             _setter("addons", addons)
         if availability_zone is not None:

@@ -29,7 +29,7 @@ public final class GetDBClustersCluster {
      */
     private String commodityCode;
     /**
-     * @return The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
+     * @return The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources.
      * 
      */
     private String computeResource;
@@ -199,7 +199,7 @@ public final class GetDBClustersCluster {
      */
     private String status;
     /**
-     * @return The specifications of storage resources in elastic mode. The resources are used for data read and write operations. The increase of resources can improve the read and write performance of your cluster. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
+     * @return The specifications of storage resources in elastic mode. The resources are used for data read and write operations. The increase of resources can improve the read and write performance of your cluster.
      * 
      */
     private String storageResource;
@@ -252,7 +252,7 @@ public final class GetDBClustersCluster {
         return this.commodityCode;
     }
     /**
-     * @return The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
+     * @return The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources.
      * 
      */
     public String computeResource() {
@@ -490,7 +490,7 @@ public final class GetDBClustersCluster {
         return this.status;
     }
     /**
-     * @return The specifications of storage resources in elastic mode. The resources are used for data read and write operations. The increase of resources can improve the read and write performance of your cluster. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
+     * @return The specifications of storage resources in elastic mode. The resources are used for data read and write operations. The increase of resources can improve the read and write performance of your cluster.
      * 
      */
     public String storageResource() {

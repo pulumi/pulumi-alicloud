@@ -74,7 +74,13 @@ class K8sSlbAttachmentSlbConfig(dict):
              name: Optional[str] = None,
              slb_id: Optional[str] = None,
              specification: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'portMappings' in kwargs:
+            port_mappings = kwargs['portMappings']
+        if 'slbId' in kwargs:
+            slb_id = kwargs['slbId']
+
         _setter("port_mappings", port_mappings)
         _setter("scheduler", scheduler)
         _setter("type", type)
@@ -178,7 +184,15 @@ class K8sSlbAttachmentSlbConfigPortMapping(dict):
              loadbalancer_protocol: str,
              service_port: 'outputs.K8sSlbAttachmentSlbConfigPortMappingServicePort',
              cert_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'loadbalancerProtocol' in kwargs:
+            loadbalancer_protocol = kwargs['loadbalancerProtocol']
+        if 'servicePort' in kwargs:
+            service_port = kwargs['servicePort']
+        if 'certId' in kwargs:
+            cert_id = kwargs['certId']
+
         _setter("loadbalancer_protocol", loadbalancer_protocol)
         _setter("service_port", service_port)
         if cert_id is not None:
@@ -249,7 +263,11 @@ class K8sSlbAttachmentSlbConfigPortMappingServicePort(dict):
              port: int,
              protocol: str,
              target_port: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'targetPort' in kwargs:
+            target_port = kwargs['targetPort']
+
         _setter("port", port)
         _setter("protocol", protocol)
         _setter("target_port", target_port)
@@ -318,7 +336,23 @@ class GetApplicationsApplicationResult(dict):
              cluster_id: str,
              cluster_type: int,
              region_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if 'appName' in kwargs:
+            app_name = kwargs['appName']
+        if 'applicationType' in kwargs:
+            application_type = kwargs['applicationType']
+        if 'buildPackageId' in kwargs:
+            build_package_id = kwargs['buildPackageId']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'clusterType' in kwargs:
+            cluster_type = kwargs['clusterType']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+
         _setter("app_id", app_id)
         _setter("app_name", app_name)
         _setter("application_type", application_type)
@@ -447,7 +481,31 @@ class GetClustersClusterResult(dict):
              region_id: str,
              update_time: int,
              vpc_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'clusterType' in kwargs:
+            cluster_type = kwargs['clusterType']
+        if 'cpuUsed' in kwargs:
+            cpu_used = kwargs['cpuUsed']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'memUsed' in kwargs:
+            mem_used = kwargs['memUsed']
+        if 'networkMode' in kwargs:
+            network_mode = kwargs['networkMode']
+        if 'nodeNum' in kwargs:
+            node_num = kwargs['nodeNum']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         _setter("cluster_id", cluster_id)
         _setter("cluster_name", cluster_name)
         _setter("cluster_type", cluster_type)
@@ -614,7 +672,27 @@ class GetDeployGroupsGroupResult(dict):
              group_type: int,
              package_version_id: str,
              update_time: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if 'appVersionId' in kwargs:
+            app_version_id = kwargs['appVersionId']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'groupType' in kwargs:
+            group_type = kwargs['groupType']
+        if 'packageVersionId' in kwargs:
+            package_version_id = kwargs['packageVersionId']
+        if 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         _setter("app_id", app_id)
         _setter("app_version_id", app_version_id)
         _setter("cluster_id", cluster_id)
@@ -741,7 +819,21 @@ class GetNamespacesNamespaceResult(dict):
              namespace_logical_id: str,
              namespace_name: str,
              user_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'belongRegion' in kwargs:
+            belong_region = kwargs['belongRegion']
+        if 'debugEnable' in kwargs:
+            debug_enable = kwargs['debugEnable']
+        if 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+        if 'namespaceLogicalId' in kwargs:
+            namespace_logical_id = kwargs['namespaceLogicalId']
+        if 'namespaceName' in kwargs:
+            namespace_name = kwargs['namespaceName']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         _setter("belong_region", belong_region)
         _setter("debug_enable", debug_enable)
         _setter("description", description)

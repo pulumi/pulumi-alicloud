@@ -58,7 +58,9 @@ class ChainChainConfig(dict):
              _setter: Callable[[Any, Any], None],
              nodes: Optional[Sequence['outputs.ChainChainConfigNode']] = None,
              routers: Optional[Sequence['outputs.ChainChainConfigRouter']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if nodes is not None:
             _setter("nodes", nodes)
         if routers is not None:
@@ -125,7 +127,13 @@ class ChainChainConfigNode(dict):
              enable: Optional[bool] = None,
              node_configs: Optional[Sequence['outputs.ChainChainConfigNodeNodeConfig']] = None,
              node_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nodeConfigs' in kwargs:
+            node_configs = kwargs['nodeConfigs']
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+
         if enable is not None:
             _setter("enable", enable)
         if node_configs is not None:
@@ -190,7 +198,11 @@ class ChainChainConfigNodeNodeConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              deny_policies: Optional[Sequence['outputs.ChainChainConfigNodeNodeConfigDenyPolicy']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'denyPolicies' in kwargs:
+            deny_policies = kwargs['denyPolicies']
+
         if deny_policies is not None:
             _setter("deny_policies", deny_policies)
 
@@ -249,7 +261,13 @@ class ChainChainConfigNodeNodeConfigDenyPolicy(dict):
              issue_count: Optional[str] = None,
              issue_level: Optional[str] = None,
              logic: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'issueCount' in kwargs:
+            issue_count = kwargs['issueCount']
+        if 'issueLevel' in kwargs:
+            issue_level = kwargs['issueLevel']
+
         if action is not None:
             _setter("action", action)
         if issue_count is not None:
@@ -311,7 +329,9 @@ class ChainChainConfigRouter(dict):
              _setter: Callable[[Any, Any], None],
              froms: Optional[Sequence['outputs.ChainChainConfigRouterFrom']] = None,
              tos: Optional[Sequence['outputs.ChainChainConfigRouterTo']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if froms is not None:
             _setter("froms", froms)
         if tos is not None:
@@ -366,7 +386,11 @@ class ChainChainConfigRouterFrom(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              node_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+
         if node_name is not None:
             _setter("node_name", node_name)
 
@@ -411,7 +435,11 @@ class ChainChainConfigRouterTo(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              node_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+
         if node_name is not None:
             _setter("node_name", node_name)
 
@@ -447,7 +475,9 @@ class RepoDomainList(dict):
              internal: Optional[str] = None,
              public: Optional[str] = None,
              vpc: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if internal is not None:
             _setter("internal", internal)
         if public is not None:
@@ -531,7 +561,25 @@ class GetChainsChainResult(dict):
              modified_time: str,
              scope_id: str,
              scope_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'chainConfigs' in kwargs:
+            chain_configs = kwargs['chainConfigs']
+        if 'chainId' in kwargs:
+            chain_id = kwargs['chainId']
+        if 'chainName' in kwargs:
+            chain_name = kwargs['chainName']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'modifiedTime' in kwargs:
+            modified_time = kwargs['modifiedTime']
+        if 'scopeId' in kwargs:
+            scope_id = kwargs['scopeId']
+        if 'scopeType' in kwargs:
+            scope_type = kwargs['scopeType']
+
         _setter("chain_configs", chain_configs)
         _setter("chain_id", chain_id)
         _setter("chain_name", chain_name)
@@ -643,7 +691,9 @@ class GetChainsChainChainConfigResult(dict):
              _setter: Callable[[Any, Any], None],
              nodes: Sequence['outputs.GetChainsChainChainConfigNodeResult'],
              routers: Sequence['outputs.GetChainsChainChainConfigRouterResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("nodes", nodes)
         _setter("routers", routers)
 
@@ -687,7 +737,13 @@ class GetChainsChainChainConfigNodeResult(dict):
              enable: bool,
              node_configs: Sequence['outputs.GetChainsChainChainConfigNodeNodeConfigResult'],
              node_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nodeConfigs' in kwargs:
+            node_configs = kwargs['nodeConfigs']
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+
         _setter("enable", enable)
         _setter("node_configs", node_configs)
         _setter("node_name", node_name)
@@ -732,7 +788,11 @@ class GetChainsChainChainConfigNodeNodeConfigResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              deny_policies: Sequence['outputs.GetChainsChainChainConfigNodeNodeConfigDenyPolicyResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'denyPolicies' in kwargs:
+            deny_policies = kwargs['denyPolicies']
+
         _setter("deny_policies", deny_policies)
 
     @property
@@ -771,7 +831,13 @@ class GetChainsChainChainConfigNodeNodeConfigDenyPolicyResult(dict):
              issue_level: str,
              logic: str,
              action: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'issueCount' in kwargs:
+            issue_count = kwargs['issueCount']
+        if 'issueLevel' in kwargs:
+            issue_level = kwargs['issueLevel']
+
         _setter("issue_count", issue_count)
         _setter("issue_level", issue_level)
         _setter("logic", logic)
@@ -830,7 +896,9 @@ class GetChainsChainChainConfigRouterResult(dict):
              _setter: Callable[[Any, Any], None],
              froms: Sequence['outputs.GetChainsChainChainConfigRouterFromResult'],
              tos: Sequence['outputs.GetChainsChainChainConfigRouterToResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("froms", froms)
         _setter("tos", tos)
 
@@ -866,7 +934,11 @@ class GetChainsChainChainConfigRouterFromResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              node_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+
         _setter("node_name", node_name)
 
     @property
@@ -893,7 +965,11 @@ class GetChainsChainChainConfigRouterToResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              node_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+
         _setter("node_name", node_name)
 
     @property
@@ -940,7 +1016,19 @@ class GetChartNamespacesNamespaceResult(dict):
              id: str,
              instance_id: str,
              namespace_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoCreateRepo' in kwargs:
+            auto_create_repo = kwargs['autoCreateRepo']
+        if 'chartNamespaceId' in kwargs:
+            chart_namespace_id = kwargs['chartNamespaceId']
+        if 'defaultRepoType' in kwargs:
+            default_repo_type = kwargs['defaultRepoType']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'namespaceName' in kwargs:
+            namespace_name = kwargs['namespaceName']
+
         _setter("auto_create_repo", auto_create_repo)
         _setter("chart_namespace_id", chart_namespace_id)
         _setter("default_repo_type", default_repo_type)
@@ -1040,7 +1128,21 @@ class GetChartRepositoriesRepositoryResult(dict):
              repo_namespace_name: str,
              repo_type: str,
              summary: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'chartRepositoryId' in kwargs:
+            chart_repository_id = kwargs['chartRepositoryId']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'repoName' in kwargs:
+            repo_name = kwargs['repoName']
+        if 'repoNamespaceName' in kwargs:
+            repo_namespace_name = kwargs['repoNamespaceName']
+        if 'repoType' in kwargs:
+            repo_type = kwargs['repoType']
+
         _setter("chart_repository_id", chart_repository_id)
         _setter("create_time", create_time)
         _setter("id", id)
@@ -1146,7 +1248,13 @@ class GetEndpointAclPoliciesPolicyResult(dict):
              entry: str,
              id: str,
              instance_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'endpointType' in kwargs:
+            endpoint_type = kwargs['endpointType']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("description", description)
         _setter("endpoint_type", endpoint_type)
         _setter("entry", entry)
@@ -1217,7 +1325,13 @@ class GetNamespacesNamespaceResult(dict):
              auto_create: bool,
              default_visibility: str,
              name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoCreate' in kwargs:
+            auto_create = kwargs['autoCreate']
+        if 'defaultVisibility' in kwargs:
+            default_visibility = kwargs['defaultVisibility']
+
         _setter("auto_create", auto_create)
         _setter("default_visibility", default_visibility)
         _setter("name", name)
@@ -1282,7 +1396,13 @@ class GetReposRepoResult(dict):
              repo_type: str,
              summary: str,
              tags: Sequence['outputs.GetReposRepoTagResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'domainList' in kwargs:
+            domain_list = kwargs['domainList']
+        if 'repoType' in kwargs:
+            repo_type = kwargs['repoType']
+
         _setter("domain_list", domain_list)
         _setter("name", name)
         _setter("namespace", namespace)
@@ -1362,7 +1482,9 @@ class GetReposRepoDomainListResult(dict):
              internal: str,
              public: str,
              vpc: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("internal", internal)
         _setter("public", public)
         _setter("vpc", vpc)
@@ -1431,7 +1553,17 @@ class GetReposRepoTagResult(dict):
              image_update: int,
              status: str,
              tag: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'imageCreate' in kwargs:
+            image_create = kwargs['imageCreate']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'imageSize' in kwargs:
+            image_size = kwargs['imageSize']
+        if 'imageUpdate' in kwargs:
+            image_update = kwargs['imageUpdate']
+
         _setter("digest", digest)
         _setter("image_create", image_create)
         _setter("image_id", image_id)
@@ -1540,7 +1672,19 @@ class GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcResult(dict):
              status: str,
              vpc_id: str,
              vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defaultAccess' in kwargs:
+            default_access = kwargs['defaultAccess']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'moduleName' in kwargs:
+            module_name = kwargs['moduleName']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("default_access", default_access)
         _setter("id", id)
         _setter("instance_id", instance_id)

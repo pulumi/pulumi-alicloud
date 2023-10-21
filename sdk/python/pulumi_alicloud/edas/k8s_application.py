@@ -149,7 +149,57 @@ class K8sApplicationArgs:
              requests_m_cpu: Optional[pulumi.Input[int]] = None,
              requests_mem: Optional[pulumi.Input[int]] = None,
              web_container: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applicationName' in kwargs:
+            application_name = kwargs['applicationName']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'applicationDescriotion' in kwargs:
+            application_descriotion = kwargs['applicationDescriotion']
+        if 'commandArgs' in kwargs:
+            command_args = kwargs['commandArgs']
+        if 'edasContainerVersion' in kwargs:
+            edas_container_version = kwargs['edasContainerVersion']
+        if 'imageUrl' in kwargs:
+            image_url = kwargs['imageUrl']
+        if 'internetSlbId' in kwargs:
+            internet_slb_id = kwargs['internetSlbId']
+        if 'internetSlbPort' in kwargs:
+            internet_slb_port = kwargs['internetSlbPort']
+        if 'internetSlbProtocol' in kwargs:
+            internet_slb_protocol = kwargs['internetSlbProtocol']
+        if 'internetTargetPort' in kwargs:
+            internet_target_port = kwargs['internetTargetPort']
+        if 'limitMCpu' in kwargs:
+            limit_m_cpu = kwargs['limitMCpu']
+        if 'limitMem' in kwargs:
+            limit_mem = kwargs['limitMem']
+        if 'localVolume' in kwargs:
+            local_volume = kwargs['localVolume']
+        if 'logicalRegionId' in kwargs:
+            logical_region_id = kwargs['logicalRegionId']
+        if 'mountDescs' in kwargs:
+            mount_descs = kwargs['mountDescs']
+        if 'nasId' in kwargs:
+            nas_id = kwargs['nasId']
+        if 'packageType' in kwargs:
+            package_type = kwargs['packageType']
+        if 'packageUrl' in kwargs:
+            package_url = kwargs['packageUrl']
+        if 'packageVersion' in kwargs:
+            package_version = kwargs['packageVersion']
+        if 'postStart' in kwargs:
+            post_start = kwargs['postStart']
+        if 'preStop' in kwargs:
+            pre_stop = kwargs['preStop']
+        if 'requestsMCpu' in kwargs:
+            requests_m_cpu = kwargs['requestsMCpu']
+        if 'requestsMem' in kwargs:
+            requests_mem = kwargs['requestsMem']
+        if 'webContainer' in kwargs:
+            web_container = kwargs['webContainer']
+
         _setter("application_name", application_name)
         _setter("cluster_id", cluster_id)
         if application_descriotion is not None:
@@ -748,7 +798,57 @@ class _K8sApplicationState:
              requests_m_cpu: Optional[pulumi.Input[int]] = None,
              requests_mem: Optional[pulumi.Input[int]] = None,
              web_container: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applicationDescriotion' in kwargs:
+            application_descriotion = kwargs['applicationDescriotion']
+        if 'applicationName' in kwargs:
+            application_name = kwargs['applicationName']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'commandArgs' in kwargs:
+            command_args = kwargs['commandArgs']
+        if 'edasContainerVersion' in kwargs:
+            edas_container_version = kwargs['edasContainerVersion']
+        if 'imageUrl' in kwargs:
+            image_url = kwargs['imageUrl']
+        if 'internetSlbId' in kwargs:
+            internet_slb_id = kwargs['internetSlbId']
+        if 'internetSlbPort' in kwargs:
+            internet_slb_port = kwargs['internetSlbPort']
+        if 'internetSlbProtocol' in kwargs:
+            internet_slb_protocol = kwargs['internetSlbProtocol']
+        if 'internetTargetPort' in kwargs:
+            internet_target_port = kwargs['internetTargetPort']
+        if 'limitMCpu' in kwargs:
+            limit_m_cpu = kwargs['limitMCpu']
+        if 'limitMem' in kwargs:
+            limit_mem = kwargs['limitMem']
+        if 'localVolume' in kwargs:
+            local_volume = kwargs['localVolume']
+        if 'logicalRegionId' in kwargs:
+            logical_region_id = kwargs['logicalRegionId']
+        if 'mountDescs' in kwargs:
+            mount_descs = kwargs['mountDescs']
+        if 'nasId' in kwargs:
+            nas_id = kwargs['nasId']
+        if 'packageType' in kwargs:
+            package_type = kwargs['packageType']
+        if 'packageUrl' in kwargs:
+            package_url = kwargs['packageUrl']
+        if 'packageVersion' in kwargs:
+            package_version = kwargs['packageVersion']
+        if 'postStart' in kwargs:
+            post_start = kwargs['postStart']
+        if 'preStop' in kwargs:
+            pre_stop = kwargs['preStop']
+        if 'requestsMCpu' in kwargs:
+            requests_m_cpu = kwargs['requestsMCpu']
+        if 'requestsMem' in kwargs:
+            requests_mem = kwargs['requestsMem']
+        if 'webContainer' in kwargs:
+            web_container = kwargs['webContainer']
+
         if application_descriotion is not None:
             _setter("application_descriotion", application_descriotion)
         if application_name is not None:

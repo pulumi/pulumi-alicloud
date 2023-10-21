@@ -175,7 +175,81 @@ class BackupPlanArgs:
              status: Optional[pulumi.Input[str]] = None,
              storage_region: Optional[pulumi.Input[str]] = None,
              used_time: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupMethod' in kwargs:
+            backup_method = kwargs['backupMethod']
+        if 'backupPlanName' in kwargs:
+            backup_plan_name = kwargs['backupPlanName']
+        if 'databaseType' in kwargs:
+            database_type = kwargs['databaseType']
+        if 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if 'sourceEndpointInstanceType' in kwargs:
+            source_endpoint_instance_type = kwargs['sourceEndpointInstanceType']
+        if 'backupGatewayId' in kwargs:
+            backup_gateway_id = kwargs['backupGatewayId']
+        if 'backupLogIntervalSeconds' in kwargs:
+            backup_log_interval_seconds = kwargs['backupLogIntervalSeconds']
+        if 'backupObjects' in kwargs:
+            backup_objects = kwargs['backupObjects']
+        if 'backupPeriod' in kwargs:
+            backup_period = kwargs['backupPeriod']
+        if 'backupRateLimit' in kwargs:
+            backup_rate_limit = kwargs['backupRateLimit']
+        if 'backupRetentionPeriod' in kwargs:
+            backup_retention_period = kwargs['backupRetentionPeriod']
+        if 'backupSpeedLimit' in kwargs:
+            backup_speed_limit = kwargs['backupSpeedLimit']
+        if 'backupStartTime' in kwargs:
+            backup_start_time = kwargs['backupStartTime']
+        if 'backupStorageType' in kwargs:
+            backup_storage_type = kwargs['backupStorageType']
+        if 'backupStrategyType' in kwargs:
+            backup_strategy_type = kwargs['backupStrategyType']
+        if 'crossAliyunId' in kwargs:
+            cross_aliyun_id = kwargs['crossAliyunId']
+        if 'crossRoleName' in kwargs:
+            cross_role_name = kwargs['crossRoleName']
+        if 'databaseRegion' in kwargs:
+            database_region = kwargs['databaseRegion']
+        if 'duplicationArchivePeriod' in kwargs:
+            duplication_archive_period = kwargs['duplicationArchivePeriod']
+        if 'duplicationInfrequentAccessPeriod' in kwargs:
+            duplication_infrequent_access_period = kwargs['duplicationInfrequentAccessPeriod']
+        if 'enableBackupLog' in kwargs:
+            enable_backup_log = kwargs['enableBackupLog']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'ossBucketName' in kwargs:
+            oss_bucket_name = kwargs['ossBucketName']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'sourceEndpointDatabaseName' in kwargs:
+            source_endpoint_database_name = kwargs['sourceEndpointDatabaseName']
+        if 'sourceEndpointInstanceId' in kwargs:
+            source_endpoint_instance_id = kwargs['sourceEndpointInstanceId']
+        if 'sourceEndpointIp' in kwargs:
+            source_endpoint_ip = kwargs['sourceEndpointIp']
+        if 'sourceEndpointOracleSid' in kwargs:
+            source_endpoint_oracle_sid = kwargs['sourceEndpointOracleSid']
+        if 'sourceEndpointPassword' in kwargs:
+            source_endpoint_password = kwargs['sourceEndpointPassword']
+        if 'sourceEndpointPort' in kwargs:
+            source_endpoint_port = kwargs['sourceEndpointPort']
+        if 'sourceEndpointRegion' in kwargs:
+            source_endpoint_region = kwargs['sourceEndpointRegion']
+        if 'sourceEndpointSid' in kwargs:
+            source_endpoint_sid = kwargs['sourceEndpointSid']
+        if 'sourceEndpointUserName' in kwargs:
+            source_endpoint_user_name = kwargs['sourceEndpointUserName']
+        if 'storageRegion' in kwargs:
+            storage_region = kwargs['storageRegion']
+        if 'usedTime' in kwargs:
+            used_time = kwargs['usedTime']
+
         _setter("backup_method", backup_method)
         _setter("backup_plan_name", backup_plan_name)
         _setter("database_type", database_type)
@@ -869,7 +943,81 @@ class _BackupPlanState:
              status: Optional[pulumi.Input[str]] = None,
              storage_region: Optional[pulumi.Input[str]] = None,
              used_time: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupGatewayId' in kwargs:
+            backup_gateway_id = kwargs['backupGatewayId']
+        if 'backupLogIntervalSeconds' in kwargs:
+            backup_log_interval_seconds = kwargs['backupLogIntervalSeconds']
+        if 'backupMethod' in kwargs:
+            backup_method = kwargs['backupMethod']
+        if 'backupObjects' in kwargs:
+            backup_objects = kwargs['backupObjects']
+        if 'backupPeriod' in kwargs:
+            backup_period = kwargs['backupPeriod']
+        if 'backupPlanName' in kwargs:
+            backup_plan_name = kwargs['backupPlanName']
+        if 'backupRateLimit' in kwargs:
+            backup_rate_limit = kwargs['backupRateLimit']
+        if 'backupRetentionPeriod' in kwargs:
+            backup_retention_period = kwargs['backupRetentionPeriod']
+        if 'backupSpeedLimit' in kwargs:
+            backup_speed_limit = kwargs['backupSpeedLimit']
+        if 'backupStartTime' in kwargs:
+            backup_start_time = kwargs['backupStartTime']
+        if 'backupStorageType' in kwargs:
+            backup_storage_type = kwargs['backupStorageType']
+        if 'backupStrategyType' in kwargs:
+            backup_strategy_type = kwargs['backupStrategyType']
+        if 'crossAliyunId' in kwargs:
+            cross_aliyun_id = kwargs['crossAliyunId']
+        if 'crossRoleName' in kwargs:
+            cross_role_name = kwargs['crossRoleName']
+        if 'databaseRegion' in kwargs:
+            database_region = kwargs['databaseRegion']
+        if 'databaseType' in kwargs:
+            database_type = kwargs['databaseType']
+        if 'duplicationArchivePeriod' in kwargs:
+            duplication_archive_period = kwargs['duplicationArchivePeriod']
+        if 'duplicationInfrequentAccessPeriod' in kwargs:
+            duplication_infrequent_access_period = kwargs['duplicationInfrequentAccessPeriod']
+        if 'enableBackupLog' in kwargs:
+            enable_backup_log = kwargs['enableBackupLog']
+        if 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'ossBucketName' in kwargs:
+            oss_bucket_name = kwargs['ossBucketName']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'sourceEndpointDatabaseName' in kwargs:
+            source_endpoint_database_name = kwargs['sourceEndpointDatabaseName']
+        if 'sourceEndpointInstanceId' in kwargs:
+            source_endpoint_instance_id = kwargs['sourceEndpointInstanceId']
+        if 'sourceEndpointInstanceType' in kwargs:
+            source_endpoint_instance_type = kwargs['sourceEndpointInstanceType']
+        if 'sourceEndpointIp' in kwargs:
+            source_endpoint_ip = kwargs['sourceEndpointIp']
+        if 'sourceEndpointOracleSid' in kwargs:
+            source_endpoint_oracle_sid = kwargs['sourceEndpointOracleSid']
+        if 'sourceEndpointPassword' in kwargs:
+            source_endpoint_password = kwargs['sourceEndpointPassword']
+        if 'sourceEndpointPort' in kwargs:
+            source_endpoint_port = kwargs['sourceEndpointPort']
+        if 'sourceEndpointRegion' in kwargs:
+            source_endpoint_region = kwargs['sourceEndpointRegion']
+        if 'sourceEndpointSid' in kwargs:
+            source_endpoint_sid = kwargs['sourceEndpointSid']
+        if 'sourceEndpointUserName' in kwargs:
+            source_endpoint_user_name = kwargs['sourceEndpointUserName']
+        if 'storageRegion' in kwargs:
+            storage_region = kwargs['storageRegion']
+        if 'usedTime' in kwargs:
+            used_time = kwargs['usedTime']
+
         if backup_gateway_id is not None:
             _setter("backup_gateway_id", backup_gateway_id)
         if backup_log_interval_seconds is not None:
@@ -1451,9 +1599,9 @@ class BackupPlan(pulumi.CustomResource):
         """
         Provides a DBS Backup Plan resource.
 
-        For information about DBS Backup Plan and how to use it, see [What is Backup Plan](https://www.alibabacloud.com/help/zh/database-backup-service/latest/api-doc-dbs-2019-03-06-api-doc-createandstartbackupplan).
+        For information about DBS Backup Plan and how to use it, see [What is Backup Plan](https://www.alibabacloud.com/help/en/dbs/developer-reference/api-dbs-2019-03-06-createandstartbackupplan).
 
-        > **NOTE:** Available in v1.185.0+.
+        > **NOTE:** Available since v1.185.0.
 
         ## Import
 
@@ -1513,9 +1661,9 @@ class BackupPlan(pulumi.CustomResource):
         """
         Provides a DBS Backup Plan resource.
 
-        For information about DBS Backup Plan and how to use it, see [What is Backup Plan](https://www.alibabacloud.com/help/zh/database-backup-service/latest/api-doc-dbs-2019-03-06-api-doc-createandstartbackupplan).
+        For information about DBS Backup Plan and how to use it, see [What is Backup Plan](https://www.alibabacloud.com/help/en/dbs/developer-reference/api-dbs-2019-03-06-createandstartbackupplan).
 
-        > **NOTE:** Available in v1.185.0+.
+        > **NOTE:** Available since v1.185.0.
 
         ## Import
 

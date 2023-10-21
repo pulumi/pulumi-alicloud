@@ -39,7 +39,17 @@ class ChartNamespaceArgs:
              namespace_name: pulumi.Input[str],
              auto_create_repo: Optional[pulumi.Input[bool]] = None,
              default_repo_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'namespaceName' in kwargs:
+            namespace_name = kwargs['namespaceName']
+        if 'autoCreateRepo' in kwargs:
+            auto_create_repo = kwargs['autoCreateRepo']
+        if 'defaultRepoType' in kwargs:
+            default_repo_type = kwargs['defaultRepoType']
+
         _setter("instance_id", instance_id)
         _setter("namespace_name", namespace_name)
         if auto_create_repo is not None:
@@ -124,7 +134,17 @@ class _ChartNamespaceState:
              default_repo_type: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
              namespace_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoCreateRepo' in kwargs:
+            auto_create_repo = kwargs['autoCreateRepo']
+        if 'defaultRepoType' in kwargs:
+            default_repo_type = kwargs['defaultRepoType']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'namespaceName' in kwargs:
+            namespace_name = kwargs['namespaceName']
+
         if auto_create_repo is not None:
             _setter("auto_create_repo", auto_create_repo)
         if default_repo_type is not None:

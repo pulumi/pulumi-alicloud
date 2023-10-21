@@ -47,7 +47,21 @@ class TransitRouterPrefixListAssociationArgs:
              transit_router_table_id: pulumi.Input[str],
              next_hop_type: Optional[pulumi.Input[str]] = None,
              owner_uid: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nextHop' in kwargs:
+            next_hop = kwargs['nextHop']
+        if 'prefixListId' in kwargs:
+            prefix_list_id = kwargs['prefixListId']
+        if 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+        if 'transitRouterTableId' in kwargs:
+            transit_router_table_id = kwargs['transitRouterTableId']
+        if 'nextHopType' in kwargs:
+            next_hop_type = kwargs['nextHopType']
+        if 'ownerUid' in kwargs:
+            owner_uid = kwargs['ownerUid']
+
         _setter("next_hop", next_hop)
         _setter("prefix_list_id", prefix_list_id)
         _setter("transit_router_id", transit_router_id)
@@ -170,7 +184,21 @@ class _TransitRouterPrefixListAssociationState:
              status: Optional[pulumi.Input[str]] = None,
              transit_router_id: Optional[pulumi.Input[str]] = None,
              transit_router_table_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nextHop' in kwargs:
+            next_hop = kwargs['nextHop']
+        if 'nextHopType' in kwargs:
+            next_hop_type = kwargs['nextHopType']
+        if 'ownerUid' in kwargs:
+            owner_uid = kwargs['ownerUid']
+        if 'prefixListId' in kwargs:
+            prefix_list_id = kwargs['prefixListId']
+        if 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+        if 'transitRouterTableId' in kwargs:
+            transit_router_table_id = kwargs['transitRouterTableId']
+
         if next_hop is not None:
             _setter("next_hop", next_hop)
         if next_hop_type is not None:

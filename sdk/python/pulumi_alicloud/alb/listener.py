@@ -103,7 +103,41 @@ class ListenerArgs:
              security_policy_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              x_forwarded_for_config: Optional[pulumi.Input['ListenerXForwardedForConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'listenerPort' in kwargs:
+            listener_port = kwargs['listenerPort']
+        if 'listenerProtocol' in kwargs:
+            listener_protocol = kwargs['listenerProtocol']
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+        if 'accessLogRecordCustomizedHeadersEnabled' in kwargs:
+            access_log_record_customized_headers_enabled = kwargs['accessLogRecordCustomizedHeadersEnabled']
+        if 'accessLogTracingConfig' in kwargs:
+            access_log_tracing_config = kwargs['accessLogTracingConfig']
+        if 'aclConfig' in kwargs:
+            acl_config = kwargs['aclConfig']
+        if 'defaultActions' in kwargs:
+            default_actions = kwargs['defaultActions']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'gzipEnabled' in kwargs:
+            gzip_enabled = kwargs['gzipEnabled']
+        if 'http2Enabled' in kwargs:
+            http2_enabled = kwargs['http2Enabled']
+        if 'idleTimeout' in kwargs:
+            idle_timeout = kwargs['idleTimeout']
+        if 'listenerDescription' in kwargs:
+            listener_description = kwargs['listenerDescription']
+        if 'quicConfig' in kwargs:
+            quic_config = kwargs['quicConfig']
+        if 'requestTimeout' in kwargs:
+            request_timeout = kwargs['requestTimeout']
+        if 'securityPolicyId' in kwargs:
+            security_policy_id = kwargs['securityPolicyId']
+        if 'xForwardedForConfig' in kwargs:
+            x_forwarded_for_config = kwargs['xForwardedForConfig']
+
         _setter("listener_port", listener_port)
         _setter("listener_protocol", listener_protocol)
         _setter("load_balancer_id", load_balancer_id)
@@ -457,7 +491,41 @@ class _ListenerState:
              security_policy_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              x_forwarded_for_config: Optional[pulumi.Input['ListenerXForwardedForConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessLogRecordCustomizedHeadersEnabled' in kwargs:
+            access_log_record_customized_headers_enabled = kwargs['accessLogRecordCustomizedHeadersEnabled']
+        if 'accessLogTracingConfig' in kwargs:
+            access_log_tracing_config = kwargs['accessLogTracingConfig']
+        if 'aclConfig' in kwargs:
+            acl_config = kwargs['aclConfig']
+        if 'defaultActions' in kwargs:
+            default_actions = kwargs['defaultActions']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'gzipEnabled' in kwargs:
+            gzip_enabled = kwargs['gzipEnabled']
+        if 'http2Enabled' in kwargs:
+            http2_enabled = kwargs['http2Enabled']
+        if 'idleTimeout' in kwargs:
+            idle_timeout = kwargs['idleTimeout']
+        if 'listenerDescription' in kwargs:
+            listener_description = kwargs['listenerDescription']
+        if 'listenerPort' in kwargs:
+            listener_port = kwargs['listenerPort']
+        if 'listenerProtocol' in kwargs:
+            listener_protocol = kwargs['listenerProtocol']
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+        if 'quicConfig' in kwargs:
+            quic_config = kwargs['quicConfig']
+        if 'requestTimeout' in kwargs:
+            request_timeout = kwargs['requestTimeout']
+        if 'securityPolicyId' in kwargs:
+            security_policy_id = kwargs['securityPolicyId']
+        if 'xForwardedForConfig' in kwargs:
+            x_forwarded_for_config = kwargs['xForwardedForConfig']
+
         if access_log_record_customized_headers_enabled is not None:
             _setter("access_log_record_customized_headers_enabled", access_log_record_customized_headers_enabled)
         if access_log_tracing_config is not None:
@@ -751,7 +819,7 @@ class Listener(pulumi.CustomResource):
         """
         Provides a Application Load Balancer (ALB) Listener resource.
 
-        For information about Application Load Balancer (ALB) Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createlistener).
+        For information about Application Load Balancer (ALB) Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createlistener).
 
         > **NOTE:** Available since v1.133.0.
 
@@ -799,7 +867,7 @@ class Listener(pulumi.CustomResource):
         """
         Provides a Application Load Balancer (ALB) Listener resource.
 
-        For information about Application Load Balancer (ALB) Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createlistener).
+        For information about Application Load Balancer (ALB) Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createlistener).
 
         > **NOTE:** Available since v1.133.0.
 

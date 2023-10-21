@@ -16,9 +16,17 @@ public final class GetLaunchOptionsArgs extends com.pulumi.resources.InvokeArgs 
 
     public static final GetLaunchOptionsArgs Empty = new GetLaunchOptionsArgs();
 
+    /**
+     * A list of Launch Option IDs.
+     * 
+     */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
+    /**
+     * @return A list of Launch Option IDs.
+     * 
+     */
     public Optional<Output<List<String>>> ids() {
         return Optional.ofNullable(this.ids);
     }
@@ -95,15 +103,33 @@ public final class GetLaunchOptionsArgs extends com.pulumi.resources.InvokeArgs 
             $ = new GetLaunchOptionsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ids A list of Launch Option IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(@Nullable Output<List<String>> ids) {
             $.ids = ids;
             return this;
         }
 
+        /**
+         * @param ids A list of Launch Option IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(List<String> ids) {
             return ids(Output.of(ids));
         }
 
+        /**
+         * @param ids A list of Launch Option IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }

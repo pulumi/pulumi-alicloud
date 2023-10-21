@@ -35,7 +35,15 @@ class GroupPolicyAttachmentArgs:
              group_name: pulumi.Input[str],
              policy_name: pulumi.Input[str],
              policy_type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if 'policyType' in kwargs:
+            policy_type = kwargs['policyType']
+
         _setter("group_name", group_name)
         _setter("policy_name", policy_name)
         _setter("policy_type", policy_type)
@@ -101,7 +109,15 @@ class _GroupPolicyAttachmentState:
              group_name: Optional[pulumi.Input[str]] = None,
              policy_name: Optional[pulumi.Input[str]] = None,
              policy_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if 'policyType' in kwargs:
+            policy_type = kwargs['policyType']
+
         if group_name is not None:
             _setter("group_name", group_name)
         if policy_name is not None:

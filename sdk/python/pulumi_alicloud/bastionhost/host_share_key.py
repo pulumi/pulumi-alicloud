@@ -39,7 +39,17 @@ class HostShareKeyArgs:
              instance_id: pulumi.Input[str],
              private_key: pulumi.Input[str],
              pass_phrase: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'hostShareKeyName' in kwargs:
+            host_share_key_name = kwargs['hostShareKeyName']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if 'passPhrase' in kwargs:
+            pass_phrase = kwargs['passPhrase']
+
         _setter("host_share_key_name", host_share_key_name)
         _setter("instance_id", instance_id)
         _setter("private_key", private_key)
@@ -131,7 +141,21 @@ class _HostShareKeyState:
              pass_phrase: Optional[pulumi.Input[str]] = None,
              private_key: Optional[pulumi.Input[str]] = None,
              private_key_finger_print: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'hostShareKeyId' in kwargs:
+            host_share_key_id = kwargs['hostShareKeyId']
+        if 'hostShareKeyName' in kwargs:
+            host_share_key_name = kwargs['hostShareKeyName']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'passPhrase' in kwargs:
+            pass_phrase = kwargs['passPhrase']
+        if 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if 'privateKeyFingerPrint' in kwargs:
+            private_key_finger_print = kwargs['privateKeyFingerPrint']
+
         if host_share_key_id is not None:
             _setter("host_share_key_id", host_share_key_id)
         if host_share_key_name is not None:

@@ -31,7 +31,13 @@ class WafDomainArgs:
              _setter: Callable[[Any, Any], None],
              domain_name: pulumi.Input[str],
              client_ip_tag: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'clientIpTag' in kwargs:
+            client_ip_tag = kwargs['clientIpTag']
+
         _setter("domain_name", domain_name)
         if client_ip_tag is not None:
             _setter("client_ip_tag", client_ip_tag)
@@ -81,7 +87,13 @@ class _WafDomainState:
              _setter: Callable[[Any, Any], None],
              client_ip_tag: Optional[pulumi.Input[str]] = None,
              domain_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clientIpTag' in kwargs:
+            client_ip_tag = kwargs['clientIpTag']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+
         if client_ip_tag is not None:
             _setter("client_ip_tag", client_ip_tag)
         if domain_name is not None:
@@ -123,7 +135,7 @@ class WafDomain(pulumi.CustomResource):
         """
         Provides a DCDN Waf Domain resource.
 
-        For information about DCDN Waf Domain and how to use it, see [What is Waf Domain](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/batch-configure-domain-name-protection).
+        For information about DCDN Waf Domain and how to use it, see [What is Waf Domain](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchsetdcdnwafdomainconfigs).
 
         > **NOTE:** Available since v1.185.0.
 
@@ -176,7 +188,7 @@ class WafDomain(pulumi.CustomResource):
         """
         Provides a DCDN Waf Domain resource.
 
-        For information about DCDN Waf Domain and how to use it, see [What is Waf Domain](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/batch-configure-domain-name-protection).
+        For information about DCDN Waf Domain and how to use it, see [What is Waf Domain](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchsetdcdnwafdomainconfigs).
 
         > **NOTE:** Available since v1.185.0.
 

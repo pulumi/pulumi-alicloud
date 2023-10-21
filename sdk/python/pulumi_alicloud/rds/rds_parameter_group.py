@@ -45,7 +45,17 @@ class RdsParameterGroupArgs:
              param_details: pulumi.Input[Sequence[pulumi.Input['RdsParameterGroupParamDetailArgs']]],
              parameter_group_name: pulumi.Input[str],
              parameter_group_desc: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'paramDetails' in kwargs:
+            param_details = kwargs['paramDetails']
+        if 'parameterGroupName' in kwargs:
+            parameter_group_name = kwargs['parameterGroupName']
+        if 'parameterGroupDesc' in kwargs:
+            parameter_group_desc = kwargs['parameterGroupDesc']
+
         _setter("engine", engine)
         _setter("engine_version", engine_version)
         _setter("param_details", param_details)
@@ -146,7 +156,17 @@ class _RdsParameterGroupState:
              param_details: Optional[pulumi.Input[Sequence[pulumi.Input['RdsParameterGroupParamDetailArgs']]]] = None,
              parameter_group_desc: Optional[pulumi.Input[str]] = None,
              parameter_group_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'paramDetails' in kwargs:
+            param_details = kwargs['paramDetails']
+        if 'parameterGroupDesc' in kwargs:
+            parameter_group_desc = kwargs['parameterGroupDesc']
+        if 'parameterGroupName' in kwargs:
+            parameter_group_name = kwargs['parameterGroupName']
+
         if engine is not None:
             _setter("engine", engine)
         if engine_version is not None:

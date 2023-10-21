@@ -35,7 +35,15 @@ class InstanceGrantArgs:
              cen_id: pulumi.Input[str],
              cen_owner_id: pulumi.Input[str],
              child_instance_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'cenOwnerId' in kwargs:
+            cen_owner_id = kwargs['cenOwnerId']
+        if 'childInstanceId' in kwargs:
+            child_instance_id = kwargs['childInstanceId']
+
         _setter("cen_id", cen_id)
         _setter("cen_owner_id", cen_owner_id)
         _setter("child_instance_id", child_instance_id)
@@ -101,7 +109,15 @@ class _InstanceGrantState:
              cen_id: Optional[pulumi.Input[str]] = None,
              cen_owner_id: Optional[pulumi.Input[str]] = None,
              child_instance_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'cenOwnerId' in kwargs:
+            cen_owner_id = kwargs['cenOwnerId']
+        if 'childInstanceId' in kwargs:
+            child_instance_id = kwargs['childInstanceId']
+
         if cen_id is not None:
             _setter("cen_id", cen_id)
         if cen_owner_id is not None:
@@ -158,7 +174,7 @@ class InstanceGrant(pulumi.CustomResource):
         """
         Provides a CEN child instance grant resource, which allow you to authorize a VPC or VBR to a CEN of a different account.
 
-        For more information about how to use it, see [Attach a network in a different account](https://www.alibabacloud.com/help/zh/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-attachcenchildinstance).
+        For more information about how to use it, see [Attach a network in a different account](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-attachcenchildinstance).
 
         > **NOTE:** Available since v1.37.0.
 
@@ -236,7 +252,7 @@ class InstanceGrant(pulumi.CustomResource):
         """
         Provides a CEN child instance grant resource, which allow you to authorize a VPC or VBR to a CEN of a different account.
 
-        For more information about how to use it, see [Attach a network in a different account](https://www.alibabacloud.com/help/zh/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-attachcenchildinstance).
+        For more information about how to use it, see [Attach a network in a different account](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-attachcenchildinstance).
 
         > **NOTE:** Available since v1.37.0.
 

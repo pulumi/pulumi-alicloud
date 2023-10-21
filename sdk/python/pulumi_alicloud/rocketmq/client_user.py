@@ -55,7 +55,21 @@ class ClientUserArgs:
              kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              password: Optional[pulumi.Input[str]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'sagId' in kwargs:
+            sag_id = kwargs['sagId']
+        if 'userMail' in kwargs:
+            user_mail = kwargs['userMail']
+        if 'clientIp' in kwargs:
+            client_ip = kwargs['clientIp']
+        if 'kmsEncryptedPassword' in kwargs:
+            kms_encrypted_password = kwargs['kmsEncryptedPassword']
+        if 'kmsEncryptionContext' in kwargs:
+            kms_encryption_context = kwargs['kmsEncryptionContext']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         _setter("bandwidth", bandwidth)
         _setter("sag_id", sag_id)
         _setter("user_mail", user_mail)
@@ -211,7 +225,21 @@ class _ClientUserState:
              sag_id: Optional[pulumi.Input[str]] = None,
              user_mail: Optional[pulumi.Input[str]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clientIp' in kwargs:
+            client_ip = kwargs['clientIp']
+        if 'kmsEncryptedPassword' in kwargs:
+            kms_encrypted_password = kwargs['kmsEncryptedPassword']
+        if 'kmsEncryptionContext' in kwargs:
+            kms_encryption_context = kwargs['kmsEncryptionContext']
+        if 'sagId' in kwargs:
+            sag_id = kwargs['sagId']
+        if 'userMail' in kwargs:
+            user_mail = kwargs['userMail']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         if bandwidth is not None:
             _setter("bandwidth", bandwidth)
         if client_ip is not None:

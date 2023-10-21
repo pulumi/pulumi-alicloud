@@ -35,7 +35,15 @@ class TransitRouterMulticastDomainAssociationArgs:
              transit_router_attachment_id: pulumi.Input[str],
              transit_router_multicast_domain_id: pulumi.Input[str],
              vswitch_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'transitRouterAttachmentId' in kwargs:
+            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
+        if 'transitRouterMulticastDomainId' in kwargs:
+            transit_router_multicast_domain_id = kwargs['transitRouterMulticastDomainId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("transit_router_attachment_id", transit_router_attachment_id)
         _setter("transit_router_multicast_domain_id", transit_router_multicast_domain_id)
         _setter("vswitch_id", vswitch_id)
@@ -105,7 +113,15 @@ class _TransitRouterMulticastDomainAssociationState:
              transit_router_attachment_id: Optional[pulumi.Input[str]] = None,
              transit_router_multicast_domain_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'transitRouterAttachmentId' in kwargs:
+            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
+        if 'transitRouterMulticastDomainId' in kwargs:
+            transit_router_multicast_domain_id = kwargs['transitRouterMulticastDomainId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if status is not None:
             _setter("status", status)
         if transit_router_attachment_id is not None:
@@ -176,7 +192,7 @@ class TransitRouterMulticastDomainAssociation(pulumi.CustomResource):
         """
         Provides a Cloud Enterprise Network (CEN) Transit Router Multicast Domain Association resource.
 
-        For information about Cloud Enterprise Network (CEN) Transit Router Multicast Domain Association and how to use it, see [What is Transit Router Multicast Domain Association](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-associatetransitroutermulticastdomain).
+        For information about Cloud Enterprise Network (CEN) Transit Router Multicast Domain Association and how to use it, see [What is Transit Router Multicast Domain Association](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-associatetransitroutermulticastdomain).
 
         > **NOTE:** Available since v1.195.0.
 
@@ -247,7 +263,7 @@ class TransitRouterMulticastDomainAssociation(pulumi.CustomResource):
         """
         Provides a Cloud Enterprise Network (CEN) Transit Router Multicast Domain Association resource.
 
-        For information about Cloud Enterprise Network (CEN) Transit Router Multicast Domain Association and how to use it, see [What is Transit Router Multicast Domain Association](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-associatetransitroutermulticastdomain).
+        For information about Cloud Enterprise Network (CEN) Transit Router Multicast Domain Association and how to use it, see [What is Transit Router Multicast Domain Association](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-associatetransitroutermulticastdomain).
 
         > **NOTE:** Available since v1.195.0.
 

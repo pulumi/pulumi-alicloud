@@ -164,7 +164,7 @@ export class Alarm extends pulumi.CustomResource {
      */
     public readonly evaluationCount!: pulumi.Output<number | undefined>;
     /**
-     * The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
+     * The name for the alarm's associated metric. See `dimensions` below for details.
      */
     public readonly metricName!: pulumi.Output<string>;
     /**
@@ -295,7 +295,7 @@ export interface AlarmState {
      */
     evaluationCount?: pulumi.Input<number>;
     /**
-     * The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
+     * The name for the alarm's associated metric. See `dimensions` below for details.
      */
     metricName?: pulumi.Input<string>;
     /**
@@ -364,7 +364,7 @@ export interface AlarmArgs {
      */
     evaluationCount?: pulumi.Input<number>;
     /**
-     * The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
+     * The name for the alarm's associated metric. See `dimensions` below for details.
      */
     metricName: pulumi.Input<string>;
     /**

@@ -14,8 +14,6 @@ namespace Pulumi.AliCloud.Pvtz.Inputs
     {
         /// <summary>
         /// The region of the vpc. If not set, the current region will instead of.
-        /// 
-        /// Recommend to use `vpcs`.
         /// </summary>
         [Input("regionId")]
         public Input<string>? RegionId { get; set; }

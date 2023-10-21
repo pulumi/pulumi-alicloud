@@ -105,7 +105,43 @@ class GtmInstanceArgs:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              strategy_mode: Optional[pulumi.Input[str]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'healthCheckTaskCount' in kwargs:
+            health_check_task_count = kwargs['healthCheckTaskCount']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'packageEdition' in kwargs:
+            package_edition = kwargs['packageEdition']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'smsNotificationCount' in kwargs:
+            sms_notification_count = kwargs['smsNotificationCount']
+        if 'alertConfigs' in kwargs:
+            alert_configs = kwargs['alertConfigs']
+        if 'alertGroups' in kwargs:
+            alert_groups = kwargs['alertGroups']
+        if 'cnameType' in kwargs:
+            cname_type = kwargs['cnameType']
+        if 'forceUpdate' in kwargs:
+            force_update = kwargs['forceUpdate']
+        if 'publicCnameMode' in kwargs:
+            public_cname_mode = kwargs['publicCnameMode']
+        if 'publicRr' in kwargs:
+            public_rr = kwargs['publicRr']
+        if 'publicUserDomainName' in kwargs:
+            public_user_domain_name = kwargs['publicUserDomainName']
+        if 'publicZoneName' in kwargs:
+            public_zone_name = kwargs['publicZoneName']
+        if 'renewPeriod' in kwargs:
+            renew_period = kwargs['renewPeriod']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'strategyMode' in kwargs:
+            strategy_mode = kwargs['strategyMode']
+
         _setter("health_check_task_count", health_check_task_count)
         _setter("instance_name", instance_name)
         _setter("package_edition", package_edition)
@@ -474,7 +510,43 @@ class _GtmInstanceState:
              sms_notification_count: Optional[pulumi.Input[int]] = None,
              strategy_mode: Optional[pulumi.Input[str]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alertConfigs' in kwargs:
+            alert_configs = kwargs['alertConfigs']
+        if 'alertGroups' in kwargs:
+            alert_groups = kwargs['alertGroups']
+        if 'cnameType' in kwargs:
+            cname_type = kwargs['cnameType']
+        if 'forceUpdate' in kwargs:
+            force_update = kwargs['forceUpdate']
+        if 'healthCheckTaskCount' in kwargs:
+            health_check_task_count = kwargs['healthCheckTaskCount']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'packageEdition' in kwargs:
+            package_edition = kwargs['packageEdition']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'publicCnameMode' in kwargs:
+            public_cname_mode = kwargs['publicCnameMode']
+        if 'publicRr' in kwargs:
+            public_rr = kwargs['publicRr']
+        if 'publicUserDomainName' in kwargs:
+            public_user_domain_name = kwargs['publicUserDomainName']
+        if 'publicZoneName' in kwargs:
+            public_zone_name = kwargs['publicZoneName']
+        if 'renewPeriod' in kwargs:
+            renew_period = kwargs['renewPeriod']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'smsNotificationCount' in kwargs:
+            sms_notification_count = kwargs['smsNotificationCount']
+        if 'strategyMode' in kwargs:
+            strategy_mode = kwargs['strategyMode']
+
         if alert_configs is not None:
             _setter("alert_configs", alert_configs)
         if alert_groups is not None:

@@ -37,7 +37,15 @@ class DomainConfigArgs:
              domain_name: pulumi.Input[str],
              function_args: pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]],
              function_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'functionArgs' in kwargs:
+            function_args = kwargs['functionArgs']
+        if 'functionName' in kwargs:
+            function_name = kwargs['functionName']
+
         _setter("domain_name", domain_name)
         _setter("function_args", function_args)
         _setter("function_name", function_name)
@@ -111,7 +119,17 @@ class _DomainConfigState:
              function_args: Optional[pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]]] = None,
              function_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configId' in kwargs:
+            config_id = kwargs['configId']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'functionArgs' in kwargs:
+            function_args = kwargs['functionArgs']
+        if 'functionName' in kwargs:
+            function_name = kwargs['functionName']
+
         if config_id is not None:
             _setter("config_id", config_id)
         if domain_name is not None:
@@ -200,6 +218,8 @@ class DomainConfig(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.131.0+.
 
+        > **NOTE:** Alibaba Cloud SCDN has stopped new customer purchases from January 26, 2023, and you can choose to buy Alibaba Cloud DCDN products with more comprehensive acceleration and protection capabilities. If you are already a SCDN customer, you can submit a work order at any time to apply for a smooth migration to Alibaba Cloud DCDN products. In the future, we will provide better acceleration and security protection services in Alibaba Cloud DCDN, thank you for your understanding and cooperation.
+
         ## Import
 
         SCDN domain config can be imported using the id, e.g.
@@ -226,6 +246,8 @@ class DomainConfig(pulumi.CustomResource):
         For information about domain config and how to use it, see [Batch set config](https://help.aliyun.com/document_detail/92912.html)
 
         > **NOTE:** Available in v1.131.0+.
+
+        > **NOTE:** Alibaba Cloud SCDN has stopped new customer purchases from January 26, 2023, and you can choose to buy Alibaba Cloud DCDN products with more comprehensive acceleration and protection capabilities. If you are already a SCDN customer, you can submit a work order at any time to apply for a smooth migration to Alibaba Cloud DCDN products. In the future, we will provide better acceleration and security protection services in Alibaba Cloud DCDN, thank you for your understanding and cooperation.
 
         ## Import
 

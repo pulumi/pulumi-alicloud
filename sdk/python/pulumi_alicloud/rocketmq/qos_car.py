@@ -63,7 +63,23 @@ class QosCarArgs:
              min_bandwidth_percent: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
              percent_source_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'limitType' in kwargs:
+            limit_type = kwargs['limitType']
+        if 'qosId' in kwargs:
+            qos_id = kwargs['qosId']
+        if 'maxBandwidthAbs' in kwargs:
+            max_bandwidth_abs = kwargs['maxBandwidthAbs']
+        if 'maxBandwidthPercent' in kwargs:
+            max_bandwidth_percent = kwargs['maxBandwidthPercent']
+        if 'minBandwidthAbs' in kwargs:
+            min_bandwidth_abs = kwargs['minBandwidthAbs']
+        if 'minBandwidthPercent' in kwargs:
+            min_bandwidth_percent = kwargs['minBandwidthPercent']
+        if 'percentSourceType' in kwargs:
+            percent_source_type = kwargs['percentSourceType']
+
         _setter("limit_type", limit_type)
         _setter("priority", priority)
         _setter("qos_id", qos_id)
@@ -255,7 +271,23 @@ class _QosCarState:
              percent_source_type: Optional[pulumi.Input[str]] = None,
              priority: Optional[pulumi.Input[int]] = None,
              qos_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'limitType' in kwargs:
+            limit_type = kwargs['limitType']
+        if 'maxBandwidthAbs' in kwargs:
+            max_bandwidth_abs = kwargs['maxBandwidthAbs']
+        if 'maxBandwidthPercent' in kwargs:
+            max_bandwidth_percent = kwargs['maxBandwidthPercent']
+        if 'minBandwidthAbs' in kwargs:
+            min_bandwidth_abs = kwargs['minBandwidthAbs']
+        if 'minBandwidthPercent' in kwargs:
+            min_bandwidth_percent = kwargs['minBandwidthPercent']
+        if 'percentSourceType' in kwargs:
+            percent_source_type = kwargs['percentSourceType']
+        if 'qosId' in kwargs:
+            qos_id = kwargs['qosId']
+
         if description is not None:
             _setter("description", description)
         if limit_type is not None:

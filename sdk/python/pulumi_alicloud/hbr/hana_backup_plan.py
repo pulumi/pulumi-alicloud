@@ -59,7 +59,23 @@ class HanaBackupPlanArgs:
              backup_prefix: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupType' in kwargs:
+            backup_type = kwargs['backupType']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'databaseName' in kwargs:
+            database_name = kwargs['databaseName']
+        if 'planName' in kwargs:
+            plan_name = kwargs['planName']
+        if 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+        if 'backupPrefix' in kwargs:
+            backup_prefix = kwargs['backupPrefix']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("backup_type", backup_type)
         _setter("cluster_id", cluster_id)
         _setter("database_name", database_name)
@@ -234,7 +250,25 @@ class _HanaBackupPlanState:
              schedule: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              vault_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupPrefix' in kwargs:
+            backup_prefix = kwargs['backupPrefix']
+        if 'backupType' in kwargs:
+            backup_type = kwargs['backupType']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'databaseName' in kwargs:
+            database_name = kwargs['databaseName']
+        if 'planId' in kwargs:
+            plan_id = kwargs['planId']
+        if 'planName' in kwargs:
+            plan_name = kwargs['planName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+
         if backup_prefix is not None:
             _setter("backup_prefix", backup_prefix)
         if backup_type is not None:
@@ -395,7 +429,7 @@ class HanaBackupPlan(pulumi.CustomResource):
         """
         Provides a Hybrid Backup Recovery (HBR) Hana Backup Plan resource.
 
-        For information about Hybrid Backup Recovery (HBR) Hana Backup Plan and how to use it, see [What is Hana Backup Plan](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-doc-hbr-2017-09-08-api-doc-createhanabackupplan).
+        For information about Hybrid Backup Recovery (HBR) Hana Backup Plan and how to use it, see [What is Hana Backup Plan](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createhanabackupplan).
 
         > **NOTE:** Available in v1.179.0+.
 
@@ -461,7 +495,7 @@ class HanaBackupPlan(pulumi.CustomResource):
         """
         Provides a Hybrid Backup Recovery (HBR) Hana Backup Plan resource.
 
-        For information about Hybrid Backup Recovery (HBR) Hana Backup Plan and how to use it, see [What is Hana Backup Plan](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-doc-hbr-2017-09-08-api-doc-createhanabackupplan).
+        For information about Hybrid Backup Recovery (HBR) Hana Backup Plan and how to use it, see [What is Hana Backup Plan](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createhanabackupplan).
 
         > **NOTE:** Available in v1.179.0+.
 

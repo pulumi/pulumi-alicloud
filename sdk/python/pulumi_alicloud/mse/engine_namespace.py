@@ -39,7 +39,17 @@ class EngineNamespaceArgs:
              namespace_id: pulumi.Input[str],
              namespace_show_name: pulumi.Input[str],
              accept_language: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+        if 'namespaceShowName' in kwargs:
+            namespace_show_name = kwargs['namespaceShowName']
+        if 'acceptLanguage' in kwargs:
+            accept_language = kwargs['acceptLanguage']
+
         _setter("cluster_id", cluster_id)
         _setter("namespace_id", namespace_id)
         _setter("namespace_show_name", namespace_show_name)
@@ -123,7 +133,17 @@ class _EngineNamespaceState:
              cluster_id: Optional[pulumi.Input[str]] = None,
              namespace_id: Optional[pulumi.Input[str]] = None,
              namespace_show_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceptLanguage' in kwargs:
+            accept_language = kwargs['acceptLanguage']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+        if 'namespaceShowName' in kwargs:
+            namespace_show_name = kwargs['namespaceShowName']
+
         if accept_language is not None:
             _setter("accept_language", accept_language)
         if cluster_id is not None:
@@ -195,7 +215,7 @@ class EngineNamespace(pulumi.CustomResource):
         """
         Provides a Microservice Engine (MSE) Engine Namespace resource.
 
-        For information about Microservice Engine (MSE) Engine Namespace and how to use it, see [What is Engine Namespace](https://www.alibabacloud.com/help/zh/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createenginenamespace).
+        For information about Microservice Engine (MSE) Engine Namespace and how to use it, see [What is Engine Namespace](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createenginenamespace).
 
         > **NOTE:** Available in v1.166.0+.
 
@@ -258,7 +278,7 @@ class EngineNamespace(pulumi.CustomResource):
         """
         Provides a Microservice Engine (MSE) Engine Namespace resource.
 
-        For information about Microservice Engine (MSE) Engine Namespace and how to use it, see [What is Engine Namespace](https://www.alibabacloud.com/help/zh/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createenginenamespace).
+        For information about Microservice Engine (MSE) Engine Namespace and how to use it, see [What is Engine Namespace](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createenginenamespace).
 
         > **NOTE:** Available in v1.166.0+.
 

@@ -45,7 +45,13 @@ class AttachmentArgs:
              instance_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
              scaling_group_id: pulumi.Input[str],
              force: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceIds' in kwargs:
+            instance_ids = kwargs['instanceIds']
+        if 'scalingGroupId' in kwargs:
+            scaling_group_id = kwargs['scalingGroupId']
+
         _setter("instance_ids", instance_ids)
         _setter("scaling_group_id", scaling_group_id)
         if force is not None:
@@ -132,7 +138,13 @@ class _AttachmentState:
              force: Optional[pulumi.Input[bool]] = None,
              instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              scaling_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceIds' in kwargs:
+            instance_ids = kwargs['instanceIds']
+        if 'scalingGroupId' in kwargs:
+            scaling_group_id = kwargs['scalingGroupId']
+
         if force is not None:
             _setter("force", force)
         if instance_ids is not None:

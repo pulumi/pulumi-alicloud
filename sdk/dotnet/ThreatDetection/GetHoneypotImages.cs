@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     public static class GetHoneypotImages
     {
         /// <summary>
-        /// This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-listavailablehoneypot)
+        /// This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
         /// 
         /// &gt; **NOTE:** Available in 1.195.0+
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.ThreatDetection
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHoneypotImagesResult>("alicloud:threatdetection/getHoneypotImages:getHoneypotImages", args ?? new GetHoneypotImagesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-listavailablehoneypot)
+        /// This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
         /// 
         /// &gt; **NOTE:** Available in 1.195.0+
         /// 

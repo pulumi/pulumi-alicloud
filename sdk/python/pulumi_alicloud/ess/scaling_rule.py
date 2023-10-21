@@ -75,7 +75,29 @@ class ScalingRuleArgs:
              scaling_rule_type: Optional[pulumi.Input[str]] = None,
              step_adjustments: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]]] = None,
              target_value: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'scalingGroupId' in kwargs:
+            scaling_group_id = kwargs['scalingGroupId']
+        if 'adjustmentType' in kwargs:
+            adjustment_type = kwargs['adjustmentType']
+        if 'adjustmentValue' in kwargs:
+            adjustment_value = kwargs['adjustmentValue']
+        if 'disableScaleIn' in kwargs:
+            disable_scale_in = kwargs['disableScaleIn']
+        if 'estimatedInstanceWarmup' in kwargs:
+            estimated_instance_warmup = kwargs['estimatedInstanceWarmup']
+        if 'metricName' in kwargs:
+            metric_name = kwargs['metricName']
+        if 'scalingRuleName' in kwargs:
+            scaling_rule_name = kwargs['scalingRuleName']
+        if 'scalingRuleType' in kwargs:
+            scaling_rule_type = kwargs['scalingRuleType']
+        if 'stepAdjustments' in kwargs:
+            step_adjustments = kwargs['stepAdjustments']
+        if 'targetValue' in kwargs:
+            target_value = kwargs['targetValue']
+
         _setter("scaling_group_id", scaling_group_id)
         if adjustment_type is not None:
             _setter("adjustment_type", adjustment_type)
@@ -303,7 +325,29 @@ class _ScalingRuleState:
              scaling_rule_type: Optional[pulumi.Input[str]] = None,
              step_adjustments: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]]] = None,
              target_value: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'adjustmentType' in kwargs:
+            adjustment_type = kwargs['adjustmentType']
+        if 'adjustmentValue' in kwargs:
+            adjustment_value = kwargs['adjustmentValue']
+        if 'disableScaleIn' in kwargs:
+            disable_scale_in = kwargs['disableScaleIn']
+        if 'estimatedInstanceWarmup' in kwargs:
+            estimated_instance_warmup = kwargs['estimatedInstanceWarmup']
+        if 'metricName' in kwargs:
+            metric_name = kwargs['metricName']
+        if 'scalingGroupId' in kwargs:
+            scaling_group_id = kwargs['scalingGroupId']
+        if 'scalingRuleName' in kwargs:
+            scaling_rule_name = kwargs['scalingRuleName']
+        if 'scalingRuleType' in kwargs:
+            scaling_rule_type = kwargs['scalingRuleType']
+        if 'stepAdjustments' in kwargs:
+            step_adjustments = kwargs['stepAdjustments']
+        if 'targetValue' in kwargs:
+            target_value = kwargs['targetValue']
+
         if adjustment_type is not None:
             _setter("adjustment_type", adjustment_type)
         if adjustment_value is not None:

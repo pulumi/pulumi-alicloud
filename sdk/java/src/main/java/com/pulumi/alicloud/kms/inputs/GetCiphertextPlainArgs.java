@@ -16,14 +16,14 @@ public final class GetCiphertextPlainArgs extends com.pulumi.resources.InvokeArg
     public static final GetCiphertextPlainArgs Empty = new GetCiphertextPlainArgs();
 
     /**
-     * (Optional) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+     * The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
      * 
      */
     @Import(name="encryptionContext")
     private @Nullable Map<String,String> encryptionContext;
 
     /**
-     * @return (Optional) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+     * @return The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
      * 
      */
     public Optional<Map<String,String>> encryptionContext() {
@@ -87,7 +87,7 @@ public final class GetCiphertextPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param encryptionContext (Optional) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+         * @param encryptionContext The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
          * 
          * @return builder
          * 

@@ -35,7 +35,15 @@ class SharedResourceArgs:
              resource_id: pulumi.Input[str],
              resource_share_id: pulumi.Input[str],
              resource_type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+        if 'resourceShareId' in kwargs:
+            resource_share_id = kwargs['resourceShareId']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+
         _setter("resource_id", resource_id)
         _setter("resource_share_id", resource_share_id)
         _setter("resource_type", resource_type)
@@ -105,7 +113,15 @@ class _SharedResourceState:
              resource_share_id: Optional[pulumi.Input[str]] = None,
              resource_type: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+        if 'resourceShareId' in kwargs:
+            resource_share_id = kwargs['resourceShareId']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+
         if resource_id is not None:
             _setter("resource_id", resource_id)
         if resource_share_id is not None:

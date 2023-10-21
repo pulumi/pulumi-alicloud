@@ -45,7 +45,19 @@ class EndpointArgs:
              security_group_id: pulumi.Input[str],
              vpc_id: pulumi.Input[str],
              vpc_region_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'endpointName' in kwargs:
+            endpoint_name = kwargs['endpointName']
+        if 'ipConfigs' in kwargs:
+            ip_configs = kwargs['ipConfigs']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vpcRegionId' in kwargs:
+            vpc_region_id = kwargs['vpcRegionId']
+
         _setter("endpoint_name", endpoint_name)
         _setter("ip_configs", ip_configs)
         _setter("security_group_id", security_group_id)
@@ -149,7 +161,19 @@ class _EndpointState:
              status: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vpc_region_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'endpointName' in kwargs:
+            endpoint_name = kwargs['endpointName']
+        if 'ipConfigs' in kwargs:
+            ip_configs = kwargs['ipConfigs']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vpcRegionId' in kwargs:
+            vpc_region_id = kwargs['vpcRegionId']
+
         if endpoint_name is not None:
             _setter("endpoint_name", endpoint_name)
         if ip_configs is not None:

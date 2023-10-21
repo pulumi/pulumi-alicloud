@@ -43,7 +43,11 @@ class FlowArgs:
              type: pulumi.Input[str],
              name: Optional[pulumi.Input[str]] = None,
              role_arn: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+
         _setter("definition", definition)
         _setter("description", description)
         _setter("type", type)
@@ -153,7 +157,15 @@ class _FlowState:
              name: Optional[pulumi.Input[str]] = None,
              role_arn: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'flowId' in kwargs:
+            flow_id = kwargs['flowId']
+        if 'lastModifiedTime' in kwargs:
+            last_modified_time = kwargs['lastModifiedTime']
+        if 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+
         if definition is not None:
             _setter("definition", definition)
         if description is not None:

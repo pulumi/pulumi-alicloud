@@ -35,7 +35,11 @@ class ApplicationAccessPointArgs:
              application_access_point_name: pulumi.Input[str],
              policies: pulumi.Input[Sequence[pulumi.Input[str]]],
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applicationAccessPointName' in kwargs:
+            application_access_point_name = kwargs['applicationAccessPointName']
+
         _setter("application_access_point_name", application_access_point_name)
         _setter("policies", policies)
         if description is not None:
@@ -102,7 +106,11 @@ class _ApplicationAccessPointState:
              application_access_point_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applicationAccessPointName' in kwargs:
+            application_access_point_name = kwargs['applicationAccessPointName']
+
         if application_access_point_name is not None:
             _setter("application_access_point_name", application_access_point_name)
         if description is not None:

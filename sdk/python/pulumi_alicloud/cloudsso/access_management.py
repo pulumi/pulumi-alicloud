@@ -51,7 +51,23 @@ class AccessManagementArgs:
              target_id: pulumi.Input[str],
              target_type: pulumi.Input[str],
              deprovision_strategy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessConfigurationId' in kwargs:
+            access_configuration_id = kwargs['accessConfigurationId']
+        if 'directoryId' in kwargs:
+            directory_id = kwargs['directoryId']
+        if 'principalId' in kwargs:
+            principal_id = kwargs['principalId']
+        if 'principalType' in kwargs:
+            principal_type = kwargs['principalType']
+        if 'targetId' in kwargs:
+            target_id = kwargs['targetId']
+        if 'targetType' in kwargs:
+            target_type = kwargs['targetType']
+        if 'deprovisionStrategy' in kwargs:
+            deprovision_strategy = kwargs['deprovisionStrategy']
+
         _setter("access_configuration_id", access_configuration_id)
         _setter("directory_id", directory_id)
         _setter("principal_id", principal_id)
@@ -186,7 +202,23 @@ class _AccessManagementState:
              principal_type: Optional[pulumi.Input[str]] = None,
              target_id: Optional[pulumi.Input[str]] = None,
              target_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessConfigurationId' in kwargs:
+            access_configuration_id = kwargs['accessConfigurationId']
+        if 'deprovisionStrategy' in kwargs:
+            deprovision_strategy = kwargs['deprovisionStrategy']
+        if 'directoryId' in kwargs:
+            directory_id = kwargs['directoryId']
+        if 'principalId' in kwargs:
+            principal_id = kwargs['principalId']
+        if 'principalType' in kwargs:
+            principal_type = kwargs['principalType']
+        if 'targetId' in kwargs:
+            target_id = kwargs['targetId']
+        if 'targetType' in kwargs:
+            target_type = kwargs['targetType']
+
         if access_configuration_id is not None:
             _setter("access_configuration_id", access_configuration_id)
         if deprovision_strategy is not None:

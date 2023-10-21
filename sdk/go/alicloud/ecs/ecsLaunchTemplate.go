@@ -16,7 +16,7 @@ import (
 //
 // For information about ECS Launch Template and how to use it, see [What is Launch Template](https://www.alibabacloud.com/help/en/doc-detail/74686.htm).
 //
-// > **NOTE:** Available in v1.120.0+.
+// > **NOTE:** Available since v1.120.0.
 //
 // ## Example Usage
 //
@@ -165,7 +165,7 @@ type EcsLaunchTemplate struct {
 
 	// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
 	AutoReleaseTime pulumi.StringPtrOutput `pulumi:"autoReleaseTime"`
-	// The list of data disks created with instance.
+	// The list of data disks created with instance. See `dataDisks` below.
 	DataDisks EcsLaunchTemplateDataDiskArrayOutput `pulumi:"dataDisks"`
 	// The Deployment Set Id.
 	DeploymentSetId pulumi.StringPtrOutput `pulumi:"deploymentSetId"`
@@ -203,7 +203,7 @@ type EcsLaunchTemplate struct {
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The list of network interfaces created with instance.
+	// The list of network interfaces created with instance. See `networkInterfaces` below.
 	NetworkInterfaces EcsLaunchTemplateNetworkInterfacesPtrOutput `pulumi:"networkInterfaces"`
 	// Network type of the instance. Valid values: `classic`, `vpc`.
 	NetworkType pulumi.StringPtrOutput `pulumi:"networkType"`
@@ -231,7 +231,7 @@ type EcsLaunchTemplate struct {
 	SpotPriceLimit pulumi.Float64PtrOutput `pulumi:"spotPriceLimit"`
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
 	SpotStrategy pulumi.StringPtrOutput `pulumi:"spotStrategy"`
-	// The System Disk.
+	// The System Disk. See `systemDisk` below.
 	SystemDisk EcsLaunchTemplateSystemDiskOutput `pulumi:"systemDisk"`
 	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
 	//
@@ -305,7 +305,7 @@ func GetEcsLaunchTemplate(ctx *pulumi.Context,
 type ecsLaunchTemplateState struct {
 	// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
 	AutoReleaseTime *string `pulumi:"autoReleaseTime"`
-	// The list of data disks created with instance.
+	// The list of data disks created with instance. See `dataDisks` below.
 	DataDisks []EcsLaunchTemplateDataDisk `pulumi:"dataDisks"`
 	// The Deployment Set Id.
 	DeploymentSetId *string `pulumi:"deploymentSetId"`
@@ -343,7 +343,7 @@ type ecsLaunchTemplateState struct {
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 	Name *string `pulumi:"name"`
-	// The list of network interfaces created with instance.
+	// The list of network interfaces created with instance. See `networkInterfaces` below.
 	NetworkInterfaces *EcsLaunchTemplateNetworkInterfaces `pulumi:"networkInterfaces"`
 	// Network type of the instance. Valid values: `classic`, `vpc`.
 	NetworkType *string `pulumi:"networkType"`
@@ -371,7 +371,7 @@ type ecsLaunchTemplateState struct {
 	SpotPriceLimit *float64 `pulumi:"spotPriceLimit"`
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
 	SpotStrategy *string `pulumi:"spotStrategy"`
-	// The System Disk.
+	// The System Disk. See `systemDisk` below.
 	SystemDisk *EcsLaunchTemplateSystemDisk `pulumi:"systemDisk"`
 	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
 	//
@@ -416,7 +416,7 @@ type ecsLaunchTemplateState struct {
 type EcsLaunchTemplateState struct {
 	// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
 	AutoReleaseTime pulumi.StringPtrInput
-	// The list of data disks created with instance.
+	// The list of data disks created with instance. See `dataDisks` below.
 	DataDisks EcsLaunchTemplateDataDiskArrayInput
 	// The Deployment Set Id.
 	DeploymentSetId pulumi.StringPtrInput
@@ -454,7 +454,7 @@ type EcsLaunchTemplateState struct {
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 	Name pulumi.StringPtrInput
-	// The list of network interfaces created with instance.
+	// The list of network interfaces created with instance. See `networkInterfaces` below.
 	NetworkInterfaces EcsLaunchTemplateNetworkInterfacesPtrInput
 	// Network type of the instance. Valid values: `classic`, `vpc`.
 	NetworkType pulumi.StringPtrInput
@@ -482,7 +482,7 @@ type EcsLaunchTemplateState struct {
 	SpotPriceLimit pulumi.Float64PtrInput
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
 	SpotStrategy pulumi.StringPtrInput
-	// The System Disk.
+	// The System Disk. See `systemDisk` below.
 	SystemDisk EcsLaunchTemplateSystemDiskPtrInput
 	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
 	//
@@ -531,7 +531,7 @@ func (EcsLaunchTemplateState) ElementType() reflect.Type {
 type ecsLaunchTemplateArgs struct {
 	// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
 	AutoReleaseTime *string `pulumi:"autoReleaseTime"`
-	// The list of data disks created with instance.
+	// The list of data disks created with instance. See `dataDisks` below.
 	DataDisks []EcsLaunchTemplateDataDisk `pulumi:"dataDisks"`
 	// The Deployment Set Id.
 	DeploymentSetId *string `pulumi:"deploymentSetId"`
@@ -569,7 +569,7 @@ type ecsLaunchTemplateArgs struct {
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 	Name *string `pulumi:"name"`
-	// The list of network interfaces created with instance.
+	// The list of network interfaces created with instance. See `networkInterfaces` below.
 	NetworkInterfaces *EcsLaunchTemplateNetworkInterfaces `pulumi:"networkInterfaces"`
 	// Network type of the instance. Valid values: `classic`, `vpc`.
 	NetworkType *string `pulumi:"networkType"`
@@ -597,7 +597,7 @@ type ecsLaunchTemplateArgs struct {
 	SpotPriceLimit *float64 `pulumi:"spotPriceLimit"`
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
 	SpotStrategy *string `pulumi:"spotStrategy"`
-	// The System Disk.
+	// The System Disk. See `systemDisk` below.
 	SystemDisk *EcsLaunchTemplateSystemDisk `pulumi:"systemDisk"`
 	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
 	//
@@ -643,7 +643,7 @@ type ecsLaunchTemplateArgs struct {
 type EcsLaunchTemplateArgs struct {
 	// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
 	AutoReleaseTime pulumi.StringPtrInput
-	// The list of data disks created with instance.
+	// The list of data disks created with instance. See `dataDisks` below.
 	DataDisks EcsLaunchTemplateDataDiskArrayInput
 	// The Deployment Set Id.
 	DeploymentSetId pulumi.StringPtrInput
@@ -681,7 +681,7 @@ type EcsLaunchTemplateArgs struct {
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 	Name pulumi.StringPtrInput
-	// The list of network interfaces created with instance.
+	// The list of network interfaces created with instance. See `networkInterfaces` below.
 	NetworkInterfaces EcsLaunchTemplateNetworkInterfacesPtrInput
 	// Network type of the instance. Valid values: `classic`, `vpc`.
 	NetworkType pulumi.StringPtrInput
@@ -709,7 +709,7 @@ type EcsLaunchTemplateArgs struct {
 	SpotPriceLimit pulumi.Float64PtrInput
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
 	SpotStrategy pulumi.StringPtrInput
-	// The System Disk.
+	// The System Disk. See `systemDisk` below.
 	SystemDisk EcsLaunchTemplateSystemDiskPtrInput
 	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
 	//
@@ -867,7 +867,7 @@ func (o EcsLaunchTemplateOutput) AutoReleaseTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.AutoReleaseTime }).(pulumi.StringPtrOutput)
 }
 
-// The list of data disks created with instance.
+// The list of data disks created with instance. See `dataDisks` below.
 func (o EcsLaunchTemplateOutput) DataDisks() EcsLaunchTemplateDataDiskArrayOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) EcsLaunchTemplateDataDiskArrayOutput { return v.DataDisks }).(EcsLaunchTemplateDataDiskArrayOutput)
 }
@@ -956,7 +956,7 @@ func (o EcsLaunchTemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The list of network interfaces created with instance.
+// The list of network interfaces created with instance. See `networkInterfaces` below.
 func (o EcsLaunchTemplateOutput) NetworkInterfaces() EcsLaunchTemplateNetworkInterfacesPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) EcsLaunchTemplateNetworkInterfacesPtrOutput { return v.NetworkInterfaces }).(EcsLaunchTemplateNetworkInterfacesPtrOutput)
 }
@@ -1023,7 +1023,7 @@ func (o EcsLaunchTemplateOutput) SpotStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.SpotStrategy }).(pulumi.StringPtrOutput)
 }
 
-// The System Disk.
+// The System Disk. See `systemDisk` below.
 func (o EcsLaunchTemplateOutput) SystemDisk() EcsLaunchTemplateSystemDiskOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) EcsLaunchTemplateSystemDiskOutput { return v.SystemDisk }).(EcsLaunchTemplateSystemDiskOutput)
 }

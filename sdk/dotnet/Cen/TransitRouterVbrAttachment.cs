@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cen
 {
     /// <summary>
-    /// Provides a CEN transit router VBR attachment resource that associate the VBR with the CEN instance.[What is Cen Transit Router VBR Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutervbrattachment)
+    /// Provides a CEN transit router VBR attachment resource that associate the VBR with the CEN instance.[What is Cen Transit Router VBR Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervbrattachment)
     /// 
     /// &gt; **NOTE:** Available since v1.126.0.
     /// 
@@ -23,22 +23,20 @@ namespace Pulumi.AliCloud.Cen
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
-    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
+    ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new()
     ///     {
     ///         CenInstanceName = name,
     ///         ProtectionLevel = "REDUCED",
     ///     });
     /// 
-    ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("exampleTransitRouter", new()
+    ///     var defaultTransitRouter = new AliCloud.Cen.TransitRouter("defaultTransitRouter", new()
     ///     {
-    ///         TransitRouterName = name,
-    ///         CenId = exampleInstance.Id,
+    ///         CenId = defaultInstance.Id,
     ///     });
     /// 
     ///     var nameRegex = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
@@ -46,33 +44,26 @@ namespace Pulumi.AliCloud.Cen
     ///         NameRegex = "^preserved-NODELETING",
     ///     });
     /// 
-    ///     var vlanId = new Random.RandomInteger("vlanId", new()
-    ///     {
-    ///         Max = 2999,
-    ///         Min = 1,
-    ///     });
-    /// 
-    ///     var exampleVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("exampleVirtualBorderRouter", new()
+    ///     var defaultVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("defaultVirtualBorderRouter", new()
     ///     {
     ///         LocalGatewayIp = "10.0.0.1",
     ///         PeerGatewayIp = "10.0.0.2",
     ///         PeeringSubnetMask = "255.255.255.252",
     ///         PhysicalConnectionId = nameRegex.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id),
     ///         VirtualBorderRouterName = name,
-    ///         VlanId = vlanId.Id,
+    ///         VlanId = 2420,
     ///         MinRxInterval = 1000,
     ///         MinTxInterval = 1000,
     ///         DetectMultiplier = 10,
     ///     });
     /// 
-    ///     var exampleTransitRouterVbrAttachment = new AliCloud.Cen.TransitRouterVbrAttachment("exampleTransitRouterVbrAttachment", new()
+    ///     var defaultTransitRouterVbrAttachment = new AliCloud.Cen.TransitRouterVbrAttachment("defaultTransitRouterVbrAttachment", new()
     ///     {
-    ///         VbrId = exampleVirtualBorderRouter.Id,
-    ///         CenId = exampleInstance.Id,
-    ///         TransitRouterId = exampleTransitRouter.TransitRouterId,
-    ///         AutoPublishRouteEnabled = true,
-    ///         TransitRouterAttachmentName = name,
-    ///         TransitRouterAttachmentDescription = name,
+    ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+    ///         TransitRouterAttachmentName = "example",
+    ///         TransitRouterAttachmentDescription = "example",
+    ///         VbrId = defaultVirtualBorderRouter.Id,
+    ///         CenId = defaultInstance.Id,
     ///     });
     /// 
     /// });

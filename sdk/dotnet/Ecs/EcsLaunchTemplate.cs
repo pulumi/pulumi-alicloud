@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// For information about ECS Launch Template and how to use it, see [What is Launch Template](https://www.alibabacloud.com/help/en/doc-detail/74686.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.120.0+.
+    /// &gt; **NOTE:** Available since v1.120.0.
     /// 
     /// ## Example Usage
     /// 
@@ -158,7 +158,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> AutoReleaseTime { get; private set; } = null!;
 
         /// <summary>
-        /// The list of data disks created with instance.
+        /// The list of data disks created with instance. See `data_disks` below.
         /// </summary>
         [Output("dataDisks")]
         public Output<ImmutableArray<Outputs.EcsLaunchTemplateDataDisk>> DataDisks { get; private set; } = null!;
@@ -262,7 +262,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The list of network interfaces created with instance.
+        /// The list of network interfaces created with instance. See `network_interfaces` below.
         /// </summary>
         [Output("networkInterfaces")]
         public Output<Outputs.EcsLaunchTemplateNetworkInterfaces?> NetworkInterfaces { get; private set; } = null!;
@@ -342,7 +342,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> SpotStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// The System Disk.
+        /// The System Disk. See `system_disk` below.
         /// </summary>
         [Output("systemDisk")]
         public Output<Outputs.EcsLaunchTemplateSystemDisk> SystemDisk { get; private set; } = null!;
@@ -483,7 +483,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.EcsLaunchTemplateDataDiskArgs>? _dataDisks;
 
         /// <summary>
-        /// The list of data disks created with instance.
+        /// The list of data disks created with instance. See `data_disks` below.
         /// </summary>
         public InputList<Inputs.EcsLaunchTemplateDataDiskArgs> DataDisks
         {
@@ -590,7 +590,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The list of network interfaces created with instance.
+        /// The list of network interfaces created with instance. See `network_interfaces` below.
         /// </summary>
         [Input("networkInterfaces")]
         public Input<Inputs.EcsLaunchTemplateNetworkInterfacesArgs>? NetworkInterfaces { get; set; }
@@ -676,7 +676,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SpotStrategy { get; set; }
 
         /// <summary>
-        /// The System Disk.
+        /// The System Disk. See `system_disk` below.
         /// </summary>
         [Input("systemDisk")]
         public Input<Inputs.EcsLaunchTemplateSystemDiskArgs>? SystemDisk { get; set; }
@@ -791,7 +791,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.EcsLaunchTemplateDataDiskGetArgs>? _dataDisks;
 
         /// <summary>
-        /// The list of data disks created with instance.
+        /// The list of data disks created with instance. See `data_disks` below.
         /// </summary>
         public InputList<Inputs.EcsLaunchTemplateDataDiskGetArgs> DataDisks
         {
@@ -898,7 +898,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The list of network interfaces created with instance.
+        /// The list of network interfaces created with instance. See `network_interfaces` below.
         /// </summary>
         [Input("networkInterfaces")]
         public Input<Inputs.EcsLaunchTemplateNetworkInterfacesGetArgs>? NetworkInterfaces { get; set; }
@@ -984,7 +984,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SpotStrategy { get; set; }
 
         /// <summary>
-        /// The System Disk.
+        /// The System Disk. See `system_disk` below.
         /// </summary>
         [Input("systemDisk")]
         public Input<Inputs.EcsLaunchTemplateSystemDiskGetArgs>? SystemDisk { get; set; }

@@ -150,7 +150,7 @@ def get_honeypot_nodes(ids: Optional[Sequence[str]] = None,
                        page_size: Optional[int] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHoneypotNodesResult:
     """
-    This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypotnode)
+    This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode)
 
     > **NOTE:** Available in 1.195.0+
 
@@ -205,7 +205,7 @@ def get_honeypot_nodes_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
                               page_size: Optional[pulumi.Input[Optional[int]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHoneypotNodesResult]:
     """
-    This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypotnode)
+    This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode)
 
     > **NOTE:** Available in 1.195.0+
 

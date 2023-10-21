@@ -97,7 +97,41 @@ class AccessStrategyArgs:
              failover_min_available_addr_num: Optional[pulumi.Input[int]] = None,
              lang: Optional[pulumi.Input[str]] = None,
              lines: Optional[pulumi.Input[Sequence[pulumi.Input['AccessStrategyLineArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defaultAddrPoolType' in kwargs:
+            default_addr_pool_type = kwargs['defaultAddrPoolType']
+        if 'defaultAddrPools' in kwargs:
+            default_addr_pools = kwargs['defaultAddrPools']
+        if 'defaultMinAvailableAddrNum' in kwargs:
+            default_min_available_addr_num = kwargs['defaultMinAvailableAddrNum']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'strategyMode' in kwargs:
+            strategy_mode = kwargs['strategyMode']
+        if 'strategyName' in kwargs:
+            strategy_name = kwargs['strategyName']
+        if 'accessMode' in kwargs:
+            access_mode = kwargs['accessMode']
+        if 'defaultLatencyOptimization' in kwargs:
+            default_latency_optimization = kwargs['defaultLatencyOptimization']
+        if 'defaultLbaStrategy' in kwargs:
+            default_lba_strategy = kwargs['defaultLbaStrategy']
+        if 'defaultMaxReturnAddrNum' in kwargs:
+            default_max_return_addr_num = kwargs['defaultMaxReturnAddrNum']
+        if 'failoverAddrPoolType' in kwargs:
+            failover_addr_pool_type = kwargs['failoverAddrPoolType']
+        if 'failoverAddrPools' in kwargs:
+            failover_addr_pools = kwargs['failoverAddrPools']
+        if 'failoverLatencyOptimization' in kwargs:
+            failover_latency_optimization = kwargs['failoverLatencyOptimization']
+        if 'failoverLbaStrategy' in kwargs:
+            failover_lba_strategy = kwargs['failoverLbaStrategy']
+        if 'failoverMaxReturnAddrNum' in kwargs:
+            failover_max_return_addr_num = kwargs['failoverMaxReturnAddrNum']
+        if 'failoverMinAvailableAddrNum' in kwargs:
+            failover_min_available_addr_num = kwargs['failoverMinAvailableAddrNum']
+
         _setter("default_addr_pool_type", default_addr_pool_type)
         _setter("default_addr_pools", default_addr_pools)
         _setter("default_min_available_addr_num", default_min_available_addr_num)
@@ -430,7 +464,41 @@ class _AccessStrategyState:
              lines: Optional[pulumi.Input[Sequence[pulumi.Input['AccessStrategyLineArgs']]]] = None,
              strategy_mode: Optional[pulumi.Input[str]] = None,
              strategy_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessMode' in kwargs:
+            access_mode = kwargs['accessMode']
+        if 'defaultAddrPoolType' in kwargs:
+            default_addr_pool_type = kwargs['defaultAddrPoolType']
+        if 'defaultAddrPools' in kwargs:
+            default_addr_pools = kwargs['defaultAddrPools']
+        if 'defaultLatencyOptimization' in kwargs:
+            default_latency_optimization = kwargs['defaultLatencyOptimization']
+        if 'defaultLbaStrategy' in kwargs:
+            default_lba_strategy = kwargs['defaultLbaStrategy']
+        if 'defaultMaxReturnAddrNum' in kwargs:
+            default_max_return_addr_num = kwargs['defaultMaxReturnAddrNum']
+        if 'defaultMinAvailableAddrNum' in kwargs:
+            default_min_available_addr_num = kwargs['defaultMinAvailableAddrNum']
+        if 'failoverAddrPoolType' in kwargs:
+            failover_addr_pool_type = kwargs['failoverAddrPoolType']
+        if 'failoverAddrPools' in kwargs:
+            failover_addr_pools = kwargs['failoverAddrPools']
+        if 'failoverLatencyOptimization' in kwargs:
+            failover_latency_optimization = kwargs['failoverLatencyOptimization']
+        if 'failoverLbaStrategy' in kwargs:
+            failover_lba_strategy = kwargs['failoverLbaStrategy']
+        if 'failoverMaxReturnAddrNum' in kwargs:
+            failover_max_return_addr_num = kwargs['failoverMaxReturnAddrNum']
+        if 'failoverMinAvailableAddrNum' in kwargs:
+            failover_min_available_addr_num = kwargs['failoverMinAvailableAddrNum']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'strategyMode' in kwargs:
+            strategy_mode = kwargs['strategyMode']
+        if 'strategyName' in kwargs:
+            strategy_name = kwargs['strategyName']
+
         if access_mode is not None:
             _setter("access_mode", access_mode)
         if default_addr_pool_type is not None:

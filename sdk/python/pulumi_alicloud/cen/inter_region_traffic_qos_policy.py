@@ -39,7 +39,17 @@ class InterRegionTrafficQosPolicyArgs:
              transit_router_id: pulumi.Input[str],
              inter_region_traffic_qos_policy_description: Optional[pulumi.Input[str]] = None,
              inter_region_traffic_qos_policy_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'transitRouterAttachmentId' in kwargs:
+            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
+        if 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+        if 'interRegionTrafficQosPolicyDescription' in kwargs:
+            inter_region_traffic_qos_policy_description = kwargs['interRegionTrafficQosPolicyDescription']
+        if 'interRegionTrafficQosPolicyName' in kwargs:
+            inter_region_traffic_qos_policy_name = kwargs['interRegionTrafficQosPolicyName']
+
         _setter("transit_router_attachment_id", transit_router_attachment_id)
         _setter("transit_router_id", transit_router_id)
         if inter_region_traffic_qos_policy_description is not None:
@@ -128,7 +138,17 @@ class _InterRegionTrafficQosPolicyState:
              status: Optional[pulumi.Input[str]] = None,
              transit_router_attachment_id: Optional[pulumi.Input[str]] = None,
              transit_router_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'interRegionTrafficQosPolicyDescription' in kwargs:
+            inter_region_traffic_qos_policy_description = kwargs['interRegionTrafficQosPolicyDescription']
+        if 'interRegionTrafficQosPolicyName' in kwargs:
+            inter_region_traffic_qos_policy_name = kwargs['interRegionTrafficQosPolicyName']
+        if 'transitRouterAttachmentId' in kwargs:
+            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
+        if 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+
         if inter_region_traffic_qos_policy_description is not None:
             _setter("inter_region_traffic_qos_policy_description", inter_region_traffic_qos_policy_description)
         if inter_region_traffic_qos_policy_name is not None:
@@ -214,7 +234,7 @@ class InterRegionTrafficQosPolicy(pulumi.CustomResource):
         """
         Provides a Cloud Enterprise Network (CEN) Inter Region Traffic Qos Policy resource.
 
-        For information about Cloud Enterprise Network (CEN) Inter Region Traffic Qos Policy and how to use it, see [What is Inter Region Traffic Qos Policy](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createceninterregiontrafficqospolicy).
+        For information about Cloud Enterprise Network (CEN) Inter Region Traffic Qos Policy and how to use it, see [What is Inter Region Traffic Qos Policy](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createceninterregiontrafficqospolicy).
 
         > **NOTE:** Available since v1.195.0.
 
@@ -283,7 +303,7 @@ class InterRegionTrafficQosPolicy(pulumi.CustomResource):
         """
         Provides a Cloud Enterprise Network (CEN) Inter Region Traffic Qos Policy resource.
 
-        For information about Cloud Enterprise Network (CEN) Inter Region Traffic Qos Policy and how to use it, see [What is Inter Region Traffic Qos Policy](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createceninterregiontrafficqospolicy).
+        For information about Cloud Enterprise Network (CEN) Inter Region Traffic Qos Policy and how to use it, see [What is Inter Region Traffic Qos Policy](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createceninterregiontrafficqospolicy).
 
         > **NOTE:** Available since v1.195.0.
 

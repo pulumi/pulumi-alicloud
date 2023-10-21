@@ -65,14 +65,14 @@ public final class ForwardingRuleRuleActionArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createforwardingrules).
+     * The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
      * 
      */
     @Import(name="ruleActionValue")
     private @Nullable Output<String> ruleActionValue;
 
     /**
-     * @return The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createforwardingrules).
+     * @return The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
      * 
      */
     public Optional<Output<String>> ruleActionValue() {
@@ -172,7 +172,7 @@ public final class ForwardingRuleRuleActionArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ruleActionValue The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createforwardingrules).
+         * @param ruleActionValue The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class ForwardingRuleRuleActionArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ruleActionValue The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createforwardingrules).
+         * @param ruleActionValue The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
          * 
          * @return builder
          * 

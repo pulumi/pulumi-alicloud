@@ -37,7 +37,9 @@ class AppTemplateConfigList(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if value is not None:
@@ -121,7 +123,27 @@ class GetAppTemplatesTemplateResult(dict):
              sdk_info: str,
              standard_room_info: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appTemplateCreator' in kwargs:
+            app_template_creator = kwargs['appTemplateCreator']
+        if 'appTemplateId' in kwargs:
+            app_template_id = kwargs['appTemplateId']
+        if 'appTemplateName' in kwargs:
+            app_template_name = kwargs['appTemplateName']
+        if 'componentLists' in kwargs:
+            component_lists = kwargs['componentLists']
+        if 'configLists' in kwargs:
+            config_lists = kwargs['configLists']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'integrationMode' in kwargs:
+            integration_mode = kwargs['integrationMode']
+        if 'sdkInfo' in kwargs:
+            sdk_info = kwargs['sdkInfo']
+        if 'standardRoomInfo' in kwargs:
+            standard_room_info = kwargs['standardRoomInfo']
+
         _setter("app_template_creator", app_template_creator)
         _setter("app_template_id", app_template_id)
         _setter("app_template_name", app_template_name)
@@ -251,7 +273,9 @@ class GetAppTemplatesTemplateConfigListResult(dict):
              _setter: Callable[[Any, Any], None],
              key: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 

@@ -51,7 +51,17 @@ class EcsImageComponentArgs:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              system_type: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'componentType' in kwargs:
+            component_type = kwargs['componentType']
+        if 'imageComponentName' in kwargs:
+            image_component_name = kwargs['imageComponentName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'systemType' in kwargs:
+            system_type = kwargs['systemType']
+
         _setter("content", content)
         if component_type is not None:
             _setter("component_type", component_type)
@@ -191,7 +201,17 @@ class _EcsImageComponentState:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              system_type: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'componentType' in kwargs:
+            component_type = kwargs['componentType']
+        if 'imageComponentName' in kwargs:
+            image_component_name = kwargs['imageComponentName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'systemType' in kwargs:
+            system_type = kwargs['systemType']
+
         if component_type is not None:
             _setter("component_type", component_type)
         if content is not None:

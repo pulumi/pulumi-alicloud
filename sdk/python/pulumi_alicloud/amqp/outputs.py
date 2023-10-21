@@ -61,7 +61,21 @@ class GetBindingsBindingResult(dict):
              instance_id: str,
              source_exchange: str,
              virtual_host_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bindingKey' in kwargs:
+            binding_key = kwargs['bindingKey']
+        if 'bindingType' in kwargs:
+            binding_type = kwargs['bindingType']
+        if 'destinationName' in kwargs:
+            destination_name = kwargs['destinationName']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'sourceExchange' in kwargs:
+            source_exchange = kwargs['sourceExchange']
+        if 'virtualHostName' in kwargs:
+            virtual_host_name = kwargs['virtualHostName']
+
         _setter("argument", argument)
         _setter("binding_key", binding_key)
         _setter("binding_type", binding_type)
@@ -179,7 +193,21 @@ class GetExchangesExchangeResult(dict):
              id: str,
              instance_id: str,
              virtual_host_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoDeleteState' in kwargs:
+            auto_delete_state = kwargs['autoDeleteState']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'exchangeName' in kwargs:
+            exchange_name = kwargs['exchangeName']
+        if 'exchangeType' in kwargs:
+            exchange_type = kwargs['exchangeType']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'virtualHostName' in kwargs:
+            virtual_host_name = kwargs['virtualHostName']
+
         _setter("attributes", attributes)
         _setter("auto_delete_state", auto_delete_state)
         _setter("create_time", create_time)
@@ -321,7 +349,33 @@ class GetInstancesInstanceResult(dict):
              renewal_status: str,
              status: str,
              support_eip: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'privateEndPoint' in kwargs:
+            private_end_point = kwargs['privateEndPoint']
+        if 'publicEndpoint' in kwargs:
+            public_endpoint = kwargs['publicEndpoint']
+        if 'renewalDuration' in kwargs:
+            renewal_duration = kwargs['renewalDuration']
+        if 'renewalDurationUnit' in kwargs:
+            renewal_duration_unit = kwargs['renewalDurationUnit']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if 'supportEip' in kwargs:
+            support_eip = kwargs['supportEip']
+
         _setter("create_time", create_time)
         _setter("expire_time", expire_time)
         _setter("id", id)
@@ -497,7 +551,23 @@ class GetQueuesQueueResult(dict):
              last_consume_time: str,
              queue_name: str,
              virtual_host_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoDeleteState' in kwargs:
+            auto_delete_state = kwargs['autoDeleteState']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'exclusiveState' in kwargs:
+            exclusive_state = kwargs['exclusiveState']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'lastConsumeTime' in kwargs:
+            last_consume_time = kwargs['lastConsumeTime']
+        if 'queueName' in kwargs:
+            queue_name = kwargs['queueName']
+        if 'virtualHostName' in kwargs:
+            virtual_host_name = kwargs['virtualHostName']
+
         _setter("attributes", attributes)
         _setter("auto_delete_state", auto_delete_state)
         _setter("create_time", create_time)
@@ -620,7 +690,19 @@ class GetStaticAccountsAccountResult(dict):
              master_uid: str,
              password: str,
              user_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'masterUid' in kwargs:
+            master_uid = kwargs['masterUid']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         _setter("access_key", access_key)
         _setter("create_time", create_time)
         _setter("id", id)
@@ -709,7 +791,13 @@ class GetVirtualHostsHostResult(dict):
              id: str,
              instance_id: str,
              virtual_host_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'virtualHostName' in kwargs:
+            virtual_host_name = kwargs['virtualHostName']
+
         _setter("id", id)
         _setter("instance_id", instance_id)
         _setter("virtual_host_name", virtual_host_name)

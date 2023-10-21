@@ -45,7 +45,11 @@ class RepoArgs:
              summary: pulumi.Input[str],
              detail: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'repoType' in kwargs:
+            repo_type = kwargs['repoType']
+
         _setter("namespace", namespace)
         _setter("repo_type", repo_type)
         _setter("summary", summary)
@@ -151,7 +155,13 @@ class _RepoState:
              namespace: Optional[pulumi.Input[str]] = None,
              repo_type: Optional[pulumi.Input[str]] = None,
              summary: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'domainList' in kwargs:
+            domain_list = kwargs['domainList']
+        if 'repoType' in kwargs:
+            repo_type = kwargs['repoType']
+
         if detail is not None:
             _setter("detail", detail)
         if domain_list is not None:

@@ -85,7 +85,29 @@ class WafRuleArgs:
              scenes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              status: Optional[pulumi.Input[str]] = None,
              waf_group_ids: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+        if 'ccStatus' in kwargs:
+            cc_status = kwargs['ccStatus']
+        if 'cnRegionList' in kwargs:
+            cn_region_list = kwargs['cnRegionList']
+        if 'otherRegionList' in kwargs:
+            other_region_list = kwargs['otherRegionList']
+        if 'rateLimit' in kwargs:
+            rate_limit = kwargs['rateLimit']
+        if 'regularRules' in kwargs:
+            regular_rules = kwargs['regularRules']
+        if 'regularTypes' in kwargs:
+            regular_types = kwargs['regularTypes']
+        if 'remoteAddrs' in kwargs:
+            remote_addrs = kwargs['remoteAddrs']
+        if 'wafGroupIds' in kwargs:
+            waf_group_ids = kwargs['wafGroupIds']
+
         _setter("policy_id", policy_id)
         _setter("rule_name", rule_name)
         if action is not None:
@@ -376,7 +398,33 @@ class _WafRuleState:
              scenes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              status: Optional[pulumi.Input[str]] = None,
              waf_group_ids: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ccStatus' in kwargs:
+            cc_status = kwargs['ccStatus']
+        if 'cnRegionList' in kwargs:
+            cn_region_list = kwargs['cnRegionList']
+        if 'defenseScene' in kwargs:
+            defense_scene = kwargs['defenseScene']
+        if 'gmtModified' in kwargs:
+            gmt_modified = kwargs['gmtModified']
+        if 'otherRegionList' in kwargs:
+            other_region_list = kwargs['otherRegionList']
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if 'rateLimit' in kwargs:
+            rate_limit = kwargs['rateLimit']
+        if 'regularRules' in kwargs:
+            regular_rules = kwargs['regularRules']
+        if 'regularTypes' in kwargs:
+            regular_types = kwargs['regularTypes']
+        if 'remoteAddrs' in kwargs:
+            remote_addrs = kwargs['remoteAddrs']
+        if 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+        if 'wafGroupIds' in kwargs:
+            waf_group_ids = kwargs['wafGroupIds']
+
         if action is not None:
             _setter("action", action)
         if cc_status is not None:
@@ -641,7 +689,7 @@ class WafRule(pulumi.CustomResource):
         """
         Provides a Dcdn Waf Rule resource.
 
-        For information about Dcdn Waf Rule and how to use it, see [What is Waf Rule](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/configure-protection-rules).
+        For information about Dcdn Waf Rule and how to use it, see [What is Waf Rule](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchcreatedcdnwafrules).
 
         > **NOTE:** Available since v1.201.0.
 
@@ -729,7 +777,7 @@ class WafRule(pulumi.CustomResource):
         """
         Provides a Dcdn Waf Rule resource.
 
-        For information about Dcdn Waf Rule and how to use it, see [What is Waf Rule](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/configure-protection-rules).
+        For information about Dcdn Waf Rule and how to use it, see [What is Waf Rule](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchcreatedcdnwafrules).
 
         > **NOTE:** Available since v1.201.0.
 

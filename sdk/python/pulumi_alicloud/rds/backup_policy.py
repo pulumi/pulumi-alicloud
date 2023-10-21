@@ -125,7 +125,51 @@ class BackupPolicyArgs:
              preferred_backup_time: Optional[pulumi.Input[str]] = None,
              released_keep_policy: Optional[pulumi.Input[str]] = None,
              retention_period: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'archiveBackupKeepCount' in kwargs:
+            archive_backup_keep_count = kwargs['archiveBackupKeepCount']
+        if 'archiveBackupKeepPolicy' in kwargs:
+            archive_backup_keep_policy = kwargs['archiveBackupKeepPolicy']
+        if 'archiveBackupRetentionPeriod' in kwargs:
+            archive_backup_retention_period = kwargs['archiveBackupRetentionPeriod']
+        if 'backupInterval' in kwargs:
+            backup_interval = kwargs['backupInterval']
+        if 'backupPeriods' in kwargs:
+            backup_periods = kwargs['backupPeriods']
+        if 'backupRetentionPeriod' in kwargs:
+            backup_retention_period = kwargs['backupRetentionPeriod']
+        if 'backupTime' in kwargs:
+            backup_time = kwargs['backupTime']
+        if 'compressType' in kwargs:
+            compress_type = kwargs['compressType']
+        if 'enableBackupLog' in kwargs:
+            enable_backup_log = kwargs['enableBackupLog']
+        if 'highSpaceUsageProtection' in kwargs:
+            high_space_usage_protection = kwargs['highSpaceUsageProtection']
+        if 'localLogRetentionHours' in kwargs:
+            local_log_retention_hours = kwargs['localLogRetentionHours']
+        if 'localLogRetentionSpace' in kwargs:
+            local_log_retention_space = kwargs['localLogRetentionSpace']
+        if 'logBackup' in kwargs:
+            log_backup = kwargs['logBackup']
+        if 'logBackupFrequency' in kwargs:
+            log_backup_frequency = kwargs['logBackupFrequency']
+        if 'logBackupRetentionPeriod' in kwargs:
+            log_backup_retention_period = kwargs['logBackupRetentionPeriod']
+        if 'logRetentionPeriod' in kwargs:
+            log_retention_period = kwargs['logRetentionPeriod']
+        if 'preferredBackupPeriods' in kwargs:
+            preferred_backup_periods = kwargs['preferredBackupPeriods']
+        if 'preferredBackupTime' in kwargs:
+            preferred_backup_time = kwargs['preferredBackupTime']
+        if 'releasedKeepPolicy' in kwargs:
+            released_keep_policy = kwargs['releasedKeepPolicy']
+        if 'retentionPeriod' in kwargs:
+            retention_period = kwargs['retentionPeriod']
+
         _setter("instance_id", instance_id)
         if archive_backup_keep_count is not None:
             _setter("archive_backup_keep_count", archive_backup_keep_count)
@@ -593,7 +637,51 @@ class _BackupPolicyState:
              preferred_backup_time: Optional[pulumi.Input[str]] = None,
              released_keep_policy: Optional[pulumi.Input[str]] = None,
              retention_period: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'archiveBackupKeepCount' in kwargs:
+            archive_backup_keep_count = kwargs['archiveBackupKeepCount']
+        if 'archiveBackupKeepPolicy' in kwargs:
+            archive_backup_keep_policy = kwargs['archiveBackupKeepPolicy']
+        if 'archiveBackupRetentionPeriod' in kwargs:
+            archive_backup_retention_period = kwargs['archiveBackupRetentionPeriod']
+        if 'backupInterval' in kwargs:
+            backup_interval = kwargs['backupInterval']
+        if 'backupPeriods' in kwargs:
+            backup_periods = kwargs['backupPeriods']
+        if 'backupRetentionPeriod' in kwargs:
+            backup_retention_period = kwargs['backupRetentionPeriod']
+        if 'backupTime' in kwargs:
+            backup_time = kwargs['backupTime']
+        if 'compressType' in kwargs:
+            compress_type = kwargs['compressType']
+        if 'enableBackupLog' in kwargs:
+            enable_backup_log = kwargs['enableBackupLog']
+        if 'highSpaceUsageProtection' in kwargs:
+            high_space_usage_protection = kwargs['highSpaceUsageProtection']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'localLogRetentionHours' in kwargs:
+            local_log_retention_hours = kwargs['localLogRetentionHours']
+        if 'localLogRetentionSpace' in kwargs:
+            local_log_retention_space = kwargs['localLogRetentionSpace']
+        if 'logBackup' in kwargs:
+            log_backup = kwargs['logBackup']
+        if 'logBackupFrequency' in kwargs:
+            log_backup_frequency = kwargs['logBackupFrequency']
+        if 'logBackupRetentionPeriod' in kwargs:
+            log_backup_retention_period = kwargs['logBackupRetentionPeriod']
+        if 'logRetentionPeriod' in kwargs:
+            log_retention_period = kwargs['logRetentionPeriod']
+        if 'preferredBackupPeriods' in kwargs:
+            preferred_backup_periods = kwargs['preferredBackupPeriods']
+        if 'preferredBackupTime' in kwargs:
+            preferred_backup_time = kwargs['preferredBackupTime']
+        if 'releasedKeepPolicy' in kwargs:
+            released_keep_policy = kwargs['releasedKeepPolicy']
+        if 'retentionPeriod' in kwargs:
+            retention_period = kwargs['retentionPeriod']
+
         if archive_backup_keep_count is not None:
             _setter("archive_backup_keep_count", archive_backup_keep_count)
         if archive_backup_keep_policy is not None:

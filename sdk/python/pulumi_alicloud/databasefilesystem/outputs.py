@@ -50,7 +50,11 @@ class InstanceEcsList(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              ecs_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ecsId' in kwargs:
+            ecs_id = kwargs['ecsId']
+
         if ecs_id is not None:
             _setter("ecs_id", ecs_id)
 
@@ -118,7 +122,27 @@ class GetAutoSnapShotPoliciesAutoSnapShotPolicyResult(dict):
              status: str,
              status_detail: str,
              time_points: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appliedDbfsNumber' in kwargs:
+            applied_dbfs_number = kwargs['appliedDbfsNumber']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'lastModified' in kwargs:
+            last_modified = kwargs['lastModified']
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if 'repeatWeekdays' in kwargs:
+            repeat_weekdays = kwargs['repeatWeekdays']
+        if 'retentionDays' in kwargs:
+            retention_days = kwargs['retentionDays']
+        if 'statusDetail' in kwargs:
+            status_detail = kwargs['statusDetail']
+        if 'timePoints' in kwargs:
+            time_points = kwargs['timePoints']
+
         _setter("applied_dbfs_number", applied_dbfs_number)
         _setter("create_time", create_time)
         _setter("id", id)
@@ -299,7 +323,33 @@ class GetInstancesInstanceResult(dict):
              size: int,
              status: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'attachNodeNumber' in kwargs:
+            attach_node_number = kwargs['attachNodeNumber']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dbfsClusterId' in kwargs:
+            dbfs_cluster_id = kwargs['dbfsClusterId']
+        if 'ecsLists' in kwargs:
+            ecs_lists = kwargs['ecsLists']
+        if 'enableRaid' in kwargs:
+            enable_raid = kwargs['enableRaid']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+        if 'raidStripeUnitNumber' in kwargs:
+            raid_stripe_unit_number = kwargs['raidStripeUnitNumber']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("attach_node_number", attach_node_number)
         _setter("category", category)
         _setter("create_time", create_time)
@@ -470,7 +520,11 @@ class GetInstancesInstanceEcsListResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              ecs_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ecsId' in kwargs:
+            ecs_id = kwargs['ecsId']
+
         _setter("ecs_id", ecs_id)
 
     @property
@@ -549,7 +603,27 @@ class GetSnapshotsSnapshotResult(dict):
              snapshot_type: str,
              source_fs_size: int,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'lastModifiedTime' in kwargs:
+            last_modified_time = kwargs['lastModifiedTime']
+        if 'remainTime' in kwargs:
+            remain_time = kwargs['remainTime']
+        if 'retentionDays' in kwargs:
+            retention_days = kwargs['retentionDays']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+        if 'snapshotName' in kwargs:
+            snapshot_name = kwargs['snapshotName']
+        if 'snapshotType' in kwargs:
+            snapshot_type = kwargs['snapshotType']
+        if 'sourceFsSize' in kwargs:
+            source_fs_size = kwargs['sourceFsSize']
+
         _setter("category", category)
         _setter("create_time", create_time)
         _setter("description", description)

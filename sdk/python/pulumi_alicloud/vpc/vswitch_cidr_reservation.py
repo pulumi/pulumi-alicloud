@@ -51,7 +51,23 @@ class VswitchCidrReservationArgs:
              cidr_reservation_type: Optional[pulumi.Input[str]] = None,
              ip_version: Optional[pulumi.Input[str]] = None,
              vswitch_cidr_reservation_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'cidrReservationCidr' in kwargs:
+            cidr_reservation_cidr = kwargs['cidrReservationCidr']
+        if 'cidrReservationDescription' in kwargs:
+            cidr_reservation_description = kwargs['cidrReservationDescription']
+        if 'cidrReservationMask' in kwargs:
+            cidr_reservation_mask = kwargs['cidrReservationMask']
+        if 'cidrReservationType' in kwargs:
+            cidr_reservation_type = kwargs['cidrReservationType']
+        if 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if 'vswitchCidrReservationName' in kwargs:
+            vswitch_cidr_reservation_name = kwargs['vswitchCidrReservationName']
+
         _setter("vswitch_id", vswitch_id)
         if cidr_reservation_cidr is not None:
             _setter("cidr_reservation_cidr", cidr_reservation_cidr)
@@ -207,7 +223,29 @@ class _VswitchCidrReservationState:
              vswitch_cidr_reservation_id: Optional[pulumi.Input[str]] = None,
              vswitch_cidr_reservation_name: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cidrReservationCidr' in kwargs:
+            cidr_reservation_cidr = kwargs['cidrReservationCidr']
+        if 'cidrReservationDescription' in kwargs:
+            cidr_reservation_description = kwargs['cidrReservationDescription']
+        if 'cidrReservationMask' in kwargs:
+            cidr_reservation_mask = kwargs['cidrReservationMask']
+        if 'cidrReservationType' in kwargs:
+            cidr_reservation_type = kwargs['cidrReservationType']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchCidrReservationId' in kwargs:
+            vswitch_cidr_reservation_id = kwargs['vswitchCidrReservationId']
+        if 'vswitchCidrReservationName' in kwargs:
+            vswitch_cidr_reservation_name = kwargs['vswitchCidrReservationName']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if cidr_reservation_cidr is not None:
             _setter("cidr_reservation_cidr", cidr_reservation_cidr)
         if cidr_reservation_description is not None:

@@ -33,7 +33,9 @@ class GetAclsAclResult(dict):
              _setter: Callable[[Any, Any], None],
              id: str,
              name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("id", id)
         _setter("name", name)
 
@@ -129,7 +131,35 @@ class GetSmartagFlowLogsLogResult(dict):
              sls_region_id: str,
              status: str,
              total_sag_num: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'activeAging' in kwargs:
+            active_aging = kwargs['activeAging']
+        if 'flowLogId' in kwargs:
+            flow_log_id = kwargs['flowLogId']
+        if 'flowLogName' in kwargs:
+            flow_log_name = kwargs['flowLogName']
+        if 'inactiveAging' in kwargs:
+            inactive_aging = kwargs['inactiveAging']
+        if 'logstoreName' in kwargs:
+            logstore_name = kwargs['logstoreName']
+        if 'netflowServerIp' in kwargs:
+            netflow_server_ip = kwargs['netflowServerIp']
+        if 'netflowServerPort' in kwargs:
+            netflow_server_port = kwargs['netflowServerPort']
+        if 'netflowVersion' in kwargs:
+            netflow_version = kwargs['netflowVersion']
+        if 'outputType' in kwargs:
+            output_type = kwargs['outputType']
+        if 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'slsRegionId' in kwargs:
+            sls_region_id = kwargs['slsRegionId']
+        if 'totalSagNum' in kwargs:
+            total_sag_num = kwargs['totalSagNum']
+
         _setter("active_aging", active_aging)
         _setter("description", description)
         _setter("flow_log_id", flow_log_id)

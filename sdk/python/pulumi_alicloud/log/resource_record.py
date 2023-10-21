@@ -39,7 +39,13 @@ class ResourceRecordArgs:
              resource_name: pulumi.Input[str],
              tag: pulumi.Input[str],
              value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'recordId' in kwargs:
+            record_id = kwargs['recordId']
+        if 'resourceName' in kwargs:
+            resource_name = kwargs['resourceName']
+
         _setter("record_id", record_id)
         _setter("resource_name", resource_name)
         _setter("tag", tag)
@@ -122,7 +128,13 @@ class _ResourceRecordState:
              resource_name: Optional[pulumi.Input[str]] = None,
              tag: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'recordId' in kwargs:
+            record_id = kwargs['recordId']
+        if 'resourceName' in kwargs:
+            resource_name = kwargs['resourceName']
+
         if record_id is not None:
             _setter("record_id", record_id)
         if resource_name is not None:

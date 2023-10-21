@@ -13,7 +13,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Provides a CEN transit router VBR attachment resource that associate the VBR with the CEN instance.[What is Cen Transit Router VBR Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutervbrattachment)
+// Provides a CEN transit router VBR attachment resource that associate the VBR with the CEN instance.[What is Cen Transit Router VBR Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervbrattachment)
 //
 // > **NOTE:** Available since v1.126.0.
 //
@@ -28,7 +28,6 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -41,16 +40,15 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//			defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", &cen.InstanceArgs{
 //				CenInstanceName: pulumi.String(name),
 //				ProtectionLevel: pulumi.String("REDUCED"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "exampleTransitRouter", &cen.TransitRouterArgs{
-//				TransitRouterName: pulumi.String(name),
-//				CenId:             exampleInstance.ID(),
+//			defaultTransitRouter, err := cen.NewTransitRouter(ctx, "defaultTransitRouter", &cen.TransitRouterArgs{
+//				CenId: defaultInstance.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -61,20 +59,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			vlanId, err := random.NewRandomInteger(ctx, "vlanId", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(2999),
-//				Min: pulumi.Int(1),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleVirtualBorderRouter, err := expressconnect.NewVirtualBorderRouter(ctx, "exampleVirtualBorderRouter", &expressconnect.VirtualBorderRouterArgs{
+//			defaultVirtualBorderRouter, err := expressconnect.NewVirtualBorderRouter(ctx, "defaultVirtualBorderRouter", &expressconnect.VirtualBorderRouterArgs{
 //				LocalGatewayIp:          pulumi.String("10.0.0.1"),
 //				PeerGatewayIp:           pulumi.String("10.0.0.2"),
 //				PeeringSubnetMask:       pulumi.String("255.255.255.252"),
 //				PhysicalConnectionId:    *pulumi.String(nameRegex.Connections[0].Id),
 //				VirtualBorderRouterName: pulumi.String(name),
-//				VlanId:                  vlanId.ID(),
+//				VlanId:                  pulumi.Int(2420),
 //				MinRxInterval:           pulumi.Int(1000),
 //				MinTxInterval:           pulumi.Int(1000),
 //				DetectMultiplier:        pulumi.Int(10),
@@ -82,13 +73,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewTransitRouterVbrAttachment(ctx, "exampleTransitRouterVbrAttachment", &cen.TransitRouterVbrAttachmentArgs{
-//				VbrId:                              exampleVirtualBorderRouter.ID(),
-//				CenId:                              exampleInstance.ID(),
-//				TransitRouterId:                    exampleTransitRouter.TransitRouterId,
-//				AutoPublishRouteEnabled:            pulumi.Bool(true),
-//				TransitRouterAttachmentName:        pulumi.String(name),
-//				TransitRouterAttachmentDescription: pulumi.String(name),
+//			_, err = cen.NewTransitRouterVbrAttachment(ctx, "defaultTransitRouterVbrAttachment", &cen.TransitRouterVbrAttachmentArgs{
+//				TransitRouterId:                    defaultTransitRouter.TransitRouterId,
+//				TransitRouterAttachmentName:        pulumi.String("example"),
+//				TransitRouterAttachmentDescription: pulumi.String("example"),
+//				VbrId:                              defaultVirtualBorderRouter.ID(),
+//				CenId:                              defaultInstance.ID(),
 //			})
 //			if err != nil {
 //				return err

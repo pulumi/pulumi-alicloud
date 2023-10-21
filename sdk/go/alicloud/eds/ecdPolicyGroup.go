@@ -14,7 +14,7 @@ import (
 
 // Provides a Elastic Desktop Service (ECD) Policy Group resource.
 //
-// For information about Elastic Desktop Service (ECD) Policy Group and how to use it, see [What is Policy Group](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createpolicygroup).
+// For information about Elastic Desktop Service (ECD) Policy Group and how to use it, see [What is Policy Group](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createpolicygroup).
 //
 // > **NOTE:** Available since v1.130.0.
 //

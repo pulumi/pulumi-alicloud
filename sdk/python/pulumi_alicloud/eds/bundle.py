@@ -61,7 +61,23 @@ class BundleArgs:
              language: Optional[pulumi.Input[str]] = None,
              root_disk_performance_level: Optional[pulumi.Input[str]] = None,
              user_disk_performance_level: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'desktopType' in kwargs:
+            desktop_type = kwargs['desktopType']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'rootDiskSizeGib' in kwargs:
+            root_disk_size_gib = kwargs['rootDiskSizeGib']
+        if 'userDiskSizeGibs' in kwargs:
+            user_disk_size_gibs = kwargs['userDiskSizeGibs']
+        if 'bundleName' in kwargs:
+            bundle_name = kwargs['bundleName']
+        if 'rootDiskPerformanceLevel' in kwargs:
+            root_disk_performance_level = kwargs['rootDiskPerformanceLevel']
+        if 'userDiskPerformanceLevel' in kwargs:
+            user_disk_performance_level = kwargs['userDiskPerformanceLevel']
+
         _setter("desktop_type", desktop_type)
         _setter("image_id", image_id)
         _setter("root_disk_size_gib", root_disk_size_gib)
@@ -238,7 +254,23 @@ class _BundleState:
              root_disk_size_gib: Optional[pulumi.Input[int]] = None,
              user_disk_performance_level: Optional[pulumi.Input[str]] = None,
              user_disk_size_gibs: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bundleName' in kwargs:
+            bundle_name = kwargs['bundleName']
+        if 'desktopType' in kwargs:
+            desktop_type = kwargs['desktopType']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'rootDiskPerformanceLevel' in kwargs:
+            root_disk_performance_level = kwargs['rootDiskPerformanceLevel']
+        if 'rootDiskSizeGib' in kwargs:
+            root_disk_size_gib = kwargs['rootDiskSizeGib']
+        if 'userDiskPerformanceLevel' in kwargs:
+            user_disk_performance_level = kwargs['userDiskPerformanceLevel']
+        if 'userDiskSizeGibs' in kwargs:
+            user_disk_size_gibs = kwargs['userDiskSizeGibs']
+
         if bundle_name is not None:
             _setter("bundle_name", bundle_name)
         if description is not None:
@@ -387,7 +419,7 @@ class Bundle(pulumi.CustomResource):
         """
         Provides a ECD Bundle resource.
 
-        For information about ECD Bundle and how to use it, see [What is Bundle](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createbundle).
+        For information about ECD Bundle and how to use it, see [What is Bundle](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createbundle).
 
         > **NOTE:** Available since v1.170.0.
 
@@ -451,7 +483,7 @@ class Bundle(pulumi.CustomResource):
         """
         Provides a ECD Bundle resource.
 
-        For information about ECD Bundle and how to use it, see [What is Bundle](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createbundle).
+        For information about ECD Bundle and how to use it, see [What is Bundle](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createbundle).
 
         > **NOTE:** Available since v1.170.0.
 

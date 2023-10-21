@@ -98,7 +98,33 @@ class InstanceArgs:
              renewal_status: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'licenseCode' in kwargs:
+            license_code = kwargs['licenseCode']
+        if 'planCode' in kwargs:
+            plan_code = kwargs['planCode']
+        if 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'adAuthServers' in kwargs:
+            ad_auth_servers = kwargs['adAuthServers']
+        if 'enablePublicAccess' in kwargs:
+            enable_public_access = kwargs['enablePublicAccess']
+        if 'ldapAuthServers' in kwargs:
+            ldap_auth_servers = kwargs['ldapAuthServers']
+        if 'publicWhiteLists' in kwargs:
+            public_white_lists = kwargs['publicWhiteLists']
+        if 'renewPeriod' in kwargs:
+            renew_period = kwargs['renewPeriod']
+        if 'renewalPeriodUnit' in kwargs:
+            renewal_period_unit = kwargs['renewalPeriodUnit']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("bandwidth", bandwidth)
         _setter("description", description)
         _setter("license_code", license_code)
@@ -420,7 +446,33 @@ class _InstanceState:
              storage: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'adAuthServers' in kwargs:
+            ad_auth_servers = kwargs['adAuthServers']
+        if 'enablePublicAccess' in kwargs:
+            enable_public_access = kwargs['enablePublicAccess']
+        if 'ldapAuthServers' in kwargs:
+            ldap_auth_servers = kwargs['ldapAuthServers']
+        if 'licenseCode' in kwargs:
+            license_code = kwargs['licenseCode']
+        if 'planCode' in kwargs:
+            plan_code = kwargs['planCode']
+        if 'publicWhiteLists' in kwargs:
+            public_white_lists = kwargs['publicWhiteLists']
+        if 'renewPeriod' in kwargs:
+            renew_period = kwargs['renewPeriod']
+        if 'renewalPeriodUnit' in kwargs:
+            renewal_period_unit = kwargs['renewalPeriodUnit']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if ad_auth_servers is not None:
             _setter("ad_auth_servers", ad_auth_servers)
         if bandwidth is not None:

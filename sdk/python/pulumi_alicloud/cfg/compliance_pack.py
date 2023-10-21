@@ -49,7 +49,19 @@ class CompliancePackArgs:
              compliance_pack_template_id: Optional[pulumi.Input[str]] = None,
              config_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]]] = None,
              config_rules: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'compliancePackName' in kwargs:
+            compliance_pack_name = kwargs['compliancePackName']
+        if 'riskLevel' in kwargs:
+            risk_level = kwargs['riskLevel']
+        if 'compliancePackTemplateId' in kwargs:
+            compliance_pack_template_id = kwargs['compliancePackTemplateId']
+        if 'configRuleIds' in kwargs:
+            config_rule_ids = kwargs['configRuleIds']
+        if 'configRules' in kwargs:
+            config_rules = kwargs['configRules']
+
         _setter("compliance_pack_name", compliance_pack_name)
         _setter("description", description)
         _setter("risk_level", risk_level)
@@ -179,7 +191,19 @@ class _CompliancePackState:
              description: Optional[pulumi.Input[str]] = None,
              risk_level: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'compliancePackName' in kwargs:
+            compliance_pack_name = kwargs['compliancePackName']
+        if 'compliancePackTemplateId' in kwargs:
+            compliance_pack_template_id = kwargs['compliancePackTemplateId']
+        if 'configRuleIds' in kwargs:
+            config_rule_ids = kwargs['configRuleIds']
+        if 'configRules' in kwargs:
+            config_rules = kwargs['configRules']
+        if 'riskLevel' in kwargs:
+            risk_level = kwargs['riskLevel']
+
         if compliance_pack_name is not None:
             _setter("compliance_pack_name", compliance_pack_name)
         if compliance_pack_template_id is not None:

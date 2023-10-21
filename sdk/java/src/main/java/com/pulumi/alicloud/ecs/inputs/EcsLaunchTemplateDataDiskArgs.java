@@ -48,14 +48,14 @@ public final class EcsLaunchTemplateDataDiskArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
+     * The description of the data disk.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
+     * @return The description of the data disk.
      * 
      */
     public Optional<Output<String>> description() {
@@ -78,14 +78,14 @@ public final class EcsLaunchTemplateDataDiskArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+     * The name of the data disk.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+     * @return The name of the data disk.
      * 
      */
     public Optional<Output<String>> name() {
@@ -211,7 +211,7 @@ public final class EcsLaunchTemplateDataDiskArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param description Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
+         * @param description The description of the data disk.
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class EcsLaunchTemplateDataDiskArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param description Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
+         * @param description The description of the data disk.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class EcsLaunchTemplateDataDiskArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param name It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+         * @param name The name of the data disk.
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class EcsLaunchTemplateDataDiskArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param name It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+         * @param name The name of the data disk.
          * 
          * @return builder
          * 

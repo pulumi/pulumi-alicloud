@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Eds
     /// <summary>
     /// Provides a Elastic Desktop Service (ECD) User resource.
     /// 
-    /// For information about Elastic Desktop Service (ECD) User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-eds-user-2021-03-08-api-doc-createusers-desktop).
+    /// For information about Elastic Desktop Service (ECD) User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-eds-user-2021-03-08-createusers-desktop).
     /// 
     /// &gt; **NOTE:** Available since v1.142.0.
     /// 

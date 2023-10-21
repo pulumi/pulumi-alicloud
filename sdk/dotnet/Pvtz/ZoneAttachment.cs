@@ -22,15 +22,20 @@ namespace Pulumi.AliCloud.Pvtz
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var zone = new AliCloud.Pvtz.Zone("zone");
+    ///     var zone = new AliCloud.Pvtz.Zone("zone", new()
+    ///     {
+    ///         ZoneName = "foo.example.com",
+    ///     });
     /// 
     ///     var first = new AliCloud.Vpc.Network("first", new()
     ///     {
+    ///         VpcName = "the-first-vpc",
     ///         CidrBlock = "172.16.0.0/12",
     ///     });
     /// 
     ///     var second = new AliCloud.Vpc.Network("second", new()
     ///     {
+    ///         VpcName = "the-second-vpc",
     ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
@@ -57,15 +62,20 @@ namespace Pulumi.AliCloud.Pvtz
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var zone = new AliCloud.Pvtz.Zone("zone");
+    ///     var zone = new AliCloud.Pvtz.Zone("zone", new()
+    ///     {
+    ///         ZoneName = "foo.example.com",
+    ///     });
     /// 
     ///     var first = new AliCloud.Vpc.Network("first", new()
     ///     {
+    ///         VpcName = "the-first-vpc",
     ///         CidrBlock = "172.16.0.0/12",
     ///     });
     /// 
     ///     var second = new AliCloud.Vpc.Network("second", new()
     ///     {
+    ///         VpcName = "the-second-vpc",
     ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
@@ -98,15 +108,20 @@ namespace Pulumi.AliCloud.Pvtz
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var zone = new AliCloud.Pvtz.Zone("zone");
+    ///     var zone = new AliCloud.Pvtz.Zone("zone", new()
+    ///     {
+    ///         ZoneName = "foo.example.com",
+    ///     });
     /// 
     ///     var first = new AliCloud.Vpc.Network("first", new()
     ///     {
+    ///         VpcName = "the-first-vpc",
     ///         CidrBlock = "172.16.0.0/12",
     ///     });
     /// 
     ///     var second = new AliCloud.Vpc.Network("second", new()
     ///     {
+    ///         VpcName = "the-second-vpc",
     ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
@@ -117,6 +132,7 @@ namespace Pulumi.AliCloud.Pvtz
     /// 
     ///     var third = new AliCloud.Vpc.Network("third", new()
     ///     {
+    ///         VpcName = "the-third-vpc",
     ///         CidrBlock = "172.16.0.0/16",
     ///     }, new CustomResourceOptions
     ///     {
@@ -177,7 +193,7 @@ namespace Pulumi.AliCloud.Pvtz
         public Output<ImmutableArray<string>> VpcIds { get; private set; } = null!;
 
         /// <summary>
-        /// The List of the VPC:
+        /// See `vpcs` below.Recommend to use `vpcs`.
         /// </summary>
         [Output("vpcs")]
         public Output<ImmutableArray<Outputs.ZoneAttachmentVpc>> Vpcs { get; private set; } = null!;
@@ -262,7 +278,7 @@ namespace Pulumi.AliCloud.Pvtz
         private InputList<Inputs.ZoneAttachmentVpcArgs>? _vpcs;
 
         /// <summary>
-        /// The List of the VPC:
+        /// See `vpcs` below.Recommend to use `vpcs`.
         /// </summary>
         public InputList<Inputs.ZoneAttachmentVpcArgs> Vpcs
         {
@@ -312,7 +328,7 @@ namespace Pulumi.AliCloud.Pvtz
         private InputList<Inputs.ZoneAttachmentVpcGetArgs>? _vpcs;
 
         /// <summary>
-        /// The List of the VPC:
+        /// See `vpcs` below.Recommend to use `vpcs`.
         /// </summary>
         public InputList<Inputs.ZoneAttachmentVpcGetArgs> Vpcs
         {

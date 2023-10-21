@@ -37,7 +37,15 @@ class AccessConfigurationPermissionPolicyArgs:
              permission_policy_name: pulumi.Input[str],
              permission_policy_type: pulumi.Input[str],
              permission_policy_document: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'permissionPolicyName' in kwargs:
+            permission_policy_name = kwargs['permissionPolicyName']
+        if 'permissionPolicyType' in kwargs:
+            permission_policy_type = kwargs['permissionPolicyType']
+        if 'permissionPolicyDocument' in kwargs:
+            permission_policy_document = kwargs['permissionPolicyDocument']
+
         _setter("permission_policy_name", permission_policy_name)
         _setter("permission_policy_type", permission_policy_type)
         if permission_policy_document is not None:
@@ -99,7 +107,13 @@ class DirectorySamlIdentityProviderConfigurationArgs:
              _setter: Callable[[Any, Any], None],
              encoded_metadata_document: Optional[pulumi.Input[str]] = None,
              sso_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'encodedMetadataDocument' in kwargs:
+            encoded_metadata_document = kwargs['encodedMetadataDocument']
+        if 'ssoStatus' in kwargs:
+            sso_status = kwargs['ssoStatus']
+
         if encoded_metadata_document is not None:
             _setter("encoded_metadata_document", encoded_metadata_document)
         if sso_status is not None:

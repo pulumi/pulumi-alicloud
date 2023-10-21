@@ -39,7 +39,13 @@ class ChangeSetParameterArgs:
              _setter: Callable[[Any, Any], None],
              parameter_key: pulumi.Input[str],
              parameter_value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'parameterKey' in kwargs:
+            parameter_key = kwargs['parameterKey']
+        if 'parameterValue' in kwargs:
+            parameter_value = kwargs['parameterValue']
+
         _setter("parameter_key", parameter_key)
         _setter("parameter_value", parameter_value)
 
@@ -87,7 +93,13 @@ class StackGroupParameterArgs:
              _setter: Callable[[Any, Any], None],
              parameter_key: Optional[pulumi.Input[str]] = None,
              parameter_value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'parameterKey' in kwargs:
+            parameter_key = kwargs['parameterKey']
+        if 'parameterValue' in kwargs:
+            parameter_value = kwargs['parameterValue']
+
         if parameter_key is not None:
             _setter("parameter_key", parameter_key)
         if parameter_value is not None:
@@ -137,7 +149,13 @@ class StackInstanceParameterOverrideArgs:
              _setter: Callable[[Any, Any], None],
              parameter_key: Optional[pulumi.Input[str]] = None,
              parameter_value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'parameterKey' in kwargs:
+            parameter_key = kwargs['parameterKey']
+        if 'parameterValue' in kwargs:
+            parameter_value = kwargs['parameterValue']
+
         if parameter_key is not None:
             _setter("parameter_key", parameter_key)
         if parameter_value is not None:
@@ -187,7 +205,13 @@ class StackParameterArgs:
              _setter: Callable[[Any, Any], None],
              parameter_value: pulumi.Input[str],
              parameter_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'parameterValue' in kwargs:
+            parameter_value = kwargs['parameterValue']
+        if 'parameterKey' in kwargs:
+            parameter_key = kwargs['parameterKey']
+
         _setter("parameter_value", parameter_value)
         if parameter_key is not None:
             _setter("parameter_key", parameter_key)
@@ -236,7 +260,13 @@ class TemplateScratchPreferenceParameterArgs:
              _setter: Callable[[Any, Any], None],
              parameter_key: pulumi.Input[str],
              parameter_value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'parameterKey' in kwargs:
+            parameter_key = kwargs['parameterKey']
+        if 'parameterValue' in kwargs:
+            parameter_value = kwargs['parameterValue']
+
         _setter("parameter_key", parameter_key)
         _setter("parameter_value", parameter_value)
 
@@ -284,7 +314,13 @@ class TemplateScratchSourceResourceArgs:
              _setter: Callable[[Any, Any], None],
              resource_id: pulumi.Input[str],
              resource_type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+
         _setter("resource_id", resource_id)
         _setter("resource_type", resource_type)
 
@@ -332,7 +368,13 @@ class TemplateScratchSourceResourceGroupArgs:
              _setter: Callable[[Any, Any], None],
              resource_group_id: pulumi.Input[str],
              resource_type_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'resourceTypeFilters' in kwargs:
+            resource_type_filters = kwargs['resourceTypeFilters']
+
         _setter("resource_group_id", resource_group_id)
         if resource_type_filters is not None:
             _setter("resource_type_filters", resource_type_filters)
@@ -381,7 +423,13 @@ class TemplateScratchSourceTagArgs:
              _setter: Callable[[Any, Any], None],
              resource_tags: pulumi.Input[Mapping[str, Any]],
              resource_type_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceTags' in kwargs:
+            resource_tags = kwargs['resourceTags']
+        if 'resourceTypeFilters' in kwargs:
+            resource_type_filters = kwargs['resourceTypeFilters']
+
         _setter("resource_tags", resource_tags)
         if resource_type_filters is not None:
             _setter("resource_type_filters", resource_type_filters)

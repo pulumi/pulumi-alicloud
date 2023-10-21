@@ -39,7 +39,13 @@ class ConsumerGroupArgs:
              instance_id: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'consumerId' in kwargs:
+            consumer_id = kwargs['consumerId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("consumer_id", consumer_id)
         _setter("instance_id", instance_id)
         if description is not None:
@@ -124,7 +130,13 @@ class _ConsumerGroupState:
              description: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'consumerId' in kwargs:
+            consumer_id = kwargs['consumerId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if consumer_id is not None:
             _setter("consumer_id", consumer_id)
         if description is not None:
@@ -194,7 +206,7 @@ class ConsumerGroup(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
-        Provides an ALIKAFKA consumer group resource, see [What is alikafka consumer group](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-createconsumergroup).
+        Provides an ALIKAFKA consumer group resource, see [What is alikafka consumer group](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createconsumergroup).
 
         > **NOTE:** Available since v1.56.0.
 
@@ -253,7 +265,7 @@ class ConsumerGroup(pulumi.CustomResource):
                  args: ConsumerGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an ALIKAFKA consumer group resource, see [What is alikafka consumer group](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-createconsumergroup).
+        Provides an ALIKAFKA consumer group resource, see [What is alikafka consumer group](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createconsumergroup).
 
         > **NOTE:** Available since v1.56.0.
 

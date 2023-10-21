@@ -81,7 +81,33 @@ class ClusterArgs:
              security_mode: Optional[pulumi.Input[str]] = None,
              subscription_config: Optional[pulumi.Input['ClusterSubscriptionConfigArgs']] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'clusterType' in kwargs:
+            cluster_type = kwargs['clusterType']
+        if 'nodeAttributes' in kwargs:
+            node_attributes = kwargs['nodeAttributes']
+        if 'nodeGroups' in kwargs:
+            node_groups = kwargs['nodeGroups']
+        if 'releaseVersion' in kwargs:
+            release_version = kwargs['releaseVersion']
+        if 'applicationConfigs' in kwargs:
+            application_configs = kwargs['applicationConfigs']
+        if 'bootstrapScripts' in kwargs:
+            bootstrap_scripts = kwargs['bootstrapScripts']
+        if 'deployMode' in kwargs:
+            deploy_mode = kwargs['deployMode']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityMode' in kwargs:
+            security_mode = kwargs['securityMode']
+        if 'subscriptionConfig' in kwargs:
+            subscription_config = kwargs['subscriptionConfig']
+
         _setter("applications", applications)
         _setter("cluster_name", cluster_name)
         _setter("cluster_type", cluster_type)
@@ -342,7 +368,33 @@ class _ClusterState:
              security_mode: Optional[pulumi.Input[str]] = None,
              subscription_config: Optional[pulumi.Input['ClusterSubscriptionConfigArgs']] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applicationConfigs' in kwargs:
+            application_configs = kwargs['applicationConfigs']
+        if 'bootstrapScripts' in kwargs:
+            bootstrap_scripts = kwargs['bootstrapScripts']
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'clusterType' in kwargs:
+            cluster_type = kwargs['clusterType']
+        if 'deployMode' in kwargs:
+            deploy_mode = kwargs['deployMode']
+        if 'nodeAttributes' in kwargs:
+            node_attributes = kwargs['nodeAttributes']
+        if 'nodeGroups' in kwargs:
+            node_groups = kwargs['nodeGroups']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'releaseVersion' in kwargs:
+            release_version = kwargs['releaseVersion']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityMode' in kwargs:
+            security_mode = kwargs['securityMode']
+        if 'subscriptionConfig' in kwargs:
+            subscription_config = kwargs['subscriptionConfig']
+
         if application_configs is not None:
             _setter("application_configs", application_configs)
         if applications is not None:

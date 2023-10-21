@@ -31,7 +31,13 @@ class RemoteWriteArgs:
              _setter: Callable[[Any, Any], None],
              cluster_id: pulumi.Input[str],
              remote_write_yaml: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'remoteWriteYaml' in kwargs:
+            remote_write_yaml = kwargs['remoteWriteYaml']
+
         _setter("cluster_id", cluster_id)
         _setter("remote_write_yaml", remote_write_yaml)
 
@@ -84,7 +90,15 @@ class _RemoteWriteState:
              cluster_id: Optional[pulumi.Input[str]] = None,
              remote_write_name: Optional[pulumi.Input[str]] = None,
              remote_write_yaml: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'remoteWriteName' in kwargs:
+            remote_write_name = kwargs['remoteWriteName']
+        if 'remoteWriteYaml' in kwargs:
+            remote_write_yaml = kwargs['remoteWriteYaml']
+
         if cluster_id is not None:
             _setter("cluster_id", cluster_id)
         if remote_write_name is not None:
@@ -140,7 +154,7 @@ class RemoteWrite(pulumi.CustomResource):
         """
         Provides a Application Real-Time Monitoring Service (ARMS) Remote Write resource.
 
-        For information about Application Real-Time Monitoring Service (ARMS) Remote Write and how to use it, see [What is Remote Write](https://www.alibabacloud.com/help/en/application-real-time-monitoring-service/latest/api-doc-arms-2019-08-08-api-doc-addprometheusremotewrite).
+        For information about Application Real-Time Monitoring Service (ARMS) Remote Write and how to use it, see [What is Remote Write](https://www.alibabacloud.com/help/en/arms/developer-reference/api-arms-2019-08-08-addprometheusremotewrite).
 
         > **NOTE:** Available since v1.204.0.
 
@@ -216,7 +230,7 @@ class RemoteWrite(pulumi.CustomResource):
         """
         Provides a Application Real-Time Monitoring Service (ARMS) Remote Write resource.
 
-        For information about Application Real-Time Monitoring Service (ARMS) Remote Write and how to use it, see [What is Remote Write](https://www.alibabacloud.com/help/en/application-real-time-monitoring-service/latest/api-doc-arms-2019-08-08-api-doc-addprometheusremotewrite).
+        For information about Application Real-Time Monitoring Service (ARMS) Remote Write and how to use it, see [What is Remote Write](https://www.alibabacloud.com/help/en/arms/developer-reference/api-arms-2019-08-08-addprometheusremotewrite).
 
         > **NOTE:** Available since v1.204.0.
 

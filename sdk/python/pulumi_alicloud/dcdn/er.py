@@ -37,7 +37,13 @@ class ErArgs:
              er_name: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
              env_conf: Optional[pulumi.Input['ErEnvConfArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'erName' in kwargs:
+            er_name = kwargs['erName']
+        if 'envConf' in kwargs:
+            env_conf = kwargs['envConf']
+
         _setter("er_name", er_name)
         if description is not None:
             _setter("description", description)
@@ -105,7 +111,13 @@ class _ErState:
              description: Optional[pulumi.Input[str]] = None,
              env_conf: Optional[pulumi.Input['ErEnvConfArgs']] = None,
              er_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'envConf' in kwargs:
+            env_conf = kwargs['envConf']
+        if 'erName' in kwargs:
+            er_name = kwargs['erName']
+
         if description is not None:
             _setter("description", description)
         if env_conf is not None:
@@ -162,7 +174,7 @@ class Er(pulumi.CustomResource):
         """
         Provides a DCDN Er resource.
 
-        For information about DCDN Er and how to use it, see [What is Er](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/createroutine).
+        For information about DCDN Er and how to use it, see [What is Er](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-createroutine).
 
         > **NOTE:** Available since v1.201.0.
 
@@ -216,7 +228,7 @@ class Er(pulumi.CustomResource):
         """
         Provides a DCDN Er resource.
 
-        For information about DCDN Er and how to use it, see [What is Er](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/createroutine).
+        For information about DCDN Er and how to use it, see [What is Er](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-createroutine).
 
         > **NOTE:** Available since v1.201.0.
 

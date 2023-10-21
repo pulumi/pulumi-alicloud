@@ -56,7 +56,13 @@ class EipSegmentAddressArgs:
              internet_charge_type: Optional[pulumi.Input[str]] = None,
              isp: Optional[pulumi.Input[str]] = None,
              netmode: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'eipMask' in kwargs:
+            eip_mask = kwargs['eipMask']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+
         _setter("eip_mask", eip_mask)
         if bandwidth is not None:
             _setter("bandwidth", bandwidth)
@@ -194,7 +200,15 @@ class _EipSegmentAddressState:
              isp: Optional[pulumi.Input[str]] = None,
              netmode: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'eipMask' in kwargs:
+            eip_mask = kwargs['eipMask']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+
         if bandwidth is not None:
             _setter("bandwidth", bandwidth)
         if create_time is not None:

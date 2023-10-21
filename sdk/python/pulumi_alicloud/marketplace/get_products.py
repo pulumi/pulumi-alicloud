@@ -176,7 +176,7 @@ def get_products(category_id: Optional[str] = None,
     > **NOTE:** Available in 1.64.0+
 
 
-    :param str category_id: The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
+    :param str category_id: The Category ID of products.
     :param Sequence[str] ids: A list of product code.
     :param str name_regex: A regex string to apply to the product name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -234,7 +234,7 @@ def get_products_output(category_id: Optional[pulumi.Input[Optional[str]]] = Non
     > **NOTE:** Available in 1.64.0+
 
 
-    :param str category_id: The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
+    :param str category_id: The Category ID of products.
     :param Sequence[str] ids: A list of product code.
     :param str name_regex: A regex string to apply to the product name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

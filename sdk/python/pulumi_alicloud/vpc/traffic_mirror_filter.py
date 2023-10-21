@@ -55,7 +55,21 @@ class TrafficMirrorFilterArgs:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              traffic_mirror_filter_description: Optional[pulumi.Input[str]] = None,
              traffic_mirror_filter_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'egressRules' in kwargs:
+            egress_rules = kwargs['egressRules']
+        if 'ingressRules' in kwargs:
+            ingress_rules = kwargs['ingressRules']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'trafficMirrorFilterDescription' in kwargs:
+            traffic_mirror_filter_description = kwargs['trafficMirrorFilterDescription']
+        if 'trafficMirrorFilterName' in kwargs:
+            traffic_mirror_filter_name = kwargs['trafficMirrorFilterName']
+
         if dry_run is not None:
             _setter("dry_run", dry_run)
         if egress_rules is not None:
@@ -204,7 +218,21 @@ class _TrafficMirrorFilterState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              traffic_mirror_filter_description: Optional[pulumi.Input[str]] = None,
              traffic_mirror_filter_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'egressRules' in kwargs:
+            egress_rules = kwargs['egressRules']
+        if 'ingressRules' in kwargs:
+            ingress_rules = kwargs['ingressRules']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'trafficMirrorFilterDescription' in kwargs:
+            traffic_mirror_filter_description = kwargs['trafficMirrorFilterDescription']
+        if 'trafficMirrorFilterName' in kwargs:
+            traffic_mirror_filter_name = kwargs['trafficMirrorFilterName']
+
         if dry_run is not None:
             _setter("dry_run", dry_run)
         if egress_rules is not None:

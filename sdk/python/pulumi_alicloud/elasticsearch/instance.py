@@ -159,7 +159,65 @@ class InstanceArgs:
              setting_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              zone_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dataNodeAmount' in kwargs:
+            data_node_amount = kwargs['dataNodeAmount']
+        if 'dataNodeDiskSize' in kwargs:
+            data_node_disk_size = kwargs['dataNodeDiskSize']
+        if 'dataNodeDiskType' in kwargs:
+            data_node_disk_type = kwargs['dataNodeDiskType']
+        if 'dataNodeSpec' in kwargs:
+            data_node_spec = kwargs['dataNodeSpec']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'autoRenewDuration' in kwargs:
+            auto_renew_duration = kwargs['autoRenewDuration']
+        if 'clientNodeAmount' in kwargs:
+            client_node_amount = kwargs['clientNodeAmount']
+        if 'clientNodeSpec' in kwargs:
+            client_node_spec = kwargs['clientNodeSpec']
+        if 'dataNodeDiskEncrypted' in kwargs:
+            data_node_disk_encrypted = kwargs['dataNodeDiskEncrypted']
+        if 'dataNodeDiskPerformanceLevel' in kwargs:
+            data_node_disk_performance_level = kwargs['dataNodeDiskPerformanceLevel']
+        if 'enableKibanaPrivateNetwork' in kwargs:
+            enable_kibana_private_network = kwargs['enableKibanaPrivateNetwork']
+        if 'enableKibanaPublicNetwork' in kwargs:
+            enable_kibana_public_network = kwargs['enableKibanaPublicNetwork']
+        if 'enablePublic' in kwargs:
+            enable_public = kwargs['enablePublic']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'kibanaNodeSpec' in kwargs:
+            kibana_node_spec = kwargs['kibanaNodeSpec']
+        if 'kibanaPrivateWhitelists' in kwargs:
+            kibana_private_whitelists = kwargs['kibanaPrivateWhitelists']
+        if 'kibanaWhitelists' in kwargs:
+            kibana_whitelists = kwargs['kibanaWhitelists']
+        if 'kmsEncryptedPassword' in kwargs:
+            kms_encrypted_password = kwargs['kmsEncryptedPassword']
+        if 'kmsEncryptionContext' in kwargs:
+            kms_encryption_context = kwargs['kmsEncryptionContext']
+        if 'masterNodeDiskType' in kwargs:
+            master_node_disk_type = kwargs['masterNodeDiskType']
+        if 'masterNodeSpec' in kwargs:
+            master_node_spec = kwargs['masterNodeSpec']
+        if 'privateWhitelists' in kwargs:
+            private_whitelists = kwargs['privateWhitelists']
+        if 'publicWhitelists' in kwargs:
+            public_whitelists = kwargs['publicWhitelists']
+        if 'renewStatus' in kwargs:
+            renew_status = kwargs['renewStatus']
+        if 'renewalDurationUnit' in kwargs:
+            renewal_duration_unit = kwargs['renewalDurationUnit']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'settingConfig' in kwargs:
+            setting_config = kwargs['settingConfig']
+        if 'zoneCount' in kwargs:
+            zone_count = kwargs['zoneCount']
+
         _setter("data_node_amount", data_node_amount)
         _setter("data_node_disk_size", data_node_disk_size)
         _setter("data_node_disk_type", data_node_disk_type)
@@ -808,7 +866,73 @@ class _InstanceState:
              version: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoRenewDuration' in kwargs:
+            auto_renew_duration = kwargs['autoRenewDuration']
+        if 'clientNodeAmount' in kwargs:
+            client_node_amount = kwargs['clientNodeAmount']
+        if 'clientNodeSpec' in kwargs:
+            client_node_spec = kwargs['clientNodeSpec']
+        if 'dataNodeAmount' in kwargs:
+            data_node_amount = kwargs['dataNodeAmount']
+        if 'dataNodeDiskEncrypted' in kwargs:
+            data_node_disk_encrypted = kwargs['dataNodeDiskEncrypted']
+        if 'dataNodeDiskPerformanceLevel' in kwargs:
+            data_node_disk_performance_level = kwargs['dataNodeDiskPerformanceLevel']
+        if 'dataNodeDiskSize' in kwargs:
+            data_node_disk_size = kwargs['dataNodeDiskSize']
+        if 'dataNodeDiskType' in kwargs:
+            data_node_disk_type = kwargs['dataNodeDiskType']
+        if 'dataNodeSpec' in kwargs:
+            data_node_spec = kwargs['dataNodeSpec']
+        if 'enableKibanaPrivateNetwork' in kwargs:
+            enable_kibana_private_network = kwargs['enableKibanaPrivateNetwork']
+        if 'enableKibanaPublicNetwork' in kwargs:
+            enable_kibana_public_network = kwargs['enableKibanaPublicNetwork']
+        if 'enablePublic' in kwargs:
+            enable_public = kwargs['enablePublic']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'kibanaDomain' in kwargs:
+            kibana_domain = kwargs['kibanaDomain']
+        if 'kibanaNodeSpec' in kwargs:
+            kibana_node_spec = kwargs['kibanaNodeSpec']
+        if 'kibanaPort' in kwargs:
+            kibana_port = kwargs['kibanaPort']
+        if 'kibanaPrivateWhitelists' in kwargs:
+            kibana_private_whitelists = kwargs['kibanaPrivateWhitelists']
+        if 'kibanaWhitelists' in kwargs:
+            kibana_whitelists = kwargs['kibanaWhitelists']
+        if 'kmsEncryptedPassword' in kwargs:
+            kms_encrypted_password = kwargs['kmsEncryptedPassword']
+        if 'kmsEncryptionContext' in kwargs:
+            kms_encryption_context = kwargs['kmsEncryptionContext']
+        if 'masterNodeDiskType' in kwargs:
+            master_node_disk_type = kwargs['masterNodeDiskType']
+        if 'masterNodeSpec' in kwargs:
+            master_node_spec = kwargs['masterNodeSpec']
+        if 'privateWhitelists' in kwargs:
+            private_whitelists = kwargs['privateWhitelists']
+        if 'publicDomain' in kwargs:
+            public_domain = kwargs['publicDomain']
+        if 'publicPort' in kwargs:
+            public_port = kwargs['publicPort']
+        if 'publicWhitelists' in kwargs:
+            public_whitelists = kwargs['publicWhitelists']
+        if 'renewStatus' in kwargs:
+            renew_status = kwargs['renewStatus']
+        if 'renewalDurationUnit' in kwargs:
+            renewal_duration_unit = kwargs['renewalDurationUnit']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'settingConfig' in kwargs:
+            setting_config = kwargs['settingConfig']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneCount' in kwargs:
+            zone_count = kwargs['zoneCount']
+
         if auto_renew_duration is not None:
             _setter("auto_renew_duration", auto_renew_duration)
         if client_node_amount is not None:

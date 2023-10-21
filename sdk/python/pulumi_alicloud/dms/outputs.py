@@ -98,7 +98,31 @@ class GetEnterpriseDatabasesDatabaseResult(dict):
              search_name: str,
              sid: str,
              state: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'catalogName' in kwargs:
+            catalog_name = kwargs['catalogName']
+        if 'databaseId' in kwargs:
+            database_id = kwargs['databaseId']
+        if 'dbType' in kwargs:
+            db_type = kwargs['dbType']
+        if 'dbaId' in kwargs:
+            dba_id = kwargs['dbaId']
+        if 'dbaName' in kwargs:
+            dba_name = kwargs['dbaName']
+        if 'envType' in kwargs:
+            env_type = kwargs['envType']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'ownerIdLists' in kwargs:
+            owner_id_lists = kwargs['ownerIdLists']
+        if 'ownerNameLists' in kwargs:
+            owner_name_lists = kwargs['ownerNameLists']
+        if 'schemaName' in kwargs:
+            schema_name = kwargs['schemaName']
+        if 'searchName' in kwargs:
+            search_name = kwargs['searchName']
+
         _setter("catalog_name", catalog_name)
         _setter("database_id", database_id)
         _setter("db_type", db_type)
@@ -359,7 +383,47 @@ class GetEnterpriseInstancesInstanceResult(dict):
              status: str,
              use_dsql: int,
              vpc_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dataLinkName' in kwargs:
+            data_link_name = kwargs['dataLinkName']
+        if 'databasePassword' in kwargs:
+            database_password = kwargs['databasePassword']
+        if 'databaseUser' in kwargs:
+            database_user = kwargs['databaseUser']
+        if 'dbaId' in kwargs:
+            dba_id = kwargs['dbaId']
+        if 'dbaNickName' in kwargs:
+            dba_nick_name = kwargs['dbaNickName']
+        if 'ddlOnline' in kwargs:
+            ddl_online = kwargs['ddlOnline']
+        if 'ecsInstanceId' in kwargs:
+            ecs_instance_id = kwargs['ecsInstanceId']
+        if 'ecsRegion' in kwargs:
+            ecs_region = kwargs['ecsRegion']
+        if 'envType' in kwargs:
+            env_type = kwargs['envType']
+        if 'exportTimeout' in kwargs:
+            export_timeout = kwargs['exportTimeout']
+        if 'instanceAlias' in kwargs:
+            instance_alias = kwargs['instanceAlias']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'instanceSource' in kwargs:
+            instance_source = kwargs['instanceSource']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'queryTimeout' in kwargs:
+            query_timeout = kwargs['queryTimeout']
+        if 'safeRuleId' in kwargs:
+            safe_rule_id = kwargs['safeRuleId']
+        if 'useDsql' in kwargs:
+            use_dsql = kwargs['useDsql']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         _setter("data_link_name", data_link_name)
         _setter("database_password", database_password)
         _setter("database_user", database_user)
@@ -627,7 +691,25 @@ class GetEnterpriseLogicDatabasesDatabaseResult(dict):
              owner_name_lists: Sequence[str],
              schema_name: str,
              search_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'databaseIds' in kwargs:
+            database_ids = kwargs['databaseIds']
+        if 'dbType' in kwargs:
+            db_type = kwargs['dbType']
+        if 'envType' in kwargs:
+            env_type = kwargs['envType']
+        if 'logicDatabaseId' in kwargs:
+            logic_database_id = kwargs['logicDatabaseId']
+        if 'ownerIdLists' in kwargs:
+            owner_id_lists = kwargs['ownerIdLists']
+        if 'ownerNameLists' in kwargs:
+            owner_name_lists = kwargs['ownerNameLists']
+        if 'schemaName' in kwargs:
+            schema_name = kwargs['schemaName']
+        if 'searchName' in kwargs:
+            search_name = kwargs['searchName']
+
         _setter("alias", alias)
         _setter("database_ids", database_ids)
         _setter("db_type", db_type)
@@ -788,7 +870,31 @@ class GetEnterpriseProxiesProxyResult(dict):
              proxy_id: str,
              public_enable: bool,
              public_host: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'creatorId' in kwargs:
+            creator_id = kwargs['creatorId']
+        if 'creatorName' in kwargs:
+            creator_name = kwargs['creatorName']
+        if 'httpsPort' in kwargs:
+            https_port = kwargs['httpsPort']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'privateEnable' in kwargs:
+            private_enable = kwargs['privateEnable']
+        if 'privateHost' in kwargs:
+            private_host = kwargs['privateHost']
+        if 'protocolPort' in kwargs:
+            protocol_port = kwargs['protocolPort']
+        if 'protocolType' in kwargs:
+            protocol_type = kwargs['protocolType']
+        if 'proxyId' in kwargs:
+            proxy_id = kwargs['proxyId']
+        if 'publicEnable' in kwargs:
+            public_enable = kwargs['publicEnable']
+        if 'publicHost' in kwargs:
+            public_host = kwargs['publicHost']
+
         _setter("creator_id", creator_id)
         _setter("creator_name", creator_name)
         _setter("https_port", https_port)
@@ -916,6 +1022,7 @@ class GetEnterpriseProxyAccessesAccessResult(dict):
                  user_uid: str):
         """
         :param str access_id: The authorized account of the security agent.
+        :param str create_time: The authorization time of the security access agent permission.
         :param str id: Security Protection authorization ID.
         :param str indep_account: Database account.
         :param str instance_id: The ID of the instance.
@@ -956,7 +1063,31 @@ class GetEnterpriseProxyAccessesAccessResult(dict):
              user_id: str,
              user_name: str,
              user_uid: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessId' in kwargs:
+            access_id = kwargs['accessId']
+        if 'accessSecret' in kwargs:
+            access_secret = kwargs['accessSecret']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'indepAccount' in kwargs:
+            indep_account = kwargs['indepAccount']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'originInfo' in kwargs:
+            origin_info = kwargs['originInfo']
+        if 'proxyAccessId' in kwargs:
+            proxy_access_id = kwargs['proxyAccessId']
+        if 'proxyId' in kwargs:
+            proxy_id = kwargs['proxyId']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+        if 'userUid' in kwargs:
+            user_uid = kwargs['userUid']
+
         _setter("access_id", access_id)
         _setter("access_secret", access_secret)
         _setter("create_time", create_time)
@@ -986,6 +1117,9 @@ class GetEnterpriseProxyAccessesAccessResult(dict):
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
+        """
+        The authorization time of the security access agent permission.
+        """
         return pulumi.get(self, "create_time")
 
     @property
@@ -1111,7 +1245,21 @@ class GetEnterpriseUsersUserResult(dict):
              uid: str,
              user_id: str,
              user_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nickName' in kwargs:
+            nick_name = kwargs['nickName']
+        if 'parentUid' in kwargs:
+            parent_uid = kwargs['parentUid']
+        if 'roleIds' in kwargs:
+            role_ids = kwargs['roleIds']
+        if 'roleNames' in kwargs:
+            role_names = kwargs['roleNames']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         _setter("id", id)
         _setter("mobile", mobile)
         _setter("nick_name", nick_name)
@@ -1228,7 +1376,11 @@ class GetUserTenantsTenantResult(dict):
              status: str,
              tenant_name: str,
              tid: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'tenantName' in kwargs:
+            tenant_name = kwargs['tenantName']
+
         _setter("id", id)
         _setter("status", status)
         _setter("tenant_name", tenant_name)

@@ -63,7 +63,25 @@ class BaselineStrategyArgs:
              start_time: pulumi.Input[str],
              target_type: pulumi.Input[str],
              cycle_start_time: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'baselineStrategyName' in kwargs:
+            baseline_strategy_name = kwargs['baselineStrategyName']
+        if 'customType' in kwargs:
+            custom_type = kwargs['customType']
+        if 'cycleDays' in kwargs:
+            cycle_days = kwargs['cycleDays']
+        if 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if 'riskSubTypeName' in kwargs:
+            risk_sub_type_name = kwargs['riskSubTypeName']
+        if 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if 'targetType' in kwargs:
+            target_type = kwargs['targetType']
+        if 'cycleStartTime' in kwargs:
+            cycle_start_time = kwargs['cycleStartTime']
+
         _setter("baseline_strategy_name", baseline_strategy_name)
         _setter("custom_type", custom_type)
         _setter("cycle_days", cycle_days)
@@ -235,7 +253,27 @@ class _BaselineStrategyState:
              risk_sub_type_name: Optional[pulumi.Input[str]] = None,
              start_time: Optional[pulumi.Input[str]] = None,
              target_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'baselineStrategyId' in kwargs:
+            baseline_strategy_id = kwargs['baselineStrategyId']
+        if 'baselineStrategyName' in kwargs:
+            baseline_strategy_name = kwargs['baselineStrategyName']
+        if 'customType' in kwargs:
+            custom_type = kwargs['customType']
+        if 'cycleDays' in kwargs:
+            cycle_days = kwargs['cycleDays']
+        if 'cycleStartTime' in kwargs:
+            cycle_start_time = kwargs['cycleStartTime']
+        if 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if 'riskSubTypeName' in kwargs:
+            risk_sub_type_name = kwargs['riskSubTypeName']
+        if 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if 'targetType' in kwargs:
+            target_type = kwargs['targetType']
+
         if baseline_strategy_id is not None:
             _setter("baseline_strategy_id", baseline_strategy_id)
         if baseline_strategy_name is not None:
@@ -389,9 +427,9 @@ class BaselineStrategy(pulumi.CustomResource):
         """
         Provides a Threat Detection Baseline Strategy resource.
 
-        For information about Threat Detection Baseline Strategy and how to use it, see [What is Baseline Strategy](https://www.alibabacloud.com/help/zh/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifystrategy).
+        For information about Threat Detection Baseline Strategy and how to use it, see [What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-modifystrategy).
 
-        > **NOTE:** Available in v1.195.0+.
+        > **NOTE:** Available since v1.195.0.
 
         ## Example Usage
 
@@ -447,9 +485,9 @@ class BaselineStrategy(pulumi.CustomResource):
         """
         Provides a Threat Detection Baseline Strategy resource.
 
-        For information about Threat Detection Baseline Strategy and how to use it, see [What is Baseline Strategy](https://www.alibabacloud.com/help/zh/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifystrategy).
+        For information about Threat Detection Baseline Strategy and how to use it, see [What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-modifystrategy).
 
-        > **NOTE:** Available in v1.195.0+.
+        > **NOTE:** Available since v1.195.0.
 
         ## Example Usage
 

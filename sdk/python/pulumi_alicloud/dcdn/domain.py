@@ -88,7 +88,31 @@ class DomainArgs:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              top_level_domain: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'certName' in kwargs:
+            cert_name = kwargs['certName']
+        if 'certType' in kwargs:
+            cert_type = kwargs['certType']
+        if 'checkUrl' in kwargs:
+            check_url = kwargs['checkUrl']
+        if 'forceSet' in kwargs:
+            force_set = kwargs['forceSet']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityToken' in kwargs:
+            security_token = kwargs['securityToken']
+        if 'sslPri' in kwargs:
+            ssl_pri = kwargs['sslPri']
+        if 'sslProtocol' in kwargs:
+            ssl_protocol = kwargs['sslProtocol']
+        if 'sslPub' in kwargs:
+            ssl_pub = kwargs['sslPub']
+        if 'topLevelDomain' in kwargs:
+            top_level_domain = kwargs['topLevelDomain']
+
         _setter("domain_name", domain_name)
         _setter("sources", sources)
         if cert_name is not None:
@@ -381,7 +405,31 @@ class _DomainState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              top_level_domain: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'certName' in kwargs:
+            cert_name = kwargs['certName']
+        if 'certType' in kwargs:
+            cert_type = kwargs['certType']
+        if 'checkUrl' in kwargs:
+            check_url = kwargs['checkUrl']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'forceSet' in kwargs:
+            force_set = kwargs['forceSet']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityToken' in kwargs:
+            security_token = kwargs['securityToken']
+        if 'sslPri' in kwargs:
+            ssl_pri = kwargs['sslPri']
+        if 'sslProtocol' in kwargs:
+            ssl_protocol = kwargs['sslProtocol']
+        if 'sslPub' in kwargs:
+            ssl_pub = kwargs['sslPub']
+        if 'topLevelDomain' in kwargs:
+            top_level_domain = kwargs['topLevelDomain']
+
         if cert_name is not None:
             _setter("cert_name", cert_name)
         if cert_type is not None:

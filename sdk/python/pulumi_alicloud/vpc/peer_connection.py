@@ -74,7 +74,23 @@ class PeerConnectionArgs:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceptingRegionId' in kwargs:
+            accepting_region_id = kwargs['acceptingRegionId']
+        if 'acceptingVpcId' in kwargs:
+            accepting_vpc_id = kwargs['acceptingVpcId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'acceptingAliUid' in kwargs:
+            accepting_ali_uid = kwargs['acceptingAliUid']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'peerConnectionName' in kwargs:
+            peer_connection_name = kwargs['peerConnectionName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("accepting_region_id", accepting_region_id)
         _setter("accepting_vpc_id", accepting_vpc_id)
         _setter("vpc_id", vpc_id)
@@ -302,7 +318,25 @@ class _PeerConnectionState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceptingAliUid' in kwargs:
+            accepting_ali_uid = kwargs['acceptingAliUid']
+        if 'acceptingRegionId' in kwargs:
+            accepting_region_id = kwargs['acceptingRegionId']
+        if 'acceptingVpcId' in kwargs:
+            accepting_vpc_id = kwargs['acceptingVpcId']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'peerConnectionName' in kwargs:
+            peer_connection_name = kwargs['peerConnectionName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if accepting_ali_uid is not None:
             _setter("accepting_ali_uid", accepting_ali_uid)
         if accepting_region_id is not None:

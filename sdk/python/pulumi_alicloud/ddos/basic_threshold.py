@@ -43,7 +43,15 @@ class BasicThresholdArgs:
              instance_type: pulumi.Input[str],
              internet_ip: pulumi.Input[str],
              pps: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'internetIp' in kwargs:
+            internet_ip = kwargs['internetIp']
+
         _setter("bps", bps)
         _setter("instance_id", instance_id)
         _setter("instance_type", instance_type)
@@ -151,7 +159,19 @@ class _BasicThresholdState:
              max_bps: Optional[pulumi.Input[int]] = None,
              max_pps: Optional[pulumi.Input[int]] = None,
              pps: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'internetIp' in kwargs:
+            internet_ip = kwargs['internetIp']
+        if 'maxBps' in kwargs:
+            max_bps = kwargs['maxBps']
+        if 'maxPps' in kwargs:
+            max_pps = kwargs['maxPps']
+
         if bps is not None:
             _setter("bps", bps)
         if instance_id is not None:

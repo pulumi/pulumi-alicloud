@@ -12,8 +12,10 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -226,32 +228,74 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.secondaryZoneId);
     }
     /**
-     * The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm.
+     * The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
      * 
      */
     @Export(name="shardCount", type=Integer.class, parameters={})
     private Output<Integer> shardCount;
 
     /**
-     * @return The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm.
+     * @return The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
      * 
      */
     public Output<Integer> shardCount() {
         return this.shardCount;
     }
     /**
-     * The status of the instance. Valid values: Normal, Creating, Changing, Inactive, Flushing, Released, Transforming, Unavailable, Error, Migrating, and upgrading, networkModifying, SSLModifying, and MajorVersionUpgrading.
+     * The status of the resource.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return The status of the instance. Valid values: Normal, Creating, Changing, Inactive, Flushing, Released, Transforming, Unavailable, Error, Migrating, and upgrading, networkModifying, SSLModifying, and MajorVersionUpgrading.
+     * @return The status of the resource.
      * 
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instance_type is &#34;tair_essd&#34;, this attribute takes effect and is required.
+     * 
+     */
+    @Export(name="storagePerformanceLevel", type=String.class, parameters={})
+    private Output</* @Nullable */ String> storagePerformanceLevel;
+
+    /**
+     * @return The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instance_type is &#34;tair_essd&#34;, this attribute takes effect and is required.
+     * 
+     */
+    public Output<Optional<String>> storagePerformanceLevel() {
+        return Codegen.optional(this.storagePerformanceLevel);
+    }
+    /**
+     * The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instance_type is &#34;tair_essd&#34;, this attribute takes effect and is required.
+     * 
+     */
+    @Export(name="storageSizeGb", type=Integer.class, parameters={})
+    private Output<Integer> storageSizeGb;
+
+    /**
+     * @return The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instance_type is &#34;tair_essd&#34;, this attribute takes effect and is required.
+     * 
+     */
+    public Output<Integer> storageSizeGb() {
+        return this.storageSizeGb;
+    }
+    /**
+     * The tag of the resource.
+     * 
+     */
+    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return The tag of the resource.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * The name of the resource.
@@ -296,14 +340,14 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
         return this.vswitchId;
     }
     /**
-     * The zone ID of the instance.
+     * Zone ID.
      * 
      */
     @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**
-     * @return The zone ID of the instance.
+     * @return Zone ID.
      * 
      */
     public Output<String> zoneId() {

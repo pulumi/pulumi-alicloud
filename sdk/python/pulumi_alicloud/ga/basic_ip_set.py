@@ -39,7 +39,15 @@ class BasicIpSetArgs:
              accelerator_id: pulumi.Input[str],
              bandwidth: Optional[pulumi.Input[int]] = None,
              isp_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accelerateRegionId' in kwargs:
+            accelerate_region_id = kwargs['accelerateRegionId']
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'ispType' in kwargs:
+            isp_type = kwargs['ispType']
+
         _setter("accelerate_region_id", accelerate_region_id)
         _setter("accelerator_id", accelerator_id)
         if bandwidth is not None:
@@ -128,7 +136,15 @@ class _BasicIpSetState:
              bandwidth: Optional[pulumi.Input[int]] = None,
              isp_type: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accelerateRegionId' in kwargs:
+            accelerate_region_id = kwargs['accelerateRegionId']
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'ispType' in kwargs:
+            isp_type = kwargs['ispType']
+
         if accelerate_region_id is not None:
             _setter("accelerate_region_id", accelerate_region_id)
         if accelerator_id is not None:

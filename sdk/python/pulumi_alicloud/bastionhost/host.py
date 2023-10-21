@@ -63,7 +63,25 @@ class HostArgs:
              host_public_address: Optional[pulumi.Input[str]] = None,
              instance_region_id: Optional[pulumi.Input[str]] = None,
              source_instance_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'activeAddressType' in kwargs:
+            active_address_type = kwargs['activeAddressType']
+        if 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'osType' in kwargs:
+            os_type = kwargs['osType']
+        if 'hostPrivateAddress' in kwargs:
+            host_private_address = kwargs['hostPrivateAddress']
+        if 'hostPublicAddress' in kwargs:
+            host_public_address = kwargs['hostPublicAddress']
+        if 'instanceRegionId' in kwargs:
+            instance_region_id = kwargs['instanceRegionId']
+        if 'sourceInstanceId' in kwargs:
+            source_instance_id = kwargs['sourceInstanceId']
+
         _setter("active_address_type", active_address_type)
         _setter("host_name", host_name)
         _setter("instance_id", instance_id)
@@ -257,7 +275,27 @@ class _HostState:
              os_type: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input[str]] = None,
              source_instance_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'activeAddressType' in kwargs:
+            active_address_type = kwargs['activeAddressType']
+        if 'hostId' in kwargs:
+            host_id = kwargs['hostId']
+        if 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if 'hostPrivateAddress' in kwargs:
+            host_private_address = kwargs['hostPrivateAddress']
+        if 'hostPublicAddress' in kwargs:
+            host_public_address = kwargs['hostPublicAddress']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceRegionId' in kwargs:
+            instance_region_id = kwargs['instanceRegionId']
+        if 'osType' in kwargs:
+            os_type = kwargs['osType']
+        if 'sourceInstanceId' in kwargs:
+            source_instance_id = kwargs['sourceInstanceId']
+
         if active_address_type is not None:
             _setter("active_address_type", active_address_type)
         if comment is not None:

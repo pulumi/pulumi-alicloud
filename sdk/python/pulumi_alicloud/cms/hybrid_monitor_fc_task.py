@@ -35,7 +35,13 @@ class HybridMonitorFcTaskArgs:
              namespace: pulumi.Input[str],
              yarm_config: pulumi.Input[str],
              target_user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'yarmConfig' in kwargs:
+            yarm_config = kwargs['yarmConfig']
+        if 'targetUserId' in kwargs:
+            target_user_id = kwargs['targetUserId']
+
         _setter("namespace", namespace)
         _setter("yarm_config", yarm_config)
         if target_user_id is not None:
@@ -106,7 +112,15 @@ class _HybridMonitorFcTaskState:
              namespace: Optional[pulumi.Input[str]] = None,
              target_user_id: Optional[pulumi.Input[str]] = None,
              yarm_config: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'hybridMonitorFcTaskId' in kwargs:
+            hybrid_monitor_fc_task_id = kwargs['hybridMonitorFcTaskId']
+        if 'targetUserId' in kwargs:
+            target_user_id = kwargs['targetUserId']
+        if 'yarmConfig' in kwargs:
+            yarm_config = kwargs['yarmConfig']
+
         if hybrid_monitor_fc_task_id is not None:
             _setter("hybrid_monitor_fc_task_id", hybrid_monitor_fc_task_id)
         if namespace is not None:

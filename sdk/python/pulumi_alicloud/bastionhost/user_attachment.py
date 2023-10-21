@@ -35,7 +35,15 @@ class UserAttachmentArgs:
              instance_id: pulumi.Input[str],
              user_group_id: pulumi.Input[str],
              user_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'userGroupId' in kwargs:
+            user_group_id = kwargs['userGroupId']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         _setter("instance_id", instance_id)
         _setter("user_group_id", user_group_id)
         _setter("user_id", user_id)
@@ -101,7 +109,15 @@ class _UserAttachmentState:
              instance_id: Optional[pulumi.Input[str]] = None,
              user_group_id: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'userGroupId' in kwargs:
+            user_group_id = kwargs['userGroupId']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if instance_id is not None:
             _setter("instance_id", instance_id)
         if user_group_id is not None:

@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Nas
         /// <summary>
         /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
         /// 
-        /// &gt; **NOTE:** Setting `enable = "On"` to open the NAS service that means you have read and agreed the [NAS Terms of Service](https://help.aliyun.com/knowledge_detail/44004.html). The service can not closed once it is opened.
+        /// &gt; **NOTE:** Setting `enable = "On"` to open the NAS service that means you have read and agreed the [NAS Terms of Service](https://www.alibabacloud.com/help/en/scu/latest/overview-of-scu). The service can not closed once it is opened.
         /// </summary>
         [Input("enable")]
         public string? Enable { get; set; }
@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.Nas
         /// <summary>
         /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
         /// 
-        /// &gt; **NOTE:** Setting `enable = "On"` to open the NAS service that means you have read and agreed the [NAS Terms of Service](https://help.aliyun.com/knowledge_detail/44004.html). The service can not closed once it is opened.
+        /// &gt; **NOTE:** Setting `enable = "On"` to open the NAS service that means you have read and agreed the [NAS Terms of Service](https://www.alibabacloud.com/help/en/scu/latest/overview-of-scu). The service can not closed once it is opened.
         /// </summary>
         [Input("enable")]
         public Input<string>? Enable { get; set; }

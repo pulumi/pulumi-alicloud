@@ -39,7 +39,13 @@ class PrometheusMonitoringArgs:
              config_yaml: pulumi.Input[str],
              type: pulumi.Input[str],
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'configYaml' in kwargs:
+            config_yaml = kwargs['configYaml']
+
         _setter("cluster_id", cluster_id)
         _setter("config_yaml", config_yaml)
         _setter("type", type)
@@ -127,7 +133,15 @@ class _PrometheusMonitoringState:
              monitoring_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'configYaml' in kwargs:
+            config_yaml = kwargs['configYaml']
+        if 'monitoringName' in kwargs:
+            monitoring_name = kwargs['monitoringName']
+
         if cluster_id is not None:
             _setter("cluster_id", cluster_id)
         if config_yaml is not None:

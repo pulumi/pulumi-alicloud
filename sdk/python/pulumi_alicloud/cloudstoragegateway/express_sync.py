@@ -43,7 +43,17 @@ class ExpressSyncArgs:
              express_sync_name: pulumi.Input[str],
              bucket_prefix: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if 'bucketRegion' in kwargs:
+            bucket_region = kwargs['bucketRegion']
+        if 'expressSyncName' in kwargs:
+            express_sync_name = kwargs['expressSyncName']
+        if 'bucketPrefix' in kwargs:
+            bucket_prefix = kwargs['bucketPrefix']
+
         _setter("bucket_name", bucket_name)
         _setter("bucket_region", bucket_region)
         _setter("express_sync_name", express_sync_name)
@@ -145,7 +155,17 @@ class _ExpressSyncState:
              bucket_region: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              express_sync_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if 'bucketPrefix' in kwargs:
+            bucket_prefix = kwargs['bucketPrefix']
+        if 'bucketRegion' in kwargs:
+            bucket_region = kwargs['bucketRegion']
+        if 'expressSyncName' in kwargs:
+            express_sync_name = kwargs['expressSyncName']
+
         if bucket_name is not None:
             _setter("bucket_name", bucket_name)
         if bucket_prefix is not None:

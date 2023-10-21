@@ -115,7 +115,43 @@ class RuleArgs:
              sticky_session_type: Optional[pulumi.Input[str]] = None,
              unhealthy_threshold: Optional[pulumi.Input[int]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'frontendPort' in kwargs:
+            frontend_port = kwargs['frontendPort']
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+        if 'serverGroupId' in kwargs:
+            server_group_id = kwargs['serverGroupId']
+        if 'cookieTimeout' in kwargs:
+            cookie_timeout = kwargs['cookieTimeout']
+        if 'deleteProtectionValidation' in kwargs:
+            delete_protection_validation = kwargs['deleteProtectionValidation']
+        if 'healthCheck' in kwargs:
+            health_check = kwargs['healthCheck']
+        if 'healthCheckConnectPort' in kwargs:
+            health_check_connect_port = kwargs['healthCheckConnectPort']
+        if 'healthCheckDomain' in kwargs:
+            health_check_domain = kwargs['healthCheckDomain']
+        if 'healthCheckHttpCode' in kwargs:
+            health_check_http_code = kwargs['healthCheckHttpCode']
+        if 'healthCheckInterval' in kwargs:
+            health_check_interval = kwargs['healthCheckInterval']
+        if 'healthCheckTimeout' in kwargs:
+            health_check_timeout = kwargs['healthCheckTimeout']
+        if 'healthCheckUri' in kwargs:
+            health_check_uri = kwargs['healthCheckUri']
+        if 'healthyThreshold' in kwargs:
+            healthy_threshold = kwargs['healthyThreshold']
+        if 'listenerSync' in kwargs:
+            listener_sync = kwargs['listenerSync']
+        if 'stickySession' in kwargs:
+            sticky_session = kwargs['stickySession']
+        if 'stickySessionType' in kwargs:
+            sticky_session_type = kwargs['stickySessionType']
+        if 'unhealthyThreshold' in kwargs:
+            unhealthy_threshold = kwargs['unhealthyThreshold']
+
         _setter("frontend_port", frontend_port)
         _setter("load_balancer_id", load_balancer_id)
         _setter("server_group_id", server_group_id)
@@ -531,7 +567,43 @@ class _RuleState:
              sticky_session_type: Optional[pulumi.Input[str]] = None,
              unhealthy_threshold: Optional[pulumi.Input[int]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cookieTimeout' in kwargs:
+            cookie_timeout = kwargs['cookieTimeout']
+        if 'deleteProtectionValidation' in kwargs:
+            delete_protection_validation = kwargs['deleteProtectionValidation']
+        if 'frontendPort' in kwargs:
+            frontend_port = kwargs['frontendPort']
+        if 'healthCheck' in kwargs:
+            health_check = kwargs['healthCheck']
+        if 'healthCheckConnectPort' in kwargs:
+            health_check_connect_port = kwargs['healthCheckConnectPort']
+        if 'healthCheckDomain' in kwargs:
+            health_check_domain = kwargs['healthCheckDomain']
+        if 'healthCheckHttpCode' in kwargs:
+            health_check_http_code = kwargs['healthCheckHttpCode']
+        if 'healthCheckInterval' in kwargs:
+            health_check_interval = kwargs['healthCheckInterval']
+        if 'healthCheckTimeout' in kwargs:
+            health_check_timeout = kwargs['healthCheckTimeout']
+        if 'healthCheckUri' in kwargs:
+            health_check_uri = kwargs['healthCheckUri']
+        if 'healthyThreshold' in kwargs:
+            healthy_threshold = kwargs['healthyThreshold']
+        if 'listenerSync' in kwargs:
+            listener_sync = kwargs['listenerSync']
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+        if 'serverGroupId' in kwargs:
+            server_group_id = kwargs['serverGroupId']
+        if 'stickySession' in kwargs:
+            sticky_session = kwargs['stickySession']
+        if 'stickySessionType' in kwargs:
+            sticky_session_type = kwargs['stickySessionType']
+        if 'unhealthyThreshold' in kwargs:
+            unhealthy_threshold = kwargs['unhealthyThreshold']
+
         if cookie is not None:
             _setter("cookie", cookie)
         if cookie_timeout is not None:

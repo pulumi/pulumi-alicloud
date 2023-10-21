@@ -35,7 +35,13 @@ class NamespaceArgs:
              auto_create: pulumi.Input[bool],
              default_visibility: pulumi.Input[str],
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoCreate' in kwargs:
+            auto_create = kwargs['autoCreate']
+        if 'defaultVisibility' in kwargs:
+            default_visibility = kwargs['defaultVisibility']
+
         _setter("auto_create", auto_create)
         _setter("default_visibility", default_visibility)
         if name is not None:
@@ -102,7 +108,13 @@ class _NamespaceState:
              auto_create: Optional[pulumi.Input[bool]] = None,
              default_visibility: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoCreate' in kwargs:
+            auto_create = kwargs['autoCreate']
+        if 'defaultVisibility' in kwargs:
+            default_visibility = kwargs['defaultVisibility']
+
         if auto_create is not None:
             _setter("auto_create", auto_create)
         if default_visibility is not None:

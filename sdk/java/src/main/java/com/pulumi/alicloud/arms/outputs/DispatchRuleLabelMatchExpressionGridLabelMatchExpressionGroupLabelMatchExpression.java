@@ -10,7 +10,7 @@ import java.util.Objects;
 @CustomType
 public final class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression {
     /**
-     * @return The key of the tag of the dispatch rule. Valud values:
+     * @return The key of the tag of the dispatch rule. Valid values:
      * * _aliyun_arms_userid: user ID
      * * _aliyun_arms_involvedObject_kind: type of the associated object
      * * _aliyun_arms_involvedObject_id: ID of the associated object
@@ -37,7 +37,7 @@ public final class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup
 
     private DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression() {}
     /**
-     * @return The key of the tag of the dispatch rule. Valud values:
+     * @return The key of the tag of the dispatch rule. Valid values:
      * * _aliyun_arms_userid: user ID
      * * _aliyun_arms_involvedObject_kind: type of the associated object
      * * _aliyun_arms_involvedObject_id: ID of the associated object

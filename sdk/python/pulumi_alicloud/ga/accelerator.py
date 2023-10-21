@@ -81,7 +81,29 @@ class AcceleratorArgs:
              renewal_status: Optional[pulumi.Input[str]] = None,
              spec: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorName' in kwargs:
+            accelerator_name = kwargs['acceleratorName']
+        if 'autoRenewDuration' in kwargs:
+            auto_renew_duration = kwargs['autoRenewDuration']
+        if 'autoUseCoupon' in kwargs:
+            auto_use_coupon = kwargs['autoUseCoupon']
+        if 'bandwidthBillingType' in kwargs:
+            bandwidth_billing_type = kwargs['bandwidthBillingType']
+        if 'crossBorderMode' in kwargs:
+            cross_border_mode = kwargs['crossBorderMode']
+        if 'crossBorderStatus' in kwargs:
+            cross_border_status = kwargs['crossBorderStatus']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'pricingCycle' in kwargs:
+            pricing_cycle = kwargs['pricingCycle']
+        if 'promotionOptionNo' in kwargs:
+            promotion_option_no = kwargs['promotionOptionNo']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+
         if accelerator_name is not None:
             _setter("accelerator_name", accelerator_name)
         if auto_renew_duration is not None:
@@ -356,7 +378,29 @@ class _AcceleratorState:
              spec: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorName' in kwargs:
+            accelerator_name = kwargs['acceleratorName']
+        if 'autoRenewDuration' in kwargs:
+            auto_renew_duration = kwargs['autoRenewDuration']
+        if 'autoUseCoupon' in kwargs:
+            auto_use_coupon = kwargs['autoUseCoupon']
+        if 'bandwidthBillingType' in kwargs:
+            bandwidth_billing_type = kwargs['bandwidthBillingType']
+        if 'crossBorderMode' in kwargs:
+            cross_border_mode = kwargs['crossBorderMode']
+        if 'crossBorderStatus' in kwargs:
+            cross_border_status = kwargs['crossBorderStatus']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'pricingCycle' in kwargs:
+            pricing_cycle = kwargs['pricingCycle']
+        if 'promotionOptionNo' in kwargs:
+            promotion_option_no = kwargs['promotionOptionNo']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+
         if accelerator_name is not None:
             _setter("accelerator_name", accelerator_name)
         if auto_renew_duration is not None:

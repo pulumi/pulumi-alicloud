@@ -92,7 +92,35 @@ class EndpointGroupArgs:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              threshold_count: Optional[pulumi.Input[int]] = None,
              traffic_percentage: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'endpointConfigurations' in kwargs:
+            endpoint_configurations = kwargs['endpointConfigurations']
+        if 'endpointGroupRegion' in kwargs:
+            endpoint_group_region = kwargs['endpointGroupRegion']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if 'endpointGroupType' in kwargs:
+            endpoint_group_type = kwargs['endpointGroupType']
+        if 'endpointRequestProtocol' in kwargs:
+            endpoint_request_protocol = kwargs['endpointRequestProtocol']
+        if 'healthCheckIntervalSeconds' in kwargs:
+            health_check_interval_seconds = kwargs['healthCheckIntervalSeconds']
+        if 'healthCheckPath' in kwargs:
+            health_check_path = kwargs['healthCheckPath']
+        if 'healthCheckPort' in kwargs:
+            health_check_port = kwargs['healthCheckPort']
+        if 'healthCheckProtocol' in kwargs:
+            health_check_protocol = kwargs['healthCheckProtocol']
+        if 'portOverrides' in kwargs:
+            port_overrides = kwargs['portOverrides']
+        if 'thresholdCount' in kwargs:
+            threshold_count = kwargs['thresholdCount']
+        if 'trafficPercentage' in kwargs:
+            traffic_percentage = kwargs['trafficPercentage']
+
         _setter("accelerator_id", accelerator_id)
         _setter("endpoint_configurations", endpoint_configurations)
         _setter("endpoint_group_region", endpoint_group_region)
@@ -401,7 +429,35 @@ class _EndpointGroupState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              threshold_count: Optional[pulumi.Input[int]] = None,
              traffic_percentage: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'endpointConfigurations' in kwargs:
+            endpoint_configurations = kwargs['endpointConfigurations']
+        if 'endpointGroupRegion' in kwargs:
+            endpoint_group_region = kwargs['endpointGroupRegion']
+        if 'endpointGroupType' in kwargs:
+            endpoint_group_type = kwargs['endpointGroupType']
+        if 'endpointRequestProtocol' in kwargs:
+            endpoint_request_protocol = kwargs['endpointRequestProtocol']
+        if 'healthCheckIntervalSeconds' in kwargs:
+            health_check_interval_seconds = kwargs['healthCheckIntervalSeconds']
+        if 'healthCheckPath' in kwargs:
+            health_check_path = kwargs['healthCheckPath']
+        if 'healthCheckPort' in kwargs:
+            health_check_port = kwargs['healthCheckPort']
+        if 'healthCheckProtocol' in kwargs:
+            health_check_protocol = kwargs['healthCheckProtocol']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if 'portOverrides' in kwargs:
+            port_overrides = kwargs['portOverrides']
+        if 'thresholdCount' in kwargs:
+            threshold_count = kwargs['thresholdCount']
+        if 'trafficPercentage' in kwargs:
+            traffic_percentage = kwargs['trafficPercentage']
+
         if accelerator_id is not None:
             _setter("accelerator_id", accelerator_id)
         if description is not None:

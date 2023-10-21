@@ -43,7 +43,17 @@ class ClientKeyArgs:
              not_after: Optional[pulumi.Input[str]] = None,
              not_before: Optional[pulumi.Input[str]] = None,
              private_key_data_file: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aapName' in kwargs:
+            aap_name = kwargs['aapName']
+        if 'notAfter' in kwargs:
+            not_after = kwargs['notAfter']
+        if 'notBefore' in kwargs:
+            not_before = kwargs['notBefore']
+        if 'privateKeyDataFile' in kwargs:
+            private_key_data_file = kwargs['privateKeyDataFile']
+
         _setter("aap_name", aap_name)
         _setter("password", password)
         if not_after is not None:
@@ -150,7 +160,19 @@ class _ClientKeyState:
              not_before: Optional[pulumi.Input[str]] = None,
              password: Optional[pulumi.Input[str]] = None,
              private_key_data_file: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aapName' in kwargs:
+            aap_name = kwargs['aapName']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'notAfter' in kwargs:
+            not_after = kwargs['notAfter']
+        if 'notBefore' in kwargs:
+            not_before = kwargs['notBefore']
+        if 'privateKeyDataFile' in kwargs:
+            private_key_data_file = kwargs['privateKeyDataFile']
+
         if aap_name is not None:
             _setter("aap_name", aap_name)
         if create_time is not None:

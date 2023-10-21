@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a Oos Default Patch Baseline resource.
  *
- * For information about Oos Default Patch Baseline and how to use it, see [What is Default Patch Baseline](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/api-doc-oos-2019-06-01-api-doc-registerdefaultpatchbaseline).
+ * For information about Oos Default Patch Baseline and how to use it, see [What is Default Patch Baseline](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/api-oos-2019-06-01-registerdefaultpatchbaseline).
  *
  * > **NOTE:** Available in v1.203.0+.
  *

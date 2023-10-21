@@ -20,9 +20,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a DBS Backup Plan resource.
  * 
- * For information about DBS Backup Plan and how to use it, see [What is Backup Plan](https://www.alibabacloud.com/help/zh/database-backup-service/latest/api-doc-dbs-2019-03-06-api-doc-createandstartbackupplan).
+ * For information about DBS Backup Plan and how to use it, see [What is Backup Plan](https://www.alibabacloud.com/help/en/dbs/developer-reference/api-dbs-2019-03-06-createandstartbackupplan).
  * 
- * &gt; **NOTE:** Available in v1.185.0+.
+ * &gt; **NOTE:** Available since v1.185.0.
  * 
  * ## Import
  * 

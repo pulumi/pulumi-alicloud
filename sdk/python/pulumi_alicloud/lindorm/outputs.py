@@ -160,7 +160,73 @@ class GetInstancesInstanceResult(dict):
              vpc_id: str,
              vswitch_id: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'coldStorage' in kwargs:
+            cold_storage = kwargs['coldStorage']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'deletionProection' in kwargs:
+            deletion_proection = kwargs['deletionProection']
+        if 'diskCategory' in kwargs:
+            disk_category = kwargs['diskCategory']
+        if 'diskUsage' in kwargs:
+            disk_usage = kwargs['diskUsage']
+        if 'diskWarningThreshold' in kwargs:
+            disk_warning_threshold = kwargs['diskWarningThreshold']
+        if 'engineType' in kwargs:
+            engine_type = kwargs['engineType']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'fileEngineNodeCount' in kwargs:
+            file_engine_node_count = kwargs['fileEngineNodeCount']
+        if 'fileEngineSpecification' in kwargs:
+            file_engine_specification = kwargs['fileEngineSpecification']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'instanceStorage' in kwargs:
+            instance_storage = kwargs['instanceStorage']
+        if 'ipWhiteLists' in kwargs:
+            ip_white_lists = kwargs['ipWhiteLists']
+        if 'ltsNodeCount' in kwargs:
+            lts_node_count = kwargs['ltsNodeCount']
+        if 'ltsNodeSpecification' in kwargs:
+            lts_node_specification = kwargs['ltsNodeSpecification']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'phoenixNodeCount' in kwargs:
+            phoenix_node_count = kwargs['phoenixNodeCount']
+        if 'phoenixNodeSpecification' in kwargs:
+            phoenix_node_specification = kwargs['phoenixNodeSpecification']
+        if 'resourceOwnerId' in kwargs:
+            resource_owner_id = kwargs['resourceOwnerId']
+        if 'searchEngineNodeCount' in kwargs:
+            search_engine_node_count = kwargs['searchEngineNodeCount']
+        if 'searchEngineSpecification' in kwargs:
+            search_engine_specification = kwargs['searchEngineSpecification']
+        if 'serviceType' in kwargs:
+            service_type = kwargs['serviceType']
+        if 'tableEngineNodeCount' in kwargs:
+            table_engine_node_count = kwargs['tableEngineNodeCount']
+        if 'tableEngineSpecification' in kwargs:
+            table_engine_specification = kwargs['tableEngineSpecification']
+        if 'timeSeriesEngineNodeCount' in kwargs:
+            time_series_engine_node_count = kwargs['timeSeriesEngineNodeCount']
+        if 'timeSeriresEngineSpecification' in kwargs:
+            time_serires_engine_specification = kwargs['timeSeriresEngineSpecification']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("auto_renew", auto_renew)
         _setter("cold_storage", cold_storage)
         _setter("create_time", create_time)

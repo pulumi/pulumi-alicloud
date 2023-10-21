@@ -43,7 +43,9 @@ class ApplicationInfoDimension(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if value is not None:
@@ -79,7 +81,9 @@ class QuotaAlarmQuotaDimension(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if value is not None:
@@ -121,7 +125,9 @@ class QuotaApplicationDimension(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if value is not None:
@@ -163,7 +169,9 @@ class TemplateQuotaDimension(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if value is not None:
@@ -243,7 +251,33 @@ class GetApplicationInfosApplicationResult(dict):
              quota_unit: str,
              reason: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if 'approveValue' in kwargs:
+            approve_value = kwargs['approveValue']
+        if 'auditReason' in kwargs:
+            audit_reason = kwargs['auditReason']
+        if 'desireValue' in kwargs:
+            desire_value = kwargs['desireValue']
+        if 'effectiveTime' in kwargs:
+            effective_time = kwargs['effectiveTime']
+        if 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if 'noticeType' in kwargs:
+            notice_type = kwargs['noticeType']
+        if 'productCode' in kwargs:
+            product_code = kwargs['productCode']
+        if 'quotaActionCode' in kwargs:
+            quota_action_code = kwargs['quotaActionCode']
+        if 'quotaDescription' in kwargs:
+            quota_description = kwargs['quotaDescription']
+        if 'quotaName' in kwargs:
+            quota_name = kwargs['quotaName']
+        if 'quotaUnit' in kwargs:
+            quota_unit = kwargs['quotaUnit']
+
         _setter("application_id", application_id)
         _setter("approve_value", approve_value)
         _setter("audit_reason", audit_reason)
@@ -357,7 +391,9 @@ class GetApplicationInfosApplicationDimensionResult(dict):
              _setter: Callable[[Any, Any], None],
              key: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 
@@ -387,7 +423,9 @@ class GetApplicationInfosDimensionResult(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if value is not None:
@@ -451,7 +489,23 @@ class GetQuotaAlarmsAlarmResult(dict):
              threshold: float,
              threshold_percent: float,
              web_hook: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alarmId' in kwargs:
+            alarm_id = kwargs['alarmId']
+        if 'productCode' in kwargs:
+            product_code = kwargs['productCode']
+        if 'quotaActionCode' in kwargs:
+            quota_action_code = kwargs['quotaActionCode']
+        if 'quotaAlarmName' in kwargs:
+            quota_alarm_name = kwargs['quotaAlarmName']
+        if 'quotaDimensions' in kwargs:
+            quota_dimensions = kwargs['quotaDimensions']
+        if 'thresholdPercent' in kwargs:
+            threshold_percent = kwargs['thresholdPercent']
+        if 'webHook' in kwargs:
+            web_hook = kwargs['webHook']
+
         _setter("alarm_id", alarm_id)
         _setter("id", id)
         _setter("product_code", product_code)
@@ -554,7 +608,9 @@ class GetQuotaAlarmsAlarmQuotaDimensionResult(dict):
              _setter: Callable[[Any, Any], None],
              key: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 
@@ -594,7 +650,9 @@ class GetQuotaAlarmsQuotaDimensionResult(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if value is not None:
@@ -692,7 +750,33 @@ class GetQuotaApplicationsApplicationResult(dict):
              quota_unit: str,
              reason: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if 'approveValue' in kwargs:
+            approve_value = kwargs['approveValue']
+        if 'auditReason' in kwargs:
+            audit_reason = kwargs['auditReason']
+        if 'desireValue' in kwargs:
+            desire_value = kwargs['desireValue']
+        if 'effectiveTime' in kwargs:
+            effective_time = kwargs['effectiveTime']
+        if 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if 'noticeType' in kwargs:
+            notice_type = kwargs['noticeType']
+        if 'productCode' in kwargs:
+            product_code = kwargs['productCode']
+        if 'quotaActionCode' in kwargs:
+            quota_action_code = kwargs['quotaActionCode']
+        if 'quotaDescription' in kwargs:
+            quota_description = kwargs['quotaDescription']
+        if 'quotaName' in kwargs:
+            quota_name = kwargs['quotaName']
+        if 'quotaUnit' in kwargs:
+            quota_unit = kwargs['quotaUnit']
+
         _setter("application_id", application_id)
         _setter("approve_value", approve_value)
         _setter("audit_reason", audit_reason)
@@ -858,7 +942,9 @@ class GetQuotaApplicationsApplicationDimensionResult(dict):
              _setter: Callable[[Any, Any], None],
              key: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 
@@ -898,7 +984,9 @@ class GetQuotaApplicationsDimensionResult(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if value is not None:
@@ -940,7 +1028,9 @@ class GetQuotasDimensionResult(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if value is not None:
@@ -1026,7 +1116,29 @@ class GetQuotasQuotaResult(dict):
              total_quota: float,
              total_usage: float,
              unadjustable_detail: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applicableRanges' in kwargs:
+            applicable_ranges = kwargs['applicableRanges']
+        if 'applicableType' in kwargs:
+            applicable_type = kwargs['applicableType']
+        if 'quotaActionCode' in kwargs:
+            quota_action_code = kwargs['quotaActionCode']
+        if 'quotaDescription' in kwargs:
+            quota_description = kwargs['quotaDescription']
+        if 'quotaName' in kwargs:
+            quota_name = kwargs['quotaName']
+        if 'quotaType' in kwargs:
+            quota_type = kwargs['quotaType']
+        if 'quotaUnit' in kwargs:
+            quota_unit = kwargs['quotaUnit']
+        if 'totalQuota' in kwargs:
+            total_quota = kwargs['totalQuota']
+        if 'totalUsage' in kwargs:
+            total_usage = kwargs['totalUsage']
+        if 'unadjustableDetail' in kwargs:
+            unadjustable_detail = kwargs['unadjustableDetail']
+
         _setter("adjustable", adjustable)
         _setter("applicable_ranges", applicable_ranges)
         _setter("applicable_type", applicable_type)

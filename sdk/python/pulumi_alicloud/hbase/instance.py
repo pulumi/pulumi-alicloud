@@ -43,7 +43,7 @@ class InstanceArgs:
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] core_instance_type: Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
-        :param pulumi.Input[str] engine_version: HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
+        :param pulumi.Input[str] engine_version: HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://www.alibabacloud.com/help/en/data-lake-analytics/latest/createinstance).
         :param pulumi.Input[str] master_instance_type: Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
         :param pulumi.Input[str] account: The account of the cluster web ui. Size [0-128].
         :param pulumi.Input[bool] auto_renew: Valid values are `true`, `false`, system default to `false`, valid when pay_type = PrePaid.
@@ -124,7 +124,45 @@ class InstanceArgs:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'coreInstanceType' in kwargs:
+            core_instance_type = kwargs['coreInstanceType']
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'masterInstanceType' in kwargs:
+            master_instance_type = kwargs['masterInstanceType']
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'coldStorageSize' in kwargs:
+            cold_storage_size = kwargs['coldStorageSize']
+        if 'coreDiskSize' in kwargs:
+            core_disk_size = kwargs['coreDiskSize']
+        if 'coreDiskType' in kwargs:
+            core_disk_type = kwargs['coreDiskType']
+        if 'coreInstanceQuantity' in kwargs:
+            core_instance_quantity = kwargs['coreInstanceQuantity']
+        if 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if 'immediateDeleteFlag' in kwargs:
+            immediate_delete_flag = kwargs['immediateDeleteFlag']
+        if 'ipWhite' in kwargs:
+            ip_white = kwargs['ipWhite']
+        if 'maintainEndTime' in kwargs:
+            maintain_end_time = kwargs['maintainEndTime']
+        if 'maintainStartTime' in kwargs:
+            maintain_start_time = kwargs['maintainStartTime']
+        if 'payType' in kwargs:
+            pay_type = kwargs['payType']
+        if 'securityGroups' in kwargs:
+            security_groups = kwargs['securityGroups']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("core_instance_type", core_instance_type)
         _setter("engine_version", engine_version)
         _setter("master_instance_type", master_instance_type)
@@ -187,7 +225,7 @@ class InstanceArgs:
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> pulumi.Input[str]:
         """
-        HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
+        HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://www.alibabacloud.com/help/en/data-lake-analytics/latest/createinstance).
         """
         return pulumi.get(self, "engine_version")
 
@@ -509,7 +547,7 @@ class _InstanceState:
         :param pulumi.Input[bool] deletion_protection: The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
         :param pulumi.Input[int] duration: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when pay_type = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
         :param pulumi.Input[str] engine: Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
-        :param pulumi.Input[str] engine_version: HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
+        :param pulumi.Input[str] engine_version: HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://www.alibabacloud.com/help/en/data-lake-analytics/latest/createinstance).
         :param pulumi.Input[bool] immediate_delete_flag: The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
         :param pulumi.Input[str] ip_white: The white ip list of the cluster.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 04:00Z.
@@ -592,7 +630,53 @@ class _InstanceState:
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zk_conn_addrs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceZkConnAddrArgs']]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'coldStorageSize' in kwargs:
+            cold_storage_size = kwargs['coldStorageSize']
+        if 'coreDiskSize' in kwargs:
+            core_disk_size = kwargs['coreDiskSize']
+        if 'coreDiskType' in kwargs:
+            core_disk_type = kwargs['coreDiskType']
+        if 'coreInstanceQuantity' in kwargs:
+            core_instance_quantity = kwargs['coreInstanceQuantity']
+        if 'coreInstanceType' in kwargs:
+            core_instance_type = kwargs['coreInstanceType']
+        if 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'immediateDeleteFlag' in kwargs:
+            immediate_delete_flag = kwargs['immediateDeleteFlag']
+        if 'ipWhite' in kwargs:
+            ip_white = kwargs['ipWhite']
+        if 'maintainEndTime' in kwargs:
+            maintain_end_time = kwargs['maintainEndTime']
+        if 'maintainStartTime' in kwargs:
+            maintain_start_time = kwargs['maintainStartTime']
+        if 'masterInstanceQuantity' in kwargs:
+            master_instance_quantity = kwargs['masterInstanceQuantity']
+        if 'masterInstanceType' in kwargs:
+            master_instance_type = kwargs['masterInstanceType']
+        if 'payType' in kwargs:
+            pay_type = kwargs['payType']
+        if 'securityGroups' in kwargs:
+            security_groups = kwargs['securityGroups']
+        if 'slbConnAddrs' in kwargs:
+            slb_conn_addrs = kwargs['slbConnAddrs']
+        if 'uiProxyConnAddrs' in kwargs:
+            ui_proxy_conn_addrs = kwargs['uiProxyConnAddrs']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zkConnAddrs' in kwargs:
+            zk_conn_addrs = kwargs['zkConnAddrs']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if account is not None:
             _setter("account", account)
         if auto_renew is not None:
@@ -777,7 +861,7 @@ class _InstanceState:
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> Optional[pulumi.Input[str]]:
         """
-        HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
+        HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://www.alibabacloud.com/help/en/data-lake-analytics/latest/createinstance).
         """
         return pulumi.get(self, "engine_version")
 
@@ -1091,7 +1175,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection: The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
         :param pulumi.Input[int] duration: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when pay_type = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
         :param pulumi.Input[str] engine: Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
-        :param pulumi.Input[str] engine_version: HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
+        :param pulumi.Input[str] engine_version: HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://www.alibabacloud.com/help/en/data-lake-analytics/latest/createinstance).
         :param pulumi.Input[bool] immediate_delete_flag: The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
         :param pulumi.Input[str] ip_white: The white ip list of the cluster.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 04:00Z.
@@ -1312,7 +1396,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection: The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
         :param pulumi.Input[int] duration: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when pay_type = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
         :param pulumi.Input[str] engine: Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
-        :param pulumi.Input[str] engine_version: HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
+        :param pulumi.Input[str] engine_version: HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://www.alibabacloud.com/help/en/data-lake-analytics/latest/createinstance).
         :param pulumi.Input[bool] immediate_delete_flag: The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
         :param pulumi.Input[str] ip_white: The white ip list of the cluster.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 04:00Z.
@@ -1454,7 +1538,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> pulumi.Output[str]:
         """
-        HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
+        HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://www.alibabacloud.com/help/en/data-lake-analytics/latest/createinstance).
         """
         return pulumi.get(self, "engine_version")
 

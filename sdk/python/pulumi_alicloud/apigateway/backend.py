@@ -39,7 +39,15 @@ class BackendArgs:
              backend_type: pulumi.Input[str],
              create_event_bridge_service_linked_role: Optional[pulumi.Input[bool]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backendName' in kwargs:
+            backend_name = kwargs['backendName']
+        if 'backendType' in kwargs:
+            backend_type = kwargs['backendType']
+        if 'createEventBridgeServiceLinkedRole' in kwargs:
+            create_event_bridge_service_linked_role = kwargs['createEventBridgeServiceLinkedRole']
+
         _setter("backend_name", backend_name)
         _setter("backend_type", backend_type)
         if create_event_bridge_service_linked_role is not None:
@@ -124,7 +132,15 @@ class _BackendState:
              backend_type: Optional[pulumi.Input[str]] = None,
              create_event_bridge_service_linked_role: Optional[pulumi.Input[bool]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backendName' in kwargs:
+            backend_name = kwargs['backendName']
+        if 'backendType' in kwargs:
+            backend_type = kwargs['backendType']
+        if 'createEventBridgeServiceLinkedRole' in kwargs:
+            create_event_bridge_service_linked_role = kwargs['createEventBridgeServiceLinkedRole']
+
         if backend_name is not None:
             _setter("backend_name", backend_name)
         if backend_type is not None:
@@ -196,7 +212,7 @@ class Backend(pulumi.CustomResource):
         """
         Provides a Api Gateway Backend resource.
 
-        For information about Api Gateway Backend and how to use it, see [What is Backend](https://www.alibabacloud.com/help/en/api-gateway/latest/api-doc-cloudapi-2016-07-14-api-doc-createbackend).
+        For information about Api Gateway Backend and how to use it, see [What is Backend](https://www.alibabacloud.com/help/en/api-gateway/developer-reference/api-cloudapi-2016-07-14-createbackend).
 
         > **NOTE:** Available since v1.181.0.
 
@@ -242,7 +258,7 @@ class Backend(pulumi.CustomResource):
         """
         Provides a Api Gateway Backend resource.
 
-        For information about Api Gateway Backend and how to use it, see [What is Backend](https://www.alibabacloud.com/help/en/api-gateway/latest/api-doc-cloudapi-2016-07-14-api-doc-createbackend).
+        For information about Api Gateway Backend and how to use it, see [What is Backend](https://www.alibabacloud.com/help/en/api-gateway/developer-reference/api-cloudapi-2016-07-14-createbackend).
 
         > **NOTE:** Available since v1.181.0.
 

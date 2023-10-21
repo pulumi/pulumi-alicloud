@@ -83,7 +83,37 @@ class AutoscalingConfigArgs:
              skip_nodes_with_system_pods: Optional[pulumi.Input[bool]] = None,
              unneeded_duration: Optional[pulumi.Input[str]] = None,
              utilization_threshold: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'coolDownDuration' in kwargs:
+            cool_down_duration = kwargs['coolDownDuration']
+        if 'daemonsetEvictionForNodes' in kwargs:
+            daemonset_eviction_for_nodes = kwargs['daemonsetEvictionForNodes']
+        if 'gpuUtilizationThreshold' in kwargs:
+            gpu_utilization_threshold = kwargs['gpuUtilizationThreshold']
+        if 'maxGracefulTerminationSec' in kwargs:
+            max_graceful_termination_sec = kwargs['maxGracefulTerminationSec']
+        if 'minReplicaCount' in kwargs:
+            min_replica_count = kwargs['minReplicaCount']
+        if 'recycleNodeDeletionEnabled' in kwargs:
+            recycle_node_deletion_enabled = kwargs['recycleNodeDeletionEnabled']
+        if 'scaleDownEnabled' in kwargs:
+            scale_down_enabled = kwargs['scaleDownEnabled']
+        if 'scaleUpFromZero' in kwargs:
+            scale_up_from_zero = kwargs['scaleUpFromZero']
+        if 'scanInterval' in kwargs:
+            scan_interval = kwargs['scanInterval']
+        if 'skipNodesWithLocalStorage' in kwargs:
+            skip_nodes_with_local_storage = kwargs['skipNodesWithLocalStorage']
+        if 'skipNodesWithSystemPods' in kwargs:
+            skip_nodes_with_system_pods = kwargs['skipNodesWithSystemPods']
+        if 'unneededDuration' in kwargs:
+            unneeded_duration = kwargs['unneededDuration']
+        if 'utilizationThreshold' in kwargs:
+            utilization_threshold = kwargs['utilizationThreshold']
+
         if cluster_id is not None:
             _setter("cluster_id", cluster_id)
         if cool_down_duration is not None:
@@ -368,7 +398,37 @@ class _AutoscalingConfigState:
              skip_nodes_with_system_pods: Optional[pulumi.Input[bool]] = None,
              unneeded_duration: Optional[pulumi.Input[str]] = None,
              utilization_threshold: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'coolDownDuration' in kwargs:
+            cool_down_duration = kwargs['coolDownDuration']
+        if 'daemonsetEvictionForNodes' in kwargs:
+            daemonset_eviction_for_nodes = kwargs['daemonsetEvictionForNodes']
+        if 'gpuUtilizationThreshold' in kwargs:
+            gpu_utilization_threshold = kwargs['gpuUtilizationThreshold']
+        if 'maxGracefulTerminationSec' in kwargs:
+            max_graceful_termination_sec = kwargs['maxGracefulTerminationSec']
+        if 'minReplicaCount' in kwargs:
+            min_replica_count = kwargs['minReplicaCount']
+        if 'recycleNodeDeletionEnabled' in kwargs:
+            recycle_node_deletion_enabled = kwargs['recycleNodeDeletionEnabled']
+        if 'scaleDownEnabled' in kwargs:
+            scale_down_enabled = kwargs['scaleDownEnabled']
+        if 'scaleUpFromZero' in kwargs:
+            scale_up_from_zero = kwargs['scaleUpFromZero']
+        if 'scanInterval' in kwargs:
+            scan_interval = kwargs['scanInterval']
+        if 'skipNodesWithLocalStorage' in kwargs:
+            skip_nodes_with_local_storage = kwargs['skipNodesWithLocalStorage']
+        if 'skipNodesWithSystemPods' in kwargs:
+            skip_nodes_with_system_pods = kwargs['skipNodesWithSystemPods']
+        if 'unneededDuration' in kwargs:
+            unneeded_duration = kwargs['unneededDuration']
+        if 'utilizationThreshold' in kwargs:
+            utilization_threshold = kwargs['utilizationThreshold']
+
         if cluster_id is not None:
             _setter("cluster_id", cluster_id)
         if cool_down_duration is not None:

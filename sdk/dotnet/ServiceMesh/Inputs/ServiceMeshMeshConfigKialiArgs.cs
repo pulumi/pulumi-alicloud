@@ -13,10 +13,16 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
     public sealed class ServiceMeshMeshConfigKialiArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to enable Service grid audit.
+        /// Enable CNI.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// Grid topology service address.
+        /// </summary>
+        [Input("url")]
+        public Input<string>? Url { get; set; }
 
         public ServiceMeshMeshConfigKialiArgs()
         {

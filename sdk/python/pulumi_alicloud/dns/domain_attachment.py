@@ -31,7 +31,13 @@ class DomainAttachmentArgs:
              _setter: Callable[[Any, Any], None],
              domain_names: pulumi.Input[Sequence[pulumi.Input[str]]],
              instance_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'domainNames' in kwargs:
+            domain_names = kwargs['domainNames']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("domain_names", domain_names)
         _setter("instance_id", instance_id)
 
@@ -80,7 +86,13 @@ class _DomainAttachmentState:
              _setter: Callable[[Any, Any], None],
              domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'domainNames' in kwargs:
+            domain_names = kwargs['domainNames']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if domain_names is not None:
             _setter("domain_names", domain_names)
         if instance_id is not None:

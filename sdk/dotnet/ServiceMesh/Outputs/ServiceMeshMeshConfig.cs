@@ -14,55 +14,63 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
     public sealed class ServiceMeshMeshConfig
     {
         /// <summary>
-        /// The configuration of the access logging. See `access_log` below.
+        /// The access logging configuration. See `mesh_config-access_log` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigAccessLog? AccessLog;
         /// <summary>
-        /// The configuration of the audit. See `audit` below.
+        /// Audit information. See `mesh_config-audit` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigAudit? Audit;
         /// <summary>
-        /// The configuration of the control plane logging. See `control_plane_log` below.
+        /// Control plane log collection configuration. See `mesh_config-control_plane_log` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigControlPlaneLog? ControlPlaneLog;
         /// <summary>
-        /// Whether to enable the use of a custom zipkin.
+        /// Whether or not to enable the use of a custom zipkin.
         /// </summary>
         public readonly bool? CustomizedZipkin;
         /// <summary>
-        /// The enable locality lb.
+        /// Whether to enable service can access the service through the nearest node access.
         /// </summary>
         public readonly bool? EnableLocalityLb;
         /// <summary>
-        /// The configuration of the Kiali. See `kiali` below.
+        /// The IP ADDRESS range.
+        /// </summary>
+        public readonly string? IncludeIpRanges;
+        /// <summary>
+        /// Kiali configuration. See `mesh_config-kiali` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigKiali? Kiali;
         /// <summary>
-        /// The open-door policy of agent (OPA) plug-in information. See `opa` below.
+        /// The open-door policy of agent (OPA) plug-in information. See `mesh_config-opa` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigOpa? Opa;
         /// <summary>
-        /// The policy of the Out to the traffic. Valid values: `ALLOW_ANY` and `REGISTRY_ONLY`.
+        /// Out to the traffic policy.
         /// </summary>
         public readonly string? OutboundTrafficPolicy;
         /// <summary>
-        /// The configuration of the Link trace sampling. See `pilot` below.
+        /// Link trace sampling information. See `mesh_config-pilot` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigPilot? Pilot;
         /// <summary>
-        /// The configuration of the Proxy. See `proxy` below.
+        /// Prometheus configuration.
+        /// </summary>
+        public readonly Outputs.ServiceMeshMeshConfigPrometheus? Prometheus;
+        /// <summary>
+        /// Proxy configuration. See `mesh_config-proxy` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigProxy? Proxy;
         /// <summary>
-        /// The configuration of the Sidecar injector. See `sidecar_injector` below.
+        /// Sidecar injector configuration. See `mesh_config-sidecar_injector` below.
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigSidecarInjector? SidecarInjector;
         /// <summary>
-        /// Whether to enable acquisition Prometheus metrics it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
+        /// Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
         /// </summary>
         public readonly bool? Telemetry;
         /// <summary>
-        /// Whether to enable link trace you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
+        /// Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
         /// </summary>
         public readonly bool? Tracing;
 
@@ -78,6 +86,8 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
 
             bool? enableLocalityLb,
 
+            string? includeIpRanges,
+
             Outputs.ServiceMeshMeshConfigKiali? kiali,
 
             Outputs.ServiceMeshMeshConfigOpa? opa,
@@ -85,6 +95,8 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
             string? outboundTrafficPolicy,
 
             Outputs.ServiceMeshMeshConfigPilot? pilot,
+
+            Outputs.ServiceMeshMeshConfigPrometheus? prometheus,
 
             Outputs.ServiceMeshMeshConfigProxy? proxy,
 
@@ -99,10 +111,12 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
             ControlPlaneLog = controlPlaneLog;
             CustomizedZipkin = customizedZipkin;
             EnableLocalityLb = enableLocalityLb;
+            IncludeIpRanges = includeIpRanges;
             Kiali = kiali;
             Opa = opa;
             OutboundTrafficPolicy = outboundTrafficPolicy;
             Pilot = pilot;
+            Prometheus = prometheus;
             Proxy = proxy;
             SidecarInjector = sidecarInjector;
             Telemetry = telemetry;

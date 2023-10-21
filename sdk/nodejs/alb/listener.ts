@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a Application Load Balancer (ALB) Listener resource.
  *
- * For information about Application Load Balancer (ALB) Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createlistener).
+ * For information about Application Load Balancer (ALB) Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createlistener).
  *
  * > **NOTE:** Available since v1.133.0.
  *

@@ -33,7 +33,11 @@ class RuleAttachmentArgs:
              _setter: Callable[[Any, Any], None],
              rule_id: pulumi.Input[str],
              vpcs: pulumi.Input[Sequence[pulumi.Input['RuleAttachmentVpcArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ruleId' in kwargs:
+            rule_id = kwargs['ruleId']
+
         _setter("rule_id", rule_id)
         _setter("vpcs", vpcs)
 
@@ -82,7 +86,11 @@ class _RuleAttachmentState:
              _setter: Callable[[Any, Any], None],
              rule_id: Optional[pulumi.Input[str]] = None,
              vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['RuleAttachmentVpcArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ruleId' in kwargs:
+            rule_id = kwargs['ruleId']
+
         if rule_id is not None:
             _setter("rule_id", rule_id)
         if vpcs is not None:

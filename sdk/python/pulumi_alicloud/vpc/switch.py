@@ -67,7 +67,23 @@ class SwitchArgs:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vswitch_name: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'enableIpv6' in kwargs:
+            enable_ipv6 = kwargs['enableIpv6']
+        if 'ipv6CidrBlockMask' in kwargs:
+            ipv6_cidr_block_mask = kwargs['ipv6CidrBlockMask']
+        if 'vswitchName' in kwargs:
+            vswitch_name = kwargs['vswitchName']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("cidr_block", cidr_block)
         _setter("vpc_id", vpc_id)
         if availability_zone is not None:
@@ -292,7 +308,27 @@ class _SwitchState:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_name: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'enableIpv6' in kwargs:
+            enable_ipv6 = kwargs['enableIpv6']
+        if 'ipv6CidrBlock' in kwargs:
+            ipv6_cidr_block = kwargs['ipv6CidrBlock']
+        if 'ipv6CidrBlockMask' in kwargs:
+            ipv6_cidr_block_mask = kwargs['ipv6CidrBlockMask']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchName' in kwargs:
+            vswitch_name = kwargs['vswitchName']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if availability_zone is not None:
             warnings.warn("""Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.""", DeprecationWarning)
             pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.""")

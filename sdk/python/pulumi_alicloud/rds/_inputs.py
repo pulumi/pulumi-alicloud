@@ -48,7 +48,11 @@ class DbInstanceEndpointNodeItemArgs:
              _setter: Callable[[Any, Any], None],
              node_id: pulumi.Input[str],
              weight: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+
         _setter("node_id", node_id)
         _setter("weight", weight)
 
@@ -96,7 +100,9 @@ class DdrInstanceParameterArgs:
              _setter: Callable[[Any, Any], None],
              name: pulumi.Input[str],
              value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         _setter("value", value)
 
@@ -173,7 +179,11 @@ class DdrInstancePgHbaConfArgs:
              user: pulumi.Input[str],
              mask: Optional[pulumi.Input[str]] = None,
              option: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'priorityId' in kwargs:
+            priority_id = kwargs['priorityId']
+
         _setter("address", address)
         _setter("database", database)
         _setter("method", method)
@@ -314,7 +324,17 @@ class InstanceBabelfishConfigArgs:
              master_user_password: pulumi.Input[str],
              master_username: pulumi.Input[str],
              migration_mode: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'babelfishEnabled' in kwargs:
+            babelfish_enabled = kwargs['babelfishEnabled']
+        if 'masterUserPassword' in kwargs:
+            master_user_password = kwargs['masterUserPassword']
+        if 'masterUsername' in kwargs:
+            master_username = kwargs['masterUsername']
+        if 'migrationMode' in kwargs:
+            migration_mode = kwargs['migrationMode']
+
         _setter("babelfish_enabled", babelfish_enabled)
         _setter("master_user_password", master_user_password)
         _setter("master_username", master_username)
@@ -388,7 +408,9 @@ class InstanceParameterArgs:
              _setter: Callable[[Any, Any], None],
              name: pulumi.Input[str],
              value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         _setter("value", value)
 
@@ -465,7 +487,11 @@ class InstancePgHbaConfArgs:
              user: pulumi.Input[str],
              mask: Optional[pulumi.Input[str]] = None,
              option: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'priorityId' in kwargs:
+            priority_id = kwargs['priorityId']
+
         _setter("address", address)
         _setter("database", database)
         _setter("method", method)
@@ -619,7 +645,17 @@ class InstanceServerlessConfigArgs:
              min_capacity: pulumi.Input[float],
              auto_pause: Optional[pulumi.Input[bool]] = None,
              switch_force: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxCapacity' in kwargs:
+            max_capacity = kwargs['maxCapacity']
+        if 'minCapacity' in kwargs:
+            min_capacity = kwargs['minCapacity']
+        if 'autoPause' in kwargs:
+            auto_pause = kwargs['autoPause']
+        if 'switchForce' in kwargs:
+            switch_force = kwargs['switchForce']
+
         _setter("max_capacity", max_capacity)
         _setter("min_capacity", min_capacity)
         if auto_pause is not None:
@@ -708,7 +744,9 @@ class RdsCloneDbInstanceParameterArgs:
              _setter: Callable[[Any, Any], None],
              name: pulumi.Input[str],
              value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         _setter("value", value)
 
@@ -785,7 +823,11 @@ class RdsCloneDbInstancePgHbaConfArgs:
              user: pulumi.Input[str],
              mask: Optional[pulumi.Input[str]] = None,
              option: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'priorityId' in kwargs:
+            priority_id = kwargs['priorityId']
+
         _setter("address", address)
         _setter("database", database)
         _setter("method", method)
@@ -939,7 +981,17 @@ class RdsCloneDbInstanceServerlessConfigArgs:
              min_capacity: pulumi.Input[float],
              auto_pause: Optional[pulumi.Input[bool]] = None,
              switch_force: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxCapacity' in kwargs:
+            max_capacity = kwargs['maxCapacity']
+        if 'minCapacity' in kwargs:
+            min_capacity = kwargs['minCapacity']
+        if 'autoPause' in kwargs:
+            auto_pause = kwargs['autoPause']
+        if 'switchForce' in kwargs:
+            switch_force = kwargs['switchForce']
+
         _setter("max_capacity", max_capacity)
         _setter("min_capacity", min_capacity)
         if auto_pause is not None:
@@ -1028,7 +1080,11 @@ class RdsDbProxyReadOnlyInstanceWeightArgs:
              _setter: Callable[[Any, Any], None],
              instance_id: pulumi.Input[str],
              weight: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("instance_id", instance_id)
         _setter("weight", weight)
 
@@ -1076,7 +1132,13 @@ class RdsParameterGroupParamDetailArgs:
              _setter: Callable[[Any, Any], None],
              param_name: pulumi.Input[str],
              param_value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'paramName' in kwargs:
+            param_name = kwargs['paramName']
+        if 'paramValue' in kwargs:
+            param_value = kwargs['paramValue']
+
         _setter("param_name", param_name)
         _setter("param_value", param_value)
 
@@ -1124,7 +1186,9 @@ class RdsUpgradeDbInstanceParameterArgs:
              _setter: Callable[[Any, Any], None],
              name: pulumi.Input[str],
              value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         _setter("value", value)
 
@@ -1201,7 +1265,11 @@ class RdsUpgradeDbInstancePgHbaConfArgs:
              user: pulumi.Input[str],
              mask: Optional[pulumi.Input[str]] = None,
              option: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'priorityId' in kwargs:
+            priority_id = kwargs['priorityId']
+
         _setter("address", address)
         _setter("database", database)
         _setter("method", method)
@@ -1334,7 +1402,9 @@ class ReadOnlyInstanceParameterArgs:
              _setter: Callable[[Any, Any], None],
              name: pulumi.Input[str],
              value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         _setter("value", value)
 
@@ -1386,7 +1456,13 @@ class GetCollationTimeZonesCollationTimeZoneArgs:
              description: Optional[str] = None,
              standard_time_offset: Optional[str] = None,
              time_zone: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'standardTimeOffset' in kwargs:
+            standard_time_offset = kwargs['standardTimeOffset']
+        if 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         if description is not None:
             _setter("description", description)
         if standard_time_offset is not None:
@@ -1478,7 +1554,25 @@ class GetInstanceClassInfosInfoArgs:
              max_iops: Optional[str] = None,
              memory_class: Optional[str] = None,
              reference_price: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'classCode' in kwargs:
+            class_code = kwargs['classCode']
+        if 'classGroup' in kwargs:
+            class_group = kwargs['classGroup']
+        if 'instructionSetArch' in kwargs:
+            instruction_set_arch = kwargs['instructionSetArch']
+        if 'maxConnections' in kwargs:
+            max_connections = kwargs['maxConnections']
+        if 'maxIombps' in kwargs:
+            max_iombps = kwargs['maxIombps']
+        if 'maxIops' in kwargs:
+            max_iops = kwargs['maxIops']
+        if 'memoryClass' in kwargs:
+            memory_class = kwargs['memoryClass']
+        if 'referencePrice' in kwargs:
+            reference_price = kwargs['referencePrice']
+
         if class_code is not None:
             _setter("class_code", class_code)
         if class_group is not None:

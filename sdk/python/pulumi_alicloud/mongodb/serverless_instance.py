@@ -99,7 +99,39 @@ class ServerlessInstanceArgs:
              security_ip_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ServerlessInstanceSecurityIpGroupArgs']]]] = None,
              storage_engine: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountPassword' in kwargs:
+            account_password = kwargs['accountPassword']
+        if 'capacityUnit' in kwargs:
+            capacity_unit = kwargs['capacityUnit']
+        if 'dbInstanceStorage' in kwargs:
+            db_instance_storage = kwargs['dbInstanceStorage']
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'dbInstanceDescription' in kwargs:
+            db_instance_description = kwargs['dbInstanceDescription']
+        if 'maintainEndTime' in kwargs:
+            maintain_end_time = kwargs['maintainEndTime']
+        if 'maintainStartTime' in kwargs:
+            maintain_start_time = kwargs['maintainStartTime']
+        if 'periodPriceType' in kwargs:
+            period_price_type = kwargs['periodPriceType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityIpGroups' in kwargs:
+            security_ip_groups = kwargs['securityIpGroups']
+        if 'storageEngine' in kwargs:
+            storage_engine = kwargs['storageEngine']
+
         _setter("account_password", account_password)
         _setter("capacity_unit", capacity_unit)
         _setter("db_instance_storage", db_instance_storage)
@@ -439,7 +471,39 @@ class _ServerlessInstanceState:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountPassword' in kwargs:
+            account_password = kwargs['accountPassword']
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'capacityUnit' in kwargs:
+            capacity_unit = kwargs['capacityUnit']
+        if 'dbInstanceDescription' in kwargs:
+            db_instance_description = kwargs['dbInstanceDescription']
+        if 'dbInstanceStorage' in kwargs:
+            db_instance_storage = kwargs['dbInstanceStorage']
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'maintainEndTime' in kwargs:
+            maintain_end_time = kwargs['maintainEndTime']
+        if 'maintainStartTime' in kwargs:
+            maintain_start_time = kwargs['maintainStartTime']
+        if 'periodPriceType' in kwargs:
+            period_price_type = kwargs['periodPriceType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityIpGroups' in kwargs:
+            security_ip_groups = kwargs['securityIpGroups']
+        if 'storageEngine' in kwargs:
+            storage_engine = kwargs['storageEngine']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if account_password is not None:
             _setter("account_password", account_password)
         if auto_renew is not None:

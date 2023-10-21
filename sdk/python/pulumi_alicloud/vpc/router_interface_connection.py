@@ -45,7 +45,19 @@ class RouterInterfaceConnectionArgs:
              opposite_interface_owner_id: Optional[pulumi.Input[str]] = None,
              opposite_router_id: Optional[pulumi.Input[str]] = None,
              opposite_router_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'interfaceId' in kwargs:
+            interface_id = kwargs['interfaceId']
+        if 'oppositeInterfaceId' in kwargs:
+            opposite_interface_id = kwargs['oppositeInterfaceId']
+        if 'oppositeInterfaceOwnerId' in kwargs:
+            opposite_interface_owner_id = kwargs['oppositeInterfaceOwnerId']
+        if 'oppositeRouterId' in kwargs:
+            opposite_router_id = kwargs['oppositeRouterId']
+        if 'oppositeRouterType' in kwargs:
+            opposite_router_type = kwargs['oppositeRouterType']
+
         _setter("interface_id", interface_id)
         _setter("opposite_interface_id", opposite_interface_id)
         if opposite_interface_owner_id is not None:
@@ -152,7 +164,19 @@ class _RouterInterfaceConnectionState:
              opposite_interface_owner_id: Optional[pulumi.Input[str]] = None,
              opposite_router_id: Optional[pulumi.Input[str]] = None,
              opposite_router_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'interfaceId' in kwargs:
+            interface_id = kwargs['interfaceId']
+        if 'oppositeInterfaceId' in kwargs:
+            opposite_interface_id = kwargs['oppositeInterfaceId']
+        if 'oppositeInterfaceOwnerId' in kwargs:
+            opposite_interface_owner_id = kwargs['oppositeInterfaceOwnerId']
+        if 'oppositeRouterId' in kwargs:
+            opposite_router_id = kwargs['oppositeRouterId']
+        if 'oppositeRouterType' in kwargs:
+            opposite_router_type = kwargs['oppositeRouterType']
+
         if interface_id is not None:
             _setter("interface_id", interface_id)
         if opposite_interface_id is not None:

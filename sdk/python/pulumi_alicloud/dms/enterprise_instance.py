@@ -127,7 +127,53 @@ class EnterpriseInstanceArgs:
              tid: Optional[pulumi.Input[int]] = None,
              use_dsql: Optional[pulumi.Input[int]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'databasePassword' in kwargs:
+            database_password = kwargs['databasePassword']
+        if 'databaseUser' in kwargs:
+            database_user = kwargs['databaseUser']
+        if 'dbaUid' in kwargs:
+            dba_uid = kwargs['dbaUid']
+        if 'envType' in kwargs:
+            env_type = kwargs['envType']
+        if 'exportTimeout' in kwargs:
+            export_timeout = kwargs['exportTimeout']
+        if 'instanceSource' in kwargs:
+            instance_source = kwargs['instanceSource']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'queryTimeout' in kwargs:
+            query_timeout = kwargs['queryTimeout']
+        if 'safeRule' in kwargs:
+            safe_rule = kwargs['safeRule']
+        if 'dataLinkName' in kwargs:
+            data_link_name = kwargs['dataLinkName']
+        if 'dbaId' in kwargs:
+            dba_id = kwargs['dbaId']
+        if 'ddlOnline' in kwargs:
+            ddl_online = kwargs['ddlOnline']
+        if 'ecsInstanceId' in kwargs:
+            ecs_instance_id = kwargs['ecsInstanceId']
+        if 'ecsRegion' in kwargs:
+            ecs_region = kwargs['ecsRegion']
+        if 'instanceAlias' in kwargs:
+            instance_alias = kwargs['instanceAlias']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'safeRuleId' in kwargs:
+            safe_rule_id = kwargs['safeRuleId']
+        if 'skipTest' in kwargs:
+            skip_test = kwargs['skipTest']
+        if 'useDsql' in kwargs:
+            use_dsql = kwargs['useDsql']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         _setter("database_password", database_password)
         _setter("database_user", database_user)
         _setter("dba_uid", dba_uid)
@@ -616,7 +662,55 @@ class _EnterpriseInstanceState:
              tid: Optional[pulumi.Input[int]] = None,
              use_dsql: Optional[pulumi.Input[int]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dataLinkName' in kwargs:
+            data_link_name = kwargs['dataLinkName']
+        if 'databasePassword' in kwargs:
+            database_password = kwargs['databasePassword']
+        if 'databaseUser' in kwargs:
+            database_user = kwargs['databaseUser']
+        if 'dbaId' in kwargs:
+            dba_id = kwargs['dbaId']
+        if 'dbaNickName' in kwargs:
+            dba_nick_name = kwargs['dbaNickName']
+        if 'dbaUid' in kwargs:
+            dba_uid = kwargs['dbaUid']
+        if 'ddlOnline' in kwargs:
+            ddl_online = kwargs['ddlOnline']
+        if 'ecsInstanceId' in kwargs:
+            ecs_instance_id = kwargs['ecsInstanceId']
+        if 'ecsRegion' in kwargs:
+            ecs_region = kwargs['ecsRegion']
+        if 'envType' in kwargs:
+            env_type = kwargs['envType']
+        if 'exportTimeout' in kwargs:
+            export_timeout = kwargs['exportTimeout']
+        if 'instanceAlias' in kwargs:
+            instance_alias = kwargs['instanceAlias']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'instanceSource' in kwargs:
+            instance_source = kwargs['instanceSource']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'queryTimeout' in kwargs:
+            query_timeout = kwargs['queryTimeout']
+        if 'safeRule' in kwargs:
+            safe_rule = kwargs['safeRule']
+        if 'safeRuleId' in kwargs:
+            safe_rule_id = kwargs['safeRuleId']
+        if 'skipTest' in kwargs:
+            skip_test = kwargs['skipTest']
+        if 'useDsql' in kwargs:
+            use_dsql = kwargs['useDsql']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if data_link_name is not None:
             _setter("data_link_name", data_link_name)
         if database_password is not None:

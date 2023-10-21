@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Dns
         /// <summary>
         /// This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
         /// 
+        /// &gt; **NOTE:** Available since v1.0.0.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -49,6 +51,8 @@ namespace Pulumi.AliCloud.Dns
 
         /// <summary>
         /// This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available since v1.0.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -118,7 +122,7 @@ namespace Pulumi.AliCloud.Dns
         public bool? IsLocked { get; set; }
 
         /// <summary>
-        /// ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+        /// ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/doc-detail/29807.htm)
         /// </summary>
         [Input("line")]
         public string? Line { get; set; }
@@ -186,7 +190,7 @@ namespace Pulumi.AliCloud.Dns
         public Input<bool>? IsLocked { get; set; }
 
         /// <summary>
-        /// ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+        /// ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/doc-detail/29807.htm)
         /// </summary>
         [Input("line")]
         public Input<string>? Line { get; set; }

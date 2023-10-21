@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Adb
     public static class GetResourceGroups
     {
         /// <summary>
-        /// This data source provides Adb Resource Group available to the user.[What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/describe-db-resource-group)
+        /// This data source provides Adb Resource Group available to the user.[What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describedbresourcegroup)
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -47,9 +47,9 @@ namespace Pulumi.AliCloud.Adb
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetResourceGroupsResult>("alicloud:adb/getResourceGroups:getResourceGroups", args ?? new GetResourceGroupsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Adb Resource Group available to the user.[What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/describe-db-resource-group)
+        /// This data source provides Adb Resource Group available to the user.[What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describedbresourcegroup)
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

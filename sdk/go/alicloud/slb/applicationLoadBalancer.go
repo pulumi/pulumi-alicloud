@@ -42,7 +42,7 @@ type ApplicationLoadBalancer struct {
 	InternetChargeType pulumi.StringPtrOutput `pulumi:"internetChargeType"`
 	LoadBalancerName   pulumi.StringOutput    `pulumi:"loadBalancerName"`
 	// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-	// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+	// Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
 	// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instanceChargeType = "PayByCLCU"`.
 	LoadBalancerSpec pulumi.StringOutput `pulumi:"loadBalancerSpec"`
 	// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the [DescribeZone](https://help.aliyun.com/document_detail/27585.htm) API.
@@ -123,7 +123,7 @@ type applicationLoadBalancerState struct {
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	LoadBalancerName   *string `pulumi:"loadBalancerName"`
 	// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-	// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+	// Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
 	// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instanceChargeType = "PayByCLCU"`.
 	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
 	// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the [DescribeZone](https://help.aliyun.com/document_detail/27585.htm) API.
@@ -175,7 +175,7 @@ type ApplicationLoadBalancerState struct {
 	InternetChargeType pulumi.StringPtrInput
 	LoadBalancerName   pulumi.StringPtrInput
 	// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-	// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+	// Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
 	// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instanceChargeType = "PayByCLCU"`.
 	LoadBalancerSpec pulumi.StringPtrInput
 	// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the [DescribeZone](https://help.aliyun.com/document_detail/27585.htm) API.
@@ -231,7 +231,7 @@ type applicationLoadBalancerArgs struct {
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	LoadBalancerName   *string `pulumi:"loadBalancerName"`
 	// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-	// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+	// Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
 	// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instanceChargeType = "PayByCLCU"`.
 	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
 	// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the [DescribeZone](https://help.aliyun.com/document_detail/27585.htm) API.
@@ -284,7 +284,7 @@ type ApplicationLoadBalancerArgs struct {
 	InternetChargeType pulumi.StringPtrInput
 	LoadBalancerName   pulumi.StringPtrInput
 	// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-	// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+	// Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
 	// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instanceChargeType = "PayByCLCU"`.
 	LoadBalancerSpec pulumi.StringPtrInput
 	// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the [DescribeZone](https://help.aliyun.com/document_detail/27585.htm) API.
@@ -470,7 +470,7 @@ func (o ApplicationLoadBalancerOutput) LoadBalancerName() pulumi.StringOutput {
 }
 
 // The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+// Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
 // `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instanceChargeType = "PayByCLCU"`.
 func (o ApplicationLoadBalancerOutput) LoadBalancerSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationLoadBalancer) pulumi.StringOutput { return v.LoadBalancerSpec }).(pulumi.StringOutput)

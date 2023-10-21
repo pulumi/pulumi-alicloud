@@ -87,7 +87,7 @@ type DdrInstance struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	//
-	// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+	// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection pulumi.BoolOutput `pulumi:"deletionProtection"`
 	// The method to update the engine version and change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
@@ -379,7 +379,7 @@ type ddrInstanceState struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	//
-	// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+	// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The method to update the engine version and change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
@@ -624,7 +624,7 @@ type DdrInstanceState struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	//
-	// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+	// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection pulumi.BoolPtrInput
 	// The method to update the engine version and change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
@@ -869,7 +869,7 @@ type ddrInstanceArgs struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	//
-	// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+	// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The method to update the engine version and change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
@@ -1105,7 +1105,7 @@ type DdrInstanceArgs struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	//
-	// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+	// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection pulumi.BoolPtrInput
 	// The method to update the engine version and change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
@@ -1502,7 +1502,7 @@ func (o DdrInstanceOutput) DbInstanceStorageType() pulumi.StringOutput {
 // - true: delete protect.
 // - false: no delete protect.
 //
-// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
 func (o DdrInstanceOutput) DeletionProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DdrInstance) pulumi.BoolOutput { return v.DeletionProtection }).(pulumi.BoolOutput)
 }

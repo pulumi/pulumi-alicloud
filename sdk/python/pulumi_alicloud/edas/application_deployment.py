@@ -39,7 +39,17 @@ class ApplicationDeploymentArgs:
              group_id: pulumi.Input[str],
              war_url: pulumi.Input[str],
              package_version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'warUrl' in kwargs:
+            war_url = kwargs['warUrl']
+        if 'packageVersion' in kwargs:
+            package_version = kwargs['packageVersion']
+
         _setter("app_id", app_id)
         _setter("group_id", group_id)
         _setter("war_url", war_url)
@@ -127,7 +137,19 @@ class _ApplicationDeploymentState:
              last_package_version: Optional[pulumi.Input[str]] = None,
              package_version: Optional[pulumi.Input[str]] = None,
              war_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'lastPackageVersion' in kwargs:
+            last_package_version = kwargs['lastPackageVersion']
+        if 'packageVersion' in kwargs:
+            package_version = kwargs['packageVersion']
+        if 'warUrl' in kwargs:
+            war_url = kwargs['warUrl']
+
         if app_id is not None:
             _setter("app_id", app_id)
         if group_id is not None:

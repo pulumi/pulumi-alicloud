@@ -17,6 +17,21 @@ public final class DBClusterLakeVersionArgs extends com.pulumi.resources.Resourc
     public static final DBClusterLakeVersionArgs Empty = new DBClusterLakeVersionArgs();
 
     /**
+     * The ID of the backup set that you want to use to restore data.
+     * 
+     */
+    @Import(name="backupSetId")
+    private @Nullable Output<String> backupSetId;
+
+    /**
+     * @return The ID of the backup set that you want to use to restore data.
+     * 
+     */
+    public Optional<Output<String>> backupSetId() {
+        return Optional.ofNullable(this.backupSetId);
+    }
+
+    /**
      * The computing resources of the cluster.
      * 
      */
@@ -47,14 +62,14 @@ public final class DBClusterLakeVersionArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The version of the cluster. Value options: `5.0`.
+     * The version of the cluster. Valid values: `5.0`.
      * 
      */
     @Import(name="dbClusterVersion", required=true)
     private Output<String> dbClusterVersion;
 
     /**
-     * @return The version of the cluster. Value options: `5.0`.
+     * @return The version of the cluster. Valid values: `5.0`.
      * 
      */
     public Output<String> dbClusterVersion() {
@@ -77,18 +92,63 @@ public final class DBClusterLakeVersionArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The payment type of the resource. Valid values are `PayAsYouGo`.
+     * The payment type of the resource. Valid values: `PayAsYouGo`.
      * 
      */
     @Import(name="paymentType", required=true)
     private Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource. Valid values are `PayAsYouGo`.
+     * @return The payment type of the resource. Valid values: `PayAsYouGo`.
      * 
      */
     public Output<String> paymentType() {
         return this.paymentType;
+    }
+
+    /**
+     * The ID of the resource group.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * The point in time to which you want to restore data from the backup set.
+     * 
+     */
+    @Import(name="restoreToTime")
+    private @Nullable Output<String> restoreToTime;
+
+    /**
+     * @return The point in time to which you want to restore data from the backup set.
+     * 
+     */
+    public Optional<Output<String>> restoreToTime() {
+        return Optional.ofNullable(this.restoreToTime);
+    }
+
+    /**
+     * The method that you want to use to restore data. Valid values:
+     * 
+     */
+    @Import(name="restoreType")
+    private @Nullable Output<String> restoreType;
+
+    /**
+     * @return The method that you want to use to restore data. Valid values:
+     * 
+     */
+    public Optional<Output<String>> restoreType() {
+        return Optional.ofNullable(this.restoreType);
     }
 
     /**
@@ -108,6 +168,21 @@ public final class DBClusterLakeVersionArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> securityIps() {
         return Optional.ofNullable(this.securityIps);
+    }
+
+    /**
+     * The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
+     * 
+     */
+    @Import(name="sourceDbClusterId")
+    private @Nullable Output<String> sourceDbClusterId;
+
+    /**
+     * @return The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
+     * 
+     */
+    public Optional<Output<String>> sourceDbClusterId() {
+        return Optional.ofNullable(this.sourceDbClusterId);
     }
 
     /**
@@ -173,12 +248,17 @@ public final class DBClusterLakeVersionArgs extends com.pulumi.resources.Resourc
     private DBClusterLakeVersionArgs() {}
 
     private DBClusterLakeVersionArgs(DBClusterLakeVersionArgs $) {
+        this.backupSetId = $.backupSetId;
         this.computeResource = $.computeResource;
         this.dbClusterDescription = $.dbClusterDescription;
         this.dbClusterVersion = $.dbClusterVersion;
         this.enableDefaultResourceGroup = $.enableDefaultResourceGroup;
         this.paymentType = $.paymentType;
+        this.resourceGroupId = $.resourceGroupId;
+        this.restoreToTime = $.restoreToTime;
+        this.restoreType = $.restoreType;
         this.securityIps = $.securityIps;
+        this.sourceDbClusterId = $.sourceDbClusterId;
         this.storageResource = $.storageResource;
         this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
@@ -201,6 +281,27 @@ public final class DBClusterLakeVersionArgs extends com.pulumi.resources.Resourc
 
         public Builder(DBClusterLakeVersionArgs defaults) {
             $ = new DBClusterLakeVersionArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param backupSetId The ID of the backup set that you want to use to restore data.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupSetId(@Nullable Output<String> backupSetId) {
+            $.backupSetId = backupSetId;
+            return this;
+        }
+
+        /**
+         * @param backupSetId The ID of the backup set that you want to use to restore data.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupSetId(String backupSetId) {
+            return backupSetId(Output.of(backupSetId));
         }
 
         /**
@@ -246,7 +347,7 @@ public final class DBClusterLakeVersionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dbClusterVersion The version of the cluster. Value options: `5.0`.
+         * @param dbClusterVersion The version of the cluster. Valid values: `5.0`.
          * 
          * @return builder
          * 
@@ -257,7 +358,7 @@ public final class DBClusterLakeVersionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dbClusterVersion The version of the cluster. Value options: `5.0`.
+         * @param dbClusterVersion The version of the cluster. Valid values: `5.0`.
          * 
          * @return builder
          * 
@@ -288,7 +389,7 @@ public final class DBClusterLakeVersionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param paymentType The payment type of the resource. Valid values are `PayAsYouGo`.
+         * @param paymentType The payment type of the resource. Valid values: `PayAsYouGo`.
          * 
          * @return builder
          * 
@@ -299,13 +400,76 @@ public final class DBClusterLakeVersionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param paymentType The payment type of the resource. Valid values are `PayAsYouGo`.
+         * @param paymentType The payment type of the resource. Valid values: `PayAsYouGo`.
          * 
          * @return builder
          * 
          */
         public Builder paymentType(String paymentType) {
             return paymentType(Output.of(paymentType));
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param restoreToTime The point in time to which you want to restore data from the backup set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restoreToTime(@Nullable Output<String> restoreToTime) {
+            $.restoreToTime = restoreToTime;
+            return this;
+        }
+
+        /**
+         * @param restoreToTime The point in time to which you want to restore data from the backup set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restoreToTime(String restoreToTime) {
+            return restoreToTime(Output.of(restoreToTime));
+        }
+
+        /**
+         * @param restoreType The method that you want to use to restore data. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restoreType(@Nullable Output<String> restoreType) {
+            $.restoreType = restoreType;
+            return this;
+        }
+
+        /**
+         * @param restoreType The method that you want to use to restore data. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restoreType(String restoreType) {
+            return restoreType(Output.of(restoreType));
         }
 
         /**
@@ -331,6 +495,27 @@ public final class DBClusterLakeVersionArgs extends com.pulumi.resources.Resourc
          */
         public Builder securityIps(String securityIps) {
             return securityIps(Output.of(securityIps));
+        }
+
+        /**
+         * @param sourceDbClusterId The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceDbClusterId(@Nullable Output<String> sourceDbClusterId) {
+            $.sourceDbClusterId = sourceDbClusterId;
+            return this;
+        }
+
+        /**
+         * @param sourceDbClusterId The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceDbClusterId(String sourceDbClusterId) {
+            return sourceDbClusterId(Output.of(sourceDbClusterId));
         }
 
         /**

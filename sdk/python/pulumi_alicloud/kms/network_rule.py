@@ -35,7 +35,13 @@ class NetworkRuleArgs:
              source_private_ips: pulumi.Input[Sequence[pulumi.Input[str]]],
              description: Optional[pulumi.Input[str]] = None,
              network_rule_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'sourcePrivateIps' in kwargs:
+            source_private_ips = kwargs['sourcePrivateIps']
+        if 'networkRuleName' in kwargs:
+            network_rule_name = kwargs['networkRuleName']
+
         _setter("source_private_ips", source_private_ips)
         if description is not None:
             _setter("description", description)
@@ -103,7 +109,13 @@ class _NetworkRuleState:
              description: Optional[pulumi.Input[str]] = None,
              network_rule_name: Optional[pulumi.Input[str]] = None,
              source_private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'networkRuleName' in kwargs:
+            network_rule_name = kwargs['networkRuleName']
+        if 'sourcePrivateIps' in kwargs:
+            source_private_ips = kwargs['sourcePrivateIps']
+
         if description is not None:
             _setter("description", description)
         if network_rule_name is not None:

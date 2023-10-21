@@ -53,7 +53,19 @@ class AlarmContactArgs:
              channels_mail: Optional[pulumi.Input[str]] = None,
              channels_sms: Optional[pulumi.Input[str]] = None,
              lang: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alarmContactName' in kwargs:
+            alarm_contact_name = kwargs['alarmContactName']
+        if 'channelsAliim' in kwargs:
+            channels_aliim = kwargs['channelsAliim']
+        if 'channelsDingWebHook' in kwargs:
+            channels_ding_web_hook = kwargs['channelsDingWebHook']
+        if 'channelsMail' in kwargs:
+            channels_mail = kwargs['channelsMail']
+        if 'channelsSms' in kwargs:
+            channels_sms = kwargs['channelsSms']
+
         _setter("alarm_contact_name", alarm_contact_name)
         _setter("describe", describe)
         if channels_aliim is not None:
@@ -196,7 +208,19 @@ class _AlarmContactState:
              channels_sms: Optional[pulumi.Input[str]] = None,
              describe: Optional[pulumi.Input[str]] = None,
              lang: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alarmContactName' in kwargs:
+            alarm_contact_name = kwargs['alarmContactName']
+        if 'channelsAliim' in kwargs:
+            channels_aliim = kwargs['channelsAliim']
+        if 'channelsDingWebHook' in kwargs:
+            channels_ding_web_hook = kwargs['channelsDingWebHook']
+        if 'channelsMail' in kwargs:
+            channels_mail = kwargs['channelsMail']
+        if 'channelsSms' in kwargs:
+            channels_sms = kwargs['channelsSms']
+
         if alarm_contact_name is not None:
             _setter("alarm_contact_name", alarm_contact_name)
         if channels_aliim is not None:

@@ -39,7 +39,13 @@ class AlarmContactGroupArgs:
              contacts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              describe: Optional[pulumi.Input[str]] = None,
              enable_subscribed: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alarmContactGroupName' in kwargs:
+            alarm_contact_group_name = kwargs['alarmContactGroupName']
+        if 'enableSubscribed' in kwargs:
+            enable_subscribed = kwargs['enableSubscribed']
+
         _setter("alarm_contact_group_name", alarm_contact_group_name)
         if contacts is not None:
             _setter("contacts", contacts)
@@ -125,7 +131,13 @@ class _AlarmContactGroupState:
              contacts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              describe: Optional[pulumi.Input[str]] = None,
              enable_subscribed: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alarmContactGroupName' in kwargs:
+            alarm_contact_group_name = kwargs['alarmContactGroupName']
+        if 'enableSubscribed' in kwargs:
+            enable_subscribed = kwargs['enableSubscribed']
+
         if alarm_contact_group_name is not None:
             _setter("alarm_contact_group_name", alarm_contact_group_name)
         if contacts is not None:

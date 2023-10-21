@@ -126,7 +126,7 @@ def get_baseline_strategies(custom_type: Optional[str] = None,
                             strategy_ids: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBaselineStrategiesResult:
     """
-    This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/zh/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifystrategy)
+    This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
 
     > **NOTE:** Available in 1.195.0+
 
@@ -164,7 +164,7 @@ def get_baseline_strategies_output(custom_type: Optional[pulumi.Input[Optional[s
                                    strategy_ids: Optional[pulumi.Input[Optional[str]]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBaselineStrategiesResult]:
     """
-    This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/zh/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifystrategy)
+    This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
 
     > **NOTE:** Available in 1.195.0+
 

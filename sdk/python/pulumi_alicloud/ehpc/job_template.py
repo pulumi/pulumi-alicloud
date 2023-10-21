@@ -91,7 +91,27 @@ class JobTemplateArgs:
              task: Optional[pulumi.Input[int]] = None,
              thread: Optional[pulumi.Input[int]] = None,
              variables: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'commandLine' in kwargs:
+            command_line = kwargs['commandLine']
+        if 'jobTemplateName' in kwargs:
+            job_template_name = kwargs['jobTemplateName']
+        if 'arrayRequest' in kwargs:
+            array_request = kwargs['arrayRequest']
+        if 'clockTime' in kwargs:
+            clock_time = kwargs['clockTime']
+        if 'packagePath' in kwargs:
+            package_path = kwargs['packagePath']
+        if 'reRunable' in kwargs:
+            re_runable = kwargs['reRunable']
+        if 'runasUser' in kwargs:
+            runas_user = kwargs['runasUser']
+        if 'stderrRedirectPath' in kwargs:
+            stderr_redirect_path = kwargs['stderrRedirectPath']
+        if 'stdoutRedirectPath' in kwargs:
+            stdout_redirect_path = kwargs['stdoutRedirectPath']
+
         _setter("command_line", command_line)
         _setter("job_template_name", job_template_name)
         if array_request is not None:
@@ -410,7 +430,27 @@ class _JobTemplateState:
              task: Optional[pulumi.Input[int]] = None,
              thread: Optional[pulumi.Input[int]] = None,
              variables: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'arrayRequest' in kwargs:
+            array_request = kwargs['arrayRequest']
+        if 'clockTime' in kwargs:
+            clock_time = kwargs['clockTime']
+        if 'commandLine' in kwargs:
+            command_line = kwargs['commandLine']
+        if 'jobTemplateName' in kwargs:
+            job_template_name = kwargs['jobTemplateName']
+        if 'packagePath' in kwargs:
+            package_path = kwargs['packagePath']
+        if 'reRunable' in kwargs:
+            re_runable = kwargs['reRunable']
+        if 'runasUser' in kwargs:
+            runas_user = kwargs['runasUser']
+        if 'stderrRedirectPath' in kwargs:
+            stderr_redirect_path = kwargs['stderrRedirectPath']
+        if 'stdoutRedirectPath' in kwargs:
+            stdout_redirect_path = kwargs['stdoutRedirectPath']
+
         if array_request is not None:
             _setter("array_request", array_request)
         if clock_time is not None:

@@ -35,7 +35,15 @@ class ListenerAdditionalCertificateAttachmentArgs:
              certificate_id: pulumi.Input[str],
              listener_id: pulumi.Input[str],
              dry_run: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'certificateId' in kwargs:
+            certificate_id = kwargs['certificateId']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+
         _setter("certificate_id", certificate_id)
         _setter("listener_id", listener_id)
         if dry_run is not None:
@@ -106,7 +114,15 @@ class _ListenerAdditionalCertificateAttachmentState:
              dry_run: Optional[pulumi.Input[bool]] = None,
              listener_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'certificateId' in kwargs:
+            certificate_id = kwargs['certificateId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+
         if certificate_id is not None:
             _setter("certificate_id", certificate_id)
         if dry_run is not None:

@@ -50,22 +50,22 @@ import (
 //			_, err = cms.NewEventRule(ctx, "example", &cms.EventRuleArgs{
 //				RuleName:    pulumi.String(name),
 //				GroupId:     _default.ID(),
+//				SilenceTime: pulumi.Int(100),
 //				Description: pulumi.String(name),
 //				Status:      pulumi.String("ENABLED"),
 //				EventPattern: &cms.EventRuleEventPatternArgs{
-//					Product: pulumi.String("ecs"),
-//					EventTypeLists: pulumi.StringArray{
-//						pulumi.String("StatusNotification"),
+//					Product:   pulumi.String("ecs"),
+//					SqlFilter: pulumi.String("example_value"),
+//					NameLists: pulumi.StringArray{
+//						pulumi.String("example_value"),
 //					},
 //					LevelLists: pulumi.StringArray{
 //						pulumi.String("CRITICAL"),
 //					},
-//					NameLists: pulumi.StringArray{
-//						pulumi.String("example_value"),
+//					EventTypeLists: pulumi.StringArray{
+//						pulumi.String("StatusNotification"),
 //					},
-//					SqlFilter: pulumi.String("example_value"),
 //				},
-//				SilenceTime: pulumi.Int(100),
 //			})
 //			if err != nil {
 //				return err
@@ -88,18 +88,30 @@ import (
 type EventRule struct {
 	pulumi.CustomResourceState
 
+	// The information about the alert contact groups that receive alert notifications. See `contactParameters` below.
+	ContactParameters EventRuleContactParameterArrayOutput `pulumi:"contactParameters"`
 	// The description of the event-triggered alert rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Event mode, used to describe the trigger conditions for this event. See `eventPattern` below.
 	EventPattern EventRuleEventPatternOutput `pulumi:"eventPattern"`
+	// The information about the recipients in Function Compute. See `fcParameters` below.
+	FcParameters EventRuleFcParameterArrayOutput `pulumi:"fcParameters"`
 	// The ID of the application group to which the event-triggered alert rule belongs.
 	GroupId pulumi.StringPtrOutput `pulumi:"groupId"`
+	// The information about the recipients in Message Service (MNS). See `mnsParameters` below.
+	MnsParameters EventRuleMnsParameterArrayOutput `pulumi:"mnsParameters"`
+	// The parameters of API callback notification. See `openApiParameters` below.
+	OpenApiParameters EventRuleOpenApiParameterArrayOutput `pulumi:"openApiParameters"`
 	// The name of the event-triggered alert rule.
 	RuleName pulumi.StringOutput `pulumi:"ruleName"`
 	// The silence time.
 	SilenceTime pulumi.IntPtrOutput `pulumi:"silenceTime"`
+	// The information about the recipients in Simple Log Service. See `slsParameters` below.
+	SlsParameters EventRuleSlsParameterArrayOutput `pulumi:"slsParameters"`
 	// The status of the resource. Valid values: `ENABLED`, `DISABLED`.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The information about the callback URLs that are used to receive alert notifications. See `webhookParameters` below.
+	WebhookParameters EventRuleWebhookParameterArrayOutput `pulumi:"webhookParameters"`
 }
 
 // NewEventRule registers a new resource with the given unique name, arguments, and options.
@@ -138,33 +150,57 @@ func GetEventRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EventRule resources.
 type eventRuleState struct {
+	// The information about the alert contact groups that receive alert notifications. See `contactParameters` below.
+	ContactParameters []EventRuleContactParameter `pulumi:"contactParameters"`
 	// The description of the event-triggered alert rule.
 	Description *string `pulumi:"description"`
 	// Event mode, used to describe the trigger conditions for this event. See `eventPattern` below.
 	EventPattern *EventRuleEventPattern `pulumi:"eventPattern"`
+	// The information about the recipients in Function Compute. See `fcParameters` below.
+	FcParameters []EventRuleFcParameter `pulumi:"fcParameters"`
 	// The ID of the application group to which the event-triggered alert rule belongs.
 	GroupId *string `pulumi:"groupId"`
+	// The information about the recipients in Message Service (MNS). See `mnsParameters` below.
+	MnsParameters []EventRuleMnsParameter `pulumi:"mnsParameters"`
+	// The parameters of API callback notification. See `openApiParameters` below.
+	OpenApiParameters []EventRuleOpenApiParameter `pulumi:"openApiParameters"`
 	// The name of the event-triggered alert rule.
 	RuleName *string `pulumi:"ruleName"`
 	// The silence time.
 	SilenceTime *int `pulumi:"silenceTime"`
+	// The information about the recipients in Simple Log Service. See `slsParameters` below.
+	SlsParameters []EventRuleSlsParameter `pulumi:"slsParameters"`
 	// The status of the resource. Valid values: `ENABLED`, `DISABLED`.
 	Status *string `pulumi:"status"`
+	// The information about the callback URLs that are used to receive alert notifications. See `webhookParameters` below.
+	WebhookParameters []EventRuleWebhookParameter `pulumi:"webhookParameters"`
 }
 
 type EventRuleState struct {
+	// The information about the alert contact groups that receive alert notifications. See `contactParameters` below.
+	ContactParameters EventRuleContactParameterArrayInput
 	// The description of the event-triggered alert rule.
 	Description pulumi.StringPtrInput
 	// Event mode, used to describe the trigger conditions for this event. See `eventPattern` below.
 	EventPattern EventRuleEventPatternPtrInput
+	// The information about the recipients in Function Compute. See `fcParameters` below.
+	FcParameters EventRuleFcParameterArrayInput
 	// The ID of the application group to which the event-triggered alert rule belongs.
 	GroupId pulumi.StringPtrInput
+	// The information about the recipients in Message Service (MNS). See `mnsParameters` below.
+	MnsParameters EventRuleMnsParameterArrayInput
+	// The parameters of API callback notification. See `openApiParameters` below.
+	OpenApiParameters EventRuleOpenApiParameterArrayInput
 	// The name of the event-triggered alert rule.
 	RuleName pulumi.StringPtrInput
 	// The silence time.
 	SilenceTime pulumi.IntPtrInput
+	// The information about the recipients in Simple Log Service. See `slsParameters` below.
+	SlsParameters EventRuleSlsParameterArrayInput
 	// The status of the resource. Valid values: `ENABLED`, `DISABLED`.
 	Status pulumi.StringPtrInput
+	// The information about the callback URLs that are used to receive alert notifications. See `webhookParameters` below.
+	WebhookParameters EventRuleWebhookParameterArrayInput
 }
 
 func (EventRuleState) ElementType() reflect.Type {
@@ -172,34 +208,58 @@ func (EventRuleState) ElementType() reflect.Type {
 }
 
 type eventRuleArgs struct {
+	// The information about the alert contact groups that receive alert notifications. See `contactParameters` below.
+	ContactParameters []EventRuleContactParameter `pulumi:"contactParameters"`
 	// The description of the event-triggered alert rule.
 	Description *string `pulumi:"description"`
 	// Event mode, used to describe the trigger conditions for this event. See `eventPattern` below.
 	EventPattern EventRuleEventPattern `pulumi:"eventPattern"`
+	// The information about the recipients in Function Compute. See `fcParameters` below.
+	FcParameters []EventRuleFcParameter `pulumi:"fcParameters"`
 	// The ID of the application group to which the event-triggered alert rule belongs.
 	GroupId *string `pulumi:"groupId"`
+	// The information about the recipients in Message Service (MNS). See `mnsParameters` below.
+	MnsParameters []EventRuleMnsParameter `pulumi:"mnsParameters"`
+	// The parameters of API callback notification. See `openApiParameters` below.
+	OpenApiParameters []EventRuleOpenApiParameter `pulumi:"openApiParameters"`
 	// The name of the event-triggered alert rule.
 	RuleName string `pulumi:"ruleName"`
 	// The silence time.
 	SilenceTime *int `pulumi:"silenceTime"`
+	// The information about the recipients in Simple Log Service. See `slsParameters` below.
+	SlsParameters []EventRuleSlsParameter `pulumi:"slsParameters"`
 	// The status of the resource. Valid values: `ENABLED`, `DISABLED`.
 	Status *string `pulumi:"status"`
+	// The information about the callback URLs that are used to receive alert notifications. See `webhookParameters` below.
+	WebhookParameters []EventRuleWebhookParameter `pulumi:"webhookParameters"`
 }
 
 // The set of arguments for constructing a EventRule resource.
 type EventRuleArgs struct {
+	// The information about the alert contact groups that receive alert notifications. See `contactParameters` below.
+	ContactParameters EventRuleContactParameterArrayInput
 	// The description of the event-triggered alert rule.
 	Description pulumi.StringPtrInput
 	// Event mode, used to describe the trigger conditions for this event. See `eventPattern` below.
 	EventPattern EventRuleEventPatternInput
+	// The information about the recipients in Function Compute. See `fcParameters` below.
+	FcParameters EventRuleFcParameterArrayInput
 	// The ID of the application group to which the event-triggered alert rule belongs.
 	GroupId pulumi.StringPtrInput
+	// The information about the recipients in Message Service (MNS). See `mnsParameters` below.
+	MnsParameters EventRuleMnsParameterArrayInput
+	// The parameters of API callback notification. See `openApiParameters` below.
+	OpenApiParameters EventRuleOpenApiParameterArrayInput
 	// The name of the event-triggered alert rule.
 	RuleName pulumi.StringInput
 	// The silence time.
 	SilenceTime pulumi.IntPtrInput
+	// The information about the recipients in Simple Log Service. See `slsParameters` below.
+	SlsParameters EventRuleSlsParameterArrayInput
 	// The status of the resource. Valid values: `ENABLED`, `DISABLED`.
 	Status pulumi.StringPtrInput
+	// The information about the callback URLs that are used to receive alert notifications. See `webhookParameters` below.
+	WebhookParameters EventRuleWebhookParameterArrayInput
 }
 
 func (EventRuleArgs) ElementType() reflect.Type {
@@ -313,6 +373,11 @@ func (o EventRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*EventRule
 	}
 }
 
+// The information about the alert contact groups that receive alert notifications. See `contactParameters` below.
+func (o EventRuleOutput) ContactParameters() EventRuleContactParameterArrayOutput {
+	return o.ApplyT(func(v *EventRule) EventRuleContactParameterArrayOutput { return v.ContactParameters }).(EventRuleContactParameterArrayOutput)
+}
+
 // The description of the event-triggered alert rule.
 func (o EventRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -323,9 +388,24 @@ func (o EventRuleOutput) EventPattern() EventRuleEventPatternOutput {
 	return o.ApplyT(func(v *EventRule) EventRuleEventPatternOutput { return v.EventPattern }).(EventRuleEventPatternOutput)
 }
 
+// The information about the recipients in Function Compute. See `fcParameters` below.
+func (o EventRuleOutput) FcParameters() EventRuleFcParameterArrayOutput {
+	return o.ApplyT(func(v *EventRule) EventRuleFcParameterArrayOutput { return v.FcParameters }).(EventRuleFcParameterArrayOutput)
+}
+
 // The ID of the application group to which the event-triggered alert rule belongs.
 func (o EventRuleOutput) GroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventRule) pulumi.StringPtrOutput { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
+// The information about the recipients in Message Service (MNS). See `mnsParameters` below.
+func (o EventRuleOutput) MnsParameters() EventRuleMnsParameterArrayOutput {
+	return o.ApplyT(func(v *EventRule) EventRuleMnsParameterArrayOutput { return v.MnsParameters }).(EventRuleMnsParameterArrayOutput)
+}
+
+// The parameters of API callback notification. See `openApiParameters` below.
+func (o EventRuleOutput) OpenApiParameters() EventRuleOpenApiParameterArrayOutput {
+	return o.ApplyT(func(v *EventRule) EventRuleOpenApiParameterArrayOutput { return v.OpenApiParameters }).(EventRuleOpenApiParameterArrayOutput)
 }
 
 // The name of the event-triggered alert rule.
@@ -338,9 +418,19 @@ func (o EventRuleOutput) SilenceTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EventRule) pulumi.IntPtrOutput { return v.SilenceTime }).(pulumi.IntPtrOutput)
 }
 
+// The information about the recipients in Simple Log Service. See `slsParameters` below.
+func (o EventRuleOutput) SlsParameters() EventRuleSlsParameterArrayOutput {
+	return o.ApplyT(func(v *EventRule) EventRuleSlsParameterArrayOutput { return v.SlsParameters }).(EventRuleSlsParameterArrayOutput)
+}
+
 // The status of the resource. Valid values: `ENABLED`, `DISABLED`.
 func (o EventRuleOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *EventRule) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The information about the callback URLs that are used to receive alert notifications. See `webhookParameters` below.
+func (o EventRuleOutput) WebhookParameters() EventRuleWebhookParameterArrayOutput {
+	return o.ApplyT(func(v *EventRule) EventRuleWebhookParameterArrayOutput { return v.WebhookParameters }).(EventRuleWebhookParameterArrayOutput)
 }
 
 type EventRuleArrayOutput struct{ *pulumi.OutputState }

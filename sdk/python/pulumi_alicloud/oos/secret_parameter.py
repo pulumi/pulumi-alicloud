@@ -55,7 +55,15 @@ class SecretParameterArgs:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'secretParameterName' in kwargs:
+            secret_parameter_name = kwargs['secretParameterName']
+        if 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("secret_parameter_name", secret_parameter_name)
         _setter("value", value)
         if constraints is not None:
@@ -212,7 +220,15 @@ class _SecretParameterState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'secretParameterName' in kwargs:
+            secret_parameter_name = kwargs['secretParameterName']
+
         if constraints is not None:
             _setter("constraints", constraints)
         if description is not None:

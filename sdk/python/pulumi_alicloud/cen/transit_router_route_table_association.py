@@ -37,7 +37,15 @@ class TransitRouterRouteTableAssociationArgs:
              transit_router_attachment_id: pulumi.Input[str],
              transit_router_route_table_id: pulumi.Input[str],
              dry_run: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'transitRouterAttachmentId' in kwargs:
+            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
+        if 'transitRouterRouteTableId' in kwargs:
+            transit_router_route_table_id = kwargs['transitRouterRouteTableId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+
         _setter("transit_router_attachment_id", transit_router_attachment_id)
         _setter("transit_router_route_table_id", transit_router_route_table_id)
         if dry_run is not None:
@@ -112,7 +120,15 @@ class _TransitRouterRouteTableAssociationState:
              status: Optional[pulumi.Input[str]] = None,
              transit_router_attachment_id: Optional[pulumi.Input[str]] = None,
              transit_router_route_table_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'transitRouterAttachmentId' in kwargs:
+            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
+        if 'transitRouterRouteTableId' in kwargs:
+            transit_router_route_table_id = kwargs['transitRouterRouteTableId']
+
         if dry_run is not None:
             _setter("dry_run", dry_run)
         if status is not None:
@@ -183,7 +199,7 @@ class TransitRouterRouteTableAssociation(pulumi.CustomResource):
                  transit_router_route_table_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a CEN transit router route table association resource.[What is Cen Transit Router Route Table Association](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutetableaggregation)
+        Provides a CEN transit router route table association resource.[What is Cen Transit Router Route Table Association](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutetableaggregation)
 
         > **NOTE:** Available since v1.126.0.
 
@@ -266,7 +282,7 @@ class TransitRouterRouteTableAssociation(pulumi.CustomResource):
                  args: TransitRouterRouteTableAssociationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a CEN transit router route table association resource.[What is Cen Transit Router Route Table Association](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutetableaggregation)
+        Provides a CEN transit router route table association resource.[What is Cen Transit Router Route Table Association](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutetableaggregation)
 
         > **NOTE:** Available since v1.126.0.
 

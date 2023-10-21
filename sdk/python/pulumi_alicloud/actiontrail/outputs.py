@@ -59,7 +59,13 @@ class GetConsumerGroupsGroupResult(dict):
              instance_id: str,
              remark: str,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'consumerId' in kwargs:
+            consumer_id = kwargs['consumerId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("consumer_id", consumer_id)
         _setter("id", id)
         _setter("instance_id", instance_id)
@@ -158,7 +164,25 @@ class GetHistoryDeliveryJobsJobResult(dict):
              status: int,
              trail_name: str,
              updated_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if 'historyDeliveryJobId' in kwargs:
+            history_delivery_job_id = kwargs['historyDeliveryJobId']
+        if 'homeRegion' in kwargs:
+            home_region = kwargs['homeRegion']
+        if 'jobStatuses' in kwargs:
+            job_statuses = kwargs['jobStatuses']
+        if 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if 'trailName' in kwargs:
+            trail_name = kwargs['trailName']
+        if 'updatedTime' in kwargs:
+            updated_time = kwargs['updatedTime']
+
         _setter("create_time", create_time)
         _setter("end_time", end_time)
         _setter("history_delivery_job_id", history_delivery_job_id)
@@ -267,7 +291,9 @@ class GetHistoryDeliveryJobsJobJobStatusResult(dict):
              _setter: Callable[[Any, Any], None],
              region: str,
              status: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("region", region)
         _setter("status", status)
 
@@ -415,7 +441,59 @@ class GetInstancesInstanceResult(dict):
              vswitch_id: str,
              zone_id: str,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedLists' in kwargs:
+            allowed_lists = kwargs['allowedLists']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'deployType' in kwargs:
+            deploy_type = kwargs['deployType']
+        if 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if 'domainEndpoint' in kwargs:
+            domain_endpoint = kwargs['domainEndpoint']
+        if 'eipMax' in kwargs:
+            eip_max = kwargs['eipMax']
+        if 'endPoint' in kwargs:
+            end_point = kwargs['endPoint']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'ioMax' in kwargs:
+            io_max = kwargs['ioMax']
+        if 'msgRetain' in kwargs:
+            msg_retain = kwargs['msgRetain']
+        if 'paidType' in kwargs:
+            paid_type = kwargs['paidType']
+        if 'partitionNum' in kwargs:
+            partition_num = kwargs['partitionNum']
+        if 'saslDomainEndpoint' in kwargs:
+            sasl_domain_endpoint = kwargs['saslDomainEndpoint']
+        if 'securityGroup' in kwargs:
+            security_group = kwargs['securityGroup']
+        if 'serviceStatus' in kwargs:
+            service_status = kwargs['serviceStatus']
+        if 'serviceVersion' in kwargs:
+            service_version = kwargs['serviceVersion']
+        if 'specType' in kwargs:
+            spec_type = kwargs['specType']
+        if 'sslDomainEndpoint' in kwargs:
+            ssl_domain_endpoint = kwargs['sslDomainEndpoint']
+        if 'sslEndPoint' in kwargs:
+            ssl_end_point = kwargs['sslEndPoint']
+        if 'topicQuota' in kwargs:
+            topic_quota = kwargs['topicQuota']
+        if 'upgradeServiceDetailInfos' in kwargs:
+            upgrade_service_detail_infos = kwargs['upgradeServiceDetailInfos']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("allowed_lists", allowed_lists)
         _setter("config", config)
         _setter("create_time", create_time)
@@ -703,7 +781,15 @@ class GetInstancesInstanceAllowedListResult(dict):
              deploy_type: str,
              internet_lists: Sequence['outputs.GetInstancesInstanceAllowedListInternetListResult'],
              vpc_lists: Sequence['outputs.GetInstancesInstanceAllowedListVpcListResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deployType' in kwargs:
+            deploy_type = kwargs['deployType']
+        if 'internetLists' in kwargs:
+            internet_lists = kwargs['internetLists']
+        if 'vpcLists' in kwargs:
+            vpc_lists = kwargs['vpcLists']
+
         _setter("deploy_type", deploy_type)
         _setter("internet_lists", internet_lists)
         _setter("vpc_lists", vpc_lists)
@@ -752,7 +838,13 @@ class GetInstancesInstanceAllowedListInternetListResult(dict):
              _setter: Callable[[Any, Any], None],
              allowed_ip_lists: Sequence[str],
              port_range: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedIpLists' in kwargs:
+            allowed_ip_lists = kwargs['allowedIpLists']
+        if 'portRange' in kwargs:
+            port_range = kwargs['portRange']
+
         _setter("allowed_ip_lists", allowed_ip_lists)
         _setter("port_range", port_range)
 
@@ -792,7 +884,13 @@ class GetInstancesInstanceAllowedListVpcListResult(dict):
              _setter: Callable[[Any, Any], None],
              allowed_ip_lists: Sequence[str],
              port_range: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedIpLists' in kwargs:
+            allowed_ip_lists = kwargs['allowedIpLists']
+        if 'portRange' in kwargs:
+            port_range = kwargs['portRange']
+
         _setter("allowed_ip_lists", allowed_ip_lists)
         _setter("port_range", port_range)
 
@@ -828,7 +926,11 @@ class GetInstancesInstanceUpgradeServiceDetailInfoResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              current2_open_source_version: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'current2OpenSourceVersion' in kwargs:
+            current2_open_source_version = kwargs['current2OpenSourceVersion']
+
         _setter("current2_open_source_version", current2_open_source_version)
 
     @property
@@ -875,7 +977,17 @@ class GetSaslAclsAclResult(dict):
              acl_resource_type: str,
              host: str,
              username: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclOperationType' in kwargs:
+            acl_operation_type = kwargs['aclOperationType']
+        if 'aclResourceName' in kwargs:
+            acl_resource_name = kwargs['aclResourceName']
+        if 'aclResourcePatternType' in kwargs:
+            acl_resource_pattern_type = kwargs['aclResourcePatternType']
+        if 'aclResourceType' in kwargs:
+            acl_resource_type = kwargs['aclResourceType']
+
         _setter("acl_operation_type", acl_operation_type)
         _setter("acl_resource_name", acl_resource_name)
         _setter("acl_resource_pattern_type", acl_resource_pattern_type)
@@ -951,7 +1063,9 @@ class GetSaslUsersUserResult(dict):
              _setter: Callable[[Any, Any], None],
              password: str,
              username: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("password", password)
         _setter("username", username)
 
@@ -1027,7 +1141,21 @@ class GetTopicsTopicResult(dict):
              status_name: str,
              topic: str,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'compactTopic' in kwargs:
+            compact_topic = kwargs['compactTopic']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'localTopic' in kwargs:
+            local_topic = kwargs['localTopic']
+        if 'partitionNum' in kwargs:
+            partition_num = kwargs['partitionNum']
+        if 'statusName' in kwargs:
+            status_name = kwargs['statusName']
+
         _setter("compact_topic", compact_topic)
         _setter("create_time", create_time)
         _setter("id", id)
@@ -1183,7 +1311,27 @@ class GetTrailsActiontrailResult(dict):
              status: str,
              trail_name: str,
              trail_region: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'eventRw' in kwargs:
+            event_rw = kwargs['eventRw']
+        if 'isOrganizationTrail' in kwargs:
+            is_organization_trail = kwargs['isOrganizationTrail']
+        if 'ossBucketName' in kwargs:
+            oss_bucket_name = kwargs['ossBucketName']
+        if 'ossKeyPrefix' in kwargs:
+            oss_key_prefix = kwargs['ossKeyPrefix']
+        if 'ossWriteRoleArn' in kwargs:
+            oss_write_role_arn = kwargs['ossWriteRoleArn']
+        if 'slsProjectArn' in kwargs:
+            sls_project_arn = kwargs['slsProjectArn']
+        if 'slsWriteRoleArn' in kwargs:
+            sls_write_role_arn = kwargs['slsWriteRoleArn']
+        if 'trailName' in kwargs:
+            trail_name = kwargs['trailName']
+        if 'trailRegion' in kwargs:
+            trail_region = kwargs['trailRegion']
+
         _setter("event_rw", event_rw)
         _setter("id", id)
         _setter("is_organization_trail", is_organization_trail)
@@ -1328,7 +1476,27 @@ class GetTrailsDeprecatedActiontrailResult(dict):
              status: str,
              trail_name: str,
              trail_region: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'eventRw' in kwargs:
+            event_rw = kwargs['eventRw']
+        if 'isOrganizationTrail' in kwargs:
+            is_organization_trail = kwargs['isOrganizationTrail']
+        if 'ossBucketName' in kwargs:
+            oss_bucket_name = kwargs['ossBucketName']
+        if 'ossKeyPrefix' in kwargs:
+            oss_key_prefix = kwargs['ossKeyPrefix']
+        if 'ossWriteRoleArn' in kwargs:
+            oss_write_role_arn = kwargs['ossWriteRoleArn']
+        if 'slsProjectArn' in kwargs:
+            sls_project_arn = kwargs['slsProjectArn']
+        if 'slsWriteRoleArn' in kwargs:
+            sls_write_role_arn = kwargs['slsWriteRoleArn']
+        if 'trailName' in kwargs:
+            trail_name = kwargs['trailName']
+        if 'trailRegion' in kwargs:
+            trail_region = kwargs['trailRegion']
+
         _setter("event_rw", event_rw)
         _setter("id", id)
         _setter("is_organization_trail", is_organization_trail)
@@ -1461,7 +1629,27 @@ class GetTrailsDeprecatedTrailResult(dict):
              status: str,
              trail_name: str,
              trail_region: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'eventRw' in kwargs:
+            event_rw = kwargs['eventRw']
+        if 'isOrganizationTrail' in kwargs:
+            is_organization_trail = kwargs['isOrganizationTrail']
+        if 'ossBucketName' in kwargs:
+            oss_bucket_name = kwargs['ossBucketName']
+        if 'ossKeyPrefix' in kwargs:
+            oss_key_prefix = kwargs['ossKeyPrefix']
+        if 'ossWriteRoleArn' in kwargs:
+            oss_write_role_arn = kwargs['ossWriteRoleArn']
+        if 'slsProjectArn' in kwargs:
+            sls_project_arn = kwargs['slsProjectArn']
+        if 'slsWriteRoleArn' in kwargs:
+            sls_write_role_arn = kwargs['slsWriteRoleArn']
+        if 'trailName' in kwargs:
+            trail_name = kwargs['trailName']
+        if 'trailRegion' in kwargs:
+            trail_region = kwargs['trailRegion']
+
         _setter("event_rw", event_rw)
         _setter("id", id)
         _setter("is_organization_trail", is_organization_trail)
@@ -1598,7 +1786,27 @@ class GetTrailsTrailResult(dict):
              status: str,
              trail_name: str,
              trail_region: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'eventRw' in kwargs:
+            event_rw = kwargs['eventRw']
+        if 'isOrganizationTrail' in kwargs:
+            is_organization_trail = kwargs['isOrganizationTrail']
+        if 'ossBucketName' in kwargs:
+            oss_bucket_name = kwargs['ossBucketName']
+        if 'ossKeyPrefix' in kwargs:
+            oss_key_prefix = kwargs['ossKeyPrefix']
+        if 'ossWriteRoleArn' in kwargs:
+            oss_write_role_arn = kwargs['ossWriteRoleArn']
+        if 'slsProjectArn' in kwargs:
+            sls_project_arn = kwargs['slsProjectArn']
+        if 'slsWriteRoleArn' in kwargs:
+            sls_write_role_arn = kwargs['slsWriteRoleArn']
+        if 'trailName' in kwargs:
+            trail_name = kwargs['trailName']
+        if 'trailRegion' in kwargs:
+            trail_region = kwargs['trailRegion']
+
         _setter("event_rw", event_rw)
         _setter("id", id)
         _setter("is_organization_trail", is_organization_trail)

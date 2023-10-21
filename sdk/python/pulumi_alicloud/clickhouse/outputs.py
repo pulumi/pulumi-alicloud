@@ -65,7 +65,15 @@ class DbClusterDbClusterAccessWhiteList(dict):
              db_cluster_ip_array_attribute: Optional[str] = None,
              db_cluster_ip_array_name: Optional[str] = None,
              security_ip_list: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbClusterIpArrayAttribute' in kwargs:
+            db_cluster_ip_array_attribute = kwargs['dbClusterIpArrayAttribute']
+        if 'dbClusterIpArrayName' in kwargs:
+            db_cluster_ip_array_name = kwargs['dbClusterIpArrayName']
+        if 'securityIpList' in kwargs:
+            security_ip_list = kwargs['securityIpList']
+
         if db_cluster_ip_array_attribute is not None:
             _setter("db_cluster_ip_array_attribute", db_cluster_ip_array_attribute)
         if db_cluster_ip_array_name is not None:
@@ -133,7 +141,17 @@ class GetAccountsAccountResult(dict):
              db_cluster_id: str,
              id: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountDescription' in kwargs:
+            account_description = kwargs['accountDescription']
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'accountType' in kwargs:
+            account_type = kwargs['accountType']
+        if 'dbClusterId' in kwargs:
+            db_cluster_id = kwargs['dbClusterId']
+
         _setter("account_description", account_description)
         _setter("account_name", account_name)
         _setter("account_type", account_type)
@@ -225,7 +243,17 @@ class GetBackupPoliciesPolicyResult(dict):
              preferred_backup_periods: Sequence[str],
              preferred_backup_time: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupRetentionPeriod' in kwargs:
+            backup_retention_period = kwargs['backupRetentionPeriod']
+        if 'dbClusterId' in kwargs:
+            db_cluster_id = kwargs['dbClusterId']
+        if 'preferredBackupPeriods' in kwargs:
+            preferred_backup_periods = kwargs['preferredBackupPeriods']
+        if 'preferredBackupTime' in kwargs:
+            preferred_backup_time = kwargs['preferredBackupTime']
+
         _setter("backup_retention_period", backup_retention_period)
         _setter("db_cluster_id", db_cluster_id)
         _setter("id", id)
@@ -448,7 +476,75 @@ class GetDbClustersClusterResult(dict):
              vpc_id: str,
              vswitch_id: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aliUid' in kwargs:
+            ali_uid = kwargs['aliUid']
+        if 'commodityCode' in kwargs:
+            commodity_code = kwargs['commodityCode']
+        if 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if 'controlVersion' in kwargs:
+            control_version = kwargs['controlVersion']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dbClusterAccessWhiteLists' in kwargs:
+            db_cluster_access_white_lists = kwargs['dbClusterAccessWhiteLists']
+        if 'dbClusterDescription' in kwargs:
+            db_cluster_description = kwargs['dbClusterDescription']
+        if 'dbClusterId' in kwargs:
+            db_cluster_id = kwargs['dbClusterId']
+        if 'dbClusterNetworkType' in kwargs:
+            db_cluster_network_type = kwargs['dbClusterNetworkType']
+        if 'dbClusterType' in kwargs:
+            db_cluster_type = kwargs['dbClusterType']
+        if 'dbNodeClass' in kwargs:
+            db_node_class = kwargs['dbNodeClass']
+        if 'dbNodeCount' in kwargs:
+            db_node_count = kwargs['dbNodeCount']
+        if 'dbNodeStorage' in kwargs:
+            db_node_storage = kwargs['dbNodeStorage']
+        if 'encryptionKey' in kwargs:
+            encryption_key = kwargs['encryptionKey']
+        if 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if 'isExpired' in kwargs:
+            is_expired = kwargs['isExpired']
+        if 'lockMode' in kwargs:
+            lock_mode = kwargs['lockMode']
+        if 'lockReason' in kwargs:
+            lock_reason = kwargs['lockReason']
+        if 'maintainTime' in kwargs:
+            maintain_time = kwargs['maintainTime']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'publicConnectionString' in kwargs:
+            public_connection_string = kwargs['publicConnectionString']
+        if 'publicPort' in kwargs:
+            public_port = kwargs['publicPort']
+        if 'scaleOutStatuses' in kwargs:
+            scale_out_statuses = kwargs['scaleOutStatuses']
+        if 'storageType' in kwargs:
+            storage_type = kwargs['storageType']
+        if 'supportBackup' in kwargs:
+            support_backup = kwargs['supportBackup']
+        if 'supportHttpsPort' in kwargs:
+            support_https_port = kwargs['supportHttpsPort']
+        if 'supportMysqlPort' in kwargs:
+            support_mysql_port = kwargs['supportMysqlPort']
+        if 'vpcCloudInstanceId' in kwargs:
+            vpc_cloud_instance_id = kwargs['vpcCloudInstanceId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("ali_uid", ali_uid)
         _setter("bid", bid)
         _setter("category", category)
@@ -822,7 +918,15 @@ class GetDbClustersClusterDbClusterAccessWhiteListResult(dict):
              db_cluster_ip_array_attribute: str,
              db_cluster_ip_array_name: str,
              security_ip_list: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbClusterIpArrayAttribute' in kwargs:
+            db_cluster_ip_array_attribute = kwargs['dbClusterIpArrayAttribute']
+        if 'dbClusterIpArrayName' in kwargs:
+            db_cluster_ip_array_name = kwargs['dbClusterIpArrayName']
+        if 'securityIpList' in kwargs:
+            security_ip_list = kwargs['securityIpList']
+
         _setter("db_cluster_ip_array_attribute", db_cluster_ip_array_attribute)
         _setter("db_cluster_ip_array_name", db_cluster_ip_array_name)
         _setter("security_ip_list", security_ip_list)
@@ -871,7 +975,9 @@ class GetDbClustersClusterScaleOutStatusResult(dict):
              _setter: Callable[[Any, Any], None],
              progress: str,
              ratio: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("progress", progress)
         _setter("ratio", ratio)
 
@@ -911,7 +1017,13 @@ class GetRegionsRegionResult(dict):
              _setter: Callable[[Any, Any], None],
              region_id: str,
              zone_ids: Sequence['outputs.GetRegionsRegionZoneIdResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'zoneIds' in kwargs:
+            zone_ids = kwargs['zoneIds']
+
         _setter("region_id", region_id)
         _setter("zone_ids", zone_ids)
 
@@ -951,7 +1063,13 @@ class GetRegionsRegionZoneIdResult(dict):
              _setter: Callable[[Any, Any], None],
              vpc_enabled: bool,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vpcEnabled' in kwargs:
+            vpc_enabled = kwargs['vpcEnabled']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("vpc_enabled", vpc_enabled)
         _setter("zone_id", zone_id)
 

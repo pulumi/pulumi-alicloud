@@ -33,16 +33,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:polardb/cluster:Cluster")
 public class Cluster extends com.pulumi.resources.CustomResource {
     /**
-     * Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
-     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
      * 
      */
     @Export(name="allowShutDown", type=String.class, parameters={})
     private Output</* @Nullable */ String> allowShutDown;
 
     /**
-     * @return Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
-     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * @return Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
      * 
      */
     public Output<Optional<String>> allowShutDown() {
@@ -107,28 +105,28 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.collectorStatus;
     }
     /**
-     * (Available since 1.81.0+) PolarDB cluster connection string.
+     * (Available since 1.81.0) PolarDB cluster connection string.
      * 
      */
     @Export(name="connectionString", type=String.class, parameters={})
     private Output<String> connectionString;
 
     /**
-     * @return (Available since 1.81.0+) PolarDB cluster connection string.
+     * @return (Available since 1.81.0) PolarDB cluster connection string.
      * 
      */
     public Output<String> connectionString() {
         return this.connectionString;
     }
     /**
-     * (Available since 1.204.1+) PolarDB cluster creation time.
+     * (Available since 1.204.1) PolarDB cluster creation time.
      * 
      */
     @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
-     * @return (Available since 1.204.1+) PolarDB cluster creation time.
+     * @return (Available since 1.204.1) PolarDB cluster creation time.
      * 
      */
     public Output<String> createTime() {
@@ -215,14 +213,28 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.dbNodeCount;
     }
     /**
-     * The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+     * The ID of the node or node subscript. Node subscript values: 1 to 15.
+     * 
+     */
+    @Export(name="dbNodeId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> dbNodeId;
+
+    /**
+     * @return The ID of the node or node subscript. Node subscript values: 1 to 15.
+     * 
+     */
+    public Output<Optional<String>> dbNodeId() {
+        return Codegen.optional(this.dbNodeId);
+    }
+    /**
+     * The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
      * 
      */
     @Export(name="dbNodeNum", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> dbNodeNum;
 
     /**
-     * @return The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+     * @return The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
      * 
      */
     public Output<Optional<Integer>> dbNodeNum() {
@@ -262,15 +274,15 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="defaultTimeZone", type=String.class, parameters={})
-    private Output</* @Nullable */ String> defaultTimeZone;
+    private Output<String> defaultTimeZone;
 
     /**
      * @return The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
      * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
      * 
      */
-    public Output<Optional<String>> defaultTimeZone() {
-        return Codegen.optional(this.defaultTimeZone);
+    public Output<String> defaultTimeZone() {
+        return this.defaultTimeZone;
     }
     /**
      * turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
@@ -363,6 +375,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.gdnId);
     }
     /**
+     * Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
+     * 
+     */
+    @Export(name="hotReplicaMode", type=String.class, parameters={})
+    private Output<String> hotReplicaMode;
+
+    /**
+     * @return Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
+     * 
+     */
+    public Output<String> hotReplicaMode() {
+        return this.hotReplicaMode;
+    }
+    /**
      * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
      * 
      */
@@ -395,36 +421,36 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.imciSwitch;
     }
     /**
-     * Enable the Binlog function. Valid values are `OFF`, `ON`.
+     * Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
      * &gt; **NOTE:** This parameter is valid only MySQL Engine supports.
      * 
      */
     @Export(name="loosePolarLogBin", type=String.class, parameters={})
-    private Output</* @Nullable */ String> loosePolarLogBin;
+    private Output<String> loosePolarLogBin;
 
     /**
-     * @return Enable the Binlog function. Valid values are `OFF`, `ON`.
+     * @return Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
      * &gt; **NOTE:** This parameter is valid only MySQL Engine supports.
      * 
      */
-    public Output<Optional<String>> loosePolarLogBin() {
-        return Codegen.optional(this.loosePolarLogBin);
+    public Output<String> loosePolarLogBin() {
+        return this.loosePolarLogBin;
     }
     /**
-     * Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+     * Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
      * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
      * 
      */
     @Export(name="lowerCaseTableNames", type=Integer.class, parameters={})
-    private Output</* @Nullable */ Integer> lowerCaseTableNames;
+    private Output<Integer> lowerCaseTableNames;
 
     /**
-     * @return Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+     * @return Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
      * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
      * 
      */
-    public Output<Optional<Integer>> lowerCaseTableNames() {
-        return Codegen.optional(this.lowerCaseTableNames);
+    public Output<Integer> lowerCaseTableNames() {
+        return this.lowerCaseTableNames;
     }
     /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
@@ -547,14 +573,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.plannedStartTime);
     }
     /**
-     * (Available since 1.196.0+) PolarDB cluster connection port.
+     * (Available since 1.196.0) PolarDB cluster connection port.
      * 
      */
     @Export(name="port", type=String.class, parameters={})
     private Output<String> port;
 
     /**
-     * @return (Available since 1.196.0+) PolarDB cluster connection port.
+     * @return (Available since 1.196.0) PolarDB cluster connection port.
      * 
      */
     public Output<String> port() {
@@ -577,7 +603,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.proxyClass);
     }
     /**
-     * The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+     * The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
      * &gt; **NOTE:** This parameter is valid only for standard clusters.
      * 
      */
@@ -585,7 +611,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> proxyType;
 
     /**
-     * @return The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+     * @return The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
      * &gt; **NOTE:** This parameter is valid only for standard clusters.
      * 
      */
@@ -635,80 +661,98 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.roleArn;
     }
     /**
-     * The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
-     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+     * 
+     */
+    @Export(name="scaleApRoNumMax", type=Integer.class, parameters={})
+    private Output<Integer> scaleApRoNumMax;
+
+    /**
+     * @return Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+     * 
+     */
+    public Output<Integer> scaleApRoNumMax() {
+        return this.scaleApRoNumMax;
+    }
+    /**
+     * Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+     * 
+     */
+    @Export(name="scaleApRoNumMin", type=Integer.class, parameters={})
+    private Output<Integer> scaleApRoNumMin;
+
+    /**
+     * @return Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+     * 
+     */
+    public Output<Integer> scaleApRoNumMin() {
+        return this.scaleApRoNumMin;
+    }
+    /**
+     * The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
      * 
      */
     @Export(name="scaleMax", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> scaleMax;
 
     /**
-     * @return The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
-     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * @return The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
      * 
      */
     public Output<Optional<Integer>> scaleMax() {
         return Codegen.optional(this.scaleMax);
     }
     /**
-     * The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
-     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`.· This parameter is valid only for serverless clusters.
      * 
      */
     @Export(name="scaleMin", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> scaleMin;
 
     /**
-     * @return The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
-     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * @return The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`.· This parameter is valid only for serverless clusters.
      * 
      */
     public Output<Optional<Integer>> scaleMin() {
         return Codegen.optional(this.scaleMin);
     }
     /**
-     * The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
-     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * The maximum number of read-only nodes for scaling. Valid values: 0 to 15. It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7. It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
      * 
      */
     @Export(name="scaleRoNumMax", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> scaleRoNumMax;
 
     /**
-     * @return The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
-     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * @return The maximum number of read-only nodes for scaling. Valid values: 0 to 15. It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7. It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
      * 
      */
     public Output<Optional<Integer>> scaleRoNumMax() {
         return Codegen.optional(this.scaleRoNumMax);
     }
     /**
-     * The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
-     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * The minimum number of read-only nodes for scaling. Valid values: 0 to 15 . It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7 .It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
      * 
      */
     @Export(name="scaleRoNumMin", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> scaleRoNumMin;
 
     /**
-     * @return The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
-     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * @return The minimum number of read-only nodes for scaling. Valid values: 0 to 15 . It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7 .It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
      * 
      */
     public Output<Optional<Integer>> scaleRoNumMin() {
         return Codegen.optional(this.scaleRoNumMin);
     }
     /**
-     * The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
-     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds. This parameter is valid only for serverless clusters.
      * 
      */
     @Export(name="secondsUntilAutoPause", type=Integer.class, parameters={})
     private Output<Integer> secondsUntilAutoPause;
 
     /**
-     * @return The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
-     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * @return The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds. This parameter is valid only for serverless clusters.
      * 
      */
     public Output<Integer> secondsUntilAutoPause() {
@@ -747,16 +791,30 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.securityIps;
     }
     /**
-     * The type of the serverless cluster. Set the value to AgileServerless.
-     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
+     * &gt; **NOTE:** When serverless_steady_switch is `ON` and serverless_type is `SteadyServerless`, parameters `scale_min`, `scale_max`, `scale_ro_num_min` and `scale_ro_num_max` are all required.
+     * 
+     */
+    @Export(name="serverlessSteadySwitch", type=String.class, parameters={})
+    private Output</* @Nullable */ String> serverlessSteadySwitch;
+
+    /**
+     * @return Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
+     * &gt; **NOTE:** When serverless_steady_switch is `ON` and serverless_type is `SteadyServerless`, parameters `scale_min`, `scale_max`, `scale_ro_num_min` and `scale_ro_num_max` are all required.
+     * 
+     */
+    public Output<Optional<String>> serverlessSteadySwitch() {
+        return Codegen.optional(this.serverlessSteadySwitch);
+    }
+    /**
+     * The type of the serverless cluster. Valid values `AgileServerless`, `SteadyServerless`. This parameter is valid only for serverless clusters.
      * 
      */
     @Export(name="serverlessType", type=String.class, parameters={})
     private Output</* @Nullable */ String> serverlessType;
 
     /**
-     * @return The type of the serverless cluster. Set the value to AgileServerless.
-     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * @return The type of the serverless cluster. Valid values `AgileServerless`, `SteadyServerless`. This parameter is valid only for serverless clusters.
      * 
      */
     public Output<Optional<String>> serverlessType() {
@@ -777,14 +835,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sourceResourceId);
     }
     /**
-     * (Available since 1.204.1+) PolarDB cluster status.
+     * (Available since 1.204.1) PolarDB cluster status.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return (Available since 1.204.1+) PolarDB cluster status.
+     * @return (Available since 1.204.1) PolarDB cluster status.
      * 
      */
     public Output<String> status() {
@@ -871,7 +929,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * (Available since 1.200.0+) The region where the TDE key resides.
+     * (Available since 1.200.0) The region where the TDE key resides.
      * &gt; **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
      * **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
      * 
@@ -880,7 +938,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output<String> tdeRegion;
 
     /**
-     * @return (Available since 1.200.0+) The region where the TDE key resides.
+     * @return (Available since 1.200.0) The region where the TDE key resides.
      * &gt; **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
      * **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
      * 

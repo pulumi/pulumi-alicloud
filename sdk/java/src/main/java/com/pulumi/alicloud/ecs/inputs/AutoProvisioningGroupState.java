@@ -96,14 +96,14 @@ public final class AutoProvisioningGroupState extends com.pulumi.resources.Resou
     }
 
     /**
-     * DataDisk mappings to attach to ecs instance. See Block config below for details.
+     * DataDisk mappings to attach to ecs instance. See `block-config` below for details.
      * 
      */
     @Import(name="launchTemplateConfigs")
     private @Nullable Output<List<AutoProvisioningGroupLaunchTemplateConfigArgs>> launchTemplateConfigs;
 
     /**
-     * @return DataDisk mappings to attach to ecs instance. See Block config below for details.
+     * @return DataDisk mappings to attach to ecs instance. See `block-config` below for details.
      * 
      */
     public Optional<Output<List<AutoProvisioningGroupLaunchTemplateConfigArgs>>> launchTemplateConfigs() {
@@ -469,7 +469,7 @@ public final class AutoProvisioningGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param launchTemplateConfigs DataDisk mappings to attach to ecs instance. See Block config below for details.
+         * @param launchTemplateConfigs DataDisk mappings to attach to ecs instance. See `block-config` below for details.
          * 
          * @return builder
          * 
@@ -480,7 +480,7 @@ public final class AutoProvisioningGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param launchTemplateConfigs DataDisk mappings to attach to ecs instance. See Block config below for details.
+         * @param launchTemplateConfigs DataDisk mappings to attach to ecs instance. See `block-config` below for details.
          * 
          * @return builder
          * 
@@ -490,7 +490,7 @@ public final class AutoProvisioningGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param launchTemplateConfigs DataDisk mappings to attach to ecs instance. See Block config below for details.
+         * @param launchTemplateConfigs DataDisk mappings to attach to ecs instance. See `block-config` below for details.
          * 
          * @return builder
          * 

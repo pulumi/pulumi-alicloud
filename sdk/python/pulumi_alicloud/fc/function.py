@@ -106,7 +106,31 @@ class FunctionArgs:
              oss_bucket: Optional[pulumi.Input[str]] = None,
              oss_key: Optional[pulumi.Input[str]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'caPort' in kwargs:
+            ca_port = kwargs['caPort']
+        if 'codeChecksum' in kwargs:
+            code_checksum = kwargs['codeChecksum']
+        if 'customContainerConfig' in kwargs:
+            custom_container_config = kwargs['customContainerConfig']
+        if 'environmentVariables' in kwargs:
+            environment_variables = kwargs['environmentVariables']
+        if 'initializationTimeout' in kwargs:
+            initialization_timeout = kwargs['initializationTimeout']
+        if 'instanceConcurrency' in kwargs:
+            instance_concurrency = kwargs['instanceConcurrency']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'memorySize' in kwargs:
+            memory_size = kwargs['memorySize']
+        if 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+        if 'ossBucket' in kwargs:
+            oss_bucket = kwargs['ossBucket']
+        if 'ossKey' in kwargs:
+            oss_key = kwargs['ossKey']
+
         _setter("handler", handler)
         _setter("runtime", runtime)
         _setter("service", service)
@@ -488,7 +512,35 @@ class _FunctionState:
              runtime: Optional[pulumi.Input[str]] = None,
              service: Optional[pulumi.Input[str]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'caPort' in kwargs:
+            ca_port = kwargs['caPort']
+        if 'codeChecksum' in kwargs:
+            code_checksum = kwargs['codeChecksum']
+        if 'customContainerConfig' in kwargs:
+            custom_container_config = kwargs['customContainerConfig']
+        if 'environmentVariables' in kwargs:
+            environment_variables = kwargs['environmentVariables']
+        if 'functionId' in kwargs:
+            function_id = kwargs['functionId']
+        if 'initializationTimeout' in kwargs:
+            initialization_timeout = kwargs['initializationTimeout']
+        if 'instanceConcurrency' in kwargs:
+            instance_concurrency = kwargs['instanceConcurrency']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'lastModified' in kwargs:
+            last_modified = kwargs['lastModified']
+        if 'memorySize' in kwargs:
+            memory_size = kwargs['memorySize']
+        if 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+        if 'ossBucket' in kwargs:
+            oss_bucket = kwargs['ossBucket']
+        if 'ossKey' in kwargs:
+            oss_key = kwargs['ossKey']
+
         if ca_port is not None:
             _setter("ca_port", ca_port)
         if code_checksum is not None:
@@ -828,7 +880,7 @@ class Function(pulumi.CustomResource):
                  __props__=None):
         """
         Provides a Alicloud Function Compute Function resource. Function allows you to trigger execution of code in response to events in Alibaba Cloud. The Function itself includes source code and runtime configuration.
-         For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/zh/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-createfunction).
+         For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/en/fc/developer-reference/api-createfunction).
 
         > **NOTE:** The resource requires a provider field 'account_id'. See account_id.
 
@@ -946,7 +998,7 @@ class Function(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Alicloud Function Compute Function resource. Function allows you to trigger execution of code in response to events in Alibaba Cloud. The Function itself includes source code and runtime configuration.
-         For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/zh/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-createfunction).
+         For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/en/fc/developer-reference/api-createfunction).
 
         > **NOTE:** The resource requires a provider field 'account_id'. See account_id.
 

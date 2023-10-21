@@ -179,7 +179,79 @@ class SubscriptionJobArgs:
              sync_architecture: Optional[pulumi.Input[str]] = None,
              synchronization_direction: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'sourceEndpointEngineName' in kwargs:
+            source_endpoint_engine_name = kwargs['sourceEndpointEngineName']
+        if 'sourceEndpointInstanceType' in kwargs:
+            source_endpoint_instance_type = kwargs['sourceEndpointInstanceType']
+        if 'sourceEndpointRegion' in kwargs:
+            source_endpoint_region = kwargs['sourceEndpointRegion']
+        if 'computeUnit' in kwargs:
+            compute_unit = kwargs['computeUnit']
+        if 'databaseCount' in kwargs:
+            database_count = kwargs['databaseCount']
+        if 'dbList' in kwargs:
+            db_list = kwargs['dbList']
+        if 'delayNotice' in kwargs:
+            delay_notice = kwargs['delayNotice']
+        if 'delayPhone' in kwargs:
+            delay_phone = kwargs['delayPhone']
+        if 'delayRuleTime' in kwargs:
+            delay_rule_time = kwargs['delayRuleTime']
+        if 'destinationEndpointEngineName' in kwargs:
+            destination_endpoint_engine_name = kwargs['destinationEndpointEngineName']
+        if 'destinationRegion' in kwargs:
+            destination_region = kwargs['destinationRegion']
+        if 'dtsInstanceId' in kwargs:
+            dts_instance_id = kwargs['dtsInstanceId']
+        if 'dtsJobName' in kwargs:
+            dts_job_name = kwargs['dtsJobName']
+        if 'errorNotice' in kwargs:
+            error_notice = kwargs['errorNotice']
+        if 'errorPhone' in kwargs:
+            error_phone = kwargs['errorPhone']
+        if 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if 'paymentDuration' in kwargs:
+            payment_duration = kwargs['paymentDuration']
+        if 'paymentDurationUnit' in kwargs:
+            payment_duration_unit = kwargs['paymentDurationUnit']
+        if 'sourceEndpointDatabaseName' in kwargs:
+            source_endpoint_database_name = kwargs['sourceEndpointDatabaseName']
+        if 'sourceEndpointInstanceId' in kwargs:
+            source_endpoint_instance_id = kwargs['sourceEndpointInstanceId']
+        if 'sourceEndpointIp' in kwargs:
+            source_endpoint_ip = kwargs['sourceEndpointIp']
+        if 'sourceEndpointOracleSid' in kwargs:
+            source_endpoint_oracle_sid = kwargs['sourceEndpointOracleSid']
+        if 'sourceEndpointOwnerId' in kwargs:
+            source_endpoint_owner_id = kwargs['sourceEndpointOwnerId']
+        if 'sourceEndpointPassword' in kwargs:
+            source_endpoint_password = kwargs['sourceEndpointPassword']
+        if 'sourceEndpointPort' in kwargs:
+            source_endpoint_port = kwargs['sourceEndpointPort']
+        if 'sourceEndpointRole' in kwargs:
+            source_endpoint_role = kwargs['sourceEndpointRole']
+        if 'sourceEndpointUserName' in kwargs:
+            source_endpoint_user_name = kwargs['sourceEndpointUserName']
+        if 'subscriptionDataTypeDdl' in kwargs:
+            subscription_data_type_ddl = kwargs['subscriptionDataTypeDdl']
+        if 'subscriptionDataTypeDml' in kwargs:
+            subscription_data_type_dml = kwargs['subscriptionDataTypeDml']
+        if 'subscriptionInstanceNetworkType' in kwargs:
+            subscription_instance_network_type = kwargs['subscriptionInstanceNetworkType']
+        if 'subscriptionInstanceVpcId' in kwargs:
+            subscription_instance_vpc_id = kwargs['subscriptionInstanceVpcId']
+        if 'subscriptionInstanceVswitchId' in kwargs:
+            subscription_instance_vswitch_id = kwargs['subscriptionInstanceVswitchId']
+        if 'syncArchitecture' in kwargs:
+            sync_architecture = kwargs['syncArchitecture']
+        if 'synchronizationDirection' in kwargs:
+            synchronization_direction = kwargs['synchronizationDirection']
+
         _setter("payment_type", payment_type)
         _setter("source_endpoint_engine_name", source_endpoint_engine_name)
         _setter("source_endpoint_instance_type", source_endpoint_instance_type)
@@ -892,7 +964,79 @@ class _SubscriptionJobState:
              sync_architecture: Optional[pulumi.Input[str]] = None,
              synchronization_direction: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'computeUnit' in kwargs:
+            compute_unit = kwargs['computeUnit']
+        if 'databaseCount' in kwargs:
+            database_count = kwargs['databaseCount']
+        if 'dbList' in kwargs:
+            db_list = kwargs['dbList']
+        if 'delayNotice' in kwargs:
+            delay_notice = kwargs['delayNotice']
+        if 'delayPhone' in kwargs:
+            delay_phone = kwargs['delayPhone']
+        if 'delayRuleTime' in kwargs:
+            delay_rule_time = kwargs['delayRuleTime']
+        if 'destinationEndpointEngineName' in kwargs:
+            destination_endpoint_engine_name = kwargs['destinationEndpointEngineName']
+        if 'destinationRegion' in kwargs:
+            destination_region = kwargs['destinationRegion']
+        if 'dtsInstanceId' in kwargs:
+            dts_instance_id = kwargs['dtsInstanceId']
+        if 'dtsJobName' in kwargs:
+            dts_job_name = kwargs['dtsJobName']
+        if 'errorNotice' in kwargs:
+            error_notice = kwargs['errorNotice']
+        if 'errorPhone' in kwargs:
+            error_phone = kwargs['errorPhone']
+        if 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if 'paymentDuration' in kwargs:
+            payment_duration = kwargs['paymentDuration']
+        if 'paymentDurationUnit' in kwargs:
+            payment_duration_unit = kwargs['paymentDurationUnit']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'sourceEndpointDatabaseName' in kwargs:
+            source_endpoint_database_name = kwargs['sourceEndpointDatabaseName']
+        if 'sourceEndpointEngineName' in kwargs:
+            source_endpoint_engine_name = kwargs['sourceEndpointEngineName']
+        if 'sourceEndpointInstanceId' in kwargs:
+            source_endpoint_instance_id = kwargs['sourceEndpointInstanceId']
+        if 'sourceEndpointInstanceType' in kwargs:
+            source_endpoint_instance_type = kwargs['sourceEndpointInstanceType']
+        if 'sourceEndpointIp' in kwargs:
+            source_endpoint_ip = kwargs['sourceEndpointIp']
+        if 'sourceEndpointOracleSid' in kwargs:
+            source_endpoint_oracle_sid = kwargs['sourceEndpointOracleSid']
+        if 'sourceEndpointOwnerId' in kwargs:
+            source_endpoint_owner_id = kwargs['sourceEndpointOwnerId']
+        if 'sourceEndpointPassword' in kwargs:
+            source_endpoint_password = kwargs['sourceEndpointPassword']
+        if 'sourceEndpointPort' in kwargs:
+            source_endpoint_port = kwargs['sourceEndpointPort']
+        if 'sourceEndpointRegion' in kwargs:
+            source_endpoint_region = kwargs['sourceEndpointRegion']
+        if 'sourceEndpointRole' in kwargs:
+            source_endpoint_role = kwargs['sourceEndpointRole']
+        if 'sourceEndpointUserName' in kwargs:
+            source_endpoint_user_name = kwargs['sourceEndpointUserName']
+        if 'subscriptionDataTypeDdl' in kwargs:
+            subscription_data_type_ddl = kwargs['subscriptionDataTypeDdl']
+        if 'subscriptionDataTypeDml' in kwargs:
+            subscription_data_type_dml = kwargs['subscriptionDataTypeDml']
+        if 'subscriptionInstanceNetworkType' in kwargs:
+            subscription_instance_network_type = kwargs['subscriptionInstanceNetworkType']
+        if 'subscriptionInstanceVpcId' in kwargs:
+            subscription_instance_vpc_id = kwargs['subscriptionInstanceVpcId']
+        if 'subscriptionInstanceVswitchId' in kwargs:
+            subscription_instance_vswitch_id = kwargs['subscriptionInstanceVswitchId']
+        if 'syncArchitecture' in kwargs:
+            sync_architecture = kwargs['syncArchitecture']
+        if 'synchronizationDirection' in kwargs:
+            synchronization_direction = kwargs['synchronizationDirection']
+
         if checkpoint is not None:
             _setter("checkpoint", checkpoint)
         if compute_unit is not None:

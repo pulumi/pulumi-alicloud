@@ -32,7 +32,9 @@ class AclEntryListArgs:
              _setter: Callable[[Any, Any], None],
              comment: Optional[pulumi.Input[str]] = None,
              entry: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if comment is not None:
             _setter("comment", comment)
         if entry is not None:
@@ -78,7 +80,13 @@ class BackendServerBackendServerArgs:
              weight: pulumi.Input[int],
              server_ip: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverId' in kwargs:
+            server_id = kwargs['serverId']
+        if 'serverIp' in kwargs:
+            server_ip = kwargs['serverIp']
+
         _setter("server_id", server_id)
         _setter("weight", weight)
         if server_ip is not None:
@@ -150,7 +158,17 @@ class ListenerXForwardedForArgs:
              retrive_slb_id: Optional[pulumi.Input[bool]] = None,
              retrive_slb_ip: Optional[pulumi.Input[bool]] = None,
              retrive_slb_proto: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'retriveClientIp' in kwargs:
+            retrive_client_ip = kwargs['retriveClientIp']
+        if 'retriveSlbId' in kwargs:
+            retrive_slb_id = kwargs['retriveSlbId']
+        if 'retriveSlbIp' in kwargs:
+            retrive_slb_ip = kwargs['retriveSlbIp']
+        if 'retriveSlbProto' in kwargs:
+            retrive_slb_proto = kwargs['retriveSlbProto']
+
         if retrive_client_ip is not None:
             _setter("retrive_client_ip", retrive_client_ip)
         if retrive_slb_id is not None:
@@ -236,7 +254,15 @@ class MasterSlaveServerGroupServerArgs:
              server_type: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverId' in kwargs:
+            server_id = kwargs['serverId']
+        if 'isBackup' in kwargs:
+            is_backup = kwargs['isBackup']
+        if 'serverType' in kwargs:
+            server_type = kwargs['serverType']
+
         _setter("port", port)
         _setter("server_id", server_id)
         if is_backup is not None:
@@ -324,7 +350,11 @@ class ServerGroupServerArgs:
              server_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
              type: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverIds' in kwargs:
+            server_ids = kwargs['serverIds']
+
         _setter("port", port)
         _setter("server_ids", server_ids)
         if type is not None:

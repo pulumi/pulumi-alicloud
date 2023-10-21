@@ -3,7 +3,6 @@
 
 package com.pulumi.alicloud.cs.inputs;
 
-import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonsAddon;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.List;
@@ -15,21 +14,6 @@ import javax.annotation.Nullable;
 public final class GetKubernetesAddonsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetKubernetesAddonsPlainArgs Empty = new GetKubernetesAddonsPlainArgs();
-
-    /**
-     * A list of addons.
-     * 
-     */
-    @Import(name="addons")
-    private @Nullable List<GetKubernetesAddonsAddon> addons;
-
-    /**
-     * @return A list of addons.
-     * 
-     */
-    public Optional<List<GetKubernetesAddonsAddon>> addons() {
-        return Optional.ofNullable(this.addons);
-    }
 
     /**
      * The id of kubernetes cluster.
@@ -79,7 +63,6 @@ public final class GetKubernetesAddonsPlainArgs extends com.pulumi.resources.Inv
     private GetKubernetesAddonsPlainArgs() {}
 
     private GetKubernetesAddonsPlainArgs(GetKubernetesAddonsPlainArgs $) {
-        this.addons = $.addons;
         this.clusterId = $.clusterId;
         this.ids = $.ids;
         this.nameRegex = $.nameRegex;
@@ -101,27 +84,6 @@ public final class GetKubernetesAddonsPlainArgs extends com.pulumi.resources.Inv
 
         public Builder(GetKubernetesAddonsPlainArgs defaults) {
             $ = new GetKubernetesAddonsPlainArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param addons A list of addons.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder addons(@Nullable List<GetKubernetesAddonsAddon> addons) {
-            $.addons = addons;
-            return this;
-        }
-
-        /**
-         * @param addons A list of addons.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder addons(GetKubernetesAddonsAddon... addons) {
-            return addons(List.of(addons));
         }
 
         /**

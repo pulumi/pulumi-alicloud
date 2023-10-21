@@ -40,7 +40,15 @@ class GetAgentsAgentResult(dict):
              agent_key: str,
              agent_name: str,
              id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'agentId' in kwargs:
+            agent_id = kwargs['agentId']
+        if 'agentKey' in kwargs:
+            agent_key = kwargs['agentKey']
+        if 'agentName' in kwargs:
+            agent_name = kwargs['agentName']
+
         _setter("agent_id", agent_id)
         _setter("agent_key", agent_key)
         _setter("agent_name", agent_name)

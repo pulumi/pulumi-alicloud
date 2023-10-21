@@ -35,7 +35,11 @@ class GatewaySmbUserArgs:
              gateway_id: pulumi.Input[str],
              password: pulumi.Input[str],
              username: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'gatewayId' in kwargs:
+            gateway_id = kwargs['gatewayId']
+
         _setter("gateway_id", gateway_id)
         _setter("password", password)
         _setter("username", username)
@@ -101,7 +105,11 @@ class _GatewaySmbUserState:
              gateway_id: Optional[pulumi.Input[str]] = None,
              password: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'gatewayId' in kwargs:
+            gateway_id = kwargs['gatewayId']
+
         if gateway_id is not None:
             _setter("gateway_id", gateway_id)
         if password is not None:

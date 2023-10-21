@@ -61,7 +61,9 @@ class AclEntryList(dict):
              _setter: Callable[[Any, Any], None],
              comment: Optional[str] = None,
              entry: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if comment is not None:
             _setter("comment", comment)
         if entry is not None:
@@ -118,7 +120,13 @@ class BackendServerBackendServer(dict):
              weight: int,
              server_ip: Optional[str] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverId' in kwargs:
+            server_id = kwargs['serverId']
+        if 'serverIp' in kwargs:
+            server_ip = kwargs['serverIp']
+
         _setter("server_id", server_id)
         _setter("weight", weight)
         if server_ip is not None:
@@ -197,7 +205,17 @@ class ListenerXForwardedFor(dict):
              retrive_slb_id: Optional[bool] = None,
              retrive_slb_ip: Optional[bool] = None,
              retrive_slb_proto: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'retriveClientIp' in kwargs:
+            retrive_client_ip = kwargs['retriveClientIp']
+        if 'retriveSlbId' in kwargs:
+            retrive_slb_id = kwargs['retriveSlbId']
+        if 'retriveSlbIp' in kwargs:
+            retrive_slb_ip = kwargs['retriveSlbIp']
+        if 'retriveSlbProto' in kwargs:
+            retrive_slb_proto = kwargs['retriveSlbProto']
+
         if retrive_client_ip is not None:
             _setter("retrive_client_ip", retrive_client_ip)
         if retrive_slb_id is not None:
@@ -288,7 +306,15 @@ class MasterSlaveServerGroupServer(dict):
              server_type: Optional[str] = None,
              type: Optional[str] = None,
              weight: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverId' in kwargs:
+            server_id = kwargs['serverId']
+        if 'isBackup' in kwargs:
+            is_backup = kwargs['isBackup']
+        if 'serverType' in kwargs:
+            server_type = kwargs['serverType']
+
         _setter("port", port)
         _setter("server_id", server_id)
         if is_backup is not None:
@@ -369,7 +395,11 @@ class ServerGroupServer(dict):
              server_ids: Sequence[str],
              type: Optional[str] = None,
              weight: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverIds' in kwargs:
+            server_ids = kwargs['serverIds']
+
         _setter("port", port)
         _setter("server_ids", server_ids)
         if type is not None:
@@ -436,7 +466,17 @@ class GetAclsAclResult(dict):
              related_listeners: Sequence['outputs.GetAclsAclRelatedListenerResult'],
              resource_group_id: str,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'entryLists' in kwargs:
+            entry_lists = kwargs['entryLists']
+        if 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if 'relatedListeners' in kwargs:
+            related_listeners = kwargs['relatedListeners']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("entry_lists", entry_lists)
         _setter("id", id)
         _setter("ip_version", ip_version)
@@ -515,7 +555,9 @@ class GetAclsAclEntryListResult(dict):
              _setter: Callable[[Any, Any], None],
              comment: str,
              entry: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("comment", comment)
         _setter("entry", entry)
 
@@ -551,7 +593,15 @@ class GetAclsAclRelatedListenerResult(dict):
              frontend_port: int,
              load_balancer_id: str,
              protocol: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclType' in kwargs:
+            acl_type = kwargs['aclType']
+        if 'frontendPort' in kwargs:
+            frontend_port = kwargs['frontendPort']
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+
         _setter("acl_type", acl_type)
         _setter("frontend_port", frontend_port)
         _setter("load_balancer_id", load_balancer_id)
@@ -717,7 +767,63 @@ class GetApplicationLoadBalancersBalancerResult(dict):
              tags: Mapping[str, Any],
              vpc_id: str,
              vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addressIpVersion' in kwargs:
+            address_ip_version = kwargs['addressIpVersion']
+        if 'addressType' in kwargs:
+            address_type = kwargs['addressType']
+        if 'autoReleaseTime' in kwargs:
+            auto_release_time = kwargs['autoReleaseTime']
+        if 'backendServers' in kwargs:
+            backend_servers = kwargs['backendServers']
+        if 'createTimeStamp' in kwargs:
+            create_time_stamp = kwargs['createTimeStamp']
+        if 'deleteProtection' in kwargs:
+            delete_protection = kwargs['deleteProtection']
+        if 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if 'endTimeStamp' in kwargs:
+            end_time_stamp = kwargs['endTimeStamp']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'listenerPortsAndProtocals' in kwargs:
+            listener_ports_and_protocals = kwargs['listenerPortsAndProtocals']
+        if 'listenerPortsAndProtocols' in kwargs:
+            listener_ports_and_protocols = kwargs['listenerPortsAndProtocols']
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+        if 'loadBalancerName' in kwargs:
+            load_balancer_name = kwargs['loadBalancerName']
+        if 'loadBalancerSpec' in kwargs:
+            load_balancer_spec = kwargs['loadBalancerSpec']
+        if 'masterZoneId' in kwargs:
+            master_zone_id = kwargs['masterZoneId']
+        if 'modificationProtectionReason' in kwargs:
+            modification_protection_reason = kwargs['modificationProtectionReason']
+        if 'modificationProtectionStatus' in kwargs:
+            modification_protection_status = kwargs['modificationProtectionStatus']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'regionIdAlias' in kwargs:
+            region_id_alias = kwargs['regionIdAlias']
+        if 'renewalCycUnit' in kwargs:
+            renewal_cyc_unit = kwargs['renewalCycUnit']
+        if 'renewalDuration' in kwargs:
+            renewal_duration = kwargs['renewalDuration']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'slaveZoneId' in kwargs:
+            slave_zone_id = kwargs['slaveZoneId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("address", address)
         _setter("address_ip_version", address_ip_version)
         _setter("address_type", address_type)
@@ -1035,7 +1141,11 @@ class GetApplicationLoadBalancersBalancerBackendServerResult(dict):
              server_id: str,
              type: str,
              weight: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverId' in kwargs:
+            server_id = kwargs['serverId']
+
         _setter("description", description)
         _setter("server_id", server_id)
         _setter("type", type)
@@ -1093,7 +1203,13 @@ class GetApplicationLoadBalancersBalancerListenerPortsAndProtocalResult(dict):
              _setter: Callable[[Any, Any], None],
              listener_port: int,
              listener_protocal: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'listenerPort' in kwargs:
+            listener_port = kwargs['listenerPort']
+        if 'listenerProtocal' in kwargs:
+            listener_protocal = kwargs['listenerProtocal']
+
         _setter("listener_port", listener_port)
         _setter("listener_protocal", listener_protocal)
 
@@ -1145,7 +1261,17 @@ class GetApplicationLoadBalancersBalancerListenerPortsAndProtocolResult(dict):
              listener_forward: str,
              listener_port: int,
              listener_protocol: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'forwardPort' in kwargs:
+            forward_port = kwargs['forwardPort']
+        if 'listenerForward' in kwargs:
+            listener_forward = kwargs['listenerForward']
+        if 'listenerPort' in kwargs:
+            listener_port = kwargs['listenerPort']
+        if 'listenerProtocol' in kwargs:
+            listener_protocol = kwargs['listenerProtocol']
+
         _setter("description", description)
         _setter("forward_port", forward_port)
         _setter("listener_forward", listener_forward)
@@ -1250,7 +1376,23 @@ class GetApplicationLoadBalancersSlbResult(dict):
              tags: Mapping[str, Any],
              vpc_id: str,
              vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'masterAvailabilityZone' in kwargs:
+            master_availability_zone = kwargs['masterAvailabilityZone']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'slaveAvailabilityZone' in kwargs:
+            slave_availability_zone = kwargs['slaveAvailabilityZone']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("address", address)
         _setter("creation_time", creation_time)
         _setter("id", id)
@@ -1371,7 +1513,11 @@ class GetAttachmentsSlbAttachmentResult(dict):
              _setter: Callable[[Any, Any], None],
              instance_id: str,
              weight: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("instance_id", instance_id)
         _setter("weight", weight)
 
@@ -1415,7 +1561,11 @@ class GetBackendServersBackendServerResult(dict):
              id: str,
              server_type: str,
              weight: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverType' in kwargs:
+            server_type = kwargs['serverType']
+
         _setter("id", id)
         _setter("server_type", server_type)
         _setter("weight", weight)
@@ -1500,7 +1650,23 @@ class GetCaCertificatesCertificateResult(dict):
              name: str,
              resource_group_id: str,
              tags: Mapping[str, Any],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'caCertificateId' in kwargs:
+            ca_certificate_id = kwargs['caCertificateId']
+        if 'caCertificateName' in kwargs:
+            ca_certificate_name = kwargs['caCertificateName']
+        if 'commonName' in kwargs:
+            common_name = kwargs['commonName']
+        if 'createdTimestamp' in kwargs:
+            created_timestamp = kwargs['createdTimestamp']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'expiredTimestamp' in kwargs:
+            expired_timestamp = kwargs['expiredTimestamp']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("ca_certificate_id", ca_certificate_id)
         _setter("ca_certificate_name", ca_certificate_name)
         _setter("common_name", common_name)
@@ -1625,7 +1791,11 @@ class GetDomainExtensionsExtensionResult(dict):
              domain: str,
              id: str,
              server_certificate_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverCertificateId' in kwargs:
+            server_certificate_id = kwargs['serverCertificateId']
+
         _setter("domain", domain)
         _setter("id", id)
         _setter("server_certificate_id", server_certificate_id)
@@ -1825,7 +1995,75 @@ class GetListenersSlbListenerResult(dict):
              x_forwarded_for_slb_id: str,
              x_forwarded_for_slb_ip: str,
              x_forwarded_for_slb_proto: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backendPort' in kwargs:
+            backend_port = kwargs['backendPort']
+        if 'caCertificateId' in kwargs:
+            ca_certificate_id = kwargs['caCertificateId']
+        if 'cookieTimeout' in kwargs:
+            cookie_timeout = kwargs['cookieTimeout']
+        if 'enableHttp2' in kwargs:
+            enable_http2 = kwargs['enableHttp2']
+        if 'establishedTimeout' in kwargs:
+            established_timeout = kwargs['establishedTimeout']
+        if 'frontendPort' in kwargs:
+            frontend_port = kwargs['frontendPort']
+        if 'healthCheck' in kwargs:
+            health_check = kwargs['healthCheck']
+        if 'healthCheckConnectPort' in kwargs:
+            health_check_connect_port = kwargs['healthCheckConnectPort']
+        if 'healthCheckConnectTimeout' in kwargs:
+            health_check_connect_timeout = kwargs['healthCheckConnectTimeout']
+        if 'healthCheckDomain' in kwargs:
+            health_check_domain = kwargs['healthCheckDomain']
+        if 'healthCheckHttpCode' in kwargs:
+            health_check_http_code = kwargs['healthCheckHttpCode']
+        if 'healthCheckInterval' in kwargs:
+            health_check_interval = kwargs['healthCheckInterval']
+        if 'healthCheckTimeout' in kwargs:
+            health_check_timeout = kwargs['healthCheckTimeout']
+        if 'healthCheckType' in kwargs:
+            health_check_type = kwargs['healthCheckType']
+        if 'healthCheckUri' in kwargs:
+            health_check_uri = kwargs['healthCheckUri']
+        if 'healthyThreshold' in kwargs:
+            healthy_threshold = kwargs['healthyThreshold']
+        if 'idleTimeout' in kwargs:
+            idle_timeout = kwargs['idleTimeout']
+        if 'masterSlaveServerGroupId' in kwargs:
+            master_slave_server_group_id = kwargs['masterSlaveServerGroupId']
+        if 'persistenceTimeout' in kwargs:
+            persistence_timeout = kwargs['persistenceTimeout']
+        if 'proxyProtocolV2Enabled' in kwargs:
+            proxy_protocol_v2_enabled = kwargs['proxyProtocolV2Enabled']
+        if 'requestTimeout' in kwargs:
+            request_timeout = kwargs['requestTimeout']
+        if 'securityStatus' in kwargs:
+            security_status = kwargs['securityStatus']
+        if 'serverCertificateId' in kwargs:
+            server_certificate_id = kwargs['serverCertificateId']
+        if 'serverGroupId' in kwargs:
+            server_group_id = kwargs['serverGroupId']
+        if 'sslCertificateId' in kwargs:
+            ssl_certificate_id = kwargs['sslCertificateId']
+        if 'stickySession' in kwargs:
+            sticky_session = kwargs['stickySession']
+        if 'stickySessionType' in kwargs:
+            sticky_session_type = kwargs['stickySessionType']
+        if 'tlsCipherPolicy' in kwargs:
+            tls_cipher_policy = kwargs['tlsCipherPolicy']
+        if 'unhealthyThreshold' in kwargs:
+            unhealthy_threshold = kwargs['unhealthyThreshold']
+        if 'xForwardedFor' in kwargs:
+            x_forwarded_for = kwargs['xForwardedFor']
+        if 'xForwardedForSlbId' in kwargs:
+            x_forwarded_for_slb_id = kwargs['xForwardedForSlbId']
+        if 'xForwardedForSlbIp' in kwargs:
+            x_forwarded_for_slb_ip = kwargs['xForwardedForSlbIp']
+        if 'xForwardedForSlbProto' in kwargs:
+            x_forwarded_for_slb_proto = kwargs['xForwardedForSlbProto']
+
         _setter("backend_port", backend_port)
         _setter("bandwidth", bandwidth)
         _setter("ca_certificate_id", ca_certificate_id)
@@ -2309,7 +2547,63 @@ class GetLoadBalancersBalancerResult(dict):
              tags: Mapping[str, Any],
              vpc_id: str,
              vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addressIpVersion' in kwargs:
+            address_ip_version = kwargs['addressIpVersion']
+        if 'addressType' in kwargs:
+            address_type = kwargs['addressType']
+        if 'autoReleaseTime' in kwargs:
+            auto_release_time = kwargs['autoReleaseTime']
+        if 'backendServers' in kwargs:
+            backend_servers = kwargs['backendServers']
+        if 'createTimeStamp' in kwargs:
+            create_time_stamp = kwargs['createTimeStamp']
+        if 'deleteProtection' in kwargs:
+            delete_protection = kwargs['deleteProtection']
+        if 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if 'endTimeStamp' in kwargs:
+            end_time_stamp = kwargs['endTimeStamp']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'listenerPortsAndProtocals' in kwargs:
+            listener_ports_and_protocals = kwargs['listenerPortsAndProtocals']
+        if 'listenerPortsAndProtocols' in kwargs:
+            listener_ports_and_protocols = kwargs['listenerPortsAndProtocols']
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+        if 'loadBalancerName' in kwargs:
+            load_balancer_name = kwargs['loadBalancerName']
+        if 'loadBalancerSpec' in kwargs:
+            load_balancer_spec = kwargs['loadBalancerSpec']
+        if 'masterZoneId' in kwargs:
+            master_zone_id = kwargs['masterZoneId']
+        if 'modificationProtectionReason' in kwargs:
+            modification_protection_reason = kwargs['modificationProtectionReason']
+        if 'modificationProtectionStatus' in kwargs:
+            modification_protection_status = kwargs['modificationProtectionStatus']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'regionIdAlias' in kwargs:
+            region_id_alias = kwargs['regionIdAlias']
+        if 'renewalCycUnit' in kwargs:
+            renewal_cyc_unit = kwargs['renewalCycUnit']
+        if 'renewalDuration' in kwargs:
+            renewal_duration = kwargs['renewalDuration']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'slaveZoneId' in kwargs:
+            slave_zone_id = kwargs['slaveZoneId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("address", address)
         _setter("address_ip_version", address_ip_version)
         _setter("address_type", address_type)
@@ -2558,7 +2852,11 @@ class GetLoadBalancersBalancerBackendServerResult(dict):
              server_id: str,
              type: str,
              weight: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverId' in kwargs:
+            server_id = kwargs['serverId']
+
         _setter("description", description)
         _setter("server_id", server_id)
         _setter("type", type)
@@ -2600,7 +2898,13 @@ class GetLoadBalancersBalancerListenerPortsAndProtocalResult(dict):
              _setter: Callable[[Any, Any], None],
              listener_port: int,
              listener_protocal: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'listenerPort' in kwargs:
+            listener_port = kwargs['listenerPort']
+        if 'listenerProtocal' in kwargs:
+            listener_protocal = kwargs['listenerProtocal']
+
         _setter("listener_port", listener_port)
         _setter("listener_protocal", listener_protocal)
 
@@ -2639,7 +2943,17 @@ class GetLoadBalancersBalancerListenerPortsAndProtocolResult(dict):
              listener_forward: str,
              listener_port: int,
              listener_protocol: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'forwardPort' in kwargs:
+            forward_port = kwargs['forwardPort']
+        if 'listenerForward' in kwargs:
+            listener_forward = kwargs['listenerForward']
+        if 'listenerPort' in kwargs:
+            listener_port = kwargs['listenerPort']
+        if 'listenerProtocol' in kwargs:
+            listener_protocol = kwargs['listenerProtocol']
+
         _setter("description", description)
         _setter("forward_port", forward_port)
         _setter("listener_forward", listener_forward)
@@ -2744,7 +3058,23 @@ class GetLoadBalancersSlbResult(dict):
              tags: Mapping[str, Any],
              vpc_id: str,
              vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'masterAvailabilityZone' in kwargs:
+            master_availability_zone = kwargs['masterAvailabilityZone']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'slaveAvailabilityZone' in kwargs:
+            slave_availability_zone = kwargs['slaveAvailabilityZone']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("address", address)
         _setter("creation_time", creation_time)
         _setter("id", id)
@@ -2896,7 +3226,9 @@ class GetMasterSlaveServerGroupsGroupResult(dict):
              id: str,
              name: str,
              servers: Sequence['outputs.GetMasterSlaveServerGroupsGroupServerResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("id", id)
         _setter("name", name)
         _setter("servers", servers)
@@ -2957,7 +3289,15 @@ class GetMasterSlaveServerGroupsGroupServerResult(dict):
              port: int,
              server_type: str,
              weight: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'isBackup' in kwargs:
+            is_backup = kwargs['isBackup']
+        if 'serverType' in kwargs:
+            server_type = kwargs['serverType']
+
         _setter("instance_id", instance_id)
         _setter("is_backup", is_backup)
         _setter("port", port)
@@ -3036,7 +3376,11 @@ class GetRulesSlbRuleResult(dict):
              name: str,
              server_group_id: str,
              url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverGroupId' in kwargs:
+            server_group_id = kwargs['serverGroupId']
+
         _setter("domain", domain)
         _setter("id", id)
         _setter("name", name)
@@ -3151,7 +3495,29 @@ class GetServerCertificatesCertificateResult(dict):
              subject_alternative_names: Sequence[str],
              resource_group_id: Optional[str] = None,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alicloudCertificateId' in kwargs:
+            alicloud_certificate_id = kwargs['alicloudCertificateId']
+        if 'alicloudCertificateName' in kwargs:
+            alicloud_certificate_name = kwargs['alicloudCertificateName']
+        if 'commonName' in kwargs:
+            common_name = kwargs['commonName']
+        if 'createdTime' in kwargs:
+            created_time = kwargs['createdTime']
+        if 'createdTimestamp' in kwargs:
+            created_timestamp = kwargs['createdTimestamp']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'expiredTimestamp' in kwargs:
+            expired_timestamp = kwargs['expiredTimestamp']
+        if 'isAlicloudCertificate' in kwargs:
+            is_alicloud_certificate = kwargs['isAlicloudCertificate']
+        if 'subjectAlternativeNames' in kwargs:
+            subject_alternative_names = kwargs['subjectAlternativeNames']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("alicloud_certificate_id", alicloud_certificate_id)
         _setter("alicloud_certificate_name", alicloud_certificate_name)
         _setter("common_name", common_name)
@@ -3305,7 +3671,9 @@ class GetServerGroupsSlbServerGroupResult(dict):
              id: str,
              name: str,
              servers: Sequence['outputs.GetServerGroupsSlbServerGroupServerResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("id", id)
         _setter("name", name)
         _setter("servers", servers)
@@ -3354,7 +3722,11 @@ class GetServerGroupsSlbServerGroupServerResult(dict):
              _setter: Callable[[Any, Any], None],
              instance_id: str,
              weight: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("instance_id", instance_id)
         _setter("weight", weight)
 
@@ -3418,7 +3790,19 @@ class GetTlsCipherPoliciesPolicyResult(dict):
              tls_cipher_policy_id: str,
              tls_cipher_policy_name: str,
              tls_versions: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'relateListeners' in kwargs:
+            relate_listeners = kwargs['relateListeners']
+        if 'tlsCipherPolicyId' in kwargs:
+            tls_cipher_policy_id = kwargs['tlsCipherPolicyId']
+        if 'tlsCipherPolicyName' in kwargs:
+            tls_cipher_policy_name = kwargs['tlsCipherPolicyName']
+        if 'tlsVersions' in kwargs:
+            tls_versions = kwargs['tlsVersions']
+
         _setter("ciphers", ciphers)
         _setter("create_time", create_time)
         _setter("id", id)
@@ -3516,7 +3900,11 @@ class GetTlsCipherPoliciesPolicyRelateListenerResult(dict):
              load_balancer_id: str,
              port: int,
              protocol: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+
         _setter("load_balancer_id", load_balancer_id)
         _setter("port", port)
         _setter("protocol", protocol)
@@ -3578,7 +3966,17 @@ class GetZonesZoneResult(dict):
              slave_zone_id: str,
              slb_slave_zone_ids: Sequence[str],
              supported_resources: Sequence['outputs.GetZonesZoneSupportedResourceResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'masterZoneId' in kwargs:
+            master_zone_id = kwargs['masterZoneId']
+        if 'slaveZoneId' in kwargs:
+            slave_zone_id = kwargs['slaveZoneId']
+        if 'slbSlaveZoneIds' in kwargs:
+            slb_slave_zone_ids = kwargs['slbSlaveZoneIds']
+        if 'supportedResources' in kwargs:
+            supported_resources = kwargs['supportedResources']
+
         _setter("id", id)
         _setter("master_zone_id", master_zone_id)
         _setter("slave_zone_id", slave_zone_id)
@@ -3649,7 +4047,13 @@ class GetZonesZoneSupportedResourceResult(dict):
              _setter: Callable[[Any, Any], None],
              address_ip_version: str,
              address_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addressIpVersion' in kwargs:
+            address_ip_version = kwargs['addressIpVersion']
+        if 'addressType' in kwargs:
+            address_type = kwargs['addressType']
+
         _setter("address_ip_version", address_ip_version)
         _setter("address_type", address_type)
 

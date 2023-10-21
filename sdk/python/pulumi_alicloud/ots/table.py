@@ -61,7 +61,27 @@ class TableArgs:
              deviation_cell_version_in_sec: Optional[pulumi.Input[str]] = None,
              enable_sse: Optional[pulumi.Input[bool]] = None,
              sse_key_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'maxVersion' in kwargs:
+            max_version = kwargs['maxVersion']
+        if 'primaryKeys' in kwargs:
+            primary_keys = kwargs['primaryKeys']
+        if 'tableName' in kwargs:
+            table_name = kwargs['tableName']
+        if 'timeToLive' in kwargs:
+            time_to_live = kwargs['timeToLive']
+        if 'definedColumns' in kwargs:
+            defined_columns = kwargs['definedColumns']
+        if 'deviationCellVersionInSec' in kwargs:
+            deviation_cell_version_in_sec = kwargs['deviationCellVersionInSec']
+        if 'enableSse' in kwargs:
+            enable_sse = kwargs['enableSse']
+        if 'sseKeyType' in kwargs:
+            sse_key_type = kwargs['sseKeyType']
+
         _setter("instance_name", instance_name)
         _setter("max_version", max_version)
         _setter("primary_keys", primary_keys)
@@ -233,7 +253,27 @@ class _TableState:
              sse_key_type: Optional[pulumi.Input[str]] = None,
              table_name: Optional[pulumi.Input[str]] = None,
              time_to_live: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'definedColumns' in kwargs:
+            defined_columns = kwargs['definedColumns']
+        if 'deviationCellVersionInSec' in kwargs:
+            deviation_cell_version_in_sec = kwargs['deviationCellVersionInSec']
+        if 'enableSse' in kwargs:
+            enable_sse = kwargs['enableSse']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'maxVersion' in kwargs:
+            max_version = kwargs['maxVersion']
+        if 'primaryKeys' in kwargs:
+            primary_keys = kwargs['primaryKeys']
+        if 'sseKeyType' in kwargs:
+            sse_key_type = kwargs['sseKeyType']
+        if 'tableName' in kwargs:
+            table_name = kwargs['tableName']
+        if 'timeToLive' in kwargs:
+            time_to_live = kwargs['timeToLive']
+
         if defined_columns is not None:
             _setter("defined_columns", defined_columns)
         if deviation_cell_version_in_sec is not None:

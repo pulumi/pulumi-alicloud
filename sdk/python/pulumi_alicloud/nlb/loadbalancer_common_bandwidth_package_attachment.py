@@ -31,7 +31,13 @@ class LoadbalancerCommonBandwidthPackageAttachmentArgs:
              _setter: Callable[[Any, Any], None],
              bandwidth_package_id: pulumi.Input[str],
              load_balancer_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bandwidthPackageId' in kwargs:
+            bandwidth_package_id = kwargs['bandwidthPackageId']
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+
         _setter("bandwidth_package_id", bandwidth_package_id)
         _setter("load_balancer_id", load_balancer_id)
 
@@ -84,7 +90,13 @@ class _LoadbalancerCommonBandwidthPackageAttachmentState:
              bandwidth_package_id: Optional[pulumi.Input[str]] = None,
              load_balancer_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bandwidthPackageId' in kwargs:
+            bandwidth_package_id = kwargs['bandwidthPackageId']
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+
         if bandwidth_package_id is not None:
             _setter("bandwidth_package_id", bandwidth_package_id)
         if load_balancer_id is not None:

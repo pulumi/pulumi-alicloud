@@ -138,7 +138,7 @@ namespace Pulumi.AliCloud.Dns
         public string? Lang { get; set; }
 
         /// <summary>
-        /// ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+        /// ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/dns-lines)
         /// </summary>
         [Input("line")]
         public string? Line { get; set; }
@@ -254,7 +254,7 @@ namespace Pulumi.AliCloud.Dns
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+        /// ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/dns-lines)
         /// </summary>
         [Input("line")]
         public Input<string>? Line { get; set; }

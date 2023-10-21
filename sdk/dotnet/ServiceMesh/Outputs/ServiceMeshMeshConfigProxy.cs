@@ -14,24 +14,30 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
     public sealed class ServiceMeshMeshConfigProxy
     {
         /// <summary>
-        /// The CPU resource  of the limitsOPA proxy container.
+        /// Trust cluster domain.
+        /// </summary>
+        public readonly string? ClusterDomain;
+        /// <summary>
+        /// Sidecar injector Pods on the throttle.
         /// </summary>
         public readonly string? LimitCpu;
         /// <summary>
-        /// The memory resource limit of the OPA proxy container.
+        /// Sidecar injector Pods on the throttle.
         /// </summary>
         public readonly string? LimitMemory;
         /// <summary>
-        /// The CPU resource request of the OPA proxy container.
+        /// Sidecar injector Pods on the requested resource.
         /// </summary>
         public readonly string? RequestCpu;
         /// <summary>
-        /// The memory resource request of the OPA proxy container.
+        /// Sidecar injector Pods on the requested resource.
         /// </summary>
         public readonly string? RequestMemory;
 
         [OutputConstructor]
         private ServiceMeshMeshConfigProxy(
+            string? clusterDomain,
+
             string? limitCpu,
 
             string? limitMemory,
@@ -40,6 +46,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
 
             string? requestMemory)
         {
+            ClusterDomain = clusterDomain;
             LimitCpu = limitCpu;
             LimitMemory = limitMemory;
             RequestCpu = requestCpu;
