@@ -109,6 +109,16 @@ def get_accounts(enable_details: Optional[bool] = None,
 
     > **NOTE:**  Available in 1.86.0+.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.resourcemanager.get_accounts()
+    pulumi.export("firstAccountId", default.accounts[0].id)
+    ```
+
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of account IDs.
@@ -142,6 +152,16 @@ def get_accounts_output(enable_details: Optional[pulumi.Input[Optional[bool]]] =
     This data source provides the Resource Manager Accounts of the current Alibaba Cloud user.
 
     > **NOTE:**  Available in 1.86.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.resourcemanager.get_accounts()
+    pulumi.export("firstAccountId", default.accounts[0].id)
+    ```
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

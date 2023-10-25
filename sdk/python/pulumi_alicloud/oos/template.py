@@ -514,6 +514,45 @@ class Template(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.92.0+.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.oos.Template("example",
+            content=\"\"\"  {
+            "FormatVersion": "OOS-2019-06-01",
+            "Description": "Update Describe instances of given status",
+            "Parameters":{
+              "Status":{
+                "Type": "String",
+                "Description": "(Required) The status of the Ecs instance."
+              }
+            },
+            "Tasks": [
+              {
+                "Properties" :{
+                  "Parameters":{
+                    "Status": "{{ Status }}"
+                  },
+                  "API": "DescribeInstances",
+                  "Service": "Ecs"
+                },
+                "Name": "foo",
+                "Action": "ACS::ExecuteApi"
+              }]
+          }
+          
+        \"\"\",
+            tags={
+                "Created": "TF",
+                "For": "acceptance Test",
+            },
+            template_name="test-name",
+            version_name="test")
+        ```
+
         ## Import
 
         OOS Template can be imported using the id or template_name, e.g.
@@ -541,6 +580,45 @@ class Template(pulumi.CustomResource):
         Provides a OOS Template resource. For information about Alicloud OOS Template and how to use it, see [What is Resource Alicloud OOS Template](https://www.alibabacloud.com/help/doc-detail/120761.htm).
 
         > **NOTE:** Available in 1.92.0+.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.oos.Template("example",
+            content=\"\"\"  {
+            "FormatVersion": "OOS-2019-06-01",
+            "Description": "Update Describe instances of given status",
+            "Parameters":{
+              "Status":{
+                "Type": "String",
+                "Description": "(Required) The status of the Ecs instance."
+              }
+            },
+            "Tasks": [
+              {
+                "Properties" :{
+                  "Parameters":{
+                    "Status": "{{ Status }}"
+                  },
+                  "API": "DescribeInstances",
+                  "Service": "Ecs"
+                },
+                "Name": "foo",
+                "Action": "ACS::ExecuteApi"
+              }]
+          }
+          
+        \"\"\",
+            tags={
+                "Created": "TF",
+                "For": "acceptance Test",
+            },
+            template_name="test-name",
+            version_name="test")
+        ```
 
         ## Import
 

@@ -186,6 +186,24 @@ class SnatEntry(pulumi.CustomResource):
 
         > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        sag_id = config.get("sagId")
+        if sag_id is None:
+            sag_id = "sag-9bifk***"
+        default = alicloud.rocketmq.SnatEntry("default",
+            sag_id=sag_id,
+            cidr_block="192.168.7.0/24",
+            snat_ip="192.0.0.2")
+        ```
+
         ## Import
 
         The Sag SnatEntry can be imported using the id, e.g.
@@ -214,6 +232,24 @@ class SnatEntry(pulumi.CustomResource):
         > **NOTE:** Available since v1.61.0.
 
         > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        sag_id = config.get("sagId")
+        if sag_id is None:
+            sag_id = "sag-9bifk***"
+        default = alicloud.rocketmq.SnatEntry("default",
+            sag_id=sag_id,
+            cidr_block="192.168.7.0/24",
+            snat_ip="192.0.0.2")
+        ```
 
         ## Import
 

@@ -16,6 +16,152 @@ namespace Pulumi.AliCloud.Sae
     /// 
     /// &gt; **NOTE:** Available since v1.159.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     {
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultNamespace = new AliCloud.Sae.Namespace("defaultNamespace", new()
+    ///     {
+    ///         NamespaceId = Output.Tuple(defaultRegions, defaultRandomInteger.Result).Apply(values =&gt;
+    ///         {
+    ///             var defaultRegions = values.Item1;
+    ///             var result = values.Item2;
+    ///             return $"{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:example{result}";
+    ///         }),
+    ///         NamespaceName = name,
+    ///         NamespaceDescription = name,
+    ///         EnableMicroRegistration = false,
+    ///     });
+    /// 
+    ///     var defaultApplication = new AliCloud.Sae.Application("defaultApplication", new()
+    ///     {
+    ///         AppDescription = name,
+    ///         AppName = name,
+    ///         NamespaceId = defaultNamespace.Id,
+    ///         ImageUrl = $"registry-vpc.{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}.aliyuncs.com/sae-demo-image/consumer:1.0",
+    ///         PackageType = "Image",
+    ///         SecurityGroupId = defaultSecurityGroup.Id,
+    ///         VpcId = defaultNetwork.Id,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         Timezone = "Asia/Beijing",
+    ///         Replicas = 5,
+    ///         Cpu = 500,
+    ///         Memory = 2048,
+    ///     });
+    /// 
+    ///     var defaultApplicationScalingRule = new AliCloud.Sae.ApplicationScalingRule("defaultApplicationScalingRule", new()
+    ///     {
+    ///         AppId = defaultApplication.Id,
+    ///         ScalingRuleName = name,
+    ///         ScalingRuleEnable = true,
+    ///         ScalingRuleType = "mix",
+    ///         MinReadyInstances = 3,
+    ///         MinReadyInstanceRatio = -1,
+    ///         ScalingRuleTimer = new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleTimerArgs
+    ///         {
+    ///             Period = "* * *",
+    ///             Schedules = new[]
+    ///             {
+    ///                 new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleTimerScheduleArgs
+    ///                 {
+    ///                     AtTime = "08:00",
+    ///                     MaxReplicas = 10,
+    ///                     MinReplicas = 3,
+    ///                 },
+    ///                 new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleTimerScheduleArgs
+    ///                 {
+    ///                     AtTime = "20:00",
+    ///                     MaxReplicas = 50,
+    ///                     MinReplicas = 3,
+    ///                 },
+    ///             },
+    ///         },
+    ///         ScalingRuleMetric = new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleMetricArgs
+    ///         {
+    ///             MaxReplicas = 50,
+    ///             MinReplicas = 3,
+    ///             Metrics = new[]
+    ///             {
+    ///                 new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleMetricMetricArgs
+    ///                 {
+    ///                     MetricType = "CPU",
+    ///                     MetricTargetAverageUtilization = 20,
+    ///                 },
+    ///                 new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleMetricMetricArgs
+    ///                 {
+    ///                     MetricType = "MEMORY",
+    ///                     MetricTargetAverageUtilization = 30,
+    ///                 },
+    ///                 new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleMetricMetricArgs
+    ///                 {
+    ///                     MetricType = "tcpActiveConn",
+    ///                     MetricTargetAverageUtilization = 20,
+    ///                 },
+    ///             },
+    ///             ScaleUpRules = new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs
+    ///             {
+    ///                 Step = 10,
+    ///                 Disabled = false,
+    ///                 StabilizationWindowSeconds = 0,
+    ///             },
+    ///             ScaleDownRules = new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs
+    ///             {
+    ///                 Step = 10,
+    ///                 Disabled = false,
+    ///                 StabilizationWindowSeconds = 10,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Serverless App Engine (SAE) Application Scaling Rule can be imported using the id, e.g.

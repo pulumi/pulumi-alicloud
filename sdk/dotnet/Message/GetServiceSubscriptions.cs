@@ -15,6 +15,42 @@ namespace Pulumi.AliCloud.Message
         /// This data source provides the Message Notification Service Subscriptions of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.188.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Message.GetServiceSubscriptions.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         TopicName = "tf-example",
+        ///     });
+        /// 
+        ///     var name = AliCloud.Message.GetServiceSubscriptions.Invoke(new()
+        ///     {
+        ///         TopicName = "tf-example",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["subscriptionId1"] = ids.Apply(getServiceSubscriptionsResult =&gt; getServiceSubscriptionsResult.Subscriptions[0]?.Id),
+        ///         ["subscriptionId2"] = name.Apply(getServiceSubscriptionsResult =&gt; getServiceSubscriptionsResult.Subscriptions[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceSubscriptionsResult> InvokeAsync(GetServiceSubscriptionsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceSubscriptionsResult>("alicloud:message/getServiceSubscriptions:getServiceSubscriptions", args ?? new GetServiceSubscriptionsArgs(), options.WithDefaults());
@@ -23,6 +59,42 @@ namespace Pulumi.AliCloud.Message
         /// This data source provides the Message Notification Service Subscriptions of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.188.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Message.GetServiceSubscriptions.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         TopicName = "tf-example",
+        ///     });
+        /// 
+        ///     var name = AliCloud.Message.GetServiceSubscriptions.Invoke(new()
+        ///     {
+        ///         TopicName = "tf-example",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["subscriptionId1"] = ids.Apply(getServiceSubscriptionsResult =&gt; getServiceSubscriptionsResult.Subscriptions[0]?.Id),
+        ///         ["subscriptionId2"] = name.Apply(getServiceSubscriptionsResult =&gt; getServiceSubscriptionsResult.Subscriptions[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetServiceSubscriptionsResult> Invoke(GetServiceSubscriptionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceSubscriptionsResult>("alicloud:message/getServiceSubscriptions:getServiceSubscriptions", args ?? new GetServiceSubscriptionsInvokeArgs(), options.WithDefaults());

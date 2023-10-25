@@ -15,6 +15,52 @@ import (
 // This data source provides Max Compute Project available to the user.[What is Project](https://help.aliyun.com/document_detail/473479.html)
 //
 // > **NOTE:** Available in 1.196.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/maxcompute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_testaccmp"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultProject, err := maxcompute.NewProject(ctx, "defaultProject", &maxcompute.ProjectArgs{
+//				DefaultQuota: pulumi.String("默认后付费Quota"),
+//				ProjectName:  pulumi.String(name),
+//				Comment:      pulumi.String(name),
+//				ProductType:  pulumi.String("PAYASYOUGO"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultProjects := defaultProject.ID().ApplyT(func(id string) (maxcompute.GetProjectsResult, error) {
+//				return maxcompute.GetProjectsOutput(ctx, maxcompute.GetProjectsOutputArgs{
+//					Ids: []string{
+//						id,
+//					},
+//					NameRegex: defaultProject.Name,
+//				}, nil), nil
+//			}).(maxcompute.GetProjectsResultOutput)
+//			ctx.Export("alicloudMaxcomputeProjectExampleId", defaultProjects.ApplyT(func(defaultProjects maxcompute.GetProjectsResult) (*string, error) {
+//				return &defaultProjects.Projects[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetProjects(ctx *pulumi.Context, args *GetProjectsArgs, opts ...pulumi.InvokeOption) (*GetProjectsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectsResult

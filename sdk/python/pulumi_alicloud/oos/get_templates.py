@@ -218,6 +218,22 @@ def get_templates(category: Optional[str] = None,
 
     > **NOTE:** Available in v1.92.0+.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.oos.get_templates(has_trigger=False,
+        name_regex="test",
+        share_type="Private",
+        tags={
+            "Created": "TF",
+            "For": "template Test",
+        })
+    pulumi.export("firstTemplateName", example.templates[0].template_name)
+    ```
+
 
     :param str category: The category of template.
     :param str created_by: The creator of the template.
@@ -292,6 +308,22 @@ def get_templates_output(category: Optional[pulumi.Input[Optional[str]]] = None,
     This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.
 
     > **NOTE:** Available in v1.92.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.oos.get_templates(has_trigger=False,
+        name_regex="test",
+        share_type="Private",
+        tags={
+            "Created": "TF",
+            "For": "template Test",
+        })
+    pulumi.export("firstTemplateName", example.templates[0].template_name)
+    ```
 
 
     :param str category: The category of template.

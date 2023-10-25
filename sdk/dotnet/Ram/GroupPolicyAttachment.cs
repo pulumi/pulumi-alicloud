@@ -14,6 +14,54 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// &gt; **NOTE:** Available since v1.0.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a RAM Group Policy attachment.
+    ///     var @group = new AliCloud.Ram.Group("group", new()
+    ///     {
+    ///         Comments = "this is a group comments.",
+    ///     });
+    /// 
+    ///     var policy = new AliCloud.Ram.Policy("policy", new()
+    ///     {
+    ///         Document = @"    {
+    ///       ""Statement"": [
+    ///         {
+    ///           ""Action"": [
+    ///             ""oss:ListObjects"",
+    ///             ""oss:GetObject""
+    ///           ],
+    ///           ""Effect"": ""Allow"",
+    ///           ""Resource"": [
+    ///             ""acs:oss:*:*:mybucket"",
+    ///             ""acs:oss:*:*:mybucket/*""
+    ///           ]
+    ///         }
+    ///       ],
+    ///         ""Version"": ""1""
+    ///     }
+    /// ",
+    ///         Description = "this is a policy test",
+    ///     });
+    /// 
+    ///     var attach = new AliCloud.Ram.GroupPolicyAttachment("attach", new()
+    ///     {
+    ///         PolicyName = policy.Name,
+    ///         PolicyType = policy.Type,
+    ///         GroupName = @group.Name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// RAM Group Policy attachment can be imported using the id, e.g.

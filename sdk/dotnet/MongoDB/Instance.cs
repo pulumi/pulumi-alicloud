@@ -22,6 +22,58 @@ namespace Pulumi.AliCloud.MongoDB
     /// &gt; **NOTE:**  Create MongoDB instance or change instance type and storage would cost 5~10 minutes. Please make full preparation
     /// 
     /// ## Example Usage
+    /// ### Create a Mongodb instance
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultZones = AliCloud.MongoDB.GetZones.Invoke();
+    /// 
+    ///     var index = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones).Length.Apply(length =&gt; length - 1);
+    /// 
+    ///     var zoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones)[index].Id;
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.17.3.0/24",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "172.17.3.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = zoneId,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.MongoDB.Instance("defaultInstance", new()
+    ///     {
+    ///         EngineVersion = "4.2",
+    ///         DbInstanceClass = "dds.mongo.mid",
+    ///         DbInstanceStorage = 10,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         SecurityIpLists = new[]
+    ///         {
+    ///             "10.168.1.12",
+    ///             "100.69.7.112",
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## Module Support
     /// 
     /// You can use to the existing mongodb module

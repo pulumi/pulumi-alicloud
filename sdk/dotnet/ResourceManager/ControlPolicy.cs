@@ -16,6 +16,46 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// &gt; **NOTE:** Available since v1.120.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var example = new AliCloud.ResourceManager.ControlPolicy("example", new()
+    ///     {
+    ///         ControlPolicyName = name,
+    ///         Description = name,
+    ///         EffectScope = "RAM",
+    ///         PolicyDocument = @"  {
+    ///     ""Version"": ""1"",
+    ///     ""Statement"": [
+    ///       {
+    ///         ""Effect"": ""Deny"",
+    ///         ""Action"": [
+    ///           ""ram:UpdateRole"",
+    ///           ""ram:DeleteRole"",
+    ///           ""ram:AttachPolicyToRole"",
+    ///           ""ram:DetachPolicyFromRole""
+    ///         ],
+    ///         ""Resource"": ""acs:ram:*:*:role/ResourceDirectoryAccountAccessRole""
+    ///       }
+    ///     ]
+    ///   }
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Resource Manager Control Policy can be imported using the id, e.g.

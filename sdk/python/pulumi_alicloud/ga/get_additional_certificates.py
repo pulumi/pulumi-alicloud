@@ -100,6 +100,23 @@ def get_additional_certificates(accelerator_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.150.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.ga.get_additional_certificates(accelerator_id="example_value",
+        listener_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("gaAdditionalCertificateId1", ids.certificates[0].id)
+    ```
+
 
     :param str accelerator_id: The ID of the GA instance.
     :param Sequence[str] ids: A list of Additional Certificate IDs.
@@ -133,6 +150,23 @@ def get_additional_certificates_output(accelerator_id: Optional[pulumi.Input[str
     This data source provides the Ga Additional Certificates of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.150.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.ga.get_additional_certificates(accelerator_id="example_value",
+        listener_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("gaAdditionalCertificateId1", ids.certificates[0].id)
+    ```
 
 
     :param str accelerator_id: The ID of the GA instance.

@@ -16,6 +16,73 @@ namespace Pulumi.AliCloud.Cdn
     /// 
     /// &gt; **NOTE:** Available since v1.134.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultDomainNew = new AliCloud.Cdn.DomainNew("defaultDomainNew", new()
+    ///     {
+    ///         Scope = "overseas",
+    ///         DomainName = "mycdndomain.alicloud-provider.cn",
+    ///         CdnType = "web",
+    ///         Sources = new[]
+    ///         {
+    ///             new AliCloud.Cdn.Inputs.DomainNewSourceArgs
+    ///             {
+    ///                 Type = "ipaddr",
+    ///                 Content = "1.1.3.1",
+    ///                 Priority = 20,
+    ///                 Port = 80,
+    ///                 Weight = 15,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var defaultProject = new AliCloud.Log.Project("defaultProject", new()
+    ///     {
+    ///         Description = "terraform-example",
+    ///     });
+    /// 
+    ///     var defaultStore = new AliCloud.Log.Store("defaultStore", new()
+    ///     {
+    ///         Project = defaultProject.Name,
+    ///         ShardCount = 3,
+    ///         AutoSplit = true,
+    ///         MaxSplitShardCount = 60,
+    ///         AppendMeta = true,
+    ///     });
+    /// 
+    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     {
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var defaultRealTimeLogDelivery = new AliCloud.Cdn.RealTimeLogDelivery("defaultRealTimeLogDelivery", new()
+    ///     {
+    ///         Domain = defaultDomainNew.DomainName,
+    ///         Logstore = defaultProject.Name,
+    ///         Project = defaultStore.Name,
+    ///         SlsRegion = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// CDN Real Time Log Delivery can be imported using the id, e.g.

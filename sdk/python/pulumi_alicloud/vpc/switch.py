@@ -558,6 +558,68 @@ class Switch(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.0.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        foo_network = alicloud.vpc.Network("fooNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/12")
+        foo_switch = alicloud.vpc.Switch("fooSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.16.0.0/21",
+            vpc_id=foo_network.id,
+            zone_id=foo_zones.zones[0].id)
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo = alicloud.get_zones(available_resource_creation="VSwitch")
+        vpc = alicloud.vpc.Network("vpc",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/12")
+        cidr_blocks = alicloud.vpc.Ipv4CidrBlock("cidrBlocks",
+            vpc_id=vpc.id,
+            secondary_cidr_block="192.163.0.0/16")
+        island_nat = alicloud.vpc.Switch("island-nat",
+            vpc_id=cidr_blocks.vpc_id,
+            cidr_block="172.16.0.0/21",
+            zone_id=foo.zones[0].id,
+            vswitch_name="terraform-example",
+            tags={
+                "BuiltBy": "example_value",
+                "cnm_version": "example_value",
+                "Environment": "example_value",
+                "ManagedBy": "example_value",
+            })
+        ```
+
+        Create a switch associated with the additional network segment
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        foo_network = alicloud.vpc.Network("fooNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/12")
+        foo_ipv4_cidr_block = alicloud.vpc.Ipv4CidrBlock("fooIpv4CidrBlock",
+            vpc_id=foo_network.id,
+            secondary_cidr_block="192.163.0.0/16")
+        foo_switch = alicloud.vpc.Switch("fooSwitch",
+            vpc_id=foo_ipv4_cidr_block.vpc_id,
+            cidr_block="192.163.0.0/24",
+            zone_id=foo_zones.zones[0].id)
+        ```
+
         ## Import
 
         VPC Vswitch can be imported using the id, e.g.
@@ -597,6 +659,68 @@ class Switch(pulumi.CustomResource):
         For information about VPC Vswitch and how to use it, see [What is Vswitch](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/work-with-vswitches).
 
         > **NOTE:** Available since v1.0.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        foo_network = alicloud.vpc.Network("fooNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/12")
+        foo_switch = alicloud.vpc.Switch("fooSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.16.0.0/21",
+            vpc_id=foo_network.id,
+            zone_id=foo_zones.zones[0].id)
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo = alicloud.get_zones(available_resource_creation="VSwitch")
+        vpc = alicloud.vpc.Network("vpc",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/12")
+        cidr_blocks = alicloud.vpc.Ipv4CidrBlock("cidrBlocks",
+            vpc_id=vpc.id,
+            secondary_cidr_block="192.163.0.0/16")
+        island_nat = alicloud.vpc.Switch("island-nat",
+            vpc_id=cidr_blocks.vpc_id,
+            cidr_block="172.16.0.0/21",
+            zone_id=foo.zones[0].id,
+            vswitch_name="terraform-example",
+            tags={
+                "BuiltBy": "example_value",
+                "cnm_version": "example_value",
+                "Environment": "example_value",
+                "ManagedBy": "example_value",
+            })
+        ```
+
+        Create a switch associated with the additional network segment
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        foo_network = alicloud.vpc.Network("fooNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/12")
+        foo_ipv4_cidr_block = alicloud.vpc.Ipv4CidrBlock("fooIpv4CidrBlock",
+            vpc_id=foo_network.id,
+            secondary_cidr_block="192.163.0.0/16")
+        foo_switch = alicloud.vpc.Switch("fooSwitch",
+            vpc_id=foo_ipv4_cidr_block.vpc_id,
+            cidr_block="192.163.0.0/24",
+            zone_id=foo_zones.zones[0].id)
+        ```
 
         ## Import
 

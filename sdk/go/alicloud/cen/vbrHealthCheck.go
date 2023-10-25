@@ -20,6 +20,98 @@ import (
 //
 // > **NOTE:** Available since v1.88.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultPhysicalConnections, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
+//				NameRegex: pulumi.StringRef("^preserved-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vlanId, err := random.NewRandomInteger(ctx, "vlanId", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(2999),
+//				Min: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleVirtualBorderRouter, err := expressconnect.NewVirtualBorderRouter(ctx, "exampleVirtualBorderRouter", &expressconnect.VirtualBorderRouterArgs{
+//				LocalGatewayIp:          pulumi.String("10.0.0.1"),
+//				PeerGatewayIp:           pulumi.String("10.0.0.2"),
+//				PeeringSubnetMask:       pulumi.String("255.255.255.252"),
+//				PhysicalConnectionId:    *pulumi.String(defaultPhysicalConnections.Connections[0].Id),
+//				VirtualBorderRouterName: pulumi.String(name),
+//				VlanId:                  vlanId.ID(),
+//				MinRxInterval:           pulumi.Int(1000),
+//				MinTxInterval:           pulumi.Int(1000),
+//				DetectMultiplier:        pulumi.Int(10),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String(name),
+//				ProtectionLevel: pulumi.String("REDUCED"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "exampleInstanceAttachment", &cen.InstanceAttachmentArgs{
+//				InstanceId:            exampleInstance.ID(),
+//				ChildInstanceId:       exampleVirtualBorderRouter.ID(),
+//				ChildInstanceType:     pulumi.String("VBR"),
+//				ChildInstanceRegionId: *pulumi.String(defaultRegions.Regions[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cen.NewVbrHealthCheck(ctx, "exampleVbrHealthCheck", &cen.VbrHealthCheckArgs{
+//				CenId:               exampleInstance.ID(),
+//				HealthCheckSourceIp: pulumi.String("192.168.1.2"),
+//				HealthCheckTargetIp: pulumi.String("10.0.0.2"),
+//				VbrInstanceId:       exampleVirtualBorderRouter.ID(),
+//				VbrInstanceRegionId: exampleInstanceAttachment.ChildInstanceRegionId,
+//				HealthCheckInterval: pulumi.Int(2),
+//				HealthyThreshold:    pulumi.Int(8),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // CEN VBR HealthCheck can be imported using the id, e.g.

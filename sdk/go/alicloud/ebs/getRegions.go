@@ -15,6 +15,35 @@ import (
 // This data source provides the Ebs Regions of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.187.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ebs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := ebs.GetRegions(ctx, &ebs.GetRegionsArgs{
+//				RegionId: pulumi.StringRef("cn-hangzhou"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("regions", _default.Regions)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetRegions(ctx *pulumi.Context, args *GetRegionsArgs, opts ...pulumi.InvokeOption) (*GetRegionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRegionsResult

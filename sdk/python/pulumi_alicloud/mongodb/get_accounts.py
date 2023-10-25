@@ -90,6 +90,19 @@ def get_accounts(account_name: Optional[str] = None,
 
     > **NOTE:** Available in v1.148.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.mongodb.get_accounts(instance_id="example_value",
+        account_name="root")
+    pulumi.export("mongodbAccountId1", example.accounts[0].id)
+    ```
+
 
     :param str account_name: The name of the account.
     :param str instance_id: The id of the instance to which the account belongs.
@@ -119,6 +132,19 @@ def get_accounts_output(account_name: Optional[pulumi.Input[Optional[str]]] = No
     This data source provides the Mongodb Accounts of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.148.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.mongodb.get_accounts(instance_id="example_value",
+        account_name="root")
+    pulumi.export("mongodbAccountId1", example.accounts[0].id)
+    ```
 
 
     :param str account_name: The name of the account.

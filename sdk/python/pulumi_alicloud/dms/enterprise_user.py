@@ -422,6 +422,28 @@ class EnterpriseUser(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.90.0.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexamplename"
+        default_user = alicloud.ram.User("defaultUser",
+            display_name=name,
+            mobile="86-18688888888",
+            email="hello.uuu@aaa.com",
+            comments="example")
+        default_enterprise_user = alicloud.dms.EnterpriseUser("defaultEnterpriseUser",
+            uid=default_user.id,
+            user_name=name,
+            role_names=["DBA"],
+            mobile="86-18688888888")
+        ```
+
         ## Import
 
         DMS Enterprise User can be imported using the id, e.g.
@@ -452,6 +474,28 @@ class EnterpriseUser(pulumi.CustomResource):
         Provides a DMS Enterprise User resource. For information about Alidms Enterprise User and how to use it, see [What is Resource Alidms Enterprise User](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-registeruser).
 
         > **NOTE:** Available since v1.90.0.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexamplename"
+        default_user = alicloud.ram.User("defaultUser",
+            display_name=name,
+            mobile="86-18688888888",
+            email="hello.uuu@aaa.com",
+            comments="example")
+        default_enterprise_user = alicloud.dms.EnterpriseUser("defaultEnterpriseUser",
+            uid=default_user.id,
+            user_name=name,
+            role_names=["DBA"],
+            mobile="86-18688888888")
+        ```
 
         ## Import
 

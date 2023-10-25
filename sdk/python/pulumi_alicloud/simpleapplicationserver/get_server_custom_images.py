@@ -99,6 +99,20 @@ def get_server_custom_images(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.143.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.simpleapplicationserver.get_server_custom_images(ids=["example_id"])
+    pulumi.export("simpleApplicationServerCustomImageId1", ids.images[0].id)
+    name_regex = alicloud.simpleapplicationserver.get_server_custom_images(name_regex="^my-CustomImage")
+    pulumi.export("simpleApplicationServerCustomImageId2", name_regex.images[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Custom Image IDs.
     :param str name_regex: A regex string to filter results by Custom Image name.
@@ -129,6 +143,20 @@ def get_server_custom_images_output(ids: Optional[pulumi.Input[Optional[Sequence
     This data source provides the Simple Application Server Custom Images of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.143.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.simpleapplicationserver.get_server_custom_images(ids=["example_id"])
+    pulumi.export("simpleApplicationServerCustomImageId1", ids.images[0].id)
+    name_regex = alicloud.simpleapplicationserver.get_server_custom_images(name_regex="^my-CustomImage")
+    pulumi.export("simpleApplicationServerCustomImageId2", name_regex.images[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Custom Image IDs.

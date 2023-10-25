@@ -15,6 +15,35 @@ import (
 // This data source provides the Adb DBClusters of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available since v1.121.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/adb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := adb.GetDBClusters(ctx, &adb.GetDBClustersArgs{
+//				DescriptionRegex: pulumi.StringRef("example"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstAdbDbClusterId", example.Clusters[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDBClusters(ctx *pulumi.Context, args *GetDBClustersArgs, opts ...pulumi.InvokeOption) (*GetDBClustersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDBClustersResult

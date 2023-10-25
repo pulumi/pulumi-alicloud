@@ -869,6 +869,31 @@ class ElasticInstance(pulumi.CustomResource):
         > **NOTE:**  Available in 1.127.0+
 
         ## Example Usage
+        ### Create a AnalyticDB for PostgreSQL instance
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_zones = alicloud.get_zones(available_resource_creation="Gpdb")
+        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            zone_id=default_zones.zones[0].id,
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            vswitch_name="vpc-123456")
+        adb_pg_instance = alicloud.gpdb.ElasticInstance("adbPgInstance",
+            engine="gpdb",
+            engine_version="6.0",
+            seg_storage_type="cloud_essd",
+            seg_node_num=4,
+            storage_size=50,
+            instance_spec="2C16G",
+            db_instance_description="Created by terraform",
+            instance_network_type="VPC",
+            payment_type="PayAsYouGo",
+            vswitch_id=default_switch.id)
+        ```
 
         ## Import
 
@@ -918,6 +943,31 @@ class ElasticInstance(pulumi.CustomResource):
         > **NOTE:**  Available in 1.127.0+
 
         ## Example Usage
+        ### Create a AnalyticDB for PostgreSQL instance
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_zones = alicloud.get_zones(available_resource_creation="Gpdb")
+        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            zone_id=default_zones.zones[0].id,
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            vswitch_name="vpc-123456")
+        adb_pg_instance = alicloud.gpdb.ElasticInstance("adbPgInstance",
+            engine="gpdb",
+            engine_version="6.0",
+            seg_storage_type="cloud_essd",
+            seg_node_num=4,
+            storage_size=50,
+            instance_spec="2C16G",
+            db_instance_description="Created by terraform",
+            instance_network_type="VPC",
+            payment_type="PayAsYouGo",
+            vswitch_id=default_switch.id)
+        ```
 
         ## Import
 

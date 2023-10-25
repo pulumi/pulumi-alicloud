@@ -142,6 +142,20 @@ class DomainAttachment(pulumi.CustomResource):
 
         > **DEPRECATED:**  This resource has been deprecated from version `1.99.0`. Please use new resource alicloud_alidns_domain_attachment.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        dns = alicloud.dns.DomainAttachment("dns",
+            domain_names=[
+                "test111.abc",
+                "test222.abc",
+            ],
+            instance_id="dns-cn-mp91lyq9xxxx")
+        ```
+
         ## Import
 
         DNS domain attachment can be imported using the id, e.g.
@@ -167,6 +181,20 @@ class DomainAttachment(pulumi.CustomResource):
         > **NOTE:** Available in v1.80.0+.
 
         > **DEPRECATED:**  This resource has been deprecated from version `1.99.0`. Please use new resource alicloud_alidns_domain_attachment.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        dns = alicloud.dns.DomainAttachment("dns",
+            domain_names=[
+                "test111.abc",
+                "test222.abc",
+            ],
+            instance_id="dns-cn-mp91lyq9xxxx")
+        ```
 
         ## Import
 

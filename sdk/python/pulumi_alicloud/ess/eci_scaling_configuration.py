@@ -1233,6 +1233,53 @@ class EciScalingConfiguration(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.164.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
+            min_size=0,
+            max_size=1,
+            scaling_group_name=name,
+            removal_policies=[
+                "OldestInstance",
+                "NewestInstance",
+            ],
+            vswitch_ids=[default_switch.id],
+            group_type="ECI")
+        default_eci_scaling_configuration = alicloud.ess.EciScalingConfiguration("defaultEciScalingConfiguration",
+            scaling_group_id=default_scaling_group.id,
+            cpu=2,
+            memory=4,
+            security_group_id=default_security_group.id,
+            force_delete=True,
+            active=True,
+            container_group_name="container-group-1649839595174",
+            containers=[alicloud.ess.EciScalingConfigurationContainerArgs(
+                name="container-1",
+                image="registry-vpc.cn-hangzhou.aliyuncs.com/eci_open/alpine:3.5",
+            )])
+        ```
+
         ## Import
 
         ESS eci scaling configuration can be imported using the id, e.g.
@@ -1297,6 +1344,53 @@ class EciScalingConfiguration(pulumi.CustomResource):
         For information about ess eci scaling configuration, see [CreateEciScalingConfiguration](https://www.alibabacloud.com/help/en/auto-scaling/latest/create-eci-scaling-configuration).
 
         > **NOTE:** Available since v1.164.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
+            min_size=0,
+            max_size=1,
+            scaling_group_name=name,
+            removal_policies=[
+                "OldestInstance",
+                "NewestInstance",
+            ],
+            vswitch_ids=[default_switch.id],
+            group_type="ECI")
+        default_eci_scaling_configuration = alicloud.ess.EciScalingConfiguration("defaultEciScalingConfiguration",
+            scaling_group_id=default_scaling_group.id,
+            cpu=2,
+            memory=4,
+            security_group_id=default_security_group.id,
+            force_delete=True,
+            active=True,
+            container_group_name="container-group-1649839595174",
+            containers=[alicloud.ess.EciScalingConfigurationContainerArgs(
+                name="container-1",
+                image="registry-vpc.cn-hangzhou.aliyuncs.com/eci_open/alpine:3.5",
+            )])
+        ```
 
         ## Import
 

@@ -317,6 +317,23 @@ class SecurityPolicy(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.130.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.alb.SecurityPolicy("default",
+            ciphers=[
+                "ECDHE-ECDSA-AES128-SHA",
+                "AES256-SHA",
+            ],
+            security_policy_name="tf_example",
+            tls_versions=["TLSv1.0"])
+        ```
+
         ## Import
 
         ALB Security Policy can be imported using the id, e.g.
@@ -346,6 +363,23 @@ class SecurityPolicy(pulumi.CustomResource):
         For information about ALB Security Policy and how to use it, see [What is Security Policy](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createsecuritypolicy).
 
         > **NOTE:** Available since v1.130.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.alb.SecurityPolicy("default",
+            ciphers=[
+                "ECDHE-ECDSA-AES128-SHA",
+                "AES256-SHA",
+            ],
+            security_policy_name="tf_example",
+            tls_versions=["TLSv1.0"])
+        ```
 
         ## Import
 

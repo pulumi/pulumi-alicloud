@@ -16,6 +16,129 @@ namespace Pulumi.AliCloud.Dts
     /// 
     /// &gt; **NOTE:** Available since v1.138.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var exampleRegions = AliCloud.GetRegions.Invoke(new()
+    ///     {
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var exampleZones = AliCloud.Rds.GetZones.Invoke(new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         InstanceChargeType = "PostPaid",
+    ///         Category = "Basic",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///     });
+    /// 
+    ///     var exampleInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
+    ///     {
+    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         InstanceChargeType = "PostPaid",
+    ///         Category = "Basic",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///     });
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
+    ///     {
+    ///         VpcId = exampleNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("exampleSecurityGroup", new()
+    ///     {
+    ///         VpcId = exampleNetwork.Id,
+    ///     });
+    /// 
+    ///     var exampleInstance = new AliCloud.Rds.Instance("exampleInstance", new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         InstanceType = exampleInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
+    ///         InstanceStorage = exampleInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         InstanceChargeType = "Postpaid",
+    ///         InstanceName = name,
+    ///         VswitchId = exampleSwitch.Id,
+    ///         MonitoringPeriod = 60,
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             exampleSecurityGroup.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleRdsAccount = new AliCloud.Rds.RdsAccount("exampleRdsAccount", new()
+    ///     {
+    ///         DbInstanceId = exampleInstance.Id,
+    ///         AccountName = "example_name",
+    ///         AccountPassword = "example_password",
+    ///     });
+    /// 
+    ///     var exampleDatabase = new AliCloud.Rds.Database("exampleDatabase", new()
+    ///     {
+    ///         InstanceId = exampleInstance.Id,
+    ///     });
+    /// 
+    ///     var exampleAccountPrivilege = new AliCloud.Rds.AccountPrivilege("exampleAccountPrivilege", new()
+    ///     {
+    ///         InstanceId = exampleInstance.Id,
+    ///         AccountName = exampleRdsAccount.Name,
+    ///         Privilege = "ReadWrite",
+    ///         DbNames = new[]
+    ///         {
+    ///             exampleDatabase.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleSubscriptionJob = new AliCloud.Dts.SubscriptionJob("exampleSubscriptionJob", new()
+    ///     {
+    ///         DtsJobName = name,
+    ///         PaymentType = "PayAsYouGo",
+    ///         SourceEndpointEngineName = "MySQL",
+    ///         SourceEndpointRegion = exampleRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         SourceEndpointInstanceType = "RDS",
+    ///         SourceEndpointInstanceId = exampleInstance.Id,
+    ///         SourceEndpointDatabaseName = exampleDatabase.Name,
+    ///         SourceEndpointUserName = exampleRdsAccount.AccountName,
+    ///         SourceEndpointPassword = exampleRdsAccount.AccountPassword,
+    ///         DbList = Output.Tuple(exampleDatabase.Name, exampleDatabase.Name).Apply(values =&gt;
+    ///         {
+    ///             var exampleDatabaseName = values.Item1;
+    ///             var exampleDatabaseName1 = values.Item2;
+    ///             return $"{{\"{exampleDatabaseName}\":{{\"name\":\"{exampleDatabaseName1}\",\"all\":true}}}}";
+    ///         }),
+    ///         SubscriptionInstanceNetworkType = "vpc",
+    ///         SubscriptionInstanceVpcId = exampleNetwork.Id,
+    ///         SubscriptionInstanceVswitchId = exampleSwitch.Id,
+    ///         Status = "Normal",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// DTS Subscription Job can be imported using the id, e.g.

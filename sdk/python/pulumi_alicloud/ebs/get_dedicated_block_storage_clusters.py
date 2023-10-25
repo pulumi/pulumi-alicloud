@@ -108,6 +108,17 @@ def get_dedicated_block_storage_clusters(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in 1.196.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.ebs.get_dedicated_block_storage_clusters(ids=["example_id"],
+        name_regex=alicloud_ebs_dedicated_block_storage_cluster["default"]["name"])
+    pulumi.export("alicloudEbsDedicatedBlockStorageClusterExampleId", default.clusters[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Dedicated Block Storage Cluster IDs.
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
@@ -138,6 +149,17 @@ def get_dedicated_block_storage_clusters_output(ids: Optional[pulumi.Input[Optio
     This data source provides Ebs Dedicated Block Storage Cluster available to the user.
 
     > **NOTE:** Available in 1.196.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.ebs.get_dedicated_block_storage_clusters(ids=["example_id"],
+        name_regex=alicloud_ebs_dedicated_block_storage_cluster["default"]["name"])
+    pulumi.export("alicloudEbsDedicatedBlockStorageClusterExampleId", default.clusters[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Dedicated Block Storage Cluster IDs.

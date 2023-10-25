@@ -109,6 +109,18 @@ def get_ad_connector_directories(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.174.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.eds.get_ad_connector_directories(ids=["example_id"])
+    pulumi.export("ecdAdConnectorDirectoryId1", ids.directories[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Ad Connector Directory IDs.
     :param str name_regex: A regex string to filter results by Ad Connector Directory name.
@@ -143,6 +155,18 @@ def get_ad_connector_directories_output(ids: Optional[pulumi.Input[Optional[Sequ
     This data source provides the Ecd Ad Connector Directories of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.174.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.eds.get_ad_connector_directories(ids=["example_id"])
+    pulumi.export("ecdAdConnectorDirectoryId1", ids.directories[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Ad Connector Directory IDs.

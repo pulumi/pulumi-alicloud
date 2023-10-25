@@ -159,6 +159,23 @@ def get_virtual_nodes(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.145.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.eci.get_virtual_nodes(ids=[
+        "example_value-1",
+        "example_value-2",
+    ])
+    pulumi.export("eciVirtualNodeId1", ids.nodes[0].id)
+    name_regex = alicloud.eci.get_virtual_nodes(name_regex="^my-VirtualNode")
+    pulumi.export("eciVirtualNodeId2", name_regex.nodes[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Virtual Node IDs.
     :param str name_regex: A regex string to filter results by Virtual Node name.
@@ -213,6 +230,23 @@ def get_virtual_nodes_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     This data source provides the Eci Virtual Nodes of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.145.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.eci.get_virtual_nodes(ids=[
+        "example_value-1",
+        "example_value-2",
+    ])
+    pulumi.export("eciVirtualNodeId1", ids.nodes[0].id)
+    name_regex = alicloud.eci.get_virtual_nodes(name_regex="^my-VirtualNode")
+    pulumi.export("eciVirtualNodeId2", name_regex.nodes[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Virtual Node IDs.

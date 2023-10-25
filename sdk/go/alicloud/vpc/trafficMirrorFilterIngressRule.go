@@ -19,6 +19,47 @@ import (
 //
 // > **NOTE:** Available since v1.141.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleTrafficMirrorFilter, err := vpc.NewTrafficMirrorFilter(ctx, "exampleTrafficMirrorFilter", &vpc.TrafficMirrorFilterArgs{
+//				TrafficMirrorFilterName: pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewTrafficMirrorFilterIngressRule(ctx, "exampleTrafficMirrorFilterIngressRule", &vpc.TrafficMirrorFilterIngressRuleArgs{
+//				TrafficMirrorFilterId: exampleTrafficMirrorFilter.ID(),
+//				Priority:              pulumi.Int(1),
+//				RuleAction:            pulumi.String("accept"),
+//				Protocol:              pulumi.String("UDP"),
+//				DestinationCidrBlock:  pulumi.String("10.0.0.0/24"),
+//				SourceCidrBlock:       pulumi.String("10.0.0.0/24"),
+//				DestinationPortRange:  pulumi.String("1/120"),
+//				SourcePortRange:       pulumi.String("1/120"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // VPC Traffic Mirror Filter Ingress Rule can be imported using the id, e.g.

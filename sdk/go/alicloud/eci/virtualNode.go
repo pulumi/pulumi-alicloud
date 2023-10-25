@@ -19,6 +19,102 @@ import (
 //
 // > **NOTE:** Available since v1.145.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eci"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := eci.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.0.0.0/8"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.1.0.0/16"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].ZoneIds[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultEipAddress, err := ecs.NewEipAddress(ctx, "defaultEipAddress", &ecs.EipAddressArgs{
+//				Isp:         pulumi.String("BGP"),
+//				AddressName: pulumi.String(name),
+//				Netmode:     pulumi.String("public"),
+//				Bandwidth:   pulumi.String("1"),
+//				SecurityProtectionTypes: pulumi.StringArray{
+//					pulumi.String("AntiDDoS_Enhanced"),
+//				},
+//				PaymentType: pulumi.String("PayAsYouGo"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = eci.NewVirtualNode(ctx, "defaultVirtualNode", &eci.VirtualNodeArgs{
+//				SecurityGroupId:     defaultSecurityGroup.ID(),
+//				VirtualNodeName:     pulumi.String(name),
+//				VswitchId:           defaultSwitch.ID(),
+//				EnablePublicNetwork: pulumi.Bool(false),
+//				EipInstanceId:       defaultEipAddress.ID(),
+//				ResourceGroupId:     *pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				KubeConfig:          pulumi.String("kube_config"),
+//				Tags: pulumi.Map{
+//					"Created": pulumi.Any("TF"),
+//				},
+//				Taints: eci.VirtualNodeTaintArray{
+//					&eci.VirtualNodeTaintArgs{
+//						Effect: pulumi.String("NoSchedule"),
+//						Key:    pulumi.String("TF"),
+//						Value:  pulumi.String("example"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ECI Virtual Node can be imported using the id, e.g.

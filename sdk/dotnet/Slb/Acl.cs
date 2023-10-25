@@ -34,6 +34,23 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// For information about acl and how to use it, see [Configure an access control list](https://www.alibabacloud.com/help/doc-detail/70015.htm).
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var acl = new AliCloud.Slb.Acl("acl", new()
+    ///     {
+    ///         IpVersion = "ipv4",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## Entry Block
     /// 
     /// The entry mapping supports the following:

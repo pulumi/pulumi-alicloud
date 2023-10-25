@@ -174,6 +174,20 @@ class VulWhitelist(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.195.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.threatdetection.VulWhitelist("default",
+            reason="tf-example-reason",
+            target_info="{\\"type\\":\\"GroupId\\",\\"uuids\\":[],\\"groupIds\\":[10782678]}",
+            whitelist="[{\\"aliasName\\":\\"RHSA-2021:2260: libwebp 安全更新\\",\\"name\\":\\"RHSA-2021:2260: libwebp 安全更新\\",\\"type\\":\\"cve\\"}]")
+        ```
+
         ## Import
 
         Threat Detection Vul Whitelist can be imported using the id, e.g.
@@ -200,6 +214,20 @@ class VulWhitelist(pulumi.CustomResource):
         For information about Threat Detection Vul Whitelist and how to use it, see [What is Vul Whitelist](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
 
         > **NOTE:** Available in v1.195.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.threatdetection.VulWhitelist("default",
+            reason="tf-example-reason",
+            target_info="{\\"type\\":\\"GroupId\\",\\"uuids\\":[],\\"groupIds\\":[10782678]}",
+            whitelist="[{\\"aliasName\\":\\"RHSA-2021:2260: libwebp 安全更新\\",\\"name\\":\\"RHSA-2021:2260: libwebp 安全更新\\",\\"type\\":\\"cve\\"}]")
+        ```
 
         ## Import
 

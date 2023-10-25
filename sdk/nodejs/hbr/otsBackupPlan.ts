@@ -13,6 +13,83 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.163.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const defaultVault = new alicloud.hbr.Vault("defaultVault", {
+ *     vaultName: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`,
+ *     vaultType: "OTS_BACKUP",
+ * });
+ * const defaultInstance = new alicloud.ots.Instance("defaultInstance", {
+ *     description: "terraform-example",
+ *     accessedBy: "Any",
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
+ * });
+ * const defaultTable = new alicloud.ots.Table("defaultTable", {
+ *     instanceName: defaultInstance.name,
+ *     tableName: "terraform_example",
+ *     primaryKeys: [{
+ *         name: "pk1",
+ *         type: "Integer",
+ *     }],
+ *     timeToLive: -1,
+ *     maxVersion: 1,
+ *     deviationCellVersionInSec: "1",
+ * });
+ * const defaultRole = new alicloud.ram.Role("defaultRole", {
+ *     document: `		{
+ * 			"Statement": [
+ * 			{
+ * 				"Action": "sts:AssumeRole",
+ * 				"Effect": "Allow",
+ * 				"Principal": {
+ * 					"Service": [
+ * 						"crossbackup.hbr.aliyuncs.com"
+ * 					]
+ * 				}
+ * 			}
+ * 			],
+ *   			"Version": "1"
+ * 		}
+ * `,
+ *     force: true,
+ * });
+ * const defaultAccount = alicloud.getAccount({});
+ * const example = new alicloud.hbr.OtsBackupPlan("example", {
+ *     otsBackupPlanName: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`,
+ *     vaultId: defaultVault.id,
+ *     backupType: "COMPLETE",
+ *     retention: "1",
+ *     instanceName: defaultInstance.name,
+ *     crossAccountType: "SELF_ACCOUNT",
+ *     crossAccountUserId: defaultAccount.then(defaultAccount => defaultAccount.id),
+ *     crossAccountRoleName: defaultRole.id,
+ *     otsDetails: [{
+ *         tableNames: [defaultTable.tableName],
+ *     }],
+ *     rules: [{
+ *         schedule: "I|1602673264|PT2H",
+ *         retention: "1",
+ *         disabled: false,
+ *         ruleName: "terraform-example",
+ *         backupType: "COMPLETE",
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * HBR Ots Backup Plan can be imported using the id, e.g.

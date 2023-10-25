@@ -362,6 +362,23 @@ class AlidnsInstance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.95.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.dns.AlidnsInstance("example",
+            dns_security="no",
+            domain_numbers="2",
+            period=1,
+            renew_period=1,
+            renewal_status="ManualRenewal",
+            version_code="version_personal")
+        ```
+
         ## Import
 
         DNS instance be imported using the id, e.g.
@@ -390,6 +407,23 @@ class AlidnsInstance(pulumi.CustomResource):
         Create an Alidns Instance resource.
 
         > **NOTE:** Available since v1.95.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.dns.AlidnsInstance("example",
+            dns_security="no",
+            domain_numbers="2",
+            period=1,
+            renew_period=1,
+            renewal_status="ManualRenewal",
+            version_code="version_personal")
+        ```
 
         ## Import
 

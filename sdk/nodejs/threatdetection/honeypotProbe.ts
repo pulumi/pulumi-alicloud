@@ -13,6 +13,31 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.195.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.threatdetection.HoneypotProbe("default", {
+ *     arp: true,
+ *     controlNodeId: "a44e1ab3-6945-444c-889d-5bacee7056e8",
+ *     displayName: "apispec",
+ *     honeypotBindLists: [{
+ *         bindPortLists: [{
+ *             endPort: 80,
+ *             startPort: 80,
+ *         }],
+ *         honeypotId: "ede59ccdb1b7a2e21735d4593a6eb5ed31883af320c5ab63ab33818e94307be9",
+ *     }],
+ *     ping: true,
+ *     probeType: "host_probe",
+ *     uuid: "032b618f-b220-4a0d-bd37-fbdc6ef58b6a",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Threat Detection Honeypot Probe can be imported using the id, e.g.

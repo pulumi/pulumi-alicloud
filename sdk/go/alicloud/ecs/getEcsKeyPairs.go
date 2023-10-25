@@ -15,6 +15,38 @@ import (
 // This data source provides the Ecs Key Pairs of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.121.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := ecs.GetEcsKeyPairs(ctx, &ecs.GetEcsKeyPairsArgs{
+//				Ids: []string{
+//					"key_pair_name",
+//				},
+//				NameRegex: pulumi.StringRef("key_pair_name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstEcsKeyPairId", example.Pairs[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetEcsKeyPairs(ctx *pulumi.Context, args *GetEcsKeyPairsArgs, opts ...pulumi.InvokeOption) (*GetEcsKeyPairsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEcsKeyPairsResult

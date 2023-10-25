@@ -13,6 +13,53 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.186.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultServerGroup = new alicloud.nlb.ServerGroup("defaultServerGroup", {
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
+ *     serverGroupName: name,
+ *     serverGroupType: "Instance",
+ *     vpcId: defaultNetwork.id,
+ *     scheduler: "Wrr",
+ *     protocol: "TCP",
+ *     connectionDrain: true,
+ *     connectionDrainTimeout: 60,
+ *     addressIpVersion: "Ipv4",
+ *     healthCheck: {
+ *         healthCheckEnabled: true,
+ *         healthCheckType: "TCP",
+ *         healthCheckConnectPort: 0,
+ *         healthyThreshold: 2,
+ *         unhealthyThreshold: 2,
+ *         healthCheckConnectTimeout: 5,
+ *         healthCheckInterval: 10,
+ *         httpCheckMethod: "GET",
+ *         healthCheckHttpCodes: [
+ *             "http_2xx",
+ *             "http_3xx",
+ *             "http_4xx",
+ *         ],
+ *     },
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * NLB Server Group can be imported using the id, e.g.

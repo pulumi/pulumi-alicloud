@@ -342,6 +342,70 @@ class SlbAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.82.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_regions = alicloud.get_regions(current=True)
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            owners="system")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("defaultInstance",
+            availability_zone=default_zones.zones[0].id,
+            instance_name=name,
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            security_groups=[default_security_group.id],
+            vswitch_id=default_switch.id,
+            internet_max_bandwidth_out=10,
+            internet_charge_type="PayByTraffic",
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_efficiency")
+        default_cluster = alicloud.edas.Cluster("defaultCluster",
+            cluster_name=name,
+            cluster_type=2,
+            network_mode=2,
+            logical_region_id=default_regions.regions[0].id,
+            vpc_id=default_network.id)
+        default_instance_cluster_attachment = alicloud.edas.InstanceClusterAttachment("defaultInstanceClusterAttachment",
+            cluster_id=default_cluster.id,
+            instance_ids=[default_instance.id])
+        default_application = alicloud.edas.Application("defaultApplication",
+            application_name=name,
+            cluster_id=default_cluster.id,
+            package_type="JAR")
+        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
+            load_balancer_name=name,
+            vswitch_id=default_switch.id,
+            load_balancer_spec="slb.s2.small",
+            address_type="intranet")
+        default_slb_attachment = alicloud.edas.SlbAttachment("defaultSlbAttachment",
+            app_id=default_application.id,
+            slb_id=default_application_load_balancer.id,
+            slb_ip=default_application_load_balancer.address,
+            type=default_application_load_balancer.address_type)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: The ID of the application to which you want to bind an SLB instance.
@@ -361,6 +425,70 @@ class SlbAttachment(pulumi.CustomResource):
         Binds SLB to an EDAS application.
 
         > **NOTE:** Available since v1.82.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_regions = alicloud.get_regions(current=True)
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            owners="system")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("defaultInstance",
+            availability_zone=default_zones.zones[0].id,
+            instance_name=name,
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            security_groups=[default_security_group.id],
+            vswitch_id=default_switch.id,
+            internet_max_bandwidth_out=10,
+            internet_charge_type="PayByTraffic",
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_efficiency")
+        default_cluster = alicloud.edas.Cluster("defaultCluster",
+            cluster_name=name,
+            cluster_type=2,
+            network_mode=2,
+            logical_region_id=default_regions.regions[0].id,
+            vpc_id=default_network.id)
+        default_instance_cluster_attachment = alicloud.edas.InstanceClusterAttachment("defaultInstanceClusterAttachment",
+            cluster_id=default_cluster.id,
+            instance_ids=[default_instance.id])
+        default_application = alicloud.edas.Application("defaultApplication",
+            application_name=name,
+            cluster_id=default_cluster.id,
+            package_type="JAR")
+        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
+            load_balancer_name=name,
+            vswitch_id=default_switch.id,
+            load_balancer_spec="slb.s2.small",
+            address_type="intranet")
+        default_slb_attachment = alicloud.edas.SlbAttachment("defaultSlbAttachment",
+            app_id=default_application.id,
+            slb_id=default_application_load_balancer.id,
+            slb_ip=default_application_load_balancer.address,
+            type=default_application_load_balancer.address_type)
+        ```
 
         :param str resource_name: The name of the resource.
         :param SlbAttachmentArgs args: The arguments to use to populate this resource's properties.

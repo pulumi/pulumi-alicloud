@@ -260,6 +260,18 @@ def get_networks(cidr_block: Optional[str] = None,
     """
     This data source provides VPCs available to the user.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    vpcs_ds = alicloud.vpc.get_networks(cidr_block="172.16.0.0/12",
+        name_regex="^foo",
+        status="Available")
+    pulumi.export("firstVpcId", vpcs_ds.vpcs[0].id)
+    ```
+
 
     :param str cidr_block: Filter results by a specific CIDR block. For example: "172.16.0.0/12".
     :param str dhcp_options_set_id: The ID of dhcp options set.
@@ -339,6 +351,18 @@ def get_networks_output(cidr_block: Optional[pulumi.Input[Optional[str]]] = None
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworksResult]:
     """
     This data source provides VPCs available to the user.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    vpcs_ds = alicloud.vpc.get_networks(cidr_block="172.16.0.0/12",
+        name_regex="^foo",
+        status="Available")
+    pulumi.export("firstVpcId", vpcs_ds.vpcs[0].id)
+    ```
 
 
     :param str cidr_block: Filter results by a specific CIDR block. For example: "172.16.0.0/12".

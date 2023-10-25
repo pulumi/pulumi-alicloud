@@ -130,6 +130,18 @@ def get_listeners(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.133.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.alb.get_listeners(ids=["example_id"])
+    pulumi.export("albListenerId1", ids.listeners[0].id)
+    ```
+
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Listener IDs.
@@ -175,6 +187,18 @@ def get_listeners_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
     This data source provides the Application Load Balancer (ALB) Listeners of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.133.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.alb.get_listeners(ids=["example_id"])
+    pulumi.export("albListenerId1", ids.listeners[0].id)
+    ```
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

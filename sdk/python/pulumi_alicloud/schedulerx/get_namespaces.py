@@ -99,6 +99,20 @@ def get_namespaces(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.173.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.schedulerx.get_namespaces()
+    pulumi.export("schedulerxNamespaceId1", ids.namespaces[0].id)
+    name_regex = alicloud.schedulerx.get_namespaces(name_regex="^my-Namespace")
+    pulumi.export("schedulerxNamespaceId2", name_regex.namespaces[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Namespace IDs.
     :param str name_regex: A regex string to filter results by Namespace name.
@@ -129,6 +143,20 @@ def get_namespaces_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] =
     This data source provides the Schedulerx Namespaces of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.173.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.schedulerx.get_namespaces()
+    pulumi.export("schedulerxNamespaceId1", ids.namespaces[0].id)
+    name_regex = alicloud.schedulerx.get_namespaces(name_regex="^my-Namespace")
+    pulumi.export("schedulerxNamespaceId2", name_regex.namespaces[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Namespace IDs.

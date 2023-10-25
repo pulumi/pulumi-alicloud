@@ -1073,6 +1073,36 @@ class BackupPolicy(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.5.0.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="5.6")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        instance = alicloud.rds.Instance("instance",
+            engine="MySQL",
+            engine_version="5.6",
+            instance_type="rds.mysql.s1.small",
+            instance_storage=10,
+            vswitch_id=default_switch.id,
+            instance_name=name)
+        policy = alicloud.rds.BackupPolicy("policy", instance_id=instance.id)
+        ```
+
         ## Import
 
         RDS backup policy can be imported using the id or instance id, e.g.
@@ -1132,6 +1162,36 @@ class BackupPolicy(pulumi.CustomResource):
         > **NOTE:** Each DB instance has a backup policy and it will be set default values when destroying the resource.
 
         > **NOTE:** Available since v1.5.0.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="5.6")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        instance = alicloud.rds.Instance("instance",
+            engine="MySQL",
+            engine_version="5.6",
+            instance_type="rds.mysql.s1.small",
+            instance_storage=10,
+            vswitch_id=default_switch.id,
+            instance_name=name)
+        policy = alicloud.rds.BackupPolicy("policy", instance_id=instance.id)
+        ```
 
         ## Import
 

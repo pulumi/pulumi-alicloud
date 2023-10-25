@@ -16,6 +16,34 @@ namespace Pulumi.AliCloud.Message
     /// 
     /// &gt; **NOTE:** Available since v1.188.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var queue = new AliCloud.Message.ServiceQueue("queue", new()
+    ///     {
+    ///         QueueName = name,
+    ///         DelaySeconds = 60478,
+    ///         MaximumMessageSize = 12357,
+    ///         MessageRetentionPeriod = 256000,
+    ///         VisibilityTimeout = 30,
+    ///         PollingWaitSeconds = 3,
+    ///         LoggingEnabled = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Message Notification Service Queue can be imported using the id or queue_name, e.g.

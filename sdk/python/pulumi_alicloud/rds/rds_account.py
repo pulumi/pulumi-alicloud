@@ -669,6 +669,44 @@ class RdsAccount(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.120.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="5.6")
+        default_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_zones.ids[0],
+            engine="MySQL",
+            engine_version="5.6")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.ids[0],
+            vswitch_name=name)
+        default_instance = alicloud.rds.Instance("defaultInstance",
+            engine="MySQL",
+            engine_version="5.6",
+            instance_type=default_instance_classes.instance_classes[0].instance_class,
+            instance_storage=10,
+            vswitch_id=default_switch.id,
+            instance_name=name)
+        default_rds_account = alicloud.rds.RdsAccount("defaultRdsAccount",
+            db_instance_id=default_instance.id,
+            account_name=name,
+            account_password="Example1234")
+        ```
+
         ## Import
 
         RDS Account can be imported using the id, e.g.
@@ -709,6 +747,44 @@ class RdsAccount(pulumi.CustomResource):
         For information about RDS Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createaccount).
 
         > **NOTE:** Available since v1.120.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="5.6")
+        default_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_zones.ids[0],
+            engine="MySQL",
+            engine_version="5.6")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.ids[0],
+            vswitch_name=name)
+        default_instance = alicloud.rds.Instance("defaultInstance",
+            engine="MySQL",
+            engine_version="5.6",
+            instance_type=default_instance_classes.instance_classes[0].instance_class,
+            instance_storage=10,
+            vswitch_id=default_switch.id,
+            instance_name=name)
+        default_rds_account = alicloud.rds.RdsAccount("defaultRdsAccount",
+            db_instance_id=default_instance.id,
+            account_name=name,
+            account_password="Example1234")
+        ```
 
         ## Import
 

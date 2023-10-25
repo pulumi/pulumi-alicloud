@@ -15,6 +15,37 @@ namespace Pulumi.AliCloud.Vpc
         /// This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.182.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Vpc.GetPrefixLists.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.Vpc.GetPrefixLists.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-PrefixList",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcPrefixListId1"] = ids.Apply(getPrefixListsResult =&gt; getPrefixListsResult.Lists[0]?.Id),
+        ///         ["vpcPrefixListId2"] = nameRegex.Apply(getPrefixListsResult =&gt; getPrefixListsResult.Lists[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPrefixListsResult> InvokeAsync(GetPrefixListsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrefixListsResult>("alicloud:vpc/getPrefixLists:getPrefixLists", args ?? new GetPrefixListsArgs(), options.WithDefaults());
@@ -23,6 +54,37 @@ namespace Pulumi.AliCloud.Vpc
         /// This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.182.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Vpc.GetPrefixLists.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.Vpc.GetPrefixLists.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-PrefixList",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcPrefixListId1"] = ids.Apply(getPrefixListsResult =&gt; getPrefixListsResult.Lists[0]?.Id),
+        ///         ["vpcPrefixListId2"] = nameRegex.Apply(getPrefixListsResult =&gt; getPrefixListsResult.Lists[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetPrefixListsResult> Invoke(GetPrefixListsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrefixListsResult>("alicloud:vpc/getPrefixLists:getPrefixLists", args ?? new GetPrefixListsInvokeArgs(), options.WithDefaults());

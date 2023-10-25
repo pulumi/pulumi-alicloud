@@ -697,6 +697,58 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.126.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.cen.get_transit_router_available_resources()
+        master_zone = default.resources[0].master_zones[0]
+        slave_zone = default.resources[0].slave_zones[1]
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name=name,
+            cidr_block="192.168.0.0/16")
+        example_master = alicloud.vpc.Switch("exampleMaster",
+            vswitch_name=name,
+            cidr_block="192.168.1.0/24",
+            vpc_id=example_network.id,
+            zone_id=master_zone)
+        example_slave = alicloud.vpc.Switch("exampleSlave",
+            vswitch_name=name,
+            cidr_block="192.168.2.0/24",
+            vpc_id=example_network.id,
+            zone_id=slave_zone)
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name=name,
+            protection_level="REDUCED")
+        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+            transit_router_name=name,
+            cen_id=example_instance.id)
+        example_transit_router_vpc_attachment = alicloud.cen.TransitRouterVpcAttachment("exampleTransitRouterVpcAttachment",
+            cen_id=example_instance.id,
+            transit_router_id=example_transit_router.transit_router_id,
+            vpc_id=example_network.id,
+            zone_mappings=[
+                alicloud.cen.TransitRouterVpcAttachmentZoneMappingArgs(
+                    zone_id=master_zone,
+                    vswitch_id=example_master.id,
+                ),
+                alicloud.cen.TransitRouterVpcAttachmentZoneMappingArgs(
+                    zone_id=slave_zone,
+                    vswitch_id=example_slave.id,
+                ),
+            ],
+            transit_router_attachment_name=name,
+            transit_router_attachment_description=name)
+        ```
+
         ## Import
 
         CEN instance can be imported using the id, e.g.
@@ -733,6 +785,58 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         Provides a CEN transit router VPC attachment resource that associate the VPC with the CEN instance. [What is Cen Transit Router VPC Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervpcattachment)
 
         > **NOTE:** Available since v1.126.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.cen.get_transit_router_available_resources()
+        master_zone = default.resources[0].master_zones[0]
+        slave_zone = default.resources[0].slave_zones[1]
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name=name,
+            cidr_block="192.168.0.0/16")
+        example_master = alicloud.vpc.Switch("exampleMaster",
+            vswitch_name=name,
+            cidr_block="192.168.1.0/24",
+            vpc_id=example_network.id,
+            zone_id=master_zone)
+        example_slave = alicloud.vpc.Switch("exampleSlave",
+            vswitch_name=name,
+            cidr_block="192.168.2.0/24",
+            vpc_id=example_network.id,
+            zone_id=slave_zone)
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name=name,
+            protection_level="REDUCED")
+        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+            transit_router_name=name,
+            cen_id=example_instance.id)
+        example_transit_router_vpc_attachment = alicloud.cen.TransitRouterVpcAttachment("exampleTransitRouterVpcAttachment",
+            cen_id=example_instance.id,
+            transit_router_id=example_transit_router.transit_router_id,
+            vpc_id=example_network.id,
+            zone_mappings=[
+                alicloud.cen.TransitRouterVpcAttachmentZoneMappingArgs(
+                    zone_id=master_zone,
+                    vswitch_id=example_master.id,
+                ),
+                alicloud.cen.TransitRouterVpcAttachmentZoneMappingArgs(
+                    zone_id=slave_zone,
+                    vswitch_id=example_slave.id,
+                ),
+            ],
+            transit_router_attachment_name=name,
+            transit_router_attachment_description=name)
+        ```
 
         ## Import
 

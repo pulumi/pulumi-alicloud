@@ -9,6 +9,55 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.101.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultZones = alicloud.kvstore.getZones({});
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
+ *     status: "OK",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultInstance = new alicloud.kvstore.Instance("defaultInstance", {
+ *     dbInstanceName: name,
+ *     vswitchId: defaultSwitch.id,
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     instanceClass: "redis.master.large.default",
+ *     instanceType: "Redis",
+ *     engineVersion: "5.0",
+ *     securityIps: ["10.23.12.24"],
+ *     config: {
+ *         appendonly: "yes",
+ *         "lazyfree-lazy-eviction": "yes",
+ *     },
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
+ * });
+ * const defaultConnection = new alicloud.kvstore.Connection("defaultConnection", {
+ *     connectionStringPrefix: "exampleconnection",
+ *     instanceId: defaultInstance.id,
+ *     port: "6370",
+ * });
+ * ```
+ *
  * ## Import
  *
  * KVStore connection can be imported using the id, e.g.

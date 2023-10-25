@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * This data source provides Threat Detection Vul Whitelists of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.195.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.threatdetection.getVulWhitelists({
+ *     ids: ["example_id"],
+ * });
+ * export const alicloudThreatDetectionVulWhitelistExampleId = _default.then(_default => _default.whitelists?.[0]?.id);
+ * ```
  */
 export function getVulWhitelists(args?: GetVulWhitelistsArgs, opts?: pulumi.InvokeOptions): Promise<GetVulWhitelistsResult> {
     args = args || {};
@@ -60,6 +74,20 @@ export interface GetVulWhitelistsResult {
  * This data source provides Threat Detection Vul Whitelists of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.195.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.threatdetection.getVulWhitelists({
+ *     ids: ["example_id"],
+ * });
+ * export const alicloudThreatDetectionVulWhitelistExampleId = _default.then(_default => _default.whitelists?.[0]?.id);
+ * ```
  */
 export function getVulWhitelistsOutput(args?: GetVulWhitelistsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVulWhitelistsResult> {
     return pulumi.output(args).apply((a: any) => getVulWhitelists(a, opts))

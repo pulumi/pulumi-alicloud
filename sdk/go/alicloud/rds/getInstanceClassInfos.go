@@ -15,6 +15,35 @@ import (
 // This data source operation to query the instance types that are available to specific instances of Alibaba Cloud.
 //
 // > **NOTE:** Available in v1.196.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			resources, err := rds.GetInstanceClassInfos(ctx, &rds.GetInstanceClassInfosArgs{
+//				CommodityCode: "bards",
+//				OrderType:     "BUY",
+//				OutputFile:    pulumi.StringRef("./classes.txt"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstDbInstanceClass", resources.Infos[0])
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetInstanceClassInfos(ctx *pulumi.Context, args *GetInstanceClassInfosArgs, opts ...pulumi.InvokeOption) (*GetInstanceClassInfosResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstanceClassInfosResult

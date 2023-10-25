@@ -345,6 +345,32 @@ class AlarmContact(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.99.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # If you use this template, you need to activate the link before you can return to the alarm contact information, otherwise diff will appear in terraform. So please confirm the activation link as soon as possible.
+        example = alicloud.cms.AlarmContact("example",
+            alarm_contact_name="terraform-example",
+            channels_mail="terraform@test.com",
+            describe="For example")
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # If you use this template, you can ignore the diff of the alarm contact information by `lifestyle`. We recommend the above usage and activate the link in time.
+        example = alicloud.cms.AlarmContact("example",
+            alarm_contact_name="tf-example",
+            describe="For example",
+            channels_mail="terraform@test.com")
+        ```
+
         ## Import
 
         Alarm contact can be imported using the id, e.g.
@@ -375,6 +401,32 @@ class AlarmContact(pulumi.CustomResource):
         Creates or modifies an alarm contact. For information about alarm contact and how to use it, see [What is alarm contact](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putcontact).
 
         > **NOTE:** Available since v1.99.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # If you use this template, you need to activate the link before you can return to the alarm contact information, otherwise diff will appear in terraform. So please confirm the activation link as soon as possible.
+        example = alicloud.cms.AlarmContact("example",
+            alarm_contact_name="terraform-example",
+            channels_mail="terraform@test.com",
+            describe="For example")
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # If you use this template, you can ignore the diff of the alarm contact information by `lifestyle`. We recommend the above usage and activate the link in time.
+        example = alicloud.cms.AlarmContact("example",
+            alarm_contact_name="tf-example",
+            describe="For example",
+            channels_mail="terraform@test.com")
+        ```
 
         ## Import
 

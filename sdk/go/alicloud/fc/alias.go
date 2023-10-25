@@ -19,6 +19,52 @@ import (
 //
 // > **NOTE:** Available since v1.104.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultService, err := fc.NewService(ctx, "defaultService", &fc.ServiceArgs{
+//				Description: pulumi.String("example-value"),
+//				Publish:     pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = fc.NewAlias(ctx, "example", &fc.AliasArgs{
+//				AliasName:      pulumi.String("example-value"),
+//				Description:    pulumi.String("example-value"),
+//				ServiceName:    defaultService.Name,
+//				ServiceVersion: pulumi.String("1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Function Compute alias can be imported using the id, e.g.

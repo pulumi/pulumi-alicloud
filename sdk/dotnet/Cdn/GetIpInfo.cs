@@ -15,6 +15,30 @@ namespace Pulumi.AliCloud.Cdn
         /// This data source provides the function of verifying whether an IP is a CDN node.
         /// 
         /// &gt; **NOTE:** Available in v1.153.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ipTest = AliCloud.Cdn.GetIpInfo.Invoke(new()
+        ///     {
+        ///         Ip = "114.114.114.114",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetIpInfoResult> InvokeAsync(GetIpInfoArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIpInfoResult>("alicloud:cdn/getIpInfo:getIpInfo", args ?? new GetIpInfoArgs(), options.WithDefaults());
@@ -23,6 +47,30 @@ namespace Pulumi.AliCloud.Cdn
         /// This data source provides the function of verifying whether an IP is a CDN node.
         /// 
         /// &gt; **NOTE:** Available in v1.153.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ipTest = AliCloud.Cdn.GetIpInfo.Invoke(new()
+        ///     {
+        ///         Ip = "114.114.114.114",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetIpInfoResult> Invoke(GetIpInfoInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIpInfoResult>("alicloud:cdn/getIpInfo:getIpInfo", args ?? new GetIpInfoInvokeArgs(), options.WithDefaults());

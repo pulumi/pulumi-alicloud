@@ -109,6 +109,25 @@ def get_gateway_file_shares(gateway_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.144.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cloudstoragegateway.get_gateway_file_shares(gateway_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("cloudStorageGatewayGatewayFileShareId1", ids.shares[0].id)
+    name_regex = alicloud.cloudstoragegateway.get_gateway_file_shares(gateway_id="example_value",
+        name_regex="^my-GatewayFileShare")
+    pulumi.export("cloudStorageGatewayGatewayFileShareId2", name_regex.shares[0].id)
+    ```
+
 
     :param str gateway_id: The ID of the gateway.
     :param Sequence[str] ids: A list of Gateway File Share IDs.
@@ -143,6 +162,25 @@ def get_gateway_file_shares_output(gateway_id: Optional[pulumi.Input[str]] = Non
     This data source provides the Cloud Storage Gateway Gateway File Shares of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.144.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cloudstoragegateway.get_gateway_file_shares(gateway_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("cloudStorageGatewayGatewayFileShareId1", ids.shares[0].id)
+    name_regex = alicloud.cloudstoragegateway.get_gateway_file_shares(gateway_id="example_value",
+        name_regex="^my-GatewayFileShare")
+    pulumi.export("cloudStorageGatewayGatewayFileShareId2", name_regex.shares[0].id)
+    ```
 
 
     :param str gateway_id: The ID of the gateway.

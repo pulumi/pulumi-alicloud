@@ -9,6 +9,53 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.55.0.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultRegions = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultAccount = alicloud.getAccount({});
+ * const defaultZones = alicloud.getZones({
+ *     availableDiskCategory: "cloud_efficiency",
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     vswitchName: name,
+ * });
+ * const defaultScalingGroup = new alicloud.ess.ScalingGroup("defaultScalingGroup", {
+ *     minSize: 1,
+ *     maxSize: 1,
+ *     scalingGroupName: name,
+ *     removalPolicies: [
+ *         "OldestInstance",
+ *         "NewestInstance",
+ *     ],
+ *     vswitchIds: [defaultSwitch.id],
+ * });
+ * const defaultQueue = new alicloud.mns.Queue("defaultQueue", {});
+ * const defaultNotification = new alicloud.ess.Notification("defaultNotification", {
+ *     scalingGroupId: defaultScalingGroup.id,
+ *     notificationTypes: [
+ *         "AUTOSCALING:SCALE_OUT_SUCCESS",
+ *         "AUTOSCALING:SCALE_OUT_ERROR",
+ *     ],
+ *     notificationArn: pulumi.all([defaultRegions, defaultAccount, defaultQueue.name]).apply(([defaultRegions, defaultAccount, name]) => `acs:ess:${defaultRegions.regions?.[0]?.id}:${defaultAccount.id}:queue/${name}`),
+ * });
+ * ```
+ *
  * ## Import
  *
  * Ess notification can be imported using the id, e.g.

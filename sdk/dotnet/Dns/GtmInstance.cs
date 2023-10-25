@@ -16,6 +16,60 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// &gt; **NOTE:** Available since v1.151.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var domainName = config.Get("domainName") ?? "alicloud-provider.com";
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var defaultAlarmContactGroup = new AliCloud.Cms.AlarmContactGroup("defaultAlarmContactGroup", new()
+    ///     {
+    ///         AlarmContactGroupName = "tf_example",
+    ///     });
+    /// 
+    ///     var defaultGtmInstance = new AliCloud.Dns.GtmInstance("defaultGtmInstance", new()
+    ///     {
+    ///         InstanceName = "tf_example",
+    ///         PaymentType = "Subscription",
+    ///         Period = 1,
+    ///         RenewalStatus = "ManualRenewal",
+    ///         PackageEdition = "standard",
+    ///         HealthCheckTaskCount = 100,
+    ///         SmsNotificationCount = 1000,
+    ///         PublicCnameMode = "SYSTEM_ASSIGN",
+    ///         Ttl = 60,
+    ///         CnameType = "PUBLIC",
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         AlertGroups = new[]
+    ///         {
+    ///             defaultAlarmContactGroup.AlarmContactGroupName,
+    ///         },
+    ///         PublicUserDomainName = domainName,
+    ///         AlertConfigs = new[]
+    ///         {
+    ///             new AliCloud.Dns.Inputs.GtmInstanceAlertConfigArgs
+    ///             {
+    ///                 SmsNotice = true,
+    ///                 NoticeType = "ADDR_ALERT",
+    ///                 EmailNotice = true,
+    ///                 DingtalkNotice = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Alidns Gtm Instance can be imported using the id, e.g.

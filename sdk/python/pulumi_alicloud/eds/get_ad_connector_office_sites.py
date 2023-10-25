@@ -109,6 +109,20 @@ def get_ad_connector_office_sites(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.176.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.eds.get_ad_connector_office_sites()
+    pulumi.export("ecdAdConnectorOfficeSiteId1", ids.sites[0].id)
+    name_regex = alicloud.eds.get_ad_connector_office_sites(name_regex="^my-AdConnectorOfficeSite")
+    pulumi.export("ecdAdConnectorOfficeSiteId2", name_regex.sites[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Ad Connector Office Site IDs.
     :param str name_regex: A regex string to filter results by Ad Connector Office Site name.
@@ -143,6 +157,20 @@ def get_ad_connector_office_sites_output(ids: Optional[pulumi.Input[Optional[Seq
     This data source provides the Ecd Ad Connector Office Sites of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.176.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.eds.get_ad_connector_office_sites()
+    pulumi.export("ecdAdConnectorOfficeSiteId1", ids.sites[0].id)
+    name_regex = alicloud.eds.get_ad_connector_office_sites(name_regex="^my-AdConnectorOfficeSite")
+    pulumi.export("ecdAdConnectorOfficeSiteId2", name_regex.sites[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Ad Connector Office Site IDs.

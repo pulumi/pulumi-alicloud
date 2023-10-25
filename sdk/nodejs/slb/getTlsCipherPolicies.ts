@@ -10,6 +10,27 @@ import * as utilities from "../utilities";
  * This data source provides the Slb Tls Cipher Policies of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.135.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.slb.getTlsCipherPolicies({
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const slbTlsCipherPolicyId1 = ids.then(ids => ids.policies?.[0]?.id);
+ * const nameRegex = alicloud.slb.getTlsCipherPolicies({
+ *     nameRegex: "^My-TlsCipherPolicy",
+ * });
+ * export const slbTlsCipherPolicyId2 = nameRegex.then(nameRegex => nameRegex.policies?.[0]?.id);
+ * ```
  */
 export function getTlsCipherPolicies(args?: GetTlsCipherPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetTlsCipherPoliciesResult> {
     args = args || {};
@@ -76,6 +97,27 @@ export interface GetTlsCipherPoliciesResult {
  * This data source provides the Slb Tls Cipher Policies of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.135.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.slb.getTlsCipherPolicies({
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const slbTlsCipherPolicyId1 = ids.then(ids => ids.policies?.[0]?.id);
+ * const nameRegex = alicloud.slb.getTlsCipherPolicies({
+ *     nameRegex: "^My-TlsCipherPolicy",
+ * });
+ * export const slbTlsCipherPolicyId2 = nameRegex.then(nameRegex => nameRegex.policies?.[0]?.id);
+ * ```
  */
 export function getTlsCipherPoliciesOutput(args?: GetTlsCipherPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTlsCipherPoliciesResult> {
     return pulumi.output(args).apply((a: any) => getTlsCipherPolicies(a, opts))

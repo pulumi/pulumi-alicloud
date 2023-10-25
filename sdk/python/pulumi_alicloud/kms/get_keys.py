@@ -127,6 +127,17 @@ def get_keys(description_regex: Optional[str] = None,
     """
     This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    kms_keys_ds = alicloud.kms.get_keys(description_regex="Hello KMS",
+        output_file="kms_keys.json")
+    pulumi.export("firstKeyId", kms_keys_ds.keys[0].id)
+    ```
+
 
     :param str description_regex: A regex string to filter the results by the KMS key description.
     :param str filters: The CMK filter. The filter consists of one or more key-value pairs. 
@@ -166,6 +177,17 @@ def get_keys_output(description_regex: Optional[pulumi.Input[Optional[str]]] = N
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeysResult]:
     """
     This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    kms_keys_ds = alicloud.kms.get_keys(description_regex="Hello KMS",
+        output_file="kms_keys.json")
+    pulumi.export("firstKeyId", kms_keys_ds.keys[0].id)
+    ```
 
 
     :param str description_regex: A regex string to filter the results by the KMS key description.

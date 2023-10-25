@@ -18,6 +18,60 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Please remember to add a `dependsOn` clause in the router interface connection from the InitiatingSide to the AcceptingSide, because the connection from the AcceptingSide to the InitiatingSide must be done first.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const region = config.get("region") || "cn-hangzhou";
+ * const name = config.get("name") || "alicloudRouterInterfaceConnectionBasic";
+ * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const barNetwork = new alicloud.vpc.Network("barNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "192.168.0.0/16",
+ * }, {
+ *     provider: alicloud,
+ * });
+ * const initiate = new alicloud.vpc.RouterInterface("initiate", {
+ *     oppositeRegion: region,
+ *     routerType: "VRouter",
+ *     routerId: fooNetwork.routerId,
+ *     role: "InitiatingSide",
+ *     specification: "Large.2",
+ *     description: name,
+ *     instanceChargeType: "PostPaid",
+ * });
+ * const opposite = new alicloud.vpc.RouterInterface("opposite", {
+ *     oppositeRegion: region,
+ *     routerType: "VRouter",
+ *     routerId: barNetwork.routerId,
+ *     role: "AcceptingSide",
+ *     specification: "Large.1",
+ *     description: `${name}-opposite`,
+ * }, {
+ *     provider: alicloud,
+ * });
+ * const barRouterInterfaceConnection = new alicloud.vpc.RouterInterfaceConnection("barRouterInterfaceConnection", {
+ *     interfaceId: opposite.id,
+ *     oppositeInterfaceId: initiate.id,
+ * }, {
+ *     provider: alicloud,
+ * });
+ * // A integrated router interface connection tunnel requires both InitiatingSide and AcceptingSide configuring opposite router interface.
+ * const fooRouterInterfaceConnection = new alicloud.vpc.RouterInterfaceConnection("fooRouterInterfaceConnection", {
+ *     interfaceId: initiate.id,
+ *     oppositeInterfaceId: opposite.id,
+ * }, {
+ *     dependsOn: [barRouterInterfaceConnection],
+ * });
+ * // The connection must start from the accepting side.
+ * ```
+ *
  * ## Import
  *
  * The router interface connection can be imported using the id, e.g.

@@ -15,6 +15,34 @@ import (
 // This data source provides the Cdn blocked regions.
 //
 // > **NOTE:** Available in v1.173.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cdn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cdn.GetBlockedRegions(ctx, &cdn.GetBlockedRegionsArgs{
+//				Language: "zh",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetBlockedRegions(ctx *pulumi.Context, args *GetBlockedRegionsArgs, opts ...pulumi.InvokeOption) (*GetBlockedRegionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBlockedRegionsResult

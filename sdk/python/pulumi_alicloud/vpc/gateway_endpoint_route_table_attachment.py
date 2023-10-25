@@ -160,6 +160,33 @@ class GatewayEndpointRouteTableAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.208.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        defaulte_vpc = alicloud.vpc.Network("defaulteVpc", description="test")
+        default_ge = alicloud.vpc.GatewayEndpoint("defaultGE",
+            service_name="com.aliyun.cn-hangzhou.oss",
+            policy_document="{ \\"Version\\" : \\"1\\", \\"Statement\\" : [ { \\"Effect\\" : \\"Allow\\", \\"Resource\\" : [ \\"*\\" ], \\"Action\\" : [ \\"*\\" ], \\"Principal\\" : [ \\"*\\" ] } ] }",
+            vpc_id=defaulte_vpc.id,
+            gateway_endpoint_descrption="test-gateway-endpoint",
+            gateway_endpoint_name=f"{name}1")
+        default_rt = alicloud.vpc.RouteTable("defaultRT",
+            vpc_id=defaulte_vpc.id,
+            route_table_name=f"{name}2")
+        default = alicloud.vpc.GatewayEndpointRouteTableAttachment("default",
+            gateway_endpoint_id=default_ge.id,
+            route_table_id=default_rt.id)
+        ```
+
         ## Import
 
         VPC Gateway Endpoint Route Table Attachment can be imported using the id, e.g.
@@ -185,6 +212,33 @@ class GatewayEndpointRouteTableAttachment(pulumi.CustomResource):
         For information about VPC Gateway Endpoint Route Table Attachment and how to use it, see [What is Gateway Endpoint Route Table Attachment](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/311148).
 
         > **NOTE:** Available since v1.208.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        defaulte_vpc = alicloud.vpc.Network("defaulteVpc", description="test")
+        default_ge = alicloud.vpc.GatewayEndpoint("defaultGE",
+            service_name="com.aliyun.cn-hangzhou.oss",
+            policy_document="{ \\"Version\\" : \\"1\\", \\"Statement\\" : [ { \\"Effect\\" : \\"Allow\\", \\"Resource\\" : [ \\"*\\" ], \\"Action\\" : [ \\"*\\" ], \\"Principal\\" : [ \\"*\\" ] } ] }",
+            vpc_id=defaulte_vpc.id,
+            gateway_endpoint_descrption="test-gateway-endpoint",
+            gateway_endpoint_name=f"{name}1")
+        default_rt = alicloud.vpc.RouteTable("defaultRT",
+            vpc_id=defaulte_vpc.id,
+            route_table_name=f"{name}2")
+        default = alicloud.vpc.GatewayEndpointRouteTableAttachment("default",
+            gateway_endpoint_id=default_ge.id,
+            route_table_id=default_rt.id)
+        ```
 
         ## Import
 

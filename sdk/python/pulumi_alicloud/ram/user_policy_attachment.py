@@ -182,6 +182,43 @@ class UserPolicyAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.0.0.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a RAM User Policy attachment.
+        user = alicloud.ram.User("user",
+            display_name="user_display_name",
+            mobile="86-18688888888",
+            email="hello.uuu@aaa.com",
+            comments="yoyoyo")
+        policy = alicloud.ram.Policy("policy",
+            document=\"\"\"  {
+            "Statement": [
+              {
+                "Action": [
+                  "oss:ListObjects",
+                  "oss:GetObject"
+                ],
+                "Effect": "Allow",
+                "Resource": [
+                  "acs:oss:*:*:mybucket",
+                  "acs:oss:*:*:mybucket/*"
+                ]
+              }
+            ],
+              "Version": "1"
+          }
+        \"\"\",
+            description="this is a policy test")
+        attach = alicloud.ram.UserPolicyAttachment("attach",
+            policy_name=policy.name,
+            policy_type=policy.type,
+            user_name=user.name)
+        ```
+
         ## Import
 
         RAM User Policy attachment can be imported using the id, e.g.
@@ -206,6 +243,43 @@ class UserPolicyAttachment(pulumi.CustomResource):
         Provides a RAM User Policy attachment resource.
 
         > **NOTE:** Available since v1.0.0.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a RAM User Policy attachment.
+        user = alicloud.ram.User("user",
+            display_name="user_display_name",
+            mobile="86-18688888888",
+            email="hello.uuu@aaa.com",
+            comments="yoyoyo")
+        policy = alicloud.ram.Policy("policy",
+            document=\"\"\"  {
+            "Statement": [
+              {
+                "Action": [
+                  "oss:ListObjects",
+                  "oss:GetObject"
+                ],
+                "Effect": "Allow",
+                "Resource": [
+                  "acs:oss:*:*:mybucket",
+                  "acs:oss:*:*:mybucket/*"
+                ]
+              }
+            ],
+              "Version": "1"
+          }
+        \"\"\",
+            description="this is a policy test")
+        attach = alicloud.ram.UserPolicyAttachment("attach",
+            policy_name=policy.name,
+            policy_type=policy.type,
+            user_name=user.name)
+        ```
 
         ## Import
 

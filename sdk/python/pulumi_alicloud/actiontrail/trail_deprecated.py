@@ -584,6 +584,20 @@ class TrailDeprecated(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.35.0+
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new action trail.
+        foo = alicloud.actiontrail.TrailDeprecated("foo",
+            event_rw="Write-test",
+            oss_bucket_name=alicloud_oss_bucket["bucket"]["id"],
+            role_name=alicloud_ram_role_policy_attachment["attach"]["role_name"],
+            oss_key_prefix="at-product-account-audit-B")
+        ```
+
         ## Import
 
         Action trail can be imported using the id, e.g.
@@ -616,6 +630,20 @@ class TrailDeprecated(pulumi.CustomResource):
         Provides a new resource to manage [Action Trail](https://www.alibabacloud.com/help/doc-detail/28804.htm).
 
         > **NOTE:** Available in 1.35.0+
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new action trail.
+        foo = alicloud.actiontrail.TrailDeprecated("foo",
+            event_rw="Write-test",
+            oss_bucket_name=alicloud_oss_bucket["bucket"]["id"],
+            role_name=alicloud_ram_role_policy_attachment["attach"]["role_name"],
+            oss_key_prefix="at-product-account-audit-B")
+        ```
 
         ## Import
 

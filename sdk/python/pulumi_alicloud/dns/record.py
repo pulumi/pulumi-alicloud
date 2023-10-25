@@ -356,6 +356,19 @@ class Record(pulumi.CustomResource):
 
         > **NOTE:** When the site is an international site, the `type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new Domain record
+        record = alicloud.dns.Record("record",
+            host_record="@",
+            type="A",
+            value="192.168.99.99")
+        ```
+
         ## Import
 
         RDS record can be imported using the id, e.g.
@@ -386,6 +399,19 @@ class Record(pulumi.CustomResource):
         > **DEPRECATED:**  This resource  has been deprecated from version `1.85.0`. Please use new resource alicloud_alidns_record.
 
         > **NOTE:** When the site is an international site, the `type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new Domain record
+        record = alicloud.dns.Record("record",
+            host_record="@",
+            type="A",
+            value="192.168.99.99")
+        ```
 
         ## Import
 

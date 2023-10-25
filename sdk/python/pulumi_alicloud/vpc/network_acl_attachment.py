@@ -141,6 +141,38 @@ class NetworkAclAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.44.0+. Currently, the resource are only available in Hongkong(cn-hongkong), India(ap-south-1), and Indonesia(ap-southeast-1) regions.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "NatGatewayConfigSpec"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/12")
+        default_network_acl = alicloud.vpc.NetworkAcl("defaultNetworkAcl",
+            vpc_id=default_network.id,
+            network_acl_name=name)
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/21",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_network_acl_attachment = alicloud.vpc.NetworkAclAttachment("defaultNetworkAclAttachment",
+            network_acl_id=default_network_acl.id,
+            resources=[alicloud.vpc.NetworkAclAttachmentResourceArgs(
+                resource_id=default_switch.id,
+                resource_type="VSwitch",
+            )])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] network_acl_id: The id of the network acl, the field can't be changed.
@@ -159,6 +191,38 @@ class NetworkAclAttachment(pulumi.CustomResource):
         Note that because this resource conflicts with the `resources` attribute of `vpc.NetworkAcl`, this resource can no be used.
 
         > **NOTE:** Available in 1.44.0+. Currently, the resource are only available in Hongkong(cn-hongkong), India(ap-south-1), and Indonesia(ap-southeast-1) regions.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "NatGatewayConfigSpec"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/12")
+        default_network_acl = alicloud.vpc.NetworkAcl("defaultNetworkAcl",
+            vpc_id=default_network.id,
+            network_acl_name=name)
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/21",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_network_acl_attachment = alicloud.vpc.NetworkAclAttachment("defaultNetworkAclAttachment",
+            network_acl_id=default_network_acl.id,
+            resources=[alicloud.vpc.NetworkAclAttachmentResourceArgs(
+                resource_id=default_switch.id,
+                resource_type="VSwitch",
+            )])
+        ```
 
         :param str resource_name: The name of the resource.
         :param NetworkAclAttachmentArgs args: The arguments to use to populate this resource's properties.

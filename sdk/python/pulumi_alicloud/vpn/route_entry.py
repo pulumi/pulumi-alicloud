@@ -296,6 +296,44 @@ class RouteEntry(pulumi.CustomResource):
                  weight: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="terraform-example",
+            cidr_block="10.1.0.0/21")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name="terraform-example",
+            vpc_id=default_network.id,
+            cidr_block="10.1.0.0/24",
+            zone_id=default_zones.zones[0].id)
+        default_gateway = alicloud.vpn.Gateway("defaultGateway",
+            vpc_id=default_network.id,
+            bandwidth=10,
+            instance_charge_type="PrePaid",
+            enable_ssl=False,
+            vswitch_id=default_switch.id)
+        default_customer_gateway = alicloud.vpn.CustomerGateway("defaultCustomerGateway", ip_address="192.168.1.1")
+        default_connection = alicloud.vpn.Connection("defaultConnection",
+            customer_gateway_id=default_customer_gateway.id,
+            vpn_gateway_id=default_gateway.id,
+            local_subnets=["192.168.2.0/24"],
+            remote_subnets=["192.168.3.0/24"])
+        default_route_entry = alicloud.vpn.RouteEntry("defaultRouteEntry",
+            vpn_gateway_id=default_gateway.id,
+            route_dest="10.0.0.0/24",
+            next_hop=default_connection.id,
+            weight=0,
+            publish_vpc=False)
+        ```
+
         ## Import
 
         VPN route entry can be imported using the id(VpnGatewayId +":"+ NextHop +":"+ RouteDest), e.g.
@@ -319,6 +357,44 @@ class RouteEntry(pulumi.CustomResource):
                  args: RouteEntryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="terraform-example",
+            cidr_block="10.1.0.0/21")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name="terraform-example",
+            vpc_id=default_network.id,
+            cidr_block="10.1.0.0/24",
+            zone_id=default_zones.zones[0].id)
+        default_gateway = alicloud.vpn.Gateway("defaultGateway",
+            vpc_id=default_network.id,
+            bandwidth=10,
+            instance_charge_type="PrePaid",
+            enable_ssl=False,
+            vswitch_id=default_switch.id)
+        default_customer_gateway = alicloud.vpn.CustomerGateway("defaultCustomerGateway", ip_address="192.168.1.1")
+        default_connection = alicloud.vpn.Connection("defaultConnection",
+            customer_gateway_id=default_customer_gateway.id,
+            vpn_gateway_id=default_gateway.id,
+            local_subnets=["192.168.2.0/24"],
+            remote_subnets=["192.168.3.0/24"])
+        default_route_entry = alicloud.vpn.RouteEntry("defaultRouteEntry",
+            vpn_gateway_id=default_gateway.id,
+            route_dest="10.0.0.0/24",
+            next_hop=default_connection.id,
+            weight=0,
+            publish_vpc=False)
+        ```
+
         ## Import
 
         VPN route entry can be imported using the id(VpnGatewayId +":"+ NextHop +":"+ RouteDest), e.g.

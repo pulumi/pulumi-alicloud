@@ -17,6 +17,88 @@ import (
 //
 // Provides a backup policy for ApsaraDB Redis / Memcache instance resource.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kvstore"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "kvstorebackuppolicyvpc"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := kvstore.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := kvstore.NewInstance(ctx, "defaultInstance", &kvstore.InstanceArgs{
+//				DbInstanceName: pulumi.String(name),
+//				VswitchId:      defaultSwitch.ID(),
+//				ZoneId:         *pulumi.String(defaultZones.Zones[0].Id),
+//				InstanceClass:  pulumi.String("redis.master.large.default"),
+//				InstanceType:   pulumi.String("Redis"),
+//				EngineVersion:  pulumi.String("5.0"),
+//				SecurityIps: pulumi.StringArray{
+//					pulumi.String("10.23.12.24"),
+//				},
+//				Config: pulumi.Map{
+//					"appendonly":             pulumi.Any("yes"),
+//					"lazyfree-lazy-eviction": pulumi.Any("yes"),
+//				},
+//				Tags: pulumi.Map{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("example"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kvstore.NewBackupPolicy(ctx, "defaultBackupPolicy", &kvstore.BackupPolicyArgs{
+//				InstanceId: defaultInstance.ID(),
+//				BackupPeriods: pulumi.StringArray{
+//					pulumi.String("Tuesday"),
+//					pulumi.String("Wednesday"),
+//				},
+//				BackupTime: pulumi.String("10:00Z-11:00Z"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // KVStore backup policy can be imported using the id, e.g.

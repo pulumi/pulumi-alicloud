@@ -1085,6 +1085,50 @@ class OssExport(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.187.0+
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject",
+            description="terraform-example",
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            retention_period=3650,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        example_oss_export = alicloud.log.OssExport("exampleOssExport",
+            project_name=example_project.name,
+            logstore_name=example_store.name,
+            export_name="terraform-example",
+            display_name="terraform-example",
+            bucket="example-bucket",
+            prefix="root",
+            suffix="",
+            buffer_interval=300,
+            buffer_size=250,
+            compress_type="none",
+            path_format="%Y/%m/%d/%H/%M",
+            content_type="json",
+            json_enable_tag=True,
+            role_arn="role_arn_for_oss_write",
+            log_read_role_arn="role_arn_for_sls_read",
+            time_zone="+0800")
+        ```
+
         ## Import
 
         Log oss export can be imported using the id or name, e.g.
@@ -1133,6 +1177,50 @@ class OssExport(pulumi.CustomResource):
         [Refer to details](https://www.alibabacloud.com/help/en/log-service/latest/ship-logs-to-oss-new-version).
 
         > **NOTE:** Available in 1.187.0+
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject",
+            description="terraform-example",
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            retention_period=3650,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        example_oss_export = alicloud.log.OssExport("exampleOssExport",
+            project_name=example_project.name,
+            logstore_name=example_store.name,
+            export_name="terraform-example",
+            display_name="terraform-example",
+            bucket="example-bucket",
+            prefix="root",
+            suffix="",
+            buffer_interval=300,
+            buffer_size=250,
+            compress_type="none",
+            path_format="%Y/%m/%d/%H/%M",
+            content_type="json",
+            json_enable_tag=True,
+            role_arn="role_arn_for_oss_write",
+            log_read_role_arn="role_arn_for_sls_read",
+            time_zone="+0800")
+        ```
 
         ## Import
 

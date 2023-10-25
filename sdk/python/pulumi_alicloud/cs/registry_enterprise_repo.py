@@ -314,6 +314,37 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
 
         > **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        example_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance",
+            payment_type="Subscription",
+            period=1,
+            renew_period=0,
+            renewal_status="ManualRenewal",
+            instance_type="Advanced",
+            instance_name=name)
+        example_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("exampleRegistryEnterpriseNamespace",
+            instance_id=example_registry_enterprise_instance.id,
+            auto_create=False,
+            default_visibility="PUBLIC")
+        example_registry_enterprise_repo = alicloud.cs.RegistryEnterpriseRepo("exampleRegistryEnterpriseRepo",
+            instance_id=example_registry_enterprise_instance.id,
+            namespace=example_registry_enterprise_namespace.name,
+            summary="this is summary of my new repo",
+            repo_type="PUBLIC",
+            detail="this is a public repo")
+        ```
+
         ## Import
 
         Container Registry Enterprise Edition repository can be imported using the `{instance_id}:{namespace}:{repository}`, e.g.
@@ -345,6 +376,37 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
         > **NOTE:** Available since v1.86.0.
 
         > **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        example_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance",
+            payment_type="Subscription",
+            period=1,
+            renew_period=0,
+            renewal_status="ManualRenewal",
+            instance_type="Advanced",
+            instance_name=name)
+        example_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("exampleRegistryEnterpriseNamespace",
+            instance_id=example_registry_enterprise_instance.id,
+            auto_create=False,
+            default_visibility="PUBLIC")
+        example_registry_enterprise_repo = alicloud.cs.RegistryEnterpriseRepo("exampleRegistryEnterpriseRepo",
+            instance_id=example_registry_enterprise_instance.id,
+            namespace=example_registry_enterprise_namespace.name,
+            summary="this is summary of my new repo",
+            repo_type="PUBLIC",
+            detail="this is a public repo")
+        ```
 
         ## Import
 

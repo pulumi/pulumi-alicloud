@@ -347,6 +347,25 @@ class FcTrigger(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.165.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_account = alicloud.get_account()
+        default_regions = alicloud.get_regions(current=True)
+        example = alicloud.cdn.FcTrigger("example",
+            event_meta_name="LogFileCreated",
+            event_meta_version="1.0.0",
+            notes="example_value",
+            role_arn=f"acs:ram::{default_account.id}:role/aliyuncdneventnotificationrole",
+            source_arn=f"acs:cdn:*:{default_account.id}:domain/example.com",
+            trigger_arn=f"acs:fc:{default_regions.regions[0].id}:{default_account.id}:services/FCTestService/functions/printEvent/triggers/testtrigger")
+        ```
+
         ## Import
 
         CDN Fc Trigger can be imported using the id, e.g.
@@ -377,6 +396,25 @@ class FcTrigger(pulumi.CustomResource):
         For information about CDN Fc Trigger and how to use it, see [What is Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger).
 
         > **NOTE:** Available in v1.165.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_account = alicloud.get_account()
+        default_regions = alicloud.get_regions(current=True)
+        example = alicloud.cdn.FcTrigger("example",
+            event_meta_name="LogFileCreated",
+            event_meta_version="1.0.0",
+            notes="example_value",
+            role_arn=f"acs:ram::{default_account.id}:role/aliyuncdneventnotificationrole",
+            source_arn=f"acs:cdn:*:{default_account.id}:domain/example.com",
+            trigger_arn=f"acs:fc:{default_regions.regions[0].id}:{default_account.id}:services/FCTestService/functions/printEvent/triggers/testtrigger")
+        ```
 
         ## Import
 

@@ -15,6 +15,44 @@ import (
 // This data source provides the Alb Rules of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.133.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := alb.GetRules(ctx, &alb.GetRulesArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("albRuleId1", ids.Rules[0].Id)
+//			nameRegex, err := alb.GetRules(ctx, &alb.GetRulesArgs{
+//				NameRegex: pulumi.StringRef("^my-Rule"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("albRuleId2", nameRegex.Rules[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetRules(ctx *pulumi.Context, args *GetRulesArgs, opts ...pulumi.InvokeOption) (*GetRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRulesResult

@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * This data source provides the ALB System Security Policies of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.183.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaults = alicloud.alb.getSystemSecurityPolicies({
+ *     ids: ["tls_cipher_policy_1_0"],
+ * });
+ * export const albSystemSecurityPolicyId1 = defaults.then(defaults => defaults.policies?.[0]?.id);
+ * ```
  */
 export function getSystemSecurityPolicies(args?: GetSystemSecurityPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetSystemSecurityPoliciesResult> {
     args = args || {};
@@ -60,6 +74,20 @@ export interface GetSystemSecurityPoliciesResult {
  * This data source provides the ALB System Security Policies of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.183.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaults = alicloud.alb.getSystemSecurityPolicies({
+ *     ids: ["tls_cipher_policy_1_0"],
+ * });
+ * export const albSystemSecurityPolicyId1 = defaults.then(defaults => defaults.policies?.[0]?.id);
+ * ```
  */
 export function getSystemSecurityPoliciesOutput(args?: GetSystemSecurityPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSystemSecurityPoliciesResult> {
     return pulumi.output(args).apply((a: any) => getSystemSecurityPolicies(a, opts))

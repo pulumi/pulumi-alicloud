@@ -16,6 +16,63 @@ namespace Pulumi.AliCloud.FNF
     /// 
     /// &gt; **NOTE:** Available in v1.149.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-testacc-fnfflow";
+    ///     var defaultRole = new AliCloud.Ram.Role("defaultRole", new()
+    ///     {
+    ///         Document = @"  {
+    ///     ""Statement"": [
+    ///       {
+    ///         ""Action"": ""sts:AssumeRole"",
+    ///         ""Effect"": ""Allow"",
+    ///         ""Principal"": {
+    ///           ""Service"": [
+    ///             ""fnf.aliyuncs.com""
+    ///           ]
+    ///         }
+    ///       }
+    ///     ],
+    ///     ""Version"": ""1""
+    ///   }
+    /// ",
+    ///     });
+    /// 
+    ///     var defaultFlow = new AliCloud.FNF.Flow("defaultFlow", new()
+    ///     {
+    ///         Definition = @"  version: v1beta1
+    ///   type: flow
+    ///   steps:
+    ///     - type: wait
+    ///       name: custom_wait
+    ///       duration: $.wait
+    /// ",
+    ///         RoleArn = defaultRole.Arn,
+    ///         Description = "Test for terraform fnf_flow.",
+    ///         Type = "FDL",
+    ///     });
+    /// 
+    ///     var defaultExecution = new AliCloud.FNF.Execution("defaultExecution", new()
+    ///     {
+    ///         ExecutionName = name,
+    ///         FlowName = defaultFlow.Name,
+    ///         Input = "{\"wait\": 600}",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Serverless Workflow Execution can be imported using the id, e.g.

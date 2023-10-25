@@ -13,6 +13,35 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.134.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const example = new alicloud.cms.MetricRuleTemplate("example", {
+ *     metricRuleTemplateName: name,
+ *     alertTemplates: [{
+ *         category: "ecs",
+ *         metricName: "cpu_total",
+ *         namespace: "acs_ecs_dashboard",
+ *         ruleName: "tf_example",
+ *         escalations: {
+ *             critical: {
+ *                 comparisonOperator: "GreaterThanThreshold",
+ *                 statistics: "Average",
+ *                 threshold: "90",
+ *                 times: "3",
+ *             },
+ *         },
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Cloud Monitor Service Metric Rule Template can be imported using the id, e.g.

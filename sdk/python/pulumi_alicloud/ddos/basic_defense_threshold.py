@@ -380,6 +380,31 @@ class BasicDefenseThreshold(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.168.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
+            address_name=name,
+            isp="BGP",
+            internet_charge_type="PayByBandwidth",
+            payment_type="PayAsYouGo")
+        default_basic_defense_threshold = alicloud.ddos.BasicDefenseThreshold("defaultBasicDefenseThreshold",
+            instance_id=default_eip_address.id,
+            ddos_type="defense",
+            instance_type="eip",
+            bps=390,
+            pps=90000)
+        ```
+
         ## Import
 
         Ddos Basic Antiddos can be imported using the id, e.g.
@@ -410,6 +435,31 @@ class BasicDefenseThreshold(pulumi.CustomResource):
         For information about Ddos Basic Antiddos and how to use it, see [What is Defense Threshold](https://www.alibabacloud.com/help/en/ddos-protection/latest/modifydefensethreshold).
 
         > **NOTE:** Available since v1.168.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
+            address_name=name,
+            isp="BGP",
+            internet_charge_type="PayByBandwidth",
+            payment_type="PayAsYouGo")
+        default_basic_defense_threshold = alicloud.ddos.BasicDefenseThreshold("defaultBasicDefenseThreshold",
+            instance_id=default_eip_address.id,
+            ddos_type="defense",
+            instance_type="eip",
+            bps=390,
+            pps=90000)
+        ```
 
         ## Import
 

@@ -17,6 +17,32 @@ namespace Pulumi.AliCloud.ResourceManager
         /// &gt; **NOTE:**  Available in 1.84.0+.
         /// 
         /// &gt; **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.ResourceManager.GetFolders.Invoke(new()
+        ///     {
+        ///         NameRegex = "tftest",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstFolderId"] = example.Apply(getFoldersResult =&gt; getFoldersResult.Folders[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetFoldersResult> InvokeAsync(GetFoldersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFoldersResult>("alicloud:resourcemanager/getFolders:getFolders", args ?? new GetFoldersArgs(), options.WithDefaults());
@@ -27,6 +53,32 @@ namespace Pulumi.AliCloud.ResourceManager
         /// &gt; **NOTE:**  Available in 1.84.0+.
         /// 
         /// &gt; **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.ResourceManager.GetFolders.Invoke(new()
+        ///     {
+        ///         NameRegex = "tftest",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstFolderId"] = example.Apply(getFoldersResult =&gt; getFoldersResult.Folders[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetFoldersResult> Invoke(GetFoldersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFoldersResult>("alicloud:resourcemanager/getFolders:getFolders", args ?? new GetFoldersInvokeArgs(), options.WithDefaults());

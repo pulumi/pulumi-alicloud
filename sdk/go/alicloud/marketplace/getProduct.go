@@ -15,6 +15,35 @@ import (
 // This data source provides the Market product item details of Alibaba Cloud.
 //
 // > **NOTE:** Available in 1.69.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/marketplace"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := marketplace.GetProduct(ctx, &marketplace.GetProductArgs{
+//				ProductCode: "cmapi022206",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("productName", _default.Products[0].Name)
+//			ctx.Export("firstProductSkuCode", _default.Products[0].Skuses[0].SkuCode)
+//			ctx.Export("firstProductPackageVersion", _default.Products[0].Skuses[0].PackageVersions[0].PackageVersion)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetProduct(ctx *pulumi.Context, args *GetProductArgs, opts ...pulumi.InvokeOption) (*GetProductResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProductResult

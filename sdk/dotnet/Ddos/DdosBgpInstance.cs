@@ -16,6 +16,33 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     /// &gt; **NOTE:** Available since v1.183.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var instance = new AliCloud.Ddos.DdosBgpInstance("instance", new()
+    ///     {
+    ///         BaseBandwidth = 20,
+    ///         Bandwidth = -1,
+    ///         IpCount = 100,
+    ///         IpType = "IPv4",
+    ///         NormalBandwidth = 100,
+    ///         Type = "Enterprise",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Ddosbgp instance can be imported using the id, e.g.

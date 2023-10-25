@@ -16,6 +16,108 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// &gt; **NOTE:** Available since v1.187.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var region = config.Get("region") ?? "cn-hangzhou";
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var defaultProject = new AliCloud.Log.Project("defaultProject");
+    /// 
+    ///     var defaultStore = new AliCloud.Log.Store("defaultStore", new()
+    ///     {
+    ///         Project = defaultProject.Name,
+    ///     });
+    /// 
+    ///     var defaultAccelerator = new AliCloud.Ga.Accelerator("defaultAccelerator", new()
+    ///     {
+    ///         Duration = 1,
+    ///         AutoUseCoupon = true,
+    ///         Spec = "2",
+    ///     });
+    /// 
+    ///     var defaultBandwidthPackage = new AliCloud.Ga.BandwidthPackage("defaultBandwidthPackage", new()
+    ///     {
+    ///         Bandwidth = 100,
+    ///         Type = "Basic",
+    ///         BandwidthType = "Basic",
+    ///         PaymentType = "PayAsYouGo",
+    ///         BillingType = "PayBy95",
+    ///         Ratio = 30,
+    ///     });
+    /// 
+    ///     var defaultBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", new()
+    ///     {
+    ///         AcceleratorId = defaultAccelerator.Id,
+    ///         BandwidthPackageId = defaultBandwidthPackage.Id,
+    ///     });
+    /// 
+    ///     var defaultListener = new AliCloud.Ga.Listener("defaultListener", new()
+    ///     {
+    ///         AcceleratorId = defaultBandwidthPackageAttachment.AcceleratorId,
+    ///         ClientAffinity = "SOURCE_IP",
+    ///         Protocol = "HTTP",
+    ///         PortRanges = new[]
+    ///         {
+    ///             new AliCloud.Ga.Inputs.ListenerPortRangeArgs
+    ///             {
+    ///                 FromPort = 70,
+    ///                 ToPort = 70,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("defaultEipAddress", new()
+    ///     {
+    ///         Bandwidth = "10",
+    ///         InternetChargeType = "PayByBandwidth",
+    ///         AddressName = "terraform-example",
+    ///     });
+    /// 
+    ///     var defaultEndpointGroup = new AliCloud.Ga.EndpointGroup("defaultEndpointGroup", new()
+    ///     {
+    ///         AcceleratorId = defaultListener.AcceleratorId,
+    ///         EndpointConfigurations = new[]
+    ///         {
+    ///             new AliCloud.Ga.Inputs.EndpointGroupEndpointConfigurationArgs
+    ///             {
+    ///                 Endpoint = defaultEipAddress.IpAddress,
+    ///                 Type = "PublicIp",
+    ///                 Weight = 20,
+    ///             },
+    ///         },
+    ///         EndpointGroupRegion = region,
+    ///         ListenerId = defaultListener.Id,
+    ///     });
+    /// 
+    ///     var defaultAccessLog = new AliCloud.Ga.AccessLog("defaultAccessLog", new()
+    ///     {
+    ///         AcceleratorId = defaultAccelerator.Id,
+    ///         ListenerId = defaultListener.Id,
+    ///         EndpointGroupId = defaultEndpointGroup.Id,
+    ///         SlsProjectName = defaultProject.Name,
+    ///         SlsLogStoreName = defaultStore.Name,
+    ///         SlsRegionId = region,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Global Accelerator (GA) Access Log can be imported using the id, e.g.

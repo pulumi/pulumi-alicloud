@@ -15,6 +15,39 @@ namespace Pulumi.AliCloud.EventBridge
         /// This data source provides the Event Bridge Rules of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.129.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.EventBridge.GetRules.Invoke(new()
+        ///     {
+        ///         EventBusName = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstEventBridgeRuleId"] = example.Apply(getRulesResult =&gt; getRulesResult.Rules[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRulesResult> InvokeAsync(GetRulesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRulesResult>("alicloud:eventbridge/getRules:getRules", args ?? new GetRulesArgs(), options.WithDefaults());
@@ -23,6 +56,39 @@ namespace Pulumi.AliCloud.EventBridge
         /// This data source provides the Event Bridge Rules of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.129.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.EventBridge.GetRules.Invoke(new()
+        ///     {
+        ///         EventBusName = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstEventBridgeRuleId"] = example.Apply(getRulesResult =&gt; getRulesResult.Rules[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetRulesResult> Invoke(GetRulesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRulesResult>("alicloud:eventbridge/getRules:getRules", args ?? new GetRulesInvokeArgs(), options.WithDefaults());

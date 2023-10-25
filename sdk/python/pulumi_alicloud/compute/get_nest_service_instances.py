@@ -142,6 +142,20 @@ def get_nest_service_instances(filters: Optional[Sequence[pulumi.InputType['GetN
 
     > **NOTE:** Available in v1.205.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.compute.get_nest_service_instances(ids=["example_id"])
+    pulumi.export("armsPrometheisId1", ids.service_instances[0].id)
+    name_regex = alicloud.compute.get_nest_service_instances(name_regex="tf-example")
+    pulumi.export("armsPrometheisId2", name_regex.service_instances[0].id)
+    ```
+
 
     :param Sequence[pulumi.InputType['GetNestServiceInstancesFilterArgs']] filters: The conditions that are used to filter. See the following `Block filter`.
     :param Sequence[str] ids: A list of Service Instance IDs.
@@ -184,6 +198,20 @@ def get_nest_service_instances_output(filters: Optional[pulumi.Input[Optional[Se
     This data source provides the Compute Nest Service Instances of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.205.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.compute.get_nest_service_instances(ids=["example_id"])
+    pulumi.export("armsPrometheisId1", ids.service_instances[0].id)
+    name_regex = alicloud.compute.get_nest_service_instances(name_regex="tf-example")
+    pulumi.export("armsPrometheisId2", name_regex.service_instances[0].id)
+    ```
 
 
     :param Sequence[pulumi.InputType['GetNestServiceInstancesFilterArgs']] filters: The conditions that are used to filter. See the following `Block filter`.

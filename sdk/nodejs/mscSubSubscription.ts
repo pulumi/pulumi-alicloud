@@ -9,6 +9,24 @@ import * as utilities from "./utilities";
  *
  * > **NOTE:** Available since v1.135.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.MscSubSubscription("example", {
+ *     emailStatus: 1,
+ *     itemName: "Notifications of Product Expiration",
+ *     pmsgStatus: 1,
+ *     smsStatus: 1,
+ *     ttsStatus: 1,
+ *     webhookStatus: 0,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Msc Sub Subscription can be imported using the id, e.g.

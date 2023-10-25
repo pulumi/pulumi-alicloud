@@ -84,6 +84,16 @@ def get_service(enable: Optional[str] = None,
 
     > **NOTE:** Available in v1.116.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    open = alicloud.cr.get_service(enable="On",
+        password="1111aaaa")
+    ```
+
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
     :param str password: The user password. The password must be 8 to 32 characters in length, and must contain at least two of the following character types: letters, special characters, and digits.
@@ -113,6 +123,16 @@ def get_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
     For information about Container Registry (CR) and how to use it, see [What is Container Registry (CR)](https://www.alibabacloud.com/help/en/doc-detail/142759.htm).
 
     > **NOTE:** Available in v1.116.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    open = alicloud.cr.get_service(enable="On",
+        password="1111aaaa")
+    ```
 
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.

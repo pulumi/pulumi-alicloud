@@ -16,6 +16,42 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// &gt; **NOTE:** Available since v1.193.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
+    ///     {
+    ///         CenInstanceName = "tf_example",
+    ///         Description = "an example for cen",
+    ///     });
+    /// 
+    ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("exampleTransitRouter", new()
+    ///     {
+    ///         TransitRouterName = "tf_example",
+    ///         CenId = exampleInstance.Id,
+    ///     });
+    /// 
+    ///     var exampleTransitRouterCidr = new AliCloud.Cen.TransitRouterCidr("exampleTransitRouterCidr", new()
+    ///     {
+    ///         TransitRouterId = exampleTransitRouter.TransitRouterId,
+    ///         Cidr = "192.168.0.0/16",
+    ///         TransitRouterCidrName = "tf_example",
+    ///         Description = "tf_example",
+    ///         PublishCidrRoute = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Cloud Enterprise Network (CEN) Transit Router Cidr can be imported using the id, e.g.

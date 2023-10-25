@@ -119,6 +119,18 @@ def get_waf_policies(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.184.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.dcdn.get_waf_policies()
+    pulumi.export("dcdnWafPolicyId1", ids.policies[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Waf Policy IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -156,6 +168,18 @@ def get_waf_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     This data source provides the Dcdn Waf Policies of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.184.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.dcdn.get_waf_policies()
+    pulumi.export("dcdnWafPolicyId1", ids.policies[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Waf Policy IDs.

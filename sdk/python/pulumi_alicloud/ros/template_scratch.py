@@ -403,6 +403,28 @@ class TemplateScratch(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.151.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.resourcemanager.get_resource_groups()
+        example = alicloud.ros.TemplateScratch("example",
+            description="tf_testacc",
+            template_scratch_type="ResourceImport",
+            preference_parameters=[alicloud.ros.TemplateScratchPreferenceParameterArgs(
+                parameter_key="DeletionPolicy",
+                parameter_value="Retain",
+            )],
+            source_resource_group=alicloud.ros.TemplateScratchSourceResourceGroupArgs(
+                resource_group_id=default.ids[0],
+                resource_type_filters=["ALIYUN::ECS::VPC"],
+            ))
+        ```
+
         ## Import
 
         ROS Template Scratch can be imported using the id, e.g.
@@ -434,6 +456,28 @@ class TemplateScratch(pulumi.CustomResource):
         For information about ROS Template Scratch and how to use it, see [What is Template Scratch](https://www.alibabacloud.com/help/zh/doc-detail/352074.html).
 
         > **NOTE:** Available in v1.151.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.resourcemanager.get_resource_groups()
+        example = alicloud.ros.TemplateScratch("example",
+            description="tf_testacc",
+            template_scratch_type="ResourceImport",
+            preference_parameters=[alicloud.ros.TemplateScratchPreferenceParameterArgs(
+                parameter_key="DeletionPolicy",
+                parameter_value="Retain",
+            )],
+            source_resource_group=alicloud.ros.TemplateScratchSourceResourceGroupArgs(
+                resource_group_id=default.ids[0],
+                resource_type_filters=["ALIYUN::ECS::VPC"],
+            ))
+        ```
 
         ## Import
 

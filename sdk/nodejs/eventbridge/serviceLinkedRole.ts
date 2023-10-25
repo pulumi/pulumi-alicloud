@@ -11,6 +11,15 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.129.0+. After the version 1.142.0, the resource is renamed as `alicloud.eventbridge.ServiceLinkedRole`.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const serviceLinkedRole = new alicloud.eventbridge.ServiceLinkedRole("serviceLinkedRole", {productName: "AliyunServiceRoleForEventBridgeSendToMNS"});
+ * ```
+ *
  * ## Import
  *
  * Event Bridge service-linked roles(SLR) can be imported using the id, e.g.

@@ -11,6 +11,30 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.130.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const exampleEventBus = new alicloud.eventbridge.EventBus("exampleEventBus", {eventBusName: name});
+ * const exampleQueue = new alicloud.mns.Queue("exampleQueue", {});
+ * const exampleEventSource = new alicloud.eventbridge.EventSource("exampleEventSource", {
+ *     eventBusName: exampleEventBus.eventBusName,
+ *     eventSourceName: name,
+ *     description: name,
+ *     linkedExternalSource: true,
+ *     externalSourceType: "MNS",
+ *     externalSourceConfig: {
+ *         QueueName: exampleQueue.name,
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Event Bridge Event Source can be imported using the id, e.g.

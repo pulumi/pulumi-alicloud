@@ -124,6 +124,27 @@ class HistoryDeliveryJob(pulumi.CustomResource):
 
         > **NOTE:** An Alibaba cloud account can only have one running delivery history job at the same time.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        example_regions = alicloud.get_regions(current=True)
+        example_account = alicloud.get_account()
+        example_project = alicloud.log.Project("exampleProject", description="tf actiontrail example")
+        example_trail = alicloud.actiontrail.Trail("exampleTrail",
+            trail_name=name,
+            sls_project_arn=example_project.name.apply(lambda name: f"acs:log:{example_regions.regions[0].id}:{example_account.id}:project/{name}"))
+        example_history_delivery_job = alicloud.actiontrail.HistoryDeliveryJob("exampleHistoryDeliveryJob", trail_name=example_trail.id)
+        ```
+
         ## Import
 
         Actiontrail History Delivery Job can be imported using the id, e.g.
@@ -154,6 +175,27 @@ class HistoryDeliveryJob(pulumi.CustomResource):
         > **NOTE:** Make sure that you have called the `actiontrail.Trail` to create a single-account or multi-account trace that delivered to Log Service SLS.
 
         > **NOTE:** An Alibaba cloud account can only have one running delivery history job at the same time.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        example_regions = alicloud.get_regions(current=True)
+        example_account = alicloud.get_account()
+        example_project = alicloud.log.Project("exampleProject", description="tf actiontrail example")
+        example_trail = alicloud.actiontrail.Trail("exampleTrail",
+            trail_name=name,
+            sls_project_arn=example_project.name.apply(lambda name: f"acs:log:{example_regions.regions[0].id}:{example_account.id}:project/{name}"))
+        example_history_delivery_job = alicloud.actiontrail.HistoryDeliveryJob("exampleHistoryDeliveryJob", trail_name=example_trail.id)
+        ```
 
         ## Import
 

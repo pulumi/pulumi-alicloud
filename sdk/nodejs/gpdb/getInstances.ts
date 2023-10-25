@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * This data source provides the AnalyticDB for PostgreSQL instances of the current Alibaba Cloud user.
  *
  * > **NOTE:**  Available in 1.47.0+
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.gpdb.getInstances({});
+ * export const gpdbDbInstanceId1 = ids.then(ids => ids.instances?.[0]?.id);
+ * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
@@ -118,6 +130,18 @@ export interface GetInstancesResult {
  * This data source provides the AnalyticDB for PostgreSQL instances of the current Alibaba Cloud user.
  *
  * > **NOTE:**  Available in 1.47.0+
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.gpdb.getInstances({});
+ * export const gpdbDbInstanceId1 = ids.then(ids => ids.instances?.[0]?.id);
+ * ```
  */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
     return pulumi.output(args).apply((a: any) => getInstances(a, opts))

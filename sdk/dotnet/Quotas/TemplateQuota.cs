@@ -16,6 +16,41 @@ namespace Pulumi.AliCloud.Quotas
     /// 
     /// &gt; **NOTE:** Available since v1.206.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new AliCloud.Quotas.TemplateQuota("default", new()
+    ///     {
+    ///         DesireValue = 1001,
+    ///         Dimensions = new[]
+    ///         {
+    ///             new AliCloud.Quotas.Inputs.TemplateQuotaDimensionArgs
+    ///             {
+    ///                 Key = "regionId",
+    ///                 Value = "cn-hangzhou",
+    ///             },
+    ///         },
+    ///         EnvLanguage = "zh",
+    ///         NoticeType = 3,
+    ///         ProductCode = "gws",
+    ///         QuotaActionCode = "q_desktop-count",
+    ///         QuotaCategory = "CommonQuota",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Quotas Template Quota can be imported using the id, e.g.

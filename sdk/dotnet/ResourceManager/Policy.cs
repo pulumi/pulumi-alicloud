@@ -15,6 +15,37 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// &gt; **NOTE:** Available since v1.83.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tfexample";
+    ///     var example = new AliCloud.ResourceManager.Policy("example", new()
+    ///     {
+    ///         PolicyName = name,
+    ///         PolicyDocument = @"		{
+    /// 			""Statement"": [{
+    /// 				""Action"": [""oss:*""],
+    /// 				""Effect"": ""Allow"",
+    /// 				""Resource"": [""acs:oss:*:*:*""]
+    /// 			}],
+    /// 			""Version"": ""1""
+    /// 		}
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Resource Manager Policy can be imported using the id, e.g.

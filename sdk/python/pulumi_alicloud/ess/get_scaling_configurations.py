@@ -119,6 +119,21 @@ def get_scaling_configurations(ids: Optional[Sequence[str]] = None,
     """
     This data source provides available scaling configuration resources.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    scalingconfigurations_ds = alicloud.ess.get_scaling_configurations(ids=[
+            "scaling_configuration_id1",
+            "scaling_configuration_id2",
+        ],
+        name_regex="scaling_configuration_name",
+        scaling_group_id="scaling_group_id")
+    pulumi.export("firstScalingRule", scalingconfigurations_ds.configurations[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of scaling configuration IDs.
     :param str name_regex: A regex string to filter resulting scaling configurations by name.
@@ -151,6 +166,21 @@ def get_scaling_configurations_output(ids: Optional[pulumi.Input[Optional[Sequen
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetScalingConfigurationsResult]:
     """
     This data source provides available scaling configuration resources.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    scalingconfigurations_ds = alicloud.ess.get_scaling_configurations(ids=[
+            "scaling_configuration_id1",
+            "scaling_configuration_id2",
+        ],
+        name_regex="scaling_configuration_name",
+        scaling_group_id="scaling_group_id")
+    pulumi.export("firstScalingRule", scalingconfigurations_ds.configurations[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of scaling configuration IDs.

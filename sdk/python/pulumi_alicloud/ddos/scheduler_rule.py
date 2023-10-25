@@ -288,6 +288,39 @@ class SchedulerRule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.86.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example = alicloud.ddos.SchedulerRule("example",
+            rule_name=name,
+            rule_type=3,
+            rules=[
+                alicloud.ddos.SchedulerRuleRuleArgs(
+                    priority=100,
+                    region_id="cn-hangzhou",
+                    type="A",
+                    value="127.0.0.1",
+                    value_type=3,
+                ),
+                alicloud.ddos.SchedulerRuleRuleArgs(
+                    priority=50,
+                    region_id="cn-hangzhou",
+                    type="A",
+                    value="127.0.0.0",
+                    value_type=1,
+                ),
+            ])
+        ```
+
         ## Import
 
         DdosCoo Scheduler Rule can be imported using the id or the rule name, e.g.
@@ -317,6 +350,39 @@ class SchedulerRule(pulumi.CustomResource):
         Provides a DdosCoo Scheduler Rule resource. For information about DdosCoo Scheduler Rule and how to use it, see[What is DdosCoo Scheduler Rule](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-createschedulerrule).
 
         > **NOTE:** Available since v1.86.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example = alicloud.ddos.SchedulerRule("example",
+            rule_name=name,
+            rule_type=3,
+            rules=[
+                alicloud.ddos.SchedulerRuleRuleArgs(
+                    priority=100,
+                    region_id="cn-hangzhou",
+                    type="A",
+                    value="127.0.0.1",
+                    value_type=3,
+                ),
+                alicloud.ddos.SchedulerRuleRuleArgs(
+                    priority=50,
+                    region_id="cn-hangzhou",
+                    type="A",
+                    value="127.0.0.0",
+                    value_type=1,
+                ),
+            ])
+        ```
 
         ## Import
 

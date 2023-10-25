@@ -11,6 +11,19 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Currently Datahub service only can be supported in the regions: cn-beijing, cn-hangzhou, cn-shanghai, cn-shenzhen,  ap-southeast-1.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const example = new alicloud.datahub.Project("example", {comment: "created by terraform"});
+ * ```
+ *
  * ## Import
  *
  * Datahub project can be imported using the *name* or ID, e.g.

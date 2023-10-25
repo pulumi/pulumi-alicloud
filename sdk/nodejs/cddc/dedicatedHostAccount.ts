@@ -13,6 +13,63 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Each Dedicated host can have only one account. Before you create an account for a host, make sure that the existing account is deleted.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const defaultZones = alicloud.cddc.getZones({});
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
+ * });
+ * const defaultDedicatedHostGroup = new alicloud.cddc.DedicatedHostGroup("defaultDedicatedHostGroup", {
+ *     engine: "MySQL",
+ *     vpcId: defaultNetwork.id,
+ *     cpuAllocationRatio: 101,
+ *     memAllocationRatio: 50,
+ *     diskAllocationRatio: 200,
+ *     allocationPolicy: "Evenly",
+ *     hostReplacePolicy: "Manual",
+ *     dedicatedHostGroupDesc: name,
+ *     openPermission: true,
+ * });
+ * const defaultHostEcsLevelInfos = defaultZones.then(defaultZones => alicloud.cddc.getHostEcsLevelInfos({
+ *     dbType: "mysql",
+ *     zoneId: defaultZones.ids?.[0],
+ *     storageType: "cloud_essd",
+ * }));
+ * const defaultDedicatedHost = new alicloud.cddc.DedicatedHost("defaultDedicatedHost", {
+ *     hostName: name,
+ *     dedicatedHostGroupId: defaultDedicatedHostGroup.id,
+ *     hostClass: defaultHostEcsLevelInfos.then(defaultHostEcsLevelInfos => defaultHostEcsLevelInfos.infos?.[0]?.resClassCode),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
+ *     vswitchId: defaultSwitch.id,
+ *     paymentType: "Subscription",
+ *     tags: {
+ *         Created: "TF",
+ *         For: "CDDC_DEDICATED",
+ *     },
+ * });
+ * const defaultDedicatedHostAccount = new alicloud.cddc.DedicatedHostAccount("defaultDedicatedHostAccount", {
+ *     accountName: name,
+ *     accountPassword: "Password1234",
+ *     dedicatedHostId: defaultDedicatedHost.dedicatedHostId,
+ *     accountType: "Normal",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ApsaraDB for MyBase Dedicated Host Account can be imported using the id, e.g.

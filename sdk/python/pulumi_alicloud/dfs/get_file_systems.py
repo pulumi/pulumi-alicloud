@@ -99,6 +99,20 @@ def get_file_systems(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.140.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.dfs.get_file_systems(ids=["example_id"])
+    pulumi.export("dfsFileSystemId1", ids.systems[0].id)
+    name_regex = alicloud.dfs.get_file_systems(name_regex="^my-FileSystem")
+    pulumi.export("dfsFileSystemId2", name_regex.systems[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of File System IDs.
     :param str name_regex: A regex string to filter results by File System name.
@@ -129,6 +143,20 @@ def get_file_systems_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     This data source provides the Dfs File Systems of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.140.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.dfs.get_file_systems(ids=["example_id"])
+    pulumi.export("dfsFileSystemId1", ids.systems[0].id)
+    name_regex = alicloud.dfs.get_file_systems(name_regex="^my-FileSystem")
+    pulumi.export("dfsFileSystemId2", name_regex.systems[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of File System IDs.

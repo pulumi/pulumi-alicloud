@@ -16,6 +16,43 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// &gt; **NOTE:** Available since v1.153.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var exampleDhcpOptionsSet = new AliCloud.Vpc.DhcpOptionsSet("exampleDhcpOptionsSet", new()
+    ///     {
+    ///         DhcpOptionsSetName = name,
+    ///         DhcpOptionsSetDescription = name,
+    ///         DomainName = "example.com",
+    ///         DomainNameServers = "100.100.2.136",
+    ///     });
+    /// 
+    ///     var exampleDhcpOptionsSetAttachment = new AliCloud.Vpc.DhcpOptionsSetAttachment("exampleDhcpOptionsSetAttachment", new()
+    ///     {
+    ///         VpcId = exampleNetwork.Id,
+    ///         DhcpOptionsSetId = exampleDhcpOptionsSet.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// VPC Dhcp Options Set Attachment can be imported using the id, e.g.

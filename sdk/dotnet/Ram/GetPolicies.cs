@@ -15,6 +15,35 @@ namespace Pulumi.AliCloud.Ram
         /// This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
         /// 
         /// &gt; **NOTE:** Available since v1.0.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policiesDs = AliCloud.Ram.GetPolicies.Invoke(new()
+        ///     {
+        ///         GroupName = "group1",
+        ///         OutputFile = "policies.txt",
+        ///         Type = "System",
+        ///         UserName = "user1",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstPolicyName"] = policiesDs.Apply(getPoliciesResult =&gt; getPoliciesResult.Policies[0]?.Name),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPoliciesResult> InvokeAsync(GetPoliciesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPoliciesResult>("alicloud:ram/getPolicies:getPolicies", args ?? new GetPoliciesArgs(), options.WithDefaults());
@@ -23,6 +52,35 @@ namespace Pulumi.AliCloud.Ram
         /// This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
         /// 
         /// &gt; **NOTE:** Available since v1.0.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policiesDs = AliCloud.Ram.GetPolicies.Invoke(new()
+        ///     {
+        ///         GroupName = "group1",
+        ///         OutputFile = "policies.txt",
+        ///         Type = "System",
+        ///         UserName = "user1",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstPolicyName"] = policiesDs.Apply(getPoliciesResult =&gt; getPoliciesResult.Policies[0]?.Name),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetPoliciesResult> Invoke(GetPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPoliciesResult>("alicloud:ram/getPolicies:getPolicies", args ?? new GetPoliciesInvokeArgs(), options.WithDefaults());

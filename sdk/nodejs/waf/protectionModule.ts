@@ -11,6 +11,41 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.141.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultInstances = alicloud.waf.getInstances({});
+ * const defaultDomain = new alicloud.waf.Domain("defaultDomain", {
+ *     domainName: "you domain",
+ *     instanceId: defaultInstances.then(defaultInstances => defaultInstances.ids?.[0]),
+ *     isAccessProduct: "On",
+ *     sourceIps: ["1.1.1.1"],
+ *     clusterType: "PhysicalCluster",
+ *     http2Ports: ["443"],
+ *     httpPorts: ["80"],
+ *     httpsPorts: ["443"],
+ *     httpToUserIp: "Off",
+ *     httpsRedirect: "Off",
+ *     loadBalancing: "IpHash",
+ *     logHeaders: [{
+ *         key: "foo",
+ *         value: "http",
+ *     }],
+ * });
+ * const defaultProtectionModule = new alicloud.waf.ProtectionModule("defaultProtectionModule", {
+ *     instanceId: defaultInstances.then(defaultInstances => defaultInstances.ids?.[0]),
+ *     domain: defaultDomain.domainName,
+ *     defenseType: "ac_cc",
+ *     mode: 0,
+ *     status: 0,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Web Application Firewall(WAF) Protection Module can be imported using the id, e.g.

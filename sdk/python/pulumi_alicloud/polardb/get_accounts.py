@@ -96,6 +96,44 @@ def get_accounts(db_cluster_id: Optional[str] = None,
 
     > **NOTE:** Available since v1.70.0+.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    this = alicloud.polardb.get_node_classes(db_type="MySQL",
+        db_version="8.0",
+        pay_type="PostPaid",
+        category="Normal")
+    default_network = alicloud.vpc.Network("defaultNetwork",
+        vpc_name="terraform-example",
+        cidr_block="172.16.0.0/16")
+    default_switch = alicloud.vpc.Switch("defaultSwitch",
+        vpc_id=default_network.id,
+        cidr_block="172.16.0.0/24",
+        zone_id=this.classes[0].zone_id,
+        vswitch_name="terraform-example")
+    cluster = alicloud.polardb.Cluster("cluster",
+        db_type="MySQL",
+        db_version="8.0",
+        pay_type="PostPaid",
+        db_node_count=2,
+        db_node_class=this.classes[0].supported_engines[0].available_resources[0].db_node_class,
+        vswitch_id=default_switch.id)
+    polardb_clusters_ds = alicloud.polardb.get_clusters_output(description_regex=cluster.description,
+        status="Running")
+    account_account = alicloud.polardb.Account("accountAccount",
+        db_cluster_id=polardb_clusters_ds.clusters[0].id,
+        account_name="tfnormal_01",
+        account_password="Test12345",
+        account_description="tf_account_description",
+        account_type="Normal")
+    default_accounts = pulumi.Output.all(polardb_clusters_ds, account_account.account_name).apply(lambda polardb_clusters_ds, account_name: alicloud.polardb.get_accounts_output(db_cluster_id=polardb_clusters_ds.clusters[0].id,
+        name_regex=account_name))
+    pulumi.export("account", default_accounts.accounts[0].account_name)
+    ```
+
 
     :param str db_cluster_id: The polarDB cluster ID.
     :param str name_regex: A regex string to filter results by account name.
@@ -123,6 +161,44 @@ def get_accounts_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
     Filters support regular expression for the account name, searches by clusterId.
 
     > **NOTE:** Available since v1.70.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    this = alicloud.polardb.get_node_classes(db_type="MySQL",
+        db_version="8.0",
+        pay_type="PostPaid",
+        category="Normal")
+    default_network = alicloud.vpc.Network("defaultNetwork",
+        vpc_name="terraform-example",
+        cidr_block="172.16.0.0/16")
+    default_switch = alicloud.vpc.Switch("defaultSwitch",
+        vpc_id=default_network.id,
+        cidr_block="172.16.0.0/24",
+        zone_id=this.classes[0].zone_id,
+        vswitch_name="terraform-example")
+    cluster = alicloud.polardb.Cluster("cluster",
+        db_type="MySQL",
+        db_version="8.0",
+        pay_type="PostPaid",
+        db_node_count=2,
+        db_node_class=this.classes[0].supported_engines[0].available_resources[0].db_node_class,
+        vswitch_id=default_switch.id)
+    polardb_clusters_ds = alicloud.polardb.get_clusters_output(description_regex=cluster.description,
+        status="Running")
+    account_account = alicloud.polardb.Account("accountAccount",
+        db_cluster_id=polardb_clusters_ds.clusters[0].id,
+        account_name="tfnormal_01",
+        account_password="Test12345",
+        account_description="tf_account_description",
+        account_type="Normal")
+    default_accounts = pulumi.Output.all(polardb_clusters_ds, account_account.account_name).apply(lambda polardb_clusters_ds, account_name: alicloud.polardb.get_accounts_output(db_cluster_id=polardb_clusters_ds.clusters[0].id,
+        name_regex=account_name))
+    pulumi.export("account", default_accounts.accounts[0].account_name)
+    ```
 
 
     :param str db_cluster_id: The polarDB cluster ID.

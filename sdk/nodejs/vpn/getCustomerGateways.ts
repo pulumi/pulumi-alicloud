@@ -8,6 +8,22 @@ import * as utilities from "../utilities";
 
 /**
  * The VPN customers gateways data source lists a number of VPN customer gateways resource information owned by an Alicloud account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const foo = alicloud.vpn.getCustomerGateways({
+ *     ids: [
+ *         "fake-id1",
+ *         "fake-id2",
+ *     ],
+ *     nameRegex: "testAcc*",
+ *     outputFile: "/tmp/cgws",
+ * });
+ * ```
  */
 export function getCustomerGateways(args?: GetCustomerGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomerGatewaysResult> {
     args = args || {};
@@ -63,6 +79,22 @@ export interface GetCustomerGatewaysResult {
 }
 /**
  * The VPN customers gateways data source lists a number of VPN customer gateways resource information owned by an Alicloud account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const foo = alicloud.vpn.getCustomerGateways({
+ *     ids: [
+ *         "fake-id1",
+ *         "fake-id2",
+ *     ],
+ *     nameRegex: "testAcc*",
+ *     outputFile: "/tmp/cgws",
+ * });
+ * ```
  */
 export function getCustomerGatewaysOutput(args?: GetCustomerGatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomerGatewaysResult> {
     return pulumi.output(args).apply((a: any) => getCustomerGateways(a, opts))

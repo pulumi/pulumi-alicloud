@@ -21,6 +21,115 @@ import (
 //
 // > **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			sourceRegistryEnterpriseInstance, err := cr.NewRegistryEnterpriseInstance(ctx, "sourceRegistryEnterpriseInstance", &cr.RegistryEnterpriseInstanceArgs{
+//				PaymentType:   pulumi.String("Subscription"),
+//				Period:        pulumi.Int(1),
+//				RenewPeriod:   pulumi.Int(0),
+//				RenewalStatus: pulumi.String("ManualRenewal"),
+//				InstanceType:  pulumi.String("Advanced"),
+//				InstanceName:  pulumi.String(fmt.Sprintf("%v-source", name)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			targetRegistryEnterpriseInstance, err := cr.NewRegistryEnterpriseInstance(ctx, "targetRegistryEnterpriseInstance", &cr.RegistryEnterpriseInstanceArgs{
+//				PaymentType:   pulumi.String("Subscription"),
+//				Period:        pulumi.Int(1),
+//				RenewPeriod:   pulumi.Int(0),
+//				RenewalStatus: pulumi.String("ManualRenewal"),
+//				InstanceType:  pulumi.String("Advanced"),
+//				InstanceName:  pulumi.String(fmt.Sprintf("%v-target", name)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			sourceRegistryEnterpriseNamespace, err := cs.NewRegistryEnterpriseNamespace(ctx, "sourceRegistryEnterpriseNamespace", &cs.RegistryEnterpriseNamespaceArgs{
+//				InstanceId:        sourceRegistryEnterpriseInstance.ID(),
+//				AutoCreate:        pulumi.Bool(false),
+//				DefaultVisibility: pulumi.String("PUBLIC"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			targetRegistryEnterpriseNamespace, err := cs.NewRegistryEnterpriseNamespace(ctx, "targetRegistryEnterpriseNamespace", &cs.RegistryEnterpriseNamespaceArgs{
+//				InstanceId:        targetRegistryEnterpriseInstance.ID(),
+//				AutoCreate:        pulumi.Bool(false),
+//				DefaultVisibility: pulumi.String("PUBLIC"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			sourceRegistryEnterpriseRepo, err := cs.NewRegistryEnterpriseRepo(ctx, "sourceRegistryEnterpriseRepo", &cs.RegistryEnterpriseRepoArgs{
+//				InstanceId: sourceRegistryEnterpriseInstance.ID(),
+//				Namespace:  sourceRegistryEnterpriseNamespace.Name,
+//				Summary:    pulumi.String("this is summary of my new repo"),
+//				RepoType:   pulumi.String("PUBLIC"),
+//				Detail:     pulumi.String("this is a public repo"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			targetRegistryEnterpriseRepo, err := cs.NewRegistryEnterpriseRepo(ctx, "targetRegistryEnterpriseRepo", &cs.RegistryEnterpriseRepoArgs{
+//				InstanceId: targetRegistryEnterpriseInstance.ID(),
+//				Namespace:  targetRegistryEnterpriseNamespace.Name,
+//				Summary:    pulumi.String("this is summary of my new repo"),
+//				RepoType:   pulumi.String("PUBLIC"),
+//				Detail:     pulumi.String("this is a public repo"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cs.NewRegistryEnterpriseSyncRule(ctx, "defaultRegistryEnterpriseSyncRule", &cs.RegistryEnterpriseSyncRuleArgs{
+//				InstanceId:          sourceRegistryEnterpriseInstance.ID(),
+//				NamespaceName:       sourceRegistryEnterpriseNamespace.Name,
+//				TargetRegionId:      *pulumi.String(defaultRegions.Regions[0].Id),
+//				TargetInstanceId:    targetRegistryEnterpriseInstance.ID(),
+//				TargetNamespaceName: targetRegistryEnterpriseNamespace.Name,
+//				TagFilter:           pulumi.String(".*"),
+//				RepoName:            sourceRegistryEnterpriseRepo.Name,
+//				TargetRepoName:      targetRegistryEnterpriseRepo.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Container Registry Enterprise Edition sync rule can be imported using the id. Format to `{instance_id}:{namespace_name}:{rule_id}`, e.g.

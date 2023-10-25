@@ -517,6 +517,50 @@ class VbrPconnAssociation(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.196.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
+        vlan_id = random.RandomInteger("vlanId",
+            max=2999,
+            min=1)
+        example_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter",
+            local_gateway_ip="10.0.0.1",
+            peer_gateway_ip="10.0.0.2",
+            peering_subnet_mask="255.255.255.252",
+            physical_connection_id=example_physical_connections.connections[0].id,
+            virtual_border_router_name=name,
+            vlan_id=vlan_id.id,
+            min_rx_interval=1000,
+            min_tx_interval=1000,
+            detect_multiplier=10,
+            enable_ipv6=True,
+            local_ipv6_gateway_ip="2408:4004:cc:400::1",
+            peer_ipv6_gateway_ip="2408:4004:cc:400::2",
+            peering_ipv6_subnet_mask="2408:4004:cc:400::/56")
+        example_vbr_pconn_association = alicloud.expressconnect.VbrPconnAssociation("exampleVbrPconnAssociation",
+            peer_gateway_ip="10.0.0.6",
+            local_gateway_ip="10.0.0.5",
+            physical_connection_id=example_physical_connections.connections[2].id,
+            vbr_id=example_virtual_border_router.id,
+            peering_subnet_mask="255.255.255.252",
+            vlan_id=vlan_id.id.apply(lambda id: id + 2),
+            enable_ipv6=True,
+            local_ipv6_gateway_ip="2408:4004:cc::3",
+            peer_ipv6_gateway_ip="2408:4004:cc::4",
+            peering_ipv6_subnet_mask="2408:4004:cc::/56")
+        ```
+
         ## Import
 
         Express Connect Vbr Pconn Association can be imported using the id, e.g.
@@ -552,6 +596,50 @@ class VbrPconnAssociation(pulumi.CustomResource):
         For information about Express Connect Vbr Pconn Association and how to use it, see [What is Vbr Pconn Association](https://www.alibabacloud.com/help/en/express-connect/latest/associatephysicalconnectiontovirtualborderrouter#doc-api-Vpc-AssociatePhysicalConnectionToVirtualBorderRouter).
 
         > **NOTE:** Available since v1.196.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
+        vlan_id = random.RandomInteger("vlanId",
+            max=2999,
+            min=1)
+        example_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter",
+            local_gateway_ip="10.0.0.1",
+            peer_gateway_ip="10.0.0.2",
+            peering_subnet_mask="255.255.255.252",
+            physical_connection_id=example_physical_connections.connections[0].id,
+            virtual_border_router_name=name,
+            vlan_id=vlan_id.id,
+            min_rx_interval=1000,
+            min_tx_interval=1000,
+            detect_multiplier=10,
+            enable_ipv6=True,
+            local_ipv6_gateway_ip="2408:4004:cc:400::1",
+            peer_ipv6_gateway_ip="2408:4004:cc:400::2",
+            peering_ipv6_subnet_mask="2408:4004:cc:400::/56")
+        example_vbr_pconn_association = alicloud.expressconnect.VbrPconnAssociation("exampleVbrPconnAssociation",
+            peer_gateway_ip="10.0.0.6",
+            local_gateway_ip="10.0.0.5",
+            physical_connection_id=example_physical_connections.connections[2].id,
+            vbr_id=example_virtual_border_router.id,
+            peering_subnet_mask="255.255.255.252",
+            vlan_id=vlan_id.id.apply(lambda id: id + 2),
+            enable_ipv6=True,
+            local_ipv6_gateway_ip="2408:4004:cc::3",
+            peer_ipv6_gateway_ip="2408:4004:cc::4",
+            peering_ipv6_subnet_mask="2408:4004:cc::/56")
+        ```
 
         ## Import
 

@@ -105,6 +105,17 @@ def get_ip_info(ip: Optional[str] = None,
 
     > **NOTE:** Available in v1.153.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ip_test = alicloud.cdn.get_ip_info(ip="114.114.114.114")
+    ```
+
 
     :param str ip: Specify IP address.
     """
@@ -130,6 +141,17 @@ def get_ip_info_output(ip: Optional[pulumi.Input[str]] = None,
     This data source provides the function of verifying whether an IP is a CDN node.
 
     > **NOTE:** Available in v1.153.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ip_test = alicloud.cdn.get_ip_info(ip="114.114.114.114")
+    ```
 
 
     :param str ip: Specify IP address.

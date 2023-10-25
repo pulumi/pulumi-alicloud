@@ -15,6 +15,37 @@ namespace Pulumi.AliCloud.DBS
         /// This data source provides the Dbs Backup Plans of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.185.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.DBS.GetBackupPlans.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.DBS.GetBackupPlans.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-BackupPlan",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dbsBackupPlanId1"] = ids.Apply(getBackupPlansResult =&gt; getBackupPlansResult.Plans[0]?.Id),
+        ///         ["dbsBackupPlanId2"] = nameRegex.Apply(getBackupPlansResult =&gt; getBackupPlansResult.Plans[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetBackupPlansResult> InvokeAsync(GetBackupPlansArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBackupPlansResult>("alicloud:dbs/getBackupPlans:getBackupPlans", args ?? new GetBackupPlansArgs(), options.WithDefaults());
@@ -23,6 +54,37 @@ namespace Pulumi.AliCloud.DBS
         /// This data source provides the Dbs Backup Plans of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.185.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.DBS.GetBackupPlans.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.DBS.GetBackupPlans.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-BackupPlan",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dbsBackupPlanId1"] = ids.Apply(getBackupPlansResult =&gt; getBackupPlansResult.Plans[0]?.Id),
+        ///         ["dbsBackupPlanId2"] = nameRegex.Apply(getBackupPlansResult =&gt; getBackupPlansResult.Plans[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetBackupPlansResult> Invoke(GetBackupPlansInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBackupPlansResult>("alicloud:dbs/getBackupPlans:getBackupPlans", args ?? new GetBackupPlansInvokeArgs(), options.WithDefaults());

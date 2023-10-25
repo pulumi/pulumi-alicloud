@@ -15,6 +15,35 @@ import (
 // This data source provides Auto Snapshot Policies available to the user.
 //
 // > **NOTE**: Available in v1.153.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := nas.GetAutoSnapshotPolicies(ctx, &nas.GetAutoSnapshotPoliciesArgs{
+//				Ids: []string{
+//					"example_value",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("nasAutoSnapshotPoliciesId1", ids.Policies[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetAutoSnapshotPolicies(ctx *pulumi.Context, args *GetAutoSnapshotPoliciesArgs, opts ...pulumi.InvokeOption) (*GetAutoSnapshotPoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAutoSnapshotPoliciesResult

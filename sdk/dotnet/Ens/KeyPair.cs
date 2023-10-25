@@ -16,6 +16,29 @@ namespace Pulumi.AliCloud.Ens
     /// 
     /// &gt; **NOTE:** Available since v1.133.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var example = new AliCloud.Ens.KeyPair("example", new()
+    ///     {
+    ///         KeyPairName = name,
+    ///         Version = "2017-11-10",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ENS Key Pair can be imported using the id, e.g.

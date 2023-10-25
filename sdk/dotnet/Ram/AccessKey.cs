@@ -17,6 +17,68 @@ namespace Pulumi.AliCloud.Ram
     /// &gt; **NOTE:**  From version 1.98.0, if not set `pgp_key`, the resource will output the access key secret to field `secret` and please protect your backend state file judiciously
     /// 
     /// &gt; **NOTE:** Available since v1.0.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Output the secret to a file.
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new RAM access key for user.
+    ///     var user = new AliCloud.Ram.User("user", new()
+    ///     {
+    ///         DisplayName = "user_display_name",
+    ///         Mobile = "86-18688888888",
+    ///         Email = "hello.uuu@aaa.com",
+    ///         Comments = "yoyoyo",
+    ///         Force = true,
+    ///     });
+    /// 
+    ///     var ak = new AliCloud.Ram.AccessKey("ak", new()
+    ///     {
+    ///         UserName = user.Name,
+    ///         SecretFile = "/xxx/xxx/xxx.txt",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Using `pgp_key` to encrypt the secret.
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new RAM access key for user.
+    ///     var user = new AliCloud.Ram.User("user", new()
+    ///     {
+    ///         DisplayName = "user_display_name",
+    ///         Mobile = "86-18688888888",
+    ///         Email = "hello.uuu@aaa.com",
+    ///         Comments = "yoyoyo",
+    ///         Force = true,
+    ///     });
+    /// 
+    ///     var encrypt = new AliCloud.Ram.AccessKey("encrypt", new()
+    ///     {
+    ///         UserName = user.Name,
+    ///         PgpKey = "keybase:some_person_that_exists",
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["secret"] = encrypt.EncryptedSecret,
+    ///     };
+    /// });
+    /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ram/accessKey:AccessKey")]
     public partial class AccessKey : global::Pulumi.CustomResource

@@ -169,6 +169,19 @@ def get_monitor_groups(dynamic_tag_rule_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.113.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cms.get_monitor_groups(ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstCmsMonitorGroupId", example.groups[0].id)
+    ```
+
 
     :param str dynamic_tag_rule_id: The ID of the tag rule.
     :param Sequence[str] ids: A list of Monitor Group IDs.
@@ -227,6 +240,19 @@ def get_monitor_groups_output(dynamic_tag_rule_id: Optional[pulumi.Input[Optiona
     This data source provides the Cms Monitor Groups of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.113.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cms.get_monitor_groups(ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstCmsMonitorGroupId", example.groups[0].id)
+    ```
 
 
     :param str dynamic_tag_rule_id: The ID of the tag rule.

@@ -592,6 +592,41 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.126.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_instance = alicloud.cen.Instance("defaultInstance",
+            cen_instance_name=name,
+            protection_level="REDUCED")
+        default_transit_router = alicloud.cen.TransitRouter("defaultTransitRouter", cen_id=default_instance.id)
+        name_regex = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
+        default_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("defaultVirtualBorderRouter",
+            local_gateway_ip="10.0.0.1",
+            peer_gateway_ip="10.0.0.2",
+            peering_subnet_mask="255.255.255.252",
+            physical_connection_id=name_regex.connections[0].id,
+            virtual_border_router_name=name,
+            vlan_id=2420,
+            min_rx_interval=1000,
+            min_tx_interval=1000,
+            detect_multiplier=10)
+        default_transit_router_vbr_attachment = alicloud.cen.TransitRouterVbrAttachment("defaultTransitRouterVbrAttachment",
+            transit_router_id=default_transit_router.transit_router_id,
+            transit_router_attachment_name="example",
+            transit_router_attachment_description="example",
+            vbr_id=default_virtual_border_router.id,
+            cen_id=default_instance.id)
+        ```
+
         ## Import
 
         CEN transit router VBR attachment can be imported using the id, e.g.
@@ -627,6 +662,41 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
         Provides a CEN transit router VBR attachment resource that associate the VBR with the CEN instance.[What is Cen Transit Router VBR Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervbrattachment)
 
         > **NOTE:** Available since v1.126.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_instance = alicloud.cen.Instance("defaultInstance",
+            cen_instance_name=name,
+            protection_level="REDUCED")
+        default_transit_router = alicloud.cen.TransitRouter("defaultTransitRouter", cen_id=default_instance.id)
+        name_regex = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
+        default_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("defaultVirtualBorderRouter",
+            local_gateway_ip="10.0.0.1",
+            peer_gateway_ip="10.0.0.2",
+            peering_subnet_mask="255.255.255.252",
+            physical_connection_id=name_regex.connections[0].id,
+            virtual_border_router_name=name,
+            vlan_id=2420,
+            min_rx_interval=1000,
+            min_tx_interval=1000,
+            detect_multiplier=10)
+        default_transit_router_vbr_attachment = alicloud.cen.TransitRouterVbrAttachment("defaultTransitRouterVbrAttachment",
+            transit_router_id=default_transit_router.transit_router_id,
+            transit_router_attachment_name="example",
+            transit_router_attachment_description="example",
+            vbr_id=default_virtual_border_router.id,
+            cen_id=default_instance.id)
+        ```
 
         ## Import
 

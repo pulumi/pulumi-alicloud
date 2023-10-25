@@ -249,6 +249,23 @@ class ResourceGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.82.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        example = alicloud.resourcemanager.ResourceGroup("example",
+            resource_group_name=name,
+            display_name=name)
+        ```
+
         ## Import
 
         Resource Manager Resource Group can be imported using the id, e.g.
@@ -274,6 +291,23 @@ class ResourceGroup(pulumi.CustomResource):
         For information about Resource Manager Resoource Group and how to use it, see [What is Resource Manager Resource Group](https://www.alibabacloud.com/help/en/doc-detail/94485.htm)
 
         > **NOTE:** Available since v1.82.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        example = alicloud.resourcemanager.ResourceGroup("example",
+            resource_group_name=name,
+            display_name=name)
+        ```
 
         ## Import
 

@@ -19,6 +19,135 @@ import (
 //
 // > **NOTE:** Available since v1.205.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/compute"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "tfexample";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil);
+// if err != nil {
+// return err
+// }
+// defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// AvailableDiskCategory: pulumi.StringRef("cloud_efficiency"),
+// AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+// AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+// InstanceTypeFamily: pulumi.StringRef("ecs.sn1ne"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+// NameRegex: pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
+// Owners: pulumi.StringRef("system"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// VpcName: pulumi.String(name),
+// CidrBlock: pulumi.String("10.0.0.0/8"),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+// VswitchName: pulumi.String(name),
+// CidrBlock: pulumi.String("10.1.0.0/16"),
+// VpcId: defaultNetwork.ID(),
+// ZoneId: *pulumi.String(defaultZones.Zones[0].Id),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+// VpcId: defaultNetwork.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// var splat0 pulumi.StringArray
+// for _, val0 := range %!v(PANIC=Format method: fatal: An assertion has failed: tok: ) {
+// splat0 = append(splat0, val0.ID())
+// }
+// defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
+// ImageId: *pulumi.String(defaultImages.Images[0].Id),
+// InstanceType: *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+// SecurityGroups: splat0,
+// InternetChargeType: pulumi.String("PayByTraffic"),
+// InternetMaxBandwidthOut: pulumi.Int(10),
+// AvailabilityZone: *pulumi.String(defaultZones.Zones[0].Id),
+// InstanceChargeType: pulumi.String("PostPaid"),
+// SystemDiskCategory: pulumi.String("cloud_efficiency"),
+// VswitchId: defaultSwitch.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// _, err = compute.NewNestServiceInstance(ctx, "defaultNestServiceInstance", &compute.NestServiceInstanceArgs{
+// ServiceId: pulumi.String("service-dd475e6e468348799f0f"),
+// ServiceVersion: pulumi.String("1"),
+// ServiceInstanceName: pulumi.String(name),
+// ResourceGroupId: *pulumi.String(defaultResourceGroups.Groups[0].Id),
+// PaymentType: pulumi.String("Permanent"),
+// OperationMetadata: &compute.NestServiceInstanceOperationMetadataArgs{
+// OperationStartTime: pulumi.String("1681281179000"),
+// OperationEndTime: pulumi.String("1681367579000"),
+// Resources: defaultInstance.ID().ApplyT(func(id string) (string, error) {
+//
+//	return fmt.Sprintf(`    {
+//	      "Type": "ResourceIds",
+//	      "RegionId": "cn-hangzhou",
+//	      "ResourceIds": {
+//	      "ALIYUN::ECS::INSTANCE": [
+//	        "%v"
+//	        ]
+//	      }
+//	    }
+//
+// `, id), nil
+// }).(pulumi.StringOutput),
+// },
+// Tags: pulumi.Map{
+// "Created": pulumi.Any("TF"),
+// "For": pulumi.Any("ServiceInstance"),
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
+//
 // ## Import
 //
 // Compute Nest Service Instance can be imported using the id, e.g.

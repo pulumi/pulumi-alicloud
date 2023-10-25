@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides the Eipanycast Anycast Eip Addresses of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.113.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.eipanycast.getAnycastEipAddresses({
+ *     ids: ["example_value"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstEipanycastAnycastEipAddressId = example.then(example => example.addresses?.[0]?.id);
+ * ```
  */
 export function getAnycastEipAddresses(args?: GetAnycastEipAddressesArgs, opts?: pulumi.InvokeOptions): Promise<GetAnycastEipAddressesResult> {
     args = args || {};
@@ -106,6 +121,21 @@ export interface GetAnycastEipAddressesResult {
  * This data source provides the Eipanycast Anycast Eip Addresses of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.113.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.eipanycast.getAnycastEipAddresses({
+ *     ids: ["example_value"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstEipanycastAnycastEipAddressId = example.then(example => example.addresses?.[0]?.id);
+ * ```
  */
 export function getAnycastEipAddressesOutput(args?: GetAnycastEipAddressesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAnycastEipAddressesResult> {
     return pulumi.output(args).apply((a: any) => getAnycastEipAddresses(a, opts))

@@ -436,6 +436,34 @@ class Role(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.0.0+.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new RAM Role.
+        role = alicloud.ram.Role("role",
+            description="this is a role test.",
+            document=\"\"\"  {
+            "Statement": [
+              {
+                "Action": "sts:AssumeRole",
+                "Effect": "Allow",
+                "Principal": {
+                  "Service": [
+                    "apigateway.aliyuncs.com", 
+                    "ecs.aliyuncs.com"
+                  ]
+                }
+              }
+            ],
+            "Version": "1"
+          }
+          
+        \"\"\")
+        ```
+
         ## Import
 
         RAM role can be imported using the id or name, e.g.
@@ -467,6 +495,34 @@ class Role(pulumi.CustomResource):
         > **NOTE:** When you want to destroy this resource forcefully(means remove all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
 
         > **NOTE:** Available since v1.0.0+.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new RAM Role.
+        role = alicloud.ram.Role("role",
+            description="this is a role test.",
+            document=\"\"\"  {
+            "Statement": [
+              {
+                "Action": "sts:AssumeRole",
+                "Effect": "Allow",
+                "Principal": {
+                  "Service": [
+                    "apigateway.aliyuncs.com", 
+                    "ecs.aliyuncs.com"
+                  ]
+                }
+              }
+            ],
+            "Version": "1"
+          }
+          
+        \"\"\")
+        ```
 
         ## Import
 

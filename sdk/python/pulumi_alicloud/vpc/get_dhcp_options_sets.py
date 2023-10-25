@@ -129,6 +129,28 @@ def get_dhcp_options_sets(dhcp_options_set_name: Optional[str] = None,
 
     > **NOTE:** Available in v1.134.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.vpc.get_dhcp_options_sets(ids=["example_value"])
+    pulumi.export("vpcDhcpOptionsSetId1", ids.sets[0].id)
+    name_regex = alicloud.vpc.get_dhcp_options_sets(name_regex="^my-DhcpOptionsSet")
+    pulumi.export("vpcDhcpOptionsSetId2", name_regex.sets[0].id)
+    dhcp_options_set_name = alicloud.vpc.get_dhcp_options_sets(dhcp_options_set_name="my-DhcpOptionsSet")
+    pulumi.export("vpcDhcpOptionsSetId3", dhcp_options_set_name.sets[0].id)
+    domain_name = alicloud.vpc.get_dhcp_options_sets(ids=["example_value"],
+        domain_name="example.com")
+    pulumi.export("vpcDhcpOptionsSetId4", domain_name.sets[0].id)
+    status = alicloud.vpc.get_dhcp_options_sets(ids=["example_value"],
+        status="Available")
+    pulumi.export("vpcDhcpOptionsSetId5", status.sets[0].id)
+    ```
+
 
     :param str dhcp_options_set_name: The root domain, for example, example.com. After a DHCP options set is associated with a
            Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the
@@ -175,6 +197,28 @@ def get_dhcp_options_sets_output(dhcp_options_set_name: Optional[pulumi.Input[Op
     This data source provides the Vpc Dhcp Options Sets of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.134.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.vpc.get_dhcp_options_sets(ids=["example_value"])
+    pulumi.export("vpcDhcpOptionsSetId1", ids.sets[0].id)
+    name_regex = alicloud.vpc.get_dhcp_options_sets(name_regex="^my-DhcpOptionsSet")
+    pulumi.export("vpcDhcpOptionsSetId2", name_regex.sets[0].id)
+    dhcp_options_set_name = alicloud.vpc.get_dhcp_options_sets(dhcp_options_set_name="my-DhcpOptionsSet")
+    pulumi.export("vpcDhcpOptionsSetId3", dhcp_options_set_name.sets[0].id)
+    domain_name = alicloud.vpc.get_dhcp_options_sets(ids=["example_value"],
+        domain_name="example.com")
+    pulumi.export("vpcDhcpOptionsSetId4", domain_name.sets[0].id)
+    status = alicloud.vpc.get_dhcp_options_sets(ids=["example_value"],
+        status="Available")
+    pulumi.export("vpcDhcpOptionsSetId5", status.sets[0].id)
+    ```
 
 
     :param str dhcp_options_set_name: The root domain, for example, example.com. After a DHCP options set is associated with a

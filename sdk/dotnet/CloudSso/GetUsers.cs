@@ -17,6 +17,68 @@ namespace Pulumi.AliCloud.CloudSso
         /// &gt; **NOTE:** Available in v1.140.0+.
         /// 
         /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.CloudSso.GetUsers.Invoke(new()
+        ///     {
+        ///         DirectoryId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.CloudSso.GetUsers.Invoke(new()
+        ///     {
+        ///         DirectoryId = "example_value",
+        ///         NameRegex = "^my-User",
+        ///     });
+        /// 
+        ///     var provisionType = AliCloud.CloudSso.GetUsers.Invoke(new()
+        ///     {
+        ///         DirectoryId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///         },
+        ///         ProvisionType = "Manual",
+        ///     });
+        /// 
+        ///     var status = AliCloud.CloudSso.GetUsers.Invoke(new()
+        ///     {
+        ///         DirectoryId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///         },
+        ///         Status = "Enabled",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cloudSsoUserId1"] = ids.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Id),
+        ///         ["cloudSsoUserId2"] = nameRegex.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Id),
+        ///         ["cloudSsoUserId3"] = provisionType.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Id),
+        ///         ["cloudSsoUserId4"] = status.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetUsersResult> InvokeAsync(GetUsersArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUsersResult>("alicloud:cloudsso/getUsers:getUsers", args ?? new GetUsersArgs(), options.WithDefaults());
@@ -27,6 +89,68 @@ namespace Pulumi.AliCloud.CloudSso
         /// &gt; **NOTE:** Available in v1.140.0+.
         /// 
         /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.CloudSso.GetUsers.Invoke(new()
+        ///     {
+        ///         DirectoryId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.CloudSso.GetUsers.Invoke(new()
+        ///     {
+        ///         DirectoryId = "example_value",
+        ///         NameRegex = "^my-User",
+        ///     });
+        /// 
+        ///     var provisionType = AliCloud.CloudSso.GetUsers.Invoke(new()
+        ///     {
+        ///         DirectoryId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///         },
+        ///         ProvisionType = "Manual",
+        ///     });
+        /// 
+        ///     var status = AliCloud.CloudSso.GetUsers.Invoke(new()
+        ///     {
+        ///         DirectoryId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///         },
+        ///         Status = "Enabled",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cloudSsoUserId1"] = ids.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Id),
+        ///         ["cloudSsoUserId2"] = nameRegex.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Id),
+        ///         ["cloudSsoUserId3"] = provisionType.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Id),
+        ///         ["cloudSsoUserId4"] = status.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetUsersResult> Invoke(GetUsersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUsersResult>("alicloud:cloudsso/getUsers:getUsers", args ?? new GetUsersInvokeArgs(), options.WithDefaults());

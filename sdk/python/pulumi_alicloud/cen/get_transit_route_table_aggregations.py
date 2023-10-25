@@ -144,6 +144,22 @@ def get_transit_route_table_aggregations(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.202.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cen.get_transit_route_table_aggregations(ids=["example_id"],
+        transit_route_table_id="your_transit_route_table_id")
+    pulumi.export("cenTransitRouterMulticastDomainId0", ids.transit_route_table_aggregations[0].id)
+    name_regex = alicloud.cen.get_transit_route_table_aggregations(name_regex="^my-name",
+        transit_route_table_id="your_transit_route_table_id")
+    pulumi.export("cenTransitRouterMulticastDomainId1", name_regex.transit_route_table_aggregations[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Transit Route Table Aggregation IDs.
     :param str name_regex: A regex string to filter results by Transit Route Table Aggregation name.
@@ -186,6 +202,22 @@ def get_transit_route_table_aggregations_output(ids: Optional[pulumi.Input[Optio
     This data source provides the Cen Transit Route Table Aggregations of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.202.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cen.get_transit_route_table_aggregations(ids=["example_id"],
+        transit_route_table_id="your_transit_route_table_id")
+    pulumi.export("cenTransitRouterMulticastDomainId0", ids.transit_route_table_aggregations[0].id)
+    name_regex = alicloud.cen.get_transit_route_table_aggregations(name_regex="^my-name",
+        transit_route_table_id="your_transit_route_table_id")
+    pulumi.export("cenTransitRouterMulticastDomainId1", name_regex.transit_route_table_aggregations[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Transit Route Table Aggregation IDs.

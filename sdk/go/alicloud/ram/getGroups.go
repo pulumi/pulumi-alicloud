@@ -15,6 +15,35 @@ import (
 // This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
 //
 // > **NOTE:** Available since v1.0.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			groupsDs, err := ram.GetGroups(ctx, &ram.GetGroupsArgs{
+//				NameRegex:  pulumi.StringRef("^group[0-9]*"),
+//				OutputFile: pulumi.StringRef("groups.txt"),
+//				UserName:   pulumi.StringRef("user1"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstGroupName", groupsDs.Groups[0].Name)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetGroups(ctx *pulumi.Context, args *GetGroupsArgs, opts ...pulumi.InvokeOption) (*GetGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGroupsResult

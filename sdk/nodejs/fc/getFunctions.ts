@@ -8,6 +8,19 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides the Function Compute functions of the current Alibaba Cloud user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const functionsDs = alicloud.fc.getFunctions({
+ *     nameRegex: "sample_fc_function",
+ *     serviceName: "sample_service",
+ * });
+ * export const firstFcFunctionName = functionsDs.then(functionsDs => functionsDs.functions?.[0]?.name);
+ * ```
  */
 export function getFunctions(args: GetFunctionsArgs, opts?: pulumi.InvokeOptions): Promise<GetFunctionsResult> {
 
@@ -68,6 +81,19 @@ export interface GetFunctionsResult {
 }
 /**
  * This data source provides the Function Compute functions of the current Alibaba Cloud user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const functionsDs = alicloud.fc.getFunctions({
+ *     nameRegex: "sample_fc_function",
+ *     serviceName: "sample_service",
+ * });
+ * export const firstFcFunctionName = functionsDs.then(functionsDs => functionsDs.functions?.[0]?.name);
+ * ```
  */
 export function getFunctionsOutput(args: GetFunctionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFunctionsResult> {
     return pulumi.output(args).apply((a: any) => getFunctions(a, opts))

@@ -14,6 +14,60 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// Provides an Alicloud ECS Disk Attachment as a resource, to attach and detach disks from ECS Instances.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new ECS disk-attachment and use it attach one disk to a new instance.
+    ///     var ecsSg = new AliCloud.Ecs.SecurityGroup("ecsSg", new()
+    ///     {
+    ///         Description = "New security group",
+    ///     });
+    /// 
+    ///     var ecsDisk = new AliCloud.Ecs.Disk("ecsDisk", new()
+    ///     {
+    ///         AvailabilityZone = "cn-beijing-a",
+    ///         Size = 50,
+    ///         Tags = 
+    ///         {
+    ///             { "Name", "TerraformTest-disk" },
+    ///         },
+    ///     });
+    /// 
+    ///     var ecsInstance = new AliCloud.Ecs.Instance("ecsInstance", new()
+    ///     {
+    ///         ImageId = "ubuntu_18_04_64_20G_alibase_20190624.vhd",
+    ///         InstanceType = "ecs.n4.small",
+    ///         AvailabilityZone = "cn-beijing-a",
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             ecsSg.Id,
+    ///         },
+    ///         InstanceName = "Hello",
+    ///         InternetChargeType = "PayByBandwidth",
+    ///         Tags = 
+    ///         {
+    ///             { "Name", "TerraformTest-instance" },
+    ///         },
+    ///     });
+    /// 
+    ///     var ecsDiskAtt = new AliCloud.Ecs.DiskAttachment("ecsDiskAtt", new()
+    ///     {
+    ///         DiskId = ecsDisk.Id,
+    ///         InstanceId = ecsInstance.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// The disk attachment can be imported using the id, e.g.

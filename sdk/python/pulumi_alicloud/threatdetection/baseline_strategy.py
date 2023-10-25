@@ -445,6 +445,24 @@ class BaselineStrategy(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.195.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.threatdetection.BaselineStrategy("default",
+            baseline_strategy_name="apispec",
+            custom_type="custom",
+            cycle_days=3,
+            end_time="08:00:00",
+            risk_sub_type_name="hc_exploit_redis",
+            start_time="05:00:00",
+            target_type="groupId")
+        ```
+
         ## Import
 
         Threat Detection Baseline Strategy can be imported using the id, e.g.
@@ -484,6 +502,24 @@ class BaselineStrategy(pulumi.CustomResource):
         For information about Threat Detection Baseline Strategy and how to use it, see [What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-modifystrategy).
 
         > **NOTE:** Available since v1.195.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.threatdetection.BaselineStrategy("default",
+            baseline_strategy_name="apispec",
+            custom_type="custom",
+            cycle_days=3,
+            end_time="08:00:00",
+            risk_sub_type_name="hc_exploit_redis",
+            start_time="05:00:00",
+            target_type="groupId")
+        ```
 
         ## Import
 

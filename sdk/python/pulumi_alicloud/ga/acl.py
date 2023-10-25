@@ -292,6 +292,23 @@ class Acl(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.150.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_acl = alicloud.ga.Acl("defaultAcl",
+            acl_name="terraform-example",
+            address_ip_version="IPv4")
+        default_acl_entry_attachment = alicloud.ga.AclEntryAttachment("defaultAclEntryAttachment",
+            acl_id=default_acl.id,
+            entry="192.168.1.1/32",
+            entry_description="terraform-example")
+        ```
+
         ## Import
 
         Global Accelerator (GA) Acl can be imported using the id, e.g.
@@ -320,6 +337,23 @@ class Acl(pulumi.CustomResource):
         For information about Global Accelerator (GA) Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createacl).
 
         > **NOTE:** Available since v1.150.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_acl = alicloud.ga.Acl("defaultAcl",
+            acl_name="terraform-example",
+            address_ip_version="IPv4")
+        default_acl_entry_attachment = alicloud.ga.AclEntryAttachment("defaultAclEntryAttachment",
+            acl_id=default_acl.id,
+            entry="192.168.1.1/32",
+            entry_description="terraform-example")
+        ```
 
         ## Import
 

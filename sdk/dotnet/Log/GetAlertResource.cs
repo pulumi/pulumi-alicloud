@@ -17,6 +17,35 @@ namespace Pulumi.AliCloud.Log
         /// For information about SLS Alert and how to use it, see [SLS Alert Overview](https://www.alibabacloud.com/help/en/doc-detail/209202.html)
         /// 
         /// &gt; **NOTE:** Available in v1.161.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleUser = AliCloud.Log.GetAlertResource.Invoke(new()
+        ///     {
+        ///         Lang = "cn",
+        ///         Type = "user",
+        ///     });
+        /// 
+        ///     var exampleProject = AliCloud.Log.GetAlertResource.Invoke(new()
+        ///     {
+        ///         Project = "test-alert-tf",
+        ///         Type = "project",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAlertResourceResult> InvokeAsync(GetAlertResourceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAlertResourceResult>("alicloud:log/getAlertResource:getAlertResource", args ?? new GetAlertResourceArgs(), options.WithDefaults());
@@ -27,6 +56,35 @@ namespace Pulumi.AliCloud.Log
         /// For information about SLS Alert and how to use it, see [SLS Alert Overview](https://www.alibabacloud.com/help/en/doc-detail/209202.html)
         /// 
         /// &gt; **NOTE:** Available in v1.161.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleUser = AliCloud.Log.GetAlertResource.Invoke(new()
+        ///     {
+        ///         Lang = "cn",
+        ///         Type = "user",
+        ///     });
+        /// 
+        ///     var exampleProject = AliCloud.Log.GetAlertResource.Invoke(new()
+        ///     {
+        ///         Project = "test-alert-tf",
+        ///         Type = "project",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAlertResourceResult> Invoke(GetAlertResourceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAlertResourceResult>("alicloud:log/getAlertResource:getAlertResource", args ?? new GetAlertResourceInvokeArgs(), options.WithDefaults());

@@ -100,6 +100,18 @@ def get_state_configurations(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.147.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.oos.get_state_configurations()
+    pulumi.export("oosStateConfigurationId1", ids.configurations[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of State Configuration IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -133,6 +145,18 @@ def get_state_configurations_output(ids: Optional[pulumi.Input[Optional[Sequence
     This data source provides the Oos State Configurations of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.147.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.oos.get_state_configurations()
+    pulumi.export("oosStateConfigurationId1", ids.configurations[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of State Configuration IDs.

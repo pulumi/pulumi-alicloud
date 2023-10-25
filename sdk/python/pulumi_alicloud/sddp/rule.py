@@ -652,6 +652,26 @@ class Rule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.132.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example_name"
+        default = alicloud.sddp.Rule("default",
+            category=0,
+            content="content",
+            rule_name=name,
+            risk_level_id="4",
+            product_code="OSS")
+        ```
+
         ## Import
 
         Data Security Center Rule can be imported using the id, e.g.
@@ -690,6 +710,26 @@ class Rule(pulumi.CustomResource):
         For information about Data Security Center Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/data-security-center/latest/api-sddp-2019-01-03-createrule).
 
         > **NOTE:** Available since v1.132.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example_name"
+        default = alicloud.sddp.Rule("default",
+            category=0,
+            content="content",
+            rule_name=name,
+            risk_level_id="4",
+            product_code="OSS")
+        ```
 
         ## Import
 

@@ -15,6 +15,34 @@ namespace Pulumi.AliCloud.Pvtz
         /// This data source provides the available zones with the Private Zone Resolver of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.143.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Pvtz.GetResolverZones.Invoke(new()
+        ///     {
+        ///         Status = "NORMAL",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstZonesId"] = @default.Apply(@default =&gt; @default.Apply(getResolverZonesResult =&gt; getResolverZonesResult.Zones[0]?.ZoneId)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetResolverZonesResult> InvokeAsync(GetResolverZonesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetResolverZonesResult>("alicloud:pvtz/getResolverZones:getResolverZones", args ?? new GetResolverZonesArgs(), options.WithDefaults());
@@ -23,6 +51,34 @@ namespace Pulumi.AliCloud.Pvtz
         /// This data source provides the available zones with the Private Zone Resolver of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.143.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Pvtz.GetResolverZones.Invoke(new()
+        ///     {
+        ///         Status = "NORMAL",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstZonesId"] = @default.Apply(@default =&gt; @default.Apply(getResolverZonesResult =&gt; getResolverZonesResult.Zones[0]?.ZoneId)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetResolverZonesResult> Invoke(GetResolverZonesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetResolverZonesResult>("alicloud:pvtz/getResolverZones:getResolverZones", args ?? new GetResolverZonesInvokeArgs(), options.WithDefaults());

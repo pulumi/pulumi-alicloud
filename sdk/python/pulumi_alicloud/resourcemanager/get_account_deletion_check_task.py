@@ -113,6 +113,18 @@ def get_account_deletion_check_task(account_id: Optional[str] = None,
 
     > **NOTE:** The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    task = alicloud.resourcemanager.get_account_deletion_check_task(account_id="your_account_id")
+    pulumi.export("abandonAbleChecksIds", [__item.check_id for __item in task.abandon_able_checks])
+    ```
+
 
     :param str account_id: The ID of the member that you want to delete.
     """
@@ -141,6 +153,18 @@ def get_account_deletion_check_task_output(account_id: Optional[pulumi.Input[str
     > **NOTE:** Available in v1.187.0+.
 
     > **NOTE:** The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    task = alicloud.resourcemanager.get_account_deletion_check_task(account_id="your_account_id")
+    pulumi.export("abandonAbleChecksIds", [__item.check_id for __item in task.abandon_able_checks])
+    ```
 
 
     :param str account_id: The ID of the member that you want to delete.

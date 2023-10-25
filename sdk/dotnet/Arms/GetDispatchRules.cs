@@ -15,6 +15,37 @@ namespace Pulumi.AliCloud.Arms
         /// This data source provides the Arms Dispatch Rules of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.136.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Arms.GetDispatchRules.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.Arms.GetDispatchRules.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-DispatchRule",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["armsDispatchRuleId1"] = ids.Apply(getDispatchRulesResult =&gt; getDispatchRulesResult.Rules[0]?.Id),
+        ///         ["armsDispatchRuleId2"] = nameRegex.Apply(getDispatchRulesResult =&gt; getDispatchRulesResult.Rules[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDispatchRulesResult> InvokeAsync(GetDispatchRulesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDispatchRulesResult>("alicloud:arms/getDispatchRules:getDispatchRules", args ?? new GetDispatchRulesArgs(), options.WithDefaults());
@@ -23,6 +54,37 @@ namespace Pulumi.AliCloud.Arms
         /// This data source provides the Arms Dispatch Rules of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.136.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Arms.GetDispatchRules.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.Arms.GetDispatchRules.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-DispatchRule",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["armsDispatchRuleId1"] = ids.Apply(getDispatchRulesResult =&gt; getDispatchRulesResult.Rules[0]?.Id),
+        ///         ["armsDispatchRuleId2"] = nameRegex.Apply(getDispatchRulesResult =&gt; getDispatchRulesResult.Rules[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDispatchRulesResult> Invoke(GetDispatchRulesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDispatchRulesResult>("alicloud:arms/getDispatchRules:getDispatchRules", args ?? new GetDispatchRulesInvokeArgs(), options.WithDefaults());

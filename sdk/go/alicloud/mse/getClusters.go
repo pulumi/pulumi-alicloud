@@ -15,6 +15,36 @@ import (
 // This data source provides a list of MSE Clusters in an Alibaba Cloud account according to the specified filters.
 //
 // > **NOTE:** Available in v1.94.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mse"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := mse.GetClusters(ctx, &mse.GetClustersArgs{
+//				Ids: []string{
+//					"mse-cn-0d9xxxx",
+//				},
+//				Status: pulumi.StringRef("INIT_SUCCESS"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("clusterId", example.Clusters[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetClusters(ctx *pulumi.Context, args *GetClustersArgs, opts ...pulumi.InvokeOption) (*GetClustersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetClustersResult

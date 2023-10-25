@@ -16,6 +16,49 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// &gt; **NOTE:** Available in v1.181.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-testacc-example";
+    ///     var defaultResourceGroup = new AliCloud.ResourceManager.ResourceGroup("defaultResourceGroup", new()
+    ///     {
+    ///         DisplayName = "tf-testAcc-rg665",
+    ///         ResourceGroupName = name,
+    ///     });
+    /// 
+    ///     var modify = new AliCloud.ResourceManager.ResourceGroup("modify", new()
+    ///     {
+    ///         DisplayName = "tf-testAcc-rg298",
+    ///         ResourceGroupName = $"{name}1",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = $"{name}2",
+    ///         CidrBlock = "10.0.0.0/8",
+    ///     });
+    /// 
+    ///     var defaultIpv4Gateway = new AliCloud.Vpc.Ipv4Gateway("defaultIpv4Gateway", new()
+    ///     {
+    ///         Ipv4GatewayName = name,
+    ///         Ipv4GatewayDescription = "tf-testAcc-Ipv4Gateway",
+    ///         ResourceGroupId = defaultResourceGroup.Id,
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Vpc Ipv4 Gateway can be imported using the id, e.g.

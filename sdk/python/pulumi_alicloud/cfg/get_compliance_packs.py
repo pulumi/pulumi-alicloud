@@ -128,6 +128,19 @@ def get_compliance_packs(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.124.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cfg.get_compliance_packs(ids=["cp-152a626622af00bc****"],
+        name_regex="the_resource_name")
+    pulumi.export("firstConfigCompliancePackId", example.packs[0].id)
+    ```
+
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Compliance Pack IDs.
@@ -166,6 +179,19 @@ def get_compliance_packs_output(enable_details: Optional[pulumi.Input[Optional[b
     This data source provides the Config Compliance Packs of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.124.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cfg.get_compliance_packs(ids=["cp-152a626622af00bc****"],
+        name_regex="the_resource_name")
+    pulumi.export("firstConfigCompliancePackId", example.packs[0].id)
+    ```
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

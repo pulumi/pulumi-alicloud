@@ -10,6 +10,24 @@ import * as utilities from "../utilities";
  * This data source provides the Ecs Deployment Sets of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.140.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.ecs.getEcsDeploymentSets({
+ *     ids: ["example_id"],
+ * });
+ * export const ecsDeploymentSetId1 = ids.then(ids => ids.sets?.[0]?.id);
+ * const nameRegex = alicloud.ecs.getEcsDeploymentSets({
+ *     nameRegex: "^my-DeploymentSet",
+ * });
+ * export const ecsDeploymentSetId2 = nameRegex.then(nameRegex => nameRegex.sets?.[0]?.id);
+ * ```
  */
 export function getEcsDeploymentSets(args?: GetEcsDeploymentSetsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsDeploymentSetsResult> {
     args = args || {};
@@ -70,6 +88,24 @@ export interface GetEcsDeploymentSetsResult {
  * This data source provides the Ecs Deployment Sets of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.140.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.ecs.getEcsDeploymentSets({
+ *     ids: ["example_id"],
+ * });
+ * export const ecsDeploymentSetId1 = ids.then(ids => ids.sets?.[0]?.id);
+ * const nameRegex = alicloud.ecs.getEcsDeploymentSets({
+ *     nameRegex: "^my-DeploymentSet",
+ * });
+ * export const ecsDeploymentSetId2 = nameRegex.then(nameRegex => nameRegex.sets?.[0]?.id);
+ * ```
  */
 export function getEcsDeploymentSetsOutput(args?: GetEcsDeploymentSetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsDeploymentSetsResult> {
     return pulumi.output(args).apply((a: any) => getEcsDeploymentSets(a, opts))

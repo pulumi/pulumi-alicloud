@@ -238,6 +238,33 @@ class BasicIpSet(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.194.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        default_basic_accelerator = alicloud.ga.BasicAccelerator("defaultBasicAccelerator",
+            duration=1,
+            pricing_cycle="Month",
+            bandwidth_billing_type="CDT",
+            auto_pay=True,
+            auto_use_coupon="true",
+            auto_renew=False,
+            auto_renew_duration=1)
+        default_basic_ip_set = alicloud.ga.BasicIpSet("defaultBasicIpSet",
+            accelerator_id=default_basic_accelerator.id,
+            accelerate_region_id=region,
+            isp_type="BGP",
+            bandwidth=5)
+        ```
+
         ## Import
 
         Global Accelerator (GA) Basic Ip Set can be imported using the id, e.g.
@@ -265,6 +292,33 @@ class BasicIpSet(pulumi.CustomResource):
         For information about Global Accelerator (GA) Basic Ip Set and how to use it, see [What is Basic Ip Set](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createbasicipset).
 
         > **NOTE:** Available since v1.194.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        default_basic_accelerator = alicloud.ga.BasicAccelerator("defaultBasicAccelerator",
+            duration=1,
+            pricing_cycle="Month",
+            bandwidth_billing_type="CDT",
+            auto_pay=True,
+            auto_use_coupon="true",
+            auto_renew=False,
+            auto_renew_duration=1)
+        default_basic_ip_set = alicloud.ga.BasicIpSet("defaultBasicIpSet",
+            accelerator_id=default_basic_accelerator.id,
+            accelerate_region_id=region,
+            isp_type="BGP",
+            bandwidth=5)
+        ```
 
         ## Import
 

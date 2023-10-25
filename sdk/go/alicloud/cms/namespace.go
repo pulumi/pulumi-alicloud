@@ -19,6 +19,35 @@ import (
 //
 // > **NOTE:** Available since v1.171.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cms.NewNamespace(ctx, "example", &cms.NamespaceArgs{
+//				Namespace:     pulumi.String("tf_example"),
+//				Specification: pulumi.String("cms.s1.large"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Cloud Monitor Service Namespace can be imported using the id, e.g.

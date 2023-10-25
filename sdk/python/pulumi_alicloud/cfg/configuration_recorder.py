@@ -207,6 +207,18 @@ class ConfigurationRecorder(pulumi.CustomResource):
 
         > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.cfg.ConfigurationRecorder("example", resource_types=[
+            "ACS::ECS::Instance",
+            "ACS::ECS::Disk",
+        ])
+        ```
+
         ## Import
 
         Alicloud Config Configuration Recorder can be imported using the id, e.g.
@@ -235,6 +247,18 @@ class ConfigurationRecorder(pulumi.CustomResource):
         > **NOTE:** Available since v1.99.0.
 
         > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.cfg.ConfigurationRecorder("example", resource_types=[
+            "ACS::ECS::Instance",
+            "ACS::ECS::Disk",
+        ])
+        ```
 
         ## Import
 

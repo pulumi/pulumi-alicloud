@@ -74,6 +74,15 @@ def get_service(enable: Optional[str] = None,
 
     > **NOTE:** Available in v1.113.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    open = alicloud.privatelink.get_service(enable="On")
+    ```
+
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
            
@@ -99,6 +108,15 @@ def get_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
     For information about Privatelink and how to use it, see [What is Privatelink](https://www.alibabacloud.com/help/en/product/120462.htm).
 
     > **NOTE:** Available in v1.113.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    open = alicloud.privatelink.get_service(enable="On")
+    ```
 
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.

@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides the Ecs Auto Snapshot Policies of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.117.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.ecs.getAutoSnapshotPolicies({
+ *     ids: ["sp-bp14e66xxxxxxxx"],
+ *     nameRegex: "tf-testAcc",
+ * });
+ * export const firstEcsAutoSnapshotPolicyId = example.then(example => example.policies?.[0]?.id);
+ * ```
  */
 export function getAutoSnapshotPolicies(args?: GetAutoSnapshotPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetAutoSnapshotPoliciesResult> {
     args = args || {};
@@ -70,6 +85,21 @@ export interface GetAutoSnapshotPoliciesResult {
  * This data source provides the Ecs Auto Snapshot Policies of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.117.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.ecs.getAutoSnapshotPolicies({
+ *     ids: ["sp-bp14e66xxxxxxxx"],
+ *     nameRegex: "tf-testAcc",
+ * });
+ * export const firstEcsAutoSnapshotPolicyId = example.then(example => example.policies?.[0]?.id);
+ * ```
  */
 export function getAutoSnapshotPoliciesOutput(args?: GetAutoSnapshotPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAutoSnapshotPoliciesResult> {
     return pulumi.output(args).apply((a: any) => getAutoSnapshotPolicies(a, opts))

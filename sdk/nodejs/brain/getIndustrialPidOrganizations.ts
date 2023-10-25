@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides the Brain Industrial Pid Organizations of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.113.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.brain.getIndustrialPidOrganizations({
+ *     ids: ["3e74e684-cbb5-xxxx"],
+ *     nameRegex: "tf-testAcc",
+ * });
+ * export const firstBrainIndustrialPidOrganizationId = example.then(example => example.organizations?.[0]?.id);
+ * ```
  */
 export function getIndustrialPidOrganizations(args?: GetIndustrialPidOrganizationsArgs, opts?: pulumi.InvokeOptions): Promise<GetIndustrialPidOrganizationsResult> {
     args = args || {};
@@ -64,6 +79,21 @@ export interface GetIndustrialPidOrganizationsResult {
  * This data source provides the Brain Industrial Pid Organizations of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.113.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.brain.getIndustrialPidOrganizations({
+ *     ids: ["3e74e684-cbb5-xxxx"],
+ *     nameRegex: "tf-testAcc",
+ * });
+ * export const firstBrainIndustrialPidOrganizationId = example.then(example => example.organizations?.[0]?.id);
+ * ```
  */
 export function getIndustrialPidOrganizationsOutput(args?: GetIndustrialPidOrganizationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIndustrialPidOrganizationsResult> {
     return pulumi.output(args).apply((a: any) => getIndustrialPidOrganizations(a, opts))

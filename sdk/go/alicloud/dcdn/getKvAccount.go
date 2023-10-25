@@ -15,6 +15,32 @@ import (
 // This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-describedcdnkvaccount)
 //
 // > **NOTE:** Available since v1.198.0.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dcdn.GetKvAccount(ctx, &dcdn.GetKvAccountArgs{
+//				Status: pulumi.StringRef("online"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetKvAccount(ctx *pulumi.Context, args *GetKvAccountArgs, opts ...pulumi.InvokeOption) (*GetKvAccountResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKvAccountResult

@@ -16,6 +16,34 @@ namespace Pulumi.AliCloud.Oos
     /// 
     /// &gt; **NOTE:** Available in v1.203.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultPatchBaseline = new AliCloud.Oos.PatchBaseline("defaultPatchBaseline", new()
+    ///     {
+    ///         OperationSystem = "Windows",
+    ///         PatchBaselineName = "terraform-example",
+    ///         Description = "terraform-example",
+    ///         ApprovalRules = "{\"PatchRules\":[{\"PatchFilterGroup\":[{\"Key\":\"PatchSet\",\"Values\":[\"OS\"]},{\"Key\":\"ProductFamily\",\"Values\":[\"Windows\"]},{\"Key\":\"Product\",\"Values\":[\"Windows 10\",\"Windows 7\"]},{\"Key\":\"Classification\",\"Values\":[\"Security Updates\",\"Updates\",\"Update Rollups\",\"Critical Updates\"]},{\"Key\":\"Severity\",\"Values\":[\"Critical\",\"Important\",\"Moderate\"]}],\"ApproveAfterDays\":7,\"EnableNonSecurity\":true,\"ComplianceLevel\":\"Medium\"}]}",
+    ///     });
+    /// 
+    ///     var defaultDefaultPatchBaseline = new AliCloud.Oos.DefaultPatchBaseline("defaultDefaultPatchBaseline", new()
+    ///     {
+    ///         PatchBaselineName = defaultPatchBaseline.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Oos Default Patch Baseline can be imported using the id, e.g.

@@ -346,6 +346,28 @@ class ServiceQueue(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.188.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        queue = alicloud.message.ServiceQueue("queue",
+            queue_name=name,
+            delay_seconds=60478,
+            maximum_message_size=12357,
+            message_retention_period=256000,
+            visibility_timeout=30,
+            polling_wait_seconds=3,
+            logging_enabled=True)
+        ```
+
         ## Import
 
         Message Notification Service Queue can be imported using the id or queue_name, e.g.
@@ -376,6 +398,28 @@ class ServiceQueue(pulumi.CustomResource):
         For information about Message Notification Service Queue and how to use it, see [What is Queue](https://www.alibabacloud.com/help/en/message-service/latest/createqueue).
 
         > **NOTE:** Available since v1.188.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        queue = alicloud.message.ServiceQueue("queue",
+            queue_name=name,
+            delay_seconds=60478,
+            maximum_message_size=12357,
+            message_retention_period=256000,
+            visibility_timeout=30,
+            polling_wait_seconds=3,
+            logging_enabled=True)
+        ```
 
         ## Import
 

@@ -11,6 +11,29 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.141.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.eds.SimpleOfficeSite("default", {
+ *     cidrBlock: "172.16.0.0/12",
+ *     enableAdminAccess: false,
+ *     desktopAccessType: "Internet",
+ *     officeSiteName: name,
+ * });
+ * const example = new alicloud.eds.NasFileSystem("example", {
+ *     nasFileSystemName: name,
+ *     officeSiteId: _default.id,
+ *     description: name,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ECD Nas File System can be imported using the id, e.g.

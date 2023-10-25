@@ -13,6 +13,60 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.194.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "Instance",
+ * });
+ * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultZones.zones?.[0]?.id,
+ *     cpuCoreCount: 1,
+ *     memorySize: 2,
+ * }));
+ * const defaultImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
+ *     owners: "system",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
+ * const defaultInstance = new alicloud.ecs.Instance("defaultInstance", {
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     instanceName: name,
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ *     securityGroups: [defaultSecurityGroup.id],
+ *     vswitchId: defaultSwitch.id,
+ * });
+ * const defaultMetricRuleBlackList = new alicloud.cms.MetricRuleBlackList("defaultMetricRuleBlackList", {
+ *     instances: [pulumi.interpolate`{"instancceId":"${defaultInstance.id}"}`],
+ *     metrics: [{
+ *         metricName: "disk_utilization",
+ *     }],
+ *     category: "ecs",
+ *     enableEndTime: "1799443209000",
+ *     namespace: "acs_ecs_dashboard",
+ *     enableStartTime: "1689243209000",
+ *     metricRuleBlackListName: name,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Cloud Monitor Service Metric Rule Black List can be imported using the id, e.g.

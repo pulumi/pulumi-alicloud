@@ -15,6 +15,49 @@ import (
 // This data source provides the Mse Znodes of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.162.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mse"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := mse.GetZnodes(ctx, &mse.GetZnodesArgs{
+//				ClusterId: "example_value",
+//				Path:      "/",
+//				Ids: []string{
+//					"example_value-1",
+//					"example_value-2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("mseZnodeId1", ids.Znodes[0].Id)
+//			nameRegex, err := mse.GetZnodes(ctx, &mse.GetZnodesArgs{
+//				Path:      "/",
+//				ClusterId: "example_value",
+//				NameRegex: pulumi.StringRef("^my-Znode"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("mseZnodeId2", nameRegex.Znodes[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetZnodes(ctx *pulumi.Context, args *GetZnodesArgs, opts ...pulumi.InvokeOption) (*GetZnodesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetZnodesResult

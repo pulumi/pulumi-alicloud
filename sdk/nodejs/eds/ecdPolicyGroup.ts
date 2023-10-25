@@ -13,6 +13,36 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.130.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.eds.EcdPolicyGroup("default", {
+ *     authorizeAccessPolicyRules: [{
+ *         cidrIp: "1.2.3.45/24",
+ *         description: "terraform-example",
+ *     }],
+ *     authorizeSecurityPolicyRules: [{
+ *         cidrIp: "1.2.3.4/24",
+ *         description: "terraform-example",
+ *         ipProtocol: "TCP",
+ *         policy: "accept",
+ *         portRange: "80/80",
+ *         priority: "1",
+ *         type: "inflow",
+ *     }],
+ *     clipboard: "read",
+ *     localDrive: "read",
+ *     policyGroupName: "terraform-example",
+ *     usbRedirect: "off",
+ *     watermark: "off",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Elastic Desktop Service (ECD) Policy Group can be imported using the id, e.g.

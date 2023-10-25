@@ -19,6 +19,114 @@ import (
 //
 // > **NOTE:** Available since v1.173.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ehpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex: pulumi.StringRef("^centos_7_6_x64*"),
+//				Owners:    pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.0.0.0/8"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.1.0.0/16"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultFileSystem, err := nas.NewFileSystem(ctx, "defaultFileSystem", &nas.FileSystemArgs{
+//				StorageType:  pulumi.String("Performance"),
+//				ProtocolType: pulumi.String("NFS"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultMountTarget, err := nas.NewMountTarget(ctx, "defaultMountTarget", &nas.MountTargetArgs{
+//				FileSystemId:    defaultFileSystem.ID(),
+//				AccessGroupName: pulumi.String("DEFAULT_VPC_GROUP_NAME"),
+//				VswitchId:       defaultSwitch.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ehpc.NewCluster(ctx, "defaultCluster", &ehpc.ClusterArgs{
+//				ClusterName:         pulumi.String(name),
+//				DeployMode:          pulumi.String("Simple"),
+//				Description:         pulumi.String(name),
+//				HaEnable:            pulumi.Bool(false),
+//				ImageId:             *pulumi.String(defaultImages.Images[0].Id),
+//				ImageOwnerAlias:     pulumi.String("system"),
+//				VolumeProtocol:      pulumi.String("nfs"),
+//				VolumeId:            defaultFileSystem.ID(),
+//				VolumeMountpoint:    defaultMountTarget.MountTargetDomain,
+//				ComputeCount:        pulumi.Int(1),
+//				ComputeInstanceType: *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				LoginCount:          pulumi.Int(1),
+//				LoginInstanceType:   *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				ManagerCount:        pulumi.Int(1),
+//				ManagerInstanceType: *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				OsTag:               pulumi.String("CentOS_7.6_64"),
+//				SchedulerType:       pulumi.String("pbs"),
+//				Password:            pulumi.String("your-password123"),
+//				VswitchId:           defaultSwitch.ID(),
+//				VpcId:               defaultNetwork.ID(),
+//				ZoneId:              *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Ehpc Cluster can be imported using the id, e.g.

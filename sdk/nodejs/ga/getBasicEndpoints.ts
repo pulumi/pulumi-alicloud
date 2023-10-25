@@ -10,6 +10,26 @@ import * as utilities from "../utilities";
  * This data source provides the Global Accelerator (GA) Basic Endpoints of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.194.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.ga.getBasicEndpoints({
+ *     ids: ["example_id"],
+ *     endpointGroupId: "example_id",
+ * });
+ * export const gaBasicEndpointsId1 = ids.then(ids => ids.endpoints?.[0]?.id);
+ * const nameRegex = alicloud.ga.getBasicEndpoints({
+ *     nameRegex: "tf-example",
+ *     endpointGroupId: "example_id",
+ * });
+ * export const gaBasicEndpointsId2 = nameRegex.then(nameRegex => nameRegex.endpoints?.[0]?.id);
+ * ```
  */
 export function getBasicEndpoints(args: GetBasicEndpointsArgs, opts?: pulumi.InvokeOptions): Promise<GetBasicEndpointsResult> {
 
@@ -105,6 +125,26 @@ export interface GetBasicEndpointsResult {
  * This data source provides the Global Accelerator (GA) Basic Endpoints of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.194.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.ga.getBasicEndpoints({
+ *     ids: ["example_id"],
+ *     endpointGroupId: "example_id",
+ * });
+ * export const gaBasicEndpointsId1 = ids.then(ids => ids.endpoints?.[0]?.id);
+ * const nameRegex = alicloud.ga.getBasicEndpoints({
+ *     nameRegex: "tf-example",
+ *     endpointGroupId: "example_id",
+ * });
+ * export const gaBasicEndpointsId2 = nameRegex.then(nameRegex => nameRegex.endpoints?.[0]?.id);
+ * ```
  */
 export function getBasicEndpointsOutput(args: GetBasicEndpointsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBasicEndpointsResult> {
     return pulumi.output(args).apply((a: any) => getBasicEndpoints(a, opts))

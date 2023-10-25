@@ -109,6 +109,22 @@ def get_enterprise_proxy_accesses(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available since v1.195.0.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default_enterprise_proxy_access = alicloud.dms.EnterpriseProxyAccess("defaultEnterpriseProxyAccess",
+        indep_password="PASSWORD-DEMO",
+        proxy_id="1881",
+        indep_account="dmstest",
+        user_id="104442")
+    default_enterprise_proxy_accesses = alicloud.dms.get_enterprise_proxy_accesses_output(ids=[default_enterprise_proxy_access.id],
+        proxy_id="1881")
+    pulumi.export("alicloudDmsProxyAccesesExampleId", default_enterprise_proxy_accesses.accesses[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Proxy Access IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -141,6 +157,22 @@ def get_enterprise_proxy_accesses_output(enable_details: Optional[pulumi.Input[O
     This data source provides DMS Enterprise Proxy Access available to the user.[What is Proxy Access](https://next.api.alibabacloud.com/document/dms-enterprise/2018-11-01/CreateProxyAccess)
 
     > **NOTE:** Available since v1.195.0.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default_enterprise_proxy_access = alicloud.dms.EnterpriseProxyAccess("defaultEnterpriseProxyAccess",
+        indep_password="PASSWORD-DEMO",
+        proxy_id="1881",
+        indep_account="dmstest",
+        user_id="104442")
+    default_enterprise_proxy_accesses = alicloud.dms.get_enterprise_proxy_accesses_output(ids=[default_enterprise_proxy_access.id],
+        proxy_id="1881")
+    pulumi.export("alicloudDmsProxyAccesesExampleId", default_enterprise_proxy_accesses.accesses[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Proxy Access IDs.

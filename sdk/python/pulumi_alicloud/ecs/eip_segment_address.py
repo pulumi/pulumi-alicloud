@@ -342,6 +342,26 @@ class EipSegmentAddress(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.207.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.ecs.EipSegmentAddress("default",
+            bandwidth="5",
+            eip_mask="28",
+            internet_charge_type="PayByBandwidth",
+            isp="BGP",
+            netmode="public")
+        ```
+
         ## Import
 
         EIP Segment Address can be imported using the id, e.g.
@@ -383,6 +403,26 @@ class EipSegmentAddress(pulumi.CustomResource):
         For information about EIP Segment Address and how to use it, see [What is Segment Address](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/allocateeipsegmentaddress).
 
         > **NOTE:** Available since v1.207.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.ecs.EipSegmentAddress("default",
+            bandwidth="5",
+            eip_mask="28",
+            internet_charge_type="PayByBandwidth",
+            isp="BGP",
+            netmode="public")
+        ```
 
         ## Import
 

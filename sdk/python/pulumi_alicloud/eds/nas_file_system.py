@@ -315,6 +315,29 @@ class NasFileSystem(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.141.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.eds.SimpleOfficeSite("default",
+            cidr_block="172.16.0.0/12",
+            enable_admin_access=False,
+            desktop_access_type="Internet",
+            office_site_name=name)
+        example = alicloud.eds.NasFileSystem("example",
+            nas_file_system_name=name,
+            office_site_id=default.id,
+            description=name)
+        ```
+
         ## Import
 
         ECD Nas File System can be imported using the id, e.g.
@@ -344,6 +367,29 @@ class NasFileSystem(pulumi.CustomResource):
         For information about ECD Nas File System and how to use it, see [What is Nas File System](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-reference-for-easy-use-1).
 
         > **NOTE:** Available since v1.141.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.eds.SimpleOfficeSite("default",
+            cidr_block="172.16.0.0/12",
+            enable_admin_access=False,
+            desktop_access_type="Internet",
+            office_site_name=name)
+        example = alicloud.eds.NasFileSystem("example",
+            nas_file_system_name=name,
+            office_site_id=default.id,
+            description=name)
+        ```
 
         ## Import
 

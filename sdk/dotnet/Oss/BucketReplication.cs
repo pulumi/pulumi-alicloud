@@ -16,6 +16,127 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// &gt; **NOTE:** Available in v1.161.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Set bucket replication configuration
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var bucketSrc = new AliCloud.Oss.Bucket("bucketSrc", new()
+    ///     {
+    ///         BucketName = @default.Result.Apply(result =&gt; $"example-src-{result}"),
+    ///     });
+    /// 
+    ///     var bucketDest = new AliCloud.Oss.Bucket("bucketDest", new()
+    ///     {
+    ///         BucketName = @default.Result.Apply(result =&gt; $"example-dest-{result}"),
+    ///     });
+    /// 
+    ///     var role = new AliCloud.Ram.Role("role", new()
+    ///     {
+    ///         Document = @"		{
+    /// 		  ""Statement"": [
+    /// 			{
+    /// 			  ""Action"": ""sts:AssumeRole"",
+    /// 			  ""Effect"": ""Allow"",
+    /// 			  ""Principal"": {
+    /// 				""Service"": [
+    /// 				  ""oss.aliyuncs.com""
+    /// 				]
+    /// 			  }
+    /// 			}
+    /// 		  ],
+    /// 		  ""Version"": ""1""
+    /// 		}
+    /// ",
+    ///         Description = "this is a test",
+    ///         Force = true,
+    ///     });
+    /// 
+    ///     var policy = new AliCloud.Ram.Policy("policy", new()
+    ///     {
+    ///         PolicyName = @default.Result.Apply(result =&gt; $"example-policy-{result}"),
+    ///         PolicyDocument = @"		{
+    /// 		  ""Statement"": [
+    /// 			{
+    /// 			  ""Action"": [
+    /// 				""*""
+    /// 			  ],
+    /// 			  ""Effect"": ""Allow"",
+    /// 			  ""Resource"": [
+    /// 				""*""
+    /// 			  ]
+    /// 			}
+    /// 		  ],
+    /// 			""Version"": ""1""
+    /// 		}
+    /// ",
+    ///         Description = "this is a policy test",
+    ///         Force = true,
+    ///     });
+    /// 
+    ///     var attach = new AliCloud.Ram.RolePolicyAttachment("attach", new()
+    ///     {
+    ///         PolicyName = policy.Name,
+    ///         PolicyType = policy.Type,
+    ///         RoleName = role.Name,
+    ///     });
+    /// 
+    ///     var key = new AliCloud.Kms.Key("key", new()
+    ///     {
+    ///         Description = "Hello KMS",
+    ///         PendingWindowInDays = 7,
+    ///         Status = "Enabled",
+    ///     });
+    /// 
+    ///     var cross_region_replication = new AliCloud.Oss.BucketReplication("cross-region-replication", new()
+    ///     {
+    ///         Bucket = bucketSrc.Id,
+    ///         Action = "PUT,DELETE",
+    ///         HistoricalObjectReplication = "enabled",
+    ///         PrefixSet = new AliCloud.Oss.Inputs.BucketReplicationPrefixSetArgs
+    ///         {
+    ///             Prefixes = new[]
+    ///             {
+    ///                 "prefix1/",
+    ///                 "prefix2/",
+    ///             },
+    ///         },
+    ///         Destination = new AliCloud.Oss.Inputs.BucketReplicationDestinationArgs
+    ///         {
+    ///             Bucket = bucketDest.Id,
+    ///             Location = bucketDest.Location,
+    ///         },
+    ///         SyncRole = role.Name,
+    ///         EncryptionConfiguration = new AliCloud.Oss.Inputs.BucketReplicationEncryptionConfigurationArgs
+    ///         {
+    ///             ReplicaKmsKeyId = key.Id,
+    ///         },
+    ///         SourceSelectionCriteria = new AliCloud.Oss.Inputs.BucketReplicationSourceSelectionCriteriaArgs
+    ///         {
+    ///             SseKmsEncryptedObjects = new AliCloud.Oss.Inputs.BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs
+    ///             {
+    ///                 Status = "Enabled",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ### Timeouts The `timeouts` block allows you to specify timeouts for certain actions* `delete` - (Defaults to 30 mins) Used when delete a data replication rule (until the data replication task is cleared).

@@ -109,6 +109,18 @@ def get_transit_router_multicast_domain_members(ids: Optional[Sequence[str]] = N
 
     > **NOTE:** Available since v1.195.0.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cen.get_transit_router_multicast_domain_members(transit_router_multicast_domain_id="tr-mcast-domain-2d9oq455uk533zfr29")
+    pulumi.export("alicloudCenTransitRouterMulticastDomainMemberExampleId", default.members[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Transit Router Multicast Domain Member IDs.
     :param str network_interface_id: The ID of the ENI.
@@ -142,6 +154,18 @@ def get_transit_router_multicast_domain_members_output(ids: Optional[pulumi.Inpu
     This data source provides Cen Transit Router Multicast Domain Member available to the user. [What is Transit Router Multicast Domain Member](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupmembers)
 
     > **NOTE:** Available since v1.195.0.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cen.get_transit_router_multicast_domain_members(transit_router_multicast_domain_id="tr-mcast-domain-2d9oq455uk533zfr29")
+    pulumi.export("alicloudCenTransitRouterMulticastDomainMemberExampleId", default.members[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Transit Router Multicast Domain Member IDs.

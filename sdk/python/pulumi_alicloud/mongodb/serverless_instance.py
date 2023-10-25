@@ -819,6 +819,44 @@ class ServerlessInstance(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.148.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_zones = alicloud.mongodb.get_zones()
+        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+            zone_id=default_zones.zones[0].id)
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        example = alicloud.mongodb.ServerlessInstance("example",
+            account_password="Abc12345",
+            db_instance_description="example_value",
+            db_instance_storage=5,
+            storage_engine="WiredTiger",
+            capacity_unit=100,
+            engine="MongoDB",
+            resource_group_id=default_resource_groups.groups[0].id,
+            engine_version="4.2",
+            period=1,
+            period_price_type="Month",
+            vpc_id=default_networks.ids[0],
+            zone_id=default_zones.zones[0].id,
+            vswitch_id=default_switches.ids[0],
+            tags={
+                "Created": "MongodbServerlessInstance",
+                "For": "TF",
+            },
+            security_ip_groups=[alicloud.mongodb.ServerlessInstanceSecurityIpGroupArgs(
+                security_ip_group_attribute="example_value",
+                security_ip_group_name="example_value",
+                security_ip_list="192.168.0.1",
+            )])
+        ```
+
         ## Import
 
         MongoDB Serverless Instance can be imported using the id, e.g.
@@ -862,6 +900,44 @@ class ServerlessInstance(pulumi.CustomResource):
         For information about MongoDB Serverless Instance and how to use it, see [What is Serverless Instance](https://www.alibabacloud.com/help/doc-detail/26558.html).
 
         > **NOTE:** Available in v1.148.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_zones = alicloud.mongodb.get_zones()
+        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+            zone_id=default_zones.zones[0].id)
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        example = alicloud.mongodb.ServerlessInstance("example",
+            account_password="Abc12345",
+            db_instance_description="example_value",
+            db_instance_storage=5,
+            storage_engine="WiredTiger",
+            capacity_unit=100,
+            engine="MongoDB",
+            resource_group_id=default_resource_groups.groups[0].id,
+            engine_version="4.2",
+            period=1,
+            period_price_type="Month",
+            vpc_id=default_networks.ids[0],
+            zone_id=default_zones.zones[0].id,
+            vswitch_id=default_switches.ids[0],
+            tags={
+                "Created": "MongodbServerlessInstance",
+                "For": "TF",
+            },
+            security_ip_groups=[alicloud.mongodb.ServerlessInstanceSecurityIpGroupArgs(
+                security_ip_group_attribute="example_value",
+                security_ip_group_name="example_value",
+                security_ip_list="192.168.0.1",
+            )])
+        ```
 
         ## Import
 

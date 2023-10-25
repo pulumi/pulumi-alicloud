@@ -11,6 +11,23 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.135.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.videosurveillance.SystemGroup("default", {
+ *     groupName: "your_group_name",
+ *     inProtocol: "rtmp",
+ *     outProtocol: "flv",
+ *     playDomain: "your_plan_domain",
+ *     pushDomain: "your_push_domain",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Video Surveillance System Group can be imported using the id, e.g.

@@ -15,6 +15,55 @@ import (
 // This data source provides the Open Search App Groups of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.136.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/opensearch"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_testacc"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultAppGroup, err := opensearch.NewAppGroup(ctx, "defaultAppGroup", &opensearch.AppGroupArgs{
+//				AppGroupName: pulumi.String(name),
+//				PaymentType:  pulumi.String("PayAsYouGo"),
+//				Type:         pulumi.String("standard"),
+//				Quota: &opensearch.AppGroupQuotaArgs{
+//					DocSize:         pulumi.Int(1),
+//					ComputeResource: pulumi.Int(20),
+//					Spec:            pulumi.String("opensearch.share.common"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultAppGroups := opensearch.GetAppGroupsOutput(ctx, opensearch.GetAppGroupsOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultAppGroup.ID(),
+//				},
+//			}, nil)
+//			ctx.Export("appGroups", defaultAppGroups.ApplyT(func(defaultAppGroups opensearch.GetAppGroupsResult) ([]opensearch.GetAppGroupsGroup, error) {
+//				return defaultAppGroups.Groups, nil
+//			}).([]opensearch.GetAppGroupsGroupOutput))
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetAppGroups(ctx *pulumi.Context, args *GetAppGroupsArgs, opts ...pulumi.InvokeOption) (*GetAppGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAppGroupsResult

@@ -141,6 +141,33 @@ class WafDomain(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.185.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "example.com"
+        example_domain = alicloud.dcdn.Domain("exampleDomain",
+            domain_name=domain_name,
+            scope="overseas",
+            sources=[alicloud.dcdn.DomainSourceArgs(
+                content="1.1.1.1",
+                port=80,
+                priority="20",
+                type="ipaddr",
+                weight="10",
+            )])
+        example_waf_domain = alicloud.dcdn.WafDomain("exampleWafDomain",
+            domain_name=example_domain.domain_name,
+            client_ip_tag="X-Forwarded-For")
+        ```
+
         ## Import
 
         DCDN Waf Domain can be imported using the id, e.g.
@@ -166,6 +193,33 @@ class WafDomain(pulumi.CustomResource):
         For information about DCDN Waf Domain and how to use it, see [What is Waf Domain](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchsetdcdnwafdomainconfigs).
 
         > **NOTE:** Available since v1.185.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "example.com"
+        example_domain = alicloud.dcdn.Domain("exampleDomain",
+            domain_name=domain_name,
+            scope="overseas",
+            sources=[alicloud.dcdn.DomainSourceArgs(
+                content="1.1.1.1",
+                port=80,
+                priority="20",
+                type="ipaddr",
+                weight="10",
+            )])
+        example_waf_domain = alicloud.dcdn.WafDomain("exampleWafDomain",
+            domain_name=example_domain.domain_name,
+            client_ip_tag="X-Forwarded-For")
+        ```
 
         ## Import
 

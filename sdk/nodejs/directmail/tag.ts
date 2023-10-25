@@ -11,6 +11,19 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.144.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "example";
+ * const example = new alicloud.directmail.Tag("example", {tagName: name});
+ * ```
+ *
  * ## Import
  *
  * Direct Mail Tag can be imported using the id, e.g.

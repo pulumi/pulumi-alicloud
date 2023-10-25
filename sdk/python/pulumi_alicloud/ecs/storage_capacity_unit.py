@@ -319,6 +319,20 @@ class StorageCapacityUnit(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.155.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ecs.StorageCapacityUnit("default",
+            capacity=20,
+            description="tftestdescription",
+            storage_capacity_unit_name="tftestname")
+        ```
+
         ## Import
 
         ECS Storage Capacity Unit can be imported using the id, e.g.
@@ -350,6 +364,20 @@ class StorageCapacityUnit(pulumi.CustomResource):
         For information about ECS Storage Capacity Unit and how to use it, see [What is Storage Capacity Unit](https://www.alibabacloud.com/help/en/doc-detail/161157.html).
 
         > **NOTE:** Available in v1.155.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ecs.StorageCapacityUnit("default",
+            capacity=20,
+            description="tftestdescription",
+            storage_capacity_unit_name="tftestname")
+        ```
 
         ## Import
 

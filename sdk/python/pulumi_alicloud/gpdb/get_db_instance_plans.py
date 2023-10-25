@@ -139,6 +139,22 @@ def get_db_instance_plans(db_instance_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.189.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.gpdb.get_db_instance_plans(db_instance_id="example_value",
+        ids=["example_value"])
+    pulumi.export("gpdbDbInstancePlanId1", ids.plans[0].id)
+    name_regex = alicloud.gpdb.get_db_instance_plans(db_instance_id="example_value",
+        name_regex="^my-DBInstancePlan")
+    pulumi.export("gpdbDbInstancePlanId2", name_regex.plans[0].id)
+    ```
+
 
     :param str db_instance_id: The ID of the Database instance.
     :param Sequence[str] ids: A list of DB Instance Plan IDs.
@@ -185,6 +201,22 @@ def get_db_instance_plans_output(db_instance_id: Optional[pulumi.Input[str]] = N
     This data source provides the Gpdb Db Instance Plans of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.189.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.gpdb.get_db_instance_plans(db_instance_id="example_value",
+        ids=["example_value"])
+    pulumi.export("gpdbDbInstancePlanId1", ids.plans[0].id)
+    name_regex = alicloud.gpdb.get_db_instance_plans(db_instance_id="example_value",
+        name_regex="^my-DBInstancePlan")
+    pulumi.export("gpdbDbInstancePlanId2", name_regex.plans[0].id)
+    ```
 
 
     :param str db_instance_id: The ID of the Database instance.

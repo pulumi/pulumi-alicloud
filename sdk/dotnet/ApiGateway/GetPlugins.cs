@@ -15,6 +15,37 @@ namespace Pulumi.AliCloud.ApiGateway
         /// This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.187.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.ApiGateway.GetPlugins.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.ApiGateway.GetPlugins.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Plugin",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["apiGatewayPluginId1"] = ids.Apply(getPluginsResult =&gt; getPluginsResult.Plugins[0]?.Id),
+        ///         ["apiGatewayPluginId2"] = nameRegex.Apply(getPluginsResult =&gt; getPluginsResult.Plugins[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPluginsResult> InvokeAsync(GetPluginsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPluginsResult>("alicloud:apigateway/getPlugins:getPlugins", args ?? new GetPluginsArgs(), options.WithDefaults());
@@ -23,6 +54,37 @@ namespace Pulumi.AliCloud.ApiGateway
         /// This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.187.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.ApiGateway.GetPlugins.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.ApiGateway.GetPlugins.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Plugin",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["apiGatewayPluginId1"] = ids.Apply(getPluginsResult =&gt; getPluginsResult.Plugins[0]?.Id),
+        ///         ["apiGatewayPluginId2"] = nameRegex.Apply(getPluginsResult =&gt; getPluginsResult.Plugins[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetPluginsResult> Invoke(GetPluginsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPluginsResult>("alicloud:apigateway/getPlugins:getPlugins", args ?? new GetPluginsInvokeArgs(), options.WithDefaults());

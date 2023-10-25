@@ -414,6 +414,25 @@ class EcsInvocation(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.168.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_command = alicloud.ecs.Command("defaultCommand",
+            command_content="bHMK",
+            description="terraform-example",
+            type="RunShellScript",
+            working_dir="/root")
+        default_instances = alicloud.ecs.get_instances(status="Running")
+        default_ecs_invocation = alicloud.ecs.EcsInvocation("defaultEcsInvocation",
+            command_id=default_command.id,
+            instance_ids=[default_instances.ids[0]])
+        ```
+
         ## Import
 
         ECS Invocation can be imported using the id, e.g.
@@ -451,6 +470,25 @@ class EcsInvocation(pulumi.CustomResource):
         For information about ECS Invocation and how to use it, see [What is Invocation](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/invokecommand#t9958.html).
 
         > **NOTE:** Available in v1.168.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_command = alicloud.ecs.Command("defaultCommand",
+            command_content="bHMK",
+            description="terraform-example",
+            type="RunShellScript",
+            working_dir="/root")
+        default_instances = alicloud.ecs.get_instances(status="Running")
+        default_ecs_invocation = alicloud.ecs.EcsInvocation("defaultEcsInvocation",
+            command_id=default_command.id,
+            instance_ids=[default_instances.ids[0]])
+        ```
 
         ## Import
 

@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides the Alidns Custom Lines of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.151.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.dns.getCustomLines({
+ *     enableDetails: true,
+ *     domainName: "your_domain_name",
+ * });
+ * export const alidnsCustomLineId1 = ids.then(ids => ids.lines?.[0]?.id);
+ * ```
  */
 export function getCustomLines(args: GetCustomLinesArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomLinesResult> {
 
@@ -75,6 +90,21 @@ export interface GetCustomLinesResult {
  * This data source provides the Alidns Custom Lines of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.151.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.dns.getCustomLines({
+ *     enableDetails: true,
+ *     domainName: "your_domain_name",
+ * });
+ * export const alidnsCustomLineId1 = ids.then(ids => ids.lines?.[0]?.id);
+ * ```
  */
 export function getCustomLinesOutput(args: GetCustomLinesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomLinesResult> {
     return pulumi.output(args).apply((a: any) => getCustomLines(a, opts))

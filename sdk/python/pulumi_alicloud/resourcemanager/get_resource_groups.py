@@ -131,6 +131,18 @@ def get_resource_groups(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available since v1.84.0.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.resourcemanager.get_resource_groups(name_regex="tf")
+    pulumi.export("firstResourceGroupId", example.groups[0].id)
+    ```
+
 
     :param bool enable_details: Set it to true can output more details. Default value: `false`.
     :param Sequence[str] ids: A list of resource group IDs.
@@ -169,6 +181,18 @@ def get_resource_groups_output(enable_details: Optional[pulumi.Input[Optional[bo
     This data source provides resource groups of the current Alibaba Cloud user.
 
     > **NOTE:** Available since v1.84.0.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.resourcemanager.get_resource_groups(name_regex="tf")
+    pulumi.export("firstResourceGroupId", example.groups[0].id)
+    ```
 
 
     :param bool enable_details: Set it to true can output more details. Default value: `false`.

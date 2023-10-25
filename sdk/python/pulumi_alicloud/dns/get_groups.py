@@ -106,6 +106,17 @@ def get_groups(ids: Optional[Sequence[str]] = None,
     """
     This data source provides a list of DNS Domain Groups in an Alibaba Cloud account according to the specified filters.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    groups_ds = alicloud.dns.get_groups(name_regex="^y[A-Za-z]+",
+        output_file="groups.txt")
+    pulumi.export("firstGroupName", groups_ds.groups[0].group_name)
+    ```
+
 
     :param Sequence[str] ids: A list of group IDs.
     :param str name_regex: A regex string to filter results by group name.
@@ -134,6 +145,17 @@ def get_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupsResult]:
     """
     This data source provides a list of DNS Domain Groups in an Alibaba Cloud account according to the specified filters.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    groups_ds = alicloud.dns.get_groups(name_regex="^y[A-Za-z]+",
+        output_file="groups.txt")
+    pulumi.export("firstGroupName", groups_ds.groups[0].group_name)
+    ```
 
 
     :param Sequence[str] ids: A list of group IDs.

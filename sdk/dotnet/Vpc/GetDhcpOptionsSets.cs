@@ -15,6 +15,69 @@ namespace Pulumi.AliCloud.Vpc
         /// This data source provides the Vpc Dhcp Options Sets of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.134.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Vpc.GetDhcpOptionsSets.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Vpc.GetDhcpOptionsSets.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-DhcpOptionsSet",
+        ///     });
+        /// 
+        ///     var dhcpOptionsSetName = AliCloud.Vpc.GetDhcpOptionsSets.Invoke(new()
+        ///     {
+        ///         DhcpOptionsSetName = "my-DhcpOptionsSet",
+        ///     });
+        /// 
+        ///     var domainName = AliCloud.Vpc.GetDhcpOptionsSets.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///         DomainName = "example.com",
+        ///     });
+        /// 
+        ///     var status = AliCloud.Vpc.GetDhcpOptionsSets.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///         Status = "Available",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcDhcpOptionsSetId1"] = ids.Apply(getDhcpOptionsSetsResult =&gt; getDhcpOptionsSetsResult.Sets[0]?.Id),
+        ///         ["vpcDhcpOptionsSetId2"] = nameRegex.Apply(getDhcpOptionsSetsResult =&gt; getDhcpOptionsSetsResult.Sets[0]?.Id),
+        ///         ["vpcDhcpOptionsSetId3"] = dhcpOptionsSetName.Apply(getDhcpOptionsSetsResult =&gt; getDhcpOptionsSetsResult.Sets[0]?.Id),
+        ///         ["vpcDhcpOptionsSetId4"] = domainName.Apply(getDhcpOptionsSetsResult =&gt; getDhcpOptionsSetsResult.Sets[0]?.Id),
+        ///         ["vpcDhcpOptionsSetId5"] = status.Apply(getDhcpOptionsSetsResult =&gt; getDhcpOptionsSetsResult.Sets[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDhcpOptionsSetsResult> InvokeAsync(GetDhcpOptionsSetsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDhcpOptionsSetsResult>("alicloud:vpc/getDhcpOptionsSets:getDhcpOptionsSets", args ?? new GetDhcpOptionsSetsArgs(), options.WithDefaults());
@@ -23,6 +86,69 @@ namespace Pulumi.AliCloud.Vpc
         /// This data source provides the Vpc Dhcp Options Sets of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.134.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Vpc.GetDhcpOptionsSets.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Vpc.GetDhcpOptionsSets.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-DhcpOptionsSet",
+        ///     });
+        /// 
+        ///     var dhcpOptionsSetName = AliCloud.Vpc.GetDhcpOptionsSets.Invoke(new()
+        ///     {
+        ///         DhcpOptionsSetName = "my-DhcpOptionsSet",
+        ///     });
+        /// 
+        ///     var domainName = AliCloud.Vpc.GetDhcpOptionsSets.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///         DomainName = "example.com",
+        ///     });
+        /// 
+        ///     var status = AliCloud.Vpc.GetDhcpOptionsSets.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///         Status = "Available",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcDhcpOptionsSetId1"] = ids.Apply(getDhcpOptionsSetsResult =&gt; getDhcpOptionsSetsResult.Sets[0]?.Id),
+        ///         ["vpcDhcpOptionsSetId2"] = nameRegex.Apply(getDhcpOptionsSetsResult =&gt; getDhcpOptionsSetsResult.Sets[0]?.Id),
+        ///         ["vpcDhcpOptionsSetId3"] = dhcpOptionsSetName.Apply(getDhcpOptionsSetsResult =&gt; getDhcpOptionsSetsResult.Sets[0]?.Id),
+        ///         ["vpcDhcpOptionsSetId4"] = domainName.Apply(getDhcpOptionsSetsResult =&gt; getDhcpOptionsSetsResult.Sets[0]?.Id),
+        ///         ["vpcDhcpOptionsSetId5"] = status.Apply(getDhcpOptionsSetsResult =&gt; getDhcpOptionsSetsResult.Sets[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDhcpOptionsSetsResult> Invoke(GetDhcpOptionsSetsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDhcpOptionsSetsResult>("alicloud:vpc/getDhcpOptionsSets:getDhcpOptionsSets", args ?? new GetDhcpOptionsSetsInvokeArgs(), options.WithDefaults());

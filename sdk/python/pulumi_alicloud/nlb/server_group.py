@@ -561,6 +561,53 @@ class ServerGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.186.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_server_group = alicloud.nlb.ServerGroup("defaultServerGroup",
+            resource_group_id=default_resource_groups.ids[0],
+            server_group_name=name,
+            server_group_type="Instance",
+            vpc_id=default_network.id,
+            scheduler="Wrr",
+            protocol="TCP",
+            connection_drain=True,
+            connection_drain_timeout=60,
+            address_ip_version="Ipv4",
+            health_check=alicloud.nlb.ServerGroupHealthCheckArgs(
+                health_check_enabled=True,
+                health_check_type="TCP",
+                health_check_connect_port=0,
+                healthy_threshold=2,
+                unhealthy_threshold=2,
+                health_check_connect_timeout=5,
+                health_check_interval=10,
+                http_check_method="GET",
+                health_check_http_codes=[
+                    "http_2xx",
+                    "http_3xx",
+                    "http_4xx",
+                ],
+            ),
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        ```
+
         ## Import
 
         NLB Server Group can be imported using the id, e.g.
@@ -596,6 +643,53 @@ class ServerGroup(pulumi.CustomResource):
         For information about NLB Server Group and how to use it, see [What is Server Group](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createservergroup-nlb).
 
         > **NOTE:** Available since v1.186.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_server_group = alicloud.nlb.ServerGroup("defaultServerGroup",
+            resource_group_id=default_resource_groups.ids[0],
+            server_group_name=name,
+            server_group_type="Instance",
+            vpc_id=default_network.id,
+            scheduler="Wrr",
+            protocol="TCP",
+            connection_drain=True,
+            connection_drain_timeout=60,
+            address_ip_version="Ipv4",
+            health_check=alicloud.nlb.ServerGroupHealthCheckArgs(
+                health_check_enabled=True,
+                health_check_type="TCP",
+                health_check_connect_port=0,
+                healthy_threshold=2,
+                unhealthy_threshold=2,
+                health_check_connect_timeout=5,
+                health_check_interval=10,
+                http_check_method="GET",
+                health_check_http_codes=[
+                    "http_2xx",
+                    "http_3xx",
+                    "http_4xx",
+                ],
+            ),
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        ```
 
         ## Import
 

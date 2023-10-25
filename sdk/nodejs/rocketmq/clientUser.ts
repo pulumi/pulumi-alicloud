@@ -13,6 +13,27 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const sagId = config.get("sagId") || "sag-9bifkfaz4fg***";
+ * const _default = new alicloud.rocketmq.ClientUser("default", {
+ *     sagId: sagId,
+ *     bandwidth: 20,
+ *     userMail: "tf-example@abc.com",
+ *     userName: name,
+ *     password: "example1234",
+ *     clientIp: "192.1.10.0",
+ * });
+ * ```
+ *
  * ## Import
  *
  * The Sag ClientUser can be imported using the name, e.g.

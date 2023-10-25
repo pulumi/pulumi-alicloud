@@ -11,6 +11,32 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.132.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultVault = new alicloud.hbr.Vault("defaultVault", {vaultName: "terraform-example2"});
+ * const defaultFileSystem = new alicloud.nas.FileSystem("defaultFileSystem", {
+ *     protocolType: "NFS",
+ *     storageType: "Performance",
+ *     description: "terraform-example",
+ *     encryptType: 1,
+ * });
+ * const defaultNasBackupPlan = new alicloud.hbr.NasBackupPlan("defaultNasBackupPlan", {
+ *     nasBackupPlanName: "terraform-example",
+ *     fileSystemId: defaultFileSystem.id,
+ *     schedule: "I|1602673264|PT2H",
+ *     backupType: "COMPLETE",
+ *     vaultId: defaultVault.id,
+ *     retention: "2",
+ *     paths: ["/"],
+ * });
+ * ```
+ *
  * ## Import
  *
  * HBR Nas Backup Plan can be imported using the id, e.g.

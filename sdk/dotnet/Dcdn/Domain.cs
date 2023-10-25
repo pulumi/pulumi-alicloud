@@ -20,6 +20,40 @@ namespace Pulumi.AliCloud.Dcdn
     /// 
     /// &gt; **NOTE:** If the origin content is not saved on Alibaba Cloud, the content must be reviewed by Alibaba Cloud. The review will be completed by the next working day after you submit the application.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var domainName = config.Get("domainName") ?? "example.com";
+    ///     var example = new AliCloud.Dcdn.Domain("example", new()
+    ///     {
+    ///         DomainName = domainName,
+    ///         Scope = "overseas",
+    ///         Sources = new[]
+    ///         {
+    ///             new AliCloud.Dcdn.Inputs.DomainSourceArgs
+    ///             {
+    ///                 Content = "1.1.1.1",
+    ///                 Port = 80,
+    ///                 Priority = "20",
+    ///                 Type = "ipaddr",
+    ///                 Weight = "10",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// DCDN Domain can be imported using the id or DCDN Domain name, e.g.

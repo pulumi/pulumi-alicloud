@@ -132,6 +132,18 @@ def get_connections(customer_gateway_id: Optional[str] = None,
     """
     The VPN connections data source lists lots of VPN connections resource information owned by an Alicloud account.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    foo = alicloud.vpn.get_connections(customer_gateway_id="fake-cgw-id",
+        ids=["fake-conn-id"],
+        output_file="/tmp/vpnconn",
+        vpn_gateway_id="fake-vpn-id")
+    ```
+
 
     :param str customer_gateway_id: Use the VPN customer gateway ID as the search key.
     :param Sequence[str] ids: IDs of the VPN connections.
@@ -168,6 +180,18 @@ def get_connections_output(customer_gateway_id: Optional[pulumi.Input[Optional[s
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectionsResult]:
     """
     The VPN connections data source lists lots of VPN connections resource information owned by an Alicloud account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    foo = alicloud.vpn.get_connections(customer_gateway_id="fake-cgw-id",
+        ids=["fake-conn-id"],
+        output_file="/tmp/vpnconn",
+        vpn_gateway_id="fake-vpn-id")
+    ```
 
 
     :param str customer_gateway_id: Use the VPN customer gateway ID as the search key.

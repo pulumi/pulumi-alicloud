@@ -10,6 +10,19 @@ import * as utilities from "../utilities";
  * > **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsKeyPairs from version 1.121.0.
  *
  * This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * // Declare the data source
+ * const defaultKeyPair = new alicloud.ecs.KeyPair("defaultKeyPair", {keyName: "keyPairDatasource"});
+ * const defaultKeyPairs = alicloud.ecs.getKeyPairsOutput({
+ *     nameRegex: defaultKeyPair.keyName,
+ * });
+ * ```
  */
 export function getKeyPairs(args?: GetKeyPairsArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyPairsResult> {
     args = args || {};
@@ -94,6 +107,19 @@ export interface GetKeyPairsResult {
  * > **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsKeyPairs from version 1.121.0.
  *
  * This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * // Declare the data source
+ * const defaultKeyPair = new alicloud.ecs.KeyPair("defaultKeyPair", {keyName: "keyPairDatasource"});
+ * const defaultKeyPairs = alicloud.ecs.getKeyPairsOutput({
+ *     nameRegex: defaultKeyPair.keyName,
+ * });
+ * ```
  */
 export function getKeyPairsOutput(args?: GetKeyPairsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyPairsResult> {
     return pulumi.output(args).apply((a: any) => getKeyPairs(a, opts))

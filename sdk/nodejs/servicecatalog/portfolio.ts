@@ -11,6 +11,22 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.204.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const _default = new alicloud.servicecatalog.Portfolio("default", {
+ *     portfolioName: name,
+ *     providerName: name,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Service Catalog Portfolio can be imported using the id, e.g.

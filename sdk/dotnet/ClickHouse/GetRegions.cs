@@ -15,6 +15,35 @@ namespace Pulumi.AliCloud.ClickHouse
         /// This data source provides the Click House Accounts of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.138.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var default1 = AliCloud.ClickHouse.GetRegions.Invoke(new()
+        ///     {
+        ///         Current = true,
+        ///     });
+        /// 
+        ///     var default2 = AliCloud.ClickHouse.GetRegions.Invoke(new()
+        ///     {
+        ///         RegionId = "cn-hangzhou",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegionsResult> InvokeAsync(GetRegionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionsResult>("alicloud:clickhouse/getRegions:getRegions", args ?? new GetRegionsArgs(), options.WithDefaults());
@@ -23,6 +52,35 @@ namespace Pulumi.AliCloud.ClickHouse
         /// This data source provides the Click House Accounts of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.138.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var default1 = AliCloud.ClickHouse.GetRegions.Invoke(new()
+        ///     {
+        ///         Current = true,
+        ///     });
+        /// 
+        ///     var default2 = AliCloud.ClickHouse.GetRegions.Invoke(new()
+        ///     {
+        ///         RegionId = "cn-hangzhou",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetRegionsResult> Invoke(GetRegionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionsResult>("alicloud:clickhouse/getRegions:getRegions", args ?? new GetRegionsInvokeArgs(), options.WithDefaults());

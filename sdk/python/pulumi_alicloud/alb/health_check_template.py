@@ -592,6 +592,17 @@ class HealthCheckTemplate(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.134.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.alb.HealthCheckTemplate("example", health_check_template_name="example_name")
+        ```
+
         ## Import
 
         Application Load Balancer (ALB) Health Check Template can be imported using the id, e.g.
@@ -628,6 +639,17 @@ class HealthCheckTemplate(pulumi.CustomResource):
         For information about Application Load Balancer (ALB) Health Check Template and how to use it, see [What is Health Check Template](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createhealthchecktemplate).
 
         > **NOTE:** Available since v1.134.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.alb.HealthCheckTemplate("example", health_check_template_name="example_name")
+        ```
 
         ## Import
 

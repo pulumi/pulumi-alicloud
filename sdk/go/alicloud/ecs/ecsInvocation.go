@@ -19,6 +19,52 @@ import (
 //
 // > **NOTE:** Available in v1.168.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultCommand, err := ecs.NewCommand(ctx, "defaultCommand", &ecs.CommandArgs{
+//				CommandContent: pulumi.String("bHMK"),
+//				Description:    pulumi.String("terraform-example"),
+//				Type:           pulumi.String("RunShellScript"),
+//				WorkingDir:     pulumi.String("/root"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstances, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
+//				Status: pulumi.StringRef("Running"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewEcsInvocation(ctx, "defaultEcsInvocation", &ecs.EcsInvocationArgs{
+//				CommandId: defaultCommand.ID(),
+//				InstanceIds: pulumi.StringArray{
+//					*pulumi.String(defaultInstances.Ids[0]),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ECS Invocation can be imported using the id, e.g.

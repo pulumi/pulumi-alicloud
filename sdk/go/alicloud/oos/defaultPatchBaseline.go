@@ -19,6 +19,43 @@ import (
 //
 // > **NOTE:** Available in v1.203.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultPatchBaseline, err := oos.NewPatchBaseline(ctx, "defaultPatchBaseline", &oos.PatchBaselineArgs{
+//				OperationSystem:   pulumi.String("Windows"),
+//				PatchBaselineName: pulumi.String("terraform-example"),
+//				Description:       pulumi.String("terraform-example"),
+//				ApprovalRules:     pulumi.String("{\"PatchRules\":[{\"PatchFilterGroup\":[{\"Key\":\"PatchSet\",\"Values\":[\"OS\"]},{\"Key\":\"ProductFamily\",\"Values\":[\"Windows\"]},{\"Key\":\"Product\",\"Values\":[\"Windows 10\",\"Windows 7\"]},{\"Key\":\"Classification\",\"Values\":[\"Security Updates\",\"Updates\",\"Update Rollups\",\"Critical Updates\"]},{\"Key\":\"Severity\",\"Values\":[\"Critical\",\"Important\",\"Moderate\"]}],\"ApproveAfterDays\":7,\"EnableNonSecurity\":true,\"ComplianceLevel\":\"Medium\"}]}"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oos.NewDefaultPatchBaseline(ctx, "defaultDefaultPatchBaseline", &oos.DefaultPatchBaselineArgs{
+//				PatchBaselineName: defaultPatchBaseline.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Oos Default Patch Baseline can be imported using the id, e.g.

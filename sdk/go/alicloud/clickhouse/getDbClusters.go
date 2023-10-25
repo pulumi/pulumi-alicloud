@@ -15,6 +15,50 @@ import (
 // This data source provides the Click House DBCluster of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.134.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/clickhouse"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultDbCluster, err := clickhouse.NewDbCluster(ctx, "defaultDbCluster", &clickhouse.DbClusterArgs{
+//				DbClusterVersion:     pulumi.String("20.3.10.75"),
+//				Category:             pulumi.String("Basic"),
+//				DbClusterClass:       pulumi.String("S8"),
+//				DbClusterNetworkType: pulumi.String("vpc"),
+//				DbNodeGroupCount:     pulumi.Int(1),
+//				PaymentType:          pulumi.String("PayAsYouGo"),
+//				DbNodeStorage:        pulumi.String("500"),
+//				StorageType:          pulumi.String("cloud_essd"),
+//				VswitchId:            pulumi.String("your_vswitch_id"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultDbClusters := clickhouse.GetDbClustersOutput(ctx, clickhouse.GetDbClustersOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultDbCluster.ID(),
+//				},
+//			}, nil)
+//			ctx.Export("dbCluster", defaultDbClusters.ApplyT(func(defaultDbClusters clickhouse.GetDbClustersResult) (*string, error) {
+//				return &defaultDbClusters.Ids[0], nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDbClusters(ctx *pulumi.Context, args *GetDbClustersArgs, opts ...pulumi.InvokeOption) (*GetDbClustersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDbClustersResult

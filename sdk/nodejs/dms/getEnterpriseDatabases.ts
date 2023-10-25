@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides DMS Enterprise Database available to the user. [What is Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-listdatabases).
  *
  * > **NOTE:** Available since v1.195.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.dms.getEnterpriseDatabases({
+ *     nameRegex: "test2",
+ *     instanceId: "2195118",
+ * });
+ * export const alicloudDmsEnterpriseDatabaseExampleId = _default.then(_default => _default.databases?.[0]?.id);
+ * ```
  */
 export function getEnterpriseDatabases(args: GetEnterpriseDatabasesArgs, opts?: pulumi.InvokeOptions): Promise<GetEnterpriseDatabasesResult> {
 
@@ -71,6 +86,21 @@ export interface GetEnterpriseDatabasesResult {
  * This data source provides DMS Enterprise Database available to the user. [What is Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-listdatabases).
  *
  * > **NOTE:** Available since v1.195.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.dms.getEnterpriseDatabases({
+ *     nameRegex: "test2",
+ *     instanceId: "2195118",
+ * });
+ * export const alicloudDmsEnterpriseDatabaseExampleId = _default.then(_default => _default.databases?.[0]?.id);
+ * ```
  */
 export function getEnterpriseDatabasesOutput(args: GetEnterpriseDatabasesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnterpriseDatabasesResult> {
     return pulumi.output(args).apply((a: any) => getEnterpriseDatabases(a, opts))

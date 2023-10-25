@@ -310,6 +310,19 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.51.0+
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.rocketmq.Instance("example",
+            instance_name="tf-example-ons-instance",
+            remark="tf-example-ons-instance-remark")
+        ```
+
         ## Import
 
         ONS INSTANCE can be imported using the id, e.g.
@@ -341,6 +354,19 @@ class Instance(pulumi.CustomResource):
         > **NOTE:** The number of instances in the same region cannot exceed 8. At present, the resource does not support region "mq-internet-access" and "ap-southeast-5".
 
         > **NOTE:** Available in 1.51.0+
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.rocketmq.Instance("example",
+            instance_name="tf-example-ons-instance",
+            remark="tf-example-ons-instance-remark")
+        ```
 
         ## Import
 

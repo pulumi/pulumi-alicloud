@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * This data source provides Ecs Elasticity Assurance available to the user.
  *
  * > **NOTE:** Available in 1.196.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.ecs.getElasticityAssurances({
+ *     ids: [alicloud_ecs_elasticity_assurance["default"].id],
+ * });
+ * export const alicloudEcsElasticityAssuranceExampleId = _default.then(_default => _default.assurances?.[0]?.id);
+ * ```
  */
 export function getElasticityAssurances(args?: GetElasticityAssurancesArgs, opts?: pulumi.InvokeOptions): Promise<GetElasticityAssurancesResult> {
     args = args || {};
@@ -90,6 +102,18 @@ export interface GetElasticityAssurancesResult {
  * This data source provides Ecs Elasticity Assurance available to the user.
  *
  * > **NOTE:** Available in 1.196.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.ecs.getElasticityAssurances({
+ *     ids: [alicloud_ecs_elasticity_assurance["default"].id],
+ * });
+ * export const alicloudEcsElasticityAssuranceExampleId = _default.then(_default => _default.assurances?.[0]?.id);
+ * ```
  */
 export function getElasticityAssurancesOutput(args?: GetElasticityAssurancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetElasticityAssurancesResult> {
     return pulumi.output(args).apply((a: any) => getElasticityAssurances(a, opts))

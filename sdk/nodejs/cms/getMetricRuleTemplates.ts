@@ -10,6 +10,32 @@ import * as utilities from "../utilities";
  * This data source provides the Cms Metric Rule Templates of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.134.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cms.getMetricRuleTemplates({
+ *     ids: ["example_value"],
+ * });
+ * export const cmsMetricRuleTemplateId1 = ids.then(ids => ids.templates?.[0]?.id);
+ * const nameRegex = alicloud.cms.getMetricRuleTemplates({
+ *     nameRegex: "^my-MetricRuleTemplate",
+ * });
+ * export const cmsMetricRuleTemplateId2 = nameRegex.then(nameRegex => nameRegex.templates?.[0]?.id);
+ * const keyword = alicloud.cms.getMetricRuleTemplates({
+ *     keyword: "^my-MetricRuleTemplate",
+ * });
+ * export const cmsMetricRuleTemplateId3 = nameRegex.then(nameRegex => nameRegex.templates?.[0]?.id);
+ * const templateId = alicloud.cms.getMetricRuleTemplates({
+ *     templateId: "example_value",
+ * });
+ * export const cmsMetricRuleTemplateId4 = nameRegex.then(nameRegex => nameRegex.templates?.[0]?.id);
+ * ```
  */
 export function getMetricRuleTemplates(args?: GetMetricRuleTemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetMetricRuleTemplatesResult> {
     args = args || {};
@@ -82,6 +108,32 @@ export interface GetMetricRuleTemplatesResult {
  * This data source provides the Cms Metric Rule Templates of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.134.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cms.getMetricRuleTemplates({
+ *     ids: ["example_value"],
+ * });
+ * export const cmsMetricRuleTemplateId1 = ids.then(ids => ids.templates?.[0]?.id);
+ * const nameRegex = alicloud.cms.getMetricRuleTemplates({
+ *     nameRegex: "^my-MetricRuleTemplate",
+ * });
+ * export const cmsMetricRuleTemplateId2 = nameRegex.then(nameRegex => nameRegex.templates?.[0]?.id);
+ * const keyword = alicloud.cms.getMetricRuleTemplates({
+ *     keyword: "^my-MetricRuleTemplate",
+ * });
+ * export const cmsMetricRuleTemplateId3 = nameRegex.then(nameRegex => nameRegex.templates?.[0]?.id);
+ * const templateId = alicloud.cms.getMetricRuleTemplates({
+ *     templateId: "example_value",
+ * });
+ * export const cmsMetricRuleTemplateId4 = nameRegex.then(nameRegex => nameRegex.templates?.[0]?.id);
+ * ```
  */
 export function getMetricRuleTemplatesOutput(args?: GetMetricRuleTemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetricRuleTemplatesResult> {
     return pulumi.output(args).apply((a: any) => getMetricRuleTemplates(a, opts))

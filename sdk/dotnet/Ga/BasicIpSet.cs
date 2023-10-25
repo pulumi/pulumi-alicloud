@@ -16,6 +16,42 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// &gt; **NOTE:** Available since v1.194.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var region = config.Get("region") ?? "cn-hangzhou";
+    ///     var defaultBasicAccelerator = new AliCloud.Ga.BasicAccelerator("defaultBasicAccelerator", new()
+    ///     {
+    ///         Duration = 1,
+    ///         PricingCycle = "Month",
+    ///         BandwidthBillingType = "CDT",
+    ///         AutoPay = true,
+    ///         AutoUseCoupon = "true",
+    ///         AutoRenew = false,
+    ///         AutoRenewDuration = 1,
+    ///     });
+    /// 
+    ///     var defaultBasicIpSet = new AliCloud.Ga.BasicIpSet("defaultBasicIpSet", new()
+    ///     {
+    ///         AcceleratorId = defaultBasicAccelerator.Id,
+    ///         AccelerateRegionId = region,
+    ///         IspType = "BGP",
+    ///         Bandwidth = 5,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Global Accelerator (GA) Basic Ip Set can be imported using the id, e.g.

@@ -18,6 +18,34 @@ namespace Pulumi.AliCloud.RocketMQ
     /// 
     /// &gt; **NOTE:** Only the following regions suppor. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var sagId = config.Get("sagId") ?? "sag-9bifkfaz***";
+    ///     var @default = new AliCloud.RocketMQ.DnatEntry("default", new()
+    ///     {
+    ///         SagId = sagId,
+    ///         Type = "Intranet",
+    ///         IpProtocol = "any",
+    ///         ExternalIp = "172.32.0.2",
+    ///         ExternalPort = "any",
+    ///         InternalIp = "172.16.0.4",
+    ///         InternalPort = "any",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// The Sag DnatEntry can be imported using the id, e.g.

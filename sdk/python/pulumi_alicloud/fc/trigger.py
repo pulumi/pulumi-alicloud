@@ -463,6 +463,421 @@ class Trigger(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.93.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default_account = alicloud.get_account()
+        default_regions = alicloud.get_regions(current=True)
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_project = alicloud.log.Project("defaultProject")
+        default_store = alicloud.log.Store("defaultStore", project=default_project.name)
+        source_store = alicloud.log.Store("sourceStore", project=default_project.name)
+        default_role = alicloud.ram.Role("defaultRole",
+            document=\"\"\"  {
+              "Statement": [
+                {
+                  "Action": "sts:AssumeRole",
+                  "Effect": "Allow",
+                  "Principal": {
+                    "Service": [
+                      "fc.aliyuncs.com"
+                    ]
+                  }
+                }
+              ],
+              "Version": "1"
+          }
+        \"\"\",
+            description="this is a example",
+            force=True)
+        default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment",
+            role_name=default_role.name,
+            policy_name="AliyunLogFullAccess",
+            policy_type="System")
+        default_service = alicloud.fc.Service("defaultService",
+            description="example-value",
+            role=default_role.arn,
+            log_config=alicloud.fc.ServiceLogConfigArgs(
+                project=default_project.name,
+                logstore=default_store.name,
+                enable_instance_metrics=True,
+                enable_request_metrics=True,
+            ))
+        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
+        # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
+            bucket=default_bucket.id,
+            key="index.py",
+            content=\"\"\"import logging 
+        def handler(event, context): 
+        logger = logging.getLogger() 
+        logger.info('hello world') 
+        return 'hello world'\"\"\")
+        default_function = alicloud.fc.Function("defaultFunction",
+            service=default_service.name,
+            description="example",
+            oss_bucket=default_bucket.id,
+            oss_key=default_bucket_object.key,
+            memory_size=512,
+            runtime="python3.10",
+            handler="hello.handler")
+        default_trigger = alicloud.fc.Trigger("defaultTrigger",
+            service=default_service.name,
+            function=default_function.name,
+            role=default_role.arn,
+            source_arn=default_project.name.apply(lambda name: f"acs:log:{default_regions.regions[0].id}:{default_account.id}:project/{name}"),
+            type="log",
+            config=pulumi.Output.all(source_store.name, default_project.name, default_store.name).apply(lambda sourceStoreName, defaultProjectName, defaultStoreName: f\"\"\"    {{
+                "sourceConfig": {{
+                    "logstore": "{source_store_name}",
+                    "startTime": null
+                }},
+                "jobConfig": {{
+                    "maxRetryTime": 3,
+                    "triggerInterval": 60
+                }},
+                "functionParameter": {{
+                    "a": "b",
+                    "c": "d"
+                }},
+                "logConfig": {{
+                     "project": "{default_project_name}",
+                    "logstore": "{default_store_name}"
+                }},
+                "targetConfig": null,
+                "enable": true
+            }}
+          
+        \"\"\"))
+        ```
+
+        MNS topic trigger:
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default_account = alicloud.get_account()
+        default_regions = alicloud.get_regions(current=True)
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_topic = alicloud.mns.Topic("defaultTopic")
+        default_role = alicloud.ram.Role("defaultRole",
+            document=\"\"\"  {
+              "Statement": [
+                {
+                  "Action": "sts:AssumeRole",
+                  "Effect": "Allow",
+                  "Principal": {
+                    "Service": [
+                      "mns.aliyuncs.com"
+                    ]
+                  }
+                }
+              ],
+              "Version": "1"
+          }
+        \"\"\",
+            description="this is a example",
+            force=True)
+        default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment",
+            role_name=default_role.name,
+            policy_name="AliyunMNSNotificationRolePolicy",
+            policy_type="System")
+        default_service = alicloud.fc.Service("defaultService",
+            description="example-value",
+            internet_access=False)
+        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
+        # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
+            bucket=default_bucket.id,
+            key="index.py",
+            content=\"\"\"import logging 
+        def handler(event, context): 
+        logger = logging.getLogger() 
+        logger.info('hello world') 
+        return 'hello world'\"\"\")
+        default_function = alicloud.fc.Function("defaultFunction",
+            service=default_service.name,
+            description="example",
+            oss_bucket=default_bucket.id,
+            oss_key=default_bucket_object.key,
+            memory_size=512,
+            runtime="python3.10",
+            handler="hello.handler")
+        default_trigger = alicloud.fc.Trigger("defaultTrigger",
+            service=default_service.name,
+            function=default_function.name,
+            role=default_role.arn,
+            source_arn=default_topic.name.apply(lambda name: f"acs:mns:{default_regions.regions[0].id}:{default_account.id}:/topics/{name}"),
+            type="mns_topic",
+            config_mns=\"\"\"  {
+            "filterTag":"exampleTag",
+            "notifyContentFormat":"STREAM",
+            "notifyStrategy":"BACKOFF_RETRY"
+          }
+        \"\"\")
+        ```
+
+        CDN events trigger:
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default_account = alicloud.get_account()
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_domain_new = alicloud.cdn.DomainNew("defaultDomainNew",
+            domain_name=default_random_integer.result.apply(lambda result: f"example{result}.tf.com"),
+            cdn_type="web",
+            scope="overseas",
+            sources=[alicloud.cdn.DomainNewSourceArgs(
+                content="1.1.1.1",
+                type="ipaddr",
+                priority=20,
+                port=80,
+                weight=10,
+            )])
+        default_service = alicloud.fc.Service("defaultService",
+            description="example-value",
+            internet_access=False)
+        default_role = alicloud.ram.Role("defaultRole",
+            document=\"\"\"    {
+              "Statement": [
+                {
+                  "Action": "sts:AssumeRole",
+                  "Effect": "Allow",
+                  "Principal": {
+                    "Service": [
+                      "cdn.aliyuncs.com"
+                    ]
+                  }
+                }
+              ],
+              "Version": "1"
+          }
+        \"\"\",
+            description="this is a example",
+            force=True)
+        default_policy = alicloud.ram.Policy("defaultPolicy",
+            policy_name=default_random_integer.result.apply(lambda result: f"fcservicepolicy-{result}"),
+            policy_document=pulumi.Output.all(default_service.name, default_service.name).apply(lambda defaultServiceName, defaultServiceName1: f\"\"\"    {{
+                "Version": "1",
+                "Statement": [
+                {{
+                    "Action": [
+                    "fc:InvokeFunction"
+                    ],
+                "Resource": [
+                    "acs:fc:*:*:services/{default_service_name}/functions/*",
+                    "acs:fc:*:*:services/{default_service_name1}.*/functions/*"
+                ],
+                "Effect": "Allow"
+                }}
+                ]
+            }}
+        \"\"\"),
+            description="this is a example",
+            force=True)
+        default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment",
+            role_name=default_role.name,
+            policy_name=default_policy.name,
+            policy_type="Custom")
+        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
+        # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
+            bucket=default_bucket.id,
+            key="index.py",
+            content=\"\"\"import logging 
+        def handler(event, context): 
+        logger = logging.getLogger() 
+        logger.info('hello world') 
+        return 'hello world'\"\"\")
+        default_function = alicloud.fc.Function("defaultFunction",
+            service=default_service.name,
+            description="example",
+            oss_bucket=default_bucket.id,
+            oss_key=default_bucket_object.key,
+            memory_size=512,
+            runtime="python3.10",
+            handler="hello.handler")
+        default_trigger = alicloud.fc.Trigger("defaultTrigger",
+            service=default_service.name,
+            function=default_function.name,
+            role=default_role.arn,
+            source_arn=f"acs:cdn:*:{default_account.id}",
+            type="cdn_events",
+            config=default_domain_new.domain_name.apply(lambda domain_name: f\"\"\"      {{"eventName":"LogFileCreated",
+             "eventVersion":"1.0.0",
+             "notes":"cdn events trigger",
+             "filter":{{
+                "domain": ["{domain_name}"]
+                }}
+            }}
+        \"\"\"))
+        ```
+
+        EventBridge trigger:
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default_account = alicloud.get_account()
+        default_regions = alicloud.get_regions(current=True)
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        service_linked_role = alicloud.eventbridge.ServiceLinkedRole("serviceLinkedRole", product_name="AliyunServiceRoleForEventBridgeSendToFC")
+        default_service = alicloud.fc.Service("defaultService",
+            description="example-value",
+            internet_access=False)
+        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
+        # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
+            bucket=default_bucket.id,
+            key="index.py",
+            content=\"\"\"import logging 
+        def handler(event, context): 
+        logger = logging.getLogger() 
+        logger.info('hello world') 
+        return 'hello world'\"\"\")
+        default_function = alicloud.fc.Function("defaultFunction",
+            service=default_service.name,
+            description="example",
+            oss_bucket=default_bucket.id,
+            oss_key=default_bucket_object.key,
+            memory_size=512,
+            runtime="python3.10",
+            handler="hello.handler")
+        oss_trigger = alicloud.fc.Trigger("ossTrigger",
+            service=default_service.name,
+            function=default_function.name,
+            type="eventbridge",
+            config=\"\"\"    {
+                "triggerEnable": false,
+                "asyncInvocationType": false,
+                "eventRuleFilterPattern": {
+                  "source":[
+                    "acs.oss"
+                    ],
+                    "type":[
+                      "oss:BucketCreated:PutBucket"
+                    ]
+                },
+                "eventSourceConfig": {
+                    "eventSourceType": "Default"
+                }
+            }
+        \"\"\")
+        mns_trigger = alicloud.fc.Trigger("mnsTrigger",
+            service=default_service.name,
+            function=default_function.name,
+            type="eventbridge",
+            config=\"\"\"    {
+                "triggerEnable": false,
+                "asyncInvocationType": false,
+                "eventRuleFilterPattern": "{}",
+                "eventSourceConfig": {
+                    "eventSourceType": "MNS",
+                    "eventSourceParameters": {
+                        "sourceMNSParameters": {
+                            "RegionId": "cn-hangzhou",
+                            "QueueName": "mns-queue",
+                            "IsBase64Decode": true
+                        }
+                    }
+                }
+            }
+        \"\"\")
+        default_instance = alicloud.rocketmq.Instance("defaultInstance",
+            instance_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
+            remark="terraform-example")
+        default_group = alicloud.rocketmq.Group("defaultGroup",
+            group_name="GID-example",
+            instance_id=default_instance.id,
+            remark="terraform-example")
+        default_topic = alicloud.rocketmq.Topic("defaultTopic",
+            topic_name="mytopic",
+            instance_id=default_instance.id,
+            message_type=0,
+            remark="terraform-example")
+        rocketmq_trigger = alicloud.fc.Trigger("rocketmqTrigger",
+            service=default_service.name,
+            function=default_function.name,
+            type="eventbridge",
+            config=pulumi.Output.all(default_instance.id, default_group.group_name, default_topic.topic_name).apply(lambda id, group_name, topic_name: f\"\"\"    {{
+                "triggerEnable": false,
+                "asyncInvocationType": false,
+                "eventRuleFilterPattern": "{{}}",
+                "eventSourceConfig": {{
+                    "eventSourceType": "RocketMQ",
+                    "eventSourceParameters": {{
+                        "sourceRocketMQParameters": {{
+                            "RegionId": "{default_regions.regions[0].id}",
+                            "InstanceId": "{id}",
+                            "GroupID": "{group_name}",
+                            "Topic": "{topic_name}",
+                            "Timestamp": 1686296162,
+                            "Tag": "example-tag",
+                            "Offset": "CONSUME_FROM_LAST_OFFSET"
+                        }}
+                    }}
+                }}
+            }}
+        \"\"\"))
+        default_amqp_instance_instance = alicloud.amqp.Instance("defaultAmqp/instanceInstance",
+            instance_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
+            instance_type="professional",
+            max_tps="1000",
+            queue_capacity="50",
+            support_eip=True,
+            max_eip_tps="128",
+            payment_type="Subscription",
+            period=1)
+        default_virtual_host = alicloud.amqp.VirtualHost("defaultVirtualHost",
+            instance_id=default_amqp / instance_instance["id"],
+            virtual_host_name="example-VirtualHost")
+        default_queue = alicloud.amqp.Queue("defaultQueue",
+            instance_id=default_virtual_host.instance_id,
+            queue_name="example-queue",
+            virtual_host_name=default_virtual_host.virtual_host_name)
+        rabbitmq_trigger = alicloud.fc.Trigger("rabbitmqTrigger",
+            service=default_service.name,
+            function=default_function.name,
+            type="eventbridge",
+            config=pulumi.Output.all(default_virtual_host.virtual_host_name, default_queue.queue_name).apply(lambda virtual_host_name, queue_name: f\"\"\"    {{
+                "triggerEnable": false,
+                "asyncInvocationType": false,
+                "eventRuleFilterPattern": "{{}}",
+                "eventSourceConfig": {{
+                    "eventSourceType": "RabbitMQ",
+                    "eventSourceParameters": {{
+                        "sourceRabbitMQParameters": {{
+                            "RegionId": "{default_regions.regions[0].id}",
+                            "InstanceId": "{default_amqp / instance_instance["id"]}",
+                            "VirtualHostName": "{virtual_host_name}",
+                            "QueueName": "{queue_name}"
+                        }}
+                    }}
+                }}
+            }}
+        \"\"\"))
+        ```
         ## Module Support
 
         You can use to the existing fc module
@@ -506,6 +921,421 @@ class Trigger(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.93.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default_account = alicloud.get_account()
+        default_regions = alicloud.get_regions(current=True)
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_project = alicloud.log.Project("defaultProject")
+        default_store = alicloud.log.Store("defaultStore", project=default_project.name)
+        source_store = alicloud.log.Store("sourceStore", project=default_project.name)
+        default_role = alicloud.ram.Role("defaultRole",
+            document=\"\"\"  {
+              "Statement": [
+                {
+                  "Action": "sts:AssumeRole",
+                  "Effect": "Allow",
+                  "Principal": {
+                    "Service": [
+                      "fc.aliyuncs.com"
+                    ]
+                  }
+                }
+              ],
+              "Version": "1"
+          }
+        \"\"\",
+            description="this is a example",
+            force=True)
+        default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment",
+            role_name=default_role.name,
+            policy_name="AliyunLogFullAccess",
+            policy_type="System")
+        default_service = alicloud.fc.Service("defaultService",
+            description="example-value",
+            role=default_role.arn,
+            log_config=alicloud.fc.ServiceLogConfigArgs(
+                project=default_project.name,
+                logstore=default_store.name,
+                enable_instance_metrics=True,
+                enable_request_metrics=True,
+            ))
+        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
+        # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
+            bucket=default_bucket.id,
+            key="index.py",
+            content=\"\"\"import logging 
+        def handler(event, context): 
+        logger = logging.getLogger() 
+        logger.info('hello world') 
+        return 'hello world'\"\"\")
+        default_function = alicloud.fc.Function("defaultFunction",
+            service=default_service.name,
+            description="example",
+            oss_bucket=default_bucket.id,
+            oss_key=default_bucket_object.key,
+            memory_size=512,
+            runtime="python3.10",
+            handler="hello.handler")
+        default_trigger = alicloud.fc.Trigger("defaultTrigger",
+            service=default_service.name,
+            function=default_function.name,
+            role=default_role.arn,
+            source_arn=default_project.name.apply(lambda name: f"acs:log:{default_regions.regions[0].id}:{default_account.id}:project/{name}"),
+            type="log",
+            config=pulumi.Output.all(source_store.name, default_project.name, default_store.name).apply(lambda sourceStoreName, defaultProjectName, defaultStoreName: f\"\"\"    {{
+                "sourceConfig": {{
+                    "logstore": "{source_store_name}",
+                    "startTime": null
+                }},
+                "jobConfig": {{
+                    "maxRetryTime": 3,
+                    "triggerInterval": 60
+                }},
+                "functionParameter": {{
+                    "a": "b",
+                    "c": "d"
+                }},
+                "logConfig": {{
+                     "project": "{default_project_name}",
+                    "logstore": "{default_store_name}"
+                }},
+                "targetConfig": null,
+                "enable": true
+            }}
+          
+        \"\"\"))
+        ```
+
+        MNS topic trigger:
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default_account = alicloud.get_account()
+        default_regions = alicloud.get_regions(current=True)
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_topic = alicloud.mns.Topic("defaultTopic")
+        default_role = alicloud.ram.Role("defaultRole",
+            document=\"\"\"  {
+              "Statement": [
+                {
+                  "Action": "sts:AssumeRole",
+                  "Effect": "Allow",
+                  "Principal": {
+                    "Service": [
+                      "mns.aliyuncs.com"
+                    ]
+                  }
+                }
+              ],
+              "Version": "1"
+          }
+        \"\"\",
+            description="this is a example",
+            force=True)
+        default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment",
+            role_name=default_role.name,
+            policy_name="AliyunMNSNotificationRolePolicy",
+            policy_type="System")
+        default_service = alicloud.fc.Service("defaultService",
+            description="example-value",
+            internet_access=False)
+        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
+        # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
+            bucket=default_bucket.id,
+            key="index.py",
+            content=\"\"\"import logging 
+        def handler(event, context): 
+        logger = logging.getLogger() 
+        logger.info('hello world') 
+        return 'hello world'\"\"\")
+        default_function = alicloud.fc.Function("defaultFunction",
+            service=default_service.name,
+            description="example",
+            oss_bucket=default_bucket.id,
+            oss_key=default_bucket_object.key,
+            memory_size=512,
+            runtime="python3.10",
+            handler="hello.handler")
+        default_trigger = alicloud.fc.Trigger("defaultTrigger",
+            service=default_service.name,
+            function=default_function.name,
+            role=default_role.arn,
+            source_arn=default_topic.name.apply(lambda name: f"acs:mns:{default_regions.regions[0].id}:{default_account.id}:/topics/{name}"),
+            type="mns_topic",
+            config_mns=\"\"\"  {
+            "filterTag":"exampleTag",
+            "notifyContentFormat":"STREAM",
+            "notifyStrategy":"BACKOFF_RETRY"
+          }
+        \"\"\")
+        ```
+
+        CDN events trigger:
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default_account = alicloud.get_account()
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_domain_new = alicloud.cdn.DomainNew("defaultDomainNew",
+            domain_name=default_random_integer.result.apply(lambda result: f"example{result}.tf.com"),
+            cdn_type="web",
+            scope="overseas",
+            sources=[alicloud.cdn.DomainNewSourceArgs(
+                content="1.1.1.1",
+                type="ipaddr",
+                priority=20,
+                port=80,
+                weight=10,
+            )])
+        default_service = alicloud.fc.Service("defaultService",
+            description="example-value",
+            internet_access=False)
+        default_role = alicloud.ram.Role("defaultRole",
+            document=\"\"\"    {
+              "Statement": [
+                {
+                  "Action": "sts:AssumeRole",
+                  "Effect": "Allow",
+                  "Principal": {
+                    "Service": [
+                      "cdn.aliyuncs.com"
+                    ]
+                  }
+                }
+              ],
+              "Version": "1"
+          }
+        \"\"\",
+            description="this is a example",
+            force=True)
+        default_policy = alicloud.ram.Policy("defaultPolicy",
+            policy_name=default_random_integer.result.apply(lambda result: f"fcservicepolicy-{result}"),
+            policy_document=pulumi.Output.all(default_service.name, default_service.name).apply(lambda defaultServiceName, defaultServiceName1: f\"\"\"    {{
+                "Version": "1",
+                "Statement": [
+                {{
+                    "Action": [
+                    "fc:InvokeFunction"
+                    ],
+                "Resource": [
+                    "acs:fc:*:*:services/{default_service_name}/functions/*",
+                    "acs:fc:*:*:services/{default_service_name1}.*/functions/*"
+                ],
+                "Effect": "Allow"
+                }}
+                ]
+            }}
+        \"\"\"),
+            description="this is a example",
+            force=True)
+        default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment",
+            role_name=default_role.name,
+            policy_name=default_policy.name,
+            policy_type="Custom")
+        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
+        # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
+            bucket=default_bucket.id,
+            key="index.py",
+            content=\"\"\"import logging 
+        def handler(event, context): 
+        logger = logging.getLogger() 
+        logger.info('hello world') 
+        return 'hello world'\"\"\")
+        default_function = alicloud.fc.Function("defaultFunction",
+            service=default_service.name,
+            description="example",
+            oss_bucket=default_bucket.id,
+            oss_key=default_bucket_object.key,
+            memory_size=512,
+            runtime="python3.10",
+            handler="hello.handler")
+        default_trigger = alicloud.fc.Trigger("defaultTrigger",
+            service=default_service.name,
+            function=default_function.name,
+            role=default_role.arn,
+            source_arn=f"acs:cdn:*:{default_account.id}",
+            type="cdn_events",
+            config=default_domain_new.domain_name.apply(lambda domain_name: f\"\"\"      {{"eventName":"LogFileCreated",
+             "eventVersion":"1.0.0",
+             "notes":"cdn events trigger",
+             "filter":{{
+                "domain": ["{domain_name}"]
+                }}
+            }}
+        \"\"\"))
+        ```
+
+        EventBridge trigger:
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default_account = alicloud.get_account()
+        default_regions = alicloud.get_regions(current=True)
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        service_linked_role = alicloud.eventbridge.ServiceLinkedRole("serviceLinkedRole", product_name="AliyunServiceRoleForEventBridgeSendToFC")
+        default_service = alicloud.fc.Service("defaultService",
+            description="example-value",
+            internet_access=False)
+        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
+        # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
+            bucket=default_bucket.id,
+            key="index.py",
+            content=\"\"\"import logging 
+        def handler(event, context): 
+        logger = logging.getLogger() 
+        logger.info('hello world') 
+        return 'hello world'\"\"\")
+        default_function = alicloud.fc.Function("defaultFunction",
+            service=default_service.name,
+            description="example",
+            oss_bucket=default_bucket.id,
+            oss_key=default_bucket_object.key,
+            memory_size=512,
+            runtime="python3.10",
+            handler="hello.handler")
+        oss_trigger = alicloud.fc.Trigger("ossTrigger",
+            service=default_service.name,
+            function=default_function.name,
+            type="eventbridge",
+            config=\"\"\"    {
+                "triggerEnable": false,
+                "asyncInvocationType": false,
+                "eventRuleFilterPattern": {
+                  "source":[
+                    "acs.oss"
+                    ],
+                    "type":[
+                      "oss:BucketCreated:PutBucket"
+                    ]
+                },
+                "eventSourceConfig": {
+                    "eventSourceType": "Default"
+                }
+            }
+        \"\"\")
+        mns_trigger = alicloud.fc.Trigger("mnsTrigger",
+            service=default_service.name,
+            function=default_function.name,
+            type="eventbridge",
+            config=\"\"\"    {
+                "triggerEnable": false,
+                "asyncInvocationType": false,
+                "eventRuleFilterPattern": "{}",
+                "eventSourceConfig": {
+                    "eventSourceType": "MNS",
+                    "eventSourceParameters": {
+                        "sourceMNSParameters": {
+                            "RegionId": "cn-hangzhou",
+                            "QueueName": "mns-queue",
+                            "IsBase64Decode": true
+                        }
+                    }
+                }
+            }
+        \"\"\")
+        default_instance = alicloud.rocketmq.Instance("defaultInstance",
+            instance_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
+            remark="terraform-example")
+        default_group = alicloud.rocketmq.Group("defaultGroup",
+            group_name="GID-example",
+            instance_id=default_instance.id,
+            remark="terraform-example")
+        default_topic = alicloud.rocketmq.Topic("defaultTopic",
+            topic_name="mytopic",
+            instance_id=default_instance.id,
+            message_type=0,
+            remark="terraform-example")
+        rocketmq_trigger = alicloud.fc.Trigger("rocketmqTrigger",
+            service=default_service.name,
+            function=default_function.name,
+            type="eventbridge",
+            config=pulumi.Output.all(default_instance.id, default_group.group_name, default_topic.topic_name).apply(lambda id, group_name, topic_name: f\"\"\"    {{
+                "triggerEnable": false,
+                "asyncInvocationType": false,
+                "eventRuleFilterPattern": "{{}}",
+                "eventSourceConfig": {{
+                    "eventSourceType": "RocketMQ",
+                    "eventSourceParameters": {{
+                        "sourceRocketMQParameters": {{
+                            "RegionId": "{default_regions.regions[0].id}",
+                            "InstanceId": "{id}",
+                            "GroupID": "{group_name}",
+                            "Topic": "{topic_name}",
+                            "Timestamp": 1686296162,
+                            "Tag": "example-tag",
+                            "Offset": "CONSUME_FROM_LAST_OFFSET"
+                        }}
+                    }}
+                }}
+            }}
+        \"\"\"))
+        default_amqp_instance_instance = alicloud.amqp.Instance("defaultAmqp/instanceInstance",
+            instance_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
+            instance_type="professional",
+            max_tps="1000",
+            queue_capacity="50",
+            support_eip=True,
+            max_eip_tps="128",
+            payment_type="Subscription",
+            period=1)
+        default_virtual_host = alicloud.amqp.VirtualHost("defaultVirtualHost",
+            instance_id=default_amqp / instance_instance["id"],
+            virtual_host_name="example-VirtualHost")
+        default_queue = alicloud.amqp.Queue("defaultQueue",
+            instance_id=default_virtual_host.instance_id,
+            queue_name="example-queue",
+            virtual_host_name=default_virtual_host.virtual_host_name)
+        rabbitmq_trigger = alicloud.fc.Trigger("rabbitmqTrigger",
+            service=default_service.name,
+            function=default_function.name,
+            type="eventbridge",
+            config=pulumi.Output.all(default_virtual_host.virtual_host_name, default_queue.queue_name).apply(lambda virtual_host_name, queue_name: f\"\"\"    {{
+                "triggerEnable": false,
+                "asyncInvocationType": false,
+                "eventRuleFilterPattern": "{{}}",
+                "eventSourceConfig": {{
+                    "eventSourceType": "RabbitMQ",
+                    "eventSourceParameters": {{
+                        "sourceRabbitMQParameters": {{
+                            "RegionId": "{default_regions.regions[0].id}",
+                            "InstanceId": "{default_amqp / instance_instance["id"]}",
+                            "VirtualHostName": "{virtual_host_name}",
+                            "QueueName": "{queue_name}"
+                        }}
+                    }}
+                }}
+            }}
+        \"\"\"))
+        ```
         ## Module Support
 
         You can use to the existing fc module

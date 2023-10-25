@@ -14,6 +14,53 @@ namespace Pulumi.AliCloud.Mse
     /// 
     /// &gt; **NOTE:** Available in 1.94.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
+    ///     {
+    ///         VswitchName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///         VpcId = exampleNetwork.Id,
+    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var exampleCluster = new AliCloud.Mse.Cluster("exampleCluster", new()
+    ///     {
+    ///         ClusterSpecification = "MSE_SC_1_2_60_c",
+    ///         ClusterType = "Nacos-Ans",
+    ///         ClusterVersion = "NACOS_2_0_0",
+    ///         InstanceCount = 1,
+    ///         NetType = "privatenet",
+    ///         PubNetworkFlow = "1",
+    ///         ConnectionType = "slb",
+    ///         ClusterAliasName = "terraform-example",
+    ///         MseVersion = "mse_dev",
+    ///         VswitchId = exampleSwitch.Id,
+    ///         VpcId = exampleNetwork.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// MSE Cluster can be imported using the id, e.g.

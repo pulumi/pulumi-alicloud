@@ -11,6 +11,29 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.168.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultCommand = new alicloud.ecs.Command("defaultCommand", {
+ *     commandContent: "bHMK",
+ *     description: "terraform-example",
+ *     type: "RunShellScript",
+ *     workingDir: "/root",
+ * });
+ * const defaultInstances = alicloud.ecs.getInstances({
+ *     status: "Running",
+ * });
+ * const defaultEcsInvocation = new alicloud.ecs.EcsInvocation("defaultEcsInvocation", {
+ *     commandId: defaultCommand.id,
+ *     instanceIds: [defaultInstances.then(defaultInstances => defaultInstances.ids?.[0])],
+ * });
+ * ```
+ *
  * ## Import
  *
  * ECS Invocation can be imported using the id, e.g.

@@ -15,6 +15,37 @@ import (
 // This data source provides Cloud Firewall Vpc Firewall Cen available to the user.[What is Vpc Firewall Cen](https://www.alibabacloud.com/help/en/cloud-firewall/latest/describevpcfirewallcenlist)
 //
 // > **NOTE:** Available in 1.194.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _default, err := cloudfirewall.GetVpcFirewallCens(ctx, &cloudfirewall.GetVpcFirewallCensArgs{
+// Ids: interface{}{
+// alicloud_cloud_firewall_vpc_firewall_cen.Default.Id,
+// },
+// CenId: pulumi.StringRef("cen-cjok7uyb5w2b27573v"),
+// MemberUid: pulumi.StringRef("1415189284827022"),
+// Status: pulumi.StringRef("closed"),
+// VpcFirewallName: pulumi.StringRef("tf-test"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("alicloudCloudFirewallVpcFirewallCenExampleId", _default.Cens[0].Id)
+// return nil
+// })
+// }
+// ```
 func GetVpcFirewallCens(ctx *pulumi.Context, args *GetVpcFirewallCensArgs, opts ...pulumi.InvokeOption) (*GetVpcFirewallCensResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVpcFirewallCensResult

@@ -17,6 +17,35 @@ import (
 // > **NOTE:** Available in v1.34.0+.
 //
 // > **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kubeConfigFilePrefix`.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			k8sClusters, err := cs.GetKubernetesClusters(ctx, &cs.GetKubernetesClustersArgs{
+//				KubeConfigFilePrefix: pulumi.StringRef("~/.kube/k8s"),
+//				NameRegex:            pulumi.StringRef("my-first-k8s"),
+//				OutputFile:           pulumi.StringRef("my-first-k8s-json"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("output", k8sClusters.Clusters)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetKubernetesClusters(ctx *pulumi.Context, args *GetKubernetesClustersArgs, opts ...pulumi.InvokeOption) (*GetKubernetesClustersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKubernetesClustersResult

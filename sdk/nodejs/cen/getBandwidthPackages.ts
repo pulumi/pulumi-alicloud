@@ -8,6 +8,19 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides CEN Bandwidth Packages available to the user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.cen.getBandwidthPackages({
+ *     instanceId: "cen-id1",
+ *     nameRegex: "^foo",
+ * });
+ * export const firstCenBandwidthPackageId = example.then(example => example.packages?.[0]?.id);
+ * ```
  */
 export function getBandwidthPackages(args?: GetBandwidthPackagesArgs, opts?: pulumi.InvokeOptions): Promise<GetBandwidthPackagesResult> {
     args = args || {};
@@ -87,6 +100,19 @@ export interface GetBandwidthPackagesResult {
 }
 /**
  * This data source provides CEN Bandwidth Packages available to the user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.cen.getBandwidthPackages({
+ *     instanceId: "cen-id1",
+ *     nameRegex: "^foo",
+ * });
+ * export const firstCenBandwidthPackageId = example.then(example => example.packages?.[0]?.id);
+ * ```
  */
 export function getBandwidthPackagesOutput(args?: GetBandwidthPackagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBandwidthPackagesResult> {
     return pulumi.output(args).apply((a: any) => getBandwidthPackages(a, opts))

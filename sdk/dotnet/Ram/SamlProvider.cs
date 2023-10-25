@@ -16,6 +16,28 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// &gt; **NOTE:** Available since v1.114.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AliCloud.Ram.SamlProvider("example", new()
+    ///     {
+    ///         Description = "For Terraform Test",
+    ///         EncodedsamlMetadataDocument = "your encodedsaml metadata document",
+    ///         SamlProviderName = "terraform-example",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// RAM SAML Provider can be imported using the id, e.g.

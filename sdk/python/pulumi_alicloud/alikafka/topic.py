@@ -337,6 +337,36 @@ class Topic(pulumi.CustomResource):
         > **NOTE:**  Only the following regions support create alikafka topic.
         [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id)
+        default_instance = alicloud.alikafka.Instance("defaultInstance",
+            partition_num=50,
+            disk_type=1,
+            disk_size=500,
+            deploy_type=5,
+            io_max=20,
+            vswitch_id=default_switch.id)
+        default_topic = alicloud.alikafka.Topic("defaultTopic",
+            instance_id=default_instance.id,
+            topic="example-topic",
+            local_topic=False,
+            compact_topic=False,
+            partition_num=12,
+            remark="dafault_kafka_topic_remark")
+        ```
+
         ## Import
 
         ALIKAFKA TOPIC can be imported using the id, e.g.
@@ -368,6 +398,36 @@ class Topic(pulumi.CustomResource):
 
         > **NOTE:**  Only the following regions support create alikafka topic.
         [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id)
+        default_instance = alicloud.alikafka.Instance("defaultInstance",
+            partition_num=50,
+            disk_type=1,
+            disk_size=500,
+            deploy_type=5,
+            io_max=20,
+            vswitch_id=default_switch.id)
+        default_topic = alicloud.alikafka.Topic("defaultTopic",
+            instance_id=default_instance.id,
+            topic="example-topic",
+            local_topic=False,
+            compact_topic=False,
+            partition_num=12,
+            remark="dafault_kafka_topic_remark")
+        ```
 
         ## Import
 

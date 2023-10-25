@@ -455,6 +455,29 @@ class AppGroup(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.136.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "name"
+        default = alicloud.opensearch.AppGroup("default",
+            app_group_name=name,
+            payment_type="PayAsYouGo",
+            type="standard",
+            quota=alicloud.opensearch.AppGroupQuotaArgs(
+                doc_size=1,
+                compute_resource=20,
+                spec="opensearch.share.common",
+            ))
+        ```
+
         ## Import
 
         Open Search App Group can be imported using the id, e.g.
@@ -487,6 +510,29 @@ class AppGroup(pulumi.CustomResource):
         For information about Open Search App Group and how to use it, see [What is App Group](https://www.aliyun.com/product/opensearch).
 
         > **NOTE:** Available in v1.136.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "name"
+        default = alicloud.opensearch.AppGroup("default",
+            app_group_name=name,
+            payment_type="PayAsYouGo",
+            type="standard",
+            quota=alicloud.opensearch.AppGroupQuotaArgs(
+                doc_size=1,
+                compute_resource=20,
+                spec="opensearch.share.common",
+            ))
+        ```
 
         ## Import
 

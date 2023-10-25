@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * This data source provides the Dms Enterprise Proxies of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.188.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.dms.getEnterpriseProxies({});
+ * export const dmsEnterpriseProxyId1 = ids.then(ids => ids.proxies?.[0]?.id);
+ * ```
  */
 export function getEnterpriseProxies(args?: GetEnterpriseProxiesArgs, opts?: pulumi.InvokeOptions): Promise<GetEnterpriseProxiesResult> {
     args = args || {};
@@ -57,6 +69,18 @@ export interface GetEnterpriseProxiesResult {
  * This data source provides the Dms Enterprise Proxies of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.188.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.dms.getEnterpriseProxies({});
+ * export const dmsEnterpriseProxyId1 = ids.then(ids => ids.proxies?.[0]?.id);
+ * ```
  */
 export function getEnterpriseProxiesOutput(args?: GetEnterpriseProxiesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnterpriseProxiesResult> {
     return pulumi.output(args).apply((a: any) => getEnterpriseProxies(a, opts))

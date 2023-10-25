@@ -16,6 +16,97 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// &gt; **NOTE:** Available since v1.143.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultZones = AliCloud.GetZones.Invoke();
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         EnableIpv6 = true,
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var vsw = new AliCloud.Vpc.Switch("vsw", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/21",
+    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         Ipv6CidrBlockMask = 22,
+    ///     });
+    /// 
+    ///     var @group = new AliCloud.Ecs.SecurityGroup("group", new()
+    ///     {
+    ///         Description = "foo",
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         CpuCoreCount = 4,
+    ///         MinimumEniIpv6AddressQuantity = 1,
+    ///     });
+    /// 
+    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         NameRegex = "^ubuntu_18.*64",
+    ///         MostRecent = true,
+    ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var vpcInstance = new AliCloud.Ecs.Instance("vpcInstance", new()
+    ///     {
+    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         Ipv6AddressCount = 1,
+    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceName = name,
+    ///         VswitchId = vsw.Id,
+    ///         InternetMaxBandwidthOut = 10,
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             @group,
+    ///         }.Select(__item =&gt; __item.Id).ToList(),
+    ///     });
+    /// 
+    ///     var exampleIpv6Gateway = new AliCloud.Vpc.Ipv6Gateway("exampleIpv6Gateway", new()
+    ///     {
+    ///         Ipv6GatewayName = "example_value",
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultIpv6Addresses = AliCloud.Vpc.GetIpv6Addresses.Invoke(new()
+    ///     {
+    ///         AssociatedInstanceId = vpcInstance.Id,
+    ///         Status = "Available",
+    ///     });
+    /// 
+    ///     var exampleIpv6InternetBandwidth = new AliCloud.Vpc.Ipv6InternetBandwidth("exampleIpv6InternetBandwidth", new()
+    ///     {
+    ///         Ipv6AddressId = defaultIpv6Addresses.Apply(getIpv6AddressesResult =&gt; getIpv6AddressesResult.Addresses[0]?.Id),
+    ///         Ipv6GatewayId = exampleIpv6Gateway.Ipv6GatewayId,
+    ///         InternetChargeType = "PayByBandwidth",
+    ///         Bandwidth = 20,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// VPC Ipv6 Internet Bandwidth can be imported using the id, e.g.

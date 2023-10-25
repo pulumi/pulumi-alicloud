@@ -15,6 +15,36 @@ import (
 // This data source provides the PolarDB node classes resource available info of Alibaba Cloud.
 //
 // > **NOTE:** Available since v1.81.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/polardb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			resources, err := polardb.GetNodeClasses(ctx, &polardb.GetNodeClassesArgs{
+//				PayType:   "PostPaid",
+//				DbType:    pulumi.StringRef("MySQL"),
+//				DbVersion: pulumi.StringRef("5.6"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("polardbNodeClasses", resources.Classes)
+//			ctx.Export("polardbAvailableZoneId", resources.Classes[0].ZoneId)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetNodeClasses(ctx *pulumi.Context, args *GetNodeClassesArgs, opts ...pulumi.InvokeOption) (*GetNodeClassesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNodeClassesResult

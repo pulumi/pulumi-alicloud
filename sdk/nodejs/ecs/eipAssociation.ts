@@ -16,6 +16,55 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.117.0.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const exampleZones = alicloud.getZones({
+ *     availableResourceCreation: "Instance",
+ * });
+ * const exampleInstanceTypes = exampleZones.then(exampleZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: exampleZones.zones?.[0]?.id,
+ *     cpuCoreCount: 1,
+ *     memorySize: 2,
+ * }));
+ * const exampleImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
+ *     owners: "system",
+ * });
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: exampleNetwork.id,
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ * });
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("exampleSecurityGroup", {vpcId: exampleNetwork.id});
+ * const exampleInstance = new alicloud.ecs.Instance("exampleInstance", {
+ *     availabilityZone: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ *     instanceName: name,
+ *     imageId: exampleImages.then(exampleImages => exampleImages.images?.[0]?.id),
+ *     instanceType: exampleInstanceTypes.then(exampleInstanceTypes => exampleInstanceTypes.instanceTypes?.[0]?.id),
+ *     securityGroups: [exampleSecurityGroup.id],
+ *     vswitchId: exampleSwitch.id,
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
+ * });
+ * const exampleEipAddress = new alicloud.ecs.EipAddress("exampleEipAddress", {addressName: name});
+ * const exampleEipAssociation = new alicloud.ecs.EipAssociation("exampleEipAssociation", {
+ *     allocationId: exampleEipAddress.id,
+ *     instanceId: exampleInstance.id,
+ * });
+ * ```
  * ## Module Support
  *
  * You can use the existing eip module

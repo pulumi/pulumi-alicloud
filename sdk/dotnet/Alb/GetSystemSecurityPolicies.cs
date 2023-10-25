@@ -15,6 +15,37 @@ namespace Pulumi.AliCloud.Alb
         /// This data source provides the ALB System Security Policies of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.183.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var defaults = AliCloud.Alb.GetSystemSecurityPolicies.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "tls_cipher_policy_1_0",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["albSystemSecurityPolicyId1"] = defaults.Apply(getSystemSecurityPoliciesResult =&gt; getSystemSecurityPoliciesResult.Policies[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSystemSecurityPoliciesResult> InvokeAsync(GetSystemSecurityPoliciesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSystemSecurityPoliciesResult>("alicloud:alb/getSystemSecurityPolicies:getSystemSecurityPolicies", args ?? new GetSystemSecurityPoliciesArgs(), options.WithDefaults());
@@ -23,6 +54,37 @@ namespace Pulumi.AliCloud.Alb
         /// This data source provides the ALB System Security Policies of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.183.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var defaults = AliCloud.Alb.GetSystemSecurityPolicies.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "tls_cipher_policy_1_0",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["albSystemSecurityPolicyId1"] = defaults.Apply(getSystemSecurityPoliciesResult =&gt; getSystemSecurityPoliciesResult.Policies[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetSystemSecurityPoliciesResult> Invoke(GetSystemSecurityPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSystemSecurityPoliciesResult>("alicloud:alb/getSystemSecurityPolicies:getSystemSecurityPolicies", args ?? new GetSystemSecurityPoliciesInvokeArgs(), options.WithDefaults());

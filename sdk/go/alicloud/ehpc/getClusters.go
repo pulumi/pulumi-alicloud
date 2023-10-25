@@ -15,6 +15,44 @@ import (
 // This data source provides the Ehpc Clusters of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.173.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ehpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := ehpc.GetClusters(ctx, &ehpc.GetClustersArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("ehpcClusterId1", ids.Clusters[0].Id)
+//			nameRegex, err := ehpc.GetClusters(ctx, &ehpc.GetClustersArgs{
+//				NameRegex: pulumi.StringRef("^my-Cluster"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("ehpcClusterId2", nameRegex.Clusters[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetClusters(ctx *pulumi.Context, args *GetClustersArgs, opts ...pulumi.InvokeOption) (*GetClustersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetClustersResult

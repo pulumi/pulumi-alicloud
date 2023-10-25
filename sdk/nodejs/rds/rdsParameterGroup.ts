@@ -13,6 +13,34 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.119.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const _default = new alicloud.rds.RdsParameterGroup("default", {
+ *     engine: "mysql",
+ *     engineVersion: "5.7",
+ *     paramDetails: [
+ *         {
+ *             paramName: "back_log",
+ *             paramValue: "4000",
+ *         },
+ *         {
+ *             paramName: "wait_timeout",
+ *             paramValue: "86460",
+ *         },
+ *     ],
+ *     parameterGroupDesc: name,
+ *     parameterGroupName: name,
+ * });
+ * ```
+ *
  * ## Import
  *
  * RDS Parameter Group can be imported using the id, e.g.

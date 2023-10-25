@@ -17,6 +17,53 @@ import (
 //
 // > **NOTE:** Available since v1.90.0.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dms"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tfexamplename"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultUser, err := ram.NewUser(ctx, "defaultUser", &ram.UserArgs{
+//				DisplayName: pulumi.String(name),
+//				Mobile:      pulumi.String("86-18688888888"),
+//				Email:       pulumi.String("hello.uuu@aaa.com"),
+//				Comments:    pulumi.String("example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dms.NewEnterpriseUser(ctx, "defaultEnterpriseUser", &dms.EnterpriseUserArgs{
+//				Uid:      defaultUser.ID(),
+//				UserName: pulumi.String(name),
+//				RoleNames: pulumi.StringArray{
+//					pulumi.String("DBA"),
+//				},
+//				Mobile: pulumi.String("86-18688888888"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // DMS Enterprise User can be imported using the id, e.g.

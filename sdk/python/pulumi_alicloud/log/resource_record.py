@@ -218,6 +218,21 @@ class ResourceRecord(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.162.0+, log resource region should be set a main region: cn-heyuan
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.log.ResourceRecord("example",
+            record_id="user_tf_test_resource_1",
+            resource_name_="user.tf.test_resource",
+            tag="test resource tag",
+            value="{\\"col1\\": \\"this is col1 value\\", \\"col2\\": \\"col2 value\\"}")
+        ```
+
         ## Import
 
         Log resource record can be imported using the id, e.g.
@@ -245,6 +260,21 @@ class ResourceRecord(pulumi.CustomResource):
         For information about SLS Resource and how to use it, see [Resource management](https://www.alibabacloud.com/help/en/doc-detail/207732.html)
 
         > **NOTE:** Available in 1.162.0+, log resource region should be set a main region: cn-heyuan
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.log.ResourceRecord("example",
+            record_id="user_tf_test_resource_1",
+            resource_name_="user.tf.test_resource",
+            tag="test resource tag",
+            value="{\\"col1\\": \\"this is col1 value\\", \\"col2\\": \\"col2 value\\"}")
+        ```
 
         ## Import
 

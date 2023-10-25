@@ -16,6 +16,52 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// &gt; **NOTE:** Available since v1.205.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultVpc = new AliCloud.Vpc.Network("defaultVpc", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.0.0.0/8",
+    ///     });
+    /// 
+    ///     var defaultVSwitch = new AliCloud.Vpc.Switch("defaultVSwitch", new()
+    ///     {
+    ///         VpcId = defaultVpc.Id,
+    ///         CidrBlock = "10.0.0.0/20",
+    ///         VswitchName = $"{name}1",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultVswitchCidrReservation = new AliCloud.Vpc.VswitchCidrReservation("defaultVswitchCidrReservation", new()
+    ///     {
+    ///         IpVersion = "IPv4",
+    ///         VswitchId = defaultVSwitch.Id,
+    ///         CidrReservationDescription = name,
+    ///         CidrReservationCidr = "10.0.10.0/24",
+    ///         VswitchCidrReservationName = name,
+    ///         CidrReservationType = "Prefix",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Vpc Vswitch Cidr Reservation can be imported using the id, e.g.

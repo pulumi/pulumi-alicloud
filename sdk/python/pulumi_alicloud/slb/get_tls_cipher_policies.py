@@ -129,6 +129,23 @@ def get_tls_cipher_policies(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.135.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.slb.get_tls_cipher_policies(ids=[
+        "example_value-1",
+        "example_value-2",
+    ])
+    pulumi.export("slbTlsCipherPolicyId1", ids.policies[0].id)
+    name_regex = alicloud.slb.get_tls_cipher_policies(name_regex="^My-TlsCipherPolicy")
+    pulumi.export("slbTlsCipherPolicyId2", name_regex.policies[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Tls Cipher Policy IDs.
     :param bool include_listener: The include listener.
@@ -171,6 +188,23 @@ def get_tls_cipher_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[
     This data source provides the Slb Tls Cipher Policies of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.135.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.slb.get_tls_cipher_policies(ids=[
+        "example_value-1",
+        "example_value-2",
+    ])
+    pulumi.export("slbTlsCipherPolicyId1", ids.policies[0].id)
+    name_regex = alicloud.slb.get_tls_cipher_policies(name_regex="^My-TlsCipherPolicy")
+    pulumi.export("slbTlsCipherPolicyId2", name_regex.policies[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Tls Cipher Policy IDs.

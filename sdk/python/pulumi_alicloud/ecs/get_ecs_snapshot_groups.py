@@ -139,6 +139,24 @@ def get_ecs_snapshot_groups(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.160.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.ecs.get_ecs_snapshot_groups(ids=["example-id"])
+    pulumi.export("ecsSnapshotGroupId1", ids.groups[0].id)
+    name_regex = alicloud.ecs.get_ecs_snapshot_groups(name_regex="^my-SnapshotGroup")
+    pulumi.export("ecsSnapshotGroupId2", name_regex.groups[0].id)
+    status = alicloud.ecs.get_ecs_snapshot_groups(status="accomplished")
+    pulumi.export("ecsSnapshotGroupId3", status.groups[0].id)
+    instance_id = alicloud.ecs.get_ecs_snapshot_groups(instance_id="example-instance_id")
+    pulumi.export("ecsSnapshotGroupId4", instance_id.groups[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Snapshot Group IDs.
     :param str instance_id: The ID of the instance.
@@ -185,6 +203,24 @@ def get_ecs_snapshot_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[
     This data source provides the Ecs Snapshot Groups of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.160.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.ecs.get_ecs_snapshot_groups(ids=["example-id"])
+    pulumi.export("ecsSnapshotGroupId1", ids.groups[0].id)
+    name_regex = alicloud.ecs.get_ecs_snapshot_groups(name_regex="^my-SnapshotGroup")
+    pulumi.export("ecsSnapshotGroupId2", name_regex.groups[0].id)
+    status = alicloud.ecs.get_ecs_snapshot_groups(status="accomplished")
+    pulumi.export("ecsSnapshotGroupId3", status.groups[0].id)
+    instance_id = alicloud.ecs.get_ecs_snapshot_groups(instance_id="example-instance_id")
+    pulumi.export("ecsSnapshotGroupId4", instance_id.groups[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Snapshot Group IDs.

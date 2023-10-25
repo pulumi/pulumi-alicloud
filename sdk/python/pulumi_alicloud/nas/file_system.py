@@ -545,6 +545,61 @@ class FileSystem(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.33.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.nas.get_zones(file_system_type="standard")
+        foo = alicloud.nas.FileSystem("foo",
+            protocol_type="NFS",
+            storage_type="Performance",
+            description="terraform-example",
+            encrypt_type=1,
+            zone_id=example.zones[0].zone_id)
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.nas.get_zones(file_system_type="extreme")
+        foo = alicloud.nas.FileSystem("foo",
+            file_system_type="extreme",
+            protocol_type="NFS",
+            zone_id=example.zones[0].zone_id,
+            storage_type="standard",
+            description="terraform-example",
+            capacity=100)
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_zones = alicloud.nas.get_zones(file_system_type="cpfs")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=example_network.id,
+            zone_id=example_zones.zones[1].zone_id)
+        example_file_system = alicloud.nas.FileSystem("exampleFileSystem",
+            protocol_type="cpfs",
+            storage_type="advance_200",
+            file_system_type="cpfs",
+            capacity=3600,
+            description="terraform-example",
+            zone_id=example_zones.zones[1].zone_id,
+            vpc_id=example_network.id,
+            vswitch_id=example_switch.id)
+        ```
+
         ## Import
 
         Nas File System can be imported using the id, e.g.
@@ -592,6 +647,61 @@ class FileSystem(pulumi.CustomResource):
         For information about NAS file system and how to use it, see [Manage file systems](https://www.alibabacloud.com/help/doc-detail/27530.htm)
 
         > **NOTE:** Available in v1.33.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.nas.get_zones(file_system_type="standard")
+        foo = alicloud.nas.FileSystem("foo",
+            protocol_type="NFS",
+            storage_type="Performance",
+            description="terraform-example",
+            encrypt_type=1,
+            zone_id=example.zones[0].zone_id)
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.nas.get_zones(file_system_type="extreme")
+        foo = alicloud.nas.FileSystem("foo",
+            file_system_type="extreme",
+            protocol_type="NFS",
+            zone_id=example.zones[0].zone_id,
+            storage_type="standard",
+            description="terraform-example",
+            capacity=100)
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_zones = alicloud.nas.get_zones(file_system_type="cpfs")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=example_network.id,
+            zone_id=example_zones.zones[1].zone_id)
+        example_file_system = alicloud.nas.FileSystem("exampleFileSystem",
+            protocol_type="cpfs",
+            storage_type="advance_200",
+            file_system_type="cpfs",
+            capacity=3600,
+            description="terraform-example",
+            zone_id=example_zones.zones[1].zone_id,
+            vpc_id=example_network.id,
+            vswitch_id=example_switch.id)
+        ```
 
         ## Import
 

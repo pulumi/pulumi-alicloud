@@ -13,6 +13,33 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.192.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.bp.StudioApplication("default", {
+ *     applicationName: "example_value",
+ *     areaId: "example_value",
+ *     configuration: {
+ *         enableMonitor: "1",
+ *     },
+ *     instances: [{
+ *         id: "example_value",
+ *         nodeName: "example_value",
+ *         nodeType: "ecs",
+ *     }],
+ *     resourceGroupId: "example_value",
+ *     templateId: "example_value",
+ *     variables: {
+ *         test: "1",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Cloud Architect Design Tools Application can be imported using the id, e.g.

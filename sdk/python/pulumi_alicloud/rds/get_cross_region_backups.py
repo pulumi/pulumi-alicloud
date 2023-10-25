@@ -150,6 +150,20 @@ def get_cross_region_backups(backup_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.196.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    backups = alicloud.rds.get_cross_region_backups(db_instance_id="example_value",
+        start_time="2022-12-01T00:00:00Z",
+        end_time="2022-12-16T00:00:00Z")
+    pulumi.export("firstRdsCrossRegionBackups", backups.backups[0].id)
+    ```
+
 
     :param str backup_id: The ID of the cross-region data backup file.
     :param str cross_backup_id: The ID of the cross-region data backup file.
@@ -203,6 +217,20 @@ def get_cross_region_backups_output(backup_id: Optional[pulumi.Input[Optional[st
     This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.196.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    backups = alicloud.rds.get_cross_region_backups(db_instance_id="example_value",
+        start_time="2022-12-01T00:00:00Z",
+        end_time="2022-12-16T00:00:00Z")
+    pulumi.export("firstRdsCrossRegionBackups", backups.backups[0].id)
+    ```
 
 
     :param str backup_id: The ID of the cross-region data backup file.

@@ -15,6 +15,36 @@ import (
 // This data source provides the Alidns Custom Lines of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.151.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := dns.GetCustomLines(ctx, &dns.GetCustomLinesArgs{
+//				EnableDetails: pulumi.BoolRef(true),
+//				DomainName:    "your_domain_name",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alidnsCustomLineId1", ids.Lines[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetCustomLines(ctx *pulumi.Context, args *GetCustomLinesArgs, opts ...pulumi.InvokeOption) (*GetCustomLinesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCustomLinesResult

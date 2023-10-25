@@ -80,6 +80,18 @@ def get_meta_tags(key_name: Optional[str] = None,
 
     > **NOTE:** Available in v1.169.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.tag.get_meta_tags(key_name="example_value")
+    pulumi.export("tagMetaTagDefault1", default.tags.value_name)
+    ```
+
 
     :param str key_name: The name of the key.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -105,6 +117,18 @@ def get_meta_tags_output(key_name: Optional[pulumi.Input[Optional[str]]] = None,
     This data source provides the Tag Meta Tags of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.169.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.tag.get_meta_tags(key_name="example_value")
+    pulumi.export("tagMetaTagDefault1", default.tags.value_name)
+    ```
 
 
     :param str key_name: The name of the key.

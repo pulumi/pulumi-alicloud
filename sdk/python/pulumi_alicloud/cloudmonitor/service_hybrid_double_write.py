@@ -222,6 +222,23 @@ class ServiceHybridDoubleWrite(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.210.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        source = alicloud.cms.Namespace("source", namespace="your_source_namespace")
+        default_namespace = alicloud.cms.Namespace("defaultNamespace", namespace="your_namespace")
+        default_service_hybrid_double_write = alicloud.cloudmonitor.ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite",
+            source_namespace=source.id,
+            source_user_id="your_source_account",
+            namespace=default_namespace.id,
+            user_id="your_account")
+        ```
+
         ## Import
 
         Cloud Monitor Service Hybrid Double Write can be imported using the id, e.g.
@@ -249,6 +266,23 @@ class ServiceHybridDoubleWrite(pulumi.CustomResource):
         For information about Cloud Monitor Service Hybrid Double Write and how to use it, see [What is Hybrid Double Write](https://next.api.alibabacloud.com/document/Cms/2018-03-08/CreateHybridDoubleWrite).
 
         > **NOTE:** Available since v1.210.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        source = alicloud.cms.Namespace("source", namespace="your_source_namespace")
+        default_namespace = alicloud.cms.Namespace("defaultNamespace", namespace="your_namespace")
+        default_service_hybrid_double_write = alicloud.cloudmonitor.ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite",
+            source_namespace=source.id,
+            source_user_id="your_source_account",
+            namespace=default_namespace.id,
+            user_id="your_account")
+        ```
 
         ## Import
 

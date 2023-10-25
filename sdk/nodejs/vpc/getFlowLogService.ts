@@ -10,6 +10,19 @@ import * as utilities from "../utilities";
  * For information about Vpc Flow Log and how to use it, see [What is Vpc Flow Log](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-openflowlog).
  *
  * > **NOTE:** Available since v1.209.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.vpc.getFlowLogService({
+ *     enable: "On",
+ * });
+ * ```
  */
 export function getFlowLogService(args?: GetFlowLogServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetFlowLogServiceResult> {
     args = args || {};
@@ -52,6 +65,19 @@ export interface GetFlowLogServiceResult {
  * For information about Vpc Flow Log and how to use it, see [What is Vpc Flow Log](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-openflowlog).
  *
  * > **NOTE:** Available since v1.209.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.vpc.getFlowLogService({
+ *     enable: "On",
+ * });
+ * ```
  */
 export function getFlowLogServiceOutput(args?: GetFlowLogServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlowLogServiceResult> {
     return pulumi.output(args).apply((a: any) => getFlowLogService(a, opts))

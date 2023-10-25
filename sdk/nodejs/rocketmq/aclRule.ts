@@ -13,6 +13,31 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const defaultAcl = new alicloud.rocketmq.Acl("defaultAcl", {});
+ * const defaultAclRule = new alicloud.rocketmq.AclRule("defaultAclRule", {
+ *     aclId: defaultAcl.id,
+ *     description: name,
+ *     policy: "accept",
+ *     ipProtocol: "ALL",
+ *     direction: "in",
+ *     sourceCidr: "10.10.1.0/24",
+ *     sourcePortRange: "-1/-1",
+ *     destCidr: "192.168.1.0/24",
+ *     destPortRange: "-1/-1",
+ *     priority: 1,
+ * });
+ * ```
+ *
  * ## Import
  *
  * The Sag Acl Rule can be imported using the id, e.g.

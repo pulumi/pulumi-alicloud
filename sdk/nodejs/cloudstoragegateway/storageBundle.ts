@@ -11,6 +11,17 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.116.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.cloudstoragegateway.StorageBundle("example", {storageBundleName: "example_value"});
+ * ```
+ *
  * ## Import
  *
  * Cloud Storage Gateway Storage Bundle can be imported using the id, e.g.

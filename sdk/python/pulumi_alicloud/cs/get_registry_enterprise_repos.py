@@ -144,6 +144,18 @@ def get_registry_enterprise_repos(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.87.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    my_repos = alicloud.cs.get_registry_enterprise_repos(instance_id="cri-xx",
+        name_regex="my-repos",
+        output_file="my-repo-json")
+    pulumi.export("output", my_repos.repos)
+    ```
+
 
     :param bool enable_details: Boolean, false by default, only repository attributes are exported. Set to true if tags belong to this repository are needed. See `tags` in attributes.
     :param Sequence[str] ids: A list of ids to filter results by repository id.
@@ -186,6 +198,18 @@ def get_registry_enterprise_repos_output(enable_details: Optional[pulumi.Input[O
     This data source provides a list Container Registry Enterprise Edition repositories on Alibaba Cloud.
 
     > **NOTE:** Available in v1.87.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    my_repos = alicloud.cs.get_registry_enterprise_repos(instance_id="cri-xx",
+        name_regex="my-repos",
+        output_file="my-repo-json")
+    pulumi.export("output", my_repos.repos)
+    ```
 
 
     :param bool enable_details: Boolean, false by default, only repository attributes are exported. Set to true if tags belong to this repository are needed. See `tags` in attributes.

@@ -16,6 +16,82 @@ namespace Pulumi.AliCloud.Eds
     /// 
     /// &gt; **NOTE:** Available since v1.169.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("defaultSimpleOfficeSite", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/12",
+    ///         EnableAdminAccess = true,
+    ///         DesktopAccessType = "Internet",
+    ///         OfficeSiteName = name,
+    ///     });
+    /// 
+    ///     var defaultEcdPolicyGroup = new AliCloud.Eds.EcdPolicyGroup("defaultEcdPolicyGroup", new()
+    ///     {
+    ///         PolicyGroupName = name,
+    ///         Clipboard = "read",
+    ///         LocalDrive = "read",
+    ///         UsbRedirect = "off",
+    ///         Watermark = "off",
+    ///         AuthorizeAccessPolicyRules = new[]
+    ///         {
+    ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs
+    ///             {
+    ///                 Description = name,
+    ///                 CidrIp = "1.2.3.45/24",
+    ///             },
+    ///         },
+    ///         AuthorizeSecurityPolicyRules = new[]
+    ///         {
+    ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs
+    ///             {
+    ///                 Type = "inflow",
+    ///                 Policy = "accept",
+    ///                 Description = name,
+    ///                 PortRange = "80/80",
+    ///                 IpProtocol = "TCP",
+    ///                 Priority = "1",
+    ///                 CidrIp = "1.2.3.4/24",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultBundles = AliCloud.Eds.GetBundles.Invoke(new()
+    ///     {
+    ///         BundleType = "SYSTEM",
+    ///     });
+    /// 
+    ///     var defaultDesktop = new AliCloud.Eds.Desktop("defaultDesktop", new()
+    ///     {
+    ///         OfficeSiteId = defaultSimpleOfficeSite.Id,
+    ///         PolicyGroupId = defaultEcdPolicyGroup.Id,
+    ///         BundleId = defaultBundles.Apply(getBundlesResult =&gt; getBundlesResult.Bundles[1]?.Id),
+    ///         DesktopName = name,
+    ///     });
+    /// 
+    ///     var defaultSnapshot = new AliCloud.Eds.Snapshot("defaultSnapshot", new()
+    ///     {
+    ///         Description = name,
+    ///         DesktopId = defaultDesktop.Id,
+    ///         SnapshotName = name,
+    ///         SourceDiskType = "SYSTEM",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ECD Snapshot can be imported using the id, e.g.

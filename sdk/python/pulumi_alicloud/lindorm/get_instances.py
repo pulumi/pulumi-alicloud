@@ -139,6 +139,20 @@ def get_instances(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.132.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.lindorm.get_instances()
+    pulumi.export("lindormInstanceId1", ids.instances[0].id)
+    name_regex = alicloud.lindorm.get_instances(name_regex="^my-Instance")
+    pulumi.export("lindormInstanceId2", name_regex.instances[0].id)
+    ```
+
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Instance IDs.
@@ -185,6 +199,20 @@ def get_instances_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
     This data source provides the Lindorm Instances of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.132.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.lindorm.get_instances()
+    pulumi.export("lindormInstanceId1", ids.instances[0].id)
+    name_regex = alicloud.lindorm.get_instances(name_regex="^my-Instance")
+    pulumi.export("lindormInstanceId2", name_regex.instances[0].id)
+    ```
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

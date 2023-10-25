@@ -15,6 +15,54 @@ import (
 // This data source provides the Service Mesh Service Meshes of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.138.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/servicemesh"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := servicemesh.GetServiceMeshes(ctx, &servicemesh.GetServiceMeshesArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("serviceMeshServiceMeshId1", ids.Meshes[0].Id)
+//			nameRegex, err := servicemesh.GetServiceMeshes(ctx, &servicemesh.GetServiceMeshesArgs{
+//				NameRegex: pulumi.StringRef("^my-ServiceMesh"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("serviceMeshServiceMeshId2", nameRegex.Meshes[0].Id)
+//			status, err := servicemesh.GetServiceMeshes(ctx, &servicemesh.GetServiceMeshesArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//				Status: pulumi.StringRef("running"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("serviceMeshServiceMeshId3", status.Meshes[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetServiceMeshes(ctx *pulumi.Context, args *GetServiceMeshesArgs, opts ...pulumi.InvokeOption) (*GetServiceMeshesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServiceMeshesResult

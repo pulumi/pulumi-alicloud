@@ -15,6 +15,42 @@ import (
 // This data source provides the Sddp Configs of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.133.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sddp"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// defaultConfig, err := sddp.NewConfig(ctx, "defaultConfig", &sddp.ConfigArgs{
+// Code: pulumi.String("access_failed_cnt"),
+// Value: pulumi.String("10"),
+// })
+// if err != nil {
+// return err
+// }
+// defaultConfigs := sddp.GetConfigsOutput(ctx, sddp.GetConfigsOutputArgs{
+// Ids: pulumi.StringArray{
+// defaultConfig.ID(),
+// },
+// OutputFile: pulumi.String("./t.json"),
+// }, nil);
+// ctx.Export("sddpConfigId", defaultConfigs.ApplyT(func(defaultConfigs sddp.GetConfigsResult) (interface{}, error) {
+// return defaultConfigs.Ids, nil
+// }).(pulumi.Interface{}Output))
+// return nil
+// })
+// }
+// ```
 func GetConfigs(ctx *pulumi.Context, args *GetConfigsArgs, opts ...pulumi.InvokeOption) (*GetConfigsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetConfigsResult

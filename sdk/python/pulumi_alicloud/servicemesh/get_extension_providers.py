@@ -131,6 +131,24 @@ def get_extension_providers(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.191.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.servicemesh.get_extension_providers(ids=["example_id"],
+        service_mesh_id="example_service_mesh_id",
+        type="httpextauth")
+    pulumi.export("serviceMeshExtensionProvidersId1", ids.providers[0].id)
+    name_regex = alicloud.servicemesh.get_extension_providers(name_regex="^my-ServiceMeshExtensionProvider",
+        service_mesh_id="example_service_mesh_id",
+        type="httpextauth")
+    pulumi.export("serviceMeshExtensionProvidersId2", name_regex.providers[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Service Mesh Extension Provider IDs.
     :param str name_regex: A regex string to filter results by Service Mesh Extension Provider name.
@@ -169,6 +187,24 @@ def get_extension_providers_output(ids: Optional[pulumi.Input[Optional[Sequence[
     This data source provides the Service Mesh Extension Providers of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.191.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.servicemesh.get_extension_providers(ids=["example_id"],
+        service_mesh_id="example_service_mesh_id",
+        type="httpextauth")
+    pulumi.export("serviceMeshExtensionProvidersId1", ids.providers[0].id)
+    name_regex = alicloud.servicemesh.get_extension_providers(name_regex="^my-ServiceMeshExtensionProvider",
+        service_mesh_id="example_service_mesh_id",
+        type="httpextauth")
+    pulumi.export("serviceMeshExtensionProvidersId2", name_regex.providers[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Service Mesh Extension Provider IDs.

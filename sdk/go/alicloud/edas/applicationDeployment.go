@@ -16,6 +16,141 @@ import (
 // Deploys applications on EDAS, see [What is EDAS Application Deployment](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-deployapplication).
 //
 // > **NOTE:** Available since v1.82.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/edas"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex: pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
+//				Owners:    pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+//				CpuCoreCount:     pulumi.IntRef(1),
+//				MemorySize:       pulumi.Float64Ref(2),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
+//				AvailabilityZone: *pulumi.String(defaultZones.Zones[0].Id),
+//				InstanceName:     pulumi.String(name),
+//				ImageId:          *pulumi.String(defaultImages.Images[0].Id),
+//				InstanceType:     *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				SecurityGroups: pulumi.StringArray{
+//					defaultSecurityGroup.ID(),
+//				},
+//				VswitchId: defaultSwitch.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultCluster, err := edas.NewCluster(ctx, "defaultCluster", &edas.ClusterArgs{
+//				ClusterName:     pulumi.String(name),
+//				ClusterType:     pulumi.Int(2),
+//				NetworkMode:     pulumi.Int(2),
+//				LogicalRegionId: *pulumi.String(defaultRegions.Regions[0].Id),
+//				VpcId:           defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = edas.NewInstanceClusterAttachment(ctx, "defaultInstanceClusterAttachment", &edas.InstanceClusterAttachmentArgs{
+//				ClusterId: defaultCluster.ID(),
+//				InstanceIds: pulumi.StringArray{
+//					defaultInstance.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultApplication, err := edas.NewApplication(ctx, "defaultApplication", &edas.ApplicationArgs{
+//				ApplicationName: pulumi.String(name),
+//				ClusterId:       defaultCluster.ID(),
+//				PackageType:     pulumi.String("JAR"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = edas.NewDeployGroup(ctx, "defaultDeployGroup", &edas.DeployGroupArgs{
+//				AppId:     defaultApplication.ID(),
+//				GroupName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = edas.NewApplicationDeployment(ctx, "defaultApplicationDeployment", &edas.ApplicationDeploymentArgs{
+//				AppId:   defaultApplication.ID(),
+//				GroupId: pulumi.String("all"),
+//				WarUrl:  pulumi.String("http://edas-sz.oss-cn-shenzhen.aliyuncs.com/prod/demo/SPRING_CLOUD_CONSUMER.jar"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type ApplicationDeployment struct {
 	pulumi.CustomResourceState
 

@@ -10,6 +10,38 @@ import * as utilities from "../utilities";
  * This data source provides a list of ALIKAFKA Instances in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in 1.59.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const instanceName = config.get("instanceName") || "alikafkaInstanceName";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/12"});
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultInstance = new alicloud.alikafka.Instance("defaultInstance", {
+ *     partitionNum: 50,
+ *     diskType: 1,
+ *     diskSize: 500,
+ *     deployType: 4,
+ *     ioMax: 20,
+ *     vswitchId: defaultSwitch.id,
+ * });
+ * const instancesDs = alicloud.actiontrail.getInstances({
+ *     nameRegex: "alikafkaInstanceName",
+ *     outputFile: "instances.txt",
+ * });
+ * export const firstInstanceName = instancesDs.then(instancesDs => instancesDs.instances?.[0]?.name);
+ * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
@@ -70,6 +102,38 @@ export interface GetInstancesResult {
  * This data source provides a list of ALIKAFKA Instances in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in 1.59.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const instanceName = config.get("instanceName") || "alikafkaInstanceName";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/12"});
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultInstance = new alicloud.alikafka.Instance("defaultInstance", {
+ *     partitionNum: 50,
+ *     diskType: 1,
+ *     diskSize: 500,
+ *     deployType: 4,
+ *     ioMax: 20,
+ *     vswitchId: defaultSwitch.id,
+ * });
+ * const instancesDs = alicloud.actiontrail.getInstances({
+ *     nameRegex: "alikafkaInstanceName",
+ *     outputFile: "instances.txt",
+ * });
+ * export const firstInstanceName = instancesDs.then(instancesDs => instancesDs.instances?.[0]?.name);
+ * ```
  */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
     return pulumi.output(args).apply((a: any) => getInstances(a, opts))

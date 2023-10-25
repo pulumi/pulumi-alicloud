@@ -14,6 +14,27 @@ namespace Pulumi.AliCloud.Brain
     /// 
     /// &gt; **NOTE:** Available in v1.113.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AliCloud.Brain.IndustrialPidProject("example", new()
+    ///     {
+    ///         PidOrganizationId = "3e74e684-cbb5-xxxx",
+    ///         PidProjectName = "tf-testAcc",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Brain Industrial Pid Project can be imported using the id, e.g.

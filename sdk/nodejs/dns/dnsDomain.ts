@@ -13,6 +13,23 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.81.0+.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * // Add a new Domain.
+ * const dns = new alicloud.dns.DnsDomain("dns", {
+ *     domainName: "starmove.com",
+ *     groupId: "85ab8713-4a30-4de4-9d20-155ff830****",
+ *     tags: {
+ *         Created: "Terraform",
+ *         Environment: "test",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * DNS domain can be imported using the id or domain name, e.g.

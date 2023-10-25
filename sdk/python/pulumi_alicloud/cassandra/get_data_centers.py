@@ -122,6 +122,16 @@ def get_data_centers(cluster_id: Optional[str] = None,
 
     > **NOTE:**  Available in 1.88.0+.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    cassandra = alicloud.cassandra.get_data_centers(cluster_id="cds-xxxxx",
+        name_regex="tf_testAccCassandra_dc")
+    ```
+
 
     :param str cluster_id: The cluster id of dataCenters belongs to.
     :param Sequence[str] ids: The list of Cassandra data center ids.
@@ -157,6 +167,16 @@ def get_data_centers_output(cluster_id: Optional[pulumi.Input[str]] = None,
     Filters support regular expression for the cluster name or ids.
 
     > **NOTE:**  Available in 1.88.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    cassandra = alicloud.cassandra.get_data_centers(cluster_id="cds-xxxxx",
+        name_regex="tf_testAccCassandra_dc")
+    ```
 
 
     :param str cluster_id: The cluster id of dataCenters belongs to.

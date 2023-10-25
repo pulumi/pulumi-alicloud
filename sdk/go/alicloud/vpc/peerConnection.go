@@ -19,6 +19,76 @@ import (
 //
 // > **NOTE:** Available since v1.186.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cfg := config.New(ctx, "")
+//			acceptingRegion := "cn-beijing"
+//			if param := cfg.Get("acceptingRegion"); param != "" {
+//				acceptingRegion = param
+//			}
+//			_, err = alicloud.NewProvider(ctx, "local", &alicloud.ProviderArgs{
+//				Region: pulumi.String("cn-hangzhou"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = alicloud.NewProvider(ctx, "accepting", &alicloud.ProviderArgs{
+//				Region: pulumi.String(acceptingRegion),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			localVpc, err := vpc.NewNetwork(ctx, "localVpc", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
+//			}, pulumi.Provider(alicloud.Local))
+//			if err != nil {
+//				return err
+//			}
+//			acceptingVpc, err := vpc.NewNetwork(ctx, "acceptingVpc", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
+//			}, pulumi.Provider(alicloud.Accepting))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewPeerConnection(ctx, "defaultPeerConnection", &vpc.PeerConnectionArgs{
+//				PeerConnectionName: pulumi.String("terraform-example"),
+//				VpcId:              localVpc.ID(),
+//				AcceptingAliUid:    *pulumi.String(defaultAccount.Id),
+//				AcceptingRegionId:  pulumi.String(acceptingRegion),
+//				AcceptingVpcId:     acceptingVpc.ID(),
+//				Description:        pulumi.String("terraform-example"),
+//			}, pulumi.Provider(alicloud.Local))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // VPC Peer Connection can be imported using the id, e.g.

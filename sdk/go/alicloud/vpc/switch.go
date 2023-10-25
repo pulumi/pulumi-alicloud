@@ -21,6 +21,154 @@ import (
 //
 // > **NOTE:** Available since v1.0.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			fooZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String("terraform-example"),
+//				CidrBlock:   pulumi.String("172.16.0.0/21"),
+//				VpcId:       fooNetwork.ID(),
+//				ZoneId:      *pulumi.String(fooZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foo, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cidrBlocks, err := vpc.NewIpv4CidrBlock(ctx, "cidrBlocks", &vpc.Ipv4CidrBlockArgs{
+//				VpcId:              vpc.ID(),
+//				SecondaryCidrBlock: pulumi.String("192.163.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewSwitch(ctx, "island-nat", &vpc.SwitchArgs{
+//				VpcId:       cidrBlocks.VpcId,
+//				CidrBlock:   pulumi.String("172.16.0.0/21"),
+//				ZoneId:      *pulumi.String(foo.Zones[0].Id),
+//				VswitchName: pulumi.String("terraform-example"),
+//				Tags: pulumi.Map{
+//					"BuiltBy":     pulumi.Any("example_value"),
+//					"cnm_version": pulumi.Any("example_value"),
+//					"Environment": pulumi.Any("example_value"),
+//					"ManagedBy":   pulumi.Any("example_value"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # Create a switch associated with the additional network segment
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			fooZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			fooIpv4CidrBlock, err := vpc.NewIpv4CidrBlock(ctx, "fooIpv4CidrBlock", &vpc.Ipv4CidrBlockArgs{
+//				VpcId:              fooNetwork.ID(),
+//				SecondaryCidrBlock: pulumi.String("192.163.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
+//				VpcId:     fooIpv4CidrBlock.VpcId,
+//				CidrBlock: pulumi.String("192.163.0.0/24"),
+//				ZoneId:    *pulumi.String(fooZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // VPC Vswitch can be imported using the id, e.g.

@@ -16,6 +16,60 @@ namespace Pulumi.AliCloud.Ocean
     /// 
     /// &gt; **NOTE:** Available since v1.203.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultZones = AliCloud.GetZones.Invoke();
+    /// 
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var defaultBaseInstance = new AliCloud.Ocean.BaseInstance("defaultBaseInstance", new()
+    ///     {
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///         Zones = new[]
+    ///         {
+    ///             Output.Tuple(defaultZones, defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids).Length).Apply(values =&gt;
+    ///             {
+    ///                 var defaultZones = values.Item1;
+    ///                 var length = values.Item2;
+    ///                 return defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids)[length - 2];
+    ///             }),
+    ///             Output.Tuple(defaultZones, defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids).Length).Apply(values =&gt;
+    ///             {
+    ///                 var defaultZones = values.Item1;
+    ///                 var length = values.Item2;
+    ///                 return defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids)[length - 3];
+    ///             }),
+    ///             Output.Tuple(defaultZones, defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids).Length).Apply(values =&gt;
+    ///             {
+    ///                 var defaultZones = values.Item1;
+    ///                 var length = values.Item2;
+    ///                 return defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids)[length - 4];
+    ///             }),
+    ///         },
+    ///         AutoRenew = false,
+    ///         DiskSize = 100,
+    ///         PaymentType = "PayAsYouGo",
+    ///         InstanceClass = "8C32GB",
+    ///         BackupRetainMode = "delete_all",
+    ///         Series = "normal",
+    ///         InstanceName = name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Ocean Base Instance can be imported using the id, e.g.

@@ -11,6 +11,30 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.173.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ *     cenInstanceName: "tf_example",
+ *     description: "an example for cen",
+ * });
+ * const exampleTransitRouter = new alicloud.cen.TransitRouter("exampleTransitRouter", {
+ *     transitRouterName: "tf_example",
+ *     cenId: exampleInstance.id,
+ * });
+ * const exampleTrafficMarkingPolicy = new alicloud.cen.TrafficMarkingPolicy("exampleTrafficMarkingPolicy", {
+ *     markingDscp: 1,
+ *     priority: 1,
+ *     trafficMarkingPolicyName: "tf_example",
+ *     transitRouterId: exampleTransitRouter.transitRouterId,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Cloud Enterprise Network (CEN) Traffic Marking Policy can be imported using the id, e.g.

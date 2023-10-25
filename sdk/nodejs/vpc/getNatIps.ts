@@ -10,6 +10,53 @@ import * as utilities from "../utilities";
  * This data source provides the Vpc Nat Ips of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.136.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.vpc.getNatIps({
+ *     natGatewayId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const vpcNatIpId1 = ids.then(ids => ids.ips?.[0]?.id);
+ * const nameRegex = alicloud.vpc.getNatIps({
+ *     natGatewayId: "example_value",
+ *     nameRegex: "^my-NatIp",
+ * });
+ * export const vpcNatIpId2 = nameRegex.then(nameRegex => nameRegex.ips?.[0]?.id);
+ * const natIpCidr = alicloud.vpc.getNatIps({
+ *     natGatewayId: "example_value",
+ *     natIpCidr: "example_value",
+ *     nameRegex: "^my-NatIp",
+ * });
+ * export const vpcNatIpId3 = natIpCidr.then(natIpCidr => natIpCidr.ips?.[0]?.id);
+ * const natIpName = alicloud.vpc.getNatIps({
+ *     natGatewayId: "example_value",
+ *     ids: ["example_value"],
+ *     natIpNames: ["example_value"],
+ * });
+ * export const vpcNatIpId4 = natIpName.then(natIpName => natIpName.ips?.[0]?.id);
+ * const natIpIds = alicloud.vpc.getNatIps({
+ *     natGatewayId: "example_value",
+ *     ids: ["example_value"],
+ *     natIpIds: ["example_value"],
+ * });
+ * export const vpcNatIpId5 = natIpIds.then(natIpIds => natIpIds.ips?.[0]?.id);
+ * const status = alicloud.vpc.getNatIps({
+ *     natGatewayId: "example_value",
+ *     ids: ["example_value"],
+ *     status: "example_value",
+ * });
+ * export const vpcNatIpId6 = status.then(status => status.ips?.[0]?.id);
+ * ```
  */
 export function getNatIps(args: GetNatIpsArgs, opts?: pulumi.InvokeOptions): Promise<GetNatIpsResult> {
 
@@ -84,6 +131,53 @@ export interface GetNatIpsResult {
  * This data source provides the Vpc Nat Ips of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.136.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.vpc.getNatIps({
+ *     natGatewayId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const vpcNatIpId1 = ids.then(ids => ids.ips?.[0]?.id);
+ * const nameRegex = alicloud.vpc.getNatIps({
+ *     natGatewayId: "example_value",
+ *     nameRegex: "^my-NatIp",
+ * });
+ * export const vpcNatIpId2 = nameRegex.then(nameRegex => nameRegex.ips?.[0]?.id);
+ * const natIpCidr = alicloud.vpc.getNatIps({
+ *     natGatewayId: "example_value",
+ *     natIpCidr: "example_value",
+ *     nameRegex: "^my-NatIp",
+ * });
+ * export const vpcNatIpId3 = natIpCidr.then(natIpCidr => natIpCidr.ips?.[0]?.id);
+ * const natIpName = alicloud.vpc.getNatIps({
+ *     natGatewayId: "example_value",
+ *     ids: ["example_value"],
+ *     natIpNames: ["example_value"],
+ * });
+ * export const vpcNatIpId4 = natIpName.then(natIpName => natIpName.ips?.[0]?.id);
+ * const natIpIds = alicloud.vpc.getNatIps({
+ *     natGatewayId: "example_value",
+ *     ids: ["example_value"],
+ *     natIpIds: ["example_value"],
+ * });
+ * export const vpcNatIpId5 = natIpIds.then(natIpIds => natIpIds.ips?.[0]?.id);
+ * const status = alicloud.vpc.getNatIps({
+ *     natGatewayId: "example_value",
+ *     ids: ["example_value"],
+ *     status: "example_value",
+ * });
+ * export const vpcNatIpId6 = status.then(status => status.ips?.[0]?.id);
+ * ```
  */
 export function getNatIpsOutput(args: GetNatIpsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNatIpsResult> {
     return pulumi.output(args).apply((a: any) => getNatIps(a, opts))

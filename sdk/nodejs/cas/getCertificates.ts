@@ -10,6 +10,19 @@ import * as utilities from "../utilities";
  * > **DEPRECATED:**  This datasource has been deprecated from version `1.129.0`. Please use new datasource alicloud_ssl_certificates_service_certificates.
  *
  * This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const certs = alicloud.cas.getCertificates({
+ *     nameRegex: "^cas",
+ *     outputFile: `${path.module}/cas_certificates.json`,
+ * });
+ * export const cert = certs.then(certs => certs.certificates?.[0]?.id);
+ * ```
  */
 /** @deprecated This resource has been deprecated in favour of getServiceCertificates */
 export function getCertificates(args?: GetCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificatesResult> {
@@ -75,6 +88,19 @@ export interface GetCertificatesResult {
  * > **DEPRECATED:**  This datasource has been deprecated from version `1.129.0`. Please use new datasource alicloud_ssl_certificates_service_certificates.
  *
  * This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const certs = alicloud.cas.getCertificates({
+ *     nameRegex: "^cas",
+ *     outputFile: `${path.module}/cas_certificates.json`,
+ * });
+ * export const cert = certs.then(certs => certs.certificates?.[0]?.id);
+ * ```
  */
 /** @deprecated This resource has been deprecated in favour of getServiceCertificates */
 export function getCertificatesOutput(args?: GetCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificatesResult> {

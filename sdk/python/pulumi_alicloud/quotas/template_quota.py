@@ -456,6 +456,31 @@ class TemplateQuota(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.206.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.quotas.TemplateQuota("default",
+            desire_value=1001,
+            dimensions=[alicloud.quotas.TemplateQuotaDimensionArgs(
+                key="regionId",
+                value="cn-hangzhou",
+            )],
+            env_language="zh",
+            notice_type=3,
+            product_code="gws",
+            quota_action_code="q_desktop-count",
+            quota_category="CommonQuota")
+        ```
+
         ## Import
 
         Quotas Template Quota can be imported using the id, e.g.
@@ -495,6 +520,31 @@ class TemplateQuota(pulumi.CustomResource):
         For information about Quotas Template Quota and how to use it, see [What is Template Quota](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createtemplatequotaitem).
 
         > **NOTE:** Available since v1.206.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.quotas.TemplateQuota("default",
+            desire_value=1001,
+            dimensions=[alicloud.quotas.TemplateQuotaDimensionArgs(
+                key="regionId",
+                value="cn-hangzhou",
+            )],
+            env_language="zh",
+            notice_type=3,
+            product_code="gws",
+            quota_action_code="q_desktop-count",
+            quota_category="CommonQuota")
+        ```
 
         ## Import
 

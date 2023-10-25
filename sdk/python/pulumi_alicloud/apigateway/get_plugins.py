@@ -149,6 +149,20 @@ def get_plugins(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.187.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.apigateway.get_plugins()
+    pulumi.export("apiGatewayPluginId1", ids.plugins[0].id)
+    name_regex = alicloud.apigateway.get_plugins(name_regex="^my-Plugin")
+    pulumi.export("apiGatewayPluginId2", name_regex.plugins[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Plugin IDs.
     :param str name_regex: A regex string to filter results by Plugin name.
@@ -197,6 +211,20 @@ def get_plugins_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
     This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.187.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.apigateway.get_plugins()
+    pulumi.export("apiGatewayPluginId1", ids.plugins[0].id)
+    name_regex = alicloud.apigateway.get_plugins(name_regex="^my-Plugin")
+    pulumi.export("apiGatewayPluginId2", name_regex.plugins[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Plugin IDs.

@@ -123,6 +123,18 @@ def get_tables(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.40.0+.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    tables_ds = alicloud.ots.get_tables(instance_name="sample-instance",
+        name_regex="sample-table",
+        output_file="tables.txt")
+    pulumi.export("firstTableId", tables_ds.tables[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of table IDs.
     :param str instance_name: The name of OTS instance.
@@ -158,6 +170,18 @@ def get_tables_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
     This data source provides the ots tables of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.40.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    tables_ds = alicloud.ots.get_tables(instance_name="sample-instance",
+        name_regex="sample-table",
+        output_file="tables.txt")
+    pulumi.export("firstTableId", tables_ds.tables[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of table IDs.

@@ -19,6 +19,46 @@ import (
 //
 // > **NOTE:** Available since v1.188.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/message"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := message.NewServiceQueue(ctx, "queue", &message.ServiceQueueArgs{
+//				QueueName:              pulumi.String(name),
+//				DelaySeconds:           pulumi.Int(60478),
+//				MaximumMessageSize:     pulumi.Int(12357),
+//				MessageRetentionPeriod: pulumi.Int(256000),
+//				VisibilityTimeout:      pulumi.Int(30),
+//				PollingWaitSeconds:     pulumi.Int(3),
+//				LoggingEnabled:         pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Message Notification Service Queue can be imported using the id or queue_name, e.g.

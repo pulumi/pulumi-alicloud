@@ -8,6 +8,18 @@ import * as utilities from "../utilities";
  * This data source is the character set supported by querying RDS instances.
  *
  * > **NOTE:** Available in v1.198.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const names = alicloud.rds.getCharacterSetNames({
+ *     engine: "MySQL",
+ * });
+ * export const firstRdsCharacterSetNames = names.then(names => names.names?.[0]);
+ * ```
  */
 export function getCharacterSetNames(args: GetCharacterSetNamesArgs, opts?: pulumi.InvokeOptions): Promise<GetCharacterSetNamesResult> {
 
@@ -45,6 +57,18 @@ export interface GetCharacterSetNamesResult {
  * This data source is the character set supported by querying RDS instances.
  *
  * > **NOTE:** Available in v1.198.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const names = alicloud.rds.getCharacterSetNames({
+ *     engine: "MySQL",
+ * });
+ * export const firstRdsCharacterSetNames = names.then(names => names.names?.[0]);
+ * ```
  */
 export function getCharacterSetNamesOutput(args: GetCharacterSetNamesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCharacterSetNamesResult> {
     return pulumi.output(args).apply((a: any) => getCharacterSetNames(a, opts))

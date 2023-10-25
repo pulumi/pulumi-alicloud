@@ -11,6 +11,27 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.210.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.kms.NetworkRule("default", {
+ *     description: "example-description",
+ *     sourcePrivateIps: [
+ *         "10.10.10.10/24",
+ *         "192.168.17.13",
+ *         "100.177.24.254",
+ *     ],
+ *     networkRuleName: name,
+ * });
+ * ```
+ *
  * ## Import
  *
  * KMS Network Rule can be imported using the id, e.g.

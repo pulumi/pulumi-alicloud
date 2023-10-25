@@ -11,6 +11,26 @@ import * as utilities from "../utilities";
  * instance types available in Alibaba Cloud account when create a emr cluster.
  *
  * > **NOTE:** Available in 1.59.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.emr.getInstanceTypes({
+ *     clusterType: "HADOOP",
+ *     destinationResource: "InstanceType",
+ *     instanceChargeType: "PostPaid",
+ *     instanceType: "ecs.g5.2xlarge",
+ *     supportLocalStorage: false,
+ *     supportNodeTypes: [
+ *         "MASTER",
+ *         "CORE",
+ *     ],
+ * });
+ * export const firstInstanceType = _default.then(_default => _default.types?.[0]?.id);
+ * ```
  */
 export function getInstanceTypes(args: GetInstanceTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypesResult> {
 
@@ -99,6 +119,26 @@ export interface GetInstanceTypesResult {
  * instance types available in Alibaba Cloud account when create a emr cluster.
  *
  * > **NOTE:** Available in 1.59.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.emr.getInstanceTypes({
+ *     clusterType: "HADOOP",
+ *     destinationResource: "InstanceType",
+ *     instanceChargeType: "PostPaid",
+ *     instanceType: "ecs.g5.2xlarge",
+ *     supportLocalStorage: false,
+ *     supportNodeTypes: [
+ *         "MASTER",
+ *         "CORE",
+ *     ],
+ * });
+ * export const firstInstanceType = _default.then(_default => _default.types?.[0]?.id);
+ * ```
  */
 export function getInstanceTypesOutput(args: GetInstanceTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTypesResult> {
     return pulumi.output(args).apply((a: any) => getInstanceTypes(a, opts))

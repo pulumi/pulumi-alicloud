@@ -336,6 +336,43 @@ class LogTailConfig(pulumi.CustomResource):
         You can use Logtail to collect logs from servers such as Alibaba Cloud Elastic
         Compute Service (ECS) instances in real time in the Log Service console. [Refer to details](https://www.alibabacloud.com/help/doc-detail/29058.htm)
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            retention_period=3650,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        example_log_tail_config = alicloud.log.LogTailConfig("exampleLogTailConfig",
+            project=example_project.name,
+            logstore=example_store.name,
+            input_type="file",
+            output_type="LogService",
+            input_detail=\"\"\"  	{
+        		"logPath": "/logPath",
+        		"filePattern": "access.log",
+        		"logType": "json_log",
+        		"topicFormat": "default",
+        		"discardUnmatch": false,
+        		"enableRawLog": true,
+        		"fileEncoding": "gbk",
+        		"maxDepth": 10
+        	}
+        \"\"\")
+        ```
         ## Module Support
 
         You can use the existing sls-logtail module
@@ -370,6 +407,43 @@ class LogTailConfig(pulumi.CustomResource):
         You can use Logtail to collect logs from servers such as Alibaba Cloud Elastic
         Compute Service (ECS) instances in real time in the Log Service console. [Refer to details](https://www.alibabacloud.com/help/doc-detail/29058.htm)
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            retention_period=3650,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        example_log_tail_config = alicloud.log.LogTailConfig("exampleLogTailConfig",
+            project=example_project.name,
+            logstore=example_store.name,
+            input_type="file",
+            output_type="LogService",
+            input_detail=\"\"\"  	{
+        		"logPath": "/logPath",
+        		"filePattern": "access.log",
+        		"logType": "json_log",
+        		"topicFormat": "default",
+        		"discardUnmatch": false,
+        		"enableRawLog": true,
+        		"fileEncoding": "gbk",
+        		"maxDepth": 10
+        	}
+        \"\"\")
+        ```
         ## Module Support
 
         You can use the existing sls-logtail module

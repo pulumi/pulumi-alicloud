@@ -14,6 +14,95 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// &gt; **NOTE:** Available since v1.128.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var region = config.Get("region") ?? "cn-hangzhou";
+    ///     var peerRegion = config.Get("peerRegion") ?? "cn-beijing";
+    ///     var hz = new AliCloud.Provider("hz", new()
+    ///     {
+    ///         Region = region,
+    ///     });
+    /// 
+    ///     var bj = new AliCloud.Provider("bj", new()
+    ///     {
+    ///         Region = peerRegion,
+    ///     });
+    /// 
+    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
+    ///     {
+    ///         CenInstanceName = name,
+    ///         ProtectionLevel = "REDUCED",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Bj,
+    ///     });
+    /// 
+    ///     var exampleBandwidthPackage = new AliCloud.Cen.BandwidthPackage("exampleBandwidthPackage", new()
+    ///     {
+    ///         Bandwidth = 5,
+    ///         CenBandwidthPackageName = "tf_example",
+    ///         GeographicRegionAId = "China",
+    ///         GeographicRegionBId = "China",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Bj,
+    ///     });
+    /// 
+    ///     var exampleBandwidthPackageAttachment = new AliCloud.Cen.BandwidthPackageAttachment("exampleBandwidthPackageAttachment", new()
+    ///     {
+    ///         InstanceId = exampleInstance.Id,
+    ///         BandwidthPackageId = exampleBandwidthPackage.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Bj,
+    ///     });
+    /// 
+    ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("exampleTransitRouter", new()
+    ///     {
+    ///         CenId = exampleBandwidthPackageAttachment.InstanceId,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Hz,
+    ///     });
+    /// 
+    ///     var peer = new AliCloud.Cen.TransitRouter("peer", new()
+    ///     {
+    ///         CenId = exampleTransitRouter.CenId,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Bj,
+    ///     });
+    /// 
+    ///     var exampleTransitRouterPeerAttachment = new AliCloud.Cen.TransitRouterPeerAttachment("exampleTransitRouterPeerAttachment", new()
+    ///     {
+    ///         CenId = exampleInstance.Id,
+    ///         TransitRouterId = exampleTransitRouter.TransitRouterId,
+    ///         PeerTransitRouterRegionId = peerRegion,
+    ///         PeerTransitRouterId = peer.TransitRouterId,
+    ///         CenBandwidthPackageId = exampleBandwidthPackageAttachment.BandwidthPackageId,
+    ///         Bandwidth = 5,
+    ///         TransitRouterAttachmentDescription = name,
+    ///         TransitRouterAttachmentName = name,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Hz,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// CEN instance can be imported using the id, e.g.

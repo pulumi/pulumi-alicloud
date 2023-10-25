@@ -110,6 +110,18 @@ def get_mail_addresses(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.134.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.directmail.get_mail_addresses(ids=["example_id"])
+    pulumi.export("directMailMailAddressId1", ids.addresses[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Mail Address IDs.
     :param str key_word: The key word about account email address.
@@ -147,6 +159,18 @@ def get_mail_addresses_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
     This data source provides the Direct Mail Mail Addresses of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.134.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.directmail.get_mail_addresses(ids=["example_id"])
+    pulumi.export("directMailMailAddressId1", ids.addresses[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Mail Address IDs.

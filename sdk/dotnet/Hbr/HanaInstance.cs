@@ -18,6 +18,46 @@ namespace Pulumi.AliCloud.Hbr
     /// 
     /// &gt; **NOTE:** The `sid` attribute is required when destroying resources.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     {
+    ///         Status = "OK",
+    ///     });
+    /// 
+    ///     var exampleVault = new AliCloud.Hbr.Vault("exampleVault", new()
+    ///     {
+    ///         VaultName = "terraform-example",
+    ///     });
+    /// 
+    ///     var exampleHanaInstance = new AliCloud.Hbr.HanaInstance("exampleHanaInstance", new()
+    ///     {
+    ///         AlertSetting = "INHERITED",
+    ///         HanaName = "terraform-example",
+    ///         Host = "1.1.1.1",
+    ///         InstanceNumber = 1,
+    ///         Password = "YouPassword123",
+    ///         ResourceGroupId = exampleResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         Sid = "HXE",
+    ///         UseSsl = false,
+    ///         UserName = "admin",
+    ///         ValidateCertificate = false,
+    ///         VaultId = exampleVault.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Hybrid Backup Recovery (HBR) Hana Instance can be imported using the id, e.g.

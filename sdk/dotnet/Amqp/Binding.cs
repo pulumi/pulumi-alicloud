@@ -16,6 +16,67 @@ namespace Pulumi.AliCloud.Amqp
     /// 
     /// &gt; **NOTE:** Available since v1.135.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultInstance = new AliCloud.Amqp.Instance("defaultInstance", new()
+    ///     {
+    ///         InstanceType = "enterprise",
+    ///         MaxTps = "3000",
+    ///         QueueCapacity = "200",
+    ///         StorageSize = "700",
+    ///         SupportEip = false,
+    ///         MaxEipTps = "128",
+    ///         PaymentType = "Subscription",
+    ///         Period = 1,
+    ///     });
+    /// 
+    ///     var defaultVirtualHost = new AliCloud.Amqp.VirtualHost("defaultVirtualHost", new()
+    ///     {
+    ///         InstanceId = defaultInstance.Id,
+    ///         VirtualHostName = "tf-example",
+    ///     });
+    /// 
+    ///     var defaultExchange = new AliCloud.Amqp.Exchange("defaultExchange", new()
+    ///     {
+    ///         AutoDeleteState = false,
+    ///         ExchangeName = "tf-example",
+    ///         ExchangeType = "DIRECT",
+    ///         InstanceId = defaultInstance.Id,
+    ///         Internal = false,
+    ///         VirtualHostName = defaultVirtualHost.VirtualHostName,
+    ///     });
+    /// 
+    ///     var defaultQueue = new AliCloud.Amqp.Queue("defaultQueue", new()
+    ///     {
+    ///         InstanceId = defaultInstance.Id,
+    ///         QueueName = "tf-example",
+    ///         VirtualHostName = defaultVirtualHost.VirtualHostName,
+    ///     });
+    /// 
+    ///     var defaultBinding = new AliCloud.Amqp.Binding("defaultBinding", new()
+    ///     {
+    ///         Argument = "x-match:all",
+    ///         BindingKey = defaultQueue.QueueName,
+    ///         BindingType = "QUEUE",
+    ///         DestinationName = "tf-example",
+    ///         InstanceId = defaultInstance.Id,
+    ///         SourceExchange = defaultExchange.ExchangeName,
+    ///         VirtualHostName = defaultVirtualHost.VirtualHostName,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// RabbitMQ (AMQP) Binding can be imported using the id, e.g.

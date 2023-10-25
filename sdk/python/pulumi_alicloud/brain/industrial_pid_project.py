@@ -181,6 +181,19 @@ class IndustrialPidProject(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.113.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.brain.IndustrialPidProject("example",
+            pid_organization_id="3e74e684-cbb5-xxxx",
+            pid_project_name="tf-testAcc")
+        ```
+
         ## Import
 
         Brain Industrial Pid Project can be imported using the id, e.g.
@@ -205,6 +218,19 @@ class IndustrialPidProject(pulumi.CustomResource):
         Provides a Brain Industrial Pid Project resource.
 
         > **NOTE:** Available in v1.113.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.brain.IndustrialPidProject("example",
+            pid_organization_id="3e74e684-cbb5-xxxx",
+            pid_project_name="tf-testAcc")
+        ```
 
         ## Import
 

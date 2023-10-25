@@ -13,6 +13,17 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** At present, the resource only supports cn-shanghai region.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.mhub.Product("example", {productName: "example_value"});
+ * ```
+ *
  * ## Import
  *
  * MHUB Product can be imported using the id, e.g.

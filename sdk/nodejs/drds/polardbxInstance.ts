@@ -11,6 +11,40 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.211.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {vpcName: name});
+ * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ *     vpcId: exampleNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     cidrBlock: "172.16.0.0/24",
+ *     vswitchName: name,
+ * });
+ * const defaultPolardbxInstance = new alicloud.drds.PolardbxInstance("defaultPolardbxInstance", {
+ *     topologyType: "3azones",
+ *     vswitchId: exampleSwitch.id,
+ *     primaryZone: "ap-southeast-1a",
+ *     cnNodeCount: 2,
+ *     dnClass: "mysql.n4.medium.25",
+ *     cnClass: "polarx.x4.medium.2e",
+ *     dnNodeCount: 2,
+ *     secondaryZone: "ap-southeast-1b",
+ *     tertiaryZone: "ap-southeast-1c",
+ *     vpcId: exampleNetwork.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * DRDS Polardb X Instance can be imported using the id, e.g.

@@ -19,6 +19,70 @@ import (
 //
 // > **NOTE:** Available since v1.194.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			fooSwitch, err := vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
+//				VpcId:     fooNetwork.ID(),
+//				CidrBlock: pulumi.String("172.16.0.0/21"),
+//				ZoneId:    *pulumi.String(_default.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			fooRouteTable, err := vpc.NewRouteTable(ctx, "fooRouteTable", &vpc.RouteTableArgs{
+//				VpcId:          fooNetwork.ID(),
+//				RouteTableName: pulumi.String(name),
+//				Description:    pulumi.String("route_table_attachment"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewRouteTableAttachment(ctx, "fooRouteTableAttachment", &vpc.RouteTableAttachmentArgs{
+//				VswitchId:    fooSwitch.ID(),
+//				RouteTableId: fooRouteTable.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // VPC Route Table Attachment can be imported using the id, e.g.

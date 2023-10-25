@@ -97,6 +97,17 @@ class Acl(pulumi.CustomResource):
 
         > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.rocketmq.Acl("default")
+        ```
+
         ## Import
 
         The Sag Acl can be imported using the id, e.g.
@@ -123,6 +134,17 @@ class Acl(pulumi.CustomResource):
         > **NOTE:** Available since v1.60.0.
 
         > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.rocketmq.Acl("default")
+        ```
 
         ## Import
 

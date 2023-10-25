@@ -8,6 +8,18 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides the api groups of the current Alibaba Cloud user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const dataApigatway = alicloud.apigateway.getGroups({
+ *     outputFile: "outgroups",
+ * });
+ * export const firstGroupId = dataApigatway.then(dataApigatway => dataApigatway.groups?.[0]?.id);
+ * ```
  */
 export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
     args = args || {};
@@ -63,6 +75,18 @@ export interface GetGroupsResult {
 }
 /**
  * This data source provides the api groups of the current Alibaba Cloud user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const dataApigatway = alicloud.apigateway.getGroups({
+ *     outputFile: "outgroups",
+ * });
+ * export const firstGroupId = dataApigatway.then(dataApigatway => dataApigatway.groups?.[0]?.id);
+ * ```
  */
 export function getGroupsOutput(args?: GetGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
     return pulumi.output(args).apply((a: any) => getGroups(a, opts))

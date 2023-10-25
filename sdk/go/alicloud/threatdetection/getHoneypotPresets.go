@@ -15,6 +15,36 @@ import (
 // This data source provides Threat Detection Honeypot Preset available to the user.
 //
 // > **NOTE:** Available in 1.195.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/threatdetection"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _default, err := threatdetection.GetHoneypotPresets(ctx, &threatdetection.GetHoneypotPresetsArgs{
+// Ids: interface{}{
+// alicloud_threat_detection_honeypot_preset.Default.Id,
+// },
+// HoneypotImageName: pulumi.StringRef("shiro"),
+// NodeId: pulumi.StringRef("example_value"),
+// PresetName: pulumi.StringRef("apiapec_test"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("alicloudThreatDetectionHoneypotPresetExampleId", _default.Presets[0].Id)
+// return nil
+// })
+// }
+// ```
 func GetHoneypotPresets(ctx *pulumi.Context, args *GetHoneypotPresetsArgs, opts ...pulumi.InvokeOption) (*GetHoneypotPresetsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHoneypotPresetsResult

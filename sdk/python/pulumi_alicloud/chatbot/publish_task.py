@@ -240,6 +240,20 @@ class PublishTask(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.203.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_agents = alicloud.chatbot.get_agents()
+        default_publish_task = alicloud.chatbot.PublishTask("defaultPublishTask",
+            biz_type="faq",
+            agent_key=default_agents.agents[0].agent_key)
+        ```
+
         ## Import
 
         Chatbot Publish Task can be imported using the id, e.g.
@@ -266,6 +280,20 @@ class PublishTask(pulumi.CustomResource):
         For information about Chatbot Publish Task and how to use it, see [What is Publish Task](https://help.aliyun.com/document_detail/433996.html).
 
         > **NOTE:** Available in v1.203.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_agents = alicloud.chatbot.get_agents()
+        default_publish_task = alicloud.chatbot.PublishTask("defaultPublishTask",
+            biz_type="faq",
+            agent_key=default_agents.agents[0].agent_key)
+        ```
 
         ## Import
 

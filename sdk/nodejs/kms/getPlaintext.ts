@@ -4,6 +4,28 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const key = new alicloud.kms.Key("key", {
+ *     description: "example key",
+ *     isEnabled: true,
+ * });
+ * // Encrypt plaintext 'example'
+ * const encrypted = new alicloud.kms.Ciphertext("encrypted", {
+ *     keyId: key.id,
+ *     plaintext: "example",
+ * });
+ * const plaintext = alicloud.kms.getPlaintextOutput({
+ *     ciphertextBlob: encrypted.ciphertextBlob,
+ * });
+ * export const decrypted = plaintext.apply(plaintext => plaintext.plaintext);
+ * ```
+ */
 export function getPlaintext(args: GetPlaintextArgs, opts?: pulumi.InvokeOptions): Promise<GetPlaintextResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -46,6 +68,28 @@ export interface GetPlaintextResult {
      */
     readonly plaintext: string;
 }
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const key = new alicloud.kms.Key("key", {
+ *     description: "example key",
+ *     isEnabled: true,
+ * });
+ * // Encrypt plaintext 'example'
+ * const encrypted = new alicloud.kms.Ciphertext("encrypted", {
+ *     keyId: key.id,
+ *     plaintext: "example",
+ * });
+ * const plaintext = alicloud.kms.getPlaintextOutput({
+ *     ciphertextBlob: encrypted.ciphertextBlob,
+ * });
+ * export const decrypted = plaintext.apply(plaintext => plaintext.plaintext);
+ * ```
+ */
 export function getPlaintextOutput(args: GetPlaintextOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPlaintextResult> {
     return pulumi.output(args).apply((a: any) => getPlaintext(a, opts))
 }

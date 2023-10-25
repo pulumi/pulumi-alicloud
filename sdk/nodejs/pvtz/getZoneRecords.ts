@@ -8,6 +8,19 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const recordsDs = alicloud.pvtz.getZoneRecords({
+ *     keyword: alicloud_pvtz_zone_record.foo.value,
+ *     zoneId: alicloud_pvtz_zone.basic.id,
+ * });
+ * export const firstRecordId = recordsDs.then(recordsDs => recordsDs.records?.[0]?.id);
+ * ```
  */
 export function getZoneRecords(args: GetZoneRecordsArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneRecordsResult> {
 
@@ -101,6 +114,19 @@ export interface GetZoneRecordsResult {
 }
 /**
  * This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const recordsDs = alicloud.pvtz.getZoneRecords({
+ *     keyword: alicloud_pvtz_zone_record.foo.value,
+ *     zoneId: alicloud_pvtz_zone.basic.id,
+ * });
+ * export const firstRecordId = recordsDs.then(recordsDs => recordsDs.records?.[0]?.id);
+ * ```
  */
 export function getZoneRecordsOutput(args: GetZoneRecordsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZoneRecordsResult> {
     return pulumi.output(args).apply((a: any) => getZoneRecords(a, opts))

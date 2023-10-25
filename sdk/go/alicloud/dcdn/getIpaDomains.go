@@ -15,6 +15,46 @@ import (
 // This data source provides the Dcdn Ipa Domains of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.158.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := dcdn.GetIpaDomains(ctx, &dcdn.GetIpaDomainsArgs{
+//				DomainName: pulumi.StringRef("example_value"),
+//				Ids: []string{
+//					"example_value-1",
+//					"example_value-2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("dcdnIpaDomainId1", ids.Domains[0].Id)
+//			status, err := dcdn.GetIpaDomains(ctx, &dcdn.GetIpaDomainsArgs{
+//				Status: pulumi.StringRef("online"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("dcdnIpaDomainId2", status.Domains[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetIpaDomains(ctx *pulumi.Context, args *GetIpaDomainsArgs, opts ...pulumi.InvokeOption) (*GetIpaDomainsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIpaDomainsResult

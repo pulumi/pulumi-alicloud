@@ -19,6 +19,38 @@ import (
 //
 // > **NOTE:** Available in v1.105.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ros"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ros.NewChangeSet(ctx, "example", &ros.ChangeSetArgs{
+//				ChangeSetName: pulumi.String("example_value"),
+//				ChangeSetType: pulumi.String("CREATE"),
+//				Description:   pulumi.String("Test From Terraform"),
+//				StackName:     pulumi.String("tf-testacc"),
+//				TemplateBody:  pulumi.String("{\"ROSTemplateFormatVersion\":\"2015-09-01\"}"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ROS Change Set can be imported using the id, e.g.

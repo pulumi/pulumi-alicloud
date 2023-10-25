@@ -303,6 +303,38 @@ class IpSet(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.113.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
+            duration=1,
+            auto_use_coupon=True,
+            spec="1")
+        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
+            bandwidth=100,
+            type="Basic",
+            bandwidth_type="Basic",
+            payment_type="PayAsYouGo",
+            billing_type="PayBy95",
+            ratio=30)
+        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
+            accelerator_id=default_accelerator.id,
+            bandwidth_package_id=default_bandwidth_package.id)
+        example = alicloud.ga.IpSet("example",
+            accelerate_region_id=region,
+            bandwidth=5,
+            accelerator_id=default_bandwidth_package_attachment.accelerator_id)
+        ```
+
         ## Import
 
         Ga Ip Set can be imported using the id, e.g.
@@ -332,6 +364,38 @@ class IpSet(pulumi.CustomResource):
         For information about Global Accelerator (GA) Ip Set and how to use it, see [What is Ip Set](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createipsets).
 
         > **NOTE:** Available since v1.113.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
+            duration=1,
+            auto_use_coupon=True,
+            spec="1")
+        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
+            bandwidth=100,
+            type="Basic",
+            bandwidth_type="Basic",
+            payment_type="PayAsYouGo",
+            billing_type="PayBy95",
+            ratio=30)
+        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
+            accelerator_id=default_accelerator.id,
+            bandwidth_package_id=default_bandwidth_package.id)
+        example = alicloud.ga.IpSet("example",
+            accelerate_region_id=region,
+            bandwidth=5,
+            accelerator_id=default_bandwidth_package_attachment.accelerator_id)
+        ```
 
         ## Import
 

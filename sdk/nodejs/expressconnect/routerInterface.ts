@@ -11,6 +11,35 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.199.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const defaultRegions = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultRouterInterface = new alicloud.expressconnect.RouterInterface("defaultRouterInterface", {
+ *     description: name,
+ *     oppositeRegionId: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
+ *     routerId: defaultNetwork.routerId,
+ *     role: "InitiatingSide",
+ *     routerType: "VRouter",
+ *     paymentType: "PayAsYouGo",
+ *     routerInterfaceName: name,
+ *     spec: "Mini.2",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Express Connect Router Interface can be imported using the id, e.g.

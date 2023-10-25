@@ -93,6 +93,18 @@ def get_slots(db_instance_id: Optional[str] = None,
 
     > **NOTE:** Available since v1.204.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.rds.get_slots(db_instance_id="example_value")
+    pulumi.export("firstRdsSlotsName", example.slots[0].slot_name)
+    ```
+
 
     :param str db_instance_id: The db instance id.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -122,6 +134,18 @@ def get_slots_output(db_instance_id: Optional[pulumi.Input[str]] = None,
     This data source provides the Rds Replication Slots of the current Alibaba Cloud user.
 
     > **NOTE:** Available since v1.204.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.rds.get_slots(db_instance_id="example_value")
+    pulumi.export("firstRdsSlotsName", example.slots[0].slot_name)
+    ```
 
 
     :param str db_instance_id: The db instance id.

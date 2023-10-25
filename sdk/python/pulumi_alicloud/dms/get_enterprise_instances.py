@@ -199,6 +199,20 @@ def get_enterprise_instances(env_type: Optional[str] = None,
 
     > **NOTE:** Available in 1.88.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    dms_enterprise_instances_ds = alicloud.dms.get_enterprise_instances(env_type="test",
+        instance_type="mysql",
+        name_regex="tf_testAcc",
+        net_type="CLASSIC",
+        output_file="dms_enterprise_instances.json")
+    pulumi.export("firstDatabaseInstanceId", dms_enterprise_instances_ds.instances[0].instance_id)
+    ```
+
 
     :param str env_type: The type of the environment to which the database instance belongs.
     :param str instance_alias_regex: A regex string to filter the results by the DMS Enterprise Instance instance_alias.
@@ -258,6 +272,20 @@ def get_enterprise_instances_output(env_type: Optional[pulumi.Input[Optional[str
     This data source provides a list of DMS Enterprise Instances in an Alibaba Cloud account according to the specified filters.
 
     > **NOTE:** Available in 1.88.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    dms_enterprise_instances_ds = alicloud.dms.get_enterprise_instances(env_type="test",
+        instance_type="mysql",
+        name_regex="tf_testAcc",
+        net_type="CLASSIC",
+        output_file="dms_enterprise_instances.json")
+    pulumi.export("firstDatabaseInstanceId", dms_enterprise_instances_ds.instances[0].instance_id)
+    ```
 
 
     :param str env_type: The type of the environment to which the database instance belongs.

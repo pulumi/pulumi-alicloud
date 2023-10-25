@@ -15,6 +15,33 @@ import (
 // This data source provides the Dcdn Waf Policies of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.184.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := dcdn.GetWafPolicies(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("dcdnWafPolicyId1", ids.Policies[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetWafPolicies(ctx *pulumi.Context, args *GetWafPoliciesArgs, opts ...pulumi.InvokeOption) (*GetWafPoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetWafPoliciesResult

@@ -16,6 +16,36 @@ namespace Pulumi.AliCloud.Edas
     /// 
     /// &gt; **NOTE:** Available since v1.173.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     {
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var defaultNamespace = new AliCloud.Edas.Namespace("defaultNamespace", new()
+    ///     {
+    ///         DebugEnable = false,
+    ///         Description = name,
+    ///         NamespaceLogicalId = $"{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:example",
+    ///         NamespaceName = name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// EDAS Namespace can be imported using the id, e.g.

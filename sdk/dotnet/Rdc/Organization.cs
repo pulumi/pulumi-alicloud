@@ -16,6 +16,27 @@ namespace Pulumi.AliCloud.Rdc
     /// 
     /// &gt; **NOTE:** Available in v1.137.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AliCloud.Rdc.Organization("example", new()
+    ///     {
+    ///         OrganizationName = "example_value",
+    ///         Source = "example_value",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// RDC Organization can be imported using the id, e.g.

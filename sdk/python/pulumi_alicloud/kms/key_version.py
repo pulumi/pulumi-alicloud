@@ -126,6 +126,18 @@ class KeyVersion(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.85.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        this = alicloud.kms.Key("this")
+        keyversion = alicloud.kms.KeyVersion("keyversion", key_id=this.id)
+        ```
+
         ## Import
 
         Alikms key version can be imported using the id, e.g.
@@ -150,6 +162,18 @@ class KeyVersion(pulumi.CustomResource):
         Provides a Alikms Key Version resource. For information about Alikms Key Version and how to use it, see [What is Resource Alikms Key Version](https://www.alibabacloud.com/help/doc-detail/133838.htm).
 
         > **NOTE:** Available in v1.85.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        this = alicloud.kms.Key("this")
+        keyversion = alicloud.kms.KeyVersion("keyversion", key_id=this.id)
+        ```
 
         ## Import
 

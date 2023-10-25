@@ -16,6 +16,40 @@ namespace Pulumi.AliCloud.Quotas
     /// 
     /// &gt; **NOTE:** Available since v1.116.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new AliCloud.Quotas.QuotaAlarm("default", new()
+    ///     {
+    ///         QuotaActionCode = "q_desktop-count",
+    ///         QuotaDimensions = new[]
+    ///         {
+    ///             new AliCloud.Quotas.Inputs.QuotaAlarmQuotaDimensionArgs
+    ///             {
+    ///                 Key = "regionId",
+    ///                 Value = "cn-hangzhou",
+    ///             },
+    ///         },
+    ///         ThresholdPercent = 80,
+    ///         ProductCode = "gws",
+    ///         QuotaAlarmName = name,
+    ///         ThresholdType = "used",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Quotas Quota Alarm can be imported using the id, e.g.

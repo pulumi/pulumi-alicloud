@@ -126,6 +126,46 @@ def get_rules(frontend_port: Optional[int] = None,
     """
     This data source provides the rules associated with a server load balancer listener.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "slbrulebasicconfig"
+    default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+        available_resource_creation="VSwitch")
+    default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+    default_switch = alicloud.vpc.Switch("defaultSwitch",
+        vpc_id=default_network.id,
+        cidr_block="172.16.0.0/16",
+        zone_id=default_zones.zones[0].id,
+        vswitch_name=name)
+    default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
+        load_balancer_name=name,
+        vswitch_id=default_switch.id)
+    default_listener = alicloud.slb.Listener("defaultListener",
+        load_balancer_id=default_application_load_balancer.id,
+        backend_port=22,
+        frontend_port=22,
+        protocol="http",
+        bandwidth=5,
+        health_check_connect_port=20)
+    default_server_group = alicloud.slb.ServerGroup("defaultServerGroup", load_balancer_id=default_application_load_balancer.id)
+    default_rule = alicloud.slb.Rule("defaultRule",
+        load_balancer_id=default_application_load_balancer.id,
+        frontend_port=default_listener.frontend_port,
+        domain="*.aliyun.com",
+        url="/image",
+        server_group_id=default_server_group.id)
+    sample_ds = default_application_load_balancer.id.apply(lambda id: alicloud.slb.get_rules_output(load_balancer_id=id,
+        frontend_port=22))
+    pulumi.export("firstSlbRuleId", sample_ds.slb_rules[0].id)
+    ```
+
 
     :param int frontend_port: SLB listener port.
     :param Sequence[str] ids: A list of rules IDs to filter results.
@@ -162,6 +202,46 @@ def get_rules_output(frontend_port: Optional[pulumi.Input[int]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRulesResult]:
     """
     This data source provides the rules associated with a server load balancer listener.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "slbrulebasicconfig"
+    default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+        available_resource_creation="VSwitch")
+    default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+    default_switch = alicloud.vpc.Switch("defaultSwitch",
+        vpc_id=default_network.id,
+        cidr_block="172.16.0.0/16",
+        zone_id=default_zones.zones[0].id,
+        vswitch_name=name)
+    default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
+        load_balancer_name=name,
+        vswitch_id=default_switch.id)
+    default_listener = alicloud.slb.Listener("defaultListener",
+        load_balancer_id=default_application_load_balancer.id,
+        backend_port=22,
+        frontend_port=22,
+        protocol="http",
+        bandwidth=5,
+        health_check_connect_port=20)
+    default_server_group = alicloud.slb.ServerGroup("defaultServerGroup", load_balancer_id=default_application_load_balancer.id)
+    default_rule = alicloud.slb.Rule("defaultRule",
+        load_balancer_id=default_application_load_balancer.id,
+        frontend_port=default_listener.frontend_port,
+        domain="*.aliyun.com",
+        url="/image",
+        server_group_id=default_server_group.id)
+    sample_ds = default_application_load_balancer.id.apply(lambda id: alicloud.slb.get_rules_output(load_balancer_id=id,
+        frontend_port=22))
+    pulumi.export("firstSlbRuleId", sample_ds.slb_rules[0].id)
+    ```
 
 
     :param int frontend_port: SLB listener port.

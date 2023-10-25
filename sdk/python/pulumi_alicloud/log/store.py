@@ -557,6 +557,62 @@ class Store(pulumi.CustomResource):
         and each project can create multiple Logstores. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48874.htm)
 
         > **NOTE:** Available since v1.0.0.
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        ```
+
+        Encrypt Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        example_account = alicloud.get_account()
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_key = alicloud.kms.Key("exampleKey",
+            description="terraform-example",
+            pending_window_in_days=7,
+            status="Enabled")
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            shard_count=1,
+            auto_split=True,
+            max_split_shard_count=60,
+            encrypt_conf=alicloud.log.StoreEncryptConfArgs(
+                enable=True,
+                encrypt_type="default",
+                user_cmk_info=alicloud.log.StoreEncryptConfUserCmkInfoArgs(
+                    cmk_key_id=example_key.id,
+                    arn=f"acs:ram::{example_account.id}:role/aliyunlogdefaultrole",
+                    region_id=region,
+                ),
+            ))
+        ```
         ## Module Support
 
         You can use the existing sls module
@@ -596,6 +652,62 @@ class Store(pulumi.CustomResource):
         and each project can create multiple Logstores. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48874.htm)
 
         > **NOTE:** Available since v1.0.0.
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        ```
+
+        Encrypt Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        example_account = alicloud.get_account()
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_key = alicloud.kms.Key("exampleKey",
+            description="terraform-example",
+            pending_window_in_days=7,
+            status="Enabled")
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            shard_count=1,
+            auto_split=True,
+            max_split_shard_count=60,
+            encrypt_conf=alicloud.log.StoreEncryptConfArgs(
+                enable=True,
+                encrypt_type="default",
+                user_cmk_info=alicloud.log.StoreEncryptConfUserCmkInfoArgs(
+                    cmk_key_id=example_key.id,
+                    arn=f"acs:ram::{example_account.id}:role/aliyunlogdefaultrole",
+                    region_id=region,
+                ),
+            ))
+        ```
         ## Module Support
 
         You can use the existing sls module

@@ -19,6 +19,72 @@ import (
 //
 // > **NOTE:** Available in v1.153.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleZones, err := nas.GetZones(ctx, &nas.GetZonesArgs{
+//				FileSystemType: pulumi.StringRef("cpfs"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String("terraform-example"),
+//				CidrBlock:   pulumi.String("172.17.3.0/24"),
+//				VpcId:       exampleNetwork.ID(),
+//				ZoneId:      *pulumi.String(exampleZones.Zones[1].ZoneId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleFileSystem, err := nas.NewFileSystem(ctx, "exampleFileSystem", &nas.FileSystemArgs{
+//				ProtocolType:   pulumi.String("cpfs"),
+//				StorageType:    pulumi.String("advance_200"),
+//				FileSystemType: pulumi.String("cpfs"),
+//				Capacity:       pulumi.Int(3600),
+//				Description:    pulumi.String("terraform-example"),
+//				ZoneId:         *pulumi.String(exampleZones.Zones[1].ZoneId),
+//				VpcId:          exampleNetwork.ID(),
+//				VswitchId:      exampleSwitch.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = nas.NewFileset(ctx, "exampleFileset", &nas.FilesetArgs{
+//				FileSystemId:   exampleFileSystem.ID(),
+//				Description:    pulumi.String("terraform-example"),
+//				FileSystemPath: pulumi.String("/example_path/"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Network Attached Storage (NAS) Fileset can be imported using the id, e.g.

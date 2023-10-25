@@ -99,6 +99,20 @@ def get_msc_sub_webhooks(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.141.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.get_msc_sub_webhooks(ids=["example_id"])
+    pulumi.export("mscSubWebhookId1", ids.webhooks[0].id)
+    name_regex = alicloud.get_msc_sub_webhooks(name_regex="^my-Webhook")
+    pulumi.export("mscSubWebhookId2", name_regex.webhooks[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Webhook IDs.
     :param str name_regex: A regex string to filter results by Webhook name.
@@ -129,6 +143,20 @@ def get_msc_sub_webhooks_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     This data source provides the Msc Sub Webhooks of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.141.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.get_msc_sub_webhooks(ids=["example_id"])
+    pulumi.export("mscSubWebhookId1", ids.webhooks[0].id)
+    name_regex = alicloud.get_msc_sub_webhooks(name_regex="^my-Webhook")
+    pulumi.export("mscSubWebhookId2", name_regex.webhooks[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Webhook IDs.

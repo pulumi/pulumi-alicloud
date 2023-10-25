@@ -15,6 +15,44 @@ import (
 // This data source provides the Cloud Architect Design Tools (BPStudio) Applications of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.192.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bp"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := bp.GetStudioApplications(ctx, &bp.GetStudioApplicationsArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("bpStudioApplicationId1", ids.Applications[0].Id)
+//			nameRegex, err := bp.GetStudioApplications(ctx, &bp.GetStudioApplicationsArgs{
+//				NameRegex: pulumi.StringRef("^my-Application"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("bpStudioApplicationId2", nameRegex.Applications[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetStudioApplications(ctx *pulumi.Context, args *GetStudioApplicationsArgs, opts ...pulumi.InvokeOption) (*GetStudioApplicationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetStudioApplicationsResult

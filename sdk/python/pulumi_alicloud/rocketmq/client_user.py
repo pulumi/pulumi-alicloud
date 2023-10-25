@@ -383,6 +383,30 @@ class ClientUser(pulumi.CustomResource):
 
         > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        sag_id = config.get("sagId")
+        if sag_id is None:
+            sag_id = "sag-9bifkfaz4fg***"
+        default = alicloud.rocketmq.ClientUser("default",
+            sag_id=sag_id,
+            bandwidth=20,
+            user_mail="tf-example@abc.com",
+            user_name=name,
+            password="example1234",
+            client_ip="192.1.10.0")
+        ```
+
         ## Import
 
         The Sag ClientUser can be imported using the name, e.g.
@@ -416,6 +440,30 @@ class ClientUser(pulumi.CustomResource):
         > **NOTE:** Available since v1.65.0.
 
         > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        sag_id = config.get("sagId")
+        if sag_id is None:
+            sag_id = "sag-9bifkfaz4fg***"
+        default = alicloud.rocketmq.ClientUser("default",
+            sag_id=sag_id,
+            bandwidth=20,
+            user_mail="tf-example@abc.com",
+            user_name=name,
+            password="example1234",
+            client_ip="192.1.10.0")
+        ```
 
         ## Import
 

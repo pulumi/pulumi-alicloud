@@ -19,6 +19,43 @@ import (
 //
 // > **NOTE:** Available in v1.152.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewEcsPrefixList(ctx, "default", &ecs.EcsPrefixListArgs{
+//				AddressFamily: pulumi.String("IPv4"),
+//				Description:   pulumi.String("description"),
+//				Entries: ecs.EcsPrefixListEntryArray{
+//					&ecs.EcsPrefixListEntryArgs{
+//						Cidr:        pulumi.String("192.168.0.0/24"),
+//						Description: pulumi.String("description"),
+//					},
+//				},
+//				MaxEntries:     pulumi.Int(2),
+//				PrefixListName: pulumi.String("tftest"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ECS Prefix List can be imported using the id, e.g.

@@ -216,6 +216,50 @@ class Execution(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.149.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-testacc-fnfflow"
+        default_role = alicloud.ram.Role("defaultRole", document=\"\"\"  {
+            "Statement": [
+              {
+                "Action": "sts:AssumeRole",
+                "Effect": "Allow",
+                "Principal": {
+                  "Service": [
+                    "fnf.aliyuncs.com"
+                  ]
+                }
+              }
+            ],
+            "Version": "1"
+          }
+        \"\"\")
+        default_flow = alicloud.fnf.Flow("defaultFlow",
+            definition=\"\"\"  version: v1beta1
+          type: flow
+          steps:
+            - type: wait
+              name: custom_wait
+              duration: $.wait
+        \"\"\",
+            role_arn=default_role.arn,
+            description="Test for terraform fnf_flow.",
+            type="FDL")
+        default_execution = alicloud.fnf.Execution("defaultExecution",
+            execution_name=name,
+            flow_name=default_flow.name,
+            input="{\\"wait\\": 600}")
+        ```
+
         ## Import
 
         Serverless Workflow Execution can be imported using the id, e.g.
@@ -243,6 +287,50 @@ class Execution(pulumi.CustomResource):
         For information about Serverless Workflow Execution and how to use it, see [What is Execution](https://www.alibabacloud.com/help/en/doc-detail/122628.html).
 
         > **NOTE:** Available in v1.149.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-testacc-fnfflow"
+        default_role = alicloud.ram.Role("defaultRole", document=\"\"\"  {
+            "Statement": [
+              {
+                "Action": "sts:AssumeRole",
+                "Effect": "Allow",
+                "Principal": {
+                  "Service": [
+                    "fnf.aliyuncs.com"
+                  ]
+                }
+              }
+            ],
+            "Version": "1"
+          }
+        \"\"\")
+        default_flow = alicloud.fnf.Flow("defaultFlow",
+            definition=\"\"\"  version: v1beta1
+          type: flow
+          steps:
+            - type: wait
+              name: custom_wait
+              duration: $.wait
+        \"\"\",
+            role_arn=default_role.arn,
+            description="Test for terraform fnf_flow.",
+            type="FDL")
+        default_execution = alicloud.fnf.Execution("defaultExecution",
+            execution_name=name,
+            flow_name=default_flow.name,
+            input="{\\"wait\\": 600}")
+        ```
 
         ## Import
 

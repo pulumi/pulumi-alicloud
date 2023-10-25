@@ -10,6 +10,24 @@ import * as utilities from "../utilities";
  * This data source provides the Cloud Firewall Vpc Firewall Control Policies of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.194.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cloudfirewall.getVpcFirewallControlPolicies({
+ *     vpcFirewallId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const alicloudCloudFirewallVpcFirewallControlPoliciesId1 = ids.then(ids => ids.policies?.[0]?.id);
+ * ```
  */
 export function getVpcFirewallControlPolicies(args: GetVpcFirewallControlPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcFirewallControlPoliciesResult> {
 
@@ -116,6 +134,24 @@ export interface GetVpcFirewallControlPoliciesResult {
  * This data source provides the Cloud Firewall Vpc Firewall Control Policies of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.194.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cloudfirewall.getVpcFirewallControlPolicies({
+ *     vpcFirewallId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const alicloudCloudFirewallVpcFirewallControlPoliciesId1 = ids.then(ids => ids.policies?.[0]?.id);
+ * ```
  */
 export function getVpcFirewallControlPoliciesOutput(args: GetVpcFirewallControlPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcFirewallControlPoliciesResult> {
     return pulumi.output(args).apply((a: any) => getVpcFirewallControlPolicies(a, opts))

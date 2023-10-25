@@ -19,6 +19,202 @@ import (
 //
 // > **NOTE:** Available since v1.199.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/emrv2"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableInstanceType: pulumi.StringRef("ecs.g7.xlarge"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/21"),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultEcsKeyPair, err := ecs.NewEcsKeyPair(ctx, "defaultEcsKeyPair", &ecs.EcsKeyPairArgs{
+//				KeyPairName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRole, err := ram.NewRole(ctx, "defaultRole", &ram.RoleArgs{
+//				Document: pulumi.String(`    {
+//	        "Statement": [
+//	        {
+//	            "Action": "sts:AssumeRole",
+//	            "Effect": "Allow",
+//	            "Principal": {
+//	            "Service": [
+//	                "emr.aliyuncs.com",
+//	                "ecs.aliyuncs.com"
+//	            ]
+//	            }
+//	        }
+//	        ],
+//	        "Version": "1"
+//	    }
+//
+// `),
+//
+//				Description: pulumi.String("this is a role example."),
+//				Force:       pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = emrv2.NewCluster(ctx, "defaultCluster", &emrv2.ClusterArgs{
+//				PaymentType:    pulumi.String("PayAsYouGo"),
+//				ClusterType:    pulumi.String("DATALAKE"),
+//				ReleaseVersion: pulumi.String("EMR-5.10.0"),
+//				ClusterName:    pulumi.String(name),
+//				DeployMode:     pulumi.String("NORMAL"),
+//				SecurityMode:   pulumi.String("NORMAL"),
+//				Applications: pulumi.StringArray{
+//					pulumi.String("HADOOP-COMMON"),
+//					pulumi.String("HDFS"),
+//					pulumi.String("YARN"),
+//					pulumi.String("HIVE"),
+//					pulumi.String("SPARK3"),
+//					pulumi.String("TEZ"),
+//				},
+//				ApplicationConfigs: emrv2.ClusterApplicationConfigArray{
+//					&emrv2.ClusterApplicationConfigArgs{
+//						ApplicationName: pulumi.String("HIVE"),
+//						ConfigFileName:  pulumi.String("hivemetastore-site.xml"),
+//						ConfigItemKey:   pulumi.String("hive.metastore.type"),
+//						ConfigItemValue: pulumi.String("DLF"),
+//						ConfigScope:     pulumi.String("CLUSTER"),
+//					},
+//					&emrv2.ClusterApplicationConfigArgs{
+//						ApplicationName: pulumi.String("SPARK3"),
+//						ConfigFileName:  pulumi.String("hive-site.xml"),
+//						ConfigItemKey:   pulumi.String("hive.metastore.type"),
+//						ConfigItemValue: pulumi.String("DLF"),
+//						ConfigScope:     pulumi.String("CLUSTER"),
+//					},
+//				},
+//				NodeAttributes: emrv2.ClusterNodeAttributeArray{
+//					&emrv2.ClusterNodeAttributeArgs{
+//						RamRole:         defaultRole.Name,
+//						SecurityGroupId: defaultSecurityGroup.ID(),
+//						VpcId:           defaultNetwork.ID(),
+//						ZoneId:          *pulumi.String(defaultZones.Zones[0].Id),
+//						KeyPairName:     defaultEcsKeyPair.ID(),
+//					},
+//				},
+//				Tags: pulumi.Map{
+//					"created": pulumi.Any("tf"),
+//				},
+//				NodeGroups: emrv2.ClusterNodeGroupArray{
+//					&emrv2.ClusterNodeGroupArgs{
+//						NodeGroupType: pulumi.String("MASTER"),
+//						NodeGroupName: pulumi.String("emr-master"),
+//						PaymentType:   pulumi.String("PayAsYouGo"),
+//						VswitchIds: pulumi.StringArray{
+//							defaultSwitch.ID(),
+//						},
+//						WithPublicIp: pulumi.Bool(false),
+//						InstanceTypes: pulumi.StringArray{
+//							pulumi.String("ecs.g7.xlarge"),
+//						},
+//						NodeCount: pulumi.Int(1),
+//						SystemDisk: &emrv2.ClusterNodeGroupSystemDiskArgs{
+//							Category: pulumi.String("cloud_essd"),
+//							Size:     pulumi.Int(80),
+//							Count:    pulumi.Int(1),
+//						},
+//						DataDisks: emrv2.ClusterNodeGroupDataDiskArray{
+//							&emrv2.ClusterNodeGroupDataDiskArgs{
+//								Category: pulumi.String("cloud_essd"),
+//								Size:     pulumi.Int(80),
+//								Count:    pulumi.Int(3),
+//							},
+//						},
+//					},
+//					&emrv2.ClusterNodeGroupArgs{
+//						NodeGroupType: pulumi.String("CORE"),
+//						NodeGroupName: pulumi.String("emr-core"),
+//						PaymentType:   pulumi.String("PayAsYouGo"),
+//						VswitchIds: pulumi.StringArray{
+//							defaultSwitch.ID(),
+//						},
+//						WithPublicIp: pulumi.Bool(false),
+//						InstanceTypes: pulumi.StringArray{
+//							pulumi.String("ecs.g7.xlarge"),
+//						},
+//						NodeCount: pulumi.Int(3),
+//						SystemDisk: &emrv2.ClusterNodeGroupSystemDiskArgs{
+//							Category: pulumi.String("cloud_essd"),
+//							Size:     pulumi.Int(80),
+//							Count:    pulumi.Int(1),
+//						},
+//						DataDisks: emrv2.ClusterNodeGroupDataDiskArray{
+//							&emrv2.ClusterNodeGroupDataDiskArgs{
+//								Category: pulumi.String("cloud_essd"),
+//								Size:     pulumi.Int(80),
+//								Count:    pulumi.Int(3),
+//							},
+//						},
+//					},
+//				},
+//				ResourceGroupId: *pulumi.String(defaultResourceGroups.Ids[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Aliclioud E-MapReduce cluster can be imported using the id e.g.

@@ -9,6 +9,62 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.126.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ *     cenInstanceName: name,
+ *     description: "an example for cen",
+ * });
+ * const exampleTransitRouter = new alicloud.cen.TransitRouter("exampleTransitRouter", {
+ *     transitRouterName: name,
+ *     cenId: exampleInstance.id,
+ * });
+ * const exampleTransitRouterRouteTable = new alicloud.cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", {transitRouterId: exampleTransitRouter.transitRouterId});
+ * const examplePhysicalConnections = alicloud.expressconnect.getPhysicalConnections({
+ *     nameRegex: "^preserved-NODELETING",
+ * });
+ * const vlanId = new random.RandomInteger("vlanId", {
+ *     max: 2999,
+ *     min: 1,
+ * });
+ * const exampleVirtualBorderRouter = new alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter", {
+ *     localGatewayIp: "10.0.0.1",
+ *     peerGatewayIp: "10.0.0.2",
+ *     peeringSubnetMask: "255.255.255.252",
+ *     physicalConnectionId: examplePhysicalConnections.then(examplePhysicalConnections => examplePhysicalConnections.connections?.[0]?.id),
+ *     virtualBorderRouterName: name,
+ *     vlanId: vlanId.id,
+ *     minRxInterval: 1000,
+ *     minTxInterval: 1000,
+ *     detectMultiplier: 10,
+ * });
+ * const exampleTransitRouterVbrAttachment = new alicloud.cen.TransitRouterVbrAttachment("exampleTransitRouterVbrAttachment", {
+ *     vbrId: exampleVirtualBorderRouter.id,
+ *     cenId: exampleInstance.id,
+ *     transitRouterId: exampleTransitRouter.transitRouterId,
+ *     autoPublishRouteEnabled: true,
+ *     transitRouterAttachmentName: name,
+ *     transitRouterAttachmentDescription: name,
+ * });
+ * const exampleTransitRouterRouteEntry = new alicloud.cen.TransitRouterRouteEntry("exampleTransitRouterRouteEntry", {
+ *     transitRouterRouteTableId: exampleTransitRouterRouteTable.transitRouterRouteTableId,
+ *     transitRouterRouteEntryDestinationCidrBlock: "192.168.0.0/24",
+ *     transitRouterRouteEntryNextHopType: "Attachment",
+ *     transitRouterRouteEntryName: name,
+ *     transitRouterRouteEntryDescription: name,
+ *     transitRouterRouteEntryNextHopId: exampleTransitRouterVbrAttachment.transitRouterAttachmentId,
+ * });
+ * ```
+ *
  * ## Import
  *
  * CEN instance can be imported using the id, e.g.

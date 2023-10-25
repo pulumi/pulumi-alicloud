@@ -13,6 +13,92 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.6.0.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultZones = alicloud.getZones({
+ *     availableDiskCategory: "cloud_efficiency",
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultZones.zones?.[0]?.id,
+ *     cpuCoreCount: 2,
+ *     memorySize: 4,
+ * }));
+ * const defaultImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_18.*64",
+ *     mostRecent: true,
+ *     owners: "system",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     vswitchName: name,
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
+ * const defaultSecurityGroupRule = new alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule", {
+ *     type: "ingress",
+ *     ipProtocol: "tcp",
+ *     nicType: "intranet",
+ *     policy: "accept",
+ *     portRange: "22/22",
+ *     priority: 1,
+ *     securityGroupId: defaultSecurityGroup.id,
+ *     cidrIp: "172.16.0.0/24",
+ * });
+ * const defaultScalingGroup = new alicloud.ess.ScalingGroup("defaultScalingGroup", {
+ *     minSize: 0,
+ *     maxSize: 2,
+ *     scalingGroupName: name,
+ *     removalPolicies: [
+ *         "OldestInstance",
+ *         "NewestInstance",
+ *     ],
+ *     vswitchIds: [defaultSwitch.id],
+ * });
+ * const defaultScalingConfiguration = new alicloud.ess.ScalingConfiguration("defaultScalingConfiguration", {
+ *     scalingGroupId: defaultScalingGroup.id,
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ *     securityGroupId: defaultSecurityGroup.id,
+ *     forceDelete: true,
+ *     active: true,
+ *     enable: true,
+ * });
+ * const defaultInstance: alicloud.ecs.Instance[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     defaultInstance.push(new alicloud.ecs.Instance(`defaultInstance-${range.value}`, {
+ *         imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
+ *         instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ *         securityGroups: [defaultSecurityGroup.id],
+ *         internetChargeType: "PayByTraffic",
+ *         internetMaxBandwidthOut: 10,
+ *         instanceChargeType: "PostPaid",
+ *         systemDiskCategory: "cloud_efficiency",
+ *         vswitchId: defaultSwitch.id,
+ *         instanceName: name,
+ *     }));
+ * }
+ * const defaultAttachment = new alicloud.ess.Attachment("defaultAttachment", {
+ *     scalingGroupId: defaultScalingGroup.id,
+ *     instanceIds: [
+ *         defaultInstance[0].id,
+ *         defaultInstance[1].id,
+ *     ],
+ *     force: true,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ESS attachment can be imported using the id or scaling group id, e.g.

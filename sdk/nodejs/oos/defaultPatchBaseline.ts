@@ -11,6 +11,23 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.203.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultPatchBaseline = new alicloud.oos.PatchBaseline("defaultPatchBaseline", {
+ *     operationSystem: "Windows",
+ *     patchBaselineName: "terraform-example",
+ *     description: "terraform-example",
+ *     approvalRules: "{\"PatchRules\":[{\"PatchFilterGroup\":[{\"Key\":\"PatchSet\",\"Values\":[\"OS\"]},{\"Key\":\"ProductFamily\",\"Values\":[\"Windows\"]},{\"Key\":\"Product\",\"Values\":[\"Windows 10\",\"Windows 7\"]},{\"Key\":\"Classification\",\"Values\":[\"Security Updates\",\"Updates\",\"Update Rollups\",\"Critical Updates\"]},{\"Key\":\"Severity\",\"Values\":[\"Critical\",\"Important\",\"Moderate\"]}],\"ApproveAfterDays\":7,\"EnableNonSecurity\":true,\"ComplianceLevel\":\"Medium\"}]}",
+ * });
+ * const defaultDefaultPatchBaseline = new alicloud.oos.DefaultPatchBaseline("defaultDefaultPatchBaseline", {patchBaselineName: defaultPatchBaseline.id});
+ * ```
+ *
  * ## Import
  *
  * Oos Default Patch Baseline can be imported using the id, e.g.

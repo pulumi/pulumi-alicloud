@@ -16,6 +16,61 @@ namespace Pulumi.AliCloud.Vpc
     /// Note that because this resource conflicts with the `resources` attribute of `alicloud.vpc.NetworkAcl`, this resource can no be used.
     /// 
     /// &gt; **NOTE:** Available in 1.44.0+. Currently, the resource are only available in Hongkong(cn-hongkong), India(ap-south-1), and Indonesia(ap-southeast-1) regions.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "NatGatewayConfigSpec";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var defaultNetworkAcl = new AliCloud.Vpc.NetworkAcl("defaultNetworkAcl", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         NetworkAclName = name,
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/21",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var defaultNetworkAclAttachment = new AliCloud.Vpc.NetworkAclAttachment("defaultNetworkAclAttachment", new()
+    ///     {
+    ///         NetworkAclId = defaultNetworkAcl.Id,
+    ///         Resources = new[]
+    ///         {
+    ///             new AliCloud.Vpc.Inputs.NetworkAclAttachmentResourceArgs
+    ///             {
+    ///                 ResourceId = defaultSwitch.Id,
+    ///                 ResourceType = "VSwitch",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/networkAclAttachment:NetworkAclAttachment")]
     public partial class NetworkAclAttachment : global::Pulumi.CustomResource

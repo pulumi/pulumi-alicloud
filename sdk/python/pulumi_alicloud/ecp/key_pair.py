@@ -142,6 +142,19 @@ class KeyPair(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.130.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ecp.KeyPair("example",
+            key_pair_name="my-KeyPair",
+            public_key_body="ssh-rsa AAAAxxxxxxxxxxtyuudsfsg")
+        ```
+
         ## Import
 
         Elastic Cloud Phone (ECP) Key Pair can be imported using the id, e.g.
@@ -167,6 +180,19 @@ class KeyPair(pulumi.CustomResource):
         For information about Elastic Cloud Phone (ECP) Key Pair and how to use it, see [What is Key Pair](https://help.aliyun.com/document_detail/257197.html).
 
         > **NOTE:** Available in v1.130.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ecp.KeyPair("example",
+            key_pair_name="my-KeyPair",
+            public_key_body="ssh-rsa AAAAxxxxxxxxxxtyuudsfsg")
+        ```
 
         ## Import
 

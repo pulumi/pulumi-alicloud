@@ -11,6 +11,63 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.132.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const exampleZones = alicloud.getZones({
+ *     availableResourceCreation: "Instance",
+ * });
+ * const exampleInstanceTypes = exampleZones.then(exampleZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: exampleZones.zones?.[0]?.id,
+ *     cpuCoreCount: 1,
+ *     memorySize: 2,
+ * }));
+ * const exampleImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
+ *     owners: "system",
+ * });
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: exampleNetwork.id,
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ * });
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("exampleSecurityGroup", {vpcId: exampleNetwork.id});
+ * const exampleInstance = new alicloud.ecs.Instance("exampleInstance", {
+ *     imageId: exampleImages.then(exampleImages => exampleImages.images?.[0]?.id),
+ *     instanceType: exampleInstanceTypes.then(exampleInstanceTypes => exampleInstanceTypes.instanceTypes?.[0]?.id),
+ *     availabilityZone: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ *     securityGroups: [exampleSecurityGroup.id],
+ *     instanceName: "terraform-example",
+ *     internetChargeType: "PayByBandwidth",
+ *     vswitchId: exampleSwitch.id,
+ * });
+ * const exampleVault = new alicloud.hbr.Vault("exampleVault", {vaultName: "terraform-example"});
+ * const exampleEcsBackupPlan = new alicloud.hbr.EcsBackupPlan("exampleEcsBackupPlan", {
+ *     ecsBackupPlanName: "terraform-example",
+ *     instanceId: exampleInstance.id,
+ *     vaultId: exampleVault.id,
+ *     retention: "1",
+ *     schedule: "I|1602673264|PT2H",
+ *     backupType: "COMPLETE",
+ *     speedLimit: "0:24:5120",
+ *     paths: [
+ *         "/home",
+ *         "/var",
+ *     ],
+ *     exclude: "  [\"/home/exclude\"]\n",
+ *     include: "  [\"/home/include\"]\n",
+ * });
+ * ```
  * ## Notice
  *
  * **About Backup path rules:**

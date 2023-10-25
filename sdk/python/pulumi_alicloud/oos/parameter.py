@@ -328,6 +328,27 @@ class Parameter(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.147.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.resourcemanager.get_resource_groups()
+        example = alicloud.oos.Parameter("example",
+            parameter_name="my-Parameter",
+            type="String",
+            value="example_value",
+            description="example_value",
+            tags={
+                "Created": "TF",
+                "For": "OosParameter",
+            },
+            resource_group_id=default.groups[0].id)
+        ```
+
         ## Import
 
         OOS Parameter can be imported using the id, e.g.
@@ -358,6 +379,27 @@ class Parameter(pulumi.CustomResource):
         For information about OOS Parameter and how to use it, see [What is Parameter](https://www.alibabacloud.com/help/en/doc-detail/183408.html).
 
         > **NOTE:** Available in v1.147.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.resourcemanager.get_resource_groups()
+        example = alicloud.oos.Parameter("example",
+            parameter_name="my-Parameter",
+            type="String",
+            value="example_value",
+            description="example_value",
+            tags={
+                "Created": "TF",
+                "For": "OosParameter",
+            },
+            resource_group_id=default.groups[0].id)
+        ```
 
         ## Import
 

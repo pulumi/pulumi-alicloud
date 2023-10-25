@@ -254,6 +254,18 @@ class Certificate(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.35.0+ .
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Add a new Certificate.
+        cert = alicloud.cas.Certificate("cert",
+            cert=(lambda path: open(path).read())(f"{path['module']}/test.crt"),
+            key=(lambda path: open(path).read())(f"{path['module']}/test.key"))
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cert: Cert of the Certificate in which the Certificate will add.
@@ -276,6 +288,18 @@ class Certificate(pulumi.CustomResource):
         > **NOTE:** The Cas Certificate region only support cn-hangzhou, ap-south-1, me-east-1, eu-central-1, ap-northeast-1, ap-southeast-2.
 
         > **NOTE:** Available in 1.35.0+ .
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Add a new Certificate.
+        cert = alicloud.cas.Certificate("cert",
+            cert=(lambda path: open(path).read())(f"{path['module']}/test.crt"),
+            key=(lambda path: open(path).read())(f"{path['module']}/test.key"))
+        ```
 
         :param str resource_name: The name of the resource.
         :param CertificateArgs args: The arguments to use to populate this resource's properties.

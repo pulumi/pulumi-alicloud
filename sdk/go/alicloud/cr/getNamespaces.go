@@ -15,6 +15,34 @@ import (
 // This data source provides a list Container Registry namespaces on Alibaba Cloud.
 //
 // > **NOTE:** Available in v1.35.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myNamespaces, err := cr.GetNamespaces(ctx, &cr.GetNamespacesArgs{
+//				NameRegex:  pulumi.StringRef("my-namespace"),
+//				OutputFile: pulumi.StringRef("my-namespace-json"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("output", myNamespaces.Namespaces)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetNamespaces(ctx *pulumi.Context, args *GetNamespacesArgs, opts ...pulumi.InvokeOption) (*GetNamespacesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNamespacesResult

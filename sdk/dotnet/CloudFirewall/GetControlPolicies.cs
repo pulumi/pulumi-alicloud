@@ -15,6 +15,30 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// This data source provides the Cloud Firewall Control Policies of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.129.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.CloudFirewall.GetControlPolicies.Invoke(new()
+        ///     {
+        ///         Direction = "in",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetControlPoliciesResult> InvokeAsync(GetControlPoliciesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetControlPoliciesResult>("alicloud:cloudfirewall/getControlPolicies:getControlPolicies", args ?? new GetControlPoliciesArgs(), options.WithDefaults());
@@ -23,6 +47,30 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// This data source provides the Cloud Firewall Control Policies of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.129.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.CloudFirewall.GetControlPolicies.Invoke(new()
+        ///     {
+        ///         Direction = "in",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetControlPoliciesResult> Invoke(GetControlPoliciesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetControlPoliciesResult>("alicloud:cloudfirewall/getControlPolicies:getControlPolicies", args ?? new GetControlPoliciesInvokeArgs(), options.WithDefaults());

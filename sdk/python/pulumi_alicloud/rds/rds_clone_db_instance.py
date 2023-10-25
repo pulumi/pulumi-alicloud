@@ -2825,6 +2825,49 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         > **NOTE:** Available since v1.149.0+.
 
         ## Example Usage
+        ### Create an RDS MySQL clone instance
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_zones = alicloud.rds.get_zones(engine="PostgreSQL",
+            engine_version="13.0",
+            instance_charge_type="PostPaid",
+            category="HighAvailability",
+            db_instance_storage_type="cloud_essd")
+        example_instance_classes = alicloud.rds.get_instance_classes(zone_id=example_zones.zones[0].id,
+            engine="PostgreSQL",
+            engine_version="13.0",
+            category="HighAvailability",
+            db_instance_storage_type="cloud_essd",
+            instance_charge_type="PostPaid")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/16")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vpc_id=example_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=example_zones.zones[0].id,
+            vswitch_name="terraform-example")
+        example_instance = alicloud.rds.Instance("exampleInstance",
+            engine="PostgreSQL",
+            engine_version="13.0",
+            instance_type=example_instance_classes.instance_classes[0].instance_class,
+            instance_storage=example_instance_classes.instance_classes[0].storage_range.min,
+            instance_charge_type="Postpaid",
+            instance_name="terraform-example",
+            vswitch_id=example_switch.id,
+            monitoring_period=60)
+        example_rds_backup = alicloud.rds.RdsBackup("exampleRdsBackup",
+            db_instance_id=example_instance.id,
+            remove_from_state=True)
+        example_rds_clone_db_instance = alicloud.rds.RdsCloneDbInstance("exampleRdsCloneDbInstance",
+            source_db_instance_id=example_instance.id,
+            db_instance_storage_type="cloud_essd",
+            payment_type="PayAsYouGo",
+            backup_id=example_rds_backup.backup_id)
+        ```
 
         ## Import
 
@@ -2981,6 +3024,49 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         > **NOTE:** Available since v1.149.0+.
 
         ## Example Usage
+        ### Create an RDS MySQL clone instance
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_zones = alicloud.rds.get_zones(engine="PostgreSQL",
+            engine_version="13.0",
+            instance_charge_type="PostPaid",
+            category="HighAvailability",
+            db_instance_storage_type="cloud_essd")
+        example_instance_classes = alicloud.rds.get_instance_classes(zone_id=example_zones.zones[0].id,
+            engine="PostgreSQL",
+            engine_version="13.0",
+            category="HighAvailability",
+            db_instance_storage_type="cloud_essd",
+            instance_charge_type="PostPaid")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/16")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vpc_id=example_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=example_zones.zones[0].id,
+            vswitch_name="terraform-example")
+        example_instance = alicloud.rds.Instance("exampleInstance",
+            engine="PostgreSQL",
+            engine_version="13.0",
+            instance_type=example_instance_classes.instance_classes[0].instance_class,
+            instance_storage=example_instance_classes.instance_classes[0].storage_range.min,
+            instance_charge_type="Postpaid",
+            instance_name="terraform-example",
+            vswitch_id=example_switch.id,
+            monitoring_period=60)
+        example_rds_backup = alicloud.rds.RdsBackup("exampleRdsBackup",
+            db_instance_id=example_instance.id,
+            remove_from_state=True)
+        example_rds_clone_db_instance = alicloud.rds.RdsCloneDbInstance("exampleRdsCloneDbInstance",
+            source_db_instance_id=example_instance.id,
+            db_instance_storage_type="cloud_essd",
+            payment_type="PayAsYouGo",
+            backup_id=example_rds_backup.backup_id)
+        ```
 
         ## Import
 

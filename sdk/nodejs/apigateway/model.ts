@@ -11,6 +11,23 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.187.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultGroup = new alicloud.apigateway.Group("defaultGroup", {description: "example_value"});
+ * const defaultModel = new alicloud.apigateway.Model("defaultModel", {
+ *     groupId: defaultGroup.id,
+ *     modelName: "example_value",
+ *     schema: "{\"type\":\"object\",\"properties\":{\"id\":{\"format\":\"int64\",\"maximum\":100,\"exclusiveMaximum\":true,\"type\":\"integer\"},\"name\":{\"maxLength\":10,\"type\":\"string\"}}}",
+ *     description: "example_value",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Api Gateway Model can be imported using the id, e.g.

@@ -99,6 +99,17 @@ def get_alarm_contact_groups(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.101.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cms.get_alarm_contact_groups(name_regex="tf-testacc")
+    ```
+
 
     :param Sequence[str] ids: A list of Alarm Contact Group IDs.
     :param str name_regex: A regex string to filter results by Alarm Contact Group name.
@@ -129,6 +140,17 @@ def get_alarm_contact_groups_output(ids: Optional[pulumi.Input[Optional[Sequence
     This data source provides the CMS Groups of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.101.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cms.get_alarm_contact_groups(name_regex="tf-testacc")
+    ```
 
 
     :param Sequence[str] ids: A list of Alarm Contact Group IDs.

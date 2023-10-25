@@ -15,6 +15,58 @@ import (
 // This data source provides the Vpc Traffic Mirror Filters of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.140.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := vpc.GetTrafficMirrorFilters(ctx, &vpc.GetTrafficMirrorFiltersArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcTrafficMirrorFilterId1", ids.Filters[0].Id)
+//			nameRegex, err := vpc.GetTrafficMirrorFilters(ctx, &vpc.GetTrafficMirrorFiltersArgs{
+//				NameRegex: pulumi.StringRef("^my-TrafficMirrorFilter"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcTrafficMirrorFilterId2", nameRegex.Filters[0].Id)
+//			filterName, err := vpc.GetTrafficMirrorFilters(ctx, &vpc.GetTrafficMirrorFiltersArgs{
+//				TrafficMirrorFilterName: pulumi.StringRef("example_traffic_mirror_filter_name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcTrafficMirrorFilterId3", filterName.Filters[0].Id)
+//			status, err := vpc.GetTrafficMirrorFilters(ctx, &vpc.GetTrafficMirrorFiltersArgs{
+//				Status: pulumi.StringRef("^my-TrafficMirrorFilter"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcTrafficMirrorFilterId4", status.Filters[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetTrafficMirrorFilters(ctx *pulumi.Context, args *GetTrafficMirrorFiltersArgs, opts ...pulumi.InvokeOption) (*GetTrafficMirrorFiltersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTrafficMirrorFiltersResult

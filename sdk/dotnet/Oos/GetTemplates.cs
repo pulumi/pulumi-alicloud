@@ -15,6 +15,39 @@ namespace Pulumi.AliCloud.Oos
         /// This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.
         ///  
         /// &gt; **NOTE:** Available in v1.92.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Oos.GetTemplates.Invoke(new()
+        ///     {
+        ///         HasTrigger = false,
+        ///         NameRegex = "test",
+        ///         ShareType = "Private",
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///             { "For", "template Test" },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstTemplateName"] = example.Apply(getTemplatesResult =&gt; getTemplatesResult.Templates[0]?.TemplateName),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTemplatesResult> InvokeAsync(GetTemplatesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTemplatesResult>("alicloud:oos/getTemplates:getTemplates", args ?? new GetTemplatesArgs(), options.WithDefaults());
@@ -23,6 +56,39 @@ namespace Pulumi.AliCloud.Oos
         /// This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.
         ///  
         /// &gt; **NOTE:** Available in v1.92.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Oos.GetTemplates.Invoke(new()
+        ///     {
+        ///         HasTrigger = false,
+        ///         NameRegex = "test",
+        ///         ShareType = "Private",
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///             { "For", "template Test" },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstTemplateName"] = example.Apply(getTemplatesResult =&gt; getTemplatesResult.Templates[0]?.TemplateName),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetTemplatesResult> Invoke(GetTemplatesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTemplatesResult>("alicloud:oos/getTemplates:getTemplates", args ?? new GetTemplatesInvokeArgs(), options.WithDefaults());

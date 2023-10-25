@@ -383,6 +383,26 @@ class AddressBook(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.178.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.cloudfirewall.AddressBook("example",
+            auto_add_tag_ecs=0,
+            description="example_value",
+            ecs_tags=[alicloud.cloudfirewall.AddressBookEcsTagArgs(
+                tag_key="created",
+                tag_value="tfTestAcc0",
+            )],
+            group_name="example_value",
+            group_type="tag",
+            tag_relation="and")
+        ```
+
         ## Import
 
         Cloud Firewall Address Book can be imported using the id, e.g.
@@ -414,6 +434,26 @@ class AddressBook(pulumi.CustomResource):
         For information about Cloud Firewall Address Book and how to use it, see [What is Address Book](https://www.alibabacloud.com/help/en/cloud-firewall/developer-reference/api-cloudfw-2017-12-07-addaddressbook).
 
         > **NOTE:** Available since v1.178.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.cloudfirewall.AddressBook("example",
+            auto_add_tag_ecs=0,
+            description="example_value",
+            ecs_tags=[alicloud.cloudfirewall.AddressBookEcsTagArgs(
+                tag_key="created",
+                tag_value="tfTestAcc0",
+            )],
+            group_name="example_value",
+            group_type="tag",
+            tag_relation="and")
+        ```
 
         ## Import
 

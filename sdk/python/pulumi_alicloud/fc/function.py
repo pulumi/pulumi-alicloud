@@ -892,6 +892,73 @@ class Function(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.10.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_project = alicloud.log.Project("defaultProject")
+        default_store = alicloud.log.Store("defaultStore", project=default_project.name)
+        default_role = alicloud.ram.Role("defaultRole",
+            document=\"\"\"  {
+              "Statement": [
+                {
+                  "Action": "sts:AssumeRole",
+                  "Effect": "Allow",
+                  "Principal": {
+                    "Service": [
+                      "fc.aliyuncs.com"
+                    ]
+                  }
+                }
+              ],
+              "Version": "1"
+          }
+        \"\"\",
+            description="this is a example",
+            force=True)
+        default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment",
+            role_name=default_role.name,
+            policy_name="AliyunLogFullAccess",
+            policy_type="System")
+        default_service = alicloud.fc.Service("defaultService",
+            description="example-value",
+            role=default_role.arn,
+            log_config=alicloud.fc.ServiceLogConfigArgs(
+                project=default_project.name,
+                logstore=default_store.name,
+                enable_instance_metrics=True,
+                enable_request_metrics=True,
+            ))
+        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
+        # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
+            bucket=default_bucket.id,
+            key="index.py",
+            content=\"\"\"import logging 
+        def handler(event, context): 
+        logger = logging.getLogger() 
+        logger.info('hello world') 
+        return 'hello world'\"\"\")
+        foo = alicloud.fc.Function("foo",
+            service=default_service.name,
+            description="example",
+            oss_bucket=default_bucket.id,
+            oss_key=default_bucket_object.key,
+            memory_size=512,
+            runtime="python3.10",
+            handler="hello.handler",
+            environment_variables={
+                "prefix": "terraform",
+            })
+        ```
         ## Module Support
 
         You can use to the existing fc module
@@ -943,6 +1010,73 @@ class Function(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.10.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_project = alicloud.log.Project("defaultProject")
+        default_store = alicloud.log.Store("defaultStore", project=default_project.name)
+        default_role = alicloud.ram.Role("defaultRole",
+            document=\"\"\"  {
+              "Statement": [
+                {
+                  "Action": "sts:AssumeRole",
+                  "Effect": "Allow",
+                  "Principal": {
+                    "Service": [
+                      "fc.aliyuncs.com"
+                    ]
+                  }
+                }
+              ],
+              "Version": "1"
+          }
+        \"\"\",
+            description="this is a example",
+            force=True)
+        default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment",
+            role_name=default_role.name,
+            policy_name="AliyunLogFullAccess",
+            policy_type="System")
+        default_service = alicloud.fc.Service("defaultService",
+            description="example-value",
+            role=default_role.arn,
+            log_config=alicloud.fc.ServiceLogConfigArgs(
+                project=default_project.name,
+                logstore=default_store.name,
+                enable_instance_metrics=True,
+                enable_request_metrics=True,
+            ))
+        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
+        # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
+            bucket=default_bucket.id,
+            key="index.py",
+            content=\"\"\"import logging 
+        def handler(event, context): 
+        logger = logging.getLogger() 
+        logger.info('hello world') 
+        return 'hello world'\"\"\")
+        foo = alicloud.fc.Function("foo",
+            service=default_service.name,
+            description="example",
+            oss_bucket=default_bucket.id,
+            oss_key=default_bucket_object.key,
+            memory_size=512,
+            runtime="python3.10",
+            handler="hello.handler",
+            environment_variables={
+                "prefix": "terraform",
+            })
+        ```
         ## Module Support
 
         You can use to the existing fc module

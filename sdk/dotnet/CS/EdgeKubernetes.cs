@@ -29,6 +29,171 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// &gt; **NOTE:** From version 1.185.0+, support new fields `cluster_spec`, `runtime` and `load_balancer_spec`.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         CpuCoreCount = 4,
+    ///         MemorySize = 8,
+    ///         KubernetesNodeRole = "Master",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultEdgeKubernetes = new AliCloud.CS.EdgeKubernetes("defaultEdgeKubernetes", new()
+    ///     {
+    ///         WorkerVswitchIds = new[]
+    ///         {
+    ///             defaultSwitch.Id,
+    ///         },
+    ///         WorkerInstanceTypes = new[]
+    ///         {
+    ///             defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         },
+    ///         Version = "1.20.11-aliyunedge.1",
+    ///         WorkerNumber = 1,
+    ///         Password = "Test12345",
+    ///         PodCidr = "10.99.0.0/16",
+    ///         ServiceCidr = "172.16.0.0/16",
+    ///         WorkerInstanceChargeType = "PostPaid",
+    ///         NewNatGateway = true,
+    ///         NodeCidrMask = 24,
+    ///         InstallCloudMonitor = true,
+    ///         SlbInternetEnabled = true,
+    ///         IsEnterpriseSecurityGroup = true,
+    ///         WorkerDataDisks = new[]
+    ///         {
+    ///             new AliCloud.CS.Inputs.EdgeKubernetesWorkerDataDiskArgs
+    ///             {
+    ///                 Category = "cloud_ssd",
+    ///                 Size = "200",
+    ///                 Encrypted = "false",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// You could create a professional kubernetes edge cluster now.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         CpuCoreCount = 4,
+    ///         MemorySize = 8,
+    ///         KubernetesNodeRole = "Master",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultEdgeKubernetes = new AliCloud.CS.EdgeKubernetes("defaultEdgeKubernetes", new()
+    ///     {
+    ///         WorkerVswitchIds = new[]
+    ///         {
+    ///             defaultSwitch.Id,
+    ///         },
+    ///         WorkerInstanceTypes = new[]
+    ///         {
+    ///             defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         },
+    ///         Version = "1.20.11-aliyunedge.1",
+    ///         ClusterSpec = "ack.pro.small",
+    ///         WorkerNumber = 1,
+    ///         Password = "Test12345",
+    ///         PodCidr = "10.99.0.0/16",
+    ///         ServiceCidr = "172.16.0.0/16",
+    ///         WorkerInstanceChargeType = "PostPaid",
+    ///         NewNatGateway = true,
+    ///         NodeCidrMask = 24,
+    ///         LoadBalancerSpec = "slb.s2.small",
+    ///         InstallCloudMonitor = true,
+    ///         SlbInternetEnabled = true,
+    ///         IsEnterpriseSecurityGroup = true,
+    ///         Addons = new[]
+    ///         {
+    ///             new AliCloud.CS.Inputs.EdgeKubernetesAddonArgs
+    ///             {
+    ///                 Name = "alibaba-log-controller",
+    ///                 Config = "{\"IngressDashboardEnabled\":\"false\"}",
+    ///             },
+    ///         },
+    ///         WorkerDataDisks = new[]
+    ///         {
+    ///             new AliCloud.CS.Inputs.EdgeKubernetesWorkerDataDiskArgs
+    ///             {
+    ///                 Category = "cloud_ssd",
+    ///                 Size = "200",
+    ///                 Encrypted = "false",
+    ///             },
+    ///         },
+    ///         Runtime = new AliCloud.CS.Inputs.EdgeKubernetesRuntimeArgs
+    ///         {
+    ///             Name = "containerd",
+    ///             Version = "1.5.10",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Kubernetes edge cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.

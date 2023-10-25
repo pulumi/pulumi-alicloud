@@ -100,6 +100,22 @@ def get_mount_points(file_system_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.140.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.dfs.get_mount_points(file_system_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("dfsMountPointId1", ids.points[0].id)
+    ```
+
 
     :param str file_system_id: The ID of the File System.
     :param Sequence[str] ids: A list of Mount Point IDs.
@@ -133,6 +149,22 @@ def get_mount_points_output(file_system_id: Optional[pulumi.Input[str]] = None,
     This data source provides the Dfs Mount Points of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.140.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.dfs.get_mount_points(file_system_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("dfsMountPointId1", ids.points[0].id)
+    ```
 
 
     :param str file_system_id: The ID of the File System.

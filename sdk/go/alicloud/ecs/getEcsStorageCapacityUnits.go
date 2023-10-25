@@ -15,6 +15,40 @@ import (
 // This data source provides the Ecs Storage Capacity Units of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.155.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := ecs.GetEcsStorageCapacityUnits(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("ecsStorageCapacityUnitId1", ids.Units[0].Id)
+//			nameRegex, err := ecs.GetEcsStorageCapacityUnits(ctx, &ecs.GetEcsStorageCapacityUnitsArgs{
+//				NameRegex: pulumi.StringRef("^my-StorageCapacityUnit"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("ecsStorageCapacityUnitId2", nameRegex.Units[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetEcsStorageCapacityUnits(ctx *pulumi.Context, args *GetEcsStorageCapacityUnitsArgs, opts ...pulumi.InvokeOption) (*GetEcsStorageCapacityUnitsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEcsStorageCapacityUnitsResult

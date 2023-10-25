@@ -10,6 +10,64 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.9.5.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const example = new alicloud.log.Project("example", {
+ *     description: "terraform-example",
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
+ * });
+ * ```
+ *
+ * Project With Policy Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const examplePolicy = new alicloud.log.Project("examplePolicy", {
+ *     description: "terraform-example",
+ *     policy: `{
+ *   "Statement": [
+ *     {
+ *       "Action": [
+ *         "log:PostLogStoreLogs"
+ *       ],
+ *       "Condition": {
+ *         "StringNotLike": {
+ *           "acs:SourceVpc": [
+ *             "vpc-*"
+ *           ]
+ *         }
+ *       },
+ *       "Effect": "Deny",
+ *       "Resource": "acs:log:*:*:project/tf-log/*"
+ *     }
+ *   ],
+ *   "Version": "1"
+ * }
+ *
+ * `,
+ * });
+ * ```
  * ## Module Support
  *
  * You can use the existing sls module

@@ -544,6 +544,39 @@ class PeerConnection(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.186.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_account = alicloud.get_account()
+        config = pulumi.Config()
+        accepting_region = config.get("acceptingRegion")
+        if accepting_region is None:
+            accepting_region = "cn-beijing"
+        local = alicloud.Provider("local", region="cn-hangzhou")
+        accepting = alicloud.Provider("accepting", region=accepting_region)
+        local_vpc = alicloud.vpc.Network("localVpc",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            opts=pulumi.ResourceOptions(provider=alicloud["local"]))
+        accepting_vpc = alicloud.vpc.Network("acceptingVpc",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            opts=pulumi.ResourceOptions(provider=alicloud["accepting"]))
+        default_peer_connection = alicloud.vpc.PeerConnection("defaultPeerConnection",
+            peer_connection_name="terraform-example",
+            vpc_id=local_vpc.id,
+            accepting_ali_uid=default_account.id,
+            accepting_region_id=accepting_region,
+            accepting_vpc_id=accepting_vpc.id,
+            description="terraform-example",
+            opts=pulumi.ResourceOptions(provider=alicloud["local"]))
+        ```
+
         ## Import
 
         VPC Peer Connection can be imported using the id, e.g.
@@ -585,6 +618,39 @@ class PeerConnection(pulumi.CustomResource):
         For information about VPC Peer Connection and how to use it, see [What is Peer Connection](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createvpcpeer).
 
         > **NOTE:** Available since v1.186.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_account = alicloud.get_account()
+        config = pulumi.Config()
+        accepting_region = config.get("acceptingRegion")
+        if accepting_region is None:
+            accepting_region = "cn-beijing"
+        local = alicloud.Provider("local", region="cn-hangzhou")
+        accepting = alicloud.Provider("accepting", region=accepting_region)
+        local_vpc = alicloud.vpc.Network("localVpc",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            opts=pulumi.ResourceOptions(provider=alicloud["local"]))
+        accepting_vpc = alicloud.vpc.Network("acceptingVpc",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            opts=pulumi.ResourceOptions(provider=alicloud["accepting"]))
+        default_peer_connection = alicloud.vpc.PeerConnection("defaultPeerConnection",
+            peer_connection_name="terraform-example",
+            vpc_id=local_vpc.id,
+            accepting_ali_uid=default_account.id,
+            accepting_region_id=accepting_region,
+            accepting_vpc_id=accepting_vpc.id,
+            description="terraform-example",
+            opts=pulumi.ResourceOptions(provider=alicloud["local"]))
+        ```
 
         ## Import
 

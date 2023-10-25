@@ -15,6 +15,31 @@ import (
 // This data source provides Threat Detection Asset available to the user.[What is Asset](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describecloudcenterinstances)
 //
 // > **NOTE:** Available since v1.195.0.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/threatdetection"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := threatdetection.GetAssets(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudThreatDetectionAssetExampleId", _default.Assets[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetAssets(ctx *pulumi.Context, args *GetAssetsArgs, opts ...pulumi.InvokeOption) (*GetAssetsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAssetsResult

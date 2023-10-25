@@ -371,6 +371,22 @@ class DnsDomain(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.81.0+.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Add a new Domain.
+        dns = alicloud.dns.DnsDomain("dns",
+            domain_name="starmove.com",
+            group_id="85ab8713-4a30-4de4-9d20-155ff830****",
+            tags={
+                "Created": "Terraform",
+                "Environment": "test",
+            })
+        ```
+
         ## Import
 
         DNS domain can be imported using the id or domain name, e.g.
@@ -404,6 +420,22 @@ class DnsDomain(pulumi.CustomResource):
         > **NOTE:** The domain name which you want to add must be already registered and had not added by another account. Every domain name can only exist in a unique group.
 
         > **NOTE:** Available in v1.81.0+.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Add a new Domain.
+        dns = alicloud.dns.DnsDomain("dns",
+            domain_name="starmove.com",
+            group_id="85ab8713-4a30-4de4-9d20-155ff830****",
+            tags={
+                "Created": "Terraform",
+                "Environment": "test",
+            })
+        ```
 
         ## Import
 

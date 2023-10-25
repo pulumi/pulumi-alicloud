@@ -396,6 +396,56 @@ class TransitRouterRouteEntry(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.126.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name=name,
+            description="an example for cen")
+        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+            transit_router_name=name,
+            cen_id=example_instance.id)
+        example_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", transit_router_id=example_transit_router.transit_router_id)
+        example_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
+        vlan_id = random.RandomInteger("vlanId",
+            max=2999,
+            min=1)
+        example_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter",
+            local_gateway_ip="10.0.0.1",
+            peer_gateway_ip="10.0.0.2",
+            peering_subnet_mask="255.255.255.252",
+            physical_connection_id=example_physical_connections.connections[0].id,
+            virtual_border_router_name=name,
+            vlan_id=vlan_id.id,
+            min_rx_interval=1000,
+            min_tx_interval=1000,
+            detect_multiplier=10)
+        example_transit_router_vbr_attachment = alicloud.cen.TransitRouterVbrAttachment("exampleTransitRouterVbrAttachment",
+            vbr_id=example_virtual_border_router.id,
+            cen_id=example_instance.id,
+            transit_router_id=example_transit_router.transit_router_id,
+            auto_publish_route_enabled=True,
+            transit_router_attachment_name=name,
+            transit_router_attachment_description=name)
+        example_transit_router_route_entry = alicloud.cen.TransitRouterRouteEntry("exampleTransitRouterRouteEntry",
+            transit_router_route_table_id=example_transit_router_route_table.transit_router_route_table_id,
+            transit_router_route_entry_destination_cidr_block="192.168.0.0/24",
+            transit_router_route_entry_next_hop_type="Attachment",
+            transit_router_route_entry_name=name,
+            transit_router_route_entry_description=name,
+            transit_router_route_entry_next_hop_id=example_transit_router_vbr_attachment.transit_router_attachment_id)
+        ```
+
         ## Import
 
         CEN instance can be imported using the id, e.g.
@@ -427,6 +477,56 @@ class TransitRouterRouteEntry(pulumi.CustomResource):
         Provides a CEN transit router route entry resource.[What is Cen Transit Router Route Entry](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-cbn-2017-09-12-createtransitrouterrouteentry)
 
         > **NOTE:** Available since v1.126.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name=name,
+            description="an example for cen")
+        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+            transit_router_name=name,
+            cen_id=example_instance.id)
+        example_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", transit_router_id=example_transit_router.transit_router_id)
+        example_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
+        vlan_id = random.RandomInteger("vlanId",
+            max=2999,
+            min=1)
+        example_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter",
+            local_gateway_ip="10.0.0.1",
+            peer_gateway_ip="10.0.0.2",
+            peering_subnet_mask="255.255.255.252",
+            physical_connection_id=example_physical_connections.connections[0].id,
+            virtual_border_router_name=name,
+            vlan_id=vlan_id.id,
+            min_rx_interval=1000,
+            min_tx_interval=1000,
+            detect_multiplier=10)
+        example_transit_router_vbr_attachment = alicloud.cen.TransitRouterVbrAttachment("exampleTransitRouterVbrAttachment",
+            vbr_id=example_virtual_border_router.id,
+            cen_id=example_instance.id,
+            transit_router_id=example_transit_router.transit_router_id,
+            auto_publish_route_enabled=True,
+            transit_router_attachment_name=name,
+            transit_router_attachment_description=name)
+        example_transit_router_route_entry = alicloud.cen.TransitRouterRouteEntry("exampleTransitRouterRouteEntry",
+            transit_router_route_table_id=example_transit_router_route_table.transit_router_route_table_id,
+            transit_router_route_entry_destination_cidr_block="192.168.0.0/24",
+            transit_router_route_entry_next_hop_type="Attachment",
+            transit_router_route_entry_name=name,
+            transit_router_route_entry_description=name,
+            transit_router_route_entry_next_hop_id=example_transit_router_vbr_attachment.transit_router_attachment_id)
+        ```
 
         ## Import
 

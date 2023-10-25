@@ -19,6 +19,54 @@ import (
 //
 // > **NOTE:** Available since v1.132.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := expressconnect.NewPhysicalConnection(ctx, "domestic", &expressconnect.PhysicalConnectionArgs{
+//				AccessPointId:          pulumi.String("ap-cn-hangzhou-yh-B"),
+//				Bandwidth:              pulumi.String("100"),
+//				Description:            pulumi.String("my domestic connection"),
+//				LineOperator:           pulumi.String("CT"),
+//				PeerLocation:           pulumi.String("example_value"),
+//				PhysicalConnectionName: pulumi.String("example_value"),
+//				PortType:               pulumi.String("1000Base-LX"),
+//				Type:                   pulumi.String("VPC"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = expressconnect.NewPhysicalConnection(ctx, "international", &expressconnect.PhysicalConnectionArgs{
+//				AccessPointId:          pulumi.String("ap-sg-singpore-A"),
+//				Bandwidth:              pulumi.String("100"),
+//				Description:            pulumi.String("my domestic connection"),
+//				LineOperator:           pulumi.String("Other"),
+//				PeerLocation:           pulumi.String("example_value"),
+//				PhysicalConnectionName: pulumi.String("example_value"),
+//				PortType:               pulumi.String("1000Base-LX"),
+//				Type:                   pulumi.String("VPC"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Express Connect Physical Connection can be imported using the id, e.g.

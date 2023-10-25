@@ -804,6 +804,15 @@ class GetInstancesInstanceResult(dict):
         :param int read_capacity: The maximum adjustable read capacity unit of the instance.
         :param str status: Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
         :param Mapping[str, Any] tags: A map of tags assigned to the instance. It must be in the format:
+               ```python
+               import pulumi
+               import pulumi_alicloud as alicloud
+               
+               instances_ds = alicloud.ots.get_instances(tags={
+                   "tagKey1": "tagValue1",
+                   "tagKey2": "tagValue2",
+               })
+               ```
         :param str user_id: The user id of the instance.
         :param int write_capacity: The maximum adjustable write capacity unit of the instance.
         """
@@ -966,6 +975,15 @@ class GetInstancesInstanceResult(dict):
     def tags(self) -> Mapping[str, Any]:
         """
         A map of tags assigned to the instance. It must be in the format:
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        instances_ds = alicloud.ots.get_instances(tags={
+            "tagKey1": "tagValue1",
+            "tagKey2": "tagValue2",
+        })
+        ```
         """
         return pulumi.get(self, "tags")
 

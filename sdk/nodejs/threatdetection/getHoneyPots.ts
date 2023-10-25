@@ -10,6 +10,22 @@ import * as utilities from "../utilities";
  * This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypot)
  *
  * > **NOTE:** Available since v1.195.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.threatdetection.getHoneyPots({
+ *     ids: ["xxxx"],
+ *     honeypotName: "tf-example",
+ *     nodeId: "a44e1ab3-6945-444c-889d-5bacee7056e8",
+ * });
+ * export const alicloudThreatDetectionHoneyPotExampleId = _default.then(_default => _default.pots?.[0]?.id);
+ * ```
  */
 export function getHoneyPots(args?: GetHoneyPotsArgs, opts?: pulumi.InvokeOptions): Promise<GetHoneyPotsResult> {
     args = args || {};
@@ -96,6 +112,22 @@ export interface GetHoneyPotsResult {
  * This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypot)
  *
  * > **NOTE:** Available since v1.195.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.threatdetection.getHoneyPots({
+ *     ids: ["xxxx"],
+ *     honeypotName: "tf-example",
+ *     nodeId: "a44e1ab3-6945-444c-889d-5bacee7056e8",
+ * });
+ * export const alicloudThreatDetectionHoneyPotExampleId = _default.then(_default => _default.pots?.[0]?.id);
+ * ```
  */
 export function getHoneyPotsOutput(args?: GetHoneyPotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHoneyPotsResult> {
     return pulumi.output(args).apply((a: any) => getHoneyPots(a, opts))

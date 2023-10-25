@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides Ecs Capacity Reservation available to the user.
  *
  * > **NOTE:** Available in 1.195.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.ecs.getCapacityReservations({
+ *     ids: [alicloud_ecs_capacity_reservation["default"].id],
+ *     nameRegex: alicloud_ecs_capacity_reservation["default"].name,
+ *     instanceType: "ecs.c6.large",
+ *     platform: "linux",
+ * });
+ * export const alicloudEcsCapacityReservationExampleId = _default.then(_default => _default.reservations?.[0]?.id);
+ * ```
  */
 export function getCapacityReservations(args?: GetCapacityReservationsArgs, opts?: pulumi.InvokeOptions): Promise<GetCapacityReservationsResult> {
     args = args || {};
@@ -124,6 +139,21 @@ export interface GetCapacityReservationsResult {
  * This data source provides Ecs Capacity Reservation available to the user.
  *
  * > **NOTE:** Available in 1.195.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.ecs.getCapacityReservations({
+ *     ids: [alicloud_ecs_capacity_reservation["default"].id],
+ *     nameRegex: alicloud_ecs_capacity_reservation["default"].name,
+ *     instanceType: "ecs.c6.large",
+ *     platform: "linux",
+ * });
+ * export const alicloudEcsCapacityReservationExampleId = _default.then(_default => _default.reservations?.[0]?.id);
+ * ```
  */
 export function getCapacityReservationsOutput(args?: GetCapacityReservationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCapacityReservationsResult> {
     return pulumi.output(args).apply((a: any) => getCapacityReservations(a, opts))

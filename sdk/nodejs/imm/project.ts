@@ -11,6 +11,41 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.134.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tfexample";
+ * const role = new alicloud.ram.Role("role", {
+ *     document: `  {
+ *     "Statement": [
+ *       {
+ *         "Action": "sts:AssumeRole",
+ *         "Effect": "Allow",
+ *         "Principal": {
+ *           "Service": [
+ *             "imm.aliyuncs.com"
+ *           ]
+ *         }
+ *       }
+ *     ],
+ *     "Version": "1"
+ *   }
+ * `,
+ *     description: "this is a role test.",
+ *     force: true,
+ * });
+ * const example = new alicloud.imm.Project("example", {
+ *     project: name,
+ *     serviceRole: role.name,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Intelligent Media Management Project can be imported using the id, e.g.

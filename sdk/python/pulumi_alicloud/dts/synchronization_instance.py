@@ -651,6 +651,25 @@ class SynchronizationInstance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.138.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_regions = alicloud.get_regions(current=True)
+        default_synchronization_instance = alicloud.dts.SynchronizationInstance("defaultSynchronizationInstance",
+            payment_type="PayAsYouGo",
+            source_endpoint_engine_name="MySQL",
+            source_endpoint_region=default_regions.regions[0].id,
+            destination_endpoint_engine_name="MySQL",
+            destination_endpoint_region=default_regions.regions[0].id,
+            instance_class="small",
+            sync_architecture="oneway")
+        ```
+
         ## Import
 
         DTS Synchronization Instance can be imported using the id, e.g.
@@ -688,6 +707,25 @@ class SynchronizationInstance(pulumi.CustomResource):
         For information about DTS Synchronization Instance and how to use it, see [What is Synchronization Instance](https://www.alibabacloud.com/help/en/doc-detail/130744.html).
 
         > **NOTE:** Available since v1.138.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_regions = alicloud.get_regions(current=True)
+        default_synchronization_instance = alicloud.dts.SynchronizationInstance("defaultSynchronizationInstance",
+            payment_type="PayAsYouGo",
+            source_endpoint_engine_name="MySQL",
+            source_endpoint_region=default_regions.regions[0].id,
+            destination_endpoint_engine_name="MySQL",
+            destination_endpoint_region=default_regions.regions[0].id,
+            instance_class="small",
+            sync_architecture="oneway")
+        ```
 
         ## Import
 

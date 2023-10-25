@@ -17,6 +17,39 @@ import (
 // > **NOTE:** Available in v1.193.0+.
 //
 // > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudsso"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := cloudsso.GetAccessAssignments(ctx, &cloudsso.GetAccessAssignmentsArgs{
+//				DirectoryId: "example_value",
+//				Ids: []string{
+//					"example_value-1",
+//					"example_value-2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cloudSsoAccessAssignmentId1", ids.Assignments[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetAccessAssignments(ctx *pulumi.Context, args *GetAccessAssignmentsArgs, opts ...pulumi.InvokeOption) (*GetAccessAssignmentsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccessAssignmentsResult

@@ -757,6 +757,23 @@ class BandwidthPackage(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.112.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ga.BandwidthPackage("example",
+            auto_pay=True,
+            bandwidth=20,
+            bandwidth_type="Basic",
+            duration="1",
+            ratio=30,
+            type="Basic")
+        ```
+
         ## Import
 
         Ga Bandwidth Package can be imported using the id, e.g.
@@ -800,6 +817,23 @@ class BandwidthPackage(pulumi.CustomResource):
         > **NOTE:** At present, The `ga.BandwidthPackage` created with `Subscription` cannot be deleted. you need to wait until the resource is outdated and released automatically.
 
         > **NOTE:** Available since v1.112.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ga.BandwidthPackage("example",
+            auto_pay=True,
+            bandwidth=20,
+            bandwidth_type="Basic",
+            duration="1",
+            ratio=30,
+            type="Basic")
+        ```
 
         ## Import
 

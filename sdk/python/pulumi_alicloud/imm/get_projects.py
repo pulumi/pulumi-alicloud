@@ -80,6 +80,18 @@ def get_projects(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.134.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.imm.get_projects(ids=["example_id"])
+    pulumi.export("immProjectId1", ids.projects[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Project IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -105,6 +117,18 @@ def get_projects_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
     This data source provides the Intelligent Media Management Projects of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.134.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.imm.get_projects(ids=["example_id"])
+    pulumi.export("immProjectId1", ids.projects[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Project IDs.

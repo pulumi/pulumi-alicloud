@@ -18,6 +18,57 @@ import (
 //
 // > **NOTE:** Available in v1.147.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-testaccoossetting"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultBucket, err := oss.NewBucket(ctx, "defaultBucket", &oss.BucketArgs{
+//				Bucket: pulumi.String(name),
+//				Acl:    pulumi.String("public-read-write"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultProject, err := log.NewProject(ctx, "defaultProject", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oos.NewServiceSetting(ctx, "defaultServiceSetting", &oos.ServiceSettingArgs{
+//				DeliveryOssEnabled:     pulumi.Bool(true),
+//				DeliveryOssKeyPrefix:   pulumi.String("path1/"),
+//				DeliveryOssBucketName:  defaultBucket.Bucket,
+//				DeliverySlsEnabled:     pulumi.Bool(true),
+//				DeliverySlsProjectName: defaultProject.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // OOS Service Setting can be imported using the id, e.g.

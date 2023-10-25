@@ -367,6 +367,23 @@ class IndustrialPidLoop(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.117.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.brain.IndustrialPidLoop("example",
+            pid_loop_configuration="YourLoopConfiguration",
+            pid_loop_dcs_type="standard",
+            pid_loop_is_crucial=True,
+            pid_loop_name="tf-testAcc",
+            pid_loop_type="0",
+            pid_project_id="856c6b8f-ca63-40a4-xxxx-xxxx")
+        ```
+
         ## Import
 
         Brain Industrial Pid Loop can be imported using the id, e.g.
@@ -395,6 +412,23 @@ class IndustrialPidLoop(pulumi.CustomResource):
         Provides a Brain Industrial Pid Loop resource.
 
         > **NOTE:** Available in v1.117.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.brain.IndustrialPidLoop("example",
+            pid_loop_configuration="YourLoopConfiguration",
+            pid_loop_dcs_type="standard",
+            pid_loop_is_crucial=True,
+            pid_loop_name="tf-testAcc",
+            pid_loop_type="0",
+            pid_project_id="856c6b8f-ca63-40a4-xxxx-xxxx")
+        ```
 
         ## Import
 

@@ -11,6 +11,50 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.149.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-testacc-fnfflow";
+ * const defaultRole = new alicloud.ram.Role("defaultRole", {document: `  {
+ *     "Statement": [
+ *       {
+ *         "Action": "sts:AssumeRole",
+ *         "Effect": "Allow",
+ *         "Principal": {
+ *           "Service": [
+ *             "fnf.aliyuncs.com"
+ *           ]
+ *         }
+ *       }
+ *     ],
+ *     "Version": "1"
+ *   }
+ * `});
+ * const defaultFlow = new alicloud.fnf.Flow("defaultFlow", {
+ *     definition: `  version: v1beta1
+ *   type: flow
+ *   steps:
+ *     - type: wait
+ *       name: custom_wait
+ *       duration: $.wait
+ * `,
+ *     roleArn: defaultRole.arn,
+ *     description: "Test for terraform fnf_flow.",
+ *     type: "FDL",
+ * });
+ * const defaultExecution = new alicloud.fnf.Execution("defaultExecution", {
+ *     executionName: name,
+ *     flowName: defaultFlow.name,
+ *     input: "{\"wait\": 600}",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Serverless Workflow Execution can be imported using the id, e.g.

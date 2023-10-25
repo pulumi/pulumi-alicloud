@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides the Eip Addresses of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.126.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.ecs.getEipAddresses({
+ *     ids: ["eip-bp1jvx5ki6c********"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstEipAddressId = example.then(example => example.addresses?.[0]?.id);
+ * ```
  */
 export function getEipAddresses(args?: GetEipAddressesArgs, opts?: pulumi.InvokeOptions): Promise<GetEipAddressesResult> {
     args = args || {};
@@ -155,6 +170,21 @@ export interface GetEipAddressesResult {
  * This data source provides the Eip Addresses of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.126.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.ecs.getEipAddresses({
+ *     ids: ["eip-bp1jvx5ki6c********"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstEipAddressId = example.then(example => example.addresses?.[0]?.id);
+ * ```
  */
 export function getEipAddressesOutput(args?: GetEipAddressesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEipAddressesResult> {
     return pulumi.output(args).apply((a: any) => getEipAddresses(a, opts))

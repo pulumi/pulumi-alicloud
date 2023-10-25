@@ -11,6 +11,31 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.204.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultZones = alicloud.getZones({});
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultVpd = new alicloud.eflo.Vpd("defaultVpd", {
+ *     cidr: "10.0.0.0/8",
+ *     vpdName: name,
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
+ * });
+ * const defaultSubnet = new alicloud.eflo.Subnet("defaultSubnet", {
+ *     subnetName: name,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     cidr: "10.0.0.0/16",
+ *     vpdId: defaultVpd.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Eflo Subnet can be imported using the id, e.g.

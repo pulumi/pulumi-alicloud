@@ -418,6 +418,49 @@ class ServerBackupPlan(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.142.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_zones = alicloud.get_zones(available_resource_creation="Instance")
+        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        example_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            owners="system")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=example_network.id,
+            zone_id=example_zones.zones[0].id)
+        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
+        example_instance = alicloud.ecs.Instance("exampleInstance",
+            image_id=example_images.images[0].id,
+            instance_type=example_instance_types.instance_types[0].id,
+            availability_zone=example_zones.zones[0].id,
+            security_groups=[example_security_group.id],
+            instance_name="terraform-example",
+            internet_charge_type="PayByBandwidth",
+            vswitch_id=example_switch.id)
+        example_server_backup_plan = alicloud.hbr.ServerBackupPlan("exampleServerBackupPlan",
+            ecs_server_backup_plan_name="terraform-example",
+            instance_id=example_instance.id,
+            schedule="I|1602673264|PT2H",
+            retention=1,
+            details=[alicloud.hbr.ServerBackupPlanDetailArgs(
+                app_consistent=True,
+                snapshot_group=True,
+            )],
+            disabled=False)
+        ```
+
         ## Import
 
         Hybrid Backup Recovery (HBR) Server Backup Plan can be imported using the id, e.g.
@@ -450,6 +493,49 @@ class ServerBackupPlan(pulumi.CustomResource):
         For information about Hybrid Backup Recovery (HBR) Server Backup Plan and how to use it, see [What is Server Backup Plan](https://www.alibabacloud.com/help/doc-detail/211140.htm).
 
         > **NOTE:** Available in v1.142.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_zones = alicloud.get_zones(available_resource_creation="Instance")
+        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        example_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            owners="system")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=example_network.id,
+            zone_id=example_zones.zones[0].id)
+        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
+        example_instance = alicloud.ecs.Instance("exampleInstance",
+            image_id=example_images.images[0].id,
+            instance_type=example_instance_types.instance_types[0].id,
+            availability_zone=example_zones.zones[0].id,
+            security_groups=[example_security_group.id],
+            instance_name="terraform-example",
+            internet_charge_type="PayByBandwidth",
+            vswitch_id=example_switch.id)
+        example_server_backup_plan = alicloud.hbr.ServerBackupPlan("exampleServerBackupPlan",
+            ecs_server_backup_plan_name="terraform-example",
+            instance_id=example_instance.id,
+            schedule="I|1602673264|PT2H",
+            retention=1,
+            details=[alicloud.hbr.ServerBackupPlanDetailArgs(
+                app_consistent=True,
+                snapshot_group=True,
+            )],
+            disabled=False)
+        ```
 
         ## Import
 

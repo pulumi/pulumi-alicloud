@@ -19,6 +19,52 @@ import (
 //
 // > **NOTE:** Available since v1.140.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dfs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "example_name"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultAccessGroup, err := dfs.NewAccessGroup(ctx, "defaultAccessGroup", &dfs.AccessGroupArgs{
+//				NetworkType:     pulumi.String("VPC"),
+//				AccessGroupName: pulumi.String(name),
+//				Description:     pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dfs.NewAccessRule(ctx, "defaultAccessRule", &dfs.AccessRuleArgs{
+//				NetworkSegment: pulumi.String("192.0.2.0/24"),
+//				AccessGroupId:  defaultAccessGroup.ID(),
+//				Description:    pulumi.String(name),
+//				RwAccessType:   pulumi.String("RDWR"),
+//				Priority:       pulumi.Int(10),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // DFS Access Rule can be imported using the id, e.g.

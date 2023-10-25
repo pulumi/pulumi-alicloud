@@ -17,6 +17,62 @@ import (
 //
 // > **NOTE:** Available since v1.99.0.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultDomainGroup, err := dns.NewDomainGroup(ctx, "defaultDomainGroup", &dns.DomainGroupArgs{
+//				DomainGroupName: pulumi.String("tf-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultAlidnsDomain, err := dns.NewAlidnsDomain(ctx, "defaultAlidnsDomain", &dns.AlidnsDomainArgs{
+//				DomainName: pulumi.String("starmove.com"),
+//				GroupId:    defaultDomainGroup.ID(),
+//				Tags: pulumi.Map{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("example"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultAlidnsInstance, err := dns.NewAlidnsInstance(ctx, "defaultAlidnsInstance", &dns.AlidnsInstanceArgs{
+//				DnsSecurity:   pulumi.String("basic"),
+//				DomainNumbers: pulumi.String("3"),
+//				VersionCode:   pulumi.String("version_personal"),
+//				Period:        pulumi.Int(1),
+//				RenewalStatus: pulumi.String("ManualRenewal"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dns.NewAlidnsDomainAttachment(ctx, "defaultAlidnsDomainAttachment", &dns.AlidnsDomainAttachmentArgs{
+//				InstanceId: defaultAlidnsInstance.ID(),
+//				DomainNames: pulumi.StringArray{
+//					defaultAlidnsDomain.DomainName,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // DNS domain attachment can be imported using the id, e.g.

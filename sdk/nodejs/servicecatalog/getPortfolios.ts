@@ -10,6 +10,19 @@ import * as utilities from "../utilities";
  * This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createportfolio)
  *
  * > **NOTE:** Available in 1.204.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.servicecatalog.getPortfolios({
+ *     ids: [alicloud_service_catalog_portfolio["default"].id],
+ *     nameRegex: alicloud_service_catalog_portfolio["default"].name,
+ * });
+ * export const alicloudServiceCatalogPortfolioExampleId = _default.then(_default => _default.portfolios?.[0]?.id);
+ * ```
  */
 export function getPortfolios(args?: GetPortfoliosArgs, opts?: pulumi.InvokeOptions): Promise<GetPortfoliosResult> {
     args = args || {};
@@ -97,6 +110,19 @@ export interface GetPortfoliosResult {
  * This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createportfolio)
  *
  * > **NOTE:** Available in 1.204.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.servicecatalog.getPortfolios({
+ *     ids: [alicloud_service_catalog_portfolio["default"].id],
+ *     nameRegex: alicloud_service_catalog_portfolio["default"].name,
+ * });
+ * export const alicloudServiceCatalogPortfolioExampleId = _default.then(_default => _default.portfolios?.[0]?.id);
+ * ```
  */
 export function getPortfoliosOutput(args?: GetPortfoliosOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPortfoliosResult> {
     return pulumi.output(args).apply((a: any) => getPortfolios(a, opts))

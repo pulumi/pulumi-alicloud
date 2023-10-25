@@ -19,6 +19,173 @@ import (
 //
 // > **NOTE:** Available since v1.111.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eci"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := eci.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.0.0.0/8"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.1.0.0/16"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].ZoneIds[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = eci.NewContainerGroup(ctx, "defaultContainerGroup", &eci.ContainerGroupArgs{
+//				ContainerGroupName: pulumi.String(name),
+//				Cpu:                pulumi.Float64(8),
+//				Memory:             pulumi.Float64(16),
+//				RestartPolicy:      pulumi.String("OnFailure"),
+//				SecurityGroupId:    defaultSecurityGroup.ID(),
+//				VswitchId:          defaultSwitch.ID(),
+//				Tags: pulumi.Map{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("example"),
+//				},
+//				Containers: eci.ContainerGroupContainerArray{
+//					&eci.ContainerGroupContainerArgs{
+//						Image:           pulumi.String("registry-vpc.cn-beijing.aliyuncs.com/eci_open/nginx:alpine"),
+//						Name:            pulumi.String("nginx"),
+//						WorkingDir:      pulumi.String("/tmp/nginx"),
+//						ImagePullPolicy: pulumi.String("IfNotPresent"),
+//						Commands: pulumi.StringArray{
+//							pulumi.String("/bin/sh"),
+//							pulumi.String("-c"),
+//							pulumi.String("sleep 9999"),
+//						},
+//						VolumeMounts: eci.ContainerGroupContainerVolumeMountArray{
+//							&eci.ContainerGroupContainerVolumeMountArgs{
+//								MountPath: pulumi.String("/tmp/example"),
+//								ReadOnly:  pulumi.Bool(false),
+//								Name:      pulumi.String("empty1"),
+//							},
+//						},
+//						Ports: eci.ContainerGroupContainerPortArray{
+//							&eci.ContainerGroupContainerPortArgs{
+//								Port:     pulumi.Int(80),
+//								Protocol: pulumi.String("TCP"),
+//							},
+//						},
+//						EnvironmentVars: eci.ContainerGroupContainerEnvironmentVarArray{
+//							&eci.ContainerGroupContainerEnvironmentVarArgs{
+//								Key:   pulumi.String("name"),
+//								Value: pulumi.String("nginx"),
+//							},
+//						},
+//						LivenessProbes: eci.ContainerGroupContainerLivenessProbeArray{
+//							&eci.ContainerGroupContainerLivenessProbeArgs{
+//								PeriodSeconds:       pulumi.Int(5),
+//								InitialDelaySeconds: pulumi.Int(5),
+//								SuccessThreshold:    pulumi.Int(1),
+//								FailureThreshold:    pulumi.Int(3),
+//								TimeoutSeconds:      pulumi.Int(1),
+//								Execs: eci.ContainerGroupContainerLivenessProbeExecArray{
+//									&eci.ContainerGroupContainerLivenessProbeExecArgs{
+//										Commands: pulumi.StringArray{
+//											pulumi.String("cat /tmp/healthy"),
+//										},
+//									},
+//								},
+//							},
+//						},
+//						ReadinessProbes: eci.ContainerGroupContainerReadinessProbeArray{
+//							&eci.ContainerGroupContainerReadinessProbeArgs{
+//								PeriodSeconds:       pulumi.Int(5),
+//								InitialDelaySeconds: pulumi.Int(5),
+//								SuccessThreshold:    pulumi.Int(1),
+//								FailureThreshold:    pulumi.Int(3),
+//								TimeoutSeconds:      pulumi.Int(1),
+//								Execs: eci.ContainerGroupContainerReadinessProbeExecArray{
+//									&eci.ContainerGroupContainerReadinessProbeExecArgs{
+//										Commands: pulumi.StringArray{
+//											pulumi.String("cat /tmp/healthy"),
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//					&eci.ContainerGroupContainerArgs{
+//						Image: pulumi.String("registry-vpc.cn-beijing.aliyuncs.com/eci_open/centos:7"),
+//						Name:  pulumi.String("centos"),
+//						Commands: pulumi.StringArray{
+//							pulumi.String("/bin/sh"),
+//							pulumi.String("-c"),
+//							pulumi.String("sleep 9999"),
+//						},
+//					},
+//				},
+//				InitContainers: eci.ContainerGroupInitContainerArray{
+//					&eci.ContainerGroupInitContainerArgs{
+//						Name:            pulumi.String("init-busybox"),
+//						Image:           pulumi.String("registry-vpc.cn-beijing.aliyuncs.com/eci_open/busybox:1.30"),
+//						ImagePullPolicy: pulumi.String("IfNotPresent"),
+//						Commands: pulumi.StringArray{
+//							pulumi.String("echo"),
+//						},
+//						Args: pulumi.StringArray{
+//							pulumi.String("hello initcontainer"),
+//						},
+//					},
+//				},
+//				Volumes: eci.ContainerGroupVolumeArray{
+//					&eci.ContainerGroupVolumeArgs{
+//						Name: pulumi.String("empty1"),
+//						Type: pulumi.String("EmptyDirVolume"),
+//					},
+//					&eci.ContainerGroupVolumeArgs{
+//						Name: pulumi.String("empty2"),
+//						Type: pulumi.String("EmptyDirVolume"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ECI Container Group can be imported using the id, e.g.

@@ -289,6 +289,24 @@ class AppTemplate(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.137.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.imp.AppTemplate("example",
+            app_template_name="example_value",
+            component_lists=[
+                "component.live",
+                "component.liveRecord",
+            ],
+            integration_mode="paasSDK",
+            scene="business")
+        ```
+
         ## Import
 
         Apsara Agile Live (IMP) App Template can be imported using the id, e.g.
@@ -319,6 +337,24 @@ class AppTemplate(pulumi.CustomResource):
         For information about Apsara Agile Live (IMP) App Template and how to use it, see [What is App Template](https://help.aliyun.com/document_detail/270121.html).
 
         > **NOTE:** Available in v1.137.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.imp.AppTemplate("example",
+            app_template_name="example_value",
+            component_lists=[
+                "component.live",
+                "component.liveRecord",
+            ],
+            integration_mode="paasSDK",
+            scene="business")
+        ```
 
         ## Import
 

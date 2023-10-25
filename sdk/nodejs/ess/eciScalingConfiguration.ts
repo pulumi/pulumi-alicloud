@@ -13,6 +13,57 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.164.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultZones = alicloud.getZones({
+ *     availableDiskCategory: "cloud_efficiency",
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     vswitchName: name,
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
+ * const defaultScalingGroup = new alicloud.ess.ScalingGroup("defaultScalingGroup", {
+ *     minSize: 0,
+ *     maxSize: 1,
+ *     scalingGroupName: name,
+ *     removalPolicies: [
+ *         "OldestInstance",
+ *         "NewestInstance",
+ *     ],
+ *     vswitchIds: [defaultSwitch.id],
+ *     groupType: "ECI",
+ * });
+ * const defaultEciScalingConfiguration = new alicloud.ess.EciScalingConfiguration("defaultEciScalingConfiguration", {
+ *     scalingGroupId: defaultScalingGroup.id,
+ *     cpu: 2,
+ *     memory: 4,
+ *     securityGroupId: defaultSecurityGroup.id,
+ *     forceDelete: true,
+ *     active: true,
+ *     containerGroupName: "container-group-1649839595174",
+ *     containers: [{
+ *         name: "container-1",
+ *         image: "registry-vpc.cn-hangzhou.aliyuncs.com/eci_open/alpine:3.5",
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * ESS eci scaling configuration can be imported using the id, e.g.

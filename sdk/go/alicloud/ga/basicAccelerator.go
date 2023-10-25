@@ -18,6 +18,40 @@ import (
 //
 // > **NOTE:** Available since v1.194.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ga.NewBasicAccelerator(ctx, "default", &ga.BasicAcceleratorArgs{
+//				AutoPay:              pulumi.Bool(true),
+//				AutoUseCoupon:        pulumi.String("true"),
+//				BandwidthBillingType: pulumi.String("BandwidthPackage"),
+//				BasicAcceleratorName: pulumi.String("tf-example-value"),
+//				Description:          pulumi.String("tf-example-value"),
+//				Duration:             pulumi.Int(1),
+//				PricingCycle:         pulumi.String("Month"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Global Accelerator (GA) Basic Accelerator can be imported using the id, e.g.

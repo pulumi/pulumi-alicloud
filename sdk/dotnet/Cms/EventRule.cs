@@ -16,6 +16,54 @@ namespace Pulumi.AliCloud.Cms
     /// 
     /// &gt; **NOTE:** Available since v1.182.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var @default = new AliCloud.Cms.MonitorGroup("default", new()
+    ///     {
+    ///         MonitorGroupName = name,
+    ///     });
+    /// 
+    ///     var example = new AliCloud.Cms.EventRule("example", new()
+    ///     {
+    ///         RuleName = name,
+    ///         GroupId = @default.Id,
+    ///         SilenceTime = 100,
+    ///         Description = name,
+    ///         Status = "ENABLED",
+    ///         EventPattern = new AliCloud.Cms.Inputs.EventRuleEventPatternArgs
+    ///         {
+    ///             Product = "ecs",
+    ///             SqlFilter = "example_value",
+    ///             NameLists = new[]
+    ///             {
+    ///                 "example_value",
+    ///             },
+    ///             LevelLists = new[]
+    ///             {
+    ///                 "CRITICAL",
+    ///             },
+    ///             EventTypeLists = new[]
+    ///             {
+    ///                 "StatusNotification",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Cloud Monitor Service Event Rule can be imported using the id, e.g.

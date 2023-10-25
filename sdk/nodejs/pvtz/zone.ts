@@ -7,6 +7,17 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const foo = new alicloud.pvtz.Zone("foo", {zoneName: "foo.test.com"});
+ * ```
+ *
  * ## Import
  *
  * Private Zone can be imported using the id, e.g.

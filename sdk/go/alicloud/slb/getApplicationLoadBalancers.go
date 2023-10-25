@@ -15,6 +15,37 @@ import (
 // This data source provides the server load balancers of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in 1.123.1+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := slb.GetApplicationLoadBalancers(ctx, &slb.GetApplicationLoadBalancersArgs{
+//				NameRegex: pulumi.StringRef("sample_slb"),
+//				Tags: map[string]interface{}{
+//					"tagKey1": "tagValue1",
+//					"tagKey2": "tagValue2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstSlbId", example.Balancers[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetApplicationLoadBalancers(ctx *pulumi.Context, args *GetApplicationLoadBalancersArgs, opts ...pulumi.InvokeOption) (*GetApplicationLoadBalancersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetApplicationLoadBalancersResult

@@ -632,6 +632,133 @@ class Cluster(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.199.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_zones = alicloud.get_zones(available_instance_type="ecs.g7.xlarge")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/12")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/21",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_ecs_key_pair = alicloud.ecs.EcsKeyPair("defaultEcsKeyPair", key_pair_name=name)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_role = alicloud.ram.Role("defaultRole",
+            document=\"\"\"    {
+                "Statement": [
+                {
+                    "Action": "sts:AssumeRole",
+                    "Effect": "Allow",
+                    "Principal": {
+                    "Service": [
+                        "emr.aliyuncs.com",
+                        "ecs.aliyuncs.com"
+                    ]
+                    }
+                }
+                ],
+                "Version": "1"
+            }
+        \"\"\",
+            description="this is a role example.",
+            force=True)
+        default_cluster = alicloud.emrv2.Cluster("defaultCluster",
+            payment_type="PayAsYouGo",
+            cluster_type="DATALAKE",
+            release_version="EMR-5.10.0",
+            cluster_name=name,
+            deploy_mode="NORMAL",
+            security_mode="NORMAL",
+            applications=[
+                "HADOOP-COMMON",
+                "HDFS",
+                "YARN",
+                "HIVE",
+                "SPARK3",
+                "TEZ",
+            ],
+            application_configs=[
+                alicloud.emrv2.ClusterApplicationConfigArgs(
+                    application_name="HIVE",
+                    config_file_name="hivemetastore-site.xml",
+                    config_item_key="hive.metastore.type",
+                    config_item_value="DLF",
+                    config_scope="CLUSTER",
+                ),
+                alicloud.emrv2.ClusterApplicationConfigArgs(
+                    application_name="SPARK3",
+                    config_file_name="hive-site.xml",
+                    config_item_key="hive.metastore.type",
+                    config_item_value="DLF",
+                    config_scope="CLUSTER",
+                ),
+            ],
+            node_attributes=[alicloud.emrv2.ClusterNodeAttributeArgs(
+                ram_role=default_role.name,
+                security_group_id=default_security_group.id,
+                vpc_id=default_network.id,
+                zone_id=default_zones.zones[0].id,
+                key_pair_name=default_ecs_key_pair.id,
+            )],
+            tags={
+                "created": "tf",
+            },
+            node_groups=[
+                alicloud.emrv2.ClusterNodeGroupArgs(
+                    node_group_type="MASTER",
+                    node_group_name="emr-master",
+                    payment_type="PayAsYouGo",
+                    vswitch_ids=[default_switch.id],
+                    with_public_ip=False,
+                    instance_types=["ecs.g7.xlarge"],
+                    node_count=1,
+                    system_disk=alicloud.emrv2.ClusterNodeGroupSystemDiskArgs(
+                        category="cloud_essd",
+                        size=80,
+                        count=1,
+                    ),
+                    data_disks=[alicloud.emrv2.ClusterNodeGroupDataDiskArgs(
+                        category="cloud_essd",
+                        size=80,
+                        count=3,
+                    )],
+                ),
+                alicloud.emrv2.ClusterNodeGroupArgs(
+                    node_group_type="CORE",
+                    node_group_name="emr-core",
+                    payment_type="PayAsYouGo",
+                    vswitch_ids=[default_switch.id],
+                    with_public_ip=False,
+                    instance_types=["ecs.g7.xlarge"],
+                    node_count=3,
+                    system_disk=alicloud.emrv2.ClusterNodeGroupSystemDiskArgs(
+                        category="cloud_essd",
+                        size=80,
+                        count=1,
+                    ),
+                    data_disks=[alicloud.emrv2.ClusterNodeGroupDataDiskArgs(
+                        category="cloud_essd",
+                        size=80,
+                        count=3,
+                    )],
+                ),
+            ],
+            resource_group_id=default_resource_groups.ids[0])
+        ```
+
         ## Import
 
         Aliclioud E-MapReduce cluster can be imported using the id e.g.
@@ -669,6 +796,133 @@ class Cluster(pulumi.CustomResource):
         For information about EMR New and how to use it, see [Add a domain](https://www.alibabacloud.com/help/doc-detail/28068.htm).
 
         > **NOTE:** Available since v1.199.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_zones = alicloud.get_zones(available_instance_type="ecs.g7.xlarge")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/12")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/21",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_ecs_key_pair = alicloud.ecs.EcsKeyPair("defaultEcsKeyPair", key_pair_name=name)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_role = alicloud.ram.Role("defaultRole",
+            document=\"\"\"    {
+                "Statement": [
+                {
+                    "Action": "sts:AssumeRole",
+                    "Effect": "Allow",
+                    "Principal": {
+                    "Service": [
+                        "emr.aliyuncs.com",
+                        "ecs.aliyuncs.com"
+                    ]
+                    }
+                }
+                ],
+                "Version": "1"
+            }
+        \"\"\",
+            description="this is a role example.",
+            force=True)
+        default_cluster = alicloud.emrv2.Cluster("defaultCluster",
+            payment_type="PayAsYouGo",
+            cluster_type="DATALAKE",
+            release_version="EMR-5.10.0",
+            cluster_name=name,
+            deploy_mode="NORMAL",
+            security_mode="NORMAL",
+            applications=[
+                "HADOOP-COMMON",
+                "HDFS",
+                "YARN",
+                "HIVE",
+                "SPARK3",
+                "TEZ",
+            ],
+            application_configs=[
+                alicloud.emrv2.ClusterApplicationConfigArgs(
+                    application_name="HIVE",
+                    config_file_name="hivemetastore-site.xml",
+                    config_item_key="hive.metastore.type",
+                    config_item_value="DLF",
+                    config_scope="CLUSTER",
+                ),
+                alicloud.emrv2.ClusterApplicationConfigArgs(
+                    application_name="SPARK3",
+                    config_file_name="hive-site.xml",
+                    config_item_key="hive.metastore.type",
+                    config_item_value="DLF",
+                    config_scope="CLUSTER",
+                ),
+            ],
+            node_attributes=[alicloud.emrv2.ClusterNodeAttributeArgs(
+                ram_role=default_role.name,
+                security_group_id=default_security_group.id,
+                vpc_id=default_network.id,
+                zone_id=default_zones.zones[0].id,
+                key_pair_name=default_ecs_key_pair.id,
+            )],
+            tags={
+                "created": "tf",
+            },
+            node_groups=[
+                alicloud.emrv2.ClusterNodeGroupArgs(
+                    node_group_type="MASTER",
+                    node_group_name="emr-master",
+                    payment_type="PayAsYouGo",
+                    vswitch_ids=[default_switch.id],
+                    with_public_ip=False,
+                    instance_types=["ecs.g7.xlarge"],
+                    node_count=1,
+                    system_disk=alicloud.emrv2.ClusterNodeGroupSystemDiskArgs(
+                        category="cloud_essd",
+                        size=80,
+                        count=1,
+                    ),
+                    data_disks=[alicloud.emrv2.ClusterNodeGroupDataDiskArgs(
+                        category="cloud_essd",
+                        size=80,
+                        count=3,
+                    )],
+                ),
+                alicloud.emrv2.ClusterNodeGroupArgs(
+                    node_group_type="CORE",
+                    node_group_name="emr-core",
+                    payment_type="PayAsYouGo",
+                    vswitch_ids=[default_switch.id],
+                    with_public_ip=False,
+                    instance_types=["ecs.g7.xlarge"],
+                    node_count=3,
+                    system_disk=alicloud.emrv2.ClusterNodeGroupSystemDiskArgs(
+                        category="cloud_essd",
+                        size=80,
+                        count=1,
+                    ),
+                    data_disks=[alicloud.emrv2.ClusterNodeGroupDataDiskArgs(
+                        category="cloud_essd",
+                        size=80,
+                        count=3,
+                    )],
+                ),
+            ],
+            resource_group_id=default_resource_groups.ids[0])
+        ```
 
         ## Import
 

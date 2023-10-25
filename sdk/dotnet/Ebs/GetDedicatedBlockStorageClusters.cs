@@ -15,6 +15,36 @@ namespace Pulumi.AliCloud.Ebs
         /// This data source provides Ebs Dedicated Block Storage Cluster available to the user.
         /// 
         /// &gt; **NOTE:** Available in 1.196.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Ebs.GetDedicatedBlockStorageClusters.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         NameRegex = alicloud_ebs_dedicated_block_storage_cluster.Default.Name,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudEbsDedicatedBlockStorageClusterExampleId"] = @default.Apply(@default =&gt; @default.Apply(getDedicatedBlockStorageClustersResult =&gt; getDedicatedBlockStorageClustersResult.Clusters[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDedicatedBlockStorageClustersResult> InvokeAsync(GetDedicatedBlockStorageClustersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDedicatedBlockStorageClustersResult>("alicloud:ebs/getDedicatedBlockStorageClusters:getDedicatedBlockStorageClusters", args ?? new GetDedicatedBlockStorageClustersArgs(), options.WithDefaults());
@@ -23,6 +53,36 @@ namespace Pulumi.AliCloud.Ebs
         /// This data source provides Ebs Dedicated Block Storage Cluster available to the user.
         /// 
         /// &gt; **NOTE:** Available in 1.196.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Ebs.GetDedicatedBlockStorageClusters.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         NameRegex = alicloud_ebs_dedicated_block_storage_cluster.Default.Name,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudEbsDedicatedBlockStorageClusterExampleId"] = @default.Apply(@default =&gt; @default.Apply(getDedicatedBlockStorageClustersResult =&gt; getDedicatedBlockStorageClustersResult.Clusters[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDedicatedBlockStorageClustersResult> Invoke(GetDedicatedBlockStorageClustersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDedicatedBlockStorageClustersResult>("alicloud:ebs/getDedicatedBlockStorageClusters:getDedicatedBlockStorageClusters", args ?? new GetDedicatedBlockStorageClustersInvokeArgs(), options.WithDefaults());

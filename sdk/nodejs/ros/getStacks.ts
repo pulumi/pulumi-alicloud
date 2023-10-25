@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides the Ros Stacks of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.106.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.ros.getStacks({
+ *     ids: ["example_value"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstRosStackId = example.then(example => example.stacks?.[0]?.id);
+ * ```
  */
 export function getStacks(args?: GetStacksArgs, opts?: pulumi.InvokeOptions): Promise<GetStacksResult> {
     args = args || {};
@@ -94,6 +109,21 @@ export interface GetStacksResult {
  * This data source provides the Ros Stacks of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.106.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.ros.getStacks({
+ *     ids: ["example_value"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstRosStackId = example.then(example => example.stacks?.[0]?.id);
+ * ```
  */
 export function getStacksOutput(args?: GetStacksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStacksResult> {
     return pulumi.output(args).apply((a: any) => getStacks(a, opts))

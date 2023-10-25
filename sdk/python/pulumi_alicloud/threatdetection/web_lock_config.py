@@ -420,6 +420,24 @@ class WebLockConfig(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.195.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_assets = alicloud.threatdetection.get_assets(machine_types="ecs")
+        default_web_lock_config = alicloud.threatdetection.WebLockConfig("defaultWebLockConfig",
+            inclusive_file_type="php;jsp;asp;aspx;js;cgi;html;htm;xml;shtml;shtm;jpg",
+            uuid=default_assets.ids[0],
+            mode="whitelist",
+            local_backup_dir="/usr/local/aegis/bak",
+            dir="/tmp/",
+            defence_mode="audit")
+        ```
+
         ## Import
 
         Threat Detection Web Lock Config can be imported using the id, e.g.
@@ -452,6 +470,24 @@ class WebLockConfig(pulumi.CustomResource):
         For information about Threat Detection Web Lock Config and how to use it, see [What is Web Lock Config](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifyweblockstart).
 
         > **NOTE:** Available in v1.195.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_assets = alicloud.threatdetection.get_assets(machine_types="ecs")
+        default_web_lock_config = alicloud.threatdetection.WebLockConfig("defaultWebLockConfig",
+            inclusive_file_type="php;jsp;asp;aspx;js;cgi;html;htm;xml;shtml;shtm;jpg",
+            uuid=default_assets.ids[0],
+            mode="whitelist",
+            local_backup_dir="/usr/local/aegis/bak",
+            dir="/tmp/",
+            defence_mode="audit")
+        ```
 
         ## Import
 

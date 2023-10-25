@@ -15,6 +15,45 @@ namespace Pulumi.AliCloud.Ga
         /// This data source provides the Global Accelerator (GA) Basic Endpoints of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.194.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Ga.GetBasicEndpoints.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         EndpointGroupId = "example_id",
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Ga.GetBasicEndpoints.Invoke(new()
+        ///     {
+        ///         NameRegex = "tf-example",
+        ///         EndpointGroupId = "example_id",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["gaBasicEndpointsId1"] = ids.Apply(getBasicEndpointsResult =&gt; getBasicEndpointsResult.Endpoints[0]?.Id),
+        ///         ["gaBasicEndpointsId2"] = nameRegex.Apply(getBasicEndpointsResult =&gt; getBasicEndpointsResult.Endpoints[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetBasicEndpointsResult> InvokeAsync(GetBasicEndpointsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBasicEndpointsResult>("alicloud:ga/getBasicEndpoints:getBasicEndpoints", args ?? new GetBasicEndpointsArgs(), options.WithDefaults());
@@ -23,6 +62,45 @@ namespace Pulumi.AliCloud.Ga
         /// This data source provides the Global Accelerator (GA) Basic Endpoints of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.194.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Ga.GetBasicEndpoints.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         EndpointGroupId = "example_id",
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Ga.GetBasicEndpoints.Invoke(new()
+        ///     {
+        ///         NameRegex = "tf-example",
+        ///         EndpointGroupId = "example_id",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["gaBasicEndpointsId1"] = ids.Apply(getBasicEndpointsResult =&gt; getBasicEndpointsResult.Endpoints[0]?.Id),
+        ///         ["gaBasicEndpointsId2"] = nameRegex.Apply(getBasicEndpointsResult =&gt; getBasicEndpointsResult.Endpoints[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetBasicEndpointsResult> Invoke(GetBasicEndpointsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBasicEndpointsResult>("alicloud:ga/getBasicEndpoints:getBasicEndpoints", args ?? new GetBasicEndpointsInvokeArgs(), options.WithDefaults());

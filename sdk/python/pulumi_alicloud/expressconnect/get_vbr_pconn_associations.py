@@ -116,6 +116,17 @@ def get_vbr_pconn_associations(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in 1.196.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.expressconnect.get_vbr_pconn_associations(ids=["example_id"],
+        vbr_id=alicloud_express_connect_vbr_pconn_association["default"]["vbr_id"])
+    pulumi.export("alicloudExpressConnectVbrPconnAssociationExampleId", default.associations[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Vbr Pconn Association IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -151,6 +162,17 @@ def get_vbr_pconn_associations_output(ids: Optional[pulumi.Input[Optional[Sequen
     This data source provides Express Connect Vbr Pconn Association available to the user.
 
     > **NOTE:** Available in 1.196.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.expressconnect.get_vbr_pconn_associations(ids=["example_id"],
+        vbr_id=alicloud_express_connect_vbr_pconn_association["default"]["vbr_id"])
+    pulumi.export("alicloudExpressConnectVbrPconnAssociationExampleId", default.associations[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Vbr Pconn Association IDs.

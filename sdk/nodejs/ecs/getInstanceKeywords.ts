@@ -8,6 +8,19 @@ import * as utilities from "../utilities";
  * Operation to query the reserved keywords of an ApsaraDB RDS instance. The reserved keywords cannot be used for the usernames of accounts or the names of databases.
  *
  * > **NOTE:** Available in v1.196.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const resources = alicloud.ecs.getInstanceKeywords({
+ *     key: "account",
+ *     outputFile: "./classes.txt",
+ * });
+ * export const accountKeywords = resources.then(resources => resources.keywords?.[0]);
+ * ```
  */
 export function getInstanceKeywords(args: GetInstanceKeywordsArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceKeywordsResult> {
 
@@ -55,6 +68,19 @@ export interface GetInstanceKeywordsResult {
  * Operation to query the reserved keywords of an ApsaraDB RDS instance. The reserved keywords cannot be used for the usernames of accounts or the names of databases.
  *
  * > **NOTE:** Available in v1.196.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const resources = alicloud.ecs.getInstanceKeywords({
+ *     key: "account",
+ *     outputFile: "./classes.txt",
+ * });
+ * export const accountKeywords = resources.then(resources => resources.keywords?.[0]);
+ * ```
  */
 export function getInstanceKeywordsOutput(args: GetInstanceKeywordsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceKeywordsResult> {
     return pulumi.output(args).apply((a: any) => getInstanceKeywords(a, opts))

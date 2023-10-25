@@ -1139,6 +1139,113 @@ class ContainerGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.111.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.eci.get_zones()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.0.0.0/8")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.1.0.0/16",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].zone_ids[0])
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_container_group = alicloud.eci.ContainerGroup("defaultContainerGroup",
+            container_group_name=name,
+            cpu=8,
+            memory=16,
+            restart_policy="OnFailure",
+            security_group_id=default_security_group.id,
+            vswitch_id=default_switch.id,
+            tags={
+                "Created": "TF",
+                "For": "example",
+            },
+            containers=[
+                alicloud.eci.ContainerGroupContainerArgs(
+                    image="registry-vpc.cn-beijing.aliyuncs.com/eci_open/nginx:alpine",
+                    name="nginx",
+                    working_dir="/tmp/nginx",
+                    image_pull_policy="IfNotPresent",
+                    commands=[
+                        "/bin/sh",
+                        "-c",
+                        "sleep 9999",
+                    ],
+                    volume_mounts=[alicloud.eci.ContainerGroupContainerVolumeMountArgs(
+                        mount_path="/tmp/example",
+                        read_only=False,
+                        name="empty1",
+                    )],
+                    ports=[alicloud.eci.ContainerGroupContainerPortArgs(
+                        port=80,
+                        protocol="TCP",
+                    )],
+                    environment_vars=[alicloud.eci.ContainerGroupContainerEnvironmentVarArgs(
+                        key="name",
+                        value="nginx",
+                    )],
+                    liveness_probes=[alicloud.eci.ContainerGroupContainerLivenessProbeArgs(
+                        period_seconds=5,
+                        initial_delay_seconds=5,
+                        success_threshold=1,
+                        failure_threshold=3,
+                        timeout_seconds=1,
+                        execs=[alicloud.eci.ContainerGroupContainerLivenessProbeExecArgs(
+                            commands=["cat /tmp/healthy"],
+                        )],
+                    )],
+                    readiness_probes=[alicloud.eci.ContainerGroupContainerReadinessProbeArgs(
+                        period_seconds=5,
+                        initial_delay_seconds=5,
+                        success_threshold=1,
+                        failure_threshold=3,
+                        timeout_seconds=1,
+                        execs=[alicloud.eci.ContainerGroupContainerReadinessProbeExecArgs(
+                            commands=["cat /tmp/healthy"],
+                        )],
+                    )],
+                ),
+                alicloud.eci.ContainerGroupContainerArgs(
+                    image="registry-vpc.cn-beijing.aliyuncs.com/eci_open/centos:7",
+                    name="centos",
+                    commands=[
+                        "/bin/sh",
+                        "-c",
+                        "sleep 9999",
+                    ],
+                ),
+            ],
+            init_containers=[alicloud.eci.ContainerGroupInitContainerArgs(
+                name="init-busybox",
+                image="registry-vpc.cn-beijing.aliyuncs.com/eci_open/busybox:1.30",
+                image_pull_policy="IfNotPresent",
+                commands=["echo"],
+                args=["hello initcontainer"],
+            )],
+            volumes=[
+                alicloud.eci.ContainerGroupVolumeArgs(
+                    name="empty1",
+                    type="EmptyDirVolume",
+                ),
+                alicloud.eci.ContainerGroupVolumeArgs(
+                    name="empty2",
+                    type="EmptyDirVolume",
+                ),
+            ])
+        ```
+
         ## Import
 
         ECI Container Group can be imported using the id, e.g.
@@ -1190,6 +1297,113 @@ class ContainerGroup(pulumi.CustomResource):
         For information about ECI Container Group and how to use it, see [What is Container Group](https://www.alibabacloud.com/help/en/elastic-container-instance/latest/api-eci-2018-08-08-createcontainergroup).
 
         > **NOTE:** Available since v1.111.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.eci.get_zones()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.0.0.0/8")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.1.0.0/16",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].zone_ids[0])
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_container_group = alicloud.eci.ContainerGroup("defaultContainerGroup",
+            container_group_name=name,
+            cpu=8,
+            memory=16,
+            restart_policy="OnFailure",
+            security_group_id=default_security_group.id,
+            vswitch_id=default_switch.id,
+            tags={
+                "Created": "TF",
+                "For": "example",
+            },
+            containers=[
+                alicloud.eci.ContainerGroupContainerArgs(
+                    image="registry-vpc.cn-beijing.aliyuncs.com/eci_open/nginx:alpine",
+                    name="nginx",
+                    working_dir="/tmp/nginx",
+                    image_pull_policy="IfNotPresent",
+                    commands=[
+                        "/bin/sh",
+                        "-c",
+                        "sleep 9999",
+                    ],
+                    volume_mounts=[alicloud.eci.ContainerGroupContainerVolumeMountArgs(
+                        mount_path="/tmp/example",
+                        read_only=False,
+                        name="empty1",
+                    )],
+                    ports=[alicloud.eci.ContainerGroupContainerPortArgs(
+                        port=80,
+                        protocol="TCP",
+                    )],
+                    environment_vars=[alicloud.eci.ContainerGroupContainerEnvironmentVarArgs(
+                        key="name",
+                        value="nginx",
+                    )],
+                    liveness_probes=[alicloud.eci.ContainerGroupContainerLivenessProbeArgs(
+                        period_seconds=5,
+                        initial_delay_seconds=5,
+                        success_threshold=1,
+                        failure_threshold=3,
+                        timeout_seconds=1,
+                        execs=[alicloud.eci.ContainerGroupContainerLivenessProbeExecArgs(
+                            commands=["cat /tmp/healthy"],
+                        )],
+                    )],
+                    readiness_probes=[alicloud.eci.ContainerGroupContainerReadinessProbeArgs(
+                        period_seconds=5,
+                        initial_delay_seconds=5,
+                        success_threshold=1,
+                        failure_threshold=3,
+                        timeout_seconds=1,
+                        execs=[alicloud.eci.ContainerGroupContainerReadinessProbeExecArgs(
+                            commands=["cat /tmp/healthy"],
+                        )],
+                    )],
+                ),
+                alicloud.eci.ContainerGroupContainerArgs(
+                    image="registry-vpc.cn-beijing.aliyuncs.com/eci_open/centos:7",
+                    name="centos",
+                    commands=[
+                        "/bin/sh",
+                        "-c",
+                        "sleep 9999",
+                    ],
+                ),
+            ],
+            init_containers=[alicloud.eci.ContainerGroupInitContainerArgs(
+                name="init-busybox",
+                image="registry-vpc.cn-beijing.aliyuncs.com/eci_open/busybox:1.30",
+                image_pull_policy="IfNotPresent",
+                commands=["echo"],
+                args=["hello initcontainer"],
+            )],
+            volumes=[
+                alicloud.eci.ContainerGroupVolumeArgs(
+                    name="empty1",
+                    type="EmptyDirVolume",
+                ),
+                alicloud.eci.ContainerGroupVolumeArgs(
+                    name="empty2",
+                    type="EmptyDirVolume",
+                ),
+            ])
+        ```
 
         ## Import
 

@@ -11,6 +11,35 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.149.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const exampleRegistryEnterpriseInstance = new alicloud.cr.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance", {
+ *     paymentType: "Subscription",
+ *     period: 1,
+ *     renewPeriod: 0,
+ *     renewalStatus: "ManualRenewal",
+ *     instanceType: "Advanced",
+ *     instanceName: name,
+ * });
+ * const exampleChartNamespace = new alicloud.cr.ChartNamespace("exampleChartNamespace", {
+ *     instanceId: exampleRegistryEnterpriseInstance.id,
+ *     namespaceName: name,
+ * });
+ * const exampleChartRepository = new alicloud.cr.ChartRepository("exampleChartRepository", {
+ *     repoNamespaceName: exampleChartNamespace.namespaceName,
+ *     instanceId: exampleChartNamespace.instanceId,
+ *     repoName: name,
+ * });
+ * ```
+ *
  * ## Import
  *
  * CR Chart Repository can be imported using the id, e.g.

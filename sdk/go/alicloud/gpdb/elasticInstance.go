@@ -21,6 +21,63 @@ import (
 // > **NOTE:**  Available in 1.127.0+
 //
 // ## Example Usage
+// ### Create a AnalyticDB for PostgreSQL instance
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/gpdb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("Gpdb"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				VswitchName: pulumi.String("vpc-123456"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gpdb.NewElasticInstance(ctx, "adbPgInstance", &gpdb.ElasticInstanceArgs{
+//				Engine:                pulumi.String("gpdb"),
+//				EngineVersion:         pulumi.String("6.0"),
+//				SegStorageType:        pulumi.String("cloud_essd"),
+//				SegNodeNum:            pulumi.Int(4),
+//				StorageSize:           pulumi.Int(50),
+//				InstanceSpec:          pulumi.String("2C16G"),
+//				DbInstanceDescription: pulumi.String("Created by terraform"),
+//				InstanceNetworkType:   pulumi.String("VPC"),
+//				PaymentType:           pulumi.String("PayAsYouGo"),
+//				VswitchId:             defaultSwitch.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

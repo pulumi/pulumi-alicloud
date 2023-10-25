@@ -10,6 +10,19 @@ import * as utilities from "../utilities";
  * This data source provides a list of KMS Secret Versions in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in v1.88.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const kmsSecretVersionsDs = alicloud.kms.getSecretVersions({
+ *     enableDetails: true,
+ *     secretName: "secret_name",
+ * });
+ * export const firstSecretData = kmsSecretVersionsDs.then(kmsSecretVersionsDs => kmsSecretVersionsDs.versions?.[0]?.secretData);
+ * ```
  */
 export function getSecretVersions(args: GetSecretVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretVersionsResult> {
 
@@ -83,6 +96,19 @@ export interface GetSecretVersionsResult {
  * This data source provides a list of KMS Secret Versions in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in v1.88.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const kmsSecretVersionsDs = alicloud.kms.getSecretVersions({
+ *     enableDetails: true,
+ *     secretName: "secret_name",
+ * });
+ * export const firstSecretData = kmsSecretVersionsDs.then(kmsSecretVersionsDs => kmsSecretVersionsDs.versions?.[0]?.secretData);
+ * ```
  */
 export function getSecretVersionsOutput(args: GetSecretVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretVersionsResult> {
     return pulumi.output(args).apply((a: any) => getSecretVersions(a, opts))

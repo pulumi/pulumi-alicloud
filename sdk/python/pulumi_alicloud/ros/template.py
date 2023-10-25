@@ -256,6 +256,23 @@ class Template(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.108.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ros.Template("example",
+            template_body=\"\"\"    {
+            	"ROSTemplateFormatVersion": "2015-09-01"
+            }
+            
+        \"\"\",
+            template_name="example_value")
+        ```
+
         ## Import
 
         ROS Template can be imported using the id, e.g.
@@ -284,6 +301,23 @@ class Template(pulumi.CustomResource):
         For information about ROS Template and how to use it, see [What is Template](https://www.alibabacloud.com/help/en/doc-detail/141851.htm).
 
         > **NOTE:** Available in v1.108.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ros.Template("example",
+            template_body=\"\"\"    {
+            	"ROSTemplateFormatVersion": "2015-09-01"
+            }
+            
+        \"\"\",
+            template_name="example_value")
+        ```
 
         ## Import
 

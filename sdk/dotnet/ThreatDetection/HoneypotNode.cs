@@ -16,6 +16,33 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// 
     /// &gt; **NOTE:** Available since v1.195.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var @default = new AliCloud.ThreatDetection.HoneypotNode("default", new()
+    ///     {
+    ///         NodeName = name,
+    ///         AvailableProbeNum = 20,
+    ///         SecurityGroupProbeIpLists = new[]
+    ///         {
+    ///             "0.0.0.0/0",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Threat Detection Honeypot Node can be imported using the id, e.g.

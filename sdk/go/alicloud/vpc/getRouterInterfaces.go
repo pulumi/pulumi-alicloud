@@ -16,6 +16,34 @@ import (
 // that connect VPCs together.
 //
 // > **DEPRECATED:**  This datasource has been deprecated from version `1.199.0`. Please use new data source alicloud_express_connect_router_interfaces.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			routerInterfacesDs, err := vpc.GetRouterInterfaces(ctx, &vpc.GetRouterInterfacesArgs{
+//				NameRegex: pulumi.StringRef("^testenv"),
+//				Status:    pulumi.StringRef("Active"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstRouterInterfaceId", routerInterfacesDs.Interfaces[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetRouterInterfaces(ctx *pulumi.Context, args *GetRouterInterfacesArgs, opts ...pulumi.InvokeOption) (*GetRouterInterfacesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRouterInterfacesResult

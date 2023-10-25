@@ -535,6 +535,36 @@ class Policy(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.0.0+.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new RAM Policy.
+        policy = alicloud.ram.Policy("policy",
+            description="this is a policy test",
+            policy_document=\"\"\"  {
+            "Statement": [
+              {
+                "Action": [
+                  "oss:ListObjects",
+                  "oss:GetObject"
+                ],
+                "Effect": "Allow",
+                "Resource": [
+                  "acs:oss:*:*:mybucket",
+                  "acs:oss:*:*:mybucket/*"
+                ]
+              }
+            ],
+              "Version": "1"
+          }
+          
+        \"\"\",
+            policy_name="policyName")
+        ```
+
         ## Import
 
         RAM policy can be imported using the id or name, e.g.
@@ -571,6 +601,36 @@ class Policy(pulumi.CustomResource):
         > **NOTE:** If the policy has multiple versions, all non-default versions will be deleted first when deleting policy.
 
         > **NOTE:** Available since v1.0.0+.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new RAM Policy.
+        policy = alicloud.ram.Policy("policy",
+            description="this is a policy test",
+            policy_document=\"\"\"  {
+            "Statement": [
+              {
+                "Action": [
+                  "oss:ListObjects",
+                  "oss:GetObject"
+                ],
+                "Effect": "Allow",
+                "Resource": [
+                  "acs:oss:*:*:mybucket",
+                  "acs:oss:*:*:mybucket/*"
+                ]
+              }
+            ],
+              "Version": "1"
+          }
+          
+        \"\"\",
+            policy_name="policyName")
+        ```
 
         ## Import
 

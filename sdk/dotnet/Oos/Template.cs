@@ -14,6 +14,54 @@ namespace Pulumi.AliCloud.Oos
     /// 
     /// &gt; **NOTE:** Available in 1.92.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AliCloud.Oos.Template("example", new()
+    ///     {
+    ///         Content = @"  {
+    ///     ""FormatVersion"": ""OOS-2019-06-01"",
+    ///     ""Description"": ""Update Describe instances of given status"",
+    ///     ""Parameters"":{
+    ///       ""Status"":{
+    ///         ""Type"": ""String"",
+    ///         ""Description"": ""(Required) The status of the Ecs instance.""
+    ///       }
+    ///     },
+    ///     ""Tasks"": [
+    ///       {
+    ///         ""Properties"" :{
+    ///           ""Parameters"":{
+    ///             ""Status"": ""{{ Status }}""
+    ///           },
+    ///           ""API"": ""DescribeInstances"",
+    ///           ""Service"": ""Ecs""
+    ///         },
+    ///         ""Name"": ""foo"",
+    ///         ""Action"": ""ACS::ExecuteApi""
+    ///       }]
+    ///   }
+    ///   
+    /// ",
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "acceptance Test" },
+    ///         },
+    ///         TemplateName = "test-name",
+    ///         VersionName = "test",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// OOS Template can be imported using the id or template_name, e.g.

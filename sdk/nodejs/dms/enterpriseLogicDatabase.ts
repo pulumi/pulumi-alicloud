@@ -11,6 +11,23 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.195.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.dms.EnterpriseLogicDatabase("default", {
+ *     alias: "TF_logic_db_test",
+ *     databaseIds: [
+ *         "35617919",
+ *         "35617920",
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * DMS Enterprise Logic Database can be imported using the id, e.g.

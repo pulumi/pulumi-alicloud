@@ -262,6 +262,24 @@ class HoneypotNode(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.195.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.threatdetection.HoneypotNode("default",
+            node_name=name,
+            available_probe_num=20,
+            security_group_probe_ip_lists=["0.0.0.0/0"])
+        ```
+
         ## Import
 
         Threat Detection Honeypot Node can be imported using the id, e.g.
@@ -289,6 +307,24 @@ class HoneypotNode(pulumi.CustomResource):
         For information about Threat Detection Honeypot Node and how to use it, see [What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode).
 
         > **NOTE:** Available since v1.195.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.threatdetection.HoneypotNode("default",
+            node_name=name,
+            available_probe_num=20,
+            security_group_probe_ip_lists=["0.0.0.0/0"])
+        ```
 
         ## Import
 

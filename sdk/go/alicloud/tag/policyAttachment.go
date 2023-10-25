@@ -19,6 +19,56 @@ import (
 //
 // > **NOTE:** Available since v1.204.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/tag"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			examplePolicy, err := tag.NewPolicy(ctx, "examplePolicy", &tag.PolicyArgs{
+//				PolicyName:    pulumi.String(name),
+//				PolicyDesc:    pulumi.String(name),
+//				UserType:      pulumi.String("USER"),
+//				PolicyContent: pulumi.String("		{\"tags\":{\"CostCenter\":{\"tag_value\":{\"@@assign\":[\"Beijing\",\"Shanghai\"]},\"tag_key\":{\"@@assign\":\"CostCenter\"}}}}\n"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = tag.NewPolicyAttachment(ctx, "examplePolicyAttachment", &tag.PolicyAttachmentArgs{
+//				PolicyId:   examplePolicy.ID(),
+//				TargetId:   *pulumi.String(_default.Id),
+//				TargetType: pulumi.String("USER"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Tag Policy Attachment can be imported using the id, e.g.

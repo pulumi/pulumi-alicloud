@@ -15,6 +15,34 @@ import (
 // This data source provides the Cen Transit Router Available Resources of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.163.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cen.GetTransitRouterAvailableResources(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("masterId", data.Alicloud_cen_transit_router_available_resources.Default.Resources[0].Master_zones[0])
+//			ctx.Export("slaveId", data.Alicloud_cen_transit_router_available_resources.Default.Resources[0].Slave_zones[0])
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetTransitRouterAvailableResources(ctx *pulumi.Context, args *GetTransitRouterAvailableResourcesArgs, opts ...pulumi.InvokeOption) (*GetTransitRouterAvailableResourcesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTransitRouterAvailableResourcesResult

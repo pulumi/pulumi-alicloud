@@ -13,6 +13,82 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.0.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const fooZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const fooSwitch = new alicloud.vpc.Switch("fooSwitch", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.16.0.0/21",
+ *     vpcId: fooNetwork.id,
+ *     zoneId: fooZones.then(fooZones => fooZones.zones?.[0]?.id),
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const foo = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const vpc = new alicloud.vpc.Network("vpc", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const cidrBlocks = new alicloud.vpc.Ipv4CidrBlock("cidrBlocks", {
+ *     vpcId: vpc.id,
+ *     secondaryCidrBlock: "192.163.0.0/16",
+ * });
+ * const island_nat = new alicloud.vpc.Switch("island-nat", {
+ *     vpcId: cidrBlocks.vpcId,
+ *     cidrBlock: "172.16.0.0/21",
+ *     zoneId: foo.then(foo => foo.zones?.[0]?.id),
+ *     vswitchName: "terraform-example",
+ *     tags: {
+ *         BuiltBy: "example_value",
+ *         cnm_version: "example_value",
+ *         Environment: "example_value",
+ *         ManagedBy: "example_value",
+ *     },
+ * });
+ * ```
+ *
+ * Create a switch associated with the additional network segment
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const fooZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const fooIpv4CidrBlock = new alicloud.vpc.Ipv4CidrBlock("fooIpv4CidrBlock", {
+ *     vpcId: fooNetwork.id,
+ *     secondaryCidrBlock: "192.163.0.0/16",
+ * });
+ * const fooSwitch = new alicloud.vpc.Switch("fooSwitch", {
+ *     vpcId: fooIpv4CidrBlock.vpcId,
+ *     cidrBlock: "192.163.0.0/24",
+ *     zoneId: fooZones.then(fooZones => fooZones.zones?.[0]?.id),
+ * });
+ * ```
+ *
  * ## Import
  *
  * VPC Vswitch can be imported using the id, e.g.

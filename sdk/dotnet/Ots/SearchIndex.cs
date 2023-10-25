@@ -16,6 +16,134 @@ namespace Pulumi.AliCloud.Ots
     /// 
     /// &gt; **NOTE:** Available since v1.187.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultInstance = new AliCloud.Ots.Instance("defaultInstance", new()
+    ///     {
+    ///         Description = name,
+    ///         AccessedBy = "Any",
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultTable = new AliCloud.Ots.Table("defaultTable", new()
+    ///     {
+    ///         InstanceName = defaultInstance.Name,
+    ///         TableName = "tf_example",
+    ///         TimeToLive = -1,
+    ///         MaxVersion = 1,
+    ///         EnableSse = true,
+    ///         SseKeyType = "SSE_KMS_SERVICE",
+    ///         PrimaryKeys = new[]
+    ///         {
+    ///             new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
+    ///             {
+    ///                 Name = "pk1",
+    ///                 Type = "Integer",
+    ///             },
+    ///             new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
+    ///             {
+    ///                 Name = "pk2",
+    ///                 Type = "String",
+    ///             },
+    ///             new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
+    ///             {
+    ///                 Name = "pk3",
+    ///                 Type = "Binary",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultSearchIndex = new AliCloud.Ots.SearchIndex("defaultSearchIndex", new()
+    ///     {
+    ///         InstanceName = defaultInstance.Name,
+    ///         TableName = defaultTable.TableName,
+    ///         IndexName = "example_index",
+    ///         TimeToLive = -1,
+    ///         Schemas = new[]
+    ///         {
+    ///             new AliCloud.Ots.Inputs.SearchIndexSchemaArgs
+    ///             {
+    ///                 FieldSchemas = new[]
+    ///                 {
+    ///                     new AliCloud.Ots.Inputs.SearchIndexSchemaFieldSchemaArgs
+    ///                     {
+    ///                         FieldName = "col1",
+    ///                         FieldType = "Text",
+    ///                         IsArray = false,
+    ///                         Index = true,
+    ///                         Analyzer = "Split",
+    ///                         Store = true,
+    ///                     },
+    ///                     new AliCloud.Ots.Inputs.SearchIndexSchemaFieldSchemaArgs
+    ///                     {
+    ///                         FieldName = "col2",
+    ///                         FieldType = "Long",
+    ///                         EnableSortAndAgg = true,
+    ///                     },
+    ///                     new AliCloud.Ots.Inputs.SearchIndexSchemaFieldSchemaArgs
+    ///                     {
+    ///                         FieldName = "pk1",
+    ///                         FieldType = "Long",
+    ///                     },
+    ///                     new AliCloud.Ots.Inputs.SearchIndexSchemaFieldSchemaArgs
+    ///                     {
+    ///                         FieldName = "pk2",
+    ///                         FieldType = "Text",
+    ///                     },
+    ///                 },
+    ///                 IndexSettings = new[]
+    ///                 {
+    ///                     new AliCloud.Ots.Inputs.SearchIndexSchemaIndexSettingArgs
+    ///                     {
+    ///                         RoutingFields = new[]
+    ///                         {
+    ///                             "pk1",
+    ///                             "pk2",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 IndexSorts = new[]
+    ///                 {
+    ///                     new AliCloud.Ots.Inputs.SearchIndexSchemaIndexSortArgs
+    ///                     {
+    ///                         Sorters = new[]
+    ///                         {
+    ///                             new AliCloud.Ots.Inputs.SearchIndexSchemaIndexSortSorterArgs
+    ///                             {
+    ///                                 SorterType = "PrimaryKeySort",
+    ///                                 Order = "Asc",
+    ///                             },
+    ///                             new AliCloud.Ots.Inputs.SearchIndexSchemaIndexSortSorterArgs
+    ///                             {
+    ///                                 SorterType = "FieldSort",
+    ///                                 Order = "Desc",
+    ///                                 FieldName = "col2",
+    ///                                 Mode = "Max",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// OTS search index can be imported using id, e.g.

@@ -21,6 +21,69 @@ import * as utilities from "../utilities";
  *   * A virtual endpoint group refers to the endpoint group that you can create on the Endpoint Group page after you create a listener.
  * * After you create a virtual endpoint group for an HTTP or HTTPS listener, you can create a forwarding rule and associate the forwarding rule with the virtual endpoint group. Then, the HTTP or HTTPS listener forwards requests with different destination domain names or paths to the default or virtual endpoint group based on the forwarding rule. This way, you can use one Global Accelerator (GA) instance to accelerate access to multiple domain names or paths. For more information about how to create a forwarding rule, see [Manage forwarding rules](https://www.alibabacloud.com/help/en/doc-detail/204224.htm).
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const region = config.get("region") || "cn-hangzhou";
+ * const defaultAccelerator = new alicloud.ga.Accelerator("defaultAccelerator", {
+ *     duration: 1,
+ *     autoUseCoupon: true,
+ *     spec: "1",
+ * });
+ * const defaultBandwidthPackage = new alicloud.ga.BandwidthPackage("defaultBandwidthPackage", {
+ *     bandwidth: 100,
+ *     type: "Basic",
+ *     bandwidthType: "Basic",
+ *     paymentType: "PayAsYouGo",
+ *     billingType: "PayBy95",
+ *     ratio: 30,
+ * });
+ * const defaultBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", {
+ *     acceleratorId: defaultAccelerator.id,
+ *     bandwidthPackageId: defaultBandwidthPackage.id,
+ * });
+ * const defaultListener = new alicloud.ga.Listener("defaultListener", {
+ *     acceleratorId: defaultBandwidthPackageAttachment.acceleratorId,
+ *     portRanges: [{
+ *         fromPort: 60,
+ *         toPort: 70,
+ *     }],
+ *     clientAffinity: "SOURCE_IP",
+ *     protocol: "UDP",
+ * });
+ * const defaultEipAddress: alicloud.ecs.EipAddress[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     defaultEipAddress.push(new alicloud.ecs.EipAddress(`defaultEipAddress-${range.value}`, {
+ *         bandwidth: "10",
+ *         internetChargeType: "PayByBandwidth",
+ *         addressName: "terraform-example",
+ *     }));
+ * }
+ * const defaultEndpointGroup = new alicloud.ga.EndpointGroup("defaultEndpointGroup", {
+ *     acceleratorId: defaultAccelerator.id,
+ *     endpointConfigurations: [
+ *         {
+ *             endpoint: defaultEipAddress[0].ipAddress,
+ *             type: "PublicIp",
+ *             weight: 20,
+ *         },
+ *         {
+ *             endpoint: defaultEipAddress[1].ipAddress,
+ *             type: "PublicIp",
+ *             weight: 20,
+ *         },
+ *     ],
+ *     endpointGroupRegion: region,
+ *     listenerId: defaultListener.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Ga Endpoint Group can be imported using the id, e.g.

@@ -27,6 +27,59 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** From version 1.162.0, support for creating professional serverless cluster.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "ask-example";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.1.0.0/21",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "10.1.1.0/24",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const serverless = new alicloud.cs.ServerlessKubernetes("serverless", {
+ *     namePrefix: name,
+ *     vpcId: defaultNetwork.id,
+ *     vswitchIds: [defaultSwitch.id],
+ *     newNatGateway: true,
+ *     endpointPublicAccessEnabled: true,
+ *     deletionProtection: false,
+ *     loadBalancerSpec: "slb.s2.small",
+ *     timeZone: "Asia/Shanghai",
+ *     serviceCidr: "172.21.0.0/20",
+ *     serviceDiscoveryTypes: ["PrivateZone"],
+ *     loggingType: "SLS",
+ *     tags: {
+ *         "k-aa": "v-aa",
+ *         "k-bb": "v-aa",
+ *     },
+ *     addons: [
+ *         {
+ *             name: "alb-ingress-controller",
+ *         },
+ *         {
+ *             name: "metrics-server",
+ *         },
+ *         {
+ *             name: "knative",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Serverless Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.

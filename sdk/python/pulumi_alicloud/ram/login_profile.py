@@ -218,6 +218,23 @@ class LoginProfile(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.0.0+.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        user = alicloud.ram.User("user",
+            display_name="terraform_example",
+            mobile="86-18688888888",
+            email="hello.uuu@aaa.com",
+            comments="terraform_example",
+            force=True)
+        profile = alicloud.ram.LoginProfile("profile",
+            user_name=user.name,
+            password="Example_1234")
+        ```
+
         ## Import
 
         RAM login profile can be imported using the id or user name, e.g.
@@ -243,6 +260,23 @@ class LoginProfile(pulumi.CustomResource):
         Provides a RAM User Login Profile resource.
 
         > **NOTE:** Available since v1.0.0+.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        user = alicloud.ram.User("user",
+            display_name="terraform_example",
+            mobile="86-18688888888",
+            email="hello.uuu@aaa.com",
+            comments="terraform_example",
+            force=True)
+        profile = alicloud.ram.LoginProfile("profile",
+            user_name=user.name,
+            password="Example_1234")
+        ```
 
         ## Import
 

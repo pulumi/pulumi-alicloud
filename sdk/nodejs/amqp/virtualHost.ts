@@ -11,6 +11,29 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.126.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultInstance = new alicloud.amqp.Instance("defaultInstance", {
+ *     instanceType: "professional",
+ *     maxTps: "1000",
+ *     queueCapacity: "50",
+ *     supportEip: true,
+ *     maxEipTps: "128",
+ *     paymentType: "Subscription",
+ *     period: 1,
+ * });
+ * const defaultVirtualHost = new alicloud.amqp.VirtualHost("defaultVirtualHost", {
+ *     instanceId: defaultInstance.id,
+ *     virtualHostName: "tf-example",
+ * });
+ * ```
+ *
  * ## Import
  *
  * RabbitMQ (AMQP) Virtual Host can be imported using the id, e.g.

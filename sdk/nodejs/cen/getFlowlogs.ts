@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides CEN flow logs available to the user.
  *
  * > **NOTE:** Available in 1.78.0+
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.cen.getFlowlogs({
+ *     ids: ["flowlog-tig1xxxxx"],
+ *     nameRegex: "^foo",
+ * });
+ * export const firstCenFlowlogId = data.alicloud_cen_instances["default"].flowlogs[0].id;
+ * ```
  */
 export function getFlowlogs(args?: GetFlowlogsArgs, opts?: pulumi.InvokeOptions): Promise<GetFlowlogsResult> {
     args = args || {};
@@ -109,6 +124,21 @@ export interface GetFlowlogsResult {
  * This data source provides CEN flow logs available to the user.
  *
  * > **NOTE:** Available in 1.78.0+
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.cen.getFlowlogs({
+ *     ids: ["flowlog-tig1xxxxx"],
+ *     nameRegex: "^foo",
+ * });
+ * export const firstCenFlowlogId = data.alicloud_cen_instances["default"].flowlogs[0].id;
+ * ```
  */
 export function getFlowlogsOutput(args?: GetFlowlogsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlowlogsResult> {
     return pulumi.output(args).apply((a: any) => getFlowlogs(a, opts))

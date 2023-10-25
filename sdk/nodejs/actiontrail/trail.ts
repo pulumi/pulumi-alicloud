@@ -13,6 +13,29 @@ import * as utilities from "../utilities";
  * - Deliver events to Log Service: A project is created in Log Service.
  * - Deliver events to OSS: A bucket is created in OSS.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const exampleRegions = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const exampleAccount = alicloud.getAccount({});
+ * const exampleProject = new alicloud.log.Project("exampleProject", {description: "tf actiontrail example"});
+ * const exampleRoles = alicloud.ram.getRoles({
+ *     nameRegex: "AliyunServiceRoleForActionTrail",
+ * });
+ * const exampleTrail = new alicloud.actiontrail.Trail("exampleTrail", {
+ *     trailName: name,
+ *     slsWriteRoleArn: exampleRoles.then(exampleRoles => exampleRoles.roles?.[0]?.arn),
+ *     slsProjectArn: pulumi.all([exampleRegions, exampleAccount, exampleProject.name]).apply(([exampleRegions, exampleAccount, name]) => `acs:log:${exampleRegions.regions?.[0]?.id}:${exampleAccount.id}:project/${name}`),
+ * });
+ * ```
+ *
  * ## Import
  *
  * Action trail can be imported using the id or trail_name, e.g.

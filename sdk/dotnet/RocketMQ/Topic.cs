@@ -16,6 +16,37 @@ namespace Pulumi.AliCloud.RocketMQ
     /// 
     /// &gt; **NOTE:** Available in 1.53.0+
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "onsInstanceName";
+    ///     var topic = config.Get("topic") ?? "onsTopicName";
+    ///     var defaultInstance = new AliCloud.RocketMQ.Instance("defaultInstance", new()
+    ///     {
+    ///         Remark = "default_ons_instance_remark",
+    ///     });
+    /// 
+    ///     var defaultTopic = new AliCloud.RocketMQ.Topic("defaultTopic", new()
+    ///     {
+    ///         TopicName = topic,
+    ///         InstanceId = defaultInstance.Id,
+    ///         MessageType = 0,
+    ///         Remark = "dafault_ons_topic_remark",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ONS TOPIC can be imported using the id, e.g.

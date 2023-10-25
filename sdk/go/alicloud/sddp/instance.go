@@ -21,6 +21,41 @@ import (
 //
 // > **NOTE:** The Data Security Center Instance is not support in the international site.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sddp"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sddp.NewInstance(ctx, "default", &sddp.InstanceArgs{
+//				Dataphin:    pulumi.String("yes"),
+//				PaymentType: pulumi.String("Subscription"),
+//				Period:      pulumi.Int(1),
+//				SdCbool:     pulumi.String("yes"),
+//				Sdc:         pulumi.String("3"),
+//				SddpVersion: pulumi.String("version_company"),
+//				UdCbool:     pulumi.String("yes"),
+//				Udc:         pulumi.String("2000"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Data Security Center Instance can be imported using the id, e.g.

@@ -18,6 +18,38 @@ import (
 //
 // > **NOTE:** Available in v1.140.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewEcsDeploymentSet(ctx, "default", &ecs.EcsDeploymentSetArgs{
+//				DeploymentSetName: pulumi.String("example_value"),
+//				Description:       pulumi.String("example_value"),
+//				Domain:            pulumi.String("Default"),
+//				Granularity:       pulumi.String("Host"),
+//				Strategy:          pulumi.String("Availability"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ECS Deployment Set can be imported using the id, e.g.

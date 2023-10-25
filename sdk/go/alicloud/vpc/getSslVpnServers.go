@@ -13,6 +13,37 @@ import (
 )
 
 // The SSL-VPN servers data source lists lots of SSL-VPN servers resource information owned by an Alicloud account.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vpc.GetSslVpnServers(ctx, &vpc.GetSslVpnServersArgs{
+//				Ids: []string{
+//					"fake-server-id",
+//				},
+//				NameRegex:    pulumi.StringRef("^foo"),
+//				OutputFile:   pulumi.StringRef("/tmp/sslserver"),
+//				VpnGatewayId: pulumi.StringRef("fake-vpn-id"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetSslVpnServers(ctx *pulumi.Context, args *GetSslVpnServersArgs, opts ...pulumi.InvokeOption) (*GetSslVpnServersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSslVpnServersResult

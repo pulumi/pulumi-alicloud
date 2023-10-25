@@ -16,6 +16,38 @@ namespace Pulumi.AliCloud.Eds
     /// 
     /// &gt; **NOTE:** Available since v1.141.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new AliCloud.Eds.SimpleOfficeSite("default", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/12",
+    ///         EnableAdminAccess = false,
+    ///         DesktopAccessType = "Internet",
+    ///         OfficeSiteName = name,
+    ///     });
+    /// 
+    ///     var example = new AliCloud.Eds.NasFileSystem("example", new()
+    ///     {
+    ///         NasFileSystemName = name,
+    ///         OfficeSiteId = @default.Id,
+    ///         Description = name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ECD Nas File System can be imported using the id, e.g.

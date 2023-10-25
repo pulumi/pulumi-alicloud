@@ -10,6 +10,19 @@ import * as utilities from "../utilities";
  * This data source provides the ECS instance type families of Alibaba Cloud.
  *
  * > **NOTE:** Available in 1.54.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.ecs.getInstanceTypeFamilies({
+ *     instanceChargeType: "PrePaid",
+ * });
+ * export const firstInstanceTypeFamilyId = _default.then(_default => _default.families?.[0]?.id);
+ * export const instanceIds = _default.then(_default => _default.ids);
+ * ```
  */
 export function getInstanceTypeFamilies(args?: GetInstanceTypeFamiliesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypeFamiliesResult> {
     args = args || {};
@@ -76,6 +89,19 @@ export interface GetInstanceTypeFamiliesResult {
  * This data source provides the ECS instance type families of Alibaba Cloud.
  *
  * > **NOTE:** Available in 1.54.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.ecs.getInstanceTypeFamilies({
+ *     instanceChargeType: "PrePaid",
+ * });
+ * export const firstInstanceTypeFamilyId = _default.then(_default => _default.families?.[0]?.id);
+ * export const instanceIds = _default.then(_default => _default.ids);
+ * ```
  */
 export function getInstanceTypeFamiliesOutput(args?: GetInstanceTypeFamiliesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTypeFamiliesResult> {
     return pulumi.output(args).apply((a: any) => getInstanceTypeFamilies(a, opts))

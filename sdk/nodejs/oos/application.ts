@@ -11,6 +11,27 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.145.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultApplication = new alicloud.oos.Application("defaultApplication", {
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
+ *     applicationName: name,
+ *     description: name,
+ *     tags: {
+ *         Created: "TF",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * OOS Application can be imported using the id, e.g.

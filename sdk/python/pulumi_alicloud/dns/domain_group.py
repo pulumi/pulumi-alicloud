@@ -187,6 +187,15 @@ class DomainGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.84.0.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.dns.DomainGroup("default", domain_group_name="tf-example")
+        ```
+
         ## Import
 
         Alidns domain group can be imported using the id, e.g.
@@ -211,6 +220,15 @@ class DomainGroup(pulumi.CustomResource):
         Provides a Alidns Domain Group resource. For information about Alidns Domain Group and how to use it, see [What is Resource Alidns Domain Group](https://www.alibabacloud.com/help/en/doc-detail/29762.htm).
 
         > **NOTE:** Available since v1.84.0.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.dns.DomainGroup("default", domain_group_name="tf-example")
+        ```
 
         ## Import
 

@@ -15,6 +15,51 @@ import (
 // This data source provides the Vpc Bgp Networks of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.153.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := vpc.GetBgpNetworks(ctx, &vpc.GetBgpNetworksArgs{
+//				Ids: []string{
+//					"example_value",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcBgpNetworkId1", ids.Networks[0].Id)
+//			routerId, err := vpc.GetBgpNetworks(ctx, &vpc.GetBgpNetworksArgs{
+//				RouterId: pulumi.StringRef("example_value"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcBgpNetworkId2", routerId.Networks[0].Id)
+//			status, err := vpc.GetBgpNetworks(ctx, &vpc.GetBgpNetworksArgs{
+//				Status: pulumi.StringRef("Available"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcBgpNetworkId3", status.Networks[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetBgpNetworks(ctx *pulumi.Context, args *GetBgpNetworksArgs, opts ...pulumi.InvokeOption) (*GetBgpNetworksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBgpNetworksResult

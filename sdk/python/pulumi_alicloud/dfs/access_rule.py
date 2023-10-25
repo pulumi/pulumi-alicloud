@@ -279,6 +279,30 @@ class AccessRule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.140.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "example_name"
+        default_access_group = alicloud.dfs.AccessGroup("defaultAccessGroup",
+            network_type="VPC",
+            access_group_name=name,
+            description=name)
+        default_access_rule = alicloud.dfs.AccessRule("defaultAccessRule",
+            network_segment="192.0.2.0/24",
+            access_group_id=default_access_group.id,
+            description=name,
+            rw_access_type="RDWR",
+            priority=10)
+        ```
+
         ## Import
 
         DFS Access Rule can be imported using the id, e.g.
@@ -307,6 +331,30 @@ class AccessRule(pulumi.CustomResource):
         For information about DFS Access Rule and how to use it, see [What is Access Rule](https://www.alibabacloud.com/help/doc-detail/207144.htm).
 
         > **NOTE:** Available since v1.140.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "example_name"
+        default_access_group = alicloud.dfs.AccessGroup("defaultAccessGroup",
+            network_type="VPC",
+            access_group_name=name,
+            description=name)
+        default_access_rule = alicloud.dfs.AccessRule("defaultAccessRule",
+            network_segment="192.0.2.0/24",
+            access_group_id=default_access_group.id,
+            description=name,
+            rw_access_type="RDWR",
+            priority=10)
+        ```
 
         ## Import
 

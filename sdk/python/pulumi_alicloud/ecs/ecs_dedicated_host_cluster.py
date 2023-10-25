@@ -256,6 +256,25 @@ class EcsDedicatedHostCluster(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.146.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_zones = alicloud.get_zones()
+        example_ecs_dedicated_host_cluster = alicloud.ecs.EcsDedicatedHostCluster("exampleEcsDedicatedHostCluster",
+            dedicated_host_cluster_name="example_value",
+            description="example_value",
+            zone_id=example_zones.zones[0].id,
+            tags={
+                "Create": "TF",
+                "For": "DDH_Cluster_Test",
+            })
+        ```
+
         ## Import
 
         ECS Dedicated Host Cluster can be imported using the id, e.g.
@@ -284,6 +303,25 @@ class EcsDedicatedHostCluster(pulumi.CustomResource):
         For information about ECS Dedicated Host Cluster and how to use it, see [What is Dedicated Host Cluster](https://www.alibabacloud.com/help/en/doc-detail/184667.html).
 
         > **NOTE:** Available in v1.146.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_zones = alicloud.get_zones()
+        example_ecs_dedicated_host_cluster = alicloud.ecs.EcsDedicatedHostCluster("exampleEcsDedicatedHostCluster",
+            dedicated_host_cluster_name="example_value",
+            description="example_value",
+            zone_id=example_zones.zones[0].id,
+            tags={
+                "Create": "TF",
+                "For": "DDH_Cluster_Test",
+            })
+        ```
 
         ## Import
 

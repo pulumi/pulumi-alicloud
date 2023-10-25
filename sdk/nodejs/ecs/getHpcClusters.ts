@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides the Ecs Hpc Clusters of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.116.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.ecs.getHpcClusters({
+ *     ids: ["hpc-bp1i09xxxxxxxx"],
+ *     nameRegex: "tf-testAcc",
+ * });
+ * export const firstEcsHpcClusterId = example.then(example => example.clusters?.[0]?.id);
+ * ```
  */
 export function getHpcClusters(args?: GetHpcClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetHpcClustersResult> {
     args = args || {};
@@ -58,6 +73,21 @@ export interface GetHpcClustersResult {
  * This data source provides the Ecs Hpc Clusters of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.116.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.ecs.getHpcClusters({
+ *     ids: ["hpc-bp1i09xxxxxxxx"],
+ *     nameRegex: "tf-testAcc",
+ * });
+ * export const firstEcsHpcClusterId = example.then(example => example.clusters?.[0]?.id);
+ * ```
  */
 export function getHpcClustersOutput(args?: GetHpcClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHpcClustersResult> {
     return pulumi.output(args).apply((a: any) => getHpcClusters(a, opts))

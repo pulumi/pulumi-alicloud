@@ -75,6 +75,16 @@ def get_configuration_recorders(output_file: Optional[str] = None,
 
     > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cfg.get_configuration_recorders()
+    pulumi.export("listOfResourceTypes", data["alicloud_config_configuration_recorders"]["this"]["recorders"][0]["resource_types"])
+    ```
+
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
@@ -98,6 +108,16 @@ def get_configuration_recorders_output(output_file: Optional[pulumi.Input[Option
     > **NOTE:**  Available in 1.99.0+.
 
     > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cfg.get_configuration_recorders()
+    pulumi.export("listOfResourceTypes", data["alicloud_config_configuration_recorders"]["this"]["recorders"][0]["resource_types"])
+    ```
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

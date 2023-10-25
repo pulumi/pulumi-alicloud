@@ -477,6 +477,29 @@ class AlidnsRecord(pulumi.CustomResource):
 
         > **NOTE:** When the site is an international site, the `type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_domain_group = alicloud.dns.DomainGroup("defaultDomainGroup", domain_group_name="tf-example")
+        default_alidns_domain = alicloud.dns.AlidnsDomain("defaultAlidnsDomain",
+            domain_name="starmove.com",
+            group_id=default_domain_group.id,
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        record = alicloud.dns.AlidnsRecord("record",
+            domain_name=default_alidns_domain.domain_name,
+            rr="alimail",
+            type="CNAME",
+            value="mail.mxhichin.com",
+            remark="tf-example",
+            status="ENABLE")
+        ```
+
         ## Import
 
         Alidns Domain Record can be imported using the id, e.g.
@@ -511,6 +534,29 @@ class AlidnsRecord(pulumi.CustomResource):
         > **NOTE:** Available since v1.85.0.
 
         > **NOTE:** When the site is an international site, the `type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_domain_group = alicloud.dns.DomainGroup("defaultDomainGroup", domain_group_name="tf-example")
+        default_alidns_domain = alicloud.dns.AlidnsDomain("defaultAlidnsDomain",
+            domain_name="starmove.com",
+            group_id=default_domain_group.id,
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        record = alicloud.dns.AlidnsRecord("record",
+            domain_name=default_alidns_domain.domain_name,
+            rr="alimail",
+            type="CNAME",
+            value="mail.mxhichin.com",
+            remark="tf-example",
+            status="ENABLE")
+        ```
 
         ## Import
 

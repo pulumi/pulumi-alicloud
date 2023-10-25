@@ -15,6 +15,43 @@ namespace Pulumi.AliCloud.Ecs
         /// This data source provides the Ecs Image Components of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.159.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Ecs.GetEcsImageComponents.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Ecs.GetEcsImageComponents.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-ImageComponent",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecsImageComponentId1"] = ids.Apply(getEcsImageComponentsResult =&gt; getEcsImageComponentsResult.Components[0]?.Id),
+        ///         ["ecsImageComponentId2"] = nameRegex.Apply(getEcsImageComponentsResult =&gt; getEcsImageComponentsResult.Components[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetEcsImageComponentsResult> InvokeAsync(GetEcsImageComponentsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEcsImageComponentsResult>("alicloud:ecs/getEcsImageComponents:getEcsImageComponents", args ?? new GetEcsImageComponentsArgs(), options.WithDefaults());
@@ -23,6 +60,43 @@ namespace Pulumi.AliCloud.Ecs
         /// This data source provides the Ecs Image Components of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.159.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Ecs.GetEcsImageComponents.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Ecs.GetEcsImageComponents.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-ImageComponent",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecsImageComponentId1"] = ids.Apply(getEcsImageComponentsResult =&gt; getEcsImageComponentsResult.Components[0]?.Id),
+        ///         ["ecsImageComponentId2"] = nameRegex.Apply(getEcsImageComponentsResult =&gt; getEcsImageComponentsResult.Components[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetEcsImageComponentsResult> Invoke(GetEcsImageComponentsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEcsImageComponentsResult>("alicloud:ecs/getEcsImageComponents:getEcsImageComponents", args ?? new GetEcsImageComponentsInvokeArgs(), options.WithDefaults());

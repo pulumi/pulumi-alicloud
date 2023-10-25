@@ -11,6 +11,32 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.153.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const exampleDhcpOptionsSet = new alicloud.vpc.DhcpOptionsSet("exampleDhcpOptionsSet", {
+ *     dhcpOptionsSetName: name,
+ *     dhcpOptionsSetDescription: name,
+ *     domainName: "example.com",
+ *     domainNameServers: "100.100.2.136",
+ * });
+ * const exampleDhcpOptionsSetAttachment = new alicloud.vpc.DhcpOptionsSetAttachment("exampleDhcpOptionsSetAttachment", {
+ *     vpcId: exampleNetwork.id,
+ *     dhcpOptionsSetId: exampleDhcpOptionsSet.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * VPC Dhcp Options Set Attachment can be imported using the id, e.g.

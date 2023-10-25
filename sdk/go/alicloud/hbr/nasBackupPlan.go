@@ -19,6 +19,58 @@ import (
 //
 // > **NOTE:** Available in v1.132.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultVault, err := hbr.NewVault(ctx, "defaultVault", &hbr.VaultArgs{
+//				VaultName: pulumi.String("terraform-example2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultFileSystem, err := nas.NewFileSystem(ctx, "defaultFileSystem", &nas.FileSystemArgs{
+//				ProtocolType: pulumi.String("NFS"),
+//				StorageType:  pulumi.String("Performance"),
+//				Description:  pulumi.String("terraform-example"),
+//				EncryptType:  pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = hbr.NewNasBackupPlan(ctx, "defaultNasBackupPlan", &hbr.NasBackupPlanArgs{
+//				NasBackupPlanName: pulumi.String("terraform-example"),
+//				FileSystemId:      defaultFileSystem.ID(),
+//				Schedule:          pulumi.String("I|1602673264|PT2H"),
+//				BackupType:        pulumi.String("COMPLETE"),
+//				VaultId:           defaultVault.ID(),
+//				Retention:         pulumi.String("2"),
+//				Paths: pulumi.StringArray{
+//					pulumi.String("/"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // HBR Nas Backup Plan can be imported using the id, e.g.

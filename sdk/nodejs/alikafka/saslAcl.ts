@@ -12,6 +12,62 @@ import * as utilities from "../utilities";
  * > **NOTE:**  Only the following regions support create alikafka sasl user.
  * [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
+ * const defaultInstance = new alicloud.alikafka.Instance("defaultInstance", {
+ *     partitionNum: 50,
+ *     diskType: 1,
+ *     diskSize: 500,
+ *     deployType: 5,
+ *     ioMax: 20,
+ *     specType: "professional",
+ *     serviceVersion: "2.2.0",
+ *     config: "{\"enable.acl\":\"true\"}",
+ *     vswitchId: defaultSwitch.id,
+ *     securityGroup: defaultSecurityGroup.id,
+ * });
+ * const defaultTopic = new alicloud.alikafka.Topic("defaultTopic", {
+ *     instanceId: defaultInstance.id,
+ *     topic: "example-topic",
+ *     remark: "topic-remark",
+ * });
+ * const defaultSaslUser = new alicloud.alikafka.SaslUser("defaultSaslUser", {
+ *     instanceId: defaultInstance.id,
+ *     username: name,
+ *     password: "tf_example123",
+ * });
+ * const defaultSaslAcl = new alicloud.alikafka.SaslAcl("defaultSaslAcl", {
+ *     instanceId: defaultInstance.id,
+ *     username: defaultSaslUser.username,
+ *     aclResourceType: "Topic",
+ *     aclResourceName: defaultTopic.topic,
+ *     aclResourcePatternType: "LITERAL",
+ *     aclOperationType: "Write",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ALIKAFKA GROUP can be imported using the id, e.g.

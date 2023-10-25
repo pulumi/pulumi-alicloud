@@ -746,6 +746,64 @@ class EndpointGroup(pulumi.CustomResource):
           * A virtual endpoint group refers to the endpoint group that you can create on the Endpoint Group page after you create a listener.
         * After you create a virtual endpoint group for an HTTP or HTTPS listener, you can create a forwarding rule and associate the forwarding rule with the virtual endpoint group. Then, the HTTP or HTTPS listener forwards requests with different destination domain names or paths to the default or virtual endpoint group based on the forwarding rule. This way, you can use one Global Accelerator (GA) instance to accelerate access to multiple domain names or paths. For more information about how to create a forwarding rule, see [Manage forwarding rules](https://www.alibabacloud.com/help/en/doc-detail/204224.htm).
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
+            duration=1,
+            auto_use_coupon=True,
+            spec="1")
+        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
+            bandwidth=100,
+            type="Basic",
+            bandwidth_type="Basic",
+            payment_type="PayAsYouGo",
+            billing_type="PayBy95",
+            ratio=30)
+        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
+            accelerator_id=default_accelerator.id,
+            bandwidth_package_id=default_bandwidth_package.id)
+        default_listener = alicloud.ga.Listener("defaultListener",
+            accelerator_id=default_bandwidth_package_attachment.accelerator_id,
+            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
+                from_port=60,
+                to_port=70,
+            )],
+            client_affinity="SOURCE_IP",
+            protocol="UDP")
+        default_eip_address = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            default_eip_address.append(alicloud.ecs.EipAddress(f"defaultEipAddress-{range['value']}",
+                bandwidth="10",
+                internet_charge_type="PayByBandwidth",
+                address_name="terraform-example"))
+        default_endpoint_group = alicloud.ga.EndpointGroup("defaultEndpointGroup",
+            accelerator_id=default_accelerator.id,
+            endpoint_configurations=[
+                alicloud.ga.EndpointGroupEndpointConfigurationArgs(
+                    endpoint=default_eip_address[0].ip_address,
+                    type="PublicIp",
+                    weight=20,
+                ),
+                alicloud.ga.EndpointGroupEndpointConfigurationArgs(
+                    endpoint=default_eip_address[1].ip_address,
+                    type="PublicIp",
+                    weight=20,
+                ),
+            ],
+            endpoint_group_region=region,
+            listener_id=default_listener.id)
+        ```
+
         ## Import
 
         Ga Endpoint Group can be imported using the id, e.g.
@@ -796,6 +854,64 @@ class EndpointGroup(pulumi.CustomResource):
           * A default endpoint group refers to the endpoint group that you configure when you create an HTTP or HTTPS listener.
           * A virtual endpoint group refers to the endpoint group that you can create on the Endpoint Group page after you create a listener.
         * After you create a virtual endpoint group for an HTTP or HTTPS listener, you can create a forwarding rule and associate the forwarding rule with the virtual endpoint group. Then, the HTTP or HTTPS listener forwards requests with different destination domain names or paths to the default or virtual endpoint group based on the forwarding rule. This way, you can use one Global Accelerator (GA) instance to accelerate access to multiple domain names or paths. For more information about how to create a forwarding rule, see [Manage forwarding rules](https://www.alibabacloud.com/help/en/doc-detail/204224.htm).
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
+            duration=1,
+            auto_use_coupon=True,
+            spec="1")
+        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
+            bandwidth=100,
+            type="Basic",
+            bandwidth_type="Basic",
+            payment_type="PayAsYouGo",
+            billing_type="PayBy95",
+            ratio=30)
+        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
+            accelerator_id=default_accelerator.id,
+            bandwidth_package_id=default_bandwidth_package.id)
+        default_listener = alicloud.ga.Listener("defaultListener",
+            accelerator_id=default_bandwidth_package_attachment.accelerator_id,
+            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
+                from_port=60,
+                to_port=70,
+            )],
+            client_affinity="SOURCE_IP",
+            protocol="UDP")
+        default_eip_address = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            default_eip_address.append(alicloud.ecs.EipAddress(f"defaultEipAddress-{range['value']}",
+                bandwidth="10",
+                internet_charge_type="PayByBandwidth",
+                address_name="terraform-example"))
+        default_endpoint_group = alicloud.ga.EndpointGroup("defaultEndpointGroup",
+            accelerator_id=default_accelerator.id,
+            endpoint_configurations=[
+                alicloud.ga.EndpointGroupEndpointConfigurationArgs(
+                    endpoint=default_eip_address[0].ip_address,
+                    type="PublicIp",
+                    weight=20,
+                ),
+                alicloud.ga.EndpointGroupEndpointConfigurationArgs(
+                    endpoint=default_eip_address[1].ip_address,
+                    type="PublicIp",
+                    weight=20,
+                ),
+            ],
+            endpoint_group_region=region,
+            listener_id=default_listener.id)
+        ```
 
         ## Import
 

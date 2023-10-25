@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides the Ens Key Pairs of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.133.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const nameRegex = alicloud.ens.getKeyPairs({
+ *     version: "example_value",
+ *     nameRegex: "^my-KeyPair",
+ * });
+ * export const ensKeyPairId1 = nameRegex.then(nameRegex => nameRegex.pairs?.[0]?.id);
+ * ```
  */
 export function getKeyPairs(args: GetKeyPairsArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyPairsResult> {
 
@@ -64,6 +79,21 @@ export interface GetKeyPairsResult {
  * This data source provides the Ens Key Pairs of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.133.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const nameRegex = alicloud.ens.getKeyPairs({
+ *     version: "example_value",
+ *     nameRegex: "^my-KeyPair",
+ * });
+ * export const ensKeyPairId1 = nameRegex.then(nameRegex => nameRegex.pairs?.[0]?.id);
+ * ```
  */
 export function getKeyPairsOutput(args: GetKeyPairsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyPairsResult> {
     return pulumi.output(args).apply((a: any) => getKeyPairs(a, opts))

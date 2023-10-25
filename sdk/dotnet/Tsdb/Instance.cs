@@ -16,6 +16,45 @@ namespace Pulumi.AliCloud.Tsdb
     /// 
     /// &gt; **NOTE:** Available in v1.112.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZones = AliCloud.Tsdb.GetZones.Invoke();
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     {
+    ///         CidrBlock = "192.168.0.0/16",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
+    ///     {
+    ///         AvailabilityZone = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///         CidrBlock = "192.168.1.0/24",
+    ///         VpcId = exampleNetwork.Id,
+    ///     });
+    /// 
+    ///     var exampleInstance = new AliCloud.Tsdb.Instance("exampleInstance", new()
+    ///     {
+    ///         PaymentType = "PayAsYouGo",
+    ///         VswitchId = exampleSwitch.Id,
+    ///         InstanceStorage = "50",
+    ///         InstanceClass = "tsdb.1x.basic",
+    ///         EngineType = "tsdb_tsdb",
+    ///         InstanceAlias = "tf-testaccTsdbInstance",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// TSDB Instance can be imported using the id, e.g.

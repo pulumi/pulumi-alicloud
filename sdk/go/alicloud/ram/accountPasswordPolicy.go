@@ -12,6 +12,65 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// ## Example Usage
+//
+// Empty resource sets defaults values for every property.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ram.NewAccountPasswordPolicy(ctx, "default", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ram.NewAccountPasswordPolicy(ctx, "corporate", &ram.AccountPasswordPolicyArgs{
+//				HardExpiry:                 pulumi.Bool(true),
+//				MaxLoginAttempts:           pulumi.Int(3),
+//				MaxPasswordAge:             pulumi.Int(12),
+//				MinimumPasswordLength:      pulumi.Int(9),
+//				PasswordReusePrevention:    pulumi.Int(5),
+//				RequireLowercaseCharacters: pulumi.Bool(false),
+//				RequireNumbers:             pulumi.Bool(false),
+//				RequireSymbols:             pulumi.Bool(false),
+//				RequireUppercaseCharacters: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// For not specified values sets defaults.
+//
 // ## Import
 //
 // RAM account password policy can be imported using the `id`, e.g. bash

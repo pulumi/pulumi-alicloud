@@ -130,6 +130,17 @@ def get_repos(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.35.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    my_repos = alicloud.cr.get_repos(name_regex="my-repos",
+        output_file="my-repo-json")
+    pulumi.export("output", my_repos.repos)
+    ```
+
 
     :param bool enable_details: Boolean, false by default, only repository attributes are exported. Set to true if domain list and tags belong to this repository are needed. See `tags` in attributes.
     :param str name_regex: A regex string to filter results by repository name.
@@ -165,6 +176,17 @@ def get_repos_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = No
     This data source provides a list Container Registry repositories on Alibaba Cloud.
 
     > **NOTE:** Available in v1.35.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    my_repos = alicloud.cr.get_repos(name_regex="my-repos",
+        output_file="my-repo-json")
+    pulumi.export("output", my_repos.repos)
+    ```
 
 
     :param bool enable_details: Boolean, false by default, only repository attributes are exported. Set to true if domain list and tags belong to this repository are needed. See `tags` in attributes.

@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides the Quotas Quota Alarms of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.116.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.quotas.getQuotaAlarms({
+ *     ids: ["5VR90-421F886-81E9-xxx"],
+ *     nameRegex: "tf-testAcc",
+ * });
+ * export const firstQuotasQuotaAlarmId = example.then(example => example.alarms?.[0]?.id);
+ * ```
  */
 export function getQuotaAlarms(args?: GetQuotaAlarmsArgs, opts?: pulumi.InvokeOptions): Promise<GetQuotaAlarmsResult> {
     args = args || {};
@@ -88,6 +103,21 @@ export interface GetQuotaAlarmsResult {
  * This data source provides the Quotas Quota Alarms of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.116.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.quotas.getQuotaAlarms({
+ *     ids: ["5VR90-421F886-81E9-xxx"],
+ *     nameRegex: "tf-testAcc",
+ * });
+ * export const firstQuotasQuotaAlarmId = example.then(example => example.alarms?.[0]?.id);
+ * ```
  */
 export function getQuotaAlarmsOutput(args?: GetQuotaAlarmsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQuotaAlarmsResult> {
     return pulumi.output(args).apply((a: any) => getQuotaAlarms(a, opts))

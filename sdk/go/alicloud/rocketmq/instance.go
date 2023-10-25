@@ -20,6 +20,35 @@ import (
 //
 // > **NOTE:** Available in 1.51.0+
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rocketmq.NewInstance(ctx, "example", &rocketmq.InstanceArgs{
+//				InstanceName: pulumi.String("tf-example-ons-instance"),
+//				Remark:       pulumi.String("tf-example-ons-instance-remark"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ONS INSTANCE can be imported using the id, e.g.

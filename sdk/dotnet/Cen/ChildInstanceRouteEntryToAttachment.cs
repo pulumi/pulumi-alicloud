@@ -16,6 +16,100 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// &gt; **NOTE:** Available since v1.195.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.Cen.GetTransitRouterAvailableResources.Invoke();
+    /// 
+    ///     var masterZone = @default.Apply(@default =&gt; @default.Apply(getTransitRouterAvailableResourcesResult =&gt; getTransitRouterAvailableResourcesResult.Resources[0]?.MasterZones[0]));
+    /// 
+    ///     var slaveZone = @default.Apply(@default =&gt; @default.Apply(getTransitRouterAvailableResourcesResult =&gt; getTransitRouterAvailableResourcesResult.Resources[0]?.SlaveZones[1]));
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "192.168.0.0/16",
+    ///     });
+    /// 
+    ///     var exampleMaster = new AliCloud.Vpc.Switch("exampleMaster", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "192.168.1.0/24",
+    ///         VpcId = exampleNetwork.Id,
+    ///         ZoneId = masterZone,
+    ///     });
+    /// 
+    ///     var exampleSlave = new AliCloud.Vpc.Switch("exampleSlave", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "192.168.2.0/24",
+    ///         VpcId = exampleNetwork.Id,
+    ///         ZoneId = slaveZone,
+    ///     });
+    /// 
+    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
+    ///     {
+    ///         CenInstanceName = name,
+    ///         ProtectionLevel = "REDUCED",
+    ///     });
+    /// 
+    ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("exampleTransitRouter", new()
+    ///     {
+    ///         TransitRouterName = name,
+    ///         CenId = exampleInstance.Id,
+    ///     });
+    /// 
+    ///     var exampleTransitRouterVpcAttachment = new AliCloud.Cen.TransitRouterVpcAttachment("exampleTransitRouterVpcAttachment", new()
+    ///     {
+    ///         CenId = exampleInstance.Id,
+    ///         TransitRouterId = exampleTransitRouter.TransitRouterId,
+    ///         VpcId = exampleNetwork.Id,
+    ///         ZoneMappings = new[]
+    ///         {
+    ///             new AliCloud.Cen.Inputs.TransitRouterVpcAttachmentZoneMappingArgs
+    ///             {
+    ///                 ZoneId = masterZone,
+    ///                 VswitchId = exampleMaster.Id,
+    ///             },
+    ///             new AliCloud.Cen.Inputs.TransitRouterVpcAttachmentZoneMappingArgs
+    ///             {
+    ///                 ZoneId = slaveZone,
+    ///                 VswitchId = exampleSlave.Id,
+    ///             },
+    ///         },
+    ///         TransitRouterAttachmentName = name,
+    ///         TransitRouterAttachmentDescription = name,
+    ///     });
+    /// 
+    ///     var exampleRouteTable = new AliCloud.Vpc.RouteTable("exampleRouteTable", new()
+    ///     {
+    ///         VpcId = exampleNetwork.Id,
+    ///         RouteTableName = name,
+    ///         Description = name,
+    ///     });
+    /// 
+    ///     var exampleChildInstanceRouteEntryToAttachment = new AliCloud.Cen.ChildInstanceRouteEntryToAttachment("exampleChildInstanceRouteEntryToAttachment", new()
+    ///     {
+    ///         TransitRouterAttachmentId = exampleTransitRouterVpcAttachment.TransitRouterAttachmentId,
+    ///         CenId = exampleInstance.Id,
+    ///         DestinationCidrBlock = "10.0.0.0/24",
+    ///         ChildInstanceRouteTableId = exampleRouteTable.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Cen Child Instance Route Entry To Attachment can be imported using the id, e.g.

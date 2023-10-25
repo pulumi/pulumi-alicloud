@@ -91,6 +91,23 @@ def get_server_backup_plans(filters: Optional[Sequence[pulumi.InputType['GetServ
 
     > **NOTE:** Available in v1.142.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.ecs.get_instances(name_regex="no-deleteing-hbr-ecs-server-backup-plan",
+        status="Running")
+    ids = alicloud.hbr.get_server_backup_plans(filters=[alicloud.hbr.GetServerBackupPlansFilterArgs(
+        key="instanceId",
+        values=[default.instances[0].id],
+    )])
+    pulumi.export("hbrServerBackupPlanId1", ids.plans[0].id)
+    ```
+
 
     :param Sequence[pulumi.InputType['GetServerBackupPlansFilterArgs']] filters: The filters.
     :param Sequence[str] ids: A list of Server Backup Plan IDs.
@@ -120,6 +137,23 @@ def get_server_backup_plans_output(filters: Optional[pulumi.Input[Optional[Seque
     This data source provides the Hbr Server Backup Plans of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.142.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.ecs.get_instances(name_regex="no-deleteing-hbr-ecs-server-backup-plan",
+        status="Running")
+    ids = alicloud.hbr.get_server_backup_plans(filters=[alicloud.hbr.GetServerBackupPlansFilterArgs(
+        key="instanceId",
+        values=[default.instances[0].id],
+    )])
+    pulumi.export("hbrServerBackupPlanId1", ids.plans[0].id)
+    ```
 
 
     :param Sequence[pulumi.InputType['GetServerBackupPlansFilterArgs']] filters: The filters.

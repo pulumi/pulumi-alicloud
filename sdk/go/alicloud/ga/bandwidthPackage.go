@@ -21,6 +21,39 @@ import (
 //
 // > **NOTE:** Available since v1.112.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ga.NewBandwidthPackage(ctx, "example", &ga.BandwidthPackageArgs{
+//				AutoPay:       pulumi.Bool(true),
+//				Bandwidth:     pulumi.Int(20),
+//				BandwidthType: pulumi.String("Basic"),
+//				Duration:      pulumi.String("1"),
+//				Ratio:         pulumi.Int(30),
+//				Type:          pulumi.String("Basic"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Ga Bandwidth Package can be imported using the id, e.g.

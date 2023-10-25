@@ -16,6 +16,49 @@ namespace Pulumi.AliCloud.Vod
     /// 
     /// &gt; **NOTE:** Available since v1.187.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tfexample";
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
+    ///     {
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var example = new AliCloud.Vod.EditingProject("example", new()
+    ///     {
+    ///         EditingProjectName = name,
+    ///         Title = name,
+    ///         Timeline = @"  {
+    ///     ""VideoTracks"":[
+    ///       {
+    ///         ""VideoTrackClips"":[
+    ///           {
+    ///           ""MediaId"":""0c60e6f02dae71edbfaa472190a90102"",
+    ///           ""In"":2811
+    ///           }
+    ///         ]
+    ///       }
+    ///     ]
+    ///   }
+    /// ",
+    ///         CoverUrl = "https://demo.aliyundoc.com/6AB4D0E1E1C74468883516C2349D1FC2-6-2.png",
+    ///         Division = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// VOD Editing Project can be imported using the id, e.g.

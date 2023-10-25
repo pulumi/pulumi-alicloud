@@ -296,6 +296,19 @@ class Handshake(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.82.0+.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Add a Resource Manager handshake.
+        example = alicloud.resourcemanager.Handshake("example",
+            note="test resource manager handshake",
+            target_entity="1182775234******",
+            target_type="Account")
+        ```
+
         ## Import
 
         Resource Manager handshake can be imported using the id, e.g.
@@ -321,6 +334,19 @@ class Handshake(pulumi.CustomResource):
         For information about Resource Manager handshake and how to use it, see [What is Resource Manager handshake](https://www.alibabacloud.com/help/en/doc-detail/135287.htm).
 
         > **NOTE:** Available in v1.82.0+.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Add a Resource Manager handshake.
+        example = alicloud.resourcemanager.Handshake("example",
+            note="test resource manager handshake",
+            target_entity="1182775234******",
+            target_type="Account")
+        ```
 
         ## Import
 

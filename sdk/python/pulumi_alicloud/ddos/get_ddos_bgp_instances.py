@@ -108,6 +108,16 @@ def get_ddos_bgp_instances(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in 1.183.0+ .
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    instance_ddos_bgp_instances = alicloud.ddos.get_ddos_bgp_instances(name_regex="^ddosbgp")
+    pulumi.export("instance", [__item["id"] for __item in alicloud_ddosbgp_instances["instance"]])
+    ```
+
 
     :param Sequence[str] ids: A list of instance IDs.
     :param str name_regex: A regex string to filter results by the instance name.
@@ -138,6 +148,16 @@ def get_ddos_bgp_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     This data source provides a list of Anti-DDoS Advanced instances in an Alibaba Cloud account according to the specified filters.
 
     > **NOTE:** Available in 1.183.0+ .
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    instance_ddos_bgp_instances = alicloud.ddos.get_ddos_bgp_instances(name_regex="^ddosbgp")
+    pulumi.export("instance", [__item["id"] for __item in alicloud_ddosbgp_instances["instance"]])
+    ```
 
 
     :param Sequence[str] ids: A list of instance IDs.

@@ -10,6 +10,25 @@ import * as utilities from "../utilities";
  * This data source provides the Api Gateway Models of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.187.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.apigateway.getModels({
+ *     ids: ["example_id"],
+ *     groupId: "example_group_id",
+ * });
+ * export const apiGatewayModelId1 = ids.then(ids => ids.models?.[0]?.id);
+ * const groupId = alicloud.apigateway.getModels({
+ *     groupId: "example_group_id",
+ * });
+ * export const apiGatewayModelId2 = groupId.then(groupId => groupId.models?.[0]?.id);
+ * ```
  */
 export function getModels(args: GetModelsArgs, opts?: pulumi.InvokeOptions): Promise<GetModelsResult> {
 
@@ -87,6 +106,25 @@ export interface GetModelsResult {
  * This data source provides the Api Gateway Models of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.187.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.apigateway.getModels({
+ *     ids: ["example_id"],
+ *     groupId: "example_group_id",
+ * });
+ * export const apiGatewayModelId1 = ids.then(ids => ids.models?.[0]?.id);
+ * const groupId = alicloud.apigateway.getModels({
+ *     groupId: "example_group_id",
+ * });
+ * export const apiGatewayModelId2 = groupId.then(groupId => groupId.models?.[0]?.id);
+ * ```
  */
 export function getModelsOutput(args: GetModelsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetModelsResult> {
     return pulumi.output(args).apply((a: any) => getModels(a, opts))

@@ -13,6 +13,40 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Ensure that at least one VPC in the selected region is attached to the CEN instance.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: "tf_example",
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ *     cenInstanceName: "tf_example",
+ *     description: "an example for cen",
+ * });
+ * const exampleInstanceAttachment = new alicloud.cen.InstanceAttachment("exampleInstanceAttachment", {
+ *     instanceId: exampleInstance.id,
+ *     childInstanceId: exampleNetwork.id,
+ *     childInstanceType: "VPC",
+ *     childInstanceRegionId: _default.then(_default => _default.regions?.[0]?.id),
+ * });
+ * const exampleRouteService = new alicloud.cen.RouteService("exampleRouteService", {
+ *     accessRegionId: _default.then(_default => _default.regions?.[0]?.id),
+ *     hostRegionId: _default.then(_default => _default.regions?.[0]?.id),
+ *     hostVpcId: exampleNetwork.id,
+ *     cenId: exampleInstanceAttachment.instanceId,
+ *     host: "100.118.28.52/32",
+ * });
+ * ```
+ *
  * ## Import
  *
  * CEN Route Service can be imported using the id, e.g.

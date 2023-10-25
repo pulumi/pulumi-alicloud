@@ -10,6 +10,19 @@ import * as utilities from "../utilities";
  * This data source provides a list of Alidns Domains in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:**  Available in 1.95.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const domainsDs = alicloud.dns.getAlidnsDomains({
+ *     domainNameRegex: "^hegu",
+ *     outputFile: "domains.txt",
+ * });
+ * export const firstDomainId = domainsDs.then(domainsDs => domainsDs.domains?.[0]?.domainId);
+ * ```
  */
 export function getAlidnsDomains(args?: GetAlidnsDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetAlidnsDomainsResult> {
     args = args || {};
@@ -151,6 +164,19 @@ export interface GetAlidnsDomainsResult {
  * This data source provides a list of Alidns Domains in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:**  Available in 1.95.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const domainsDs = alicloud.dns.getAlidnsDomains({
+ *     domainNameRegex: "^hegu",
+ *     outputFile: "domains.txt",
+ * });
+ * export const firstDomainId = domainsDs.then(domainsDs => domainsDs.domains?.[0]?.domainId);
+ * ```
  */
 export function getAlidnsDomainsOutput(args?: GetAlidnsDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlidnsDomainsResult> {
     return pulumi.output(args).apply((a: any) => getAlidnsDomains(a, opts))

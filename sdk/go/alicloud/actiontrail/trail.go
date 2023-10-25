@@ -20,6 +20,69 @@ import (
 // - Deliver events to Log Service: A project is created in Log Service.
 // - Deliver events to OSS: A bucket is created in OSS.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			exampleRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
+//				Description: pulumi.String("tf actiontrail example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleRoles, err := ram.GetRoles(ctx, &ram.GetRolesArgs{
+//				NameRegex: pulumi.StringRef("AliyunServiceRoleForActionTrail"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = actiontrail.NewTrail(ctx, "exampleTrail", &actiontrail.TrailArgs{
+//				TrailName:       pulumi.String(name),
+//				SlsWriteRoleArn: *pulumi.String(exampleRoles.Roles[0].Arn),
+//				SlsProjectArn: exampleProject.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("acs:log:%v:%v:project/%v", exampleRegions.Regions[0].Id, exampleAccount.Id, name), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Action trail can be imported using the id or trail_name, e.g.

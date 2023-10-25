@@ -11,6 +11,31 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.168.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultEipAddress = new alicloud.ecs.EipAddress("defaultEipAddress", {
+ *     addressName: name,
+ *     isp: "BGP",
+ *     internetChargeType: "PayByBandwidth",
+ *     paymentType: "PayAsYouGo",
+ * });
+ * const defaultBasicDefenseThreshold = new alicloud.ddos.BasicDefenseThreshold("defaultBasicDefenseThreshold", {
+ *     instanceId: defaultEipAddress.id,
+ *     ddosType: "defense",
+ *     instanceType: "eip",
+ *     bps: 390,
+ *     pps: 90000,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Ddos Basic Antiddos can be imported using the id, e.g.

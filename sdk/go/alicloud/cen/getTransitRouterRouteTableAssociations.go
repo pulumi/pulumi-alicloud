@@ -15,6 +15,33 @@ import (
 // This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://help.aliyun.com/document_detail/261243.html)
 //
 // > **NOTE:** Available in 1.126.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := cen.GetTransitRouterRouteTableAssociations(ctx, &cen.GetTransitRouterRouteTableAssociationsArgs{
+//				TransitRouterRouteTableId: pulumi.StringRef("rtb-id1"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType", _default.Associations[0].ResourceType)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetTransitRouterRouteTableAssociations(ctx *pulumi.Context, args *GetTransitRouterRouteTableAssociationsArgs, opts ...pulumi.InvokeOption) (*GetTransitRouterRouteTableAssociationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTransitRouterRouteTableAssociationsResult

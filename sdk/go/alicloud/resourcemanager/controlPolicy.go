@@ -19,6 +19,60 @@ import (
 //
 // > **NOTE:** Available since v1.120.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := resourcemanager.NewControlPolicy(ctx, "example", &resourcemanager.ControlPolicyArgs{
+//				ControlPolicyName: pulumi.String(name),
+//				Description:       pulumi.String(name),
+//				EffectScope:       pulumi.String("RAM"),
+//				PolicyDocument: pulumi.String(`  {
+//	    "Version": "1",
+//	    "Statement": [
+//	      {
+//	        "Effect": "Deny",
+//	        "Action": [
+//	          "ram:UpdateRole",
+//	          "ram:DeleteRole",
+//	          "ram:AttachPolicyToRole",
+//	          "ram:DetachPolicyFromRole"
+//	        ],
+//	        "Resource": "acs:ram:*:*:role/ResourceDirectoryAccountAccessRole"
+//	      }
+//	    ]
+//	  }
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Resource Manager Control Policy can be imported using the id, e.g.

@@ -11,6 +11,32 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.188.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultServiceTopic = new alicloud.message.ServiceTopic("defaultServiceTopic", {
+ *     topicName: name,
+ *     maxMessageSize: 12357,
+ *     loggingEnabled: true,
+ * });
+ * const defaultServiceSubscription = new alicloud.message.ServiceSubscription("defaultServiceSubscription", {
+ *     topicName: defaultServiceTopic.topicName,
+ *     subscriptionName: name,
+ *     endpoint: "http://example.com",
+ *     pushType: "http",
+ *     filterTag: "tf-example",
+ *     notifyContentFormat: "XML",
+ *     notifyStrategy: "BACKOFF_RETRY",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Message Notification Service Subscription can be imported using the id, e.g.

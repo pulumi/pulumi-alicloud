@@ -10,6 +10,19 @@ import * as utilities from "../utilities";
  * This data source provides Ebs Dedicated Block Storage Cluster available to the user.
  *
  * > **NOTE:** Available in 1.196.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.ebs.getDedicatedBlockStorageClusters({
+ *     ids: ["example_id"],
+ *     nameRegex: alicloud_ebs_dedicated_block_storage_cluster["default"].name,
+ * });
+ * export const alicloudEbsDedicatedBlockStorageClusterExampleId = _default.then(_default => _default.clusters?.[0]?.id);
+ * ```
  */
 export function getDedicatedBlockStorageClusters(args?: GetDedicatedBlockStorageClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetDedicatedBlockStorageClustersResult> {
     args = args || {};
@@ -67,6 +80,19 @@ export interface GetDedicatedBlockStorageClustersResult {
  * This data source provides Ebs Dedicated Block Storage Cluster available to the user.
  *
  * > **NOTE:** Available in 1.196.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.ebs.getDedicatedBlockStorageClusters({
+ *     ids: ["example_id"],
+ *     nameRegex: alicloud_ebs_dedicated_block_storage_cluster["default"].name,
+ * });
+ * export const alicloudEbsDedicatedBlockStorageClusterExampleId = _default.then(_default => _default.clusters?.[0]?.id);
+ * ```
  */
 export function getDedicatedBlockStorageClustersOutput(args?: GetDedicatedBlockStorageClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDedicatedBlockStorageClustersResult> {
     return pulumi.output(args).apply((a: any) => getDedicatedBlockStorageClusters(a, opts))

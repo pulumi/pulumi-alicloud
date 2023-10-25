@@ -524,6 +524,28 @@ class DhcpOptionsSet(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.134.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        domain = config.get("domain")
+        if domain is None:
+            domain = "terraform-example.com"
+        example = alicloud.vpc.DhcpOptionsSet("example",
+            dhcp_options_set_name=name,
+            dhcp_options_set_description=name,
+            domain_name=domain,
+            domain_name_servers="100.100.2.136")
+        ```
+
         ## Import
 
         VPC Dhcp Options Set can be imported using the id, e.g.
@@ -559,6 +581,28 @@ class DhcpOptionsSet(pulumi.CustomResource):
         For information about VPC Dhcp Options Set and how to use it, see [What is Dhcp Options Set](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/dhcp-options-sets-overview).
 
         > **NOTE:** Available since v1.134.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        domain = config.get("domain")
+        if domain is None:
+            domain = "terraform-example.com"
+        example = alicloud.vpc.DhcpOptionsSet("example",
+            dhcp_options_set_name=name,
+            dhcp_options_set_description=name,
+            domain_name=domain,
+            domain_name_servers="100.100.2.136")
+        ```
 
         ## Import
 

@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * This data source provides CEN Transit Router Route Table Propagations available to the user.[What is Cen Transit Router Route Table Propagations](https://help.aliyun.com/document_detail/261245.html)
  *
  * > **NOTE:** Available in 1.126.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.cen.getTransitRouterRouteTablePropagations({
+ *     transitRouterRouteTableId: "rtb-id1",
+ * });
+ * export const firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType = _default.then(_default => _default.propagations?.[0]?.resourceType);
+ * ```
  */
 export function getTransitRouterRouteTablePropagations(args: GetTransitRouterRouteTablePropagationsArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterRouteTablePropagationsResult> {
 
@@ -74,6 +86,18 @@ export interface GetTransitRouterRouteTablePropagationsResult {
  * This data source provides CEN Transit Router Route Table Propagations available to the user.[What is Cen Transit Router Route Table Propagations](https://help.aliyun.com/document_detail/261245.html)
  *
  * > **NOTE:** Available in 1.126.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.cen.getTransitRouterRouteTablePropagations({
+ *     transitRouterRouteTableId: "rtb-id1",
+ * });
+ * export const firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType = _default.then(_default => _default.propagations?.[0]?.resourceType);
+ * ```
  */
 export function getTransitRouterRouteTablePropagationsOutput(args: GetTransitRouterRouteTablePropagationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterRouteTablePropagationsResult> {
     return pulumi.output(args).apply((a: any) => getTransitRouterRouteTablePropagations(a, opts))

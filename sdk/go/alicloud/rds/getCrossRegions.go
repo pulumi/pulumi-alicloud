@@ -15,6 +15,31 @@ import (
 // This data source provides an available area for remote disaster recovery for RDS.
 //
 // > **NOTE:** Available in v1.193.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rds.GetCrossRegions(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstRdsCrossRegions", data.Alicloud_rds_cross_regions.Regions.Ids[0])
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetCrossRegions(ctx *pulumi.Context, args *GetCrossRegionsArgs, opts ...pulumi.InvokeOption) (*GetCrossRegionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCrossRegionsResult

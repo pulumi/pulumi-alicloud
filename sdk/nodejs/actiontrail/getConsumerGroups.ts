@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * This data source provides a list of ALIKAFKA Consumer Groups in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in 1.56.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const consumerGroupsDs = alicloud.actiontrail.getConsumerGroups({
+ *     consumerIdRegex: "CID-alikafkaGroupDatasourceName",
+ *     instanceId: "xxx",
+ *     outputFile: "consumerGroups.txt",
+ * });
+ * export const firstGroupName = consumerGroupsDs.then(consumerGroupsDs => consumerGroupsDs.consumerIds?.[0]);
+ * ```
  */
 export function getConsumerGroups(args: GetConsumerGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetConsumerGroupsResult> {
 
@@ -73,6 +87,20 @@ export interface GetConsumerGroupsResult {
  * This data source provides a list of ALIKAFKA Consumer Groups in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in 1.56.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const consumerGroupsDs = alicloud.actiontrail.getConsumerGroups({
+ *     consumerIdRegex: "CID-alikafkaGroupDatasourceName",
+ *     instanceId: "xxx",
+ *     outputFile: "consumerGroups.txt",
+ * });
+ * export const firstGroupName = consumerGroupsDs.then(consumerGroupsDs => consumerGroupsDs.consumerIds?.[0]);
+ * ```
  */
 export function getConsumerGroupsOutput(args: GetConsumerGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConsumerGroupsResult> {
     return pulumi.output(args).apply((a: any) => getConsumerGroups(a, opts))

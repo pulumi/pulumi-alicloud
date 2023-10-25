@@ -19,6 +19,65 @@ import (
 //
 // > **NOTE:** Available since v1.194.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.Any(_var.Name),
+//				Description:     pulumi.String("example_value"),
+//				Tags: pulumi.Map{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("acceptance test"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudfirewall.NewFirewallVpcFirewallControlPolicy(ctx, "defaultFirewallVpcFirewallControlPolicy", &cloudfirewall.FirewallVpcFirewallControlPolicyArgs{
+//				Order:           pulumi.Int(1),
+//				Destination:     pulumi.String("127.0.0.2/32"),
+//				ApplicationName: pulumi.String("ANY"),
+//				Description:     pulumi.String("example_value"),
+//				SourceType:      pulumi.String("net"),
+//				DestPort:        pulumi.String("80/88"),
+//				AclAction:       pulumi.String("accept"),
+//				Lang:            pulumi.String("zh"),
+//				DestinationType: pulumi.String("net"),
+//				Source:          pulumi.String("127.0.0.1/32"),
+//				DestPortType:    pulumi.String("port"),
+//				Proto:           pulumi.String("TCP"),
+//				Release:         pulumi.Bool(true),
+//				MemberUid:       *pulumi.String(defaultAccount.Id),
+//				VpcFirewallId:   defaultInstance.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Cloud Firewall Vpc Firewall Control Policy can be imported using the id, e.g.

@@ -15,6 +15,46 @@ namespace Pulumi.AliCloud.MaxCompute
         /// This data source provides Max Compute Project available to the user.[What is Project](https://help.aliyun.com/document_detail/473479.html)
         /// 
         /// &gt; **NOTE:** Available in 1.196.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf_testaccmp";
+        ///     var defaultProject = new AliCloud.MaxCompute.Project("defaultProject", new()
+        ///     {
+        ///         DefaultQuota = "默认后付费Quota",
+        ///         ProjectName = name,
+        ///         Comment = name,
+        ///         ProductType = "PAYASYOUGO",
+        ///     });
+        /// 
+        ///     var defaultProjects = AliCloud.MaxCompute.GetProjects.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultProject.Id,
+        ///         },
+        ///         NameRegex = defaultProject.Name,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudMaxcomputeProjectExampleId"] = defaultProjects.Apply(getProjectsResult =&gt; getProjectsResult.Projects[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectsResult> InvokeAsync(GetProjectsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectsResult>("alicloud:maxcompute/getProjects:getProjects", args ?? new GetProjectsArgs(), options.WithDefaults());
@@ -23,6 +63,46 @@ namespace Pulumi.AliCloud.MaxCompute
         /// This data source provides Max Compute Project available to the user.[What is Project](https://help.aliyun.com/document_detail/473479.html)
         /// 
         /// &gt; **NOTE:** Available in 1.196.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf_testaccmp";
+        ///     var defaultProject = new AliCloud.MaxCompute.Project("defaultProject", new()
+        ///     {
+        ///         DefaultQuota = "默认后付费Quota",
+        ///         ProjectName = name,
+        ///         Comment = name,
+        ///         ProductType = "PAYASYOUGO",
+        ///     });
+        /// 
+        ///     var defaultProjects = AliCloud.MaxCompute.GetProjects.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultProject.Id,
+        ///         },
+        ///         NameRegex = defaultProject.Name,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudMaxcomputeProjectExampleId"] = defaultProjects.Apply(getProjectsResult =&gt; getProjectsResult.Projects[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectsResult> Invoke(GetProjectsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectsResult>("alicloud:maxcompute/getProjects:getProjects", args ?? new GetProjectsInvokeArgs(), options.WithDefaults());

@@ -10,6 +10,26 @@ import * as utilities from "../utilities";
  * This data source provides the Cen Transit Router Cidrs of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.193.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cen.getTransitRouterCidrs({
+ *     ids: ["example_id"],
+ *     transitRouterId: "tr-6ehx7q2jze8ch5ji0****",
+ * });
+ * export const cenTransitRouterCidrId0 = ids.then(ids => ids.cidrs?.[0]?.id);
+ * const nameRegex = alicloud.cen.getTransitRouterCidrs({
+ *     nameRegex: "^my-name",
+ *     transitRouterId: "tr-6ehx7q2jze8ch5ji0****",
+ * });
+ * export const cenTransitRouterCidrId1 = nameRegex.then(nameRegex => nameRegex.cidrs?.[0]?.id);
+ * ```
  */
 export function getTransitRouterCidrs(args: GetTransitRouterCidrsArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterCidrsResult> {
 
@@ -69,6 +89,26 @@ export interface GetTransitRouterCidrsResult {
  * This data source provides the Cen Transit Router Cidrs of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.193.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cen.getTransitRouterCidrs({
+ *     ids: ["example_id"],
+ *     transitRouterId: "tr-6ehx7q2jze8ch5ji0****",
+ * });
+ * export const cenTransitRouterCidrId0 = ids.then(ids => ids.cidrs?.[0]?.id);
+ * const nameRegex = alicloud.cen.getTransitRouterCidrs({
+ *     nameRegex: "^my-name",
+ *     transitRouterId: "tr-6ehx7q2jze8ch5ji0****",
+ * });
+ * export const cenTransitRouterCidrId1 = nameRegex.then(nameRegex => nameRegex.cidrs?.[0]?.id);
+ * ```
  */
 export function getTransitRouterCidrsOutput(args: GetTransitRouterCidrsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterCidrsResult> {
     return pulumi.output(args).apply((a: any) => getTransitRouterCidrs(a, opts))

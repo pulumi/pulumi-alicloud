@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * This data source provides the Cloud Storage Gateway Stocks of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.144.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.cloudstoragegateway.getStocks({
+ *     gatewayClass: "Advanced",
+ * });
+ * export const zoneId = _default.then(_default => _default.stocks?.[0]?.zoneId);
+ * ```
  */
 export function getStocks(args?: GetStocksArgs, opts?: pulumi.InvokeOptions): Promise<GetStocksResult> {
     args = args || {};
@@ -51,6 +65,20 @@ export interface GetStocksResult {
  * This data source provides the Cloud Storage Gateway Stocks of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.144.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.cloudstoragegateway.getStocks({
+ *     gatewayClass: "Advanced",
+ * });
+ * export const zoneId = _default.then(_default => _default.stocks?.[0]?.zoneId);
+ * ```
  */
 export function getStocksOutput(args?: GetStocksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStocksResult> {
     return pulumi.output(args).apply((a: any) => getStocks(a, opts))

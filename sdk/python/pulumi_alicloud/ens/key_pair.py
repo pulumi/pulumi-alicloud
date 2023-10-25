@@ -138,6 +138,23 @@ class KeyPair(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.133.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        example = alicloud.ens.KeyPair("example",
+            key_pair_name=name,
+            version="2017-11-10")
+        ```
+
         ## Import
 
         ENS Key Pair can be imported using the id, e.g.
@@ -163,6 +180,23 @@ class KeyPair(pulumi.CustomResource):
         For information about ENS Key Pair and how to use it, see [What is Key Pair](https://www.alibabacloud.com/help/en/ens/latest/createkeypair).
 
         > **NOTE:** Available since v1.133.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        example = alicloud.ens.KeyPair("example",
+            key_pair_name=name,
+            version="2017-11-10")
+        ```
 
         ## Import
 

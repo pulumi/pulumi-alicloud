@@ -136,6 +136,19 @@ def get_tunnels(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.172.0+.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    tunnels_ds = alicloud.ots.get_tunnels(instance_name="sample-instance",
+        name_regex="sample-tunnel",
+        output_file="tunnels.txt",
+        table_name="sample-table")
+    pulumi.export("firstTunnelId", tunnels_ds.tunnels[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of tunnel IDs.
     :param str instance_name: The name of OTS instance.
@@ -176,6 +189,19 @@ def get_tunnels_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
     For information about OTS tunnel and how to use it, see [Tunnel overview](https://www.alibabacloud.com/help/en/tablestore/latest/tunnel-service-overview).
 
     > **NOTE:** Available in v1.172.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    tunnels_ds = alicloud.ots.get_tunnels(instance_name="sample-instance",
+        name_regex="sample-tunnel",
+        output_file="tunnels.txt",
+        table_name="sample-table")
+    pulumi.export("firstTunnelId", tunnels_ds.tunnels[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of tunnel IDs.

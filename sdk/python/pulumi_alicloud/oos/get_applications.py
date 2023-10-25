@@ -109,6 +109,20 @@ def get_applications(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.145.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.oos.get_applications()
+    pulumi.export("oosApplicationId1", ids.applications[0].id)
+    name_regex = alicloud.oos.get_applications(name_regex="^my-Application")
+    pulumi.export("oosApplicationId2", name_regex.applications[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Application IDs. Its element value is same as Application Name.
     :param str name_regex: A regex string to filter results by Application name.
@@ -143,6 +157,20 @@ def get_applications_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     This data source provides the Oos Applications of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.145.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.oos.get_applications()
+    pulumi.export("oosApplicationId1", ids.applications[0].id)
+    name_regex = alicloud.oos.get_applications(name_regex="^my-Application")
+    pulumi.export("oosApplicationId2", name_regex.applications[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Application IDs. Its element value is same as Application Name.

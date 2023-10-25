@@ -10,6 +10,22 @@ import * as utilities from "../utilities";
  * This data source provides the Ecs Storage Capacity Units of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.155.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.ecs.getEcsStorageCapacityUnits({});
+ * export const ecsStorageCapacityUnitId1 = ids.then(ids => ids.units?.[0]?.id);
+ * const nameRegex = alicloud.ecs.getEcsStorageCapacityUnits({
+ *     nameRegex: "^my-StorageCapacityUnit",
+ * });
+ * export const ecsStorageCapacityUnitId2 = nameRegex.then(nameRegex => nameRegex.units?.[0]?.id);
+ * ```
  */
 export function getEcsStorageCapacityUnits(args?: GetEcsStorageCapacityUnitsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsStorageCapacityUnitsResult> {
     args = args || {};
@@ -64,6 +80,22 @@ export interface GetEcsStorageCapacityUnitsResult {
  * This data source provides the Ecs Storage Capacity Units of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.155.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.ecs.getEcsStorageCapacityUnits({});
+ * export const ecsStorageCapacityUnitId1 = ids.then(ids => ids.units?.[0]?.id);
+ * const nameRegex = alicloud.ecs.getEcsStorageCapacityUnits({
+ *     nameRegex: "^my-StorageCapacityUnit",
+ * });
+ * export const ecsStorageCapacityUnitId2 = nameRegex.then(nameRegex => nameRegex.units?.[0]?.id);
+ * ```
  */
 export function getEcsStorageCapacityUnitsOutput(args?: GetEcsStorageCapacityUnitsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsStorageCapacityUnitsResult> {
     return pulumi.output(args).apply((a: any) => getEcsStorageCapacityUnits(a, opts))

@@ -137,6 +137,19 @@ class MetaTag(pulumi.CustomResource):
 
         > **NOTE:** Meta Tag Only Support `cn-hangzhou` Region
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.tag.MetaTag("example",
+            key="Name1",
+            values=["Desc2"])
+        ```
+
         ## Import
 
         Tag Meta Tag can be imported using the id, e.g.
@@ -165,6 +178,19 @@ class MetaTag(pulumi.CustomResource):
         > **NOTE:** Available since v1.209.0.
 
         > **NOTE:** Meta Tag Only Support `cn-hangzhou` Region
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.tag.MetaTag("example",
+            key="Name1",
+            values=["Desc2"])
+        ```
 
         ## Import
 

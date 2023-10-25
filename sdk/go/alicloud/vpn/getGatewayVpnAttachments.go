@@ -15,6 +15,42 @@ import (
 // This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.181.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := vpn.GetGatewayVpnAttachments(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpnGatewayVpnAttachmentId1", ids.Attachments[0].Id)
+//			nameRegex, err := vpn.GetGatewayVpnAttachments(ctx, &vpn.GetGatewayVpnAttachmentsArgs{
+//				NameRegex: pulumi.StringRef("^my-VpnAttachment"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpnGatewayVpnAttachmentId2", nameRegex.Attachments[0].Id)
+//			ctx.Export("localId", data.Alicloud_vpn_gateway_vpn_attachments.Vpn_attachments.Attachments[0].Ike_config[0].Local_id)
+//			ctx.Export("internetIp", data.Alicloud_vpn_gateway_vpn_attachments.Vpn_attachments.Attachments[0].Internet_ip)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetGatewayVpnAttachments(ctx *pulumi.Context, args *GetGatewayVpnAttachmentsArgs, opts ...pulumi.InvokeOption) (*GetGatewayVpnAttachmentsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGatewayVpnAttachmentsResult

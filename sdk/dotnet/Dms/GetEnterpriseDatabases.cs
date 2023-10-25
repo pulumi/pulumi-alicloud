@@ -15,6 +15,35 @@ namespace Pulumi.AliCloud.Dms
         /// This data source provides DMS Enterprise Database available to the user. [What is Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-listdatabases).
         /// 
         /// &gt; **NOTE:** Available since v1.195.0.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Dms.GetEnterpriseDatabases.Invoke(new()
+        ///     {
+        ///         NameRegex = "test2",
+        ///         InstanceId = "2195118",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudDmsEnterpriseDatabaseExampleId"] = @default.Apply(@default =&gt; @default.Apply(getEnterpriseDatabasesResult =&gt; getEnterpriseDatabasesResult.Databases[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetEnterpriseDatabasesResult> InvokeAsync(GetEnterpriseDatabasesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEnterpriseDatabasesResult>("alicloud:dms/getEnterpriseDatabases:getEnterpriseDatabases", args ?? new GetEnterpriseDatabasesArgs(), options.WithDefaults());
@@ -23,6 +52,35 @@ namespace Pulumi.AliCloud.Dms
         /// This data source provides DMS Enterprise Database available to the user. [What is Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-listdatabases).
         /// 
         /// &gt; **NOTE:** Available since v1.195.0.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Dms.GetEnterpriseDatabases.Invoke(new()
+        ///     {
+        ///         NameRegex = "test2",
+        ///         InstanceId = "2195118",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudDmsEnterpriseDatabaseExampleId"] = @default.Apply(@default =&gt; @default.Apply(getEnterpriseDatabasesResult =&gt; getEnterpriseDatabasesResult.Databases[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetEnterpriseDatabasesResult> Invoke(GetEnterpriseDatabasesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEnterpriseDatabasesResult>("alicloud:dms/getEnterpriseDatabases:getEnterpriseDatabases", args ?? new GetEnterpriseDatabasesInvokeArgs(), options.WithDefaults());

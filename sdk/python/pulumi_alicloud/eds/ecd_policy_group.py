@@ -845,6 +845,35 @@ class EcdPolicyGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.130.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.eds.EcdPolicyGroup("default",
+            authorize_access_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs(
+                cidr_ip="1.2.3.45/24",
+                description="terraform-example",
+            )],
+            authorize_security_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs(
+                cidr_ip="1.2.3.4/24",
+                description="terraform-example",
+                ip_protocol="TCP",
+                policy="accept",
+                port_range="80/80",
+                priority="1",
+                type="inflow",
+            )],
+            clipboard="read",
+            local_drive="read",
+            policy_group_name="terraform-example",
+            usb_redirect="off",
+            watermark="off")
+        ```
+
         ## Import
 
         Elastic Desktop Service (ECD) Policy Group can be imported using the id, e.g.
@@ -887,6 +916,35 @@ class EcdPolicyGroup(pulumi.CustomResource):
         For information about Elastic Desktop Service (ECD) Policy Group and how to use it, see [What is Policy Group](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createpolicygroup).
 
         > **NOTE:** Available since v1.130.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.eds.EcdPolicyGroup("default",
+            authorize_access_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs(
+                cidr_ip="1.2.3.45/24",
+                description="terraform-example",
+            )],
+            authorize_security_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs(
+                cidr_ip="1.2.3.4/24",
+                description="terraform-example",
+                ip_protocol="TCP",
+                policy="accept",
+                port_range="80/80",
+                priority="1",
+                type="inflow",
+            )],
+            clipboard="read",
+            local_drive="read",
+            policy_group_name="terraform-example",
+            usb_redirect="off",
+            watermark="off")
+        ```
 
         ## Import
 

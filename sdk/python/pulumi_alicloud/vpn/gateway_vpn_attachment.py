@@ -593,6 +593,64 @@ class GatewayVpnAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.181.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_customer_gateway = alicloud.vpn.CustomerGateway("defaultCustomerGateway",
+            ip_address="42.104.22.210",
+            asn="45014",
+            description=name)
+        default_gateway_vpn_attachment = alicloud.vpn.GatewayVpnAttachment("defaultGatewayVpnAttachment",
+            customer_gateway_id=default_customer_gateway.id,
+            network_type="public",
+            local_subnet="0.0.0.0/0",
+            remote_subnet="0.0.0.0/0",
+            effect_immediately=False,
+            ike_config=alicloud.vpn.GatewayVpnAttachmentIkeConfigArgs(
+                ike_auth_alg="md5",
+                ike_enc_alg="des",
+                ike_version="ikev2",
+                ike_mode="main",
+                ike_lifetime=86400,
+                psk="tf-testvpn2",
+                ike_pfs="group1",
+                remote_id="testbob2",
+                local_id="testalice2",
+            ),
+            ipsec_config=alicloud.vpn.GatewayVpnAttachmentIpsecConfigArgs(
+                ipsec_pfs="group5",
+                ipsec_enc_alg="des",
+                ipsec_auth_alg="md5",
+                ipsec_lifetime=86400,
+            ),
+            bgp_config=alicloud.vpn.GatewayVpnAttachmentBgpConfigArgs(
+                enable=True,
+                local_asn=45014,
+                tunnel_cidr="169.254.11.0/30",
+                local_bgp_ip="169.254.11.1",
+            ),
+            health_check_config=alicloud.vpn.GatewayVpnAttachmentHealthCheckConfigArgs(
+                enable=True,
+                sip="192.168.1.1",
+                dip="10.0.0.1",
+                interval=10,
+                retry=10,
+                policy="revoke_route",
+            ),
+            enable_dpd=True,
+            enable_nat_traversal=True,
+            vpn_attachment_name=name)
+        ```
+
         ## Import
 
         VPN Gateway Vpn Attachment can be imported using the id, e.g.
@@ -628,6 +686,64 @@ class GatewayVpnAttachment(pulumi.CustomResource):
         For information about VPN Gateway Vpn Attachment and how to use it, see [What is Vpn Attachment](https://www.alibabacloud.com/help/zh/virtual-private-cloud/latest/createvpnattachment).
 
         > **NOTE:** Available since v1.181.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_customer_gateway = alicloud.vpn.CustomerGateway("defaultCustomerGateway",
+            ip_address="42.104.22.210",
+            asn="45014",
+            description=name)
+        default_gateway_vpn_attachment = alicloud.vpn.GatewayVpnAttachment("defaultGatewayVpnAttachment",
+            customer_gateway_id=default_customer_gateway.id,
+            network_type="public",
+            local_subnet="0.0.0.0/0",
+            remote_subnet="0.0.0.0/0",
+            effect_immediately=False,
+            ike_config=alicloud.vpn.GatewayVpnAttachmentIkeConfigArgs(
+                ike_auth_alg="md5",
+                ike_enc_alg="des",
+                ike_version="ikev2",
+                ike_mode="main",
+                ike_lifetime=86400,
+                psk="tf-testvpn2",
+                ike_pfs="group1",
+                remote_id="testbob2",
+                local_id="testalice2",
+            ),
+            ipsec_config=alicloud.vpn.GatewayVpnAttachmentIpsecConfigArgs(
+                ipsec_pfs="group5",
+                ipsec_enc_alg="des",
+                ipsec_auth_alg="md5",
+                ipsec_lifetime=86400,
+            ),
+            bgp_config=alicloud.vpn.GatewayVpnAttachmentBgpConfigArgs(
+                enable=True,
+                local_asn=45014,
+                tunnel_cidr="169.254.11.0/30",
+                local_bgp_ip="169.254.11.1",
+            ),
+            health_check_config=alicloud.vpn.GatewayVpnAttachmentHealthCheckConfigArgs(
+                enable=True,
+                sip="192.168.1.1",
+                dip="10.0.0.1",
+                interval=10,
+                retry=10,
+                policy="revoke_route",
+            ),
+            enable_dpd=True,
+            enable_nat_traversal=True,
+            vpn_attachment_name=name)
+        ```
 
         ## Import
 

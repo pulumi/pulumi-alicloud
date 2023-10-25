@@ -431,6 +431,31 @@ class DomainNew(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.34.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "mycdndomain.alicloud-provider.cn"
+        default = alicloud.cdn.DomainNew("default",
+            scope="overseas",
+            domain_name=domain_name,
+            cdn_type="web",
+            sources=[alicloud.cdn.DomainNewSourceArgs(
+                type="ipaddr",
+                content="1.1.1.1",
+                priority=20,
+                port=80,
+                weight=15,
+            )])
+        ```
+
         ## Import
 
         CDN Domain can be imported using the id, e.g.
@@ -466,6 +491,31 @@ class DomainNew(pulumi.CustomResource):
         For information about CDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addcdndomain).
 
         > **NOTE:** Available since v1.34.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "mycdndomain.alicloud-provider.cn"
+        default = alicloud.cdn.DomainNew("default",
+            scope="overseas",
+            domain_name=domain_name,
+            cdn_type="web",
+            sources=[alicloud.cdn.DomainNewSourceArgs(
+                type="ipaddr",
+                content="1.1.1.1",
+                priority=20,
+                port=80,
+                weight=15,
+            )])
+        ```
 
         ## Import
 

@@ -16,6 +16,45 @@ namespace Pulumi.AliCloud.Cms
     /// 
     /// &gt; **NOTE:** Available since v1.142.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultAlarmContactGroup = new AliCloud.Cms.AlarmContactGroup("defaultAlarmContactGroup", new()
+    ///     {
+    ///         AlarmContactGroupName = "example_value",
+    ///         Describe = "example_value",
+    ///         EnableSubscribed = true,
+    ///     });
+    /// 
+    ///     var defaultDynamicTagGroup = new AliCloud.Cms.DynamicTagGroup("defaultDynamicTagGroup", new()
+    ///     {
+    ///         ContactGroupLists = new[]
+    ///         {
+    ///             defaultAlarmContactGroup.Id,
+    ///         },
+    ///         TagKey = "your_tag_key",
+    ///         MatchExpresses = new[]
+    ///         {
+    ///             new AliCloud.Cms.Inputs.DynamicTagGroupMatchExpressArgs
+    ///             {
+    ///                 TagValue = "your_tag_value",
+    ///                 TagValueMatchFunction = "all",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Cloud Monitor Service Dynamic Tag Group can be imported using the id, e.g.

@@ -357,6 +357,19 @@ class SecurityPreference(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.152.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ram.SecurityPreference("example",
+            allow_user_to_change_password=True,
+            enable_save_mfa_ticket=False)
+        ```
+
         ## Import
 
         RAM Security Preference can be imported using the id, e.g.
@@ -390,6 +403,19 @@ class SecurityPreference(pulumi.CustomResource):
         For information about RAM Security Preference and how to use it, see [What is Security Preference](https://www.alibabacloud.com/help/en/doc-detail/186694.htm).
 
         > **NOTE:** Available since v1.152.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ram.SecurityPreference("example",
+            allow_user_to_change_password=True,
+            enable_save_mfa_ticket=False)
+        ```
 
         ## Import
 

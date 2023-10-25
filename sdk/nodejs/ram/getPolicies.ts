@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available since v1.0.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const policiesDs = alicloud.ram.getPolicies({
+ *     groupName: "group1",
+ *     outputFile: "policies.txt",
+ *     type: "System",
+ *     userName: "user1",
+ * });
+ * export const firstPolicyName = policiesDs.then(policiesDs => policiesDs.policies?.[0]?.name);
+ * ```
  */
 export function getPolicies(args?: GetPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetPoliciesResult> {
     args = args || {};
@@ -100,6 +115,21 @@ export interface GetPoliciesResult {
  * This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available since v1.0.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const policiesDs = alicloud.ram.getPolicies({
+ *     groupName: "group1",
+ *     outputFile: "policies.txt",
+ *     type: "System",
+ *     userName: "user1",
+ * });
+ * export const firstPolicyName = policiesDs.then(policiesDs => policiesDs.policies?.[0]?.name);
+ * ```
  */
 export function getPoliciesOutput(args?: GetPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPoliciesResult> {
     return pulumi.output(args).apply((a: any) => getPolicies(a, opts))

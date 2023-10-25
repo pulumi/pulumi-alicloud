@@ -190,6 +190,19 @@ class Folder(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.131.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.dataworks.Folder("example",
+            folder_path="Business Flow/tfTestAcc/folderDi/tftest1",
+            project_id="320687")
+        ```
+
         ## Import
 
         Data Works Folder can be imported using the id, e.g.
@@ -215,6 +228,19 @@ class Folder(pulumi.CustomResource):
         For information about Data Works Folder and how to use it, see [What is Folder](https://help.aliyun.com/document_detail/173940.html).
 
         > **NOTE:** Available in v1.131.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.dataworks.Folder("example",
+            folder_path="Business Flow/tfTestAcc/folderDi/tftest1",
+            project_id="320687")
+        ```
 
         ## Import
 

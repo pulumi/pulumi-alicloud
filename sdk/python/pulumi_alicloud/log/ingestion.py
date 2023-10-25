@@ -413,6 +413,65 @@ class Ingestion(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.161.0+
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject",
+            description="terraform-example",
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            retention_period=3650,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        example_ingestion = alicloud.log.Ingestion("exampleIngestion",
+            project=example_project.name,
+            logstore=example_store.name,
+            ingestion_name="terraform-example",
+            display_name="terraform-example",
+            description="terraform-example",
+            interval="30m",
+            run_immediately=True,
+            time_zone="+0800",
+            source=\"\"\"        {
+                  "bucket": "bucket_name",
+                  "compressionCodec": "none",
+                  "encoding": "UTF-8",
+                  "endpoint": "oss-cn-hangzhou-internal.aliyuncs.com",
+                  "format": {
+                    "escapeChar": "\\\\",
+                    "fieldDelimiter": ",",
+                    "fieldNames": [],
+                    "firstRowAsHeader": true,
+                    "maxLines": 1,
+                    "quoteChar": "\\"",
+                    "skipLeadingRows": 0,
+                    "timeField": "",
+                    "type": "DelimitedText"
+                  },
+                  "pattern": "",
+                  "prefix": "test-prefix/",
+                  "restoreObjectEnabled": false,
+                  "roleARN": "acs:ram::1049446484210612:role/aliyunlogimportossrole",
+                  "type": "AliyunOSS"
+                }
+        \"\"\")
+        ```
+
         ## Import
 
         Log ingestion can be imported using the id or name, e.g.
@@ -444,6 +503,65 @@ class Ingestion(pulumi.CustomResource):
         [Refer to details](https://www.alibabacloud.com/help/en/doc-detail/147819.html).
 
         > **NOTE:** Available in 1.161.0+
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject",
+            description="terraform-example",
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            retention_period=3650,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        example_ingestion = alicloud.log.Ingestion("exampleIngestion",
+            project=example_project.name,
+            logstore=example_store.name,
+            ingestion_name="terraform-example",
+            display_name="terraform-example",
+            description="terraform-example",
+            interval="30m",
+            run_immediately=True,
+            time_zone="+0800",
+            source=\"\"\"        {
+                  "bucket": "bucket_name",
+                  "compressionCodec": "none",
+                  "encoding": "UTF-8",
+                  "endpoint": "oss-cn-hangzhou-internal.aliyuncs.com",
+                  "format": {
+                    "escapeChar": "\\\\",
+                    "fieldDelimiter": ",",
+                    "fieldNames": [],
+                    "firstRowAsHeader": true,
+                    "maxLines": 1,
+                    "quoteChar": "\\"",
+                    "skipLeadingRows": 0,
+                    "timeField": "",
+                    "type": "DelimitedText"
+                  },
+                  "pattern": "",
+                  "prefix": "test-prefix/",
+                  "restoreObjectEnabled": false,
+                  "roleARN": "acs:ram::1049446484210612:role/aliyunlogimportossrole",
+                  "type": "AliyunOSS"
+                }
+        \"\"\")
+        ```
 
         ## Import
 

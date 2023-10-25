@@ -469,6 +469,38 @@ class IpsecServer(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.161.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        foo_network = alicloud.vpc.Network("fooNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/12")
+        foo_switch = alicloud.vpc.Switch("fooSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.16.0.0/21",
+            vpc_id=foo_network.id,
+            zone_id=foo_zones.zones[0].id)
+        foo_gateway = alicloud.vpn.Gateway("fooGateway",
+            vpc_id=foo_network.id,
+            bandwidth=10,
+            enable_ssl=True,
+            instance_charge_type="PrePaid",
+            description="terraform-example",
+            vswitch_id=foo_switch.id)
+        foo_ipsec_server = alicloud.vpn.IpsecServer("fooIpsecServer",
+            client_ip_pool="10.0.0.0/24",
+            ipsec_server_name="terraform-example",
+            local_subnet="192.168.0.0/24",
+            vpn_gateway_id=foo_gateway.id,
+            psk_enabled=True)
+        ```
+
         ## Import
 
         VPN Ipsec Server can be imported using the id, e.g.
@@ -502,6 +534,38 @@ class IpsecServer(pulumi.CustomResource):
         For information about VPN Ipsec Server and how to use it, see [What is Ipsec Server](https://www.alibabacloud.com/help/en/doc-detail/205454.html).
 
         > **NOTE:** Available in v1.161.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        foo_network = alicloud.vpc.Network("fooNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/12")
+        foo_switch = alicloud.vpc.Switch("fooSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.16.0.0/21",
+            vpc_id=foo_network.id,
+            zone_id=foo_zones.zones[0].id)
+        foo_gateway = alicloud.vpn.Gateway("fooGateway",
+            vpc_id=foo_network.id,
+            bandwidth=10,
+            enable_ssl=True,
+            instance_charge_type="PrePaid",
+            description="terraform-example",
+            vswitch_id=foo_switch.id)
+        foo_ipsec_server = alicloud.vpn.IpsecServer("fooIpsecServer",
+            client_ip_pool="10.0.0.0/24",
+            ipsec_server_name="terraform-example",
+            local_subnet="192.168.0.0/24",
+            vpn_gateway_id=foo_gateway.id,
+            psk_enabled=True)
+        ```
 
         ## Import
 

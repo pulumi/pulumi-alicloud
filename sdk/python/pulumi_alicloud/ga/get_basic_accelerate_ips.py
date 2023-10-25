@@ -135,6 +135,19 @@ def get_basic_accelerate_ips(accelerate_ip_address: Optional[str] = None,
 
     > **NOTE:** Available in v1.194.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.ga.get_basic_accelerate_ips(ids=["example_id"],
+        ip_set_id="example_ip_set_id")
+    pulumi.export("gaBasicAccelerateIpId1", ids.ips[0].id)
+    ```
+
 
     :param str accelerate_ip_address: The address of the Basic Accelerate IP.
     :param str accelerate_ip_id: The id of the Basic Accelerate IP.
@@ -176,6 +189,19 @@ def get_basic_accelerate_ips_output(accelerate_ip_address: Optional[pulumi.Input
     This data source provides the Global Accelerator (GA) Basic Accelerate IPs of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.194.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.ga.get_basic_accelerate_ips(ids=["example_id"],
+        ip_set_id="example_ip_set_id")
+    pulumi.export("gaBasicAccelerateIpId1", ids.ips[0].id)
+    ```
 
 
     :param str accelerate_ip_address: The address of the Basic Accelerate IP.

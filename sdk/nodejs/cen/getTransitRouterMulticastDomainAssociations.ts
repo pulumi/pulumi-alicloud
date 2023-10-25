@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides the Cen Transit Router Multicast Domain Associations of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.195.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cen.getTransitRouterMulticastDomainAssociations({
+ *     ids: ["example_id"],
+ *     transitRouterMulticastDomainId: "your_transit_router_multicast_domain_id",
+ * });
+ * export const cenTransitRouterMulticastDomainId0 = ids.then(ids => ids.associations?.[0]?.id);
+ * ```
  */
 export function getTransitRouterMulticastDomainAssociations(args: GetTransitRouterMulticastDomainAssociationsArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterMulticastDomainAssociationsResult> {
 
@@ -107,6 +122,21 @@ export interface GetTransitRouterMulticastDomainAssociationsResult {
  * This data source provides the Cen Transit Router Multicast Domain Associations of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.195.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cen.getTransitRouterMulticastDomainAssociations({
+ *     ids: ["example_id"],
+ *     transitRouterMulticastDomainId: "your_transit_router_multicast_domain_id",
+ * });
+ * export const cenTransitRouterMulticastDomainId0 = ids.then(ids => ids.associations?.[0]?.id);
+ * ```
  */
 export function getTransitRouterMulticastDomainAssociationsOutput(args: GetTransitRouterMulticastDomainAssociationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterMulticastDomainAssociationsResult> {
     return pulumi.output(args).apply((a: any) => getTransitRouterMulticastDomainAssociations(a, opts))

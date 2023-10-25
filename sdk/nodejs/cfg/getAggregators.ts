@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides the Config Aggregators of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.124.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.cfg.getAggregators({
+ *     ids: ["ca-3ce2626622af0005****"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstConfigAggregatorId = example.then(example => example.aggregators?.[0]?.id);
+ * ```
  */
 export function getAggregators(args?: GetAggregatorsArgs, opts?: pulumi.InvokeOptions): Promise<GetAggregatorsResult> {
     args = args || {};
@@ -79,6 +94,21 @@ export interface GetAggregatorsResult {
  * This data source provides the Config Aggregators of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.124.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.cfg.getAggregators({
+ *     ids: ["ca-3ce2626622af0005****"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstConfigAggregatorId = example.then(example => example.aggregators?.[0]?.id);
+ * ```
  */
 export function getAggregatorsOutput(args?: GetAggregatorsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAggregatorsResult> {
     return pulumi.output(args).apply((a: any) => getAggregators(a, opts))

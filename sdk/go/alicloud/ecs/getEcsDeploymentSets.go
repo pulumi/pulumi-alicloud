@@ -15,6 +15,44 @@ import (
 // This data source provides the Ecs Deployment Sets of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.140.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := ecs.GetEcsDeploymentSets(ctx, &ecs.GetEcsDeploymentSetsArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("ecsDeploymentSetId1", ids.Sets[0].Id)
+//			nameRegex, err := ecs.GetEcsDeploymentSets(ctx, &ecs.GetEcsDeploymentSetsArgs{
+//				NameRegex: pulumi.StringRef("^my-DeploymentSet"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("ecsDeploymentSetId2", nameRegex.Sets[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetEcsDeploymentSets(ctx *pulumi.Context, args *GetEcsDeploymentSetsArgs, opts ...pulumi.InvokeOption) (*GetEcsDeploymentSetsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEcsDeploymentSetsResult

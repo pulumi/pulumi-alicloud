@@ -10,6 +10,32 @@ import * as utilities from "../utilities";
  * This data source provides the Vpc Ipv6 Addresses of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.142.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const associatedInstanceId = alicloud.vpc.getIpv6Addresses({
+ *     associatedInstanceId: "example_value",
+ * });
+ * export const vpcIpv6AddressId1 = associatedInstanceId.then(associatedInstanceId => associatedInstanceId.addresses?.[0]?.id);
+ * const vswitchId = alicloud.vpc.getIpv6Addresses({
+ *     vswitchId: "example_value",
+ * });
+ * export const vpcIpv6AddressId2 = vswitchId.then(vswitchId => vswitchId.addresses?.[0]?.id);
+ * const vpcId = alicloud.vpc.getIpv6Addresses({
+ *     vpcId: "example_value",
+ * });
+ * export const vpcIpv6AddressId3 = vpcId.then(vpcId => vpcId.addresses?.[0]?.id);
+ * const status = alicloud.vpc.getIpv6Addresses({
+ *     status: "Available",
+ * });
+ * export const vpcIpv6AddressId4 = status.then(status => status.addresses?.[0]?.id);
+ * ```
  */
 export function getIpv6Addresses(args?: GetIpv6AddressesArgs, opts?: pulumi.InvokeOptions): Promise<GetIpv6AddressesResult> {
     args = args || {};
@@ -73,6 +99,32 @@ export interface GetIpv6AddressesResult {
  * This data source provides the Vpc Ipv6 Addresses of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.142.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const associatedInstanceId = alicloud.vpc.getIpv6Addresses({
+ *     associatedInstanceId: "example_value",
+ * });
+ * export const vpcIpv6AddressId1 = associatedInstanceId.then(associatedInstanceId => associatedInstanceId.addresses?.[0]?.id);
+ * const vswitchId = alicloud.vpc.getIpv6Addresses({
+ *     vswitchId: "example_value",
+ * });
+ * export const vpcIpv6AddressId2 = vswitchId.then(vswitchId => vswitchId.addresses?.[0]?.id);
+ * const vpcId = alicloud.vpc.getIpv6Addresses({
+ *     vpcId: "example_value",
+ * });
+ * export const vpcIpv6AddressId3 = vpcId.then(vpcId => vpcId.addresses?.[0]?.id);
+ * const status = alicloud.vpc.getIpv6Addresses({
+ *     status: "Available",
+ * });
+ * export const vpcIpv6AddressId4 = status.then(status => status.addresses?.[0]?.id);
+ * ```
  */
 export function getIpv6AddressesOutput(args?: GetIpv6AddressesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpv6AddressesResult> {
     return pulumi.output(args).apply((a: any) => getIpv6Addresses(a, opts))

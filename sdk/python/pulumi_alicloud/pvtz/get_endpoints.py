@@ -109,6 +109,20 @@ def get_endpoints(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.143.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.pvtz.get_endpoints(ids=["example_id"])
+    pulumi.export("pvtzEndpointId1", ids.endpoints[0].id)
+    name_regex = alicloud.pvtz.get_endpoints(name_regex="^my-Endpoint")
+    pulumi.export("pvtzEndpointId2", name_regex.endpoints[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Endpoint IDs.
     :param str name_regex: A regex string to filter results by Endpoint name.
@@ -143,6 +157,20 @@ def get_endpoints_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     This data source provides the Pvtz Endpoints of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.143.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.pvtz.get_endpoints(ids=["example_id"])
+    pulumi.export("pvtzEndpointId1", ids.endpoints[0].id)
+    name_regex = alicloud.pvtz.get_endpoints(name_regex="^my-Endpoint")
+    pulumi.export("pvtzEndpointId2", name_regex.endpoints[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Endpoint IDs.

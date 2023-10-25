@@ -155,6 +155,19 @@ def get_hana_backup_clients(client_id: Optional[str] = None,
 
     > **NOTE:** Available in 1.198.0+
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.hbr.get_hana_backup_clients(ids=["example_id"],
+        vault_id="your_vault_id")
+    pulumi.export("hbrHanaBackupClientsId1", ids.hana_backup_clients[0].id)
+    ```
+
 
     :param str client_id: The ID of the backup client.
     :param str cluster_id: The ID of the SAP HANA instance.
@@ -202,6 +215,19 @@ def get_hana_backup_clients_output(client_id: Optional[pulumi.Input[Optional[str
     This data source provides the Hybrid Backup Recovery (HBR) Hana Backup Clients of the current Alibaba Cloud user.
 
     > **NOTE:** Available in 1.198.0+
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.hbr.get_hana_backup_clients(ids=["example_id"],
+        vault_id="your_vault_id")
+    pulumi.export("hbrHanaBackupClientsId1", ids.hana_backup_clients[0].id)
+    ```
 
 
     :param str client_id: The ID of the backup client.

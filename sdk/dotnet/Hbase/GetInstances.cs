@@ -16,6 +16,29 @@ namespace Pulumi.AliCloud.Hbase
         /// Filters support regular expression for the instance name, ids or availability_zone.
         /// 
         /// &gt; **NOTE:**  Available in 1.67.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var hbase = AliCloud.Hbase.GetInstances.Invoke(new()
+        ///     {
+        ///         AvailabilityZone = "cn-shenzhen-b",
+        ///         NameRegex = "tf_testAccHBase",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:hbase/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
@@ -25,6 +48,29 @@ namespace Pulumi.AliCloud.Hbase
         /// Filters support regular expression for the instance name, ids or availability_zone.
         /// 
         /// &gt; **NOTE:**  Available in 1.67.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var hbase = AliCloud.Hbase.GetInstances.Invoke(new()
+        ///     {
+        ///         AvailabilityZone = "cn-shenzhen-b",
+        ///         NameRegex = "tf_testAccHBase",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:hbase/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());

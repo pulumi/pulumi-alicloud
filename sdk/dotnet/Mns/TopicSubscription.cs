@@ -10,6 +10,36 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Mns
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var topic = new AliCloud.Mns.Topic("topic", new()
+    ///     {
+    ///         LoggingEnabled = false,
+    ///         MaximumMessageSize = 65536,
+    ///     });
+    /// 
+    ///     var subscription = new AliCloud.Mns.TopicSubscription("subscription", new()
+    ///     {
+    ///         Endpoint = "http://www.xxx.com/xxx",
+    ///         FilterTag = "test",
+    ///         NotifyContentFormat = "XML",
+    ///         NotifyStrategy = "BACKOFF_RETRY",
+    ///         TopicName = "tf-example-mnstopic",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// MNS Topic subscription can be imported using the id, e.g.

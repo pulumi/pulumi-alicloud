@@ -11,6 +11,53 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.52.1.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const exampleZones = alicloud.rds.getZones({
+ *     engine: "MySQL",
+ *     engineVersion: "5.6",
+ * });
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ *     vpcId: exampleNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ *     vswitchName: name,
+ * });
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("exampleSecurityGroup", {vpcId: exampleNetwork.id});
+ * const exampleInstance = new alicloud.rds.Instance("exampleInstance", {
+ *     engine: "MySQL",
+ *     engineVersion: "5.6",
+ *     instanceType: "rds.mysql.t1.small",
+ *     instanceStorage: 20,
+ *     instanceChargeType: "Postpaid",
+ *     instanceName: name,
+ *     vswitchId: exampleSwitch.id,
+ *     securityIps: [
+ *         "10.168.1.12",
+ *         "100.69.7.112",
+ *     ],
+ * });
+ * const exampleReadOnlyInstance = new alicloud.rds.ReadOnlyInstance("exampleReadOnlyInstance", {
+ *     zoneId: exampleInstance.zoneId,
+ *     masterDbInstanceId: exampleInstance.id,
+ *     engineVersion: exampleInstance.engineVersion,
+ *     instanceStorage: exampleInstance.instanceStorage,
+ *     instanceType: exampleInstance.instanceType,
+ *     instanceName: `${name}readonly`,
+ *     vswitchId: exampleSwitch.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * RDS readonly instance can be imported using the id, e.g.

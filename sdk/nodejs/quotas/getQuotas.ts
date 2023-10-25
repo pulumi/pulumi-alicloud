@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides the Quotas Quotas of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.115.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.quotas.getQuotas({
+ *     productCode: "ecs",
+ *     nameRegex: "专有宿主机总数量上限",
+ * });
+ * export const firstQuotasQuotaId = example.then(example => example.quotas?.[0]?.id);
+ * ```
  */
 export function getQuotas(args: GetQuotasArgs, opts?: pulumi.InvokeOptions): Promise<GetQuotasResult> {
 
@@ -100,6 +115,21 @@ export interface GetQuotasResult {
  * This data source provides the Quotas Quotas of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.115.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.quotas.getQuotas({
+ *     productCode: "ecs",
+ *     nameRegex: "专有宿主机总数量上限",
+ * });
+ * export const firstQuotasQuotaId = example.then(example => example.quotas?.[0]?.id);
+ * ```
  */
 export function getQuotasOutput(args: GetQuotasOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQuotasResult> {
     return pulumi.output(args).apply((a: any) => getQuotas(a, opts))

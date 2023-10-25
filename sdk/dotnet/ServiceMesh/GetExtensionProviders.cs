@@ -15,6 +15,47 @@ namespace Pulumi.AliCloud.ServiceMesh
         /// This data source provides the Service Mesh Extension Providers of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.191.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.ServiceMesh.GetExtensionProviders.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         ServiceMeshId = "example_service_mesh_id",
+        ///         Type = "httpextauth",
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.ServiceMesh.GetExtensionProviders.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-ServiceMeshExtensionProvider",
+        ///         ServiceMeshId = "example_service_mesh_id",
+        ///         Type = "httpextauth",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["serviceMeshExtensionProvidersId1"] = ids.Apply(getExtensionProvidersResult =&gt; getExtensionProvidersResult.Providers[0]?.Id),
+        ///         ["serviceMeshExtensionProvidersId2"] = nameRegex.Apply(getExtensionProvidersResult =&gt; getExtensionProvidersResult.Providers[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetExtensionProvidersResult> InvokeAsync(GetExtensionProvidersArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetExtensionProvidersResult>("alicloud:servicemesh/getExtensionProviders:getExtensionProviders", args ?? new GetExtensionProvidersArgs(), options.WithDefaults());
@@ -23,6 +64,47 @@ namespace Pulumi.AliCloud.ServiceMesh
         /// This data source provides the Service Mesh Extension Providers of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.191.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.ServiceMesh.GetExtensionProviders.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         ServiceMeshId = "example_service_mesh_id",
+        ///         Type = "httpextauth",
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.ServiceMesh.GetExtensionProviders.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-ServiceMeshExtensionProvider",
+        ///         ServiceMeshId = "example_service_mesh_id",
+        ///         Type = "httpextauth",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["serviceMeshExtensionProvidersId1"] = ids.Apply(getExtensionProvidersResult =&gt; getExtensionProvidersResult.Providers[0]?.Id),
+        ///         ["serviceMeshExtensionProvidersId2"] = nameRegex.Apply(getExtensionProvidersResult =&gt; getExtensionProvidersResult.Providers[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetExtensionProvidersResult> Invoke(GetExtensionProvidersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetExtensionProvidersResult>("alicloud:servicemesh/getExtensionProviders:getExtensionProviders", args ?? new GetExtensionProvidersInvokeArgs(), options.WithDefaults());

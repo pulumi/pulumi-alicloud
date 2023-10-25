@@ -16,6 +16,41 @@ namespace Pulumi.AliCloud.Tag
     /// 
     /// &gt; **NOTE:** Available since v1.204.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var @default = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var examplePolicy = new AliCloud.Tag.Policy("examplePolicy", new()
+    ///     {
+    ///         PolicyName = name,
+    ///         PolicyDesc = name,
+    ///         UserType = "USER",
+    ///         PolicyContent = @"		{""tags"":{""CostCenter"":{""tag_value"":{""@@assign"":[""Beijing"",""Shanghai""]},""tag_key"":{""@@assign"":""CostCenter""}}}}
+    /// ",
+    ///     });
+    /// 
+    ///     var examplePolicyAttachment = new AliCloud.Tag.PolicyAttachment("examplePolicyAttachment", new()
+    ///     {
+    ///         PolicyId = examplePolicy.Id,
+    ///         TargetId = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
+    ///         TargetType = "USER",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Tag Policy Attachment can be imported using the id, e.g.

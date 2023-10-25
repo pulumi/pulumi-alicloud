@@ -281,6 +281,38 @@ class EndpointAddress(pulumi.CustomResource):
         > **NOTE:** Available in v1.68.0+. Each PolarDB instance will allocate a intranet connection string automatically and its prefix is Cluster ID.
          To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
+            db_version="8.0",
+            pay_type="PostPaid")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_node_classes.classes[0].zone_id,
+            vswitch_name="terraform-example")
+        default_cluster = alicloud.polardb.Cluster("defaultCluster",
+            db_type="MySQL",
+            db_version="8.0",
+            db_node_class=default_node_classes.classes[0].supported_engines[0].available_resources[0].db_node_class,
+            pay_type="PostPaid",
+            vswitch_id=default_switch.id,
+            description="terraform-example")
+        default_endpoints = alicloud.polardb.get_endpoints_output(db_cluster_id=default_cluster.id)
+        default_endpoint_address = alicloud.polardb.EndpointAddress("defaultEndpointAddress",
+            db_cluster_id=default_cluster.id,
+            db_endpoint_id=default_endpoints.endpoints[0].db_endpoint_id,
+            connection_prefix="polardbexample",
+            net_type="Public")
+        ```
+
         ## Import
 
         PolarDB endpoint address can be imported using the id, e.g.
@@ -307,6 +339,38 @@ class EndpointAddress(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.68.0+. Each PolarDB instance will allocate a intranet connection string automatically and its prefix is Cluster ID.
          To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
+            db_version="8.0",
+            pay_type="PostPaid")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_node_classes.classes[0].zone_id,
+            vswitch_name="terraform-example")
+        default_cluster = alicloud.polardb.Cluster("defaultCluster",
+            db_type="MySQL",
+            db_version="8.0",
+            db_node_class=default_node_classes.classes[0].supported_engines[0].available_resources[0].db_node_class,
+            pay_type="PostPaid",
+            vswitch_id=default_switch.id,
+            description="terraform-example")
+        default_endpoints = alicloud.polardb.get_endpoints_output(db_cluster_id=default_cluster.id)
+        default_endpoint_address = alicloud.polardb.EndpointAddress("defaultEndpointAddress",
+            db_cluster_id=default_cluster.id,
+            db_endpoint_id=default_endpoints.endpoints[0].db_endpoint_id,
+            connection_prefix="polardbexample",
+            net_type="Public")
+        ```
 
         ## Import
 

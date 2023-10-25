@@ -17,6 +17,36 @@ import (
 // For information about OTS tunnel and how to use it, see [Tunnel overview](https://www.alibabacloud.com/help/en/tablestore/latest/tunnel-service-overview).
 //
 // > **NOTE:** Available in v1.172.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ots"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tunnelsDs, err := ots.GetTunnels(ctx, &ots.GetTunnelsArgs{
+//				InstanceName: "sample-instance",
+//				NameRegex:    pulumi.StringRef("sample-tunnel"),
+//				OutputFile:   pulumi.StringRef("tunnels.txt"),
+//				TableName:    "sample-table",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstTunnelId", tunnelsDs.Tunnels[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetTunnels(ctx *pulumi.Context, args *GetTunnelsArgs, opts ...pulumi.InvokeOption) (*GetTunnelsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTunnelsResult

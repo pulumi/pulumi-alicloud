@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available since v1.0.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const rolesDs = alicloud.ram.getRoles({
+ *     nameRegex: ".*test.*",
+ *     outputFile: "roles.txt",
+ *     policyName: "AliyunACSDefaultAccess",
+ *     policyType: "Custom",
+ * });
+ * export const firstRoleId = rolesDs.then(rolesDs => rolesDs.roles?.[0]?.id);
+ * ```
  */
 export function getRoles(args?: GetRolesArgs, opts?: pulumi.InvokeOptions): Promise<GetRolesResult> {
     args = args || {};
@@ -79,6 +94,21 @@ export interface GetRolesResult {
  * This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available since v1.0.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const rolesDs = alicloud.ram.getRoles({
+ *     nameRegex: ".*test.*",
+ *     outputFile: "roles.txt",
+ *     policyName: "AliyunACSDefaultAccess",
+ *     policyType: "Custom",
+ * });
+ * export const firstRoleId = rolesDs.then(rolesDs => rolesDs.roles?.[0]?.id);
+ * ```
  */
 export function getRolesOutput(args?: GetRolesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRolesResult> {
     return pulumi.output(args).apply((a: any) => getRoles(a, opts))

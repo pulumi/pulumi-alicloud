@@ -281,6 +281,30 @@ class ClientKey(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.210.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        a_ap0 = alicloud.kms.ApplicationAccessPoint("aAP0",
+            policies=["aa"],
+            description="aa",
+            application_access_point_name=name)
+        default = alicloud.kms.ClientKey("default",
+            aap_name=a_ap0.application_access_point_name,
+            password="YouPassword123!",
+            not_before="2023-09-01T14:11:22Z",
+            not_after="2028-09-01T14:11:22Z",
+            private_key_data_file="./private_key_data_file.txt")
+        ```
+
         ## Import
 
         KMS Client Key can be imported using the id, e.g.
@@ -311,6 +335,30 @@ class ClientKey(pulumi.CustomResource):
         For information about KMS Client Key and how to use it, see [What is Client Key](https://www.alibabacloud.com/help/zh/key-management-service/latest/api-createclientkey).
 
         > **NOTE:** Available since v1.210.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        a_ap0 = alicloud.kms.ApplicationAccessPoint("aAP0",
+            policies=["aa"],
+            description="aa",
+            application_access_point_name=name)
+        default = alicloud.kms.ClientKey("default",
+            aap_name=a_ap0.application_access_point_name,
+            password="YouPassword123!",
+            not_before="2023-09-01T14:11:22Z",
+            not_after="2028-09-01T14:11:22Z",
+            private_key_data_file="./private_key_data_file.txt")
+        ```
 
         ## Import
 

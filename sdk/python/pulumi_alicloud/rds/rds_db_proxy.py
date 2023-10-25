@@ -1017,6 +1017,70 @@ class RdsDbProxy(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.193.0.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="5.6")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.rds.Instance("defaultInstance",
+            engine="MySQL",
+            engine_version="5.7",
+            instance_type="rds.mysql.c1.large",
+            instance_storage=20,
+            instance_charge_type="Postpaid",
+            instance_name=name,
+            vswitch_id=default_switch.id,
+            db_instance_storage_type="local_ssd")
+        default_read_only_instance = alicloud.rds.ReadOnlyInstance("defaultReadOnlyInstance",
+            zone_id=default_instance.zone_id,
+            master_db_instance_id=default_instance.id,
+            engine_version=default_instance.engine_version,
+            instance_storage=default_instance.instance_storage,
+            instance_type=default_instance.instance_type,
+            instance_name=f"{name}readonly",
+            vswitch_id=default_switch.id)
+        default_rds_db_proxy = alicloud.rds.RdsDbProxy("defaultRdsDbProxy",
+            instance_id=default_instance.id,
+            instance_network_type="VPC",
+            vpc_id=default_instance.vpc_id,
+            vswitch_id=default_instance.vswitch_id,
+            db_proxy_instance_num=2,
+            db_proxy_connection_prefix="example",
+            db_proxy_connect_string_port=3306,
+            db_proxy_endpoint_read_write_mode="ReadWrite",
+            read_only_instance_max_delay_time=90,
+            db_proxy_features="TransactionReadSqlRouteOptimizeStatus:1;ConnectionPersist:1;ReadWriteSpliting:1",
+            read_only_instance_distribution_type="Custom",
+            read_only_instance_weights=[
+                alicloud.rds.RdsDbProxyReadOnlyInstanceWeightArgs(
+                    instance_id=default_instance.id,
+                    weight="100",
+                ),
+                alicloud.rds.RdsDbProxyReadOnlyInstanceWeightArgs(
+                    instance_id=default_read_only_instance.id,
+                    weight="500",
+                ),
+            ])
+        ```
+
+        > **NOTE:** Resource `rds.RdsDbProxy` should be created after `rds.ReadOnlyInstance`, so the `depends_on` statement is necessary.
+
         ## Import
 
         RDS database proxy feature can be imported using the id, e.g.
@@ -1085,6 +1149,70 @@ class RdsDbProxy(pulumi.CustomResource):
         Information about RDS database exclusive agent and its usage, see [What is RDS DB Proxy](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-modifydbproxy).
 
         > **NOTE:** Available since v1.193.0.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="5.6")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.rds.Instance("defaultInstance",
+            engine="MySQL",
+            engine_version="5.7",
+            instance_type="rds.mysql.c1.large",
+            instance_storage=20,
+            instance_charge_type="Postpaid",
+            instance_name=name,
+            vswitch_id=default_switch.id,
+            db_instance_storage_type="local_ssd")
+        default_read_only_instance = alicloud.rds.ReadOnlyInstance("defaultReadOnlyInstance",
+            zone_id=default_instance.zone_id,
+            master_db_instance_id=default_instance.id,
+            engine_version=default_instance.engine_version,
+            instance_storage=default_instance.instance_storage,
+            instance_type=default_instance.instance_type,
+            instance_name=f"{name}readonly",
+            vswitch_id=default_switch.id)
+        default_rds_db_proxy = alicloud.rds.RdsDbProxy("defaultRdsDbProxy",
+            instance_id=default_instance.id,
+            instance_network_type="VPC",
+            vpc_id=default_instance.vpc_id,
+            vswitch_id=default_instance.vswitch_id,
+            db_proxy_instance_num=2,
+            db_proxy_connection_prefix="example",
+            db_proxy_connect_string_port=3306,
+            db_proxy_endpoint_read_write_mode="ReadWrite",
+            read_only_instance_max_delay_time=90,
+            db_proxy_features="TransactionReadSqlRouteOptimizeStatus:1;ConnectionPersist:1;ReadWriteSpliting:1",
+            read_only_instance_distribution_type="Custom",
+            read_only_instance_weights=[
+                alicloud.rds.RdsDbProxyReadOnlyInstanceWeightArgs(
+                    instance_id=default_instance.id,
+                    weight="100",
+                ),
+                alicloud.rds.RdsDbProxyReadOnlyInstanceWeightArgs(
+                    instance_id=default_read_only_instance.id,
+                    weight="500",
+                ),
+            ])
+        ```
+
+        > **NOTE:** Resource `rds.RdsDbProxy` should be created after `rds.ReadOnlyInstance`, so the `depends_on` statement is necessary.
 
         ## Import
 

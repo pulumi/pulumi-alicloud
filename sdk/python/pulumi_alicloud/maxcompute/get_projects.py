@@ -108,6 +108,26 @@ def get_projects(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in 1.196.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "tf_testaccmp"
+    default_project = alicloud.maxcompute.Project("defaultProject",
+        default_quota="默认后付费Quota",
+        project_name=name,
+        comment=name,
+        product_type="PAYASYOUGO")
+    default_projects = default_project.id.apply(lambda id: alicloud.maxcompute.get_projects_output(ids=[id],
+        name_regex=default_project.name))
+    pulumi.export("alicloudMaxcomputeProjectExampleId", default_projects.projects[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Project IDs.
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
@@ -138,6 +158,26 @@ def get_projects_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
     This data source provides Max Compute Project available to the user.[What is Project](https://help.aliyun.com/document_detail/473479.html)
 
     > **NOTE:** Available in 1.196.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "tf_testaccmp"
+    default_project = alicloud.maxcompute.Project("defaultProject",
+        default_quota="默认后付费Quota",
+        project_name=name,
+        comment=name,
+        product_type="PAYASYOUGO")
+    default_projects = default_project.id.apply(lambda id: alicloud.maxcompute.get_projects_output(ids=[id],
+        name_regex=default_project.name))
+    pulumi.export("alicloudMaxcomputeProjectExampleId", default_projects.projects[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Project IDs.

@@ -13,6 +13,29 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.151.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const example = new alicloud.ros.TemplateScratch("example", {
+ *     description: "tf_testacc",
+ *     templateScratchType: "ResourceImport",
+ *     preferenceParameters: [{
+ *         parameterKey: "DeletionPolicy",
+ *         parameterValue: "Retain",
+ *     }],
+ *     sourceResourceGroup: {
+ *         resourceGroupId: _default.then(_default => _default.ids?.[0]),
+ *         resourceTypeFilters: ["ALIYUN::ECS::VPC"],
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * ROS Template Scratch can be imported using the id, e.g.

@@ -156,6 +156,16 @@ def get_trails(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in 1.95.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.actiontrail.get_trails(name_regex="tf-testacc-actiontrail")
+    pulumi.export("trailName", default.trails[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of ActionTrail Trail IDs. It is the same as trail name.
     :param bool include_organization_trail: Whether to show organization tracking. Default to `false`.
@@ -199,6 +209,16 @@ def get_trails_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
     This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
 
     > **NOTE:** Available in 1.95.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.actiontrail.get_trails(name_regex="tf-testacc-actiontrail")
+    pulumi.export("trailName", default.trails[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of ActionTrail Trail IDs. It is the same as trail name.

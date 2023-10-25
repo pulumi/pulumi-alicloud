@@ -439,6 +439,28 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.117.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ecs.AutoSnapshotPolicy("example",
+            repeat_weekdays=[
+                "1",
+                "2",
+                "3",
+            ],
+            retention_days=-1,
+            time_points=[
+                "1",
+                "22",
+                "23",
+            ])
+        ```
+
         ## Import
 
         ECS Auto Snapshot Policy can be imported using the id, e.g.
@@ -480,6 +502,28 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
         For information about ECS Auto Snapshot Policy and how to use it, see [What is Auto Snapshot Policy](https://www.alibabacloud.com/help/en/doc-detail/25527.htm).
 
         > **NOTE:** Available in v1.117.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ecs.AutoSnapshotPolicy("example",
+            repeat_weekdays=[
+                "1",
+                "2",
+                "3",
+            ],
+            retention_days=-1,
+            time_points=[
+                "1",
+                "22",
+                "23",
+            ])
+        ```
 
         ## Import
 

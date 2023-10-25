@@ -10,6 +10,22 @@ import * as utilities from "../utilities";
  * This data source provides the Arms Alert Contacts of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.129.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.arms.getAlertContacts({});
+ * export const armsAlertContactId1 = ids.then(ids => ids.contacts?.[0]?.id);
+ * const nameRegex = alicloud.arms.getAlertContacts({
+ *     nameRegex: "^my-AlertContact",
+ * });
+ * export const armsAlertContactId2 = nameRegex.then(nameRegex => nameRegex.contacts?.[0]?.id);
+ * ```
  */
 export function getAlertContacts(args?: GetAlertContactsArgs, opts?: pulumi.InvokeOptions): Promise<GetAlertContactsResult> {
     args = args || {};
@@ -76,6 +92,22 @@ export interface GetAlertContactsResult {
  * This data source provides the Arms Alert Contacts of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.129.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.arms.getAlertContacts({});
+ * export const armsAlertContactId1 = ids.then(ids => ids.contacts?.[0]?.id);
+ * const nameRegex = alicloud.arms.getAlertContacts({
+ *     nameRegex: "^my-AlertContact",
+ * });
+ * export const armsAlertContactId2 = nameRegex.then(nameRegex => nameRegex.contacts?.[0]?.id);
+ * ```
  */
 export function getAlertContactsOutput(args?: GetAlertContactsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlertContactsResult> {
     return pulumi.output(args).apply((a: any) => getAlertContacts(a, opts))

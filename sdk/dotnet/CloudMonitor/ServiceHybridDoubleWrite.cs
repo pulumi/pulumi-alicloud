@@ -16,6 +16,39 @@ namespace Pulumi.AliCloud.CloudMonitor
     /// 
     /// &gt; **NOTE:** Available since v1.210.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var source = new AliCloud.Cms.Namespace("source", new()
+    ///     {
+    ///         NamespaceName = "your_source_namespace",
+    ///     });
+    /// 
+    ///     var defaultNamespace = new AliCloud.Cms.Namespace("defaultNamespace", new()
+    ///     {
+    ///         NamespaceName = "your_namespace",
+    ///     });
+    /// 
+    ///     var defaultServiceHybridDoubleWrite = new AliCloud.CloudMonitor.ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite", new()
+    ///     {
+    ///         SourceNamespace = source.Id,
+    ///         SourceUserId = "your_source_account",
+    ///         Namespace = defaultNamespace.Id,
+    ///         UserId = "your_account",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Cloud Monitor Service Hybrid Double Write can be imported using the id, e.g.

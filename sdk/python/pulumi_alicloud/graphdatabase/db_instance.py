@@ -615,6 +615,29 @@ class DbInstance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.136.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example = alicloud.graphdatabase.DbInstance("example",
+            db_node_class="gdb.r.2xlarge",
+            db_instance_network_type="vpc",
+            db_version="1.0",
+            db_instance_category="HA",
+            db_instance_storage_type="cloud_ssd",
+            db_node_storage=50,
+            payment_type="PayAsYouGo",
+            db_instance_description=name)
+        ```
+
         ## Import
 
         Graph Database Db Instance can be imported using the id, e.g.
@@ -650,6 +673,29 @@ class DbInstance(pulumi.CustomResource):
         For information about Graph Database Db Instance and how to use it, see [What is Db Instance](https://www.alibabacloud.com/help/en/graph-compute/latest/placeholder).
 
         > **NOTE:** Available since v1.136.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example = alicloud.graphdatabase.DbInstance("example",
+            db_node_class="gdb.r.2xlarge",
+            db_instance_network_type="vpc",
+            db_version="1.0",
+            db_instance_category="HA",
+            db_instance_storage_type="cloud_ssd",
+            db_node_storage=50,
+            payment_type="PayAsYouGo",
+            db_instance_description=name)
+        ```
 
         ## Import
 

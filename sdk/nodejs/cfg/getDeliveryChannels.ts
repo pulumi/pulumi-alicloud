@@ -15,6 +15,19 @@ import * as utilities from "../utilities";
  * > **NOTE:**  Available in 1.99.0+.
  *
  * > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.cfg.getDeliveryChannels({
+ *     ids: ["cdc-49a2ad756057********"],
+ *     nameRegex: "tftest",
+ * });
+ * export const firstConfigDeliveryChannelId = example.then(example => example.channels?.[0]?.id);
+ * ```
  */
 export function getDeliveryChannels(args?: GetDeliveryChannelsArgs, opts?: pulumi.InvokeOptions): Promise<GetDeliveryChannelsResult> {
     args = args || {};
@@ -86,6 +99,19 @@ export interface GetDeliveryChannelsResult {
  * > **NOTE:**  Available in 1.99.0+.
  *
  * > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.cfg.getDeliveryChannels({
+ *     ids: ["cdc-49a2ad756057********"],
+ *     nameRegex: "tftest",
+ * });
+ * export const firstConfigDeliveryChannelId = example.then(example => example.channels?.[0]?.id);
+ * ```
  */
 export function getDeliveryChannelsOutput(args?: GetDeliveryChannelsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeliveryChannelsResult> {
     return pulumi.output(args).apply((a: any) => getDeliveryChannels(a, opts))

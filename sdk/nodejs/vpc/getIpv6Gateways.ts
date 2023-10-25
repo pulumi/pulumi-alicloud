@@ -10,6 +10,34 @@ import * as utilities from "../utilities";
  * This data source provides the Vpc Ipv6 Gateways of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.142.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.vpc.getIpv6Gateways({
+ *     ids: ["example_id"],
+ * });
+ * export const vpcIpv6GatewayId1 = ids.then(ids => ids.gateways?.[0]?.id);
+ * const nameRegex = alicloud.vpc.getIpv6Gateways({
+ *     nameRegex: "^my-Ipv6Gateway",
+ * });
+ * export const vpcIpv6GatewayId2 = nameRegex.then(nameRegex => nameRegex.gateways?.[0]?.id);
+ * const vpcId = alicloud.vpc.getIpv6Gateways({
+ *     ids: ["example_id"],
+ *     vpcId: "example_value",
+ * });
+ * export const vpcIpv6GatewayId3 = vpcId.then(vpcId => vpcId.gateways?.[0]?.id);
+ * const status = alicloud.vpc.getIpv6Gateways({
+ *     ids: ["example_id"],
+ *     status: "Available",
+ * });
+ * export const vpcIpv6GatewayId4 = status.then(status => status.gateways?.[0]?.id);
+ * ```
  */
 export function getIpv6Gateways(args?: GetIpv6GatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetIpv6GatewaysResult> {
     args = args || {};
@@ -76,6 +104,34 @@ export interface GetIpv6GatewaysResult {
  * This data source provides the Vpc Ipv6 Gateways of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.142.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.vpc.getIpv6Gateways({
+ *     ids: ["example_id"],
+ * });
+ * export const vpcIpv6GatewayId1 = ids.then(ids => ids.gateways?.[0]?.id);
+ * const nameRegex = alicloud.vpc.getIpv6Gateways({
+ *     nameRegex: "^my-Ipv6Gateway",
+ * });
+ * export const vpcIpv6GatewayId2 = nameRegex.then(nameRegex => nameRegex.gateways?.[0]?.id);
+ * const vpcId = alicloud.vpc.getIpv6Gateways({
+ *     ids: ["example_id"],
+ *     vpcId: "example_value",
+ * });
+ * export const vpcIpv6GatewayId3 = vpcId.then(vpcId => vpcId.gateways?.[0]?.id);
+ * const status = alicloud.vpc.getIpv6Gateways({
+ *     ids: ["example_id"],
+ *     status: "Available",
+ * });
+ * export const vpcIpv6GatewayId4 = status.then(status => status.gateways?.[0]?.id);
+ * ```
  */
 export function getIpv6GatewaysOutput(args?: GetIpv6GatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpv6GatewaysResult> {
     return pulumi.output(args).apply((a: any) => getIpv6Gateways(a, opts))

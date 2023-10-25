@@ -16,6 +16,37 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **NOTE:** Available in v1.152.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new AliCloud.Ecs.EcsPrefixList("default", new()
+    ///     {
+    ///         AddressFamily = "IPv4",
+    ///         Description = "description",
+    ///         Entries = new[]
+    ///         {
+    ///             new AliCloud.Ecs.Inputs.EcsPrefixListEntryArgs
+    ///             {
+    ///                 Cidr = "192.168.0.0/24",
+    ///                 Description = "description",
+    ///             },
+    ///         },
+    ///         MaxEntries = 2,
+    ///         PrefixListName = "tftest",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ECS Prefix List can be imported using the id, e.g.

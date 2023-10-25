@@ -11,6 +11,19 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.129.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const example = new alicloud.eventbridge.EventBus("example", {eventBusName: name});
+ * ```
+ *
  * ## Import
  *
  * Event Bridge Event Bus can be imported using the id, e.g.

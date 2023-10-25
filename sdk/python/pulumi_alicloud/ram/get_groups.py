@@ -125,6 +125,18 @@ def get_groups(name_regex: Optional[str] = None,
 
     > **NOTE:** Available since v1.0.0+.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    groups_ds = alicloud.ram.get_groups(name_regex="^group[0-9]*",
+        output_file="groups.txt",
+        user_name="user1")
+    pulumi.export("firstGroupName", groups_ds.groups[0].name)
+    ```
+
 
     :param str name_regex: A regex string to filter the returned groups by their names.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -163,6 +175,18 @@ def get_groups_output(name_regex: Optional[pulumi.Input[Optional[str]]] = None,
     This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
 
     > **NOTE:** Available since v1.0.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    groups_ds = alicloud.ram.get_groups(name_regex="^group[0-9]*",
+        output_file="groups.txt",
+        user_name="user1")
+    pulumi.export("firstGroupName", groups_ds.groups[0].name)
+    ```
 
 
     :param str name_regex: A regex string to filter the returned groups by their names.

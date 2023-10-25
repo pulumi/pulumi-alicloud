@@ -264,6 +264,25 @@ class LifecyclePolicy(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.153.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_file_system = alicloud.nas.FileSystem("exampleFileSystem",
+            protocol_type="NFS",
+            storage_type="Capacity")
+        example_lifecycle_policy = alicloud.nas.LifecyclePolicy("exampleLifecyclePolicy",
+            file_system_id=example_file_system.id,
+            lifecycle_policy_name="terraform-example",
+            lifecycle_rule_name="DEFAULT_ATIME_14",
+            storage_type="InfrequentAccess",
+            paths=["/"])
+        ```
+
         ## Import
 
         Network Attached Storage (NAS) Lifecycle Policy can be imported using the id, e.g.
@@ -292,6 +311,25 @@ class LifecyclePolicy(pulumi.CustomResource):
         For information about Network Attached Storage (NAS) Lifecycle Policy and how to use it, see [What is Lifecycle Policy](https://www.alibabacloud.com/help/en/doc-detail/169362.html).
 
         > **NOTE:** Available in v1.153.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_file_system = alicloud.nas.FileSystem("exampleFileSystem",
+            protocol_type="NFS",
+            storage_type="Capacity")
+        example_lifecycle_policy = alicloud.nas.LifecyclePolicy("exampleLifecyclePolicy",
+            file_system_id=example_file_system.id,
+            lifecycle_policy_name="terraform-example",
+            lifecycle_rule_name="DEFAULT_ATIME_14",
+            storage_type="InfrequentAccess",
+            paths=["/"])
+        ```
 
         ## Import
 

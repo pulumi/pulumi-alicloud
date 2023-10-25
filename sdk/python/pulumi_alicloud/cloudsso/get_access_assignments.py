@@ -132,6 +132,22 @@ def get_access_assignments(access_configuration_id: Optional[str] = None,
 
     > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cloudsso.get_access_assignments(directory_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("cloudSsoAccessAssignmentId1", ids.assignments[0].id)
+    ```
+
 
     :param str access_configuration_id: Access configuration ID.
     :param str directory_id: Directory ID.
@@ -179,6 +195,22 @@ def get_access_assignments_output(access_configuration_id: Optional[pulumi.Input
     > **NOTE:** Available in v1.193.0+.
 
     > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cloudsso.get_access_assignments(directory_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("cloudSsoAccessAssignmentId1", ids.assignments[0].id)
+    ```
 
 
     :param str access_configuration_id: Access configuration ID.

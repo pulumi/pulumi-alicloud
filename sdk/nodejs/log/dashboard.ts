@@ -10,6 +10,62 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in 1.86.0, parameter "action" in charList is supported since 1.164.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const exampleProject = new alicloud.log.Project("exampleProject", {description: "terraform-example"});
+ * const exampleStore = new alicloud.log.Store("exampleStore", {
+ *     project: exampleProject.name,
+ *     shardCount: 3,
+ *     autoSplit: true,
+ *     maxSplitShardCount: 60,
+ *     appendMeta: true,
+ * });
+ * const exampleDashboard = new alicloud.log.Dashboard("exampleDashboard", {
+ *     projectName: exampleProject.name,
+ *     dashboardName: "terraform-example",
+ *     attribute: "{\"type\":\"grid\"}",
+ *     charList: `  [
+ *     {
+ *       "action": {},
+ *       "title":"new_title",
+ *       "type":"map",
+ *       "search":{
+ *         "logstore":"example-store",
+ *         "topic":"new_topic",
+ *         "query":"* | SELECT COUNT(name) as ct_name, COUNT(product) as ct_product, name,product GROUP BY name,product",
+ *         "start":"-86400s",
+ *         "end":"now"
+ *       },
+ *       "display":{
+ *         "xAxis":[
+ *           "ct_name"
+ *         ],
+ *         "yAxis":[
+ *           "ct_product"
+ *         ],
+ *         "xPos":0,
+ *         "yPos":0,
+ *         "width":10,
+ *         "height":12,
+ *         "displayName":"terraform-example"
+ *       }
+ *     }
+ *   ]
+ * `,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Log Dashboard can be imported using the id or name, e.g.

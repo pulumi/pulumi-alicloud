@@ -3115,6 +3115,55 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.0.0
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        # Create a new ECS instance for VPC
+        vpc = alicloud.vpc.Network("vpc",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        # Create a new ECS instance for a VPC
+        group = alicloud.ecs.SecurityGroup("group",
+            description="foo",
+            vpc_id=vpc.id)
+        key = alicloud.kms.Key("key",
+            description="Hello KMS",
+            pending_window_in_days=7,
+            status="Enabled")
+        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        vswitch = alicloud.vpc.Switch("vswitch",
+            vpc_id=vpc.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default.zones[0].id,
+            vswitch_name=name)
+        instance = alicloud.ecs.Instance("instance",
+            availability_zone=default.zones[0].id,
+            security_groups=[__item.id for __item in [group]],
+            instance_type="ecs.n4.large",
+            system_disk_category="cloud_efficiency",
+            system_disk_name=name,
+            system_disk_description="test_foo_system_disk_description",
+            image_id="ubuntu_18_04_64_20G_alibase_20190624.vhd",
+            instance_name=name,
+            vswitch_id=vswitch.id,
+            internet_max_bandwidth_out=10,
+            data_disks=[alicloud.ecs.InstanceDataDiskArgs(
+                name="disk2",
+                size=20,
+                category="cloud_efficiency",
+                description="disk2",
+                encrypted=True,
+                kms_key_id=key.id,
+            )])
+        ```
         ## Module Support
 
         You can use the existing ecs-instance module
@@ -3249,6 +3298,55 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.0.0
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        # Create a new ECS instance for VPC
+        vpc = alicloud.vpc.Network("vpc",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        # Create a new ECS instance for a VPC
+        group = alicloud.ecs.SecurityGroup("group",
+            description="foo",
+            vpc_id=vpc.id)
+        key = alicloud.kms.Key("key",
+            description="Hello KMS",
+            pending_window_in_days=7,
+            status="Enabled")
+        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        vswitch = alicloud.vpc.Switch("vswitch",
+            vpc_id=vpc.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default.zones[0].id,
+            vswitch_name=name)
+        instance = alicloud.ecs.Instance("instance",
+            availability_zone=default.zones[0].id,
+            security_groups=[__item.id for __item in [group]],
+            instance_type="ecs.n4.large",
+            system_disk_category="cloud_efficiency",
+            system_disk_name=name,
+            system_disk_description="test_foo_system_disk_description",
+            image_id="ubuntu_18_04_64_20G_alibase_20190624.vhd",
+            instance_name=name,
+            vswitch_id=vswitch.id,
+            internet_max_bandwidth_out=10,
+            data_disks=[alicloud.ecs.InstanceDataDiskArgs(
+                name="disk2",
+                size=20,
+                category="cloud_efficiency",
+                description="disk2",
+                encrypted=True,
+                kms_key_id=key.id,
+            )])
+        ```
         ## Module Support
 
         You can use the existing ecs-instance module

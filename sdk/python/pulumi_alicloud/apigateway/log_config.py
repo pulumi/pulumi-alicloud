@@ -184,6 +184,41 @@ class LogConfig(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.185.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default_log_configs = alicloud.apigateway.get_log_configs(log_type="PROVIDER")
+        count = 0 if len(default_log_configs.configs) > 0 else 1
+        default_random_integer = []
+        for range in [{"value": i} for i in range(0, count)]:
+            default_random_integer.append(random.RandomInteger(f"defaultRandomInteger-{range['value']}",
+                max=99999,
+                min=10000))
+        example_project = []
+        for range in [{"value": i} for i in range(0, count)]:
+            example_project.append(alicloud.log.Project(f"exampleProject-{range['value']}", description="terraform-example"))
+        example_store = []
+        for range in [{"value": i} for i in range(0, count)]:
+            example_store.append(alicloud.log.Store(f"exampleStore-{range['value']}",
+                project=example_project[0].name,
+                shard_count=3,
+                auto_split=True,
+                max_split_shard_count=60,
+                append_meta=True))
+        example_log_config = []
+        for range in [{"value": i} for i in range(0, count)]:
+            example_log_config.append(alicloud.apigateway.LogConfig(f"exampleLogConfig-{range['value']}",
+                sls_project=example_project[0].name,
+                sls_log_store=example_store[0].name,
+                log_type="PROVIDER"))
+        ```
+
         ## Import
 
         Api Gateway Log Config can be imported using the id, e.g.
@@ -210,6 +245,41 @@ class LogConfig(pulumi.CustomResource):
         For information about Api Gateway Log Config and how to use it, see [What is Log Config](https://www.alibabacloud.com/help/en/api-gateway/latest/api-cloudapi-2016-07-14-createlogconfig).
 
         > **NOTE:** Available since v1.185.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default_log_configs = alicloud.apigateway.get_log_configs(log_type="PROVIDER")
+        count = 0 if len(default_log_configs.configs) > 0 else 1
+        default_random_integer = []
+        for range in [{"value": i} for i in range(0, count)]:
+            default_random_integer.append(random.RandomInteger(f"defaultRandomInteger-{range['value']}",
+                max=99999,
+                min=10000))
+        example_project = []
+        for range in [{"value": i} for i in range(0, count)]:
+            example_project.append(alicloud.log.Project(f"exampleProject-{range['value']}", description="terraform-example"))
+        example_store = []
+        for range in [{"value": i} for i in range(0, count)]:
+            example_store.append(alicloud.log.Store(f"exampleStore-{range['value']}",
+                project=example_project[0].name,
+                shard_count=3,
+                auto_split=True,
+                max_split_shard_count=60,
+                append_meta=True))
+        example_log_config = []
+        for range in [{"value": i} for i in range(0, count)]:
+            example_log_config.append(alicloud.apigateway.LogConfig(f"exampleLogConfig-{range['value']}",
+                sls_project=example_project[0].name,
+                sls_log_store=example_store[0].name,
+                log_type="PROVIDER"))
+        ```
 
         ## Import
 

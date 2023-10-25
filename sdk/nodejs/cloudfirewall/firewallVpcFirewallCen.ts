@@ -13,6 +13,26 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.194.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.cloudfirewall.FirewallVpcFirewallCen("default", {
+ *     cenId: "cen-cjok7uyb5w2b27573v",
+ *     localVpc: {
+ *         networkInstanceId: "vpc-a2d4wzzfuumzuq6uog5w4",
+ *     },
+ *     memberUid: "1415189284827022",
+ *     status: "open",
+ *     vpcFirewallName: "tf-vpc-firewall-name",
+ *     vpcRegion: "ap-south-1",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Cloud Firewall Vpc Firewall Cen can be imported using the id, e.g.

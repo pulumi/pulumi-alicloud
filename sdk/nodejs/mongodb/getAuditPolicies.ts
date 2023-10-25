@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * This data source provides the Mongodb Audit Policies of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.148.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.mongodb.getAuditPolicies({
+ *     dbInstanceId: "example_value",
+ * });
+ * export const mongodbAuditPolicyId1 = example.then(example => example.policies?.[0]?.id);
+ * ```
  */
 export function getAuditPolicies(args: GetAuditPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetAuditPoliciesResult> {
 
@@ -50,6 +64,20 @@ export interface GetAuditPoliciesResult {
  * This data source provides the Mongodb Audit Policies of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.148.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.mongodb.getAuditPolicies({
+ *     dbInstanceId: "example_value",
+ * });
+ * export const mongodbAuditPolicyId1 = example.then(example => example.policies?.[0]?.id);
+ * ```
  */
 export function getAuditPoliciesOutput(args: GetAuditPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAuditPoliciesResult> {
     return pulumi.output(args).apply((a: any) => getAuditPolicies(a, opts))

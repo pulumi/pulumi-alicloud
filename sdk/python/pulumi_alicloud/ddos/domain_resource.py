@@ -374,6 +374,41 @@ class DomainResource(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.123.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        domain = config.get("domain")
+        if domain is None:
+            domain = "tf-example.alibaba.com"
+        default_ddos_coo_instance = alicloud.ddos.DdosCooInstance("defaultDdosCooInstance",
+            bandwidth="30",
+            base_bandwidth="30",
+            service_bandwidth="100",
+            port_count="50",
+            domain_count="50",
+            period=1,
+            product_type="ddoscoo")
+        default_domain_resource = alicloud.ddos.DomainResource("defaultDomainResource",
+            domain=domain,
+            rs_type=0,
+            instance_ids=[default_ddos_coo_instance.id],
+            real_servers=["177.167.32.11"],
+            https_ext="{\\"Http2\\":1,\\"Http2https\\":0,\\"Https2http\\":0}",
+            proxy_types=[alicloud.ddos.DomainResourceProxyTypeArgs(
+                proxy_ports=[443],
+                proxy_type="https",
+            )])
+        ```
+
         ## Import
 
         Anti-DDoS Pro Domain Resource can be imported using the id, e.g.
@@ -406,6 +441,41 @@ class DomainResource(pulumi.CustomResource):
         For information about Anti-DDoS Pro Domain Resource and how to use it, see [What is Domain Resource](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-createwebrule).
 
         > **NOTE:** Available since v1.123.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        domain = config.get("domain")
+        if domain is None:
+            domain = "tf-example.alibaba.com"
+        default_ddos_coo_instance = alicloud.ddos.DdosCooInstance("defaultDdosCooInstance",
+            bandwidth="30",
+            base_bandwidth="30",
+            service_bandwidth="100",
+            port_count="50",
+            domain_count="50",
+            period=1,
+            product_type="ddoscoo")
+        default_domain_resource = alicloud.ddos.DomainResource("defaultDomainResource",
+            domain=domain,
+            rs_type=0,
+            instance_ids=[default_ddos_coo_instance.id],
+            real_servers=["177.167.32.11"],
+            https_ext="{\\"Http2\\":1,\\"Http2https\\":0,\\"Https2http\\":0}",
+            proxy_types=[alicloud.ddos.DomainResourceProxyTypeArgs(
+                proxy_ports=[443],
+                proxy_type="https",
+            )])
+        ```
 
         ## Import
 

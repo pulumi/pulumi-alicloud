@@ -19,6 +19,65 @@ import (
 //
 // > **NOTE:** Available since v1.196.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			examplePhysicalConnections, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
+//				NameRegex: pulumi.StringRef("^preserved-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vlanId, err := random.NewRandomInteger(ctx, "vlanId", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(2999),
+//				Min: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = expressconnect.NewVirtualPhysicalConnection(ctx, "exampleVirtualPhysicalConnection", &expressconnect.VirtualPhysicalConnectionArgs{
+//				VirtualPhysicalConnectionName: pulumi.String(name),
+//				Description:                   pulumi.String(name),
+//				OrderMode:                     pulumi.String("PayByPhysicalConnectionOwner"),
+//				ParentPhysicalConnectionId:    *pulumi.String(examplePhysicalConnections.Ids[0]),
+//				Spec:                          pulumi.String("50M"),
+//				VlanId:                        vlanId.ID(),
+//				VpconnAliUid:                  *pulumi.String(_default.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Express Connect Virtual Physical Connection can be imported using the id, e.g.

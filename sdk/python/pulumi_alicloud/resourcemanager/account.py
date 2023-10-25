@@ -435,6 +435,23 @@ class Account(pulumi.CustomResource):
         > **NOTE:** From version 1.188.0, the resource can be destroyed. The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial. see [how to destroy it](https://www.alibabacloud.com/help/en/resource-management/latest/delete-account).
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        display_name = config.get("displayName")
+        if display_name is None:
+            display_name = "EAccount"
+        example_folder = alicloud.resourcemanager.Folder("exampleFolder", folder_name=name)
+        example_account = alicloud.resourcemanager.Account("exampleAccount",
+            display_name=display_name,
+            folder_id=example_folder.id)
+        ```
         ### Deleting `resourcemanager.Account` or removing it from your configuration
 
         Deleting the resource manager account or removing it from your configuration will remove it from your state file and management,
@@ -478,6 +495,23 @@ class Account(pulumi.CustomResource):
         > **NOTE:** From version 1.188.0, the resource can be destroyed. The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial. see [how to destroy it](https://www.alibabacloud.com/help/en/resource-management/latest/delete-account).
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        display_name = config.get("displayName")
+        if display_name is None:
+            display_name = "EAccount"
+        example_folder = alicloud.resourcemanager.Folder("exampleFolder", folder_name=name)
+        example_account = alicloud.resourcemanager.Account("exampleAccount",
+            display_name=display_name,
+            folder_id=example_folder.id)
+        ```
         ### Deleting `resourcemanager.Account` or removing it from your configuration
 
         Deleting the resource manager account or removing it from your configuration will remove it from your state file and management,

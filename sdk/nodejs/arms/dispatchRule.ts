@@ -13,6 +13,61 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.136.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultAlertContact = new alicloud.arms.AlertContact("defaultAlertContact", {
+ *     alertContactName: "example_value",
+ *     email: "example_value@aaa.com",
+ * });
+ * const defaultAlertContactGroup = new alicloud.arms.AlertContactGroup("defaultAlertContactGroup", {
+ *     alertContactGroupName: "example_value",
+ *     contactIds: [defaultAlertContact.id],
+ * });
+ * const defaultDispatchRule = new alicloud.arms.DispatchRule("defaultDispatchRule", {
+ *     dispatchRuleName: "example_value",
+ *     dispatchType: "CREATE_ALERT",
+ *     groupRules: [{
+ *         groupWaitTime: 5,
+ *         groupInterval: 15,
+ *         repeatInterval: 100,
+ *         groupingFields: ["alertname"],
+ *     }],
+ *     labelMatchExpressionGrids: [{
+ *         labelMatchExpressionGroups: [{
+ *             labelMatchExpressions: [{
+ *                 key: "_aliyun_arms_involvedObject_kind",
+ *                 value: "app",
+ *                 operator: "eq",
+ *             }],
+ *         }],
+ *     }],
+ *     notifyRules: [{
+ *         notifyObjects: [
+ *             {
+ *                 notifyObjectId: defaultAlertContact.id,
+ *                 notifyType: "ARMS_CONTACT",
+ *                 name: "example_value",
+ *             },
+ *             {
+ *                 notifyObjectId: defaultAlertContactGroup.id,
+ *                 notifyType: "ARMS_CONTACT_GROUP",
+ *                 name: "example_value",
+ *             },
+ *         ],
+ *         notifyChannels: [
+ *             "dingTalk",
+ *             "wechat",
+ *         ],
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Application Real-Time Monitoring Service (ARMS) Alert Contact can be imported using the id, e.g.

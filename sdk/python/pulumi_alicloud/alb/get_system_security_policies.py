@@ -96,6 +96,18 @@ def get_system_security_policies(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.183.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    defaults = alicloud.alb.get_system_security_policies(ids=["tls_cipher_policy_1_0"])
+    pulumi.export("albSystemSecurityPolicyId1", defaults.policies[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of System Security Policy IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -124,6 +136,18 @@ def get_system_security_policies_output(ids: Optional[pulumi.Input[Optional[Sequ
     This data source provides the ALB System Security Policies of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.183.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    defaults = alicloud.alb.get_system_security_policies(ids=["tls_cipher_policy_1_0"])
+    pulumi.export("albSystemSecurityPolicyId1", defaults.policies[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of System Security Policy IDs.

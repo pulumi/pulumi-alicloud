@@ -11,6 +11,49 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.134.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultRegions = alicloud.clickhouse.getRegions({
+ *     current: true,
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.zoneIds?.[0]?.zoneId),
+ * });
+ * const defaultDbCluster = new alicloud.clickhouse.DbCluster("defaultDbCluster", {
+ *     dbClusterVersion: "22.8.5.29",
+ *     category: "Basic",
+ *     dbClusterClass: "S8",
+ *     dbClusterNetworkType: "vpc",
+ *     dbNodeGroupCount: 1,
+ *     paymentType: "PayAsYouGo",
+ *     dbNodeStorage: "500",
+ *     storageType: "cloud_essd",
+ *     vswitchId: defaultSwitch.id,
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultAccount = new alicloud.clickhouse.Account("defaultAccount", {
+ *     dbClusterId: defaultDbCluster.id,
+ *     accountDescription: "tf-example-description",
+ *     accountName: "examplename",
+ *     accountPassword: "Example1234",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Click House Account can be imported using the id, e.g.

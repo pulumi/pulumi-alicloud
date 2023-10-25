@@ -11,6 +11,20 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.152.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.ram.SecurityPreference("example", {
+ *     allowUserToChangePassword: true,
+ *     enableSaveMfaTicket: false,
+ * });
+ * ```
+ *
  * ## Import
  *
  * RAM Security Preference can be imported using the id, e.g.

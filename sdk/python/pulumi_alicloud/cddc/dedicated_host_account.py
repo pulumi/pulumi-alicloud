@@ -227,6 +227,58 @@ class DedicatedHostAccount(pulumi.CustomResource):
 
         > **NOTE:** Each Dedicated host can have only one account. Before you create an account for a host, make sure that the existing account is deleted.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_zones = alicloud.cddc.get_zones()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.ids[0])
+        default_dedicated_host_group = alicloud.cddc.DedicatedHostGroup("defaultDedicatedHostGroup",
+            engine="MySQL",
+            vpc_id=default_network.id,
+            cpu_allocation_ratio=101,
+            mem_allocation_ratio=50,
+            disk_allocation_ratio=200,
+            allocation_policy="Evenly",
+            host_replace_policy="Manual",
+            dedicated_host_group_desc=name,
+            open_permission=True)
+        default_host_ecs_level_infos = alicloud.cddc.get_host_ecs_level_infos(db_type="mysql",
+            zone_id=default_zones.ids[0],
+            storage_type="cloud_essd")
+        default_dedicated_host = alicloud.cddc.DedicatedHost("defaultDedicatedHost",
+            host_name=name,
+            dedicated_host_group_id=default_dedicated_host_group.id,
+            host_class=default_host_ecs_level_infos.infos[0].res_class_code,
+            zone_id=default_zones.ids[0],
+            vswitch_id=default_switch.id,
+            payment_type="Subscription",
+            tags={
+                "Created": "TF",
+                "For": "CDDC_DEDICATED",
+            })
+        default_dedicated_host_account = alicloud.cddc.DedicatedHostAccount("defaultDedicatedHostAccount",
+            account_name=name,
+            account_password="Password1234",
+            dedicated_host_id=default_dedicated_host.dedicated_host_id,
+            account_type="Normal")
+        ```
+
         ## Import
 
         ApsaraDB for MyBase Dedicated Host Account can be imported using the id, e.g.
@@ -256,6 +308,58 @@ class DedicatedHostAccount(pulumi.CustomResource):
         > **NOTE:** Available since v1.148.0.
 
         > **NOTE:** Each Dedicated host can have only one account. Before you create an account for a host, make sure that the existing account is deleted.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_zones = alicloud.cddc.get_zones()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.ids[0])
+        default_dedicated_host_group = alicloud.cddc.DedicatedHostGroup("defaultDedicatedHostGroup",
+            engine="MySQL",
+            vpc_id=default_network.id,
+            cpu_allocation_ratio=101,
+            mem_allocation_ratio=50,
+            disk_allocation_ratio=200,
+            allocation_policy="Evenly",
+            host_replace_policy="Manual",
+            dedicated_host_group_desc=name,
+            open_permission=True)
+        default_host_ecs_level_infos = alicloud.cddc.get_host_ecs_level_infos(db_type="mysql",
+            zone_id=default_zones.ids[0],
+            storage_type="cloud_essd")
+        default_dedicated_host = alicloud.cddc.DedicatedHost("defaultDedicatedHost",
+            host_name=name,
+            dedicated_host_group_id=default_dedicated_host_group.id,
+            host_class=default_host_ecs_level_infos.infos[0].res_class_code,
+            zone_id=default_zones.ids[0],
+            vswitch_id=default_switch.id,
+            payment_type="Subscription",
+            tags={
+                "Created": "TF",
+                "For": "CDDC_DEDICATED",
+            })
+        default_dedicated_host_account = alicloud.cddc.DedicatedHostAccount("defaultDedicatedHostAccount",
+            account_name=name,
+            account_password="Password1234",
+            dedicated_host_id=default_dedicated_host.dedicated_host_id,
+            account_type="Normal")
+        ```
 
         ## Import
 

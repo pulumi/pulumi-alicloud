@@ -16,6 +16,77 @@ namespace Pulumi.AliCloud.Vpn
     /// 
     /// &gt; **NOTE:** Available since v1.181.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultCustomerGateway = new AliCloud.Vpn.CustomerGateway("defaultCustomerGateway", new()
+    ///     {
+    ///         IpAddress = "42.104.22.210",
+    ///         Asn = "45014",
+    ///         Description = name,
+    ///     });
+    /// 
+    ///     var defaultGatewayVpnAttachment = new AliCloud.Vpn.GatewayVpnAttachment("defaultGatewayVpnAttachment", new()
+    ///     {
+    ///         CustomerGatewayId = defaultCustomerGateway.Id,
+    ///         NetworkType = "public",
+    ///         LocalSubnet = "0.0.0.0/0",
+    ///         RemoteSubnet = "0.0.0.0/0",
+    ///         EffectImmediately = false,
+    ///         IkeConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentIkeConfigArgs
+    ///         {
+    ///             IkeAuthAlg = "md5",
+    ///             IkeEncAlg = "des",
+    ///             IkeVersion = "ikev2",
+    ///             IkeMode = "main",
+    ///             IkeLifetime = 86400,
+    ///             Psk = "tf-testvpn2",
+    ///             IkePfs = "group1",
+    ///             RemoteId = "testbob2",
+    ///             LocalId = "testalice2",
+    ///         },
+    ///         IpsecConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentIpsecConfigArgs
+    ///         {
+    ///             IpsecPfs = "group5",
+    ///             IpsecEncAlg = "des",
+    ///             IpsecAuthAlg = "md5",
+    ///             IpsecLifetime = 86400,
+    ///         },
+    ///         BgpConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentBgpConfigArgs
+    ///         {
+    ///             Enable = true,
+    ///             LocalAsn = 45014,
+    ///             TunnelCidr = "169.254.11.0/30",
+    ///             LocalBgpIp = "169.254.11.1",
+    ///         },
+    ///         HealthCheckConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentHealthCheckConfigArgs
+    ///         {
+    ///             Enable = true,
+    ///             Sip = "192.168.1.1",
+    ///             Dip = "10.0.0.1",
+    ///             Interval = 10,
+    ///             Retry = 10,
+    ///             Policy = "revoke_route",
+    ///         },
+    ///         EnableDpd = true,
+    ///         EnableNatTraversal = true,
+    ///         VpnAttachmentName = name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// VPN Gateway Vpn Attachment can be imported using the id, e.g.

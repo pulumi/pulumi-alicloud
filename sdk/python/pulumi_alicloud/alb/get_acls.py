@@ -149,6 +149,20 @@ def get_acls(acl_ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.133.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.alb.get_acls()
+    pulumi.export("albAclId1", ids.acls[0].id)
+    name_regex = alicloud.alb.get_acls(name_regex="^my-Acl")
+    pulumi.export("albAclId2", name_regex.acls[0].id)
+    ```
+
 
     :param Sequence[str] acl_ids: The acl ids.
     :param str acl_name: The ACL Name.
@@ -199,6 +213,20 @@ def get_acls_output(acl_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
     This data source provides the Application Load Balancer (ALB) Acls of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.133.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.alb.get_acls()
+    pulumi.export("albAclId1", ids.acls[0].id)
+    name_regex = alicloud.alb.get_acls(name_regex="^my-Acl")
+    pulumi.export("albAclId2", name_regex.acls[0].id)
+    ```
 
 
     :param Sequence[str] acl_ids: The acl ids.

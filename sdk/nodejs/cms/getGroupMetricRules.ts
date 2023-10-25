@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides the Cms Group Metric Rules of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.104.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.cms.getGroupMetricRules({
+ *     ids: ["4a9a8978-a9cc-55ca-aa7c-530ccd91ae57"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstCmsGroupMetricRuleId = example.then(example => example.rules?.[0]?.id);
+ * ```
  */
 export function getGroupMetricRules(args?: GetGroupMetricRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupMetricRulesResult> {
     args = args || {};
@@ -100,6 +115,21 @@ export interface GetGroupMetricRulesResult {
  * This data source provides the Cms Group Metric Rules of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.104.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.cms.getGroupMetricRules({
+ *     ids: ["4a9a8978-a9cc-55ca-aa7c-530ccd91ae57"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstCmsGroupMetricRuleId = example.then(example => example.rules?.[0]?.id);
+ * ```
  */
 export function getGroupMetricRulesOutput(args?: GetGroupMetricRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupMetricRulesResult> {
     return pulumi.output(args).apply((a: any) => getGroupMetricRules(a, opts))

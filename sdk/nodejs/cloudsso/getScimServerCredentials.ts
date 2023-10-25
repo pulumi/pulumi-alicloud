@@ -12,6 +12,24 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in v1.138.0+.
  *
  * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cloudsso.getScimServerCredentials({
+ *     directoryId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const cloudSsoScimServerCredentialId1 = ids.then(ids => ids.credentials?.[0]?.id);
+ * ```
  */
 export function getScimServerCredentials(args: GetScimServerCredentialsArgs, opts?: pulumi.InvokeOptions): Promise<GetScimServerCredentialsResult> {
 
@@ -66,6 +84,24 @@ export interface GetScimServerCredentialsResult {
  * > **NOTE:** Available in v1.138.0+.
  *
  * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cloudsso.getScimServerCredentials({
+ *     directoryId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const cloudSsoScimServerCredentialId1 = ids.then(ids => ids.credentials?.[0]?.id);
+ * ```
  */
 export function getScimServerCredentialsOutput(args: GetScimServerCredentialsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScimServerCredentialsResult> {
     return pulumi.output(args).apply((a: any) => getScimServerCredentials(a, opts))

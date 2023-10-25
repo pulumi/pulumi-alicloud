@@ -16,6 +16,43 @@ namespace Pulumi.AliCloud.Amqp
     /// 
     /// &gt; **NOTE:** Available since v1.195.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var accessKey = config.Get("accessKey") ?? "access_key";
+    ///     var secretKey = config.Get("secretKey") ?? "secret_key";
+    ///     var defaultInstance = new AliCloud.Amqp.Instance("defaultInstance", new()
+    ///     {
+    ///         InstanceType = "enterprise",
+    ///         MaxTps = "3000",
+    ///         QueueCapacity = "200",
+    ///         StorageSize = "700",
+    ///         SupportEip = false,
+    ///         MaxEipTps = "128",
+    ///         PaymentType = "Subscription",
+    ///         Period = 1,
+    ///     });
+    /// 
+    ///     var defaultStaticAccount = new AliCloud.Amqp.StaticAccount("defaultStaticAccount", new()
+    ///     {
+    ///         InstanceId = defaultInstance.Id,
+    ///         AccessKey = accessKey,
+    ///         SecretKey = secretKey,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Amqp Static Account can be imported using the id, e.g.

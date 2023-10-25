@@ -10,6 +10,26 @@ import * as utilities from "../utilities";
  * This data source provides the Data Works Folders of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.131.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.dataworks.Folder("default", {
+ *     projectId: "xxxx",
+ *     folderPath: "Business Flow/tfTestAcc/folderDi",
+ * });
+ * const ids = pulumi.all([_default.folderId, _default.projectId]).apply(([folderId, projectId]) => alicloud.dataworks.getFoldersOutput({
+ *     ids: [folderId],
+ *     projectId: projectId,
+ *     parentFolderPath: "Business Flow/tfTestAcc/folderDi",
+ * }));
+ * export const dataWorksFolderId1 = ids.apply(ids => ids.folders?.[0]?.id);
+ * ```
  */
 export function getFolders(args: GetFoldersArgs, opts?: pulumi.InvokeOptions): Promise<GetFoldersResult> {
 
@@ -62,6 +82,26 @@ export interface GetFoldersResult {
  * This data source provides the Data Works Folders of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.131.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.dataworks.Folder("default", {
+ *     projectId: "xxxx",
+ *     folderPath: "Business Flow/tfTestAcc/folderDi",
+ * });
+ * const ids = pulumi.all([_default.folderId, _default.projectId]).apply(([folderId, projectId]) => alicloud.dataworks.getFoldersOutput({
+ *     ids: [folderId],
+ *     projectId: projectId,
+ *     parentFolderPath: "Business Flow/tfTestAcc/folderDi",
+ * }));
+ * export const dataWorksFolderId1 = ids.apply(ids => ids.folders?.[0]?.id);
+ * ```
  */
 export function getFoldersOutput(args: GetFoldersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFoldersResult> {
     return pulumi.output(args).apply((a: any) => getFolders(a, opts))

@@ -19,6 +19,71 @@ import (
 //
 // > **NOTE:** Available in v1.136.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//				VpcId:       exampleNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/21"),
+//				ZoneId:      *pulumi.String(exampleZones.Zones[0].Id),
+//				VswitchName: pulumi.String("terraform-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleNatGateway, err := vpc.NewNatGateway(ctx, "exampleNatGateway", &vpc.NatGatewayArgs{
+//				VpcId:              exampleNetwork.ID(),
+//				InternetChargeType: pulumi.String("PayByLcu"),
+//				NatGatewayName:     pulumi.String("terraform-example"),
+//				Description:        pulumi.String("terraform-example"),
+//				NatType:            pulumi.String("Enhanced"),
+//				VswitchId:          exampleSwitch.ID(),
+//				NetworkType:        pulumi.String("intranet"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewNatIpCidr(ctx, "exampleNatIpCidr", &vpc.NatIpCidrArgs{
+//				NatGatewayId:  exampleNatGateway.ID(),
+//				NatIpCidrName: pulumi.String("terraform-example"),
+//				NatIpCidr:     pulumi.String("192.168.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // VPC Nat Ip Cidr can be imported using the id, e.g.

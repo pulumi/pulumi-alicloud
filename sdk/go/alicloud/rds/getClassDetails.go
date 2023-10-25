@@ -17,6 +17,35 @@ import (
 // For information on RDS class details and how to use it, please refer to [What is RDS class details](https://www.alibabacloud.com/help/zh/apsaradb-for-rds/latest/api-rds-2014-08-15-describeclassdetails).
 //
 // > **NOTE:** Available since v1.209.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rds.GetClassDetails(ctx, &rds.GetClassDetailsArgs{
+//				ClassCode:     "mysql.n4.medium.2c",
+//				CommodityCode: "bards",
+//				Engine:        "MySQL",
+//				EngineVersion: "8.0",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetClassDetails(ctx *pulumi.Context, args *GetClassDetailsArgs, opts ...pulumi.InvokeOption) (*GetClassDetailsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetClassDetailsResult

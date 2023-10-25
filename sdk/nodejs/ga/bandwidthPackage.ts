@@ -13,6 +13,24 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.112.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.ga.BandwidthPackage("example", {
+ *     autoPay: true,
+ *     bandwidth: 20,
+ *     bandwidthType: "Basic",
+ *     duration: "1",
+ *     ratio: 30,
+ *     type: "Basic",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Ga Bandwidth Package can be imported using the id, e.g.

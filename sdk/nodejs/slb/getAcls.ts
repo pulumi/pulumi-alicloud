@@ -9,6 +9,15 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the acls in the region.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const sampleDs = alicloud.slb.getAcls({});
+ * export const firstSlbAclId = sampleDs.then(sampleDs => sampleDs.acls?.[0]?.id);
+ * ```
  * ## Entry Block
  *
  * The entry mapping supports the following:
@@ -98,6 +107,15 @@ export interface GetAclsResult {
 /**
  * This data source provides the acls in the region.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const sampleDs = alicloud.slb.getAcls({});
+ * export const firstSlbAclId = sampleDs.then(sampleDs => sampleDs.acls?.[0]?.id);
+ * ```
  * ## Entry Block
  *
  * The entry mapping supports the following:

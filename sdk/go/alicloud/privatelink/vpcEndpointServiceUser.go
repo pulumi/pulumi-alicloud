@@ -19,6 +19,59 @@ import (
 //
 // > **NOTE:** Available since v1.110.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/privatelink"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tfexampleuser"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			exampleVpcEndpointService, err := privatelink.NewVpcEndpointService(ctx, "exampleVpcEndpointService", &privatelink.VpcEndpointServiceArgs{
+//				ServiceDescription:   pulumi.String(name),
+//				ConnectBandwidth:     pulumi.Int(103),
+//				AutoAcceptConnection: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleUser, err := ram.NewUser(ctx, "exampleUser", &ram.UserArgs{
+//				DisplayName: pulumi.String("user_display_name"),
+//				Mobile:      pulumi.String("86-18688888888"),
+//				Email:       pulumi.String("hello.uuu@aaa.com"),
+//				Comments:    pulumi.String("yoyoyo"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = privatelink.NewVpcEndpointServiceUser(ctx, "exampleVpcEndpointServiceUser", &privatelink.VpcEndpointServiceUserArgs{
+//				ServiceId: exampleVpcEndpointService.ID(),
+//				UserId:    exampleUser.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Private Link Vpc Endpoint Service User can be imported using the id, e.g.

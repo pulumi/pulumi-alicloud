@@ -546,6 +546,34 @@ class EventRule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.182.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.cms.MonitorGroup("default", monitor_group_name=name)
+        example = alicloud.cms.EventRule("example",
+            rule_name=name,
+            group_id=default.id,
+            silence_time=100,
+            description=name,
+            status="ENABLED",
+            event_pattern=alicloud.cms.EventRuleEventPatternArgs(
+                product="ecs",
+                sql_filter="example_value",
+                name_lists=["example_value"],
+                level_lists=["CRITICAL"],
+                event_type_lists=["StatusNotification"],
+            ))
+        ```
+
         ## Import
 
         Cloud Monitor Service Event Rule can be imported using the id, e.g.
@@ -581,6 +609,34 @@ class EventRule(pulumi.CustomResource):
         For information about Cloud Monitor Service Event Rule and how to use it, see [What is Event Rule](https://www.alibabacloud.com/help/en/cloudmonitor/latest/puteventrule).
 
         > **NOTE:** Available since v1.182.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.cms.MonitorGroup("default", monitor_group_name=name)
+        example = alicloud.cms.EventRule("example",
+            rule_name=name,
+            group_id=default.id,
+            silence_time=100,
+            description=name,
+            status="ENABLED",
+            event_pattern=alicloud.cms.EventRuleEventPatternArgs(
+                product="ecs",
+                sql_filter="example_value",
+                name_lists=["example_value"],
+                level_lists=["CRITICAL"],
+                event_type_lists=["StatusNotification"],
+            ))
+        ```
 
         ## Import
 

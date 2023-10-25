@@ -11,6 +11,21 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.195.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.threatdetection.VulWhitelist("default", {
+ *     reason: "tf-example-reason",
+ *     targetInfo: "{\"type\":\"GroupId\",\"uuids\":[],\"groupIds\":[10782678]}",
+ *     whitelist: "[{\"aliasName\":\"RHSA-2021:2260: libwebp 安全更新\",\"name\":\"RHSA-2021:2260: libwebp 安全更新\",\"type\":\"cve\"}]",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Threat Detection Vul Whitelist can be imported using the id, e.g.

@@ -876,6 +876,40 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.194.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_account = alicloud.get_account()
+        default_instance = alicloud.cen.Instance("defaultInstance",
+            cen_instance_name=var["name"],
+            description="example_value",
+            tags={
+                "Created": "TF",
+                "For": "acceptance test",
+            })
+        default_firewall_vpc_firewall_control_policy = alicloud.cloudfirewall.FirewallVpcFirewallControlPolicy("defaultFirewallVpcFirewallControlPolicy",
+            order=1,
+            destination="127.0.0.2/32",
+            application_name="ANY",
+            description="example_value",
+            source_type="net",
+            dest_port="80/88",
+            acl_action="accept",
+            lang="zh",
+            destination_type="net",
+            source="127.0.0.1/32",
+            dest_port_type="port",
+            proto="TCP",
+            release=True,
+            member_uid=default_account.id,
+            vpc_firewall_id=default_instance.id)
+        ```
+
         ## Import
 
         Cloud Firewall Vpc Firewall Control Policy can be imported using the id, e.g.
@@ -920,6 +954,40 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
         For information about Cloud Firewall Vpc Firewall Control Policy and how to use it, see [What is Vpc Firewall Control Policy](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallcontrolpolicy).
 
         > **NOTE:** Available since v1.194.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_account = alicloud.get_account()
+        default_instance = alicloud.cen.Instance("defaultInstance",
+            cen_instance_name=var["name"],
+            description="example_value",
+            tags={
+                "Created": "TF",
+                "For": "acceptance test",
+            })
+        default_firewall_vpc_firewall_control_policy = alicloud.cloudfirewall.FirewallVpcFirewallControlPolicy("defaultFirewallVpcFirewallControlPolicy",
+            order=1,
+            destination="127.0.0.2/32",
+            application_name="ANY",
+            description="example_value",
+            source_type="net",
+            dest_port="80/88",
+            acl_action="accept",
+            lang="zh",
+            destination_type="net",
+            source="127.0.0.1/32",
+            dest_port_type="port",
+            proto="TCP",
+            release=True,
+            member_uid=default_account.id,
+            vpc_firewall_id=default_instance.id)
+        ```
 
         ## Import
 

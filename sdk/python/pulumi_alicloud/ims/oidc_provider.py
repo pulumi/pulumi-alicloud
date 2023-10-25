@@ -318,6 +318,33 @@ class OidcProvider(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.210.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        oidc_provider_name = config.get("oidcProviderName")
+        if oidc_provider_name is None:
+            oidc_provider_name = "amp-resource-example-oidc-provider"
+        default = alicloud.ims.OidcProvider("default",
+            description=oidc_provider_name,
+            issuer_url="https://oauth.aliyun.com",
+            fingerprints=["902ef2deeb3c5b13ea4c3d5193629309e231ae55"],
+            issuance_limit_time=12,
+            oidc_provider_name=name,
+            client_ids=[
+                "123",
+                "456",
+            ])
+        ```
+
         ## Import
 
         IMS Oidc Provider can be imported using the id, e.g.
@@ -347,6 +374,33 @@ class OidcProvider(pulumi.CustomResource):
         For information about IMS Oidc Provider and how to use it, see [What is Oidc Provider](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-createoidcprovider).
 
         > **NOTE:** Available since v1.210.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        oidc_provider_name = config.get("oidcProviderName")
+        if oidc_provider_name is None:
+            oidc_provider_name = "amp-resource-example-oidc-provider"
+        default = alicloud.ims.OidcProvider("default",
+            description=oidc_provider_name,
+            issuer_url="https://oauth.aliyun.com",
+            fingerprints=["902ef2deeb3c5b13ea4c3d5193629309e231ae55"],
+            issuance_limit_time=12,
+            oidc_provider_name=name,
+            client_ids=[
+                "123",
+                "456",
+            ])
+        ```
 
         ## Import
 

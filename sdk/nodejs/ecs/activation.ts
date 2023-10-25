@@ -11,6 +11,23 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.177.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.ecs.Activation("example", {
+ *     description: "terraform-example",
+ *     instanceCount: 10,
+ *     instanceName: "terraform-example",
+ *     ipAddressRange: "0.0.0.0/0",
+ *     timeToLiveInHours: 4,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ECS Activation can be imported using the id, e.g.

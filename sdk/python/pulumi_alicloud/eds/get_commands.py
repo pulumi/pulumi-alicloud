@@ -120,6 +120,50 @@ def get_commands(command_type: Optional[str] = None,
 
     > **NOTE:** Available in v1.146.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
+        cidr_block="172.16.0.0/12",
+        desktop_access_type="Internet",
+        office_site_name="your_office_site_name")
+    default_bundles = alicloud.eds.get_bundles(bundle_type="SYSTEM",
+        name_regex="windows")
+    default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup",
+        policy_group_name="your_policy_group_name",
+        clipboard="readwrite",
+        local_drive="read",
+        authorize_access_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs(
+            description="example_value",
+            cidr_ip="1.2.3.4/24",
+        )],
+        authorize_security_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs(
+            type="inflow",
+            policy="accept",
+            description="example_value",
+            port_range="80/80",
+            ip_protocol="TCP",
+            priority="1",
+            cidr_ip="0.0.0.0/0",
+        )])
+    default_desktop = alicloud.eds.Desktop("defaultDesktop",
+        office_site_id=default_simple_office_site.id,
+        policy_group_id=default_ecd_policy_group.id,
+        bundle_id=default_bundles.bundles[0].id,
+        desktop_name=var["name"])
+    default_command = alicloud.eds.Command("defaultCommand",
+        command_content="ipconfig",
+        command_type="RunPowerShellScript",
+        desktop_id=default_desktop.id)
+    ids = alicloud.eds.get_commands()
+    pulumi.export("ecdCommandId1", ids.commands[0].id)
+    ```
+
 
     :param str command_type: The Script Type. Valid values: `RunBatScript`, `RunPowerShellScript`.
     :param str content_encoding: That Returns the Data Encoding Method. Valid values: `Base64`, `PlainText`.
@@ -161,6 +205,50 @@ def get_commands_output(command_type: Optional[pulumi.Input[Optional[str]]] = No
     This data source provides the Ecd Commands of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.146.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
+        cidr_block="172.16.0.0/12",
+        desktop_access_type="Internet",
+        office_site_name="your_office_site_name")
+    default_bundles = alicloud.eds.get_bundles(bundle_type="SYSTEM",
+        name_regex="windows")
+    default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup",
+        policy_group_name="your_policy_group_name",
+        clipboard="readwrite",
+        local_drive="read",
+        authorize_access_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs(
+            description="example_value",
+            cidr_ip="1.2.3.4/24",
+        )],
+        authorize_security_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs(
+            type="inflow",
+            policy="accept",
+            description="example_value",
+            port_range="80/80",
+            ip_protocol="TCP",
+            priority="1",
+            cidr_ip="0.0.0.0/0",
+        )])
+    default_desktop = alicloud.eds.Desktop("defaultDesktop",
+        office_site_id=default_simple_office_site.id,
+        policy_group_id=default_ecd_policy_group.id,
+        bundle_id=default_bundles.bundles[0].id,
+        desktop_name=var["name"])
+    default_command = alicloud.eds.Command("defaultCommand",
+        command_content="ipconfig",
+        command_type="RunPowerShellScript",
+        desktop_id=default_desktop.id)
+    ids = alicloud.eds.get_commands()
+    pulumi.export("ecdCommandId1", ids.commands[0].id)
+    ```
 
 
     :param str command_type: The Script Type. Valid values: `RunBatScript`, `RunPowerShellScript`.

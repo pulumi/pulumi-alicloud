@@ -267,6 +267,22 @@ class Activation(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.177.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ecs.Activation("example",
+            description="terraform-example",
+            instance_count=10,
+            instance_name="terraform-example",
+            ip_address_range="0.0.0.0/0",
+            time_to_live_in_hours=4)
+        ```
+
         ## Import
 
         ECS Activation can be imported using the id, e.g.
@@ -297,6 +313,22 @@ class Activation(pulumi.CustomResource):
         For information about ECS Activation and how to use it, see [What is Activation](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createactivation#doc-api-Ecs-CreateActivation).
 
         > **NOTE:** Available in v1.177.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ecs.Activation("example",
+            description="terraform-example",
+            instance_count=10,
+            instance_name="terraform-example",
+            ip_address_range="0.0.0.0/0",
+            time_to_live_in_hours=4)
+        ```
 
         ## Import
 

@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * This data source provides the Cen Transit Router Vpn Attachments of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.183.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cen.getTransitRouterVpnAttachments({
+ *     cenId: "example_value",
+ * });
+ * export const cenTransitRouterVpnAttachmentId1 = ids.then(ids => ids.attachments?.[0]?.id);
+ * ```
  */
 export function getTransitRouterVpnAttachments(args: GetTransitRouterVpnAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterVpnAttachmentsResult> {
 
@@ -72,6 +86,20 @@ export interface GetTransitRouterVpnAttachmentsResult {
  * This data source provides the Cen Transit Router Vpn Attachments of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.183.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cen.getTransitRouterVpnAttachments({
+ *     cenId: "example_value",
+ * });
+ * export const cenTransitRouterVpnAttachmentId1 = ids.then(ids => ids.attachments?.[0]?.id);
+ * ```
  */
 export function getTransitRouterVpnAttachmentsOutput(args: GetTransitRouterVpnAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterVpnAttachmentsResult> {
     return pulumi.output(args).apply((a: any) => getTransitRouterVpnAttachments(a, opts))

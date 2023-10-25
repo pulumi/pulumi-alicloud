@@ -10,6 +10,56 @@ import * as utilities from "../utilities";
  * This data source provides the details of the Kubernetes version supported by ACK.
  *
  * > **NOTE:** Available in 1.170.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.cs.getKubernetesVersion({
+ *     clusterType: "ManagedKubernetes",
+ *     kubernetesVersion: "1.22.3-aliyun.1",
+ *     profile: "Default",
+ * });
+ * export const metadata = _default.then(_default => _default.metadatas);
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.cs.getKubernetesVersion({
+ *     clusterType: "Kubernetes",
+ *     kubernetesVersion: "1.22.3-aliyun.1",
+ *     profile: "Default",
+ * });
+ * export const metadata = _default.then(_default => _default.metadatas);
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.cs.getKubernetesVersion({
+ *     clusterType: "ManagedKubernetes",
+ *     kubernetesVersion: "1.22.3-aliyun.1",
+ *     profile: "Serverless",
+ * });
+ * export const metadata = _default.then(_default => _default.metadatas);
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.cs.getKubernetesVersion({
+ *     clusterType: "ManagedKubernetes",
+ *     kubernetesVersion: "1.20.11-aliyunedge.1",
+ *     profile: "Edge",
+ * });
+ * export const metadata = _default.then(_default => _default.metadatas);
+ * ```
  */
 export function getKubernetesVersion(args: GetKubernetesVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesVersionResult> {
 
@@ -59,6 +109,56 @@ export interface GetKubernetesVersionResult {
  * This data source provides the details of the Kubernetes version supported by ACK.
  *
  * > **NOTE:** Available in 1.170.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.cs.getKubernetesVersion({
+ *     clusterType: "ManagedKubernetes",
+ *     kubernetesVersion: "1.22.3-aliyun.1",
+ *     profile: "Default",
+ * });
+ * export const metadata = _default.then(_default => _default.metadatas);
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.cs.getKubernetesVersion({
+ *     clusterType: "Kubernetes",
+ *     kubernetesVersion: "1.22.3-aliyun.1",
+ *     profile: "Default",
+ * });
+ * export const metadata = _default.then(_default => _default.metadatas);
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.cs.getKubernetesVersion({
+ *     clusterType: "ManagedKubernetes",
+ *     kubernetesVersion: "1.22.3-aliyun.1",
+ *     profile: "Serverless",
+ * });
+ * export const metadata = _default.then(_default => _default.metadatas);
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.cs.getKubernetesVersion({
+ *     clusterType: "ManagedKubernetes",
+ *     kubernetesVersion: "1.20.11-aliyunedge.1",
+ *     profile: "Edge",
+ * });
+ * export const metadata = _default.then(_default => _default.metadatas);
+ * ```
  */
 export function getKubernetesVersionOutput(args: GetKubernetesVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesVersionResult> {
     return pulumi.output(args).apply((a: any) => getKubernetesVersion(a, opts))

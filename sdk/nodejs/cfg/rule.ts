@@ -13,6 +13,37 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.204.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
+ *     status: "OK",
+ * });
+ * const defaultRule = new alicloud.cfg.Rule("defaultRule", {
+ *     description: "If the resource matches one of the specified tag key-value pairs, the configuration is considered compliant.",
+ *     sourceOwner: "ALIYUN",
+ *     sourceIdentifier: "contains-tag",
+ *     riskLevel: 1,
+ *     tagValueScope: "example-value",
+ *     tagKeyScope: "example-key",
+ *     excludeResourceIdsScope: "example-resource_id",
+ *     regionIdsScope: "cn-hangzhou",
+ *     configRuleTriggerTypes: "ConfigurationItemChangeNotification",
+ *     resourceGroupIdsScope: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
+ *     resourceTypesScopes: ["ACS::RDS::DBInstance"],
+ *     ruleName: "contains-tag",
+ *     inputParameters: {
+ *         key: "example",
+ *         value: "example",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Config Rule can be imported using the id, e.g.

@@ -121,6 +121,25 @@ def get_access_configurations(directory_id: Optional[str] = None,
 
     > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cloudsso.get_access_configurations(directory_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("cloudSsoAccessConfigurationId1", ids.configurations[0].id)
+    name_regex = alicloud.cloudsso.get_access_configurations(directory_id="example_value",
+        name_regex="^my-AccessConfiguration")
+    pulumi.export("cloudSsoAccessConfigurationId2", name_regex.configurations[0].id)
+    ```
+
 
     :param str directory_id: The ID of the Directory.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -161,6 +180,25 @@ def get_access_configurations_output(directory_id: Optional[pulumi.Input[str]] =
     > **NOTE:** Available in v1.140.0+.
 
     > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cloudsso.get_access_configurations(directory_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("cloudSsoAccessConfigurationId1", ids.configurations[0].id)
+    name_regex = alicloud.cloudsso.get_access_configurations(directory_id="example_value",
+        name_regex="^my-AccessConfiguration")
+    pulumi.export("cloudSsoAccessConfigurationId2", name_regex.configurations[0].id)
+    ```
 
 
     :param str directory_id: The ID of the Directory.

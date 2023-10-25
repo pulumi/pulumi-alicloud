@@ -129,6 +129,25 @@ def get_traffic_marking_policies(description: Optional[str] = None,
 
     > **NOTE:** Available in v1.173.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cen.get_traffic_marking_policies(transit_router_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("cenTrafficMarkingPolicyId1", ids.policies[0].id)
+    name_regex = alicloud.cen.get_traffic_marking_policies(transit_router_id="example_value",
+        name_regex="^my-TrafficMarkingPolicy")
+    pulumi.export("cenTrafficMarkingPolicyId2", name_regex.policies[0].id)
+    ```
+
 
     :param str description: The description of the Traffic Marking Policy.
     :param Sequence[str] ids: A list of Traffic Marking Policy IDs.
@@ -171,6 +190,25 @@ def get_traffic_marking_policies_output(description: Optional[pulumi.Input[Optio
     This data source provides the Cen Traffic Marking Policies of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.173.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cen.get_traffic_marking_policies(transit_router_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("cenTrafficMarkingPolicyId1", ids.policies[0].id)
+    name_regex = alicloud.cen.get_traffic_marking_policies(transit_router_id="example_value",
+        name_regex="^my-TrafficMarkingPolicy")
+    pulumi.export("cenTrafficMarkingPolicyId2", name_regex.policies[0].id)
+    ```
 
 
     :param str description: The description of the Traffic Marking Policy.

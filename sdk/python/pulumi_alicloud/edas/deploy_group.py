@@ -160,6 +160,37 @@ class DeployGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.82.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_regions = alicloud.get_regions(current=True)
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_cluster = alicloud.edas.Cluster("defaultCluster",
+            cluster_name=name,
+            cluster_type=2,
+            network_mode=2,
+            logical_region_id=default_regions.regions[0].id,
+            vpc_id=default_network.id)
+        default_application = alicloud.edas.Application("defaultApplication",
+            application_name=name,
+            cluster_id=default_cluster.id,
+            package_type="JAR")
+        default_deploy_group = alicloud.edas.DeployGroup("defaultDeployGroup",
+            app_id=default_application.id,
+            group_name=name)
+        ```
+
         ## Import
 
         EDAS deploy group can be imported using the id, e.g.
@@ -183,6 +214,37 @@ class DeployGroup(pulumi.CustomResource):
         Provides an EDAS deploy group resource, see [What is EDAS Deploy Group](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-insertdeploygroup).
 
         > **NOTE:** Available since v1.82.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_regions = alicloud.get_regions(current=True)
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_cluster = alicloud.edas.Cluster("defaultCluster",
+            cluster_name=name,
+            cluster_type=2,
+            network_mode=2,
+            logical_region_id=default_regions.regions[0].id,
+            vpc_id=default_network.id)
+        default_application = alicloud.edas.Application("defaultApplication",
+            application_name=name,
+            cluster_id=default_cluster.id,
+            package_type="JAR")
+        default_deploy_group = alicloud.edas.DeployGroup("defaultDeployGroup",
+            app_id=default_application.id,
+            group_name=name)
+        ```
 
         ## Import
 

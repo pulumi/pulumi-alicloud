@@ -514,6 +514,43 @@ class HaVipv2(pulumi.CustomResource):
 
         For information about Vpc Ha Vip and how to use it, see [What is Ha Vip](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createhavip).
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-testacc-example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_vpc = alicloud.vpc.Network("defaultVpc",
+            description="tf-test-acc-vpc",
+            vpc_name=name,
+            cidr_block="192.168.0.0/16")
+        default_vswitch = alicloud.vpc.Switch("defaultVswitch",
+            vpc_id=default_vpc.id,
+            cidr_block="192.168.0.0/21",
+            vswitch_name=f"{name}1",
+            zone_id=default_zones.zones[0].id,
+            description="tf-testacc-vswitch")
+        default_rg = alicloud.resourcemanager.ResourceGroup("defaultRg",
+            display_name="tf-testacc-rg819",
+            resource_group_name=f"{name}2")
+        change_rg = alicloud.resourcemanager.ResourceGroup("changeRg",
+            display_name="tf-testacc-changerg670",
+            resource_group_name=f"{name}3")
+        default_ha_vipv2 = alicloud.vpc.HaVipv2("defaultHaVipv2",
+            description="test",
+            vswitch_id=default_vswitch.id,
+            ha_vip_name=name,
+            ip_address="192.168.1.101",
+            resource_group_id=default_rg.id)
+        ```
+
         ## Import
 
         Vpc Ha Vip can be imported using the id, e.g.
@@ -544,6 +581,43 @@ class HaVipv2(pulumi.CustomResource):
         Provides a Vpc Ha Vip resource. Highly available virtual IP
 
         For information about Vpc Ha Vip and how to use it, see [What is Ha Vip](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createhavip).
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-testacc-example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_vpc = alicloud.vpc.Network("defaultVpc",
+            description="tf-test-acc-vpc",
+            vpc_name=name,
+            cidr_block="192.168.0.0/16")
+        default_vswitch = alicloud.vpc.Switch("defaultVswitch",
+            vpc_id=default_vpc.id,
+            cidr_block="192.168.0.0/21",
+            vswitch_name=f"{name}1",
+            zone_id=default_zones.zones[0].id,
+            description="tf-testacc-vswitch")
+        default_rg = alicloud.resourcemanager.ResourceGroup("defaultRg",
+            display_name="tf-testacc-rg819",
+            resource_group_name=f"{name}2")
+        change_rg = alicloud.resourcemanager.ResourceGroup("changeRg",
+            display_name="tf-testacc-changerg670",
+            resource_group_name=f"{name}3")
+        default_ha_vipv2 = alicloud.vpc.HaVipv2("defaultHaVipv2",
+            description="test",
+            vswitch_id=default_vswitch.id,
+            ha_vip_name=name,
+            ip_address="192.168.1.101",
+            resource_group_id=default_rg.id)
+        ```
 
         ## Import
 

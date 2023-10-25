@@ -179,6 +179,23 @@ class AccessGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.133.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.dfs.AccessGroup("default",
+            access_group_name=name,
+            network_type="VPC")
+        ```
+
         ## Import
 
         DFS Access Group can be imported using the id, e.g.
@@ -205,6 +222,23 @@ class AccessGroup(pulumi.CustomResource):
         For information about DFS Access Group and how to use it, see [What is Access Group](https://www.alibabacloud.com/help/doc-detail/207144.htm).
 
         > **NOTE:** Available since v1.133.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.dfs.AccessGroup("default",
+            access_group_name=name,
+            network_type="VPC")
+        ```
 
         ## Import
 

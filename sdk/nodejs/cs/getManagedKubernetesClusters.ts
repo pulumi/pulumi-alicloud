@@ -12,6 +12,20 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in v1.35.0+
  *
  * > **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kubeConfigFilePrefix`.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const k8sClusters = alicloud.cs.getManagedKubernetesClusters({
+ *     kubeConfigFilePrefix: "~/.kube/managed",
+ *     nameRegex: "my-first-k8s",
+ *     outputFile: "my-first-k8s-json",
+ * });
+ * export const output = k8sClusters.then(k8sClusters => k8sClusters.clusters);
+ * ```
  */
 export function getManagedKubernetesClusters(args?: GetManagedKubernetesClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedKubernetesClustersResult> {
     args = args || {};
@@ -80,6 +94,20 @@ export interface GetManagedKubernetesClustersResult {
  * > **NOTE:** Available in v1.35.0+
  *
  * > **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kubeConfigFilePrefix`.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const k8sClusters = alicloud.cs.getManagedKubernetesClusters({
+ *     kubeConfigFilePrefix: "~/.kube/managed",
+ *     nameRegex: "my-first-k8s",
+ *     outputFile: "my-first-k8s-json",
+ * });
+ * export const output = k8sClusters.then(k8sClusters => k8sClusters.clusters);
+ * ```
  */
 export function getManagedKubernetesClustersOutput(args?: GetManagedKubernetesClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagedKubernetesClustersResult> {
     return pulumi.output(args).apply((a: any) => getManagedKubernetesClusters(a, opts))

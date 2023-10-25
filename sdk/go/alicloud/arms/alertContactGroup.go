@@ -19,6 +19,46 @@ import (
 //
 // > **NOTE:** Available since v1.131.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/arms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleAlertContact, err := arms.NewAlertContact(ctx, "exampleAlertContact", &arms.AlertContactArgs{
+//				AlertContactName:    pulumi.String("example_value"),
+//				DingRobotWebhookUrl: pulumi.String("https://oapi.dingtalk.com/robot/send?access_token=91f2f6****"),
+//				Email:               pulumi.String("someone@example.com"),
+//				PhoneNum:            pulumi.String("1381111****"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = arms.NewAlertContactGroup(ctx, "exampleAlertContactGroup", &arms.AlertContactGroupArgs{
+//				AlertContactGroupName: pulumi.String("example_value"),
+//				ContactIds: pulumi.StringArray{
+//					exampleAlertContact.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Application Real-Time Monitoring Service (ARMS) Alert Contact Group can be imported using the id, e.g.

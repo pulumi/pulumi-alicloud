@@ -319,6 +319,17 @@ class Vault(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.129.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.hbr.Vault("example", vault_name="example_value")
+        ```
+
         ## Import
 
         HBR Vault can be imported using the id, e.g.
@@ -348,6 +359,17 @@ class Vault(pulumi.CustomResource):
         For information about HBR Backup vault and how to use it, see [What is Backup vault](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createvault).
 
         > **NOTE:** Available since v1.129.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.hbr.Vault("example", vault_name="example_value")
+        ```
 
         ## Import
 

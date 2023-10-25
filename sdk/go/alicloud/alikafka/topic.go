@@ -20,6 +20,72 @@ import (
 // > **NOTE:**  Only the following regions support create alikafka topic.
 // [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alikafka"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:     defaultNetwork.ID(),
+//				CidrBlock: pulumi.String("172.16.0.0/24"),
+//				ZoneId:    *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := alikafka.NewInstance(ctx, "defaultInstance", &alikafka.InstanceArgs{
+//				PartitionNum: pulumi.Int(50),
+//				DiskType:     pulumi.Int(1),
+//				DiskSize:     pulumi.Int(500),
+//				DeployType:   pulumi.Int(5),
+//				IoMax:        pulumi.Int(20),
+//				VswitchId:    defaultSwitch.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = alikafka.NewTopic(ctx, "defaultTopic", &alikafka.TopicArgs{
+//				InstanceId:   defaultInstance.ID(),
+//				Topic:        pulumi.String("example-topic"),
+//				LocalTopic:   pulumi.Bool(false),
+//				CompactTopic: pulumi.Bool(false),
+//				PartitionNum: pulumi.Int(12),
+//				Remark:       pulumi.String("dafault_kafka_topic_remark"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ALIKAFKA TOPIC can be imported using the id, e.g.

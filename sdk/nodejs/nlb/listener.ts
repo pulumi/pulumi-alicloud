@@ -11,6 +11,101 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.191.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultZones = alicloud.nlb.getZones({});
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const default1 = new alicloud.vpc.Switch("default1", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.1.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[1]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
+ * const defaultLoadBalancer = new alicloud.nlb.LoadBalancer("defaultLoadBalancer", {
+ *     loadBalancerName: name,
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
+ *     loadBalancerType: "Network",
+ *     addressType: "Internet",
+ *     addressIpVersion: "Ipv4",
+ *     vpcId: defaultNetwork.id,
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
+ *     zoneMappings: [
+ *         {
+ *             vswitchId: defaultSwitch.id,
+ *             zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *         },
+ *         {
+ *             vswitchId: default1.id,
+ *             zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[1]?.id),
+ *         },
+ *     ],
+ * });
+ * const defaultServerGroup = new alicloud.nlb.ServerGroup("defaultServerGroup", {
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
+ *     serverGroupName: name,
+ *     serverGroupType: "Instance",
+ *     vpcId: defaultNetwork.id,
+ *     scheduler: "Wrr",
+ *     protocol: "TCP",
+ *     connectionDrain: true,
+ *     connectionDrainTimeout: 60,
+ *     addressIpVersion: "Ipv4",
+ *     healthCheck: {
+ *         healthCheckEnabled: true,
+ *         healthCheckType: "TCP",
+ *         healthCheckConnectPort: 0,
+ *         healthyThreshold: 2,
+ *         unhealthyThreshold: 2,
+ *         healthCheckConnectTimeout: 5,
+ *         healthCheckInterval: 10,
+ *         httpCheckMethod: "GET",
+ *         healthCheckHttpCodes: [
+ *             "http_2xx",
+ *             "http_3xx",
+ *             "http_4xx",
+ *         ],
+ *     },
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
+ * });
+ * const defaultListener = new alicloud.nlb.Listener("defaultListener", {
+ *     listenerProtocol: "TCP",
+ *     listenerPort: 80,
+ *     listenerDescription: name,
+ *     loadBalancerId: defaultLoadBalancer.id,
+ *     serverGroupId: defaultServerGroup.id,
+ *     idleTimeout: 900,
+ *     proxyProtocolEnabled: true,
+ *     secSensorEnabled: true,
+ *     cps: 10000,
+ *     mss: 0,
+ * });
+ * ```
+ *
  * ## Import
  *
  * NLB Listener can be imported using the id, e.g.

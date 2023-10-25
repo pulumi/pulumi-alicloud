@@ -15,6 +15,34 @@ namespace Pulumi.AliCloud.Ecs
         /// This data source provides a list of ECS Dedicated Hosts in an Alibaba Cloud account according to the specified filters.
         ///  
         /// &gt; **NOTE:** Available in v1.91.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var dedicatedHostsDs = AliCloud.Ecs.GetDedicatedHosts.Invoke(new()
+        ///     {
+        ///         DedicatedHostType = "ddh.g5",
+        ///         NameRegex = "tf-testAcc",
+        ///         Status = "Available",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstDedicatedHostsId"] = dedicatedHostsDs.Apply(getDedicatedHostsResult =&gt; getDedicatedHostsResult.Hosts[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDedicatedHostsResult> InvokeAsync(GetDedicatedHostsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDedicatedHostsResult>("alicloud:ecs/getDedicatedHosts:getDedicatedHosts", args ?? new GetDedicatedHostsArgs(), options.WithDefaults());
@@ -23,6 +51,34 @@ namespace Pulumi.AliCloud.Ecs
         /// This data source provides a list of ECS Dedicated Hosts in an Alibaba Cloud account according to the specified filters.
         ///  
         /// &gt; **NOTE:** Available in v1.91.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var dedicatedHostsDs = AliCloud.Ecs.GetDedicatedHosts.Invoke(new()
+        ///     {
+        ///         DedicatedHostType = "ddh.g5",
+        ///         NameRegex = "tf-testAcc",
+        ///         Status = "Available",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstDedicatedHostsId"] = dedicatedHostsDs.Apply(getDedicatedHostsResult =&gt; getDedicatedHostsResult.Hosts[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDedicatedHostsResult> Invoke(GetDedicatedHostsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDedicatedHostsResult>("alicloud:ecs/getDedicatedHosts:getDedicatedHosts", args ?? new GetDedicatedHostsInvokeArgs(), options.WithDefaults());

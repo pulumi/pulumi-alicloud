@@ -137,6 +137,17 @@ class StorageBundle(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.116.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.cloudstoragegateway.StorageBundle("example", storage_bundle_name="example_value")
+        ```
+
         ## Import
 
         Cloud Storage Gateway Storage Bundle can be imported using the id, e.g.
@@ -162,6 +173,17 @@ class StorageBundle(pulumi.CustomResource):
         For information about Cloud Storage Gateway Storage Bundle and how to use it, see [What is Storage Bundle](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/createstoragebundle).
 
         > **NOTE:** Available since v1.116.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.cloudstoragegateway.StorageBundle("example", storage_bundle_name="example_value")
+        ```
 
         ## Import
 

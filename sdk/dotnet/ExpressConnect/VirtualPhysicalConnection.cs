@@ -16,6 +16,48 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// 
     /// &gt; **NOTE:** Available since v1.196.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var examplePhysicalConnections = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
+    ///     {
+    ///         NameRegex = "^preserved-NODELETING",
+    ///     });
+    /// 
+    ///     var vlanId = new Random.RandomInteger("vlanId", new()
+    ///     {
+    ///         Max = 2999,
+    ///         Min = 1,
+    ///     });
+    /// 
+    ///     var @default = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var exampleVirtualPhysicalConnection = new AliCloud.ExpressConnect.VirtualPhysicalConnection("exampleVirtualPhysicalConnection", new()
+    ///     {
+    ///         VirtualPhysicalConnectionName = name,
+    ///         Description = name,
+    ///         OrderMode = "PayByPhysicalConnectionOwner",
+    ///         ParentPhysicalConnectionId = examplePhysicalConnections.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Ids[0]),
+    ///         Spec = "50M",
+    ///         VlanId = vlanId.Id,
+    ///         VpconnAliUid = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Express Connect Virtual Physical Connection can be imported using the id, e.g.

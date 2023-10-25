@@ -80,6 +80,18 @@ def get_stocks(gateway_class: Optional[str] = None,
 
     > **NOTE:** Available in v1.144.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cloudstoragegateway.get_stocks(gateway_class="Advanced")
+    pulumi.export("zoneId", default.stocks[0].zone_id)
+    ```
+
 
     :param str gateway_class: The gateway class. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -105,6 +117,18 @@ def get_stocks_output(gateway_class: Optional[pulumi.Input[Optional[str]]] = Non
     This data source provides the Cloud Storage Gateway Stocks of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.144.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cloudstoragegateway.get_stocks(gateway_class="Advanced")
+    pulumi.export("zoneId", default.stocks[0].zone_id)
+    ```
 
 
     :param str gateway_class: The gateway class. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.

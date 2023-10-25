@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides the Global Accelerator (GA) Ip Sets of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.113.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.ga.getIpSets({
+ *     acceleratorId: "example_value",
+ *     ids: ["example_value"],
+ * });
+ * export const firstGaIpSetId = example.then(example => example.sets?.[0]?.id);
+ * ```
  */
 export function getIpSets(args: GetIpSetsArgs, opts?: pulumi.InvokeOptions): Promise<GetIpSetsResult> {
 
@@ -62,6 +77,21 @@ export interface GetIpSetsResult {
  * This data source provides the Global Accelerator (GA) Ip Sets of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.113.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.ga.getIpSets({
+ *     acceleratorId: "example_value",
+ *     ids: ["example_value"],
+ * });
+ * export const firstGaIpSetId = example.then(example => example.sets?.[0]?.id);
+ * ```
  */
 export function getIpSetsOutput(args: GetIpSetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpSetsResult> {
     return pulumi.output(args).apply((a: any) => getIpSets(a, opts))

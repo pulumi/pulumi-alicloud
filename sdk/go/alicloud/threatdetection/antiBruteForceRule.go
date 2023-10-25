@@ -19,6 +19,40 @@ import (
 //
 // > **NOTE:** Available since v1.195.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/threatdetection"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := threatdetection.NewAntiBruteForceRule(ctx, "default", &threatdetection.AntiBruteForceRuleArgs{
+//				AntiBruteForceRuleName: pulumi.String("apispec_example"),
+//				FailCount:              pulumi.Int(80),
+//				ForbiddenTime:          pulumi.Int(360),
+//				Span:                   pulumi.Int(10),
+//				UuidLists: pulumi.StringArray{
+//					pulumi.String("032b618f-b220-4a0d-bd37-fbdc6ef58b6a"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Threat Detection Anti Brute Force Rule can be imported using the id, e.g.

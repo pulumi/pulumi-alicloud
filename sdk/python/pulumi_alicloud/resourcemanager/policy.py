@@ -251,6 +251,31 @@ class Policy(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.83.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        example = alicloud.resourcemanager.Policy("example",
+            policy_name=name,
+            policy_document=\"\"\"		{
+        			"Statement": [{
+        				"Action": ["oss:*"],
+        				"Effect": "Allow",
+        				"Resource": ["acs:oss:*:*:*"]
+        			}],
+        			"Version": "1"
+        		}
+        \"\"\")
+        ```
+
         ## Import
 
         Resource Manager Policy can be imported using the id, e.g.
@@ -277,6 +302,31 @@ class Policy(pulumi.CustomResource):
         For information about Resource Manager Policy and how to use it, see [What is Resource Manager Policy](https://www.alibabacloud.com/help/en/doc-detail/93732.htm).
 
         > **NOTE:** Available since v1.83.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        example = alicloud.resourcemanager.Policy("example",
+            policy_name=name,
+            policy_document=\"\"\"		{
+        			"Statement": [{
+        				"Action": ["oss:*"],
+        				"Effect": "Allow",
+        				"Resource": ["acs:oss:*:*:*"]
+        			}],
+        			"Version": "1"
+        		}
+        \"\"\")
+        ```
 
         ## Import
 

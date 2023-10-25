@@ -243,6 +243,28 @@ def get_switches(cidr_block: Optional[str] = None,
     """
     This data source provides a list of VSwitches owned by an Alibaba Cloud account.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "vswitchDatasourceName"
+    default_zones = alicloud.get_zones()
+    vpc = alicloud.vpc.Network("vpc",
+        cidr_block="172.16.0.0/16",
+        vpc_name=name)
+    vswitch = alicloud.vpc.Switch("vswitch",
+        availability_zone=default_zones.zones[0].id,
+        cidr_block="172.16.0.0/24",
+        vpc_id=vpc.id,
+        vswitch_name=name)
+    default_switches = alicloud.vpc.get_switches_output(name_regex=vswitch.vswitch_name)
+    ```
+
 
     :param str cidr_block: Filter results by a specific CIDR block. For example: "172.16.0.0/12".
     :param bool dry_run: Specifies whether to precheck this request only. Valid values: `true` and `false`.
@@ -315,6 +337,28 @@ def get_switches_output(cidr_block: Optional[pulumi.Input[Optional[str]]] = None
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSwitchesResult]:
     """
     This data source provides a list of VSwitches owned by an Alibaba Cloud account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "vswitchDatasourceName"
+    default_zones = alicloud.get_zones()
+    vpc = alicloud.vpc.Network("vpc",
+        cidr_block="172.16.0.0/16",
+        vpc_name=name)
+    vswitch = alicloud.vpc.Switch("vswitch",
+        availability_zone=default_zones.zones[0].id,
+        cidr_block="172.16.0.0/24",
+        vpc_id=vpc.id,
+        vswitch_name=name)
+    default_switches = alicloud.vpc.get_switches_output(name_regex=vswitch.vswitch_name)
+    ```
 
 
     :param str cidr_block: Filter results by a specific CIDR block. For example: "172.16.0.0/12".

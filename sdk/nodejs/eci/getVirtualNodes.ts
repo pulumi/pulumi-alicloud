@@ -10,6 +10,27 @@ import * as utilities from "../utilities";
  * This data source provides the Eci Virtual Nodes of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.145.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.eci.getVirtualNodes({
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const eciVirtualNodeId1 = ids.then(ids => ids.nodes?.[0]?.id);
+ * const nameRegex = alicloud.eci.getVirtualNodes({
+ *     nameRegex: "^my-VirtualNode",
+ * });
+ * export const eciVirtualNodeId2 = nameRegex.then(nameRegex => nameRegex.nodes?.[0]?.id);
+ * ```
  */
 export function getVirtualNodes(args?: GetVirtualNodesArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualNodesResult> {
     args = args || {};
@@ -94,6 +115,27 @@ export interface GetVirtualNodesResult {
  * This data source provides the Eci Virtual Nodes of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.145.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.eci.getVirtualNodes({
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const eciVirtualNodeId1 = ids.then(ids => ids.nodes?.[0]?.id);
+ * const nameRegex = alicloud.eci.getVirtualNodes({
+ *     nameRegex: "^my-VirtualNode",
+ * });
+ * export const eciVirtualNodeId2 = nameRegex.then(nameRegex => nameRegex.nodes?.[0]?.id);
+ * ```
  */
 export function getVirtualNodesOutput(args?: GetVirtualNodesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualNodesResult> {
     return pulumi.output(args).apply((a: any) => getVirtualNodes(a, opts))

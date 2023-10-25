@@ -574,6 +574,29 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.112.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_zones = alicloud.tsdb.get_zones()
+        example_network = alicloud.vpc.Network("exampleNetwork", cidr_block="192.168.0.0/16")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            availability_zone=example_zones.ids[0],
+            cidr_block="192.168.1.0/24",
+            vpc_id=example_network.id)
+        example_instance = alicloud.tsdb.Instance("exampleInstance",
+            payment_type="PayAsYouGo",
+            vswitch_id=example_switch.id,
+            instance_storage="50",
+            instance_class="tsdb.1x.basic",
+            engine_type="tsdb_tsdb",
+            instance_alias="tf-testaccTsdbInstance")
+        ```
+
         ## Import
 
         TSDB Instance can be imported using the id, e.g.
@@ -629,6 +652,29 @@ class Instance(pulumi.CustomResource):
         For information about Time Series Database (TSDB) Instance and how to use it, see [What is Time Series Database (TSDB)](https://www.alibabacloud.com/help/en/doc-detail/55652.htm).
 
         > **NOTE:** Available in v1.112.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_zones = alicloud.tsdb.get_zones()
+        example_network = alicloud.vpc.Network("exampleNetwork", cidr_block="192.168.0.0/16")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            availability_zone=example_zones.ids[0],
+            cidr_block="192.168.1.0/24",
+            vpc_id=example_network.id)
+        example_instance = alicloud.tsdb.Instance("exampleInstance",
+            payment_type="PayAsYouGo",
+            vswitch_id=example_switch.id,
+            instance_storage="50",
+            instance_class="tsdb.1x.basic",
+            engine_type="tsdb_tsdb",
+            instance_alias="tf-testaccTsdbInstance")
+        ```
 
         ## Import
 

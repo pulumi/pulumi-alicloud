@@ -171,6 +171,19 @@ class Topic(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        topic = alicloud.mns.Topic("topic",
+            logging_enabled=False,
+            maximum_message_size=65536)
+        ```
+
         ## Import
 
         MNS Topic can be imported using the id or name, e.g.
@@ -192,6 +205,19 @@ class Topic(pulumi.CustomResource):
                  args: Optional[TopicArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        topic = alicloud.mns.Topic("topic",
+            logging_enabled=False,
+            maximum_message_size=65536)
+        ```
+
         ## Import
 
         MNS Topic can be imported using the id or name, e.g.

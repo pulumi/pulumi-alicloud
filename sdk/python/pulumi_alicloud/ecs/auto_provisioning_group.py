@@ -877,6 +877,47 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.79.0+
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "auto_provisioning_group"
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        template = alicloud.ecs.EcsLaunchTemplate("template",
+            image_id=default_images.images[0].id,
+            instance_type="ecs.n1.tiny",
+            security_group_id=default_security_group.id)
+        default_auto_provisioning_group = alicloud.ecs.AutoProvisioningGroup("defaultAutoProvisioningGroup",
+            launch_template_id=template.id,
+            total_target_capacity="4",
+            pay_as_you_go_target_capacity="1",
+            spot_target_capacity="2",
+            launch_template_configs=[alicloud.ecs.AutoProvisioningGroupLaunchTemplateConfigArgs(
+                instance_type="ecs.n1.small",
+                vswitch_id=default_switch.id,
+                weighted_capacity="2",
+                max_price="2",
+            )])
+        ```
+
         ## Import
 
         ECS auto provisioning group can be imported using the id, e.g.
@@ -918,6 +959,47 @@ class AutoProvisioningGroup(pulumi.CustomResource):
         Provides a ECS auto provisioning group resource which is a solution that uses preemptive instances and pay_as_you_go instances to rapidly deploy clusters.
 
         > **NOTE:** Available in 1.79.0+
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "auto_provisioning_group"
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        template = alicloud.ecs.EcsLaunchTemplate("template",
+            image_id=default_images.images[0].id,
+            instance_type="ecs.n1.tiny",
+            security_group_id=default_security_group.id)
+        default_auto_provisioning_group = alicloud.ecs.AutoProvisioningGroup("defaultAutoProvisioningGroup",
+            launch_template_id=template.id,
+            total_target_capacity="4",
+            pay_as_you_go_target_capacity="1",
+            spot_target_capacity="2",
+            launch_template_configs=[alicloud.ecs.AutoProvisioningGroupLaunchTemplateConfigArgs(
+                instance_type="ecs.n1.small",
+                vswitch_id=default_switch.id,
+                weighted_capacity="2",
+                max_price="2",
+            )])
+        ```
 
         ## Import
 

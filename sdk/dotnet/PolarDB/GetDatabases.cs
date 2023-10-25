@@ -16,6 +16,78 @@ namespace Pulumi.AliCloud.PolarDB
         /// Filters support regular expression for the database name, searches by clusterId.
         /// 
         /// &gt; **NOTE:** Available since v1.70.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = AliCloud.PolarDB.GetNodeClasses.Invoke(new()
+        ///     {
+        ///         DbType = "MySQL",
+        ///         DbVersion = "8.0",
+        ///         PayType = "PostPaid",
+        ///         Category = "Normal",
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+        ///     {
+        ///         VpcName = "terraform-example",
+        ///         CidrBlock = "172.16.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+        ///     {
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "172.16.0.0/24",
+        ///         ZoneId = @this.Apply(@this =&gt; @this.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.ZoneId)),
+        ///         VswitchName = "terraform-example",
+        ///     });
+        /// 
+        ///     var cluster = new AliCloud.PolarDB.Cluster("cluster", new()
+        ///     {
+        ///         DbType = "MySQL",
+        ///         DbVersion = "8.0",
+        ///         PayType = "PostPaid",
+        ///         DbNodeCount = 2,
+        ///         DbNodeClass = @this.Apply(@this =&gt; @this.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.SupportedEngines[0]?.AvailableResources[0]?.DbNodeClass)),
+        ///         VswitchId = defaultSwitch.Id,
+        ///     });
+        /// 
+        ///     var polardbClustersDs = AliCloud.PolarDB.GetClusters.Invoke(new()
+        ///     {
+        ///         DescriptionRegex = cluster.Description,
+        ///         Status = "Running",
+        ///     });
+        /// 
+        ///     var defaultDatabase = new AliCloud.PolarDB.Database("defaultDatabase", new()
+        ///     {
+        ///         DbClusterId = polardbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///         DbName = $"tfaccountpri_{polardbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id)}",
+        ///         DbDescription = "from terraform",
+        ///     });
+        /// 
+        ///     var defaultDatabases = AliCloud.PolarDB.GetDatabases.Invoke(new()
+        ///     {
+        ///         DbClusterId = polardbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///         NameRegex = defaultDatabase.DbName,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["database"] = defaultDatabases.Apply(getDatabasesResult =&gt; getDatabasesResult.Databases[0]?.DbName),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatabasesResult> InvokeAsync(GetDatabasesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabasesResult>("alicloud:polardb/getDatabases:getDatabases", args ?? new GetDatabasesArgs(), options.WithDefaults());
@@ -25,6 +97,78 @@ namespace Pulumi.AliCloud.PolarDB
         /// Filters support regular expression for the database name, searches by clusterId.
         /// 
         /// &gt; **NOTE:** Available since v1.70.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = AliCloud.PolarDB.GetNodeClasses.Invoke(new()
+        ///     {
+        ///         DbType = "MySQL",
+        ///         DbVersion = "8.0",
+        ///         PayType = "PostPaid",
+        ///         Category = "Normal",
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+        ///     {
+        ///         VpcName = "terraform-example",
+        ///         CidrBlock = "172.16.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+        ///     {
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "172.16.0.0/24",
+        ///         ZoneId = @this.Apply(@this =&gt; @this.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.ZoneId)),
+        ///         VswitchName = "terraform-example",
+        ///     });
+        /// 
+        ///     var cluster = new AliCloud.PolarDB.Cluster("cluster", new()
+        ///     {
+        ///         DbType = "MySQL",
+        ///         DbVersion = "8.0",
+        ///         PayType = "PostPaid",
+        ///         DbNodeCount = 2,
+        ///         DbNodeClass = @this.Apply(@this =&gt; @this.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.SupportedEngines[0]?.AvailableResources[0]?.DbNodeClass)),
+        ///         VswitchId = defaultSwitch.Id,
+        ///     });
+        /// 
+        ///     var polardbClustersDs = AliCloud.PolarDB.GetClusters.Invoke(new()
+        ///     {
+        ///         DescriptionRegex = cluster.Description,
+        ///         Status = "Running",
+        ///     });
+        /// 
+        ///     var defaultDatabase = new AliCloud.PolarDB.Database("defaultDatabase", new()
+        ///     {
+        ///         DbClusterId = polardbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///         DbName = $"tfaccountpri_{polardbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id)}",
+        ///         DbDescription = "from terraform",
+        ///     });
+        /// 
+        ///     var defaultDatabases = AliCloud.PolarDB.GetDatabases.Invoke(new()
+        ///     {
+        ///         DbClusterId = polardbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///         NameRegex = defaultDatabase.DbName,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["database"] = defaultDatabases.Apply(getDatabasesResult =&gt; getDatabasesResult.Databases[0]?.DbName),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDatabasesResult> Invoke(GetDatabasesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabasesResult>("alicloud:polardb/getDatabases:getDatabases", args ?? new GetDatabasesInvokeArgs(), options.WithDefaults());

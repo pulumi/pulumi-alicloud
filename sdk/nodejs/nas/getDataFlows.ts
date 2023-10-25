@@ -10,6 +10,29 @@ import * as utilities from "../utilities";
  * This data source provides the Nas Data Flows of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.153.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.nas.getDataFlows({
+ *     fileSystemId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const nasDataFlowId1 = ids.then(ids => ids.flows?.[0]?.id);
+ * const status = alicloud.nas.getDataFlows({
+ *     fileSystemId: "example_value",
+ *     status: "Running",
+ * });
+ * export const nasDataFlowId2 = status.then(status => status.flows?.[0]?.id);
+ * ```
  */
 export function getDataFlows(args: GetDataFlowsArgs, opts?: pulumi.InvokeOptions): Promise<GetDataFlowsResult> {
 
@@ -62,6 +85,29 @@ export interface GetDataFlowsResult {
  * This data source provides the Nas Data Flows of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.153.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.nas.getDataFlows({
+ *     fileSystemId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const nasDataFlowId1 = ids.then(ids => ids.flows?.[0]?.id);
+ * const status = alicloud.nas.getDataFlows({
+ *     fileSystemId: "example_value",
+ *     status: "Running",
+ * });
+ * export const nasDataFlowId2 = status.then(status => status.flows?.[0]?.id);
+ * ```
  */
 export function getDataFlowsOutput(args: GetDataFlowsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataFlowsResult> {
     return pulumi.output(args).apply((a: any) => getDataFlows(a, opts))

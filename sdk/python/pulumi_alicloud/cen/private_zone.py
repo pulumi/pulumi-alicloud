@@ -254,6 +254,33 @@ class PrivateZone(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.83.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_regions = alicloud.get_regions(current=True)
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="tf_example",
+            cidr_block="172.17.3.0/24")
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
+            instance_id=example_instance.id,
+            child_instance_id=example_network.id,
+            child_instance_type="VPC",
+            child_instance_region_id=default_regions.regions[0].id)
+        default_private_zone = alicloud.cen.PrivateZone("defaultPrivateZone",
+            access_region_id=default_regions.regions[0].id,
+            cen_id=example_instance_attachment.instance_id,
+            host_region_id=default_regions.regions[0].id,
+            host_vpc_id=example_network.id)
+        ```
+
         ## Import
 
         CEN Private Zone can be imported using the id, e.g.
@@ -285,6 +312,33 @@ class PrivateZone(pulumi.CustomResource):
         For information about CEN Private Zone and how to use it, see [Manage CEN Private Zone](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-cbn-2017-09-12-routeprivatezoneincentovpc).
 
         > **NOTE:** Available since v1.83.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_regions = alicloud.get_regions(current=True)
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="tf_example",
+            cidr_block="172.17.3.0/24")
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
+            instance_id=example_instance.id,
+            child_instance_id=example_network.id,
+            child_instance_type="VPC",
+            child_instance_region_id=default_regions.regions[0].id)
+        default_private_zone = alicloud.cen.PrivateZone("defaultPrivateZone",
+            access_region_id=default_regions.regions[0].id,
+            cen_id=example_instance_attachment.instance_id,
+            host_region_id=default_regions.regions[0].id,
+            host_vpc_id=example_network.id)
+        ```
 
         ## Import
 

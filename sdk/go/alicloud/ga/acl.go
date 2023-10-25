@@ -19,6 +19,43 @@ import (
 //
 // > **NOTE:** Available since v1.150.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultAcl, err := ga.NewAcl(ctx, "defaultAcl", &ga.AclArgs{
+//				AclName:          pulumi.String("terraform-example"),
+//				AddressIpVersion: pulumi.String("IPv4"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ga.NewAclEntryAttachment(ctx, "defaultAclEntryAttachment", &ga.AclEntryAttachmentArgs{
+//				AclId:            defaultAcl.ID(),
+//				Entry:            pulumi.String("192.168.1.1/32"),
+//				EntryDescription: pulumi.String("terraform-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Global Accelerator (GA) Acl can be imported using the id, e.g.

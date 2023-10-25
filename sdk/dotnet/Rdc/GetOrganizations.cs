@@ -15,6 +15,51 @@ namespace Pulumi.AliCloud.Rdc
         /// This data source provides the Rdc Organizations of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.137.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf-testAccOrganizations-Organizations";
+        ///     var @default = new AliCloud.Rdc.Organization("default", new()
+        ///     {
+        ///         OrganizationName = name,
+        ///         Source = name,
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Rdc.GetOrganizations.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             @default.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Rdc.GetOrganizations.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Organization",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["rdcOrganizationId1"] = ids.Apply(getOrganizationsResult =&gt; getOrganizationsResult.Id),
+        ///         ["rdcOrganizationId2"] = nameRegex.Apply(getOrganizationsResult =&gt; getOrganizationsResult.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetOrganizationsResult> InvokeAsync(GetOrganizationsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationsResult>("alicloud:rdc/getOrganizations:getOrganizations", args ?? new GetOrganizationsArgs(), options.WithDefaults());
@@ -23,6 +68,51 @@ namespace Pulumi.AliCloud.Rdc
         /// This data source provides the Rdc Organizations of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.137.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf-testAccOrganizations-Organizations";
+        ///     var @default = new AliCloud.Rdc.Organization("default", new()
+        ///     {
+        ///         OrganizationName = name,
+        ///         Source = name,
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Rdc.GetOrganizations.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             @default.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Rdc.GetOrganizations.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Organization",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["rdcOrganizationId1"] = ids.Apply(getOrganizationsResult =&gt; getOrganizationsResult.Id),
+        ///         ["rdcOrganizationId2"] = nameRegex.Apply(getOrganizationsResult =&gt; getOrganizationsResult.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetOrganizationsResult> Invoke(GetOrganizationsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationsResult>("alicloud:rdc/getOrganizations:getOrganizations", args ?? new GetOrganizationsInvokeArgs(), options.WithDefaults());

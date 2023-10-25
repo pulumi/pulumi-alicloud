@@ -15,6 +15,33 @@ namespace Pulumi.AliCloud.Nas
         /// This data source provides MountTargets available to the user.
         /// 
         /// &gt; **NOTE**: Available in 1.35.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Nas.GetMountTargets.Invoke(new()
+        ///     {
+        ///         FileSystemId = "1a2sc4d",
+        ///         AccessGroupName = "tf-testAccNasConfig",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["theFirstMountTargetDomain"] = example.Apply(getMountTargetsResult =&gt; getMountTargetsResult.Targets[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetMountTargetsResult> InvokeAsync(GetMountTargetsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMountTargetsResult>("alicloud:nas/getMountTargets:getMountTargets", args ?? new GetMountTargetsArgs(), options.WithDefaults());
@@ -23,6 +50,33 @@ namespace Pulumi.AliCloud.Nas
         /// This data source provides MountTargets available to the user.
         /// 
         /// &gt; **NOTE**: Available in 1.35.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Nas.GetMountTargets.Invoke(new()
+        ///     {
+        ///         FileSystemId = "1a2sc4d",
+        ///         AccessGroupName = "tf-testAccNasConfig",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["theFirstMountTargetDomain"] = example.Apply(getMountTargetsResult =&gt; getMountTargetsResult.Targets[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetMountTargetsResult> Invoke(GetMountTargetsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMountTargetsResult>("alicloud:nas/getMountTargets:getMountTargets", args ?? new GetMountTargetsInvokeArgs(), options.WithDefaults());

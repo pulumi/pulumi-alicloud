@@ -15,6 +15,31 @@ namespace Pulumi.AliCloud.Dts
         /// This data source provides the Dts Consumer Channels of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.146.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Dts.GetConsumerChannels.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dtsConsumerChannelId1"] = ids.Apply(getConsumerChannelsResult =&gt; getConsumerChannelsResult.Channels[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetConsumerChannelsResult> InvokeAsync(GetConsumerChannelsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConsumerChannelsResult>("alicloud:dts/getConsumerChannels:getConsumerChannels", args ?? new GetConsumerChannelsArgs(), options.WithDefaults());
@@ -23,6 +48,31 @@ namespace Pulumi.AliCloud.Dts
         /// This data source provides the Dts Consumer Channels of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.146.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Dts.GetConsumerChannels.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dtsConsumerChannelId1"] = ids.Apply(getConsumerChannelsResult =&gt; getConsumerChannelsResult.Channels[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetConsumerChannelsResult> Invoke(GetConsumerChannelsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConsumerChannelsResult>("alicloud:dts/getConsumerChannels:getConsumerChannels", args ?? new GetConsumerChannelsInvokeArgs(), options.WithDefaults());

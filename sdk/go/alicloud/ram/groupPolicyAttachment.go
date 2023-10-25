@@ -17,6 +17,65 @@ import (
 //
 // > **NOTE:** Available since v1.0.0+.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			group, err := ram.NewGroup(ctx, "group", &ram.GroupArgs{
+//				Comments: pulumi.String("this is a group comments."),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			policy, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
+//				Document: pulumi.String(`    {
+//	      "Statement": [
+//	        {
+//	          "Action": [
+//	            "oss:ListObjects",
+//	            "oss:GetObject"
+//	          ],
+//	          "Effect": "Allow",
+//	          "Resource": [
+//	            "acs:oss:*:*:mybucket",
+//	            "acs:oss:*:*:mybucket/*"
+//	          ]
+//	        }
+//	      ],
+//	        "Version": "1"
+//	    }
+//
+// `),
+//
+//				Description: pulumi.String("this is a policy test"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ram.NewGroupPolicyAttachment(ctx, "attach", &ram.GroupPolicyAttachmentArgs{
+//				PolicyName: policy.Name,
+//				PolicyType: policy.Type,
+//				GroupName:  group.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // RAM Group Policy attachment can be imported using the id, e.g.

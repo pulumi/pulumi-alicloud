@@ -17,6 +17,44 @@ import (
 // > **NOTE:** Available in v1.135.0+.
 //
 // > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudsso"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := cloudsso.GetDirectories(ctx, &cloudsso.GetDirectoriesArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cloudSsoDirectoryId1", ids.Directories[0].Id)
+//			nameRegex, err := cloudsso.GetDirectories(ctx, &cloudsso.GetDirectoriesArgs{
+//				NameRegex: pulumi.StringRef("^my-Directory"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cloudSsoDirectoryId2", nameRegex.Directories[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDirectories(ctx *pulumi.Context, args *GetDirectoriesArgs, opts ...pulumi.InvokeOption) (*GetDirectoriesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDirectoriesResult

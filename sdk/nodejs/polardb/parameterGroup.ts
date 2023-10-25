@@ -13,6 +13,25 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.183.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.polardb.ParameterGroup("example", {
+ *     dbType: "MySQL",
+ *     dbVersion: "8.0",
+ *     description: "example_value",
+ *     parameters: [{
+ *         paramName: "wait_timeout",
+ *         paramValue: "86400",
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * PolarDB Parameter Group can be imported using the id, e.g.

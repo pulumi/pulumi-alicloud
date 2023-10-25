@@ -527,6 +527,24 @@ class TrafficMirrorFilterEgressRule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.140.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.vpc.TrafficMirrorFilter("example", traffic_mirror_filter_name="example_value")
+        default = alicloud.vpc.TrafficMirrorFilterEgressRule("default",
+            action="drop",
+            priority=2,
+            source_cidr_block="10.0.0.0/11",
+            destination_cidr_block="10.0.0.0/12",
+            traffic_mirror_filter_id=example.id,
+            protocol="ALL")
+        ```
+
         ## Import
 
         VPC Traffic Mirror Filter Egress Rule can be imported using the id, e.g.
@@ -564,6 +582,24 @@ class TrafficMirrorFilterEgressRule(pulumi.CustomResource):
         For information about VPC Traffic Mirror Filter Egress Rule and how to use it, see [What is Traffic Mirror Filter Egress Rule](https://www.alibabacloud.com/help/doc-detail/261357.htm).
 
         > **NOTE:** Available since v1.140.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.vpc.TrafficMirrorFilter("example", traffic_mirror_filter_name="example_value")
+        default = alicloud.vpc.TrafficMirrorFilterEgressRule("default",
+            action="drop",
+            priority=2,
+            source_cidr_block="10.0.0.0/11",
+            destination_cidr_block="10.0.0.0/12",
+            traffic_mirror_filter_id=example.id,
+            protocol="ALL")
+        ```
 
         ## Import
 

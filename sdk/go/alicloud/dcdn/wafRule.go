@@ -19,6 +19,77 @@ import (
 //
 // > **NOTE:** Available since v1.201.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			exampleWafPolicy, err := dcdn.NewWafPolicy(ctx, "exampleWafPolicy", &dcdn.WafPolicyArgs{
+//				DefenseScene: pulumi.String("waf_group"),
+//				PolicyName:   pulumi.String(name),
+//				PolicyType:   pulumi.String("custom"),
+//				Status:       pulumi.String("on"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dcdn.NewWafRule(ctx, "exampleWafRule", &dcdn.WafRuleArgs{
+//				PolicyId: exampleWafPolicy.ID(),
+//				RuleName: pulumi.String(name),
+//				Conditions: dcdn.WafRuleConditionArray{
+//					&dcdn.WafRuleConditionArgs{
+//						Key:     pulumi.String("URI"),
+//						OpValue: pulumi.String("ne"),
+//						Values:  pulumi.String("/login.php"),
+//					},
+//					&dcdn.WafRuleConditionArgs{
+//						Key:     pulumi.String("Header"),
+//						SubKey:  pulumi.String("a"),
+//						OpValue: pulumi.String("eq"),
+//						Values:  pulumi.String("b"),
+//					},
+//				},
+//				Status:   pulumi.String("on"),
+//				CcStatus: pulumi.String("on"),
+//				Action:   pulumi.String("monitor"),
+//				Effect:   pulumi.String("rule"),
+//				RateLimit: &dcdn.WafRuleRateLimitArgs{
+//					Target:    pulumi.String("IP"),
+//					Interval:  pulumi.Int(5),
+//					Threshold: pulumi.Int(5),
+//					Ttl:       pulumi.Int(1800),
+//					Status: &dcdn.WafRuleRateLimitStatusArgs{
+//						Code:  pulumi.String("200"),
+//						Ratio: pulumi.Int(60),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Dcdn Waf Rule can be imported using the id, e.g.

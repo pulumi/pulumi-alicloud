@@ -102,6 +102,22 @@ def get_scim_server_credentials(directory_id: Optional[str] = None,
 
     > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cloudsso.get_scim_server_credentials(directory_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("cloudSsoScimServerCredentialId1", ids.credentials[0].id)
+    ```
+
 
     :param str directory_id: The ID of the Directory.
     :param Sequence[str] ids: A list of SCIM Server Credential IDs.
@@ -137,6 +153,22 @@ def get_scim_server_credentials_output(directory_id: Optional[pulumi.Input[str]]
     > **NOTE:** Available in v1.138.0+.
 
     > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cloudsso.get_scim_server_credentials(directory_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("cloudSsoScimServerCredentialId1", ids.credentials[0].id)
+    ```
 
 
     :param str directory_id: The ID of the Directory.

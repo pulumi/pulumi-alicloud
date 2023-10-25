@@ -137,6 +137,21 @@ class EventBus(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.129.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example = alicloud.eventbridge.EventBus("example", event_bus_name=name)
+        ```
+
         ## Import
 
         Event Bridge Event Bus can be imported using the id, e.g.
@@ -162,6 +177,21 @@ class EventBus(pulumi.CustomResource):
         For information about Event Bridge Event Bus and how to use it, see [What is Event Bus](https://www.alibabacloud.com/help/en/eventbridge/latest/api-eventbridge-2020-04-01-createeventbus).
 
         > **NOTE:** Available since v1.129.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example = alicloud.eventbridge.EventBus("example", event_bus_name=name)
+        ```
 
         ## Import
 

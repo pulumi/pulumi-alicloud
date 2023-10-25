@@ -11,6 +11,21 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.203.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultAgents = alicloud.chatbot.getAgents({});
+ * const defaultPublishTask = new alicloud.chatbot.PublishTask("defaultPublishTask", {
+ *     bizType: "faq",
+ *     agentKey: defaultAgents.then(defaultAgents => defaultAgents.agents?.[0]?.agentKey),
+ * });
+ * ```
+ *
  * ## Import
  *
  * Chatbot Publish Task can be imported using the id, e.g.

@@ -135,6 +135,19 @@ def get_basic_accelerate_ip_endpoint_relations(accelerate_ip_id: Optional[str] =
 
     > **NOTE:** Available in v1.194.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.ga.get_basic_accelerate_ip_endpoint_relations(ids=["example_id"],
+        accelerator_id="example_id")
+    pulumi.export("gaBasicAccelerateIpEndpointRelationsId1", ids.relations[0].id)
+    ```
+
 
     :param str accelerate_ip_id: The ID of the Basic Accelerate IP.
     :param str accelerator_id: The ID of the Global Accelerator Basic Accelerator instance.
@@ -176,6 +189,19 @@ def get_basic_accelerate_ip_endpoint_relations_output(accelerate_ip_id: Optional
     This data source provides the Global Accelerator (GA) Basic Accelerate Ip Endpoint Relations of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.194.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.ga.get_basic_accelerate_ip_endpoint_relations(ids=["example_id"],
+        accelerator_id="example_id")
+    pulumi.export("gaBasicAccelerateIpEndpointRelationsId1", ids.relations[0].id)
+    ```
 
 
     :param str accelerate_ip_id: The ID of the Basic Accelerate IP.

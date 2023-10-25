@@ -15,6 +15,32 @@ namespace Pulumi.AliCloud.Chatbot
         /// This data source provides the Chatbot Agents of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.203.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var nameRegex = AliCloud.Chatbot.GetAgents.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Agent",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudChatbotAgentsId1"] = nameRegex.Apply(getAgentsResult =&gt; getAgentsResult.Agents[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAgentsResult> InvokeAsync(GetAgentsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAgentsResult>("alicloud:chatbot/getAgents:getAgents", args ?? new GetAgentsArgs(), options.WithDefaults());
@@ -23,6 +49,32 @@ namespace Pulumi.AliCloud.Chatbot
         /// This data source provides the Chatbot Agents of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.203.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var nameRegex = AliCloud.Chatbot.GetAgents.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Agent",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudChatbotAgentsId1"] = nameRegex.Apply(getAgentsResult =&gt; getAgentsResult.Agents[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAgentsResult> Invoke(GetAgentsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAgentsResult>("alicloud:chatbot/getAgents:getAgents", args ?? new GetAgentsInvokeArgs(), options.WithDefaults());

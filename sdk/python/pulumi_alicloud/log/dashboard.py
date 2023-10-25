@@ -261,6 +261,59 @@ class Dashboard(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.86.0, parameter "action" in char_list is supported since 1.164.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        example_dashboard = alicloud.log.Dashboard("exampleDashboard",
+            project_name=example_project.name,
+            dashboard_name="terraform-example",
+            attribute="{\\"type\\":\\"grid\\"}",
+            char_list=\"\"\"  [
+            {
+              "action": {},
+              "title":"new_title",
+              "type":"map",
+              "search":{
+                "logstore":"example-store",
+                "topic":"new_topic",
+                "query":"* | SELECT COUNT(name) as ct_name, COUNT(product) as ct_product, name,product GROUP BY name,product",
+                "start":"-86400s",
+                "end":"now"
+              },
+              "display":{
+                "xAxis":[
+                  "ct_name"
+                ],
+                "yAxis":[
+                  "ct_product"
+                ],
+                "xPos":0,
+                "yPos":0,
+                "width":10,
+                "height":12,
+                "displayName":"terraform-example"
+              }
+            }
+          ]
+        \"\"\")
+        ```
+
         ## Import
 
         Log Dashboard can be imported using the id or name, e.g.
@@ -288,6 +341,59 @@ class Dashboard(pulumi.CustomResource):
         [Refer to details](https://www.alibabacloud.com/help/doc-detail/102530.htm).
 
         > **NOTE:** Available in 1.86.0, parameter "action" in char_list is supported since 1.164.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        example_dashboard = alicloud.log.Dashboard("exampleDashboard",
+            project_name=example_project.name,
+            dashboard_name="terraform-example",
+            attribute="{\\"type\\":\\"grid\\"}",
+            char_list=\"\"\"  [
+            {
+              "action": {},
+              "title":"new_title",
+              "type":"map",
+              "search":{
+                "logstore":"example-store",
+                "topic":"new_topic",
+                "query":"* | SELECT COUNT(name) as ct_name, COUNT(product) as ct_product, name,product GROUP BY name,product",
+                "start":"-86400s",
+                "end":"now"
+              },
+              "display":{
+                "xAxis":[
+                  "ct_name"
+                ],
+                "yAxis":[
+                  "ct_product"
+                ],
+                "xPos":0,
+                "yPos":0,
+                "width":10,
+                "height":12,
+                "displayName":"terraform-example"
+              }
+            }
+          ]
+        \"\"\")
+        ```
 
         ## Import
 

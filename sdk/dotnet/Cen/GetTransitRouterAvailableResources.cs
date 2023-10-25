@@ -15,6 +15,32 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides the Cen Transit Router Available Resources of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.163.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Cen.GetTransitRouterAvailableResources.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["masterId"] = data.Alicloud_cen_transit_router_available_resources.Default.Resources[0].Master_zones[0],
+        ///         ["slaveId"] = data.Alicloud_cen_transit_router_available_resources.Default.Resources[0].Slave_zones[0],
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTransitRouterAvailableResourcesResult> InvokeAsync(GetTransitRouterAvailableResourcesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterAvailableResourcesResult>("alicloud:cen/getTransitRouterAvailableResources:getTransitRouterAvailableResources", args ?? new GetTransitRouterAvailableResourcesArgs(), options.WithDefaults());
@@ -23,6 +49,32 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides the Cen Transit Router Available Resources of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.163.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Cen.GetTransitRouterAvailableResources.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["masterId"] = data.Alicloud_cen_transit_router_available_resources.Default.Resources[0].Master_zones[0],
+        ///         ["slaveId"] = data.Alicloud_cen_transit_router_available_resources.Default.Resources[0].Slave_zones[0],
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetTransitRouterAvailableResourcesResult> Invoke(GetTransitRouterAvailableResourcesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterAvailableResourcesResult>("alicloud:cen/getTransitRouterAvailableResources:getTransitRouterAvailableResources", args ?? new GetTransitRouterAvailableResourcesInvokeArgs(), options.WithDefaults());

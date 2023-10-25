@@ -19,6 +19,65 @@ import (
 //
 // > **NOTE:** Available in v1.145.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ros"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleRegions, err := ros.GetRegions(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleStackGroup, err := ros.NewStackGroup(ctx, "exampleStackGroup", &ros.StackGroupArgs{
+//				StackGroupName: pulumi.Any(_var.Name),
+//				TemplateBody:   pulumi.String("{\"ROSTemplateFormatVersion\":\"2015-09-01\", \"Parameters\": {\"VpcName\": {\"Type\": \"String\"},\"InstanceType\": {\"Type\": \"String\"}}}"),
+//				Description:    pulumi.String("test for stack groups"),
+//				Parameters: ros.StackGroupParameterArray{
+//					&ros.StackGroupParameterArgs{
+//						ParameterKey:   pulumi.String("VpcName"),
+//						ParameterValue: pulumi.String("VpcName"),
+//					},
+//					&ros.StackGroupParameterArgs{
+//						ParameterKey:   pulumi.String("InstanceType"),
+//						ParameterValue: pulumi.String("InstanceType"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ros.NewStackInstance(ctx, "exampleStackInstance", &ros.StackInstanceArgs{
+//				StackGroupName:         exampleStackGroup.StackGroupName,
+//				StackInstanceAccountId: pulumi.String("example_value"),
+//				StackInstanceRegionId:  *pulumi.String(exampleRegions.Regions[0].RegionId),
+//				OperationPreferences:   pulumi.String("{\"FailureToleranceCount\": 1, \"MaxConcurrentCount\": 2}"),
+//				ParameterOverrides: ros.StackInstanceParameterOverrideArray{
+//					&ros.StackInstanceParameterOverrideArgs{
+//						ParameterValue: pulumi.String("VpcName"),
+//						ParameterKey:   pulumi.String("VpcName"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ROS Stack Instance can be imported using the id, e.g.

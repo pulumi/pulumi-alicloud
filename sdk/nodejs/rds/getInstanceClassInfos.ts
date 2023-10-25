@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * This data source operation to query the instance types that are available to specific instances of Alibaba Cloud.
  *
  * > **NOTE:** Available in v1.196.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const resources = alicloud.rds.getInstanceClassInfos({
+ *     commodityCode: "bards",
+ *     orderType: "BUY",
+ *     outputFile: "./classes.txt",
+ * });
+ * export const firstDbInstanceClass = resources.then(resources => resources.infos?.[0]);
+ * ```
  */
 export function getInstanceClassInfos(args: GetInstanceClassInfosArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceClassInfosResult> {
 
@@ -88,6 +102,20 @@ export interface GetInstanceClassInfosResult {
  * This data source operation to query the instance types that are available to specific instances of Alibaba Cloud.
  *
  * > **NOTE:** Available in v1.196.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const resources = alicloud.rds.getInstanceClassInfos({
+ *     commodityCode: "bards",
+ *     orderType: "BUY",
+ *     outputFile: "./classes.txt",
+ * });
+ * export const firstDbInstanceClass = resources.then(resources => resources.infos?.[0]);
+ * ```
  */
 export function getInstanceClassInfosOutput(args: GetInstanceClassInfosOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceClassInfosResult> {
     return pulumi.output(args).apply((a: any) => getInstanceClassInfos(a, opts))

@@ -10,6 +10,30 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.83.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tfexample";
+ * const example = new alicloud.resourcemanager.Policy("example", {
+ *     policyName: name,
+ *     policyDocument: `		{
+ * 			"Statement": [{
+ * 				"Action": ["oss:*"],
+ * 				"Effect": "Allow",
+ * 				"Resource": ["acs:oss:*:*:*"]
+ * 			}],
+ * 			"Version": "1"
+ * 		}
+ * `,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Resource Manager Policy can be imported using the id, e.g.

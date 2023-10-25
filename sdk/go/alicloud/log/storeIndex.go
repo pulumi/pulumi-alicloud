@@ -16,6 +16,70 @@ import (
 // Log Service provides the LogSearch/Analytics function to query and analyze large amounts of logs in real time.
 // You can use this function by enabling the index and field statistics. [Refer to details](https://www.alibabacloud.com/help/doc-detail/43772.htm)
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
+//				Description: pulumi.String("terraform-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleStore, err := log.NewStore(ctx, "exampleStore", &log.StoreArgs{
+//				Project:            exampleProject.Name,
+//				ShardCount:         pulumi.Int(3),
+//				AutoSplit:          pulumi.Bool(true),
+//				MaxSplitShardCount: pulumi.Int(60),
+//				AppendMeta:         pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = log.NewStoreIndex(ctx, "exampleStoreIndex", &log.StoreIndexArgs{
+//				Project:  exampleProject.Name,
+//				Logstore: exampleStore.Name,
+//				FullText: &log.StoreIndexFullTextArgs{
+//					CaseSensitive: pulumi.Bool(true),
+//					Token:         pulumi.String(" #$^*\n	"),
+//				},
+//				FieldSearches: log.StoreIndexFieldSearchArray{
+//					&log.StoreIndexFieldSearchArgs{
+//						Name:            pulumi.String("terraform-example"),
+//						EnableAnalytics: pulumi.Bool(true),
+//						Type:            pulumi.String("text"),
+//						Token:           pulumi.String(" #$^*\n	"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Module Support
 //
 // You can use the existing sls module

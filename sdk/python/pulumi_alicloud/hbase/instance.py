@@ -1126,6 +1126,37 @@ class Instance(pulumi.CustomResource):
         > **NOTE:**  Create HBase instance or change instance type and storage would cost 15 minutes. Please make full preparation
 
         ## Example Usage
+        ### Create a hbase instance
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.hbase.get_zones()
+        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+            zone_id=default_zones.zones[0].id)
+        default_instance = alicloud.hbase.Instance("defaultInstance",
+            zone_id=default_zones.zones[0].id,
+            vswitch_id=default_switches.ids[0],
+            vpc_id=default_networks.ids[0],
+            engine="hbaseue",
+            engine_version="2.0",
+            master_instance_type="hbase.sn2.2xlarge",
+            core_instance_type="hbase.sn2.2xlarge",
+            core_instance_quantity=2,
+            core_disk_type="cloud_efficiency",
+            core_disk_size=400,
+            pay_type="PostPaid",
+            cold_storage_size=0,
+            deletion_protection=False)
+        ```
+
+        this is a example for class netType instance. you can find more detail with the examples/hbase dir.
 
         ## Import
 
@@ -1185,6 +1216,37 @@ class Instance(pulumi.CustomResource):
         > **NOTE:**  Create HBase instance or change instance type and storage would cost 15 minutes. Please make full preparation
 
         ## Example Usage
+        ### Create a hbase instance
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.hbase.get_zones()
+        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+            zone_id=default_zones.zones[0].id)
+        default_instance = alicloud.hbase.Instance("defaultInstance",
+            zone_id=default_zones.zones[0].id,
+            vswitch_id=default_switches.ids[0],
+            vpc_id=default_networks.ids[0],
+            engine="hbaseue",
+            engine_version="2.0",
+            master_instance_type="hbase.sn2.2xlarge",
+            core_instance_type="hbase.sn2.2xlarge",
+            core_instance_quantity=2,
+            core_disk_type="cloud_efficiency",
+            core_disk_size=400,
+            pay_type="PostPaid",
+            cold_storage_size=0,
+            deletion_protection=False)
+        ```
+
+        this is a example for class netType instance. you can find more detail with the examples/hbase dir.
 
         ## Import
 

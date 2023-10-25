@@ -468,6 +468,28 @@ class Domain(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.136.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.vod.Domain("default",
+            domain_name="your_domain_name",
+            scope="domestic",
+            sources=[alicloud.vod.DomainSourceArgs(
+                source_content="your_source_content",
+                source_port="80",
+                source_type="domain",
+            )],
+            tags={
+                "key1": "value1",
+                "key2": "value2",
+            })
+        ```
+
         ## Import
 
         VOD Domain can be imported using the id, e.g.
@@ -497,6 +519,28 @@ class Domain(pulumi.CustomResource):
         For information about VOD Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/product/29932.html).
 
         > **NOTE:** Available in v1.136.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.vod.Domain("default",
+            domain_name="your_domain_name",
+            scope="domestic",
+            sources=[alicloud.vod.DomainSourceArgs(
+                source_content="your_source_content",
+                source_port="80",
+                source_type="domain",
+            )],
+            tags={
+                "key1": "value1",
+                "key2": "value2",
+            })
+        ```
 
         ## Import
 

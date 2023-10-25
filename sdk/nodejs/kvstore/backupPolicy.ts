@@ -9,6 +9,54 @@ import * as utilities from "../utilities";
  *
  * Provides a backup policy for ApsaraDB Redis / Memcache instance resource.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "kvstorebackuppolicyvpc";
+ * const defaultZones = alicloud.kvstore.getZones({});
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     vswitchName: name,
+ * });
+ * const defaultInstance = new alicloud.kvstore.Instance("defaultInstance", {
+ *     dbInstanceName: name,
+ *     vswitchId: defaultSwitch.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     instanceClass: "redis.master.large.default",
+ *     instanceType: "Redis",
+ *     engineVersion: "5.0",
+ *     securityIps: ["10.23.12.24"],
+ *     config: {
+ *         appendonly: "yes",
+ *         "lazyfree-lazy-eviction": "yes",
+ *     },
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
+ * });
+ * const defaultBackupPolicy = new alicloud.kvstore.BackupPolicy("defaultBackupPolicy", {
+ *     instanceId: defaultInstance.id,
+ *     backupPeriods: [
+ *         "Tuesday",
+ *         "Wednesday",
+ *     ],
+ *     backupTime: "10:00Z-11:00Z",
+ * });
+ * ```
+ *
  * ## Import
  *
  * KVStore backup policy can be imported using the id, e.g.

@@ -14,6 +14,56 @@ namespace Pulumi.AliCloud.Edas
     /// 
     /// &gt; **NOTE:** Available since v1.82.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     {
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultCluster = new AliCloud.Edas.Cluster("defaultCluster", new()
+    ///     {
+    ///         ClusterName = name,
+    ///         ClusterType = 2,
+    ///         NetworkMode = 2,
+    ///         LogicalRegionId = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultApplication = new AliCloud.Edas.Application("defaultApplication", new()
+    ///     {
+    ///         ApplicationName = name,
+    ///         ClusterId = defaultCluster.Id,
+    ///         PackageType = "JAR",
+    ///     });
+    /// 
+    ///     var defaultDeployGroup = new AliCloud.Edas.DeployGroup("defaultDeployGroup", new()
+    ///     {
+    ///         AppId = defaultApplication.Id,
+    ///         GroupName = name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// EDAS deploy group can be imported using the id, e.g.

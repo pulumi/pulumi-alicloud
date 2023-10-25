@@ -90,6 +90,18 @@ def get_real_time_log_deliveries(domain: Optional[str] = None,
 
     > **NOTE:** Available in v1.134.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cdn.get_real_time_log_deliveries(domain="example_value")
+    pulumi.export("cdnRealTimeLogDelivery1", example.deliveries[0].id)
+    ```
+
 
     :param str domain: Real-Time Log Service Domain.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -119,6 +131,18 @@ def get_real_time_log_deliveries_output(domain: Optional[pulumi.Input[str]] = No
     This data source provides the Cdn Real Time Log Deliveries of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.134.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cdn.get_real_time_log_deliveries(domain="example_value")
+    pulumi.export("cdnRealTimeLogDelivery1", example.deliveries[0].id)
+    ```
 
 
     :param str domain: Real-Time Log Service Domain.

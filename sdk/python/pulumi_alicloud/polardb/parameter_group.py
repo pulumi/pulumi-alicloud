@@ -256,6 +256,24 @@ class ParameterGroup(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.183.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.polardb.ParameterGroup("example",
+            db_type="MySQL",
+            db_version="8.0",
+            description="example_value",
+            parameters=[alicloud.polardb.ParameterGroupParameterArgs(
+                param_name="wait_timeout",
+                param_value="86400",
+            )])
+        ```
+
         ## Import
 
         PolarDB Parameter Group can be imported using the id, e.g.
@@ -284,6 +302,24 @@ class ParameterGroup(pulumi.CustomResource):
         For information about PolarDB Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/polardb/polardb-for-mysql/user-guide/apply-a-parameter-template).
 
         > **NOTE:** Available in v1.183.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.polardb.ParameterGroup("example",
+            db_type="MySQL",
+            db_version="8.0",
+            description="example_value",
+            parameters=[alicloud.polardb.ParameterGroupParameterArgs(
+                param_name="wait_timeout",
+                param_value="86400",
+            )])
+        ```
 
         ## Import
 

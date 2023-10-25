@@ -16,6 +16,125 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// &gt; **NOTE:** Available since v1.142.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         InstanceTypeFamily = "ecs.g7",
+    ///     });
+    /// 
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "Instance",
+    ///         AvailableInstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         Description = name,
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
+    ///         MostRecent = true,
+    ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var defaultInstance = new List&lt;AliCloud.Ecs.Instance&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultInstance.Add(new AliCloud.Ecs.Instance($"defaultInstance-{range.Value}", new()
+    ///         {
+    ///             AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///             InstanceName = name,
+    ///             HostName = name,
+    ///             ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///             InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///             SecurityGroups = new[]
+    ///             {
+    ///                 defaultSecurityGroup.Id,
+    ///             },
+    ///             VswitchId = defaultSwitch.Id,
+    ///             SystemDiskCategory = "cloud_essd",
+    ///         }));
+    ///     }
+    ///     var defaultEcsNetworkInterface = new List&lt;AliCloud.Ecs.EcsNetworkInterface&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultEcsNetworkInterface.Add(new AliCloud.Ecs.EcsNetworkInterface($"defaultEcsNetworkInterface-{range.Value}", new()
+    ///         {
+    ///             NetworkInterfaceName = name,
+    ///             VswitchId = defaultSwitch.Id,
+    ///             SecurityGroupIds = new[]
+    ///             {
+    ///                 defaultSecurityGroup.Id,
+    ///             },
+    ///         }));
+    ///     }
+    ///     var defaultEcsNetworkInterfaceAttachment = new List&lt;AliCloud.Ecs.EcsNetworkInterfaceAttachment&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultEcsNetworkInterfaceAttachment.Add(new AliCloud.Ecs.EcsNetworkInterfaceAttachment($"defaultEcsNetworkInterfaceAttachment-{range.Value}", new()
+    ///         {
+    ///             InstanceId = defaultInstance[range.Value].Id,
+    ///             NetworkInterfaceId = defaultEcsNetworkInterface[range.Value].Id,
+    ///         }));
+    ///     }
+    ///     var defaultTrafficMirrorFilter = new AliCloud.Vpc.TrafficMirrorFilter("defaultTrafficMirrorFilter", new()
+    ///     {
+    ///         TrafficMirrorFilterName = name,
+    ///         TrafficMirrorFilterDescription = name,
+    ///     });
+    /// 
+    ///     var defaultTrafficMirrorSession = new AliCloud.Vpc.TrafficMirrorSession("defaultTrafficMirrorSession", new()
+    ///     {
+    ///         Priority = 1,
+    ///         VirtualNetworkId = 10,
+    ///         TrafficMirrorSessionDescription = name,
+    ///         TrafficMirrorSessionName = name,
+    ///         TrafficMirrorTargetId = defaultEcsNetworkInterfaceAttachment[0].NetworkInterfaceId,
+    ///         TrafficMirrorSourceIds = new[]
+    ///         {
+    ///             defaultEcsNetworkInterfaceAttachment[1].NetworkInterfaceId,
+    ///         },
+    ///         TrafficMirrorFilterId = defaultTrafficMirrorFilter.Id,
+    ///         TrafficMirrorTargetType = "NetworkInterface",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// VPC Traffic Mirror Session can be imported using the id, e.g.

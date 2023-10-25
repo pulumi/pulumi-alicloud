@@ -10,6 +10,29 @@ import * as utilities from "../utilities";
  * This data source provides the Arms Prometheus Alert Rules of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.136.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.arms.getPrometheusAlertRules({
+ *     clusterId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const armsPrometheusAlertRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
+ * const nameRegex = alicloud.arms.getPrometheusAlertRules({
+ *     clusterId: "example_value",
+ *     nameRegex: "^my-PrometheusAlertRule",
+ * });
+ * export const armsPrometheusAlertRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?.[0]?.id);
+ * ```
  */
 export function getPrometheusAlertRules(args: GetPrometheusAlertRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetPrometheusAlertRulesResult> {
 
@@ -78,6 +101,29 @@ export interface GetPrometheusAlertRulesResult {
  * This data source provides the Arms Prometheus Alert Rules of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.136.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.arms.getPrometheusAlertRules({
+ *     clusterId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const armsPrometheusAlertRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
+ * const nameRegex = alicloud.arms.getPrometheusAlertRules({
+ *     clusterId: "example_value",
+ *     nameRegex: "^my-PrometheusAlertRule",
+ * });
+ * export const armsPrometheusAlertRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?.[0]?.id);
+ * ```
  */
 export function getPrometheusAlertRulesOutput(args: GetPrometheusAlertRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrometheusAlertRulesResult> {
     return pulumi.output(args).apply((a: any) => getPrometheusAlertRules(a, opts))

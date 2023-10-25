@@ -99,6 +99,16 @@ def get_notifications(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in 1.72.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ds = alicloud.ess.get_notifications(scaling_group_id="scaling_group_id")
+    pulumi.export("firstNotification", ds.notifications[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of notification ids.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -128,6 +138,16 @@ def get_notifications_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     This data source provides available notification resources.
 
     > **NOTE:** Available in 1.72.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ds = alicloud.ess.get_notifications(scaling_group_id="scaling_group_id")
+    pulumi.export("firstNotification", ds.notifications[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of notification ids.

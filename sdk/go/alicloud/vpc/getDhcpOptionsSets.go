@@ -15,6 +15,71 @@ import (
 // This data source provides the Vpc Dhcp Options Sets of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.134.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := vpc.GetDhcpOptionsSets(ctx, &vpc.GetDhcpOptionsSetsArgs{
+//				Ids: []string{
+//					"example_value",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcDhcpOptionsSetId1", ids.Sets[0].Id)
+//			nameRegex, err := vpc.GetDhcpOptionsSets(ctx, &vpc.GetDhcpOptionsSetsArgs{
+//				NameRegex: pulumi.StringRef("^my-DhcpOptionsSet"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcDhcpOptionsSetId2", nameRegex.Sets[0].Id)
+//			dhcpOptionsSetName, err := vpc.GetDhcpOptionsSets(ctx, &vpc.GetDhcpOptionsSetsArgs{
+//				DhcpOptionsSetName: pulumi.StringRef("my-DhcpOptionsSet"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcDhcpOptionsSetId3", dhcpOptionsSetName.Sets[0].Id)
+//			domainName, err := vpc.GetDhcpOptionsSets(ctx, &vpc.GetDhcpOptionsSetsArgs{
+//				Ids: []string{
+//					"example_value",
+//				},
+//				DomainName: pulumi.StringRef("example.com"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcDhcpOptionsSetId4", domainName.Sets[0].Id)
+//			status, err := vpc.GetDhcpOptionsSets(ctx, &vpc.GetDhcpOptionsSetsArgs{
+//				Ids: []string{
+//					"example_value",
+//				},
+//				Status: pulumi.StringRef("Available"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcDhcpOptionsSetId5", status.Sets[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDhcpOptionsSets(ctx *pulumi.Context, args *GetDhcpOptionsSetsArgs, opts ...pulumi.InvokeOption) (*GetDhcpOptionsSetsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDhcpOptionsSetsResult

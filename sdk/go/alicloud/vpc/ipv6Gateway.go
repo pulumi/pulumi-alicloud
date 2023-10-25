@@ -19,6 +19,67 @@ import (
 //
 // > **NOTE:** Available in v1.142.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-testacc-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultVpc, err := vpc.NewNetwork(ctx, "defaultVpc", &vpc.NetworkArgs{
+//				Description: pulumi.String("tf-testacc"),
+//				EnableIpv6:  pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRg, err := resourcemanager.NewResourceGroup(ctx, "defaultRg", &resourcemanager.ResourceGroupArgs{
+//				DisplayName:       pulumi.String("tf-testacc-ipv6gateway503"),
+//				ResourceGroupName: pulumi.String(fmt.Sprintf("%v1", name)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = resourcemanager.NewResourceGroup(ctx, "changeRg", &resourcemanager.ResourceGroupArgs{
+//				DisplayName:       pulumi.String("tf-testacc-ipv6gateway311"),
+//				ResourceGroupName: pulumi.String(fmt.Sprintf("%v2", name)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewIpv6Gateway(ctx, "default", &vpc.Ipv6GatewayArgs{
+//				Description:     pulumi.String("test"),
+//				Ipv6GatewayName: pulumi.String(name),
+//				VpcId:           defaultVpc.ID(),
+//				ResourceGroupId: defaultRg.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Vpc Ipv6 Gateway can be imported using the id, e.g.

@@ -245,6 +245,50 @@ class AccountPrivilege(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.5.0.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="5.6")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        instance = alicloud.rds.Instance("instance",
+            engine="MySQL",
+            engine_version="5.6",
+            instance_type="rds.mysql.s1.small",
+            instance_storage=10,
+            vswitch_id=default_switch.id,
+            instance_name=name)
+        db = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            db.append(alicloud.rds.Database(f"db-{range['value']}",
+                instance_id=instance.id,
+                description="from terraform"))
+        account = alicloud.rds.Account("account",
+            db_instance_id=instance.id,
+            account_name="tfexample",
+            account_password="Example12345",
+            account_description="from terraform")
+        privilege = alicloud.rds.AccountPrivilege("privilege",
+            instance_id=instance.id,
+            account_name=account.name,
+            privilege="ReadOnly",
+            db_names=[__item.name for __item in db])
+        ```
+
         ## Import
 
         RDS account privilege can be imported using the id, e.g.
@@ -278,6 +322,50 @@ class AccountPrivilege(pulumi.CustomResource):
         > **NOTE:** At present, a database can only have one database owner.
 
         > **NOTE:** Available since v1.5.0.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="5.6")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        instance = alicloud.rds.Instance("instance",
+            engine="MySQL",
+            engine_version="5.6",
+            instance_type="rds.mysql.s1.small",
+            instance_storage=10,
+            vswitch_id=default_switch.id,
+            instance_name=name)
+        db = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            db.append(alicloud.rds.Database(f"db-{range['value']}",
+                instance_id=instance.id,
+                description="from terraform"))
+        account = alicloud.rds.Account("account",
+            db_instance_id=instance.id,
+            account_name="tfexample",
+            account_password="Example12345",
+            account_description="from terraform")
+        privilege = alicloud.rds.AccountPrivilege("privilege",
+            instance_id=instance.id,
+            account_name=account.name,
+            privilege="ReadOnly",
+            db_names=[__item.name for __item in db])
+        ```
 
         ## Import
 

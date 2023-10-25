@@ -346,6 +346,37 @@ class Account(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.67.0+.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
+            db_version="8.0",
+            pay_type="PostPaid")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_node_classes.classes[0].zone_id,
+            vswitch_name="terraform-example")
+        default_cluster = alicloud.polardb.Cluster("defaultCluster",
+            db_type="MySQL",
+            db_version="8.0",
+            db_node_class=default_node_classes.classes[0].supported_engines[0].available_resources[0].db_node_class,
+            pay_type="PostPaid",
+            vswitch_id=default_switch.id,
+            description="terraform-example")
+        default_account = alicloud.polardb.Account("defaultAccount",
+            db_cluster_id=default_cluster.id,
+            account_name="terraform_example",
+            account_password="Example1234",
+            account_description="terraform-example")
+        ```
+
         ## Import
 
         PolarDB account can be imported using the id, e.g.
@@ -374,6 +405,37 @@ class Account(pulumi.CustomResource):
         Provides a PolarDB account resource and used to manage databases.
 
         > **NOTE:** Available in v1.67.0+.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
+            db_version="8.0",
+            pay_type="PostPaid")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_node_classes.classes[0].zone_id,
+            vswitch_name="terraform-example")
+        default_cluster = alicloud.polardb.Cluster("defaultCluster",
+            db_type="MySQL",
+            db_version="8.0",
+            db_node_class=default_node_classes.classes[0].supported_engines[0].available_resources[0].db_node_class,
+            pay_type="PostPaid",
+            vswitch_id=default_switch.id,
+            description="terraform-example")
+        default_account = alicloud.polardb.Account("defaultAccount",
+            db_cluster_id=default_cluster.id,
+            account_name="terraform_example",
+            account_password="Example1234",
+            account_description="terraform-example")
+        ```
 
         ## Import
 

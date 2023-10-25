@@ -15,6 +15,100 @@ import (
 // This data source provides the Ecd Images of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.146.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultSimpleOfficeSite, err := eds.NewSimpleOfficeSite(ctx, "defaultSimpleOfficeSite", &eds.SimpleOfficeSiteArgs{
+//				CidrBlock:         pulumi.String("172.16.0.0/12"),
+//				DesktopAccessType: pulumi.String("Internet"),
+//				OfficeSiteName:    pulumi.String("your_simple_office_site_name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBundles, err := eds.GetBundles(ctx, &eds.GetBundlesArgs{
+//				BundleType: pulumi.StringRef("SYSTEM"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultEcdPolicyGroup, err := eds.NewEcdPolicyGroup(ctx, "defaultEcdPolicyGroup", &eds.EcdPolicyGroupArgs{
+//				PolicyGroupName: pulumi.String("your_policy_group_name"),
+//				Clipboard:       pulumi.String("readwrite"),
+//				LocalDrive:      pulumi.String("read"),
+//				AuthorizeAccessPolicyRules: eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArray{
+//					&eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs{
+//						Description: pulumi.String("example_value"),
+//						CidrIp:      pulumi.String("1.2.3.4/24"),
+//					},
+//				},
+//				AuthorizeSecurityPolicyRules: eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArray{
+//					&eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs{
+//						Type:        pulumi.String("inflow"),
+//						Policy:      pulumi.String("accept"),
+//						Description: pulumi.String("example_value"),
+//						PortRange:   pulumi.String("80/80"),
+//						IpProtocol:  pulumi.String("TCP"),
+//						Priority:    pulumi.String("1"),
+//						CidrIp:      pulumi.String("0.0.0.0/0"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultDesktop, err := eds.NewDesktop(ctx, "defaultDesktop", &eds.DesktopArgs{
+//				OfficeSiteId:  defaultSimpleOfficeSite.ID(),
+//				PolicyGroupId: defaultEcdPolicyGroup.ID(),
+//				BundleId:      *pulumi.String(defaultBundles.Bundles[1].Id),
+//				DesktopName:   pulumi.String("your_desktop_name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultImage, err := eds.NewImage(ctx, "defaultImage", &eds.ImageArgs{
+//				ImageName:   pulumi.String("your_image_name"),
+//				DesktopId:   defaultDesktop.ID(),
+//				Description: pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ids := eds.GetImagesOutput(ctx, eds.GetImagesOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultImage.ID(),
+//				},
+//			}, nil)
+//			ctx.Export("ecdImageId1", ids.ApplyT(func(ids eds.GetImagesResult) (*string, error) {
+//				return &ids.Images[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			nameRegex := defaultImage.ImageName.ApplyT(func(imageName *string) (eds.GetImagesResult, error) {
+//				return eds.GetImagesOutput(ctx, eds.GetImagesOutputArgs{
+//					NameRegex: imageName,
+//				}, nil), nil
+//			}).(eds.GetImagesResultOutput)
+//			ctx.Export("ecdImageId2", nameRegex.ApplyT(func(nameRegex eds.GetImagesResult) (*string, error) {
+//				return &nameRegex.Images[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetImages(ctx *pulumi.Context, args *GetImagesArgs, opts ...pulumi.InvokeOption) (*GetImagesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetImagesResult

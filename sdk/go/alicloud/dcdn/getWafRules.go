@@ -15,6 +15,33 @@ import (
 // This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchcreatedcdnwafrules)
 //
 // > **NOTE:** Available since v1.201.0.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _default, err := dcdn.GetWafRules(ctx, &dcdn.GetWafRulesArgs{
+// Ids: interface{}{
+// alicloud_dcdn_waf_rule.Default.Id,
+// },
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("alicloudDcdnWafRuleExampleId", _default.WafRules[0].Id)
+// return nil
+// })
+// }
+// ```
 func GetWafRules(ctx *pulumi.Context, args *GetWafRulesArgs, opts ...pulumi.InvokeOption) (*GetWafRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetWafRulesResult

@@ -16,6 +16,29 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var snapshot = new AliCloud.Ecs.Snapshot("snapshot", new()
+    ///     {
+    ///         DiskId = alicloud_disk_attachment.Instance_attachment.Disk_id,
+    ///         Description = "this snapshot is created for testing",
+    ///         Tags = 
+    ///         {
+    ///             { "version", "1.2" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Snapshot can be imported using the id, e.g.

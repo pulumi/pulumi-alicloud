@@ -11,6 +11,58 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.195.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const bj = new alicloud.Provider("bj", {region: "cn-beijing"});
+ * const hz = new alicloud.Provider("hz", {region: "cn-hangzhou"});
+ * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {cenInstanceName: "tf-example"}, {
+ *     provider: alicloud.hz,
+ * });
+ * const defaultBandwidthPackage = new alicloud.cen.BandwidthPackage("defaultBandwidthPackage", {
+ *     bandwidth: 5,
+ *     geographicRegionAId: "China",
+ *     geographicRegionBId: "China",
+ * }, {
+ *     provider: alicloud.hz,
+ * });
+ * const defaultBandwidthPackageAttachment = new alicloud.cen.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", {
+ *     instanceId: defaultInstance.id,
+ *     bandwidthPackageId: defaultBandwidthPackage.id,
+ * }, {
+ *     provider: alicloud.hz,
+ * });
+ * const hzTransitRouter = new alicloud.cen.TransitRouter("hzTransitRouter", {cenId: defaultBandwidthPackageAttachment.instanceId}, {
+ *     provider: alicloud.hz,
+ * });
+ * const bjTransitRouter = new alicloud.cen.TransitRouter("bjTransitRouter", {cenId: hzTransitRouter.cenId}, {
+ *     provider: alicloud.bj,
+ * });
+ * const defaultTransitRouterPeerAttachment = new alicloud.cen.TransitRouterPeerAttachment("defaultTransitRouterPeerAttachment", {
+ *     cenId: defaultInstance.id,
+ *     transitRouterId: hzTransitRouter.transitRouterId,
+ *     peerTransitRouterRegionId: "cn-beijing",
+ *     peerTransitRouterId: bjTransitRouter.transitRouterId,
+ *     cenBandwidthPackageId: defaultBandwidthPackageAttachment.bandwidthPackageId,
+ *     bandwidth: 5,
+ * }, {
+ *     provider: alicloud.hz,
+ * });
+ * const defaultInterRegionTrafficQosPolicy = new alicloud.cen.InterRegionTrafficQosPolicy("defaultInterRegionTrafficQosPolicy", {
+ *     transitRouterId: hzTransitRouter.transitRouterId,
+ *     transitRouterAttachmentId: defaultTransitRouterPeerAttachment.transitRouterAttachmentId,
+ *     interRegionTrafficQosPolicyName: "tf-example-name",
+ *     interRegionTrafficQosPolicyDescription: "tf-example-description",
+ * }, {
+ *     provider: alicloud.hz,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Cloud Enterprise Network (CEN) Inter Region Traffic Qos Policy can be imported using the id, e.g.

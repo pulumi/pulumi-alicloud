@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides the Global Accelerator (GA) Accelerators of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.111.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.ga.getAccelerators({
+ *     ids: ["example_value"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstGaAcceleratorId = example.then(example => example.accelerators?.[0]?.id);
+ * ```
  */
 export function getAccelerators(args?: GetAcceleratorsArgs, opts?: pulumi.InvokeOptions): Promise<GetAcceleratorsResult> {
     args = args || {};
@@ -64,6 +79,21 @@ export interface GetAcceleratorsResult {
  * This data source provides the Global Accelerator (GA) Accelerators of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.111.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.ga.getAccelerators({
+ *     ids: ["example_value"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstGaAcceleratorId = example.then(example => example.accelerators?.[0]?.id);
+ * ```
  */
 export function getAcceleratorsOutput(args?: GetAcceleratorsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAcceleratorsResult> {
     return pulumi.output(args).apply((a: any) => getAccelerators(a, opts))

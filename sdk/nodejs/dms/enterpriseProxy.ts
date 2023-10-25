@@ -11,6 +11,97 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.188.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const current = alicloud.getAccount({});
+ * const defaultRegions = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultUserTenants = alicloud.dms.getUserTenants({
+ *     status: "ACTIVE",
+ * });
+ * const defaultZones = alicloud.rds.getZones({
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     instanceChargeType: "PostPaid",
+ *     category: "HighAvailability",
+ *     dbInstanceStorageType: "cloud_essd",
+ * });
+ * const defaultInstanceClasses = defaultZones.then(defaultZones => alicloud.rds.getInstanceClasses({
+ *     zoneId: defaultZones.zones?.[0]?.id,
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     category: "HighAvailability",
+ *     dbInstanceStorageType: "cloud_essd",
+ *     instanceChargeType: "PostPaid",
+ * }));
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
+ * const defaultInstance = new alicloud.rds.Instance("defaultInstance", {
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     dbInstanceStorageType: "cloud_essd",
+ *     instanceType: defaultInstanceClasses.then(defaultInstanceClasses => defaultInstanceClasses.instanceClasses?.[0]?.instanceClass),
+ *     instanceStorage: defaultInstanceClasses.then(defaultInstanceClasses => defaultInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     vswitchId: defaultSwitch.id,
+ *     instanceName: name,
+ *     securityIps: [
+ *         "100.104.5.0/24",
+ *         "192.168.0.6",
+ *     ],
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
+ * });
+ * const defaultAccount = new alicloud.rds.Account("defaultAccount", {
+ *     dbInstanceId: defaultInstance.id,
+ *     accountName: "tfexamplename",
+ *     accountPassword: "Example12345",
+ *     accountType: "Normal",
+ * });
+ * const defaultEnterpriseInstance = new alicloud.dms.EnterpriseInstance("defaultEnterpriseInstance", {
+ *     tid: defaultUserTenants.then(defaultUserTenants => defaultUserTenants.ids?.[0]),
+ *     instanceType: "MySQL",
+ *     instanceSource: "RDS",
+ *     networkType: "VPC",
+ *     envType: "dev",
+ *     host: defaultInstance.connectionString,
+ *     port: 3306,
+ *     databaseUser: defaultAccount.accountName,
+ *     databasePassword: defaultAccount.accountPassword,
+ *     instanceName: name,
+ *     dbaUid: current.then(current => current.id),
+ *     safeRule: "自由操作",
+ *     queryTimeout: 60,
+ *     exportTimeout: 600,
+ *     ecsRegion: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
+ * });
+ * const defaultEnterpriseProxy = new alicloud.dms.EnterpriseProxy("defaultEnterpriseProxy", {
+ *     instanceId: defaultEnterpriseInstance.instanceId,
+ *     password: "Example12345",
+ *     username: "tfexamplename",
+ *     tid: defaultUserTenants.then(defaultUserTenants => defaultUserTenants.ids?.[0]),
+ * });
+ * ```
+ *
  * ## Import
  *
  * DMS Enterprise Proxy can be imported using the id, e.g.

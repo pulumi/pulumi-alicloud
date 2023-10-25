@@ -154,6 +154,16 @@ def get_honeypot_nodes(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in 1.195.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.threatdetection.get_honeypot_nodes(ids=[alicloud_threat_detection_honeypot_node["default"]["id"]])
+    pulumi.export("alicloudThreatDetectionHoneypotNodeExampleId", default.nodes[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Honeypot Node IDs.
     :param str name_regex: A regex string to filter results by Honeypot Node name.
@@ -198,6 +208,16 @@ def get_honeypot_nodes_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
     This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode)
 
     > **NOTE:** Available in 1.195.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.threatdetection.get_honeypot_nodes(ids=[alicloud_threat_detection_honeypot_node["default"]["id"]])
+    pulumi.export("alicloudThreatDetectionHoneypotNodeExampleId", default.nodes[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Honeypot Node IDs.

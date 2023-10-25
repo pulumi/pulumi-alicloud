@@ -15,6 +15,40 @@ import (
 // This data source provides the Vpc Peer Connections of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.186.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := vpc.GetPeerConnections(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcPeerConnectionId1", ids.Connections[0].Id)
+//			nameRegex, err := vpc.GetPeerConnections(ctx, &vpc.GetPeerConnectionsArgs{
+//				NameRegex: pulumi.StringRef("^my-PeerConnection"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcPeerConnectionId2", nameRegex.Connections[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetPeerConnections(ctx *pulumi.Context, args *GetPeerConnectionsArgs, opts ...pulumi.InvokeOption) (*GetPeerConnectionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPeerConnectionsResult

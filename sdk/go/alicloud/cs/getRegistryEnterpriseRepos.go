@@ -15,6 +15,35 @@ import (
 // This data source provides a list Container Registry Enterprise Edition repositories on Alibaba Cloud.
 //
 // > **NOTE:** Available in v1.87.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myRepos, err := cs.GetRegistryEnterpriseRepos(ctx, &cs.GetRegistryEnterpriseReposArgs{
+//				InstanceId: "cri-xx",
+//				NameRegex:  pulumi.StringRef("my-repos"),
+//				OutputFile: pulumi.StringRef("my-repo-json"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("output", myRepos.Repos)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetRegistryEnterpriseRepos(ctx *pulumi.Context, args *GetRegistryEnterpriseReposArgs, opts ...pulumi.InvokeOption) (*GetRegistryEnterpriseReposResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRegistryEnterpriseReposResult

@@ -11,6 +11,27 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.153.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const exampleFileSystem = new alicloud.nas.FileSystem("exampleFileSystem", {
+ *     protocolType: "NFS",
+ *     storageType: "Capacity",
+ * });
+ * const exampleLifecyclePolicy = new alicloud.nas.LifecyclePolicy("exampleLifecyclePolicy", {
+ *     fileSystemId: exampleFileSystem.id,
+ *     lifecyclePolicyName: "terraform-example",
+ *     lifecycleRuleName: "DEFAULT_ATIME_14",
+ *     storageType: "InfrequentAccess",
+ *     paths: ["/"],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Network Attached Storage (NAS) Lifecycle Policy can be imported using the id, e.g.

@@ -15,6 +15,38 @@ namespace Pulumi.AliCloud.Ecs
         /// This data source provides the Ecs Hpc Clusters of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.116.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Ecs.GetHpcClusters.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "hpc-bp1i09xxxxxxxx",
+        ///         },
+        ///         NameRegex = "tf-testAcc",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstEcsHpcClusterId"] = example.Apply(getHpcClustersResult =&gt; getHpcClustersResult.Clusters[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetHpcClustersResult> InvokeAsync(GetHpcClustersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHpcClustersResult>("alicloud:ecs/getHpcClusters:getHpcClusters", args ?? new GetHpcClustersArgs(), options.WithDefaults());
@@ -23,6 +55,38 @@ namespace Pulumi.AliCloud.Ecs
         /// This data source provides the Ecs Hpc Clusters of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.116.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Ecs.GetHpcClusters.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "hpc-bp1i09xxxxxxxx",
+        ///         },
+        ///         NameRegex = "tf-testAcc",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstEcsHpcClusterId"] = example.Apply(getHpcClustersResult =&gt; getHpcClustersResult.Clusters[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetHpcClustersResult> Invoke(GetHpcClustersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHpcClustersResult>("alicloud:ecs/getHpcClusters:getHpcClusters", args ?? new GetHpcClustersInvokeArgs(), options.WithDefaults());

@@ -194,6 +194,19 @@ class Namespace(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.171.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.cms.Namespace("example",
+            namespace="tf_example",
+            specification="cms.s1.large")
+        ```
+
         ## Import
 
         Cloud Monitor Service Namespace can be imported using the id, e.g.
@@ -226,6 +239,19 @@ class Namespace(pulumi.CustomResource):
         For information about Cloud Monitor Service Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createhybridmonitornamespace).
 
         > **NOTE:** Available since v1.171.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.cms.Namespace("example",
+            namespace="tf_example",
+            specification="cms.s1.large")
+        ```
 
         ## Import
 

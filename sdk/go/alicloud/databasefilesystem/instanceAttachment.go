@@ -19,6 +19,105 @@ import (
 //
 // > **NOTE:** Available since v1.156.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/databasefilesystem"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			zoneId := "cn-hangzhou-i"
+//			exampleInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone:   pulumi.StringRef(zoneId),
+//				InstanceTypeFamily: pulumi.StringRef("ecs.g7se"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				InstanceType: pulumi.StringRef(exampleInstanceTypes.InstanceTypes[len(exampleInstanceTypes.InstanceTypes)-1].Id),
+//				NameRegex:    pulumi.StringRef("^aliyun_2"),
+//				Owners:       pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       exampleNetwork.ID(),
+//				ZoneId:      pulumi.String(zoneId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "exampleSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: exampleNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleInstance, err := ecs.NewInstance(ctx, "exampleInstance", &ecs.InstanceArgs{
+//				AvailabilityZone: pulumi.String(zoneId),
+//				InstanceName:     pulumi.String(name),
+//				ImageId:          *pulumi.String(exampleImages.Images[1].Id),
+//				InstanceType:     exampleInstanceTypes.InstanceTypes[len(exampleInstanceTypes.InstanceTypes)-1].Id,
+//				SecurityGroups: pulumi.StringArray{
+//					exampleSecurityGroup.ID(),
+//				},
+//				VswitchId:          exampleSwitch.ID(),
+//				SystemDiskCategory: pulumi.String("cloud_essd"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databasefilesystem.NewInstance(ctx, "exampleDatabasefilesystem/instanceInstance", &databasefilesystem.InstanceArgs{
+//				Category:         pulumi.String("standard"),
+//				ZoneId:           pulumi.String(zoneId),
+//				PerformanceLevel: pulumi.String("PL1"),
+//				InstanceName:     pulumi.String(name),
+//				Size:             pulumi.Int(100),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databasefilesystem.NewInstanceAttachment(ctx, "exampleInstanceAttachment", &databasefilesystem.InstanceAttachmentArgs{
+//				EcsId:      exampleInstance.ID(),
+//				InstanceId: exampleDatabasefilesystem / instanceInstance.Id,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // DBFS Instance Attachment can be imported using the id, e.g.

@@ -11,6 +11,25 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in 1.53.0+
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "onsInstanceName";
+ * const groupName = config.get("groupName") || "GID-onsGroupDatasourceName";
+ * const defaultInstance = new alicloud.rocketmq.Instance("defaultInstance", {remark: "default_ons_instance_remark"});
+ * const defaultGroup = new alicloud.rocketmq.Group("defaultGroup", {
+ *     groupName: groupName,
+ *     instanceId: defaultInstance.id,
+ *     remark: "dafault_ons_group_remark",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ONS GROUP can be imported using the id, e.g.

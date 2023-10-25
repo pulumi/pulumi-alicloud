@@ -16,6 +16,32 @@ namespace Pulumi.AliCloud.Sddp
     /// 
     /// &gt; **NOTE:** Available since v1.132.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example_name";
+    ///     var @default = new AliCloud.Sddp.Rule("default", new()
+    ///     {
+    ///         Category = 0,
+    ///         Content = "content",
+    ///         RuleName = name,
+    ///         RiskLevelId = "4",
+    ///         ProductCode = "OSS",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Data Security Center Rule can be imported using the id, e.g.

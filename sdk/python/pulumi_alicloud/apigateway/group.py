@@ -208,6 +208,17 @@ class Group(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.apigateway.Group("default", description="tf_example")
+        ```
+
         ## Import
 
         Api gateway group can be imported using the id, e.g.
@@ -229,6 +240,17 @@ class Group(pulumi.CustomResource):
                  args: GroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.apigateway.Group("default", description="tf_example")
+        ```
+
         ## Import
 
         Api gateway group can be imported using the id, e.g.

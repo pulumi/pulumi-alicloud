@@ -16,6 +16,70 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// 
     /// &gt; **NOTE:** Available since v1.194.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var current = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var @default = new AliCloud.CloudFirewall.FirewallVpcFirewall("default", new()
+    ///     {
+    ///         VpcFirewallName = "tf-example",
+    ///         MemberUid = current.Apply(getAccountResult =&gt; getAccountResult.Id),
+    ///         LocalVpc = new AliCloud.CloudFirewall.Inputs.FirewallVpcFirewallLocalVpcArgs
+    ///         {
+    ///             VpcId = "vpc-bp1d065m6hzn1xbw8ibfd",
+    ///             RegionNo = "cn-hangzhou",
+    ///             LocalVpcCidrTableLists = new[]
+    ///             {
+    ///                 new AliCloud.CloudFirewall.Inputs.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs
+    ///                 {
+    ///                     LocalRouteTableId = "vtb-bp1lj0ddg846856chpzrv",
+    ///                     LocalRouteEntryLists = new[]
+    ///                     {
+    ///                         new AliCloud.CloudFirewall.Inputs.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs
+    ///                         {
+    ///                             LocalNextHopInstanceId = "ri-bp1uobww3aputjlwwkyrh",
+    ///                             LocalDestinationCidr = "10.1.0.0/16",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         PeerVpc = new AliCloud.CloudFirewall.Inputs.FirewallVpcFirewallPeerVpcArgs
+    ///         {
+    ///             VpcId = "vpc-bp1gcmm64o3caox84v0nz",
+    ///             RegionNo = "cn-hangzhou",
+    ///             PeerVpcCidrTableLists = new[]
+    ///             {
+    ///                 new AliCloud.CloudFirewall.Inputs.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs
+    ///                 {
+    ///                     PeerRouteTableId = "vtb-bp1f516f2hh4sok1ig9b5",
+    ///                     PeerRouteEntryLists = new[]
+    ///                     {
+    ///                         new AliCloud.CloudFirewall.Inputs.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs
+    ///                         {
+    ///                             PeerDestinationCidr = "10.0.0.0/16",
+    ///                             PeerNextHopInstanceId = "ri-bp1thhtgf6ydr2or52l3n",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Status = "open",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Cloud Firewall Vpc Firewall can be imported using the id, e.g.

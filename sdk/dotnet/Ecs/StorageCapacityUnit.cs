@@ -16,6 +16,28 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **NOTE:** Available in v1.155.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new AliCloud.Ecs.StorageCapacityUnit("default", new()
+    ///     {
+    ///         Capacity = 20,
+    ///         Description = "tftestdescription",
+    ///         StorageCapacityUnitName = "tftestname",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ECS Storage Capacity Unit can be imported using the id, e.g.

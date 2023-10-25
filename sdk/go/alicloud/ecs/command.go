@@ -19,6 +19,37 @@ import (
 //
 // > **NOTE:** Available in v1.116.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewCommand(ctx, "example", &ecs.CommandArgs{
+//				CommandContent: pulumi.String("bHMK"),
+//				Description:    pulumi.String("For Terraform Test"),
+//				Type:           pulumi.String("RunShellScript"),
+//				WorkingDir:     pulumi.String("/root"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ECS Command can be imported using the id, e.g.

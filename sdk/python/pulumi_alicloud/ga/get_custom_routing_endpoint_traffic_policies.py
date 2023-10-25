@@ -168,6 +168,19 @@ def get_custom_routing_endpoint_traffic_policies(accelerator_id: Optional[str] =
 
     > **NOTE:** Available in 1.197.0+
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.ga.get_custom_routing_endpoint_traffic_policies(ids=["example_id"],
+        accelerator_id="your_accelerator_id")
+    pulumi.export("gaCustomRoutingEndpointTrafficPoliciesId1", ids.custom_routing_endpoint_traffic_policies[0].id)
+    ```
+
 
     :param str accelerator_id: The ID of the GA instance to which the traffic policies belong.
     :param str address: The IP addresses of the traffic policies.
@@ -219,6 +232,19 @@ def get_custom_routing_endpoint_traffic_policies_output(accelerator_id: Optional
     This data source provides the Global Accelerator (GA) Custom Routing Endpoint Traffic Policies of the current Alibaba Cloud user.
 
     > **NOTE:** Available in 1.197.0+
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.ga.get_custom_routing_endpoint_traffic_policies(ids=["example_id"],
+        accelerator_id="your_accelerator_id")
+    pulumi.export("gaCustomRoutingEndpointTrafficPoliciesId1", ids.custom_routing_endpoint_traffic_policies[0].id)
+    ```
 
 
     :param str accelerator_id: The ID of the GA instance to which the traffic policies belong.

@@ -119,6 +119,20 @@ def get_bgp_groups(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.152.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.vpc.get_bgp_groups(ids=["example_value"])
+    pulumi.export("vpcBgpGroupId1", ids.groups[0].id)
+    name_regex = alicloud.vpc.get_bgp_groups(name_regex="^my-BgpGroup")
+    pulumi.export("vpcBgpGroupId2", name_regex.groups[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Bgp Group IDs.
     :param str name_regex: A regex string to filter results by Bgp Group name.
@@ -157,6 +171,20 @@ def get_bgp_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] =
     This data source provides the Vpc Bgp Groups of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.152.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.vpc.get_bgp_groups(ids=["example_value"])
+    pulumi.export("vpcBgpGroupId1", ids.groups[0].id)
+    name_regex = alicloud.vpc.get_bgp_groups(name_regex="^my-BgpGroup")
+    pulumi.export("vpcBgpGroupId2", name_regex.groups[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Bgp Group IDs.

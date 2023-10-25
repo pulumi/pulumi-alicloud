@@ -11,6 +11,30 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.155.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const exampleZones = alicloud.nas.getZones({
+ *     fileSystemType: "standard",
+ * });
+ * const exampleFileSystem = new alicloud.nas.FileSystem("exampleFileSystem", {
+ *     protocolType: "NFS",
+ *     storageType: "Performance",
+ *     description: "terraform-example",
+ *     encryptType: 1,
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.zoneId),
+ * });
+ * const exampleRecycleBin = new alicloud.nas.RecycleBin("exampleRecycleBin", {
+ *     fileSystemId: exampleFileSystem.id,
+ *     reservedDays: 3,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Network Attached Storage (NAS) Recycle Bin can be imported using the id, e.g.

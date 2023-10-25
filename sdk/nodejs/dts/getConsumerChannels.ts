@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * This data source provides the Dts Consumer Channels of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.146.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.dts.getConsumerChannels({});
+ * export const dtsConsumerChannelId1 = ids.then(ids => ids.channels?.[0]?.id);
+ * ```
  */
 export function getConsumerChannels(args: GetConsumerChannelsArgs, opts?: pulumi.InvokeOptions): Promise<GetConsumerChannelsResult> {
 
@@ -56,6 +68,18 @@ export interface GetConsumerChannelsResult {
  * This data source provides the Dts Consumer Channels of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.146.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.dts.getConsumerChannels({});
+ * export const dtsConsumerChannelId1 = ids.then(ids => ids.channels?.[0]?.id);
+ * ```
  */
 export function getConsumerChannelsOutput(args: GetConsumerChannelsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConsumerChannelsResult> {
     return pulumi.output(args).apply((a: any) => getConsumerChannels(a, opts))

@@ -15,6 +15,34 @@ import (
 // This data source provides Cen Child Instance Route Entry To Attachment available to the user.[What is Child Instance Route Entry To Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcenchildinstancerouteentrytoattachment)
 //
 // > **NOTE:** Available in 1.195.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := cen.GetChildInstanceRouteEntryToAttachments(ctx, &cen.GetChildInstanceRouteEntryToAttachmentsArgs{
+//				ChildInstanceRouteTableId: "vtb-t4nt0z5xxbti85c78nkzy",
+//				TransitRouterAttachmentId: "tr-attach-f1fd1y50rql00emvej",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudCenChildInstanceRouteEntryToAttachmentExampleId", _default.Attachments[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetChildInstanceRouteEntryToAttachments(ctx *pulumi.Context, args *GetChildInstanceRouteEntryToAttachmentsArgs, opts ...pulumi.InvokeOption) (*GetChildInstanceRouteEntryToAttachmentsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetChildInstanceRouteEntryToAttachmentsResult

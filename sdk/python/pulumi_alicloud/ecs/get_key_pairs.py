@@ -156,6 +156,17 @@ def get_key_pairs(finger_print: Optional[str] = None,
 
     This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    # Declare the data source
+    default_key_pair = alicloud.ecs.KeyPair("defaultKeyPair", key_name="keyPairDatasource")
+    default_key_pairs = alicloud.ecs.get_key_pairs_output(name_regex=default_key_pair.key_name)
+    ```
+
 
     :param str finger_print: A finger print used to retrieve specified key pair.
     :param Sequence[str] ids: A list of key pair IDs.
@@ -199,6 +210,17 @@ def get_key_pairs_output(finger_print: Optional[pulumi.Input[Optional[str]]] = N
     > **DEPRECATED:** This datasource has been renamed to ecs_get_ecs_key_pairs from version 1.121.0.
 
     This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    # Declare the data source
+    default_key_pair = alicloud.ecs.KeyPair("defaultKeyPair", key_name="keyPairDatasource")
+    default_key_pairs = alicloud.ecs.get_key_pairs_output(name_regex=default_key_pair.key_name)
+    ```
 
 
     :param str finger_print: A finger print used to retrieve specified key pair.

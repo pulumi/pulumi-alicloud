@@ -15,6 +15,44 @@ import (
 // This data source provides the Compute Nest Service Instances of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.205.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := compute.GetNestServiceInstances(ctx, &compute.GetNestServiceInstancesArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("armsPrometheisId1", ids.ServiceInstances[0].Id)
+//			nameRegex, err := compute.GetNestServiceInstances(ctx, &compute.GetNestServiceInstancesArgs{
+//				NameRegex: pulumi.StringRef("tf-example"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("armsPrometheisId2", nameRegex.ServiceInstances[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetNestServiceInstances(ctx *pulumi.Context, args *GetNestServiceInstancesArgs, opts ...pulumi.InvokeOption) (*GetNestServiceInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNestServiceInstancesResult

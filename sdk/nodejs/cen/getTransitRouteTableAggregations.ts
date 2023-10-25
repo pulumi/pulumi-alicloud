@@ -10,6 +10,26 @@ import * as utilities from "../utilities";
  * This data source provides the Cen Transit Route Table Aggregations of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.202.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cen.getTransitRouteTableAggregations({
+ *     ids: ["example_id"],
+ *     transitRouteTableId: "your_transit_route_table_id",
+ * });
+ * export const cenTransitRouterMulticastDomainId0 = ids.then(ids => ids.transitRouteTableAggregations?.[0]?.id);
+ * const nameRegex = alicloud.cen.getTransitRouteTableAggregations({
+ *     nameRegex: "^my-name",
+ *     transitRouteTableId: "your_transit_route_table_id",
+ * });
+ * export const cenTransitRouterMulticastDomainId1 = nameRegex.then(nameRegex => nameRegex.transitRouteTableAggregations?.[0]?.id);
+ * ```
  */
 export function getTransitRouteTableAggregations(args: GetTransitRouteTableAggregationsArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouteTableAggregationsResult> {
 
@@ -90,6 +110,26 @@ export interface GetTransitRouteTableAggregationsResult {
  * This data source provides the Cen Transit Route Table Aggregations of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.202.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cen.getTransitRouteTableAggregations({
+ *     ids: ["example_id"],
+ *     transitRouteTableId: "your_transit_route_table_id",
+ * });
+ * export const cenTransitRouterMulticastDomainId0 = ids.then(ids => ids.transitRouteTableAggregations?.[0]?.id);
+ * const nameRegex = alicloud.cen.getTransitRouteTableAggregations({
+ *     nameRegex: "^my-name",
+ *     transitRouteTableId: "your_transit_route_table_id",
+ * });
+ * export const cenTransitRouterMulticastDomainId1 = nameRegex.then(nameRegex => nameRegex.transitRouteTableAggregations?.[0]?.id);
+ * ```
  */
 export function getTransitRouteTableAggregationsOutput(args: GetTransitRouteTableAggregationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouteTableAggregationsResult> {
     return pulumi.output(args).apply((a: any) => getTransitRouteTableAggregations(a, opts))

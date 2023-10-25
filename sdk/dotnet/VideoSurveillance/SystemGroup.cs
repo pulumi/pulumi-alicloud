@@ -16,6 +16,30 @@ namespace Pulumi.AliCloud.VideoSurveillance
     /// 
     /// &gt; **NOTE:** Available in v1.135.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new AliCloud.VideoSurveillance.SystemGroup("default", new()
+    ///     {
+    ///         GroupName = "your_group_name",
+    ///         InProtocol = "rtmp",
+    ///         OutProtocol = "flv",
+    ///         PlayDomain = "your_plan_domain",
+    ///         PushDomain = "your_push_domain",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Video Surveillance System Group can be imported using the id, e.g.

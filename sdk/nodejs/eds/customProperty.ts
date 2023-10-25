@@ -15,6 +15,22 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Up to 10 different attributes can be created under an alibaba cloud account. Up to 50 different attribute values can be added under an attribute.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.eds.CustomProperty("example", {
+ *     propertyKey: "example_key",
+ *     propertyValues: [{
+ *         propertyValue: "example_value",
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * ECD Custom Property can be imported using the id, e.g.

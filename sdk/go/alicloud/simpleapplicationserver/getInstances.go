@@ -15,6 +15,44 @@ import (
 // This data source provides the Simple Application Server Instances of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.135.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/simpleapplicationserver"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := simpleapplicationserver.GetInstances(ctx, &simpleapplicationserver.GetInstancesArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("simpleApplicationServerInstanceId1", ids.Instances[0].Id)
+//			nameRegex, err := simpleapplicationserver.GetInstances(ctx, &simpleapplicationserver.GetInstancesArgs{
+//				NameRegex: pulumi.StringRef("^my-Instance"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("simpleApplicationServerInstanceId2", nameRegex.Instances[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstancesResult

@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * This data source provides a list of OOS Executions in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in v1.93.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.oos.getExecutions({
+ *     ids: ["execution_id"],
+ *     status: "Success",
+ *     templateName: "name",
+ * });
+ * export const firstExecutionId = example.then(example => example.executions?.[0]?.id);
+ * ```
  */
 export function getExecutions(args?: GetExecutionsArgs, opts?: pulumi.InvokeOptions): Promise<GetExecutionsResult> {
     args = args || {};
@@ -147,6 +161,20 @@ export interface GetExecutionsResult {
  * This data source provides a list of OOS Executions in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in v1.93.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.oos.getExecutions({
+ *     ids: ["execution_id"],
+ *     status: "Success",
+ *     templateName: "name",
+ * });
+ * export const firstExecutionId = example.then(example => example.executions?.[0]?.id);
+ * ```
  */
 export function getExecutionsOutput(args?: GetExecutionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExecutionsResult> {
     return pulumi.output(args).apply((a: any) => getExecutions(a, opts))

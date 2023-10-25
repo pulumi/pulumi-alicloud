@@ -239,6 +239,55 @@ class Snapshot(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.169.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
+            cidr_block="172.16.0.0/12",
+            enable_admin_access=True,
+            desktop_access_type="Internet",
+            office_site_name=name)
+        default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup",
+            policy_group_name=name,
+            clipboard="read",
+            local_drive="read",
+            usb_redirect="off",
+            watermark="off",
+            authorize_access_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs(
+                description=name,
+                cidr_ip="1.2.3.45/24",
+            )],
+            authorize_security_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs(
+                type="inflow",
+                policy="accept",
+                description=name,
+                port_range="80/80",
+                ip_protocol="TCP",
+                priority="1",
+                cidr_ip="1.2.3.4/24",
+            )])
+        default_bundles = alicloud.eds.get_bundles(bundle_type="SYSTEM")
+        default_desktop = alicloud.eds.Desktop("defaultDesktop",
+            office_site_id=default_simple_office_site.id,
+            policy_group_id=default_ecd_policy_group.id,
+            bundle_id=default_bundles.bundles[1].id,
+            desktop_name=name)
+        default_snapshot = alicloud.eds.Snapshot("defaultSnapshot",
+            description=name,
+            desktop_id=default_desktop.id,
+            snapshot_name=name,
+            source_disk_type="SYSTEM")
+        ```
+
         ## Import
 
         ECD Snapshot can be imported using the id, e.g.
@@ -266,6 +315,55 @@ class Snapshot(pulumi.CustomResource):
         For information about ECD Snapshot and how to use it, see [What is Snapshot](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createsnapshot).
 
         > **NOTE:** Available since v1.169.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
+            cidr_block="172.16.0.0/12",
+            enable_admin_access=True,
+            desktop_access_type="Internet",
+            office_site_name=name)
+        default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup",
+            policy_group_name=name,
+            clipboard="read",
+            local_drive="read",
+            usb_redirect="off",
+            watermark="off",
+            authorize_access_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs(
+                description=name,
+                cidr_ip="1.2.3.45/24",
+            )],
+            authorize_security_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs(
+                type="inflow",
+                policy="accept",
+                description=name,
+                port_range="80/80",
+                ip_protocol="TCP",
+                priority="1",
+                cidr_ip="1.2.3.4/24",
+            )])
+        default_bundles = alicloud.eds.get_bundles(bundle_type="SYSTEM")
+        default_desktop = alicloud.eds.Desktop("defaultDesktop",
+            office_site_id=default_simple_office_site.id,
+            policy_group_id=default_ecd_policy_group.id,
+            bundle_id=default_bundles.bundles[1].id,
+            desktop_name=name)
+        default_snapshot = alicloud.eds.Snapshot("defaultSnapshot",
+            description=name,
+            desktop_id=default_desktop.id,
+            snapshot_name=name,
+            source_disk_type="SYSTEM")
+        ```
 
         ## Import
 

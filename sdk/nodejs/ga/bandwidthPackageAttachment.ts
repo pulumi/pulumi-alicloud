@@ -11,6 +11,33 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.113.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const exampleAccelerator = new alicloud.ga.Accelerator("exampleAccelerator", {
+ *     duration: 1,
+ *     autoUseCoupon: true,
+ *     spec: "1",
+ * });
+ * const exampleBandwidthPackage = new alicloud.ga.BandwidthPackage("exampleBandwidthPackage", {
+ *     bandwidth: 20,
+ *     type: "Basic",
+ *     bandwidthType: "Basic",
+ *     duration: "1",
+ *     autoPay: true,
+ *     ratio: 30,
+ * });
+ * const exampleBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("exampleBandwidthPackageAttachment", {
+ *     acceleratorId: exampleAccelerator.id,
+ *     bandwidthPackageId: exampleBandwidthPackage.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Ga Bandwidth Package Attachment can be imported using the id. Format to `<accelerator_id>:<bandwidth_package_id>`, e.g.

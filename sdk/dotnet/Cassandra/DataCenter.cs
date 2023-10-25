@@ -24,6 +24,50 @@ namespace Pulumi.AliCloud.Cassandra
     /// &gt; **NOTE:**  Create Cassandra dataCenter or change dataCenter type and storage would cost 30 minutes. Please make full preparation.
     /// 
     /// ## Example Usage
+    /// ### Create a cassandra dataCenter
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultCluster = new AliCloud.Cassandra.Cluster("defaultCluster", new()
+    ///     {
+    ///         ClusterName = "cassandra-cluster-name-tf",
+    ///         DataCenterName = "dc-1",
+    ///         AutoRenew = false,
+    ///         InstanceType = "cassandra.c.large",
+    ///         MajorVersion = "3.11",
+    ///         NodeCount = 2,
+    ///         PayType = "PayAsYouGo",
+    ///         VswitchId = "vsw-xxxx1",
+    ///         DiskSize = 160,
+    ///         DiskType = "cloud_ssd",
+    ///         MaintainStartTime = "18:00Z",
+    ///         MaintainEndTime = "20:00Z",
+    ///         IpWhite = "127.0.0.1",
+    ///     });
+    /// 
+    ///     var defaultDataCenter = new AliCloud.Cassandra.DataCenter("defaultDataCenter", new()
+    ///     {
+    ///         ClusterId = defaultCluster.Id,
+    ///         DataCenterName = "dc-2",
+    ///         AutoRenew = false,
+    ///         InstanceType = "cassandra.c.large",
+    ///         NodeCount = 2,
+    ///         PayType = "PayAsYouGo",
+    ///         VswitchId = "vsw-xxxx2",
+    ///         DiskSize = 160,
+    ///         DiskType = "cloud_ssd",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// This is a example for class netType dataCenter. You can find more detail with the examples/cassandra_data_center dir.
     /// 
     /// ## Import
     /// 

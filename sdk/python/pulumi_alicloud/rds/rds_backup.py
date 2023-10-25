@@ -361,6 +361,24 @@ class RdsBackup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.149.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_instance = alicloud.rds.Instance("exampleInstance",
+            engine="MySQL",
+            engine_version="5.6",
+            instance_type="rds.mysql.t1.small",
+            instance_storage=30,
+            instance_charge_type="Postpaid",
+            db_instance_storage_type="local_ssd")
+        example_rds_backup = alicloud.rds.RdsBackup("exampleRdsBackup", db_instance_id=example_instance.id)
+        ```
+
         ## Import
 
         RDS Backup can be imported using the id, e.g.
@@ -394,6 +412,24 @@ class RdsBackup(pulumi.CustomResource):
         For information about RDS Backup and how to use it, see [What is Backup](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createbackup).
 
         > **NOTE:** Available since v1.149.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_instance = alicloud.rds.Instance("exampleInstance",
+            engine="MySQL",
+            engine_version="5.6",
+            instance_type="rds.mysql.t1.small",
+            instance_storage=30,
+            instance_charge_type="Postpaid",
+            db_instance_storage_type="local_ssd")
+        example_rds_backup = alicloud.rds.RdsBackup("exampleRdsBackup", db_instance_id=example_instance.id)
+        ```
 
         ## Import
 

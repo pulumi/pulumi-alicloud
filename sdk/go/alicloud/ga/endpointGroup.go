@@ -28,6 +28,109 @@ import (
 //
 // * After you create a virtual endpoint group for an HTTP or HTTPS listener, you can create a forwarding rule and associate the forwarding rule with the virtual endpoint group. Then, the HTTP or HTTPS listener forwards requests with different destination domain names or paths to the default or virtual endpoint group based on the forwarding rule. This way, you can use one Global Accelerator (GA) instance to accelerate access to multiple domain names or paths. For more information about how to create a forwarding rule, see [Manage forwarding rules](https://www.alibabacloud.com/help/en/doc-detail/204224.htm).
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			region := "cn-hangzhou"
+//			if param := cfg.Get("region"); param != "" {
+//				region = param
+//			}
+//			defaultAccelerator, err := ga.NewAccelerator(ctx, "defaultAccelerator", &ga.AcceleratorArgs{
+//				Duration:      pulumi.Int(1),
+//				AutoUseCoupon: pulumi.Bool(true),
+//				Spec:          pulumi.String("1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "defaultBandwidthPackage", &ga.BandwidthPackageArgs{
+//				Bandwidth:     pulumi.Int(100),
+//				Type:          pulumi.String("Basic"),
+//				BandwidthType: pulumi.String("Basic"),
+//				PaymentType:   pulumi.String("PayAsYouGo"),
+//				BillingType:   pulumi.String("PayBy95"),
+//				Ratio:         pulumi.Int(30),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "defaultBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
+//				AcceleratorId:      defaultAccelerator.ID(),
+//				BandwidthPackageId: defaultBandwidthPackage.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultListener, err := ga.NewListener(ctx, "defaultListener", &ga.ListenerArgs{
+//				AcceleratorId: defaultBandwidthPackageAttachment.AcceleratorId,
+//				PortRanges: ga.ListenerPortRangeArray{
+//					&ga.ListenerPortRangeArgs{
+//						FromPort: pulumi.Int(60),
+//						ToPort:   pulumi.Int(70),
+//					},
+//				},
+//				ClientAffinity: pulumi.String("SOURCE_IP"),
+//				Protocol:       pulumi.String("UDP"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			var defaultEipAddress []*ecs.EipAddress
+//			for index := 0; index < 2; index++ {
+//				key0 := index
+//				_ := index
+//				__res, err := ecs.NewEipAddress(ctx, fmt.Sprintf("defaultEipAddress-%v", key0), &ecs.EipAddressArgs{
+//					Bandwidth:          pulumi.String("10"),
+//					InternetChargeType: pulumi.String("PayByBandwidth"),
+//					AddressName:        pulumi.String("terraform-example"),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				defaultEipAddress = append(defaultEipAddress, __res)
+//			}
+//			_, err = ga.NewEndpointGroup(ctx, "defaultEndpointGroup", &ga.EndpointGroupArgs{
+//				AcceleratorId: defaultAccelerator.ID(),
+//				EndpointConfigurations: ga.EndpointGroupEndpointConfigurationArray{
+//					&ga.EndpointGroupEndpointConfigurationArgs{
+//						Endpoint: defaultEipAddress[0].IpAddress,
+//						Type:     pulumi.String("PublicIp"),
+//						Weight:   pulumi.Int(20),
+//					},
+//					&ga.EndpointGroupEndpointConfigurationArgs{
+//						Endpoint: defaultEipAddress[1].IpAddress,
+//						Type:     pulumi.String("PublicIp"),
+//						Weight:   pulumi.Int(20),
+//					},
+//				},
+//				EndpointGroupRegion: pulumi.String(region),
+//				ListenerId:          defaultListener.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Ga Endpoint Group can be imported using the id, e.g.

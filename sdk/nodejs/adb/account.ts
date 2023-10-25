@@ -9,6 +9,57 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.71.0.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const defaultZones = alicloud.adb.getZones({});
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
+ *     status: "OK",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "10.4.0.0/24",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     vswitchName: name,
+ * });
+ * const defaultDBCluster = new alicloud.adb.DBCluster("defaultDBCluster", {
+ *     dbClusterCategory: "Cluster",
+ *     dbNodeClass: "C8",
+ *     dbNodeCount: 4,
+ *     dbNodeStorage: 400,
+ *     mode: "reserver",
+ *     dbClusterVersion: "3.0",
+ *     paymentType: "PayAsYouGo",
+ *     vswitchId: defaultSwitch.id,
+ *     description: name,
+ *     maintainTime: "23:00Z-00:00Z",
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
+ *     securityIps: [
+ *         "10.168.1.12",
+ *         "10.168.1.11",
+ *     ],
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
+ * });
+ * const defaultAccount = new alicloud.adb.Account("defaultAccount", {
+ *     dbClusterId: defaultDBCluster.id,
+ *     accountName: name,
+ *     accountPassword: "tf_example123",
+ *     accountDescription: name,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ADB account can be imported using the id, e.g.

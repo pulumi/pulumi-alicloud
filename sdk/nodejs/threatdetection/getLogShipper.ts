@@ -10,6 +10,19 @@ import * as utilities from "../utilities";
  * For information about Threat Detection Log Shipper and how to use it, see [What is Log Shipper](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifyopenlogshipper).
  *
  * > **NOTE:** Available in v1.195.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const open = alicloud.threatdetection.getLogShipper({
+ *     enable: "On",
+ * });
+ * ```
  */
 export function getLogShipper(args?: GetLogShipperArgs, opts?: pulumi.InvokeOptions): Promise<GetLogShipperResult> {
     args = args || {};
@@ -72,6 +85,19 @@ export interface GetLogShipperResult {
  * For information about Threat Detection Log Shipper and how to use it, see [What is Log Shipper](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifyopenlogshipper).
  *
  * > **NOTE:** Available in v1.195.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const open = alicloud.threatdetection.getLogShipper({
+ *     enable: "On",
+ * });
+ * ```
  */
 export function getLogShipperOutput(args?: GetLogShipperOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLogShipperResult> {
     return pulumi.output(args).apply((a: any) => getLogShipper(a, opts))

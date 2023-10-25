@@ -13,12 +13,68 @@ namespace Pulumi.AliCloud.FC
     {
         /// <summary>
         /// This data source provides the Function Compute triggers of the current Alibaba Cloud user.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var fcTriggersDs = AliCloud.FC.GetTriggers.Invoke(new()
+        ///     {
+        ///         FunctionName = "sample_function",
+        ///         NameRegex = "sample_fc_trigger",
+        ///         ServiceName = "sample_service",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstFcTriggerName"] = fcTriggersDs.Apply(getTriggersResult =&gt; getTriggersResult.Triggers[0]?.Name),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTriggersResult> InvokeAsync(GetTriggersArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTriggersResult>("alicloud:fc/getTriggers:getTriggers", args ?? new GetTriggersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Function Compute triggers of the current Alibaba Cloud user.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var fcTriggersDs = AliCloud.FC.GetTriggers.Invoke(new()
+        ///     {
+        ///         FunctionName = "sample_function",
+        ///         NameRegex = "sample_fc_trigger",
+        ///         ServiceName = "sample_service",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstFcTriggerName"] = fcTriggersDs.Apply(getTriggersResult =&gt; getTriggersResult.Triggers[0]?.Name),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetTriggersResult> Invoke(GetTriggersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTriggersResult>("alicloud:fc/getTriggers:getTriggers", args ?? new GetTriggersInvokeArgs(), options.WithDefaults());

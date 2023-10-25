@@ -8,6 +8,18 @@ import * as utilities from "./utilities";
 
 /**
  * This data source provides Alibaba Cloud regions.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const currentRegionDs = alicloud.getRegions({
+ *     current: true,
+ * });
+ * export const currentRegionId = currentRegionDs.then(currentRegionDs => currentRegionDs.regions?.[0]?.id);
+ * ```
  */
 export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> {
     args = args || {};
@@ -63,6 +75,18 @@ export interface GetRegionsResult {
 }
 /**
  * This data source provides Alibaba Cloud regions.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const currentRegionDs = alicloud.getRegions({
+ *     current: true,
+ * });
+ * export const currentRegionId = currentRegionDs.then(currentRegionDs => currentRegionDs.regions?.[0]?.id);
+ * ```
  */
 export function getRegionsOutput(args?: GetRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionsResult> {
     return pulumi.output(args).apply((a: any) => getRegions(a, opts))

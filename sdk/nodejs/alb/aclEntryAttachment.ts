@@ -9,6 +9,26 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.166.0.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultAcl = new alicloud.alb.Acl("defaultAcl", {
+ *     aclName: name,
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
+ * });
+ * const defaultAclEntryAttachment = new alicloud.alb.AclEntryAttachment("defaultAclEntryAttachment", {
+ *     aclId: defaultAcl.id,
+ *     entry: "168.10.10.0/24",
+ *     description: name,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Acl entry attachment can be imported using the id, e.g.

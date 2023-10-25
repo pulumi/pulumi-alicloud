@@ -200,6 +200,47 @@ class IntegrationExporter(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.203.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[len(default_zones.zones) - 1].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_prometheus = alicloud.arms.Prometheus("defaultPrometheus",
+            cluster_type="ecs",
+            grafana_instance_id="free",
+            vpc_id=default_network.id,
+            vswitch_id=default_switch.id,
+            security_group_id=default_security_group.id,
+            cluster_name=default_network.id.apply(lambda id: f"{name}-{id}"),
+            resource_group_id=default_resource_groups.groups[0].id,
+            tags={
+                "Created": "TF",
+                "For": "Prometheus",
+            })
+        default_integration_exporter = alicloud.arms.IntegrationExporter("defaultIntegrationExporter",
+            cluster_id=default_prometheus.id,
+            integration_type="kafka",
+            param="{\\"tls_insecure-skip-tls-verify\\":\\"none=tls.insecure-skip-tls-verify\\",\\"tls_enabled\\":\\"none=tls.enabled\\",\\"sasl_mechanism\\":\\"\\",\\"name\\":\\"kafka1\\",\\"sasl_enabled\\":\\"none=sasl.enabled\\",\\"ip_ports\\":\\"abc:888\\",\\"scrape_interval\\":30,\\"version\\":\\"0.10.1.0\\"}")
+        ```
+
         ## Import
 
         Application Real-Time Monitoring Service (ARMS) Integration Exporter can be imported using the id, e.g.
@@ -226,6 +267,47 @@ class IntegrationExporter(pulumi.CustomResource):
         For information about Application Real-Time Monitoring Service (ARMS) Integration Exporter and how to use it, see [What is Integration Exporter](https://www.alibabacloud.com/help/en/arms/developer-reference/api-arms-2019-08-08-addprometheusintegration).
 
         > **NOTE:** Available since v1.203.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[len(default_zones.zones) - 1].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_prometheus = alicloud.arms.Prometheus("defaultPrometheus",
+            cluster_type="ecs",
+            grafana_instance_id="free",
+            vpc_id=default_network.id,
+            vswitch_id=default_switch.id,
+            security_group_id=default_security_group.id,
+            cluster_name=default_network.id.apply(lambda id: f"{name}-{id}"),
+            resource_group_id=default_resource_groups.groups[0].id,
+            tags={
+                "Created": "TF",
+                "For": "Prometheus",
+            })
+        default_integration_exporter = alicloud.arms.IntegrationExporter("defaultIntegrationExporter",
+            cluster_id=default_prometheus.id,
+            integration_type="kafka",
+            param="{\\"tls_insecure-skip-tls-verify\\":\\"none=tls.insecure-skip-tls-verify\\",\\"tls_enabled\\":\\"none=tls.enabled\\",\\"sasl_mechanism\\":\\"\\",\\"name\\":\\"kafka1\\",\\"sasl_enabled\\":\\"none=sasl.enabled\\",\\"ip_ports\\":\\"abc:888\\",\\"scrape_interval\\":30,\\"version\\":\\"0.10.1.0\\"}")
+        ```
 
         ## Import
 

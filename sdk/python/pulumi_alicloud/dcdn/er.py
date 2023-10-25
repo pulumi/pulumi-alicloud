@@ -180,6 +180,33 @@ class Er(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.201.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.dcdn.Er("default",
+            er_name=name,
+            description=name,
+            env_conf=alicloud.dcdn.ErEnvConfArgs(
+                staging=alicloud.dcdn.ErEnvConfStagingArgs(
+                    spec_name="5ms",
+                    allowed_hosts=["example.com"],
+                ),
+                production=alicloud.dcdn.ErEnvConfProductionArgs(
+                    spec_name="5ms",
+                    allowed_hosts=["example.com"],
+                ),
+            ))
+        ```
+
         ## Import
 
         DCDN Er can be imported using the id, e.g.
@@ -206,6 +233,33 @@ class Er(pulumi.CustomResource):
         For information about DCDN Er and how to use it, see [What is Er](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-createroutine).
 
         > **NOTE:** Available since v1.201.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.dcdn.Er("default",
+            er_name=name,
+            description=name,
+            env_conf=alicloud.dcdn.ErEnvConfArgs(
+                staging=alicloud.dcdn.ErEnvConfStagingArgs(
+                    spec_name="5ms",
+                    allowed_hosts=["example.com"],
+                ),
+                production=alicloud.dcdn.ErEnvConfProductionArgs(
+                    spec_name="5ms",
+                    allowed_hosts=["example.com"],
+                ),
+            ))
+        ```
 
         ## Import
 

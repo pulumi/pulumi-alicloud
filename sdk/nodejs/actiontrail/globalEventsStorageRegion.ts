@@ -11,6 +11,15 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.201.0.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const foo = new alicloud.actiontrail.GlobalEventsStorageRegion("foo", {storageRegion: "cn-hangzhou"});
+ * ```
+ *
  * ## Import
  *
  * Global events storage region not can be imported.

@@ -15,6 +15,37 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides Cen Inter Region Traffic Qos Queue available to the user.
         /// 
         /// &gt; **NOTE:** Available in 1.195.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Cen.GetInterRegionTrafficQosQueues.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             alicloud_cen_inter_region_traffic_qos_queue.Default.Id,
+        ///         },
+        ///         NameRegex = alicloud_cen_inter_region_traffic_qos_queue.Default.Name,
+        ///         TrafficQosPolicyId = "qos-xxxxxxx",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudCenInterRegionTrafficQosQueueExampleId"] = @default.Apply(@default =&gt; @default.Apply(getInterRegionTrafficQosQueuesResult =&gt; getInterRegionTrafficQosQueuesResult.Queues[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInterRegionTrafficQosQueuesResult> InvokeAsync(GetInterRegionTrafficQosQueuesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInterRegionTrafficQosQueuesResult>("alicloud:cen/getInterRegionTrafficQosQueues:getInterRegionTrafficQosQueues", args ?? new GetInterRegionTrafficQosQueuesArgs(), options.WithDefaults());
@@ -23,6 +54,37 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides Cen Inter Region Traffic Qos Queue available to the user.
         /// 
         /// &gt; **NOTE:** Available in 1.195.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Cen.GetInterRegionTrafficQosQueues.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             alicloud_cen_inter_region_traffic_qos_queue.Default.Id,
+        ///         },
+        ///         NameRegex = alicloud_cen_inter_region_traffic_qos_queue.Default.Name,
+        ///         TrafficQosPolicyId = "qos-xxxxxxx",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudCenInterRegionTrafficQosQueueExampleId"] = @default.Apply(@default =&gt; @default.Apply(getInterRegionTrafficQosQueuesResult =&gt; getInterRegionTrafficQosQueuesResult.Queues[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetInterRegionTrafficQosQueuesResult> Invoke(GetInterRegionTrafficQosQueuesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInterRegionTrafficQosQueuesResult>("alicloud:cen/getInterRegionTrafficQosQueues:getInterRegionTrafficQosQueues", args ?? new GetInterRegionTrafficQosQueuesInvokeArgs(), options.WithDefaults());

@@ -16,6 +16,43 @@ namespace Pulumi.AliCloud.EventBridge
     /// 
     /// &gt; **NOTE:** Available since v1.130.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var exampleEventBus = new AliCloud.EventBridge.EventBus("exampleEventBus", new()
+    ///     {
+    ///         EventBusName = name,
+    ///     });
+    /// 
+    ///     var exampleQueue = new AliCloud.Mns.Queue("exampleQueue");
+    /// 
+    ///     var exampleEventSource = new AliCloud.EventBridge.EventSource("exampleEventSource", new()
+    ///     {
+    ///         EventBusName = exampleEventBus.EventBusName,
+    ///         EventSourceName = name,
+    ///         Description = name,
+    ///         LinkedExternalSource = true,
+    ///         ExternalSourceType = "MNS",
+    ///         ExternalSourceConfig = 
+    ///         {
+    ///             { "QueueName", exampleQueue.Name },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Event Bridge Event Source can be imported using the id, e.g.

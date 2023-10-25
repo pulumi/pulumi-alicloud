@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * This data source provides the Alidns Gtm Instances of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.151.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.dns.getGtmInstances({});
+ * export const alidnsGtmInstanceId1 = ids.then(ids => ids.instances?.[0]?.id);
+ * ```
  */
 export function getGtmInstances(args?: GetGtmInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetGtmInstancesResult> {
     args = args || {};
@@ -58,6 +70,18 @@ export interface GetGtmInstancesResult {
  * This data source provides the Alidns Gtm Instances of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.151.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.dns.getGtmInstances({});
+ * export const alidnsGtmInstanceId1 = ids.then(ids => ids.instances?.[0]?.id);
+ * ```
  */
 export function getGtmInstancesOutput(args?: GetGtmInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGtmInstancesResult> {
     return pulumi.output(args).apply((a: any) => getGtmInstances(a, opts))

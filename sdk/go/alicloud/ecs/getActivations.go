@@ -15,6 +15,33 @@ import (
 // This data source provides the Ecs Activations of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.177.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := ecs.GetActivations(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("ecsActivationId1", ids.Activations[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetActivations(ctx *pulumi.Context, args *GetActivationsArgs, opts ...pulumi.InvokeOption) (*GetActivationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetActivationsResult

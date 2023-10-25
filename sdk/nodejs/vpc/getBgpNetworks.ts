@@ -10,6 +10,28 @@ import * as utilities from "../utilities";
  * This data source provides the Vpc Bgp Networks of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.153.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.vpc.getBgpNetworks({
+ *     ids: ["example_value"],
+ * });
+ * export const vpcBgpNetworkId1 = ids.then(ids => ids.networks?.[0]?.id);
+ * const routerId = alicloud.vpc.getBgpNetworks({
+ *     routerId: "example_value",
+ * });
+ * export const vpcBgpNetworkId2 = routerId.then(routerId => routerId.networks?.[0]?.id);
+ * const status = alicloud.vpc.getBgpNetworks({
+ *     status: "Available",
+ * });
+ * export const vpcBgpNetworkId3 = status.then(status => status.networks?.[0]?.id);
+ * ```
  */
 export function getBgpNetworks(args?: GetBgpNetworksArgs, opts?: pulumi.InvokeOptions): Promise<GetBgpNetworksResult> {
     args = args || {};
@@ -63,6 +85,28 @@ export interface GetBgpNetworksResult {
  * This data source provides the Vpc Bgp Networks of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.153.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.vpc.getBgpNetworks({
+ *     ids: ["example_value"],
+ * });
+ * export const vpcBgpNetworkId1 = ids.then(ids => ids.networks?.[0]?.id);
+ * const routerId = alicloud.vpc.getBgpNetworks({
+ *     routerId: "example_value",
+ * });
+ * export const vpcBgpNetworkId2 = routerId.then(routerId => routerId.networks?.[0]?.id);
+ * const status = alicloud.vpc.getBgpNetworks({
+ *     status: "Available",
+ * });
+ * export const vpcBgpNetworkId3 = status.then(status => status.networks?.[0]?.id);
+ * ```
  */
 export function getBgpNetworksOutput(args?: GetBgpNetworksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBgpNetworksResult> {
     return pulumi.output(args).apply((a: any) => getBgpNetworks(a, opts))

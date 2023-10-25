@@ -842,6 +842,36 @@ class BaseInstance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.203.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_zones = alicloud.get_zones()
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_base_instance = alicloud.ocean.BaseInstance("defaultBaseInstance",
+            resource_group_id=default_resource_groups.ids[0],
+            zones=[
+                default_zones.ids[len(default_zones.ids) - 2],
+                default_zones.ids[len(default_zones.ids) - 3],
+                default_zones.ids[len(default_zones.ids) - 4],
+            ],
+            auto_renew=False,
+            disk_size=100,
+            payment_type="PayAsYouGo",
+            instance_class="8C32GB",
+            backup_retain_mode="delete_all",
+            series="normal",
+            instance_name=name)
+        ```
+
         ## Import
 
         Ocean Base Instance can be imported using the id, e.g.
@@ -905,6 +935,36 @@ class BaseInstance(pulumi.CustomResource):
         For information about Ocean Base Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/apsaradb-for-oceanbase/latest/what-is-oceanbase-database).
 
         > **NOTE:** Available since v1.203.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_zones = alicloud.get_zones()
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_base_instance = alicloud.ocean.BaseInstance("defaultBaseInstance",
+            resource_group_id=default_resource_groups.ids[0],
+            zones=[
+                default_zones.ids[len(default_zones.ids) - 2],
+                default_zones.ids[len(default_zones.ids) - 3],
+                default_zones.ids[len(default_zones.ids) - 4],
+            ],
+            auto_renew=False,
+            disk_size=100,
+            payment_type="PayAsYouGo",
+            instance_class="8C32GB",
+            backup_retain_mode="delete_all",
+            series="normal",
+            instance_name=name)
+        ```
 
         ## Import
 

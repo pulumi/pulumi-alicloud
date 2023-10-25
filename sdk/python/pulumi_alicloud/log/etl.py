@@ -977,6 +977,69 @@ class Etl(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.120.0
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            retention_period=3650,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        example2 = alicloud.log.Store("example2",
+            project=example_project.name,
+            retention_period=3650,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        example3 = alicloud.log.Store("example3",
+            project=example_project.name,
+            retention_period=3650,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        example_etl = alicloud.log.Etl("exampleEtl",
+            etl_name="terraform-example",
+            project=example_project.name,
+            display_name="terraform-example",
+            description="terraform-example",
+            access_key_id="access_key_id",
+            access_key_secret="access_key_secret",
+            script="e_set('new','key')",
+            logstore=example_store.name,
+            etl_sinks=[
+                alicloud.log.EtlEtlSinkArgs(
+                    name="target_name",
+                    access_key_id="example2_access_key_id",
+                    access_key_secret="example2_access_key_secret",
+                    endpoint="cn-hangzhou.log.aliyuncs.com",
+                    project=example_project.name,
+                    logstore=example2.name,
+                ),
+                alicloud.log.EtlEtlSinkArgs(
+                    name="target_name2",
+                    access_key_id="example3_access_key_id",
+                    access_key_secret="example3_access_key_secret",
+                    endpoint="cn-hangzhou.log.aliyuncs.com",
+                    project=example_project.name,
+                    logstore=example3.name,
+                ),
+            ])
+        ```
+
         ## Import
 
         Log etl can be imported using the id, e.g.
@@ -1023,6 +1086,69 @@ class Etl(pulumi.CustomResource):
         [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/125384.htm).
 
         > **NOTE:** Available in 1.120.0
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            retention_period=3650,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        example2 = alicloud.log.Store("example2",
+            project=example_project.name,
+            retention_period=3650,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        example3 = alicloud.log.Store("example3",
+            project=example_project.name,
+            retention_period=3650,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        example_etl = alicloud.log.Etl("exampleEtl",
+            etl_name="terraform-example",
+            project=example_project.name,
+            display_name="terraform-example",
+            description="terraform-example",
+            access_key_id="access_key_id",
+            access_key_secret="access_key_secret",
+            script="e_set('new','key')",
+            logstore=example_store.name,
+            etl_sinks=[
+                alicloud.log.EtlEtlSinkArgs(
+                    name="target_name",
+                    access_key_id="example2_access_key_id",
+                    access_key_secret="example2_access_key_secret",
+                    endpoint="cn-hangzhou.log.aliyuncs.com",
+                    project=example_project.name,
+                    logstore=example2.name,
+                ),
+                alicloud.log.EtlEtlSinkArgs(
+                    name="target_name2",
+                    access_key_id="example3_access_key_id",
+                    access_key_secret="example3_access_key_secret",
+                    endpoint="cn-hangzhou.log.aliyuncs.com",
+                    project=example_project.name,
+                    logstore=example3.name,
+                ),
+            ])
+        ```
 
         ## Import
 

@@ -686,6 +686,24 @@ class RouterInterface(pulumi.CustomResource):
 
         > **NOTE:** The router interface is not connected when it is created. It can be connected by means of resource alicloud_router_interface_connection.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo = alicloud.vpc.Network("foo",
+            vpc_name="tf_test_foo12345",
+            cidr_block="172.16.0.0/12")
+        interface = alicloud.vpc.RouterInterface("interface",
+            opposite_region="cn-beijing",
+            router_type="VRouter",
+            router_id=foo.router_id,
+            role="InitiatingSide",
+            specification="Large.2",
+            description="test1")
+        ```
+
         ## Import
 
         The router interface can be imported using the id, e.g.
@@ -725,6 +743,24 @@ class RouterInterface(pulumi.CustomResource):
         > **NOTE:** Only one pair of connected router interfaces can exist between two routers. Up to 5 router interfaces can be created for each router and each account.
 
         > **NOTE:** The router interface is not connected when it is created. It can be connected by means of resource alicloud_router_interface_connection.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo = alicloud.vpc.Network("foo",
+            vpc_name="tf_test_foo12345",
+            cidr_block="172.16.0.0/12")
+        interface = alicloud.vpc.RouterInterface("interface",
+            opposite_region="cn-beijing",
+            router_type="VRouter",
+            router_id=foo.router_id,
+            role="InitiatingSide",
+            specification="Large.2",
+            description="test1")
+        ```
 
         ## Import
 

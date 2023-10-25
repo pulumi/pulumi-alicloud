@@ -17,6 +17,33 @@ namespace Pulumi.AliCloud.CR
         /// For information about Event Bridge and how to use it, see [What is CR Endpoint Acl](https://www.alibabacloud.com/help/en/doc-detail/142246.htm).
         /// 
         /// &gt; **NOTE:** Available in v1.139.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.CR.GetEndpointAclService.Invoke(new()
+        ///     {
+        ///         Enable = true,
+        ///         EndpointType = "internet",
+        ///         InstanceId = "example_id",
+        ///         ModuleName = "Registry",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetEndpointAclServiceResult> InvokeAsync(GetEndpointAclServiceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEndpointAclServiceResult>("alicloud:cr/getEndpointAclService:getEndpointAclService", args ?? new GetEndpointAclServiceArgs(), options.WithDefaults());
@@ -27,6 +54,33 @@ namespace Pulumi.AliCloud.CR
         /// For information about Event Bridge and how to use it, see [What is CR Endpoint Acl](https://www.alibabacloud.com/help/en/doc-detail/142246.htm).
         /// 
         /// &gt; **NOTE:** Available in v1.139.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.CR.GetEndpointAclService.Invoke(new()
+        ///     {
+        ///         Enable = true,
+        ///         EndpointType = "internet",
+        ///         InstanceId = "example_id",
+        ///         ModuleName = "Registry",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetEndpointAclServiceResult> Invoke(GetEndpointAclServiceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEndpointAclServiceResult>("alicloud:cr/getEndpointAclService:getEndpointAclService", args ?? new GetEndpointAclServiceInvokeArgs(), options.WithDefaults());

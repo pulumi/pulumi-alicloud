@@ -119,6 +119,18 @@ def get_ecs_backup_plans(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.132.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.hbr.get_ecs_backup_plans(name_regex="plan-name")
+    pulumi.export("hbrEcsBackupPlanId", ids.plans[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of EcsBackupPlan IDs.
     :param str instance_id: The ID of ECS instance.
@@ -157,6 +169,18 @@ def get_ecs_backup_plans_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     This data source provides the Hbr EcsBackupPlans of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.132.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.hbr.get_ecs_backup_plans(name_regex="plan-name")
+    pulumi.export("hbrEcsBackupPlanId", ids.plans[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of EcsBackupPlan IDs.

@@ -13,6 +13,28 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.136.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const example = new alicloud.graphdatabase.DbInstance("example", {
+ *     dbNodeClass: "gdb.r.2xlarge",
+ *     dbInstanceNetworkType: "vpc",
+ *     dbVersion: "1.0",
+ *     dbInstanceCategory: "HA",
+ *     dbInstanceStorageType: "cloud_ssd",
+ *     dbNodeStorage: 50,
+ *     paymentType: "PayAsYouGo",
+ *     dbInstanceDescription: name,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Graph Database Db Instance can be imported using the id, e.g.

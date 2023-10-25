@@ -19,6 +19,93 @@ import (
 //
 // > **NOTE:** Available since v1.195.0.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := rds.GetZones(ctx, &rds.GetZonesArgs{
+//				Engine:                pulumi.StringRef("MySQL"),
+//				EngineVersion:         pulumi.StringRef("8.0"),
+//				DbInstanceStorageType: pulumi.StringRef("local_ssd"),
+//				Category:              pulumi.StringRef("HighAvailability"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstanceClasses, err := rds.GetInstanceClasses(ctx, &rds.GetInstanceClassesArgs{
+//				ZoneId:                pulumi.StringRef(defaultZones.Ids[0]),
+//				Engine:                pulumi.StringRef("MySQL"),
+//				EngineVersion:         pulumi.StringRef("8.0"),
+//				DbInstanceStorageType: pulumi.StringRef("local_ssd"),
+//				Category:              pulumi.StringRef("HighAvailability"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			regions, err := rds.GetCrossRegions(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				ZoneId:      *pulumi.String(defaultZones.Ids[0]),
+//				VswitchName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := rds.NewInstance(ctx, "defaultInstance", &rds.InstanceArgs{
+//				Engine:                pulumi.String("MySQL"),
+//				EngineVersion:         pulumi.String("8.0"),
+//				InstanceType:          *pulumi.String(defaultInstanceClasses.InstanceClasses[0].InstanceClass),
+//				InstanceStorage:       *pulumi.String(defaultInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//				InstanceChargeType:    pulumi.String("Postpaid"),
+//				Category:              pulumi.String("HighAvailability"),
+//				InstanceName:          pulumi.String(name),
+//				VswitchId:             defaultSwitch.ID(),
+//				DbInstanceStorageType: pulumi.String("local_ssd"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rds.NewRdsInstanceCrossBackupPolicy(ctx, "defaultRdsInstanceCrossBackupPolicy", &rds.RdsInstanceCrossBackupPolicyArgs{
+//				InstanceId:        defaultInstance.ID(),
+//				CrossBackupRegion: *pulumi.String(regions.Ids[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // RDS remote disaster recovery policies can be imported using id or instance id, e.g.

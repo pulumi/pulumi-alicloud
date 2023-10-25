@@ -19,6 +19,30 @@ namespace Pulumi.AliCloud.Tag
     /// 
     /// &gt; **NOTE:** Meta Tag Only Support `cn-hangzhou` Region
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AliCloud.Tag.MetaTag("example", new()
+    ///     {
+    ///         Key = "Name1",
+    ///         Values = new[]
+    ///         {
+    ///             "Desc2",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Tag Meta Tag can be imported using the id, e.g.

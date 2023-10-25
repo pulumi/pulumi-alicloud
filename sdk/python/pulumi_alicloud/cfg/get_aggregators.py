@@ -128,6 +128,19 @@ def get_aggregators(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.124.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cfg.get_aggregators(ids=["ca-3ce2626622af0005****"],
+        name_regex="the_resource_name")
+    pulumi.export("firstConfigAggregatorId", example.aggregators[0].id)
+    ```
+
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of aggregator ids.
@@ -166,6 +179,19 @@ def get_aggregators_output(enable_details: Optional[pulumi.Input[Optional[bool]]
     This data source provides the Config Aggregators of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.124.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cfg.get_aggregators(ids=["ca-3ce2626622af0005****"],
+        name_regex="the_resource_name")
+    pulumi.export("firstConfigAggregatorId", example.aggregators[0].id)
+    ```
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

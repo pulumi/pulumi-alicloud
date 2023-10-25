@@ -344,6 +344,21 @@ class AutoSnapShotPolicy(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.202.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.databasefilesystem.AutoSnapShotPolicy("default",
+            policy_name="tf-example",
+            repeat_weekdays=["2"],
+            retention_days=1,
+            time_points=["01"])
+        ```
+
         ## Import
 
         Dbfs Auto Snap Shot Policy can be imported using the id, e.g.
@@ -371,6 +386,21 @@ class AutoSnapShotPolicy(pulumi.CustomResource):
         For information about Dbfs Auto Snap Shot Policy and how to use it.
 
         > **NOTE:** Available since v1.202.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.databasefilesystem.AutoSnapShotPolicy("default",
+            policy_name="tf-example",
+            repeat_weekdays=["2"],
+            retention_days=1,
+            time_points=["01"])
+        ```
 
         ## Import
 

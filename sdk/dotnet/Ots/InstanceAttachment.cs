@@ -13,6 +13,58 @@ namespace Pulumi.AliCloud.Ots
     /// This resource will help you to bind a VPC to an OTS instance.
     /// 
     /// &gt; **NOTE:** Available since v1.10.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultInstance = new AliCloud.Ots.Instance("defaultInstance", new()
+    ///     {
+    ///         Description = name,
+    ///         AccessedBy = "Vpc",
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultInstanceAttachment = new AliCloud.Ots.InstanceAttachment("defaultInstanceAttachment", new()
+    ///     {
+    ///         InstanceName = defaultInstance.Name,
+    ///         VpcName = "examplename",
+    ///         VswitchId = defaultSwitch.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ots/instanceAttachment:InstanceAttachment")]
     public partial class InstanceAttachment : global::Pulumi.CustomResource

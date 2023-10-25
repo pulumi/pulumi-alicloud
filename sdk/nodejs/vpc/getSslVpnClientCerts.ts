@@ -8,6 +8,20 @@ import * as utilities from "../utilities";
 
 /**
  * The SSL-VPN client certificates data source lists lots of SSL-VPN client certificates resource information owned by an Alicloud account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const foo = alicloud.vpc.getSslVpnClientCerts({
+ *     ids: ["fake-cert-id"],
+ *     nameRegex: "^foo",
+ *     outputFile: "/tmp/clientcert",
+ *     sslVpnServerId: "fake-server-id",
+ * });
+ * ```
  */
 export function getSslVpnClientCerts(args?: GetSslVpnClientCertsArgs, opts?: pulumi.InvokeOptions): Promise<GetSslVpnClientCertsResult> {
     args = args || {};
@@ -72,6 +86,20 @@ export interface GetSslVpnClientCertsResult {
 }
 /**
  * The SSL-VPN client certificates data source lists lots of SSL-VPN client certificates resource information owned by an Alicloud account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const foo = alicloud.vpc.getSslVpnClientCerts({
+ *     ids: ["fake-cert-id"],
+ *     nameRegex: "^foo",
+ *     outputFile: "/tmp/clientcert",
+ *     sslVpnServerId: "fake-server-id",
+ * });
+ * ```
  */
 export function getSslVpnClientCertsOutput(args?: GetSslVpnClientCertsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSslVpnClientCertsResult> {
     return pulumi.output(args).apply((a: any) => getSslVpnClientCerts(a, opts))

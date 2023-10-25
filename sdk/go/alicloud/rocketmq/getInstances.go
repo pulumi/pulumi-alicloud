@@ -15,6 +15,48 @@ import (
 // This data source provides a list of ONS Instances in an Alibaba Cloud account according to the specified filters.
 //
 // > **NOTE:** Available in 1.52.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "onsInstanceDatasourceName"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := rocketmq.NewInstance(ctx, "default", &rocketmq.InstanceArgs{
+//				Remark: pulumi.String("default_ons_instance_remark"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			instancesDs := rocketmq.GetInstancesOutput(ctx, rocketmq.GetInstancesOutputArgs{
+//				Ids: pulumi.StringArray{
+//					_default.ID(),
+//				},
+//				NameRegex:  _default.Name,
+//				OutputFile: pulumi.String("instances.txt"),
+//			}, nil)
+//			ctx.Export("firstInstanceId", instancesDs.ApplyT(func(instancesDs rocketmq.GetInstancesResult) (*string, error) {
+//				return &instancesDs.Instances[0].InstanceId, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstancesResult

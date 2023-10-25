@@ -10,6 +10,16 @@ import * as utilities from "../utilities";
  * Provide  a data source to retrieve the type of zone used to create NAS file system.
  *
  * > **NOTE:** Available in v1.140.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.nas.getZones({});
+ * export const alicloudNasZonesId = _default.then(_default => _default.zones?.[0]?.zoneId);
+ * ```
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     args = args || {};
@@ -54,6 +64,16 @@ export interface GetZonesResult {
  * Provide  a data source to retrieve the type of zone used to create NAS file system.
  *
  * > **NOTE:** Available in v1.140.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.nas.getZones({});
+ * export const alicloudNasZonesId = _default.then(_default => _default.zones?.[0]?.zoneId);
+ * ```
  */
 export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
     return pulumi.output(args).apply((a: any) => getZones(a, opts))

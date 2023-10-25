@@ -13,6 +13,66 @@ import * as utilities from "../utilities";
  *
  * For information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "networkInterfacesName";
+ * const vpc = new alicloud.vpc.Network("vpc", {
+ *     cidrBlock: "192.168.0.0/24",
+ *     vpcName: name,
+ * });
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const vswitch = new alicloud.vpc.Switch("vswitch", {
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     cidrBlock: "192.168.0.0/24",
+ *     vpcId: vpc.id,
+ *     vswitchName: name,
+ * });
+ * const group = new alicloud.ecs.SecurityGroup("group", {vpcId: vpc.id});
+ * const _interface = new alicloud.vpc.NetworkInterface("interface", {
+ *     description: "Basic test",
+ *     privateIp: "192.168.0.2",
+ *     securityGroups: [group.id],
+ *     tags: {
+ *         "TF-VER": "0.11.3",
+ *     },
+ *     vswitchId: vswitch.id,
+ * });
+ * const instance = new alicloud.ecs.Instance("instance", {
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     imageId: "centos_7_04_64_20G_alibase_201701015.vhd",
+ *     instanceName: name,
+ *     instanceType: "ecs.e3.xlarge",
+ *     internetMaxBandwidthOut: 10,
+ *     securityGroups: [group.id],
+ *     systemDiskCategory: "cloud_efficiency",
+ *     vswitchId: vswitch.id,
+ * });
+ * const attachment = new alicloud.vpc.NetworkInterfaceAttachment("attachment", {
+ *     instanceId: instance.id,
+ *     networkInterfaceId: _interface.id,
+ * });
+ * const defaultNetworkInterfaces = alicloud.ecs.getNetworkInterfacesOutput({
+ *     ids: [attachment.networkInterfaceId],
+ *     instanceId: instance.id,
+ *     nameRegex: name,
+ *     privateIp: "192.168.0.2",
+ *     securityGroupId: group.id,
+ *     tags: {
+ *         "TF-VER": "0.11.3",
+ *     },
+ *     type: "Secondary",
+ *     vpcId: vpc.id,
+ *     vswitchId: vswitch.id,
+ * });
+ * export const eni0Name = defaultNetworkInterfaces.apply(defaultNetworkInterfaces => defaultNetworkInterfaces.interfaces?.[0]?.name);
+ * ```
  * ## Argument Reference
  *
  * The following arguments are supported:
@@ -169,6 +229,66 @@ export interface GetNetworkInterfacesResult {
  *
  * For information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "networkInterfacesName";
+ * const vpc = new alicloud.vpc.Network("vpc", {
+ *     cidrBlock: "192.168.0.0/24",
+ *     vpcName: name,
+ * });
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const vswitch = new alicloud.vpc.Switch("vswitch", {
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     cidrBlock: "192.168.0.0/24",
+ *     vpcId: vpc.id,
+ *     vswitchName: name,
+ * });
+ * const group = new alicloud.ecs.SecurityGroup("group", {vpcId: vpc.id});
+ * const _interface = new alicloud.vpc.NetworkInterface("interface", {
+ *     description: "Basic test",
+ *     privateIp: "192.168.0.2",
+ *     securityGroups: [group.id],
+ *     tags: {
+ *         "TF-VER": "0.11.3",
+ *     },
+ *     vswitchId: vswitch.id,
+ * });
+ * const instance = new alicloud.ecs.Instance("instance", {
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     imageId: "centos_7_04_64_20G_alibase_201701015.vhd",
+ *     instanceName: name,
+ *     instanceType: "ecs.e3.xlarge",
+ *     internetMaxBandwidthOut: 10,
+ *     securityGroups: [group.id],
+ *     systemDiskCategory: "cloud_efficiency",
+ *     vswitchId: vswitch.id,
+ * });
+ * const attachment = new alicloud.vpc.NetworkInterfaceAttachment("attachment", {
+ *     instanceId: instance.id,
+ *     networkInterfaceId: _interface.id,
+ * });
+ * const defaultNetworkInterfaces = alicloud.ecs.getNetworkInterfacesOutput({
+ *     ids: [attachment.networkInterfaceId],
+ *     instanceId: instance.id,
+ *     nameRegex: name,
+ *     privateIp: "192.168.0.2",
+ *     securityGroupId: group.id,
+ *     tags: {
+ *         "TF-VER": "0.11.3",
+ *     },
+ *     type: "Secondary",
+ *     vpcId: vpc.id,
+ *     vswitchId: vswitch.id,
+ * });
+ * export const eni0Name = defaultNetworkInterfaces.apply(defaultNetworkInterfaces => defaultNetworkInterfaces.interfaces?.[0]?.name);
+ * ```
  * ## Argument Reference
  *
  * The following arguments are supported:

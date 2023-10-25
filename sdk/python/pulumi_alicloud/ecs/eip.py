@@ -946,6 +946,17 @@ class Eip(pulumi.CustomResource):
 
         > **NOTE:** From version 1.10.1, this resource supports creating "PrePaid" EIP. In addition, it supports setting EIP name and description.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new EIP.
+        example = alicloud.ecs.Eip("example",
+            bandwidth="10",
+            internet_charge_type="PayByBandwidth")
+        ```
         ## Module Support
 
         You can use the existing eip module
@@ -993,6 +1004,17 @@ class Eip(pulumi.CustomResource):
 
         > **NOTE:** From version 1.10.1, this resource supports creating "PrePaid" EIP. In addition, it supports setting EIP name and description.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new EIP.
+        example = alicloud.ecs.Eip("example",
+            bandwidth="10",
+            internet_charge_type="PayByBandwidth")
+        ```
         ## Module Support
 
         You can use the existing eip module

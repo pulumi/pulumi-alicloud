@@ -198,6 +198,23 @@ class TlsCipherPolicy(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.135.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.slb.TlsCipherPolicy("example",
+            ciphers=[
+                "AES256-SHA256",
+                "AES128-GCM-SHA256",
+            ],
+            tls_cipher_policy_name="Test-example_value",
+            tls_versions=["TLSv1.2"])
+        ```
+
         ## Import
 
         SLB Tls Cipher Policy can be imported using the id, e.g.
@@ -224,6 +241,23 @@ class TlsCipherPolicy(pulumi.CustomResource):
         For information about SLB Tls Cipher Policy and how to use it, see [What is Tls Cipher Policy](https://www.alibabacloud.com/help/doc-detail/196714.htm).
 
         > **NOTE:** Available in v1.135.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.slb.TlsCipherPolicy("example",
+            ciphers=[
+                "AES256-SHA256",
+                "AES128-GCM-SHA256",
+            ],
+            tls_cipher_policy_name="Test-example_value",
+            tls_versions=["TLSv1.2"])
+        ```
 
         ## Import
 

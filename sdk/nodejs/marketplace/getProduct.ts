@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * This data source provides the Market product item details of Alibaba Cloud.
  *
  * > **NOTE:** Available in 1.69.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.marketplace.getProduct({
+ *     productCode: "cmapi022206",
+ * });
+ * export const productName = _default.then(_default => _default.products?.[0]?.name);
+ * export const firstProductSkuCode = _default.then(_default => _default.products?.[0]?.skuses?.[0]?.skuCode);
+ * export const firstProductPackageVersion = _default.then(_default => _default.products?.[0]?.skuses?.[0]?.packageVersions?.[0]?.packageVersion);
+ * ```
  */
 export function getProduct(args: GetProductArgs, opts?: pulumi.InvokeOptions): Promise<GetProductResult> {
 
@@ -53,6 +67,20 @@ export interface GetProductResult {
  * This data source provides the Market product item details of Alibaba Cloud.
  *
  * > **NOTE:** Available in 1.69.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.marketplace.getProduct({
+ *     productCode: "cmapi022206",
+ * });
+ * export const productName = _default.then(_default => _default.products?.[0]?.name);
+ * export const firstProductSkuCode = _default.then(_default => _default.products?.[0]?.skuses?.[0]?.skuCode);
+ * export const firstProductPackageVersion = _default.then(_default => _default.products?.[0]?.skuses?.[0]?.packageVersions?.[0]?.packageVersion);
+ * ```
  */
 export function getProductOutput(args: GetProductOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProductResult> {
     return pulumi.output(args).apply((a: any) => getProduct(a, opts))

@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * This data source provides the Ecd Custom Properties of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.176.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.eds.getCustomProperties({
+ *     ids: ["example_id"],
+ * });
+ * export const ecdCustomPropertyId1 = ids.then(ids => ids.properties?.[0]?.id);
+ * ```
  */
 export function getCustomProperties(args?: GetCustomPropertiesArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomPropertiesResult> {
     args = args || {};
@@ -51,6 +65,20 @@ export interface GetCustomPropertiesResult {
  * This data source provides the Ecd Custom Properties of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.176.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.eds.getCustomProperties({
+ *     ids: ["example_id"],
+ * });
+ * export const ecdCustomPropertyId1 = ids.then(ids => ids.properties?.[0]?.id);
+ * ```
  */
 export function getCustomPropertiesOutput(args?: GetCustomPropertiesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomPropertiesResult> {
     return pulumi.output(args).apply((a: any) => getCustomProperties(a, opts))

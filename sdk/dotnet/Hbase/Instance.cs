@@ -23,6 +23,52 @@ namespace Pulumi.AliCloud.Hbase
     /// &gt; **NOTE:**  Create HBase instance or change instance type and storage would cost 15 minutes. Please make full preparation
     /// 
     /// ## Example Usage
+    /// ### Create a hbase instance
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultZones = AliCloud.Hbase.GetZones.Invoke();
+    /// 
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "^default-NODELETING$",
+    ///     });
+    /// 
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Hbase.Instance("defaultInstance", new()
+    ///     {
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         Engine = "hbaseue",
+    ///         EngineVersion = "2.0",
+    ///         MasterInstanceType = "hbase.sn2.2xlarge",
+    ///         CoreInstanceType = "hbase.sn2.2xlarge",
+    ///         CoreInstanceQuantity = 2,
+    ///         CoreDiskType = "cloud_efficiency",
+    ///         CoreDiskSize = 400,
+    ///         PayType = "PostPaid",
+    ///         ColdStorageSize = 0,
+    ///         DeletionProtection = false,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// this is a example for class netType instance. you can find more detail with the examples/hbase dir.
     /// 
     /// ## Import
     /// 

@@ -19,6 +19,48 @@ import (
 //
 // > **NOTE:** Available in v1.199.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/threatdetection"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := threatdetection.NewInstance(ctx, "default", &threatdetection.InstanceArgs{
+//				BuyNumber:           pulumi.String("30"),
+//				ContainerImageScan:  pulumi.String("100"),
+//				Honeypot:            pulumi.String("32"),
+//				HoneypotSwitch:      pulumi.String("1"),
+//				PaymentType:         pulumi.String("Subscription"),
+//				Period:              pulumi.Int(12),
+//				RenewalStatus:       pulumi.String("ManualRenewal"),
+//				SasAntiRansomware:   pulumi.String("100"),
+//				SasSc:               pulumi.Bool(true),
+//				SasSdk:              pulumi.String("1000"),
+//				SasSdkSwitch:        pulumi.String("1"),
+//				SasSlsStorage:       pulumi.String("100"),
+//				SasWebguardOrderNum: pulumi.String("100"),
+//				VCore:               pulumi.String("100"),
+//				VersionCode:         pulumi.String("level2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Threat Detection Instance do not support import.

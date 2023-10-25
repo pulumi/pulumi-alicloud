@@ -1901,6 +1901,64 @@ class LaunchTemplate(pulumi.CustomResource):
 
         > **DEPRECATED:**  This resource  has been deprecated from version `1.120.0`. Please use new resource alicloud_ecs_launch_template.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        images = alicloud.ecs.get_images(owners="system")
+        instances = alicloud.ecs.get_instances()
+        template = alicloud.ecs.LaunchTemplate("template",
+            description="test1",
+            image_id=images.images[0].id,
+            host_name="tf-test-host",
+            instance_charge_type="PrePaid",
+            instance_name="tf-instance-name",
+            instance_type=instances.instances[0].instance_type,
+            internet_charge_type="PayByBandwidth",
+            internet_max_bandwidth_in=5,
+            internet_max_bandwidth_out=0,
+            io_optimized="none",
+            key_pair_name="test-key-pair",
+            ram_role_name="xxxxx",
+            network_type="vpc",
+            security_enhancement_strategy="Active",
+            spot_price_limit=5,
+            spot_strategy="SpotWithPriceLimit",
+            security_group_id="sg-zxcvj0lasdf102350asdf9a",
+            system_disk_category="cloud_ssd",
+            system_disk_description="test disk",
+            system_disk_name="hello",
+            system_disk_size=40,
+            resource_group_id="rg-zkdfjahg9zxncv0",
+            userdata="xxxxxxxxxxxxxx",
+            vswitch_id="sw-ljkngaksdjfj0nnasdf",
+            vpc_id="vpc-asdfnbg0as8dfk1nb2",
+            zone_id="beijing-a",
+            tags={
+                "tag1": "hello",
+                "tag2": "world",
+            },
+            network_interfaces=alicloud.ecs.LaunchTemplateNetworkInterfacesArgs(
+                name="eth0",
+                description="hello1",
+                primary_ip="10.0.0.2",
+                security_group_id="xxxx",
+                vswitch_id="xxxxxxx",
+            ),
+            data_disks=[
+                alicloud.ecs.LaunchTemplateDataDiskArgs(
+                    name="disk1",
+                    description="test1",
+                ),
+                alicloud.ecs.LaunchTemplateDataDiskArgs(
+                    name="disk2",
+                    description="test2",
+                ),
+            ])
+        ```
+
         ## Import
 
         Launch Template can be imported using the id, e.g.
@@ -1971,6 +2029,64 @@ class LaunchTemplate(pulumi.CustomResource):
         For information about Launch Template and how to use it, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html).
 
         > **DEPRECATED:**  This resource  has been deprecated from version `1.120.0`. Please use new resource alicloud_ecs_launch_template.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        images = alicloud.ecs.get_images(owners="system")
+        instances = alicloud.ecs.get_instances()
+        template = alicloud.ecs.LaunchTemplate("template",
+            description="test1",
+            image_id=images.images[0].id,
+            host_name="tf-test-host",
+            instance_charge_type="PrePaid",
+            instance_name="tf-instance-name",
+            instance_type=instances.instances[0].instance_type,
+            internet_charge_type="PayByBandwidth",
+            internet_max_bandwidth_in=5,
+            internet_max_bandwidth_out=0,
+            io_optimized="none",
+            key_pair_name="test-key-pair",
+            ram_role_name="xxxxx",
+            network_type="vpc",
+            security_enhancement_strategy="Active",
+            spot_price_limit=5,
+            spot_strategy="SpotWithPriceLimit",
+            security_group_id="sg-zxcvj0lasdf102350asdf9a",
+            system_disk_category="cloud_ssd",
+            system_disk_description="test disk",
+            system_disk_name="hello",
+            system_disk_size=40,
+            resource_group_id="rg-zkdfjahg9zxncv0",
+            userdata="xxxxxxxxxxxxxx",
+            vswitch_id="sw-ljkngaksdjfj0nnasdf",
+            vpc_id="vpc-asdfnbg0as8dfk1nb2",
+            zone_id="beijing-a",
+            tags={
+                "tag1": "hello",
+                "tag2": "world",
+            },
+            network_interfaces=alicloud.ecs.LaunchTemplateNetworkInterfacesArgs(
+                name="eth0",
+                description="hello1",
+                primary_ip="10.0.0.2",
+                security_group_id="xxxx",
+                vswitch_id="xxxxxxx",
+            ),
+            data_disks=[
+                alicloud.ecs.LaunchTemplateDataDiskArgs(
+                    name="disk1",
+                    description="test1",
+                ),
+                alicloud.ecs.LaunchTemplateDataDiskArgs(
+                    name="disk2",
+                    description="test2",
+                ),
+            ])
+        ```
 
         ## Import
 

@@ -1252,6 +1252,242 @@ class Alert(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.78.0
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            retention_period=3650,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        example_alert = alicloud.log.Alert("exampleAlert",
+            project_name=example_project.name,
+            alert_name="example-alert",
+            alert_displayname="example-alert",
+            condition="count> 100",
+            dashboard="example-dashboard",
+            schedule=alicloud.log.AlertScheduleArgs(
+                type="FixedRate",
+                interval="5m",
+                hour=0,
+                day_of_week=0,
+                delay=0,
+                run_immediately=False,
+            ),
+            query_lists=[alicloud.log.AlertQueryListArgs(
+                logstore=example_store.name,
+                chart_title="chart_title",
+                start="-60s",
+                end="20s",
+                query="* AND aliyun",
+            )],
+            notification_lists=[
+                alicloud.log.AlertNotificationListArgs(
+                    type="SMS",
+                    mobile_lists=[
+                        "12345678",
+                        "87654321",
+                    ],
+                    content="alert content",
+                ),
+                alicloud.log.AlertNotificationListArgs(
+                    type="Email",
+                    email_lists=[
+                        "aliyun@alibaba-inc.com",
+                        "tf-example@123.com",
+                    ],
+                    content="alert content",
+                ),
+                alicloud.log.AlertNotificationListArgs(
+                    type="DingTalk",
+                    service_uri="www.aliyun.com",
+                    content="alert content",
+                ),
+            ])
+        ```
+
+        Basic Usage for new alert
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            retention_period=3650,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        example_2 = alicloud.log.Alert("example-2",
+            version="2.0",
+            type="default",
+            project_name=example_project.name,
+            alert_name="example-alert",
+            alert_displayname="example-alert",
+            mute_until=1632486684,
+            no_data_fire=False,
+            no_data_severity=8,
+            send_resolved=True,
+            auto_annotation=True,
+            dashboard="example-dashboard",
+            schedule=alicloud.log.AlertScheduleArgs(
+                type="FixedRate",
+                interval="5m",
+                hour=0,
+                day_of_week=0,
+                delay=0,
+                run_immediately=False,
+            ),
+            query_lists=[
+                alicloud.log.AlertQueryListArgs(
+                    store=example_store.name,
+                    store_type="log",
+                    project=example_project.name,
+                    region="cn-heyuan",
+                    chart_title="chart_title",
+                    start="-60s",
+                    end="20s",
+                    query="* AND aliyun | select count(1) as cnt",
+                    power_sql_mode="auto",
+                ),
+                alicloud.log.AlertQueryListArgs(
+                    store=example_store.name,
+                    store_type="log",
+                    project=example_project.name,
+                    region="cn-heyuan",
+                    chart_title="chart_title",
+                    start="-60s",
+                    end="20s",
+                    query="error | select count(1) as error_cnt",
+                    power_sql_mode="enable",
+                ),
+            ],
+            labels=[alicloud.log.AlertLabelArgs(
+                key="env",
+                value="test",
+            )],
+            annotations=[
+                alicloud.log.AlertAnnotationArgs(
+                    key="title",
+                    value="alert title",
+                ),
+                alicloud.log.AlertAnnotationArgs(
+                    key="desc",
+                    value="alert desc",
+                ),
+                alicloud.log.AlertAnnotationArgs(
+                    key="test_key",
+                    value="test value",
+                ),
+            ],
+            group_configuration=alicloud.log.AlertGroupConfigurationArgs(
+                type="custom",
+                fields=["cnt"],
+            ),
+            policy_configuration=alicloud.log.AlertPolicyConfigurationArgs(
+                alert_policy_id="sls.bultin",
+                action_policy_id="sls_test_action",
+                repeat_interval="4h",
+            ),
+            severity_configurations=[
+                alicloud.log.AlertSeverityConfigurationArgs(
+                    severity=8,
+                    eval_condition={
+                        "condition": "cnt > 3",
+                        "count_condition": "__count__ > 3",
+                    },
+                ),
+                alicloud.log.AlertSeverityConfigurationArgs(
+                    severity=6,
+                    eval_condition={
+                        "condition": "",
+                        "count_condition": "__count__ > 0",
+                    },
+                ),
+                alicloud.log.AlertSeverityConfigurationArgs(
+                    severity=2,
+                    eval_condition={
+                        "condition": "",
+                        "count_condition": "",
+                    },
+                ),
+            ],
+            join_configurations=[alicloud.log.AlertJoinConfigurationArgs(
+                type="cross_join",
+                condition="",
+            )])
+        ```
+
+        Basic Usage for alert template
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            retention_period=3650,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        example_3 = alicloud.log.Alert("example-3",
+            version="2.0",
+            type="tpl",
+            project_name=example_project.name,
+            alert_name="example-alert",
+            alert_displayname="example-alert",
+            mute_until=1632486684,
+            schedule=alicloud.log.AlertScheduleArgs(
+                type="FixedRate",
+                interval="5m",
+                hour=0,
+                day_of_week=0,
+                delay=0,
+                run_immediately=False,
+            ),
+            template_configuration=alicloud.log.AlertTemplateConfigurationArgs(
+                id="sls.app.sls_ack.node.down",
+                type="sys",
+                lang="cn",
+                annotations={},
+                tokens={
+                    "interval_minute": "5",
+                    "default.action_policy": "sls.app.ack.builtin",
+                    "default.severity": "6",
+                    "sendResolved": "false",
+                    "default.project": example_project.name,
+                    "default.logstore": "k8s-event",
+                    "default.repeatInterval": "4h",
+                    "trigger_threshold": "1",
+                    "default.clusterId": "example-cluster-id",
+                },
+            ))
+        ```
+
         ## Import
 
         Log alert can be imported using the id, e.g.
@@ -1303,6 +1539,242 @@ class Alert(pulumi.CustomResource):
         For information about SLS Alert and how to use it, see [SLS Alert Overview](https://www.alibabacloud.com/help/en/doc-detail/209202.html)
 
         > **NOTE:** Available in 1.78.0
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            retention_period=3650,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        example_alert = alicloud.log.Alert("exampleAlert",
+            project_name=example_project.name,
+            alert_name="example-alert",
+            alert_displayname="example-alert",
+            condition="count> 100",
+            dashboard="example-dashboard",
+            schedule=alicloud.log.AlertScheduleArgs(
+                type="FixedRate",
+                interval="5m",
+                hour=0,
+                day_of_week=0,
+                delay=0,
+                run_immediately=False,
+            ),
+            query_lists=[alicloud.log.AlertQueryListArgs(
+                logstore=example_store.name,
+                chart_title="chart_title",
+                start="-60s",
+                end="20s",
+                query="* AND aliyun",
+            )],
+            notification_lists=[
+                alicloud.log.AlertNotificationListArgs(
+                    type="SMS",
+                    mobile_lists=[
+                        "12345678",
+                        "87654321",
+                    ],
+                    content="alert content",
+                ),
+                alicloud.log.AlertNotificationListArgs(
+                    type="Email",
+                    email_lists=[
+                        "aliyun@alibaba-inc.com",
+                        "tf-example@123.com",
+                    ],
+                    content="alert content",
+                ),
+                alicloud.log.AlertNotificationListArgs(
+                    type="DingTalk",
+                    service_uri="www.aliyun.com",
+                    content="alert content",
+                ),
+            ])
+        ```
+
+        Basic Usage for new alert
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            retention_period=3650,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        example_2 = alicloud.log.Alert("example-2",
+            version="2.0",
+            type="default",
+            project_name=example_project.name,
+            alert_name="example-alert",
+            alert_displayname="example-alert",
+            mute_until=1632486684,
+            no_data_fire=False,
+            no_data_severity=8,
+            send_resolved=True,
+            auto_annotation=True,
+            dashboard="example-dashboard",
+            schedule=alicloud.log.AlertScheduleArgs(
+                type="FixedRate",
+                interval="5m",
+                hour=0,
+                day_of_week=0,
+                delay=0,
+                run_immediately=False,
+            ),
+            query_lists=[
+                alicloud.log.AlertQueryListArgs(
+                    store=example_store.name,
+                    store_type="log",
+                    project=example_project.name,
+                    region="cn-heyuan",
+                    chart_title="chart_title",
+                    start="-60s",
+                    end="20s",
+                    query="* AND aliyun | select count(1) as cnt",
+                    power_sql_mode="auto",
+                ),
+                alicloud.log.AlertQueryListArgs(
+                    store=example_store.name,
+                    store_type="log",
+                    project=example_project.name,
+                    region="cn-heyuan",
+                    chart_title="chart_title",
+                    start="-60s",
+                    end="20s",
+                    query="error | select count(1) as error_cnt",
+                    power_sql_mode="enable",
+                ),
+            ],
+            labels=[alicloud.log.AlertLabelArgs(
+                key="env",
+                value="test",
+            )],
+            annotations=[
+                alicloud.log.AlertAnnotationArgs(
+                    key="title",
+                    value="alert title",
+                ),
+                alicloud.log.AlertAnnotationArgs(
+                    key="desc",
+                    value="alert desc",
+                ),
+                alicloud.log.AlertAnnotationArgs(
+                    key="test_key",
+                    value="test value",
+                ),
+            ],
+            group_configuration=alicloud.log.AlertGroupConfigurationArgs(
+                type="custom",
+                fields=["cnt"],
+            ),
+            policy_configuration=alicloud.log.AlertPolicyConfigurationArgs(
+                alert_policy_id="sls.bultin",
+                action_policy_id="sls_test_action",
+                repeat_interval="4h",
+            ),
+            severity_configurations=[
+                alicloud.log.AlertSeverityConfigurationArgs(
+                    severity=8,
+                    eval_condition={
+                        "condition": "cnt > 3",
+                        "count_condition": "__count__ > 3",
+                    },
+                ),
+                alicloud.log.AlertSeverityConfigurationArgs(
+                    severity=6,
+                    eval_condition={
+                        "condition": "",
+                        "count_condition": "__count__ > 0",
+                    },
+                ),
+                alicloud.log.AlertSeverityConfigurationArgs(
+                    severity=2,
+                    eval_condition={
+                        "condition": "",
+                        "count_condition": "",
+                    },
+                ),
+            ],
+            join_configurations=[alicloud.log.AlertJoinConfigurationArgs(
+                type="cross_join",
+                condition="",
+            )])
+        ```
+
+        Basic Usage for alert template
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            retention_period=3650,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        example_3 = alicloud.log.Alert("example-3",
+            version="2.0",
+            type="tpl",
+            project_name=example_project.name,
+            alert_name="example-alert",
+            alert_displayname="example-alert",
+            mute_until=1632486684,
+            schedule=alicloud.log.AlertScheduleArgs(
+                type="FixedRate",
+                interval="5m",
+                hour=0,
+                day_of_week=0,
+                delay=0,
+                run_immediately=False,
+            ),
+            template_configuration=alicloud.log.AlertTemplateConfigurationArgs(
+                id="sls.app.sls_ack.node.down",
+                type="sys",
+                lang="cn",
+                annotations={},
+                tokens={
+                    "interval_minute": "5",
+                    "default.action_policy": "sls.app.ack.builtin",
+                    "default.severity": "6",
+                    "sendResolved": "false",
+                    "default.project": example_project.name,
+                    "default.logstore": "k8s-event",
+                    "default.repeatInterval": "4h",
+                    "trigger_threshold": "1",
+                    "default.clusterId": "example-cluster-id",
+                },
+            ))
+        ```
 
         ## Import
 

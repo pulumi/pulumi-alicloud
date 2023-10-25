@@ -469,6 +469,34 @@ class Endpoint(pulumi.CustomResource):
 
         > **NOTE:** The primary endpoint and the default cluster endpoint can not be created or deleted manually.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
+            db_version="8.0",
+            pay_type="PostPaid")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_node_classes.classes[0].zone_id,
+            vswitch_name="terraform-example")
+        default_cluster = alicloud.polardb.Cluster("defaultCluster",
+            db_type="MySQL",
+            db_version="8.0",
+            db_node_class=default_node_classes.classes[0].supported_engines[0].available_resources[0].db_node_class,
+            pay_type="PostPaid",
+            vswitch_id=default_switch.id,
+            description="terraform-example")
+        default_endpoint = alicloud.polardb.Endpoint("defaultEndpoint",
+            db_cluster_id=default_cluster.id,
+            endpoint_type="Custom")
+        ```
         ## Argument Reference
 
         The following arguments are supported:
@@ -512,6 +540,34 @@ class Endpoint(pulumi.CustomResource):
 
         > **NOTE:** The primary endpoint and the default cluster endpoint can not be created or deleted manually.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
+            db_version="8.0",
+            pay_type="PostPaid")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_node_classes.classes[0].zone_id,
+            vswitch_name="terraform-example")
+        default_cluster = alicloud.polardb.Cluster("defaultCluster",
+            db_type="MySQL",
+            db_version="8.0",
+            db_node_class=default_node_classes.classes[0].supported_engines[0].available_resources[0].db_node_class,
+            pay_type="PostPaid",
+            vswitch_id=default_switch.id,
+            description="terraform-example")
+        default_endpoint = alicloud.polardb.Endpoint("defaultEndpoint",
+            db_cluster_id=default_cluster.id,
+            endpoint_type="Custom")
+        ```
         ## Argument Reference
 
         The following arguments are supported:

@@ -725,6 +725,19 @@ class JobTemplate(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.133.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ehpc.JobTemplate("default",
+            command_line="./LammpsTest/lammps.pbs",
+            job_template_name="example_value")
+        ```
+
         ## Import
 
         Ehpc Job Template can be imported using the id, e.g.
@@ -765,6 +778,19 @@ class JobTemplate(pulumi.CustomResource):
         For information about Ehpc Job Template and how to use it, see [What is Job Template](https://www.alibabacloud.com/help/product/57664.html).
 
         > **NOTE:** Available in v1.133.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ehpc.JobTemplate("default",
+            command_line="./LammpsTest/lammps.pbs",
+            job_template_name="example_value")
+        ```
 
         ## Import
 

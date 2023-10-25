@@ -100,6 +100,19 @@ def get_modify_parameter_logs(db_instance_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.174.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.rds.get_modify_parameter_logs(db_instance_id="example_value",
+        end_time="2022-06-08T13:56Z",
+        start_time="2022-06-04T13:56Z")
+    ```
+
 
     :param str db_instance_id: The db instance id.
     :param str end_time: The end time.
@@ -133,6 +146,19 @@ def get_modify_parameter_logs_output(db_instance_id: Optional[pulumi.Input[str]]
     This data source provides the Rds Modify Parameter Logs of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.174.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.rds.get_modify_parameter_logs(db_instance_id="example_value",
+        end_time="2022-06-08T13:56Z",
+        start_time="2022-06-04T13:56Z")
+    ```
 
 
     :param str db_instance_id: The db instance id.

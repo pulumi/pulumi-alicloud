@@ -277,6 +277,28 @@ class TransitRouterCidr(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.193.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+            transit_router_name="tf_example",
+            cen_id=example_instance.id)
+        example_transit_router_cidr = alicloud.cen.TransitRouterCidr("exampleTransitRouterCidr",
+            transit_router_id=example_transit_router.transit_router_id,
+            cidr="192.168.0.0/16",
+            transit_router_cidr_name="tf_example",
+            description="tf_example",
+            publish_cidr_route=True)
+        ```
+
         ## Import
 
         Cloud Enterprise Network (CEN) Transit Router Cidr can be imported using the id, e.g.
@@ -305,6 +327,28 @@ class TransitRouterCidr(pulumi.CustomResource):
         For information about Cloud Enterprise Network (CEN) Transit Router Cidr and how to use it, see [What is Transit Router Cidr](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/createtransitroutercidr).
 
         > **NOTE:** Available since v1.193.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+            transit_router_name="tf_example",
+            cen_id=example_instance.id)
+        example_transit_router_cidr = alicloud.cen.TransitRouterCidr("exampleTransitRouterCidr",
+            transit_router_id=example_transit_router.transit_router_id,
+            cidr="192.168.0.0/16",
+            transit_router_cidr_name="tf_example",
+            description="tf_example",
+            publish_cidr_route=True)
+        ```
 
         ## Import
 

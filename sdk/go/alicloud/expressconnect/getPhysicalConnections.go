@@ -15,6 +15,44 @@ import (
 // This data source provides the Express Connect Physical Connections of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.132.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
+//				Ids: []string{
+//					"pc-2345678",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("expressConnectPhysicalConnectionId1", ids.Connections[0].Id)
+//			nameRegex, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
+//				NameRegex: pulumi.StringRef("^my-PhysicalConnection"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("expressConnectPhysicalConnectionId2", nameRegex.Connections[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetPhysicalConnections(ctx *pulumi.Context, args *GetPhysicalConnectionsArgs, opts ...pulumi.InvokeOption) (*GetPhysicalConnectionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPhysicalConnectionsResult

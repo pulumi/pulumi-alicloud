@@ -472,6 +472,20 @@ class Snapshot(pulumi.CustomResource):
 
         For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        snapshot = alicloud.ecs.Snapshot("snapshot",
+            disk_id=alicloud_disk_attachment["instance-attachment"]["disk_id"],
+            description="this snapshot is created for testing",
+            tags={
+                "version": "1.2",
+            })
+        ```
+
         ## Import
 
         Snapshot can be imported using the id, e.g.
@@ -501,6 +515,20 @@ class Snapshot(pulumi.CustomResource):
         Provides an ECS snapshot resource.
 
         For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        snapshot = alicloud.ecs.Snapshot("snapshot",
+            disk_id=alicloud_disk_attachment["instance-attachment"]["disk_id"],
+            description="this snapshot is created for testing",
+            tags={
+                "version": "1.2",
+            })
+        ```
 
         ## Import
 

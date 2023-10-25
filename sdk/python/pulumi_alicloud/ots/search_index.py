@@ -349,6 +349,96 @@ class SearchIndex(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.187.0.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_instance = alicloud.ots.Instance("defaultInstance",
+            description=name,
+            accessed_by="Any",
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        default_table = alicloud.ots.Table("defaultTable",
+            instance_name=default_instance.name,
+            table_name="tf_example",
+            time_to_live=-1,
+            max_version=1,
+            enable_sse=True,
+            sse_key_type="SSE_KMS_SERVICE",
+            primary_keys=[
+                alicloud.ots.TablePrimaryKeyArgs(
+                    name="pk1",
+                    type="Integer",
+                ),
+                alicloud.ots.TablePrimaryKeyArgs(
+                    name="pk2",
+                    type="String",
+                ),
+                alicloud.ots.TablePrimaryKeyArgs(
+                    name="pk3",
+                    type="Binary",
+                ),
+            ])
+        default_search_index = alicloud.ots.SearchIndex("defaultSearchIndex",
+            instance_name=default_instance.name,
+            table_name=default_table.table_name,
+            index_name="example_index",
+            time_to_live=-1,
+            schemas=[alicloud.ots.SearchIndexSchemaArgs(
+                field_schemas=[
+                    alicloud.ots.SearchIndexSchemaFieldSchemaArgs(
+                        field_name="col1",
+                        field_type="Text",
+                        is_array=False,
+                        index=True,
+                        analyzer="Split",
+                        store=True,
+                    ),
+                    alicloud.ots.SearchIndexSchemaFieldSchemaArgs(
+                        field_name="col2",
+                        field_type="Long",
+                        enable_sort_and_agg=True,
+                    ),
+                    alicloud.ots.SearchIndexSchemaFieldSchemaArgs(
+                        field_name="pk1",
+                        field_type="Long",
+                    ),
+                    alicloud.ots.SearchIndexSchemaFieldSchemaArgs(
+                        field_name="pk2",
+                        field_type="Text",
+                    ),
+                ],
+                index_settings=[alicloud.ots.SearchIndexSchemaIndexSettingArgs(
+                    routing_fields=[
+                        "pk1",
+                        "pk2",
+                    ],
+                )],
+                index_sorts=[alicloud.ots.SearchIndexSchemaIndexSortArgs(
+                    sorters=[
+                        alicloud.ots.SearchIndexSchemaIndexSortSorterArgs(
+                            sorter_type="PrimaryKeySort",
+                            order="Asc",
+                        ),
+                        alicloud.ots.SearchIndexSchemaIndexSortSorterArgs(
+                            sorter_type="FieldSort",
+                            order="Desc",
+                            field_name="col2",
+                            mode="Max",
+                        ),
+                    ],
+                )],
+            )])
+        ```
+
         ## Import
 
         OTS search index can be imported using id, e.g.
@@ -378,6 +468,96 @@ class SearchIndex(pulumi.CustomResource):
         For information about OTS search index and how to use it, see [Search index overview](https://www.alibabacloud.com/help/en/tablestore/latest/search-index-overview).
 
         > **NOTE:** Available since v1.187.0.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_instance = alicloud.ots.Instance("defaultInstance",
+            description=name,
+            accessed_by="Any",
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        default_table = alicloud.ots.Table("defaultTable",
+            instance_name=default_instance.name,
+            table_name="tf_example",
+            time_to_live=-1,
+            max_version=1,
+            enable_sse=True,
+            sse_key_type="SSE_KMS_SERVICE",
+            primary_keys=[
+                alicloud.ots.TablePrimaryKeyArgs(
+                    name="pk1",
+                    type="Integer",
+                ),
+                alicloud.ots.TablePrimaryKeyArgs(
+                    name="pk2",
+                    type="String",
+                ),
+                alicloud.ots.TablePrimaryKeyArgs(
+                    name="pk3",
+                    type="Binary",
+                ),
+            ])
+        default_search_index = alicloud.ots.SearchIndex("defaultSearchIndex",
+            instance_name=default_instance.name,
+            table_name=default_table.table_name,
+            index_name="example_index",
+            time_to_live=-1,
+            schemas=[alicloud.ots.SearchIndexSchemaArgs(
+                field_schemas=[
+                    alicloud.ots.SearchIndexSchemaFieldSchemaArgs(
+                        field_name="col1",
+                        field_type="Text",
+                        is_array=False,
+                        index=True,
+                        analyzer="Split",
+                        store=True,
+                    ),
+                    alicloud.ots.SearchIndexSchemaFieldSchemaArgs(
+                        field_name="col2",
+                        field_type="Long",
+                        enable_sort_and_agg=True,
+                    ),
+                    alicloud.ots.SearchIndexSchemaFieldSchemaArgs(
+                        field_name="pk1",
+                        field_type="Long",
+                    ),
+                    alicloud.ots.SearchIndexSchemaFieldSchemaArgs(
+                        field_name="pk2",
+                        field_type="Text",
+                    ),
+                ],
+                index_settings=[alicloud.ots.SearchIndexSchemaIndexSettingArgs(
+                    routing_fields=[
+                        "pk1",
+                        "pk2",
+                    ],
+                )],
+                index_sorts=[alicloud.ots.SearchIndexSchemaIndexSortArgs(
+                    sorters=[
+                        alicloud.ots.SearchIndexSchemaIndexSortSorterArgs(
+                            sorter_type="PrimaryKeySort",
+                            order="Asc",
+                        ),
+                        alicloud.ots.SearchIndexSchemaIndexSortSorterArgs(
+                            sorter_type="FieldSort",
+                            order="Desc",
+                            field_name="col2",
+                            mode="Max",
+                        ),
+                    ],
+                )],
+            )])
+        ```
 
         ## Import
 

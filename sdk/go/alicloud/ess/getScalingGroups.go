@@ -13,6 +13,37 @@ import (
 )
 
 // This data source provides available scaling group resources.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ess"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			scalinggroupsDs, err := ess.GetScalingGroups(ctx, &ess.GetScalingGroupsArgs{
+//				Ids: []string{
+//					"scaling_group_id1",
+//					"scaling_group_id2",
+//				},
+//				NameRegex: pulumi.StringRef("scaling_group_name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstScalingGroup", scalinggroupsDs.Groups[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetScalingGroups(ctx *pulumi.Context, args *GetScalingGroupsArgs, opts ...pulumi.InvokeOption) (*GetScalingGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetScalingGroupsResult

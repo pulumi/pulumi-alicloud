@@ -11,6 +11,37 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.188.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.getAccount({});
+ * const examplePrefixList = new alicloud.vpc.PrefixList("examplePrefixList", {entrys: [{
+ *     cidr: "192.168.0.0/16",
+ * }]});
+ * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ *     cenInstanceName: "tf_example",
+ *     description: "an example for cen",
+ * });
+ * const exampleTransitRouter = new alicloud.cen.TransitRouter("exampleTransitRouter", {
+ *     transitRouterName: "tf_example",
+ *     cenId: exampleInstance.id,
+ * });
+ * const exampleTransitRouterRouteTable = new alicloud.cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", {transitRouterId: exampleTransitRouter.transitRouterId});
+ * const exampleTransitRouterPrefixListAssociation = new alicloud.cen.TransitRouterPrefixListAssociation("exampleTransitRouterPrefixListAssociation", {
+ *     prefixListId: examplePrefixList.id,
+ *     transitRouterId: exampleTransitRouter.transitRouterId,
+ *     transitRouterTableId: exampleTransitRouterRouteTable.transitRouterRouteTableId,
+ *     nextHop: "BlackHole",
+ *     nextHopType: "BlackHole",
+ *     ownerUid: _default.then(_default => _default.id),
+ * });
+ * ```
+ *
  * ## Import
  *
  * Cloud Enterprise Network (CEN) Transit Router Prefix List Association can be imported using the id, e.g.

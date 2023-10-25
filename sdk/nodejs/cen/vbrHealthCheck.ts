@@ -12,6 +12,59 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.88.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultRegions = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultPhysicalConnections = alicloud.expressconnect.getPhysicalConnections({
+ *     nameRegex: "^preserved-NODELETING",
+ * });
+ * const vlanId = new random.RandomInteger("vlanId", {
+ *     max: 2999,
+ *     min: 1,
+ * });
+ * const exampleVirtualBorderRouter = new alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter", {
+ *     localGatewayIp: "10.0.0.1",
+ *     peerGatewayIp: "10.0.0.2",
+ *     peeringSubnetMask: "255.255.255.252",
+ *     physicalConnectionId: defaultPhysicalConnections.then(defaultPhysicalConnections => defaultPhysicalConnections.connections?.[0]?.id),
+ *     virtualBorderRouterName: name,
+ *     vlanId: vlanId.id,
+ *     minRxInterval: 1000,
+ *     minTxInterval: 1000,
+ *     detectMultiplier: 10,
+ * });
+ * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ *     cenInstanceName: name,
+ *     protectionLevel: "REDUCED",
+ * });
+ * const exampleInstanceAttachment = new alicloud.cen.InstanceAttachment("exampleInstanceAttachment", {
+ *     instanceId: exampleInstance.id,
+ *     childInstanceId: exampleVirtualBorderRouter.id,
+ *     childInstanceType: "VBR",
+ *     childInstanceRegionId: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
+ * });
+ * const exampleVbrHealthCheck = new alicloud.cen.VbrHealthCheck("exampleVbrHealthCheck", {
+ *     cenId: exampleInstance.id,
+ *     healthCheckSourceIp: "192.168.1.2",
+ *     healthCheckTargetIp: "10.0.0.2",
+ *     vbrInstanceId: exampleVirtualBorderRouter.id,
+ *     vbrInstanceRegionId: exampleInstanceAttachment.childInstanceRegionId,
+ *     healthCheckInterval: 2,
+ *     healthyThreshold: 8,
+ * });
+ * ```
+ *
  * ## Import
  *
  * CEN VBR HealthCheck can be imported using the id, e.g.

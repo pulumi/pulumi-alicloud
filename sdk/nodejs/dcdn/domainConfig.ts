@@ -13,6 +13,37 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.131.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const domainName = config.get("domainName") || "example.com";
+ * const exampleDomain = new alicloud.dcdn.Domain("exampleDomain", {
+ *     domainName: domainName,
+ *     scope: "overseas",
+ *     sources: [{
+ *         content: "1.1.1.1",
+ *         port: 80,
+ *         priority: "20",
+ *         type: "ipaddr",
+ *         weight: "10",
+ *     }],
+ * });
+ * const exampleDomainConfig = new alicloud.dcdn.DomainConfig("exampleDomainConfig", {
+ *     domainName: exampleDomain.domainName,
+ *     functionName: "ip_allow_list_set",
+ *     functionArgs: [{
+ *         argName: "ip_list",
+ *         argValue: "110.110.110.110",
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * DCDN domain config can be imported using the id, e.g.

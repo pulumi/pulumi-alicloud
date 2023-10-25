@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * This data source provides the Privatelink Vpc Endpoint Zones of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.111.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.privatelink.getVpcEndpointZones({
+ *     endpointId: "ep-gw8boxxxxx",
+ * });
+ * export const firstPrivatelinkVpcEndpointZoneId = example.then(example => example.zones?.[0]?.id);
+ * ```
  */
 export function getVpcEndpointZones(args: GetVpcEndpointZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcEndpointZonesResult> {
 
@@ -57,6 +71,20 @@ export interface GetVpcEndpointZonesResult {
  * This data source provides the Privatelink Vpc Endpoint Zones of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.111.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.privatelink.getVpcEndpointZones({
+ *     endpointId: "ep-gw8boxxxxx",
+ * });
+ * export const firstPrivatelinkVpcEndpointZoneId = example.then(example => example.zones?.[0]?.id);
+ * ```
  */
 export function getVpcEndpointZonesOutput(args: GetVpcEndpointZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcEndpointZonesResult> {
     return pulumi.output(args).apply((a: any) => getVpcEndpointZones(a, opts))

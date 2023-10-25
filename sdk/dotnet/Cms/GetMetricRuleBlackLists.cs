@@ -15,6 +15,37 @@ namespace Pulumi.AliCloud.Cms
         /// This data source provides Cloud Monitor Service Metric Rule Black List available to the user.[What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist)
         /// 
         /// &gt; **NOTE:** Available in 1.194.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Cms.GetMetricRuleBlackLists.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             alicloud_cms_metric_rule_black_lists.Default.Id,
+        ///         },
+        ///         Category = "ecs",
+        ///         Namespace = "acs_ecs_dashboard",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudCmsRuleBlackListExampleId"] = data.Alicloud_cms_metric_rule_black_lists.Lists[0].Id,
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetMetricRuleBlackListsResult> InvokeAsync(GetMetricRuleBlackListsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMetricRuleBlackListsResult>("alicloud:cms/getMetricRuleBlackLists:getMetricRuleBlackLists", args ?? new GetMetricRuleBlackListsArgs(), options.WithDefaults());
@@ -23,6 +54,37 @@ namespace Pulumi.AliCloud.Cms
         /// This data source provides Cloud Monitor Service Metric Rule Black List available to the user.[What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist)
         /// 
         /// &gt; **NOTE:** Available in 1.194.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Cms.GetMetricRuleBlackLists.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             alicloud_cms_metric_rule_black_lists.Default.Id,
+        ///         },
+        ///         Category = "ecs",
+        ///         Namespace = "acs_ecs_dashboard",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudCmsRuleBlackListExampleId"] = data.Alicloud_cms_metric_rule_black_lists.Lists[0].Id,
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetMetricRuleBlackListsResult> Invoke(GetMetricRuleBlackListsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMetricRuleBlackListsResult>("alicloud:cms/getMetricRuleBlackLists:getMetricRuleBlackLists", args ?? new GetMetricRuleBlackListsInvokeArgs(), options.WithDefaults());

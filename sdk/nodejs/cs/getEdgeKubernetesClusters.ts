@@ -10,6 +10,19 @@ import * as utilities from "../utilities";
  * This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
  *
  * > **NOTE:** Available in v1.103.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const k8sClusters = alicloud.cs.getEdgeKubernetesClusters({
+ *     nameRegex: "my-first-k8s",
+ *     outputFile: "my-first-k8s-json",
+ * });
+ * export const output = k8sClusters.then(k8sClusters => k8sClusters.clusters);
+ * ```
  */
 export function getEdgeKubernetesClusters(args?: GetEdgeKubernetesClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetEdgeKubernetesClustersResult> {
     args = args || {};
@@ -70,6 +83,19 @@ export interface GetEdgeKubernetesClustersResult {
  * This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
  *
  * > **NOTE:** Available in v1.103.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const k8sClusters = alicloud.cs.getEdgeKubernetesClusters({
+ *     nameRegex: "my-first-k8s",
+ *     outputFile: "my-first-k8s-json",
+ * });
+ * export const output = k8sClusters.then(k8sClusters => k8sClusters.clusters);
+ * ```
  */
 export function getEdgeKubernetesClustersOutput(args?: GetEdgeKubernetesClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEdgeKubernetesClustersResult> {
     return pulumi.output(args).apply((a: any) => getEdgeKubernetesClusters(a, opts))

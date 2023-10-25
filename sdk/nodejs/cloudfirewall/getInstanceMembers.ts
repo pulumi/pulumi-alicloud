@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)
  *
  * > **NOTE:** Available in 1.194.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.cloudfirewall.getInstanceMembers({
+ *     ids: [alicloud_cloud_firewall_instance_member["default"].id],
+ * });
+ * export const alicloudCloudFirewallInstanceMemberExampleId = _default.then(_default => _default.members?.[0]?.id);
+ * ```
  */
 export function getInstanceMembers(args?: GetInstanceMembersArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceMembersResult> {
     args = args || {};
@@ -66,6 +78,18 @@ export interface GetInstanceMembersResult {
  * This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)
  *
  * > **NOTE:** Available in 1.194.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.cloudfirewall.getInstanceMembers({
+ *     ids: [alicloud_cloud_firewall_instance_member["default"].id],
+ * });
+ * export const alicloudCloudFirewallInstanceMemberExampleId = _default.then(_default => _default.members?.[0]?.id);
+ * ```
  */
 export function getInstanceMembersOutput(args?: GetInstanceMembersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceMembersResult> {
     return pulumi.output(args).apply((a: any) => getInstanceMembers(a, opts))

@@ -341,6 +341,51 @@ class LifecycleHook(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.13.0.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default2 = alicloud.vpc.Switch("default2",
+            vpc_id=default_network.id,
+            cidr_block="172.16.1.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=f"{name}-bar")
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
+            min_size=1,
+            max_size=1,
+            scaling_group_name=name,
+            default_cooldown=200,
+            removal_policies=[
+                "OldestInstance",
+                "NewestInstance",
+            ],
+            vswitch_ids=[
+                default_switch.id,
+                default2.id,
+            ])
+        default_lifecycle_hook = alicloud.ess.LifecycleHook("defaultLifecycleHook",
+            scaling_group_id=default_scaling_group.id,
+            lifecycle_transition="SCALE_OUT",
+            heartbeat_timeout=400,
+            notification_metadata="example")
+        ```
         ## Module Support
 
         You can use to the existing autoscaling module
@@ -375,6 +420,51 @@ class LifecycleHook(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.13.0.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default2 = alicloud.vpc.Switch("default2",
+            vpc_id=default_network.id,
+            cidr_block="172.16.1.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=f"{name}-bar")
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
+            min_size=1,
+            max_size=1,
+            scaling_group_name=name,
+            default_cooldown=200,
+            removal_policies=[
+                "OldestInstance",
+                "NewestInstance",
+            ],
+            vswitch_ids=[
+                default_switch.id,
+                default2.id,
+            ])
+        default_lifecycle_hook = alicloud.ess.LifecycleHook("defaultLifecycleHook",
+            scaling_group_id=default_scaling_group.id,
+            lifecycle_transition="SCALE_OUT",
+            heartbeat_timeout=400,
+            notification_metadata="example")
+        ```
         ## Module Support
 
         You can use to the existing autoscaling module

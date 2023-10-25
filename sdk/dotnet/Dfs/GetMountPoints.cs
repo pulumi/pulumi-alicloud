@@ -15,6 +15,39 @@ namespace Pulumi.AliCloud.Dfs
         /// This data source provides the Dfs Mount Points of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.140.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Dfs.GetMountPoints.Invoke(new()
+        ///     {
+        ///         FileSystemId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dfsMountPointId1"] = ids.Apply(getMountPointsResult =&gt; getMountPointsResult.Points[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetMountPointsResult> InvokeAsync(GetMountPointsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMountPointsResult>("alicloud:dfs/getMountPoints:getMountPoints", args ?? new GetMountPointsArgs(), options.WithDefaults());
@@ -23,6 +56,39 @@ namespace Pulumi.AliCloud.Dfs
         /// This data source provides the Dfs Mount Points of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.140.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Dfs.GetMountPoints.Invoke(new()
+        ///     {
+        ///         FileSystemId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dfsMountPointId1"] = ids.Apply(getMountPointsResult =&gt; getMountPointsResult.Points[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetMountPointsResult> Invoke(GetMountPointsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMountPointsResult>("alicloud:dfs/getMountPoints:getMountPoints", args ?? new GetMountPointsInvokeArgs(), options.WithDefaults());

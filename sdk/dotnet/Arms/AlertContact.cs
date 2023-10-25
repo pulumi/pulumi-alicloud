@@ -16,6 +16,29 @@ namespace Pulumi.AliCloud.Arms
     /// 
     /// &gt; **NOTE:** Available since v1.129.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AliCloud.Arms.AlertContact("example", new()
+    ///     {
+    ///         AlertContactName = "example_value",
+    ///         DingRobotWebhookUrl = "https://oapi.dingtalk.com/robot/send?access_token=91f2f6****",
+    ///         Email = "someone@example.com",
+    ///         PhoneNum = "1381111****",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Application Real-Time Monitoring Service (ARMS) Alert Contact can be imported using the id, e.g.

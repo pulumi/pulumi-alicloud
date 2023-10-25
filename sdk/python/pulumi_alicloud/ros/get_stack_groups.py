@@ -119,6 +119,19 @@ def get_stack_groups(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.107.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.ros.get_stack_groups(ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstRosStackGroupId", example.groups[0].id)
+    ```
+
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Stack Group IDs.
@@ -157,6 +170,19 @@ def get_stack_groups_output(enable_details: Optional[pulumi.Input[Optional[bool]
     This data source provides the Ros Stack Groups of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.107.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.ros.get_stack_groups(ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstRosStackGroupId", example.groups[0].id)
+    ```
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

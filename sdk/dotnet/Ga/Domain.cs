@@ -16,6 +16,34 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// &gt; **NOTE:** Available since v1.197.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultAccelerator = new AliCloud.Ga.Accelerator("defaultAccelerator", new()
+    ///     {
+    ///         Duration = 1,
+    ///         AutoUseCoupon = true,
+    ///         Spec = "1",
+    ///     });
+    /// 
+    ///     var defaultDomain = new AliCloud.Ga.Domain("defaultDomain", new()
+    ///     {
+    ///         AcceleratedDomain = "changes.com.cn",
+    ///         AcceleratorId = defaultAccelerator.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Ga Domain can be imported using the id, e.g.

@@ -11,6 +11,65 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.156.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const zoneId = "cn-hangzhou-i";
+ * const exampleInstanceTypes = alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: zoneId,
+ *     instanceTypeFamily: "ecs.g7se",
+ * });
+ * const exampleImages = Promise.all([exampleInstanceTypes, exampleInstanceTypes.then(exampleInstanceTypes => exampleInstanceTypes.instanceTypes).length]).then(([exampleInstanceTypes, length]) => alicloud.ecs.getImages({
+ *     instanceType: exampleInstanceTypes.instanceTypes[length - 1].id,
+ *     nameRegex: "^aliyun_2",
+ *     owners: "system",
+ * }));
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: exampleNetwork.id,
+ *     zoneId: zoneId,
+ * });
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("exampleSecurityGroup", {vpcId: exampleNetwork.id});
+ * const exampleInstance = new alicloud.ecs.Instance("exampleInstance", {
+ *     availabilityZone: zoneId,
+ *     instanceName: name,
+ *     imageId: exampleImages.then(exampleImages => exampleImages.images?.[1]?.id),
+ *     instanceType: Promise.all([exampleInstanceTypes, exampleInstanceTypes.then(exampleInstanceTypes => exampleInstanceTypes.instanceTypes).length]).then(([exampleInstanceTypes, length]) => exampleInstanceTypes.instanceTypes[length - 1].id),
+ *     securityGroups: [exampleSecurityGroup.id],
+ *     vswitchId: exampleSwitch.id,
+ *     systemDiskCategory: "cloud_essd",
+ * });
+ * const exampleDatabasefilesystem_instanceInstance = new alicloud.databasefilesystem.Instance("exampleDatabasefilesystem/instanceInstance", {
+ *     category: "standard",
+ *     zoneId: zoneId,
+ *     performanceLevel: "PL1",
+ *     instanceName: name,
+ *     size: 100,
+ * });
+ * const exampleInstanceAttachment = new alicloud.databasefilesystem.InstanceAttachment("exampleInstanceAttachment", {
+ *     ecsId: exampleInstance.id,
+ *     instanceId: exampleDatabasefilesystem / instanceInstance.id,
+ * });
+ * const exampleSnapshot = new alicloud.databasefilesystem.Snapshot("exampleSnapshot", {
+ *     instanceId: exampleInstanceAttachment.instanceId,
+ *     snapshotName: name,
+ *     description: name,
+ *     retentionDays: 30,
+ * });
+ * ```
+ *
  * ## Import
  *
  * DBFS Snapshot can be imported using the id, e.g.

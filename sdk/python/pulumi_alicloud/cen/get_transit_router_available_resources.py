@@ -70,6 +70,19 @@ def get_transit_router_available_resources(output_file: Optional[str] = None,
 
     > **NOTE:** Available in v1.163.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cen.get_transit_router_available_resources()
+    pulumi.export("masterId", data["alicloud_cen_transit_router_available_resources"]["default"]["resources"][0]["master_zones"])
+    pulumi.export("slaveId", data["alicloud_cen_transit_router_available_resources"]["default"]["resources"][0]["slave_zones"])
+    ```
+
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
@@ -91,6 +104,19 @@ def get_transit_router_available_resources_output(output_file: Optional[pulumi.I
     This data source provides the Cen Transit Router Available Resources of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.163.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cen.get_transit_router_available_resources()
+    pulumi.export("masterId", data["alicloud_cen_transit_router_available_resources"]["default"]["resources"][0]["master_zones"])
+    pulumi.export("slaveId", data["alicloud_cen_transit_router_available_resources"]["default"]["resources"][0]["slave_zones"])
+    ```
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

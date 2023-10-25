@@ -259,6 +259,49 @@ class Account(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.148.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_zones = alicloud.mongodb.get_zones()
+        index = len(default_zones.zones) - 1
+        zone_id = default_zones.zones[index].id
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.17.3.0/24")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="172.17.3.0/24",
+            vpc_id=default_network.id,
+            zone_id=zone_id)
+        default_instance = alicloud.mongodb.Instance("defaultInstance",
+            engine_version="4.2",
+            db_instance_class="dds.mongo.mid",
+            db_instance_storage=10,
+            vswitch_id=default_switch.id,
+            security_ip_lists=[
+                "10.168.1.12",
+                "100.69.7.112",
+            ],
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        default_account = alicloud.mongodb.Account("defaultAccount",
+            account_name="root",
+            account_password="Example_123",
+            instance_id=default_instance.id,
+            account_description=name)
+        ```
+
         ## Import
 
         MongoDB Account can be imported using the id, e.g.
@@ -290,6 +333,49 @@ class Account(pulumi.CustomResource):
         For information about MongoDB Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/doc-detail/62154.html).
 
         > **NOTE:** Available since v1.148.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_zones = alicloud.mongodb.get_zones()
+        index = len(default_zones.zones) - 1
+        zone_id = default_zones.zones[index].id
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.17.3.0/24")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="172.17.3.0/24",
+            vpc_id=default_network.id,
+            zone_id=zone_id)
+        default_instance = alicloud.mongodb.Instance("defaultInstance",
+            engine_version="4.2",
+            db_instance_class="dds.mongo.mid",
+            db_instance_storage=10,
+            vswitch_id=default_switch.id,
+            security_ip_lists=[
+                "10.168.1.12",
+                "100.69.7.112",
+            ],
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        default_account = alicloud.mongodb.Account("defaultAccount",
+            account_name="root",
+            account_password="Example_123",
+            instance_id=default_instance.id,
+            account_description=name)
+        ```
 
         ## Import
 

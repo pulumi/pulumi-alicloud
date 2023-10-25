@@ -250,6 +250,25 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.10.0.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.ots.Instance("default",
+            description=name,
+            accessed_by="Vpc",
+            tags={
+                "Created": "TF",
+                "For": "Building table",
+            })
+        ```
+
         ## Import
 
         OTS instance can be imported using instance id or name, e.g.
@@ -277,6 +296,25 @@ class Instance(pulumi.CustomResource):
         It is foundation of creating data table.
 
         > **NOTE:** Available since v1.10.0.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.ots.Instance("default",
+            description=name,
+            accessed_by="Vpc",
+            tags={
+                "Created": "TF",
+                "For": "Building table",
+            })
+        ```
 
         ## Import
 

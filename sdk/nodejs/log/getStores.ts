@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides the Log Stores of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.126.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.log.getStores({
+ *     project: "the_project_name",
+ *     ids: ["the_store_name"],
+ * });
+ * export const firstLogStoreId = example.then(example => example.stores?.[0]?.id);
+ * ```
  */
 export function getStores(args: GetStoresArgs, opts?: pulumi.InvokeOptions): Promise<GetStoresResult> {
 
@@ -60,6 +75,21 @@ export interface GetStoresResult {
  * This data source provides the Log Stores of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.126.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.log.getStores({
+ *     project: "the_project_name",
+ *     ids: ["the_store_name"],
+ * });
+ * export const firstLogStoreId = example.then(example => example.stores?.[0]?.id);
+ * ```
  */
 export function getStoresOutput(args: GetStoresOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStoresResult> {
     return pulumi.output(args).apply((a: any) => getStores(a, opts))

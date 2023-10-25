@@ -26,6 +26,116 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** From version 1.185.0+, support new fields `clusterSpec`, `runtime` and `loadBalancerSpec`.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultZones.zones?.[0]?.id,
+ *     cpuCoreCount: 4,
+ *     memorySize: 8,
+ *     kubernetesNodeRole: "Master",
+ * }));
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultEdgeKubernetes = new alicloud.cs.EdgeKubernetes("defaultEdgeKubernetes", {
+ *     workerVswitchIds: [defaultSwitch.id],
+ *     workerInstanceTypes: [defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id)],
+ *     version: "1.20.11-aliyunedge.1",
+ *     workerNumber: 1,
+ *     password: "Test12345",
+ *     podCidr: "10.99.0.0/16",
+ *     serviceCidr: "172.16.0.0/16",
+ *     workerInstanceChargeType: "PostPaid",
+ *     newNatGateway: true,
+ *     nodeCidrMask: 24,
+ *     installCloudMonitor: true,
+ *     slbInternetEnabled: true,
+ *     isEnterpriseSecurityGroup: true,
+ *     workerDataDisks: [{
+ *         category: "cloud_ssd",
+ *         size: "200",
+ *         encrypted: "false",
+ *     }],
+ * });
+ * ```
+ *
+ * You could create a professional kubernetes edge cluster now.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultZones.zones?.[0]?.id,
+ *     cpuCoreCount: 4,
+ *     memorySize: 8,
+ *     kubernetesNodeRole: "Master",
+ * }));
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultEdgeKubernetes = new alicloud.cs.EdgeKubernetes("defaultEdgeKubernetes", {
+ *     workerVswitchIds: [defaultSwitch.id],
+ *     workerInstanceTypes: [defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id)],
+ *     version: "1.20.11-aliyunedge.1",
+ *     clusterSpec: "ack.pro.small",
+ *     workerNumber: 1,
+ *     password: "Test12345",
+ *     podCidr: "10.99.0.0/16",
+ *     serviceCidr: "172.16.0.0/16",
+ *     workerInstanceChargeType: "PostPaid",
+ *     newNatGateway: true,
+ *     nodeCidrMask: 24,
+ *     loadBalancerSpec: "slb.s2.small",
+ *     installCloudMonitor: true,
+ *     slbInternetEnabled: true,
+ *     isEnterpriseSecurityGroup: true,
+ *     addons: [{
+ *         name: "alibaba-log-controller",
+ *         config: "{\"IngressDashboardEnabled\":\"false\"}",
+ *     }],
+ *     workerDataDisks: [{
+ *         category: "cloud_ssd",
+ *         size: "200",
+ *         encrypted: "false",
+ *     }],
+ *     runtime: {
+ *         name: "containerd",
+ *         version: "1.5.10",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Kubernetes edge cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.

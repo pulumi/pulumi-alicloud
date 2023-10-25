@@ -19,6 +19,67 @@ import (
 //
 // > **NOTE:** Available in v1.105.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fnf"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
+//				Document: pulumi.String(`  {
+//	    "Statement": [
+//	      {
+//	        "Action": "sts:AssumeRole",
+//	        "Effect": "Allow",
+//	        "Principal": {
+//	          "Service": [
+//	            "fnf.aliyuncs.com"
+//	          ]
+//	        }
+//	      }
+//	    ],
+//	    "Version": "1"
+//	  }
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = fnf.NewFlow(ctx, "example", &fnf.FlowArgs{
+//				Definition: pulumi.String(`  version: v1beta1
+//	  type: flow
+//	  steps:
+//	    - type: pass
+//	      name: helloworld
+//
+// `),
+//
+//				RoleArn:     _default.Arn,
+//				Description: pulumi.String("Test for terraform fnf_flow."),
+//				Type:        pulumi.String("FDL"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Serverless Workflow Flow can be imported using the id, e.g.

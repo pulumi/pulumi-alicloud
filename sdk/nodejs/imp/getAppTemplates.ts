@@ -10,6 +10,22 @@ import * as utilities from "../utilities";
  * This data source provides the Imp App Templates of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.137.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.imp.getAppTemplates({});
+ * export const impAppTemplateId1 = ids.then(ids => ids.templates?.[0]?.id);
+ * const nameRegex = alicloud.imp.getAppTemplates({
+ *     nameRegex: "^my_AppTemplate",
+ * });
+ * export const impAppTemplateId2 = nameRegex.then(nameRegex => nameRegex.templates?.[0]?.id);
+ * ```
  */
 export function getAppTemplates(args?: GetAppTemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetAppTemplatesResult> {
     args = args || {};
@@ -64,6 +80,22 @@ export interface GetAppTemplatesResult {
  * This data source provides the Imp App Templates of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.137.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.imp.getAppTemplates({});
+ * export const impAppTemplateId1 = ids.then(ids => ids.templates?.[0]?.id);
+ * const nameRegex = alicloud.imp.getAppTemplates({
+ *     nameRegex: "^my_AppTemplate",
+ * });
+ * export const impAppTemplateId2 = nameRegex.then(nameRegex => nameRegex.templates?.[0]?.id);
+ * ```
  */
 export function getAppTemplatesOutput(args?: GetAppTemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppTemplatesResult> {
     return pulumi.output(args).apply((a: any) => getAppTemplates(a, opts))

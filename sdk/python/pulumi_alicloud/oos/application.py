@@ -215,6 +215,28 @@ class Application(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.145.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_application = alicloud.oos.Application("defaultApplication",
+            resource_group_id=default_resource_groups.groups[0].id,
+            application_name=name,
+            description=name,
+            tags={
+                "Created": "TF",
+            })
+        ```
+
         ## Import
 
         OOS Application can be imported using the id, e.g.
@@ -242,6 +264,28 @@ class Application(pulumi.CustomResource):
         For information about OOS Application and how to use it, see [What is Application](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/api-oos-2019-06-01-createapplication).
 
         > **NOTE:** Available since v1.145.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_application = alicloud.oos.Application("defaultApplication",
+            resource_group_id=default_resource_groups.groups[0].id,
+            application_name=name,
+            description=name,
+            tags={
+                "Created": "TF",
+            })
+        ```
 
         ## Import
 

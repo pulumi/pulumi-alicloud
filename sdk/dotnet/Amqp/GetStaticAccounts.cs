@@ -15,6 +15,32 @@ namespace Pulumi.AliCloud.Amqp
         /// This data source provides Amqp Static Account available to the user.[What is Static Account](https://help.aliyun.com/document_detail/184399.html)
         /// 
         /// &gt; **NOTE:** Available in 1.195.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Amqp.GetStaticAccounts.Invoke(new()
+        ///     {
+        ///         InstanceId = "amqp-cn-0ju2y01zs001",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudAmqpStaticAccountExampleId"] = @default.Apply(@default =&gt; @default.Apply(getStaticAccountsResult =&gt; getStaticAccountsResult.Accounts[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetStaticAccountsResult> InvokeAsync(GetStaticAccountsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetStaticAccountsResult>("alicloud:amqp/getStaticAccounts:getStaticAccounts", args ?? new GetStaticAccountsArgs(), options.WithDefaults());
@@ -23,6 +49,32 @@ namespace Pulumi.AliCloud.Amqp
         /// This data source provides Amqp Static Account available to the user.[What is Static Account](https://help.aliyun.com/document_detail/184399.html)
         /// 
         /// &gt; **NOTE:** Available in 1.195.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Amqp.GetStaticAccounts.Invoke(new()
+        ///     {
+        ///         InstanceId = "amqp-cn-0ju2y01zs001",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudAmqpStaticAccountExampleId"] = @default.Apply(@default =&gt; @default.Apply(getStaticAccountsResult =&gt; getStaticAccountsResult.Accounts[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetStaticAccountsResult> Invoke(GetStaticAccountsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetStaticAccountsResult>("alicloud:amqp/getStaticAccounts:getStaticAccounts", args ?? new GetStaticAccountsInvokeArgs(), options.WithDefaults());

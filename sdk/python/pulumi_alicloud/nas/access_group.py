@@ -293,6 +293,21 @@ class AccessGroup(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.33.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo = alicloud.nas.AccessGroup("foo",
+            access_group_name="terraform-example",
+            access_group_type="Vpc",
+            description="terraform-example",
+            file_system_type="extreme")
+        ```
+
         ## Import
 
         NAS Access Group can be imported using the id, e.g.
@@ -323,6 +338,21 @@ class AccessGroup(pulumi.CustomResource):
         For information about NAS Access Group and how to use it, see [What is NAS Access Group](https://www.alibabacloud.com/help/en/nas/developer-reference/api-nas-2017-06-26-createaccessgroup)
 
         > **NOTE:** Available in v1.33.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo = alicloud.nas.AccessGroup("foo",
+            access_group_name="terraform-example",
+            access_group_type="Vpc",
+            description="terraform-example",
+            file_system_type="extreme")
+        ```
 
         ## Import
 

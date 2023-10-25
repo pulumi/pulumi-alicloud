@@ -10,6 +10,24 @@ import * as utilities from "../utilities";
  * This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in v1.92.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.oos.getTemplates({
+ *     hasTrigger: false,
+ *     nameRegex: "test",
+ *     shareType: "Private",
+ *     tags: {
+ *         Created: "TF",
+ *         For: "template Test",
+ *     },
+ * });
+ * export const firstTemplateName = example.then(example => example.templates?.[0]?.templateName);
+ * ```
  */
 export function getTemplates(args?: GetTemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetTemplatesResult> {
     args = args || {};
@@ -133,6 +151,24 @@ export interface GetTemplatesResult {
  * This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in v1.92.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.oos.getTemplates({
+ *     hasTrigger: false,
+ *     nameRegex: "test",
+ *     shareType: "Private",
+ *     tags: {
+ *         Created: "TF",
+ *         For: "template Test",
+ *     },
+ * });
+ * export const firstTemplateName = example.then(example => example.templates?.[0]?.templateName);
+ * ```
  */
 export function getTemplatesOutput(args?: GetTemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTemplatesResult> {
     return pulumi.output(args).apply((a: any) => getTemplates(a, opts))

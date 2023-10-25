@@ -300,6 +300,52 @@ class BasicThreshold(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.183.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.get_zones(available_resource_creation="Instance")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        default_images = alicloud.ecs.get_images(owners="system",
+            name_regex="^ubuntu_[0-9]+_[0-9]+_x64*")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup",
+            description="New security group",
+            vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("defaultInstance",
+            availability_zone=default_zones.zones[0].id,
+            instance_name=name,
+            host_name=name,
+            internet_max_bandwidth_out=10,
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            security_groups=[default_security_group.id],
+            vswitch_id=default_switch.id)
+        example = alicloud.ddos.BasicThreshold("example",
+            pps=60000,
+            bps=100,
+            internet_ip=default_instance.public_ip,
+            instance_id=default_instance.id,
+            instance_type="ecs")
+        ```
+
         ## Import
 
         Ddos Basic Threshold can be imported using the id, e.g.
@@ -328,6 +374,52 @@ class BasicThreshold(pulumi.CustomResource):
         For information about Ddos Basic Threshold and how to use it, see [What is Threshold](https://www.alibabacloud.com/help/en/ddos-protection/latest/describe-ip-ddosthreshold).
 
         > **NOTE:** Available since v1.183.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.get_zones(available_resource_creation="Instance")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        default_images = alicloud.ecs.get_images(owners="system",
+            name_regex="^ubuntu_[0-9]+_[0-9]+_x64*")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup",
+            description="New security group",
+            vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("defaultInstance",
+            availability_zone=default_zones.zones[0].id,
+            instance_name=name,
+            host_name=name,
+            internet_max_bandwidth_out=10,
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            security_groups=[default_security_group.id],
+            vswitch_id=default_switch.id)
+        example = alicloud.ddos.BasicThreshold("example",
+            pps=60000,
+            bps=100,
+            internet_ip=default_instance.public_ip,
+            instance_id=default_instance.id,
+            instance_type="ecs")
+        ```
 
         ## Import
 

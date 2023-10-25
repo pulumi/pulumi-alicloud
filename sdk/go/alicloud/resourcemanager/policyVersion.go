@@ -20,6 +20,68 @@ import (
 //
 // > **NOTE:** It is not recommended to use this resource management policy version, it is recommended to directly use the policy resource to manage your policy. Please refer to the link for usage resource_manager_policy.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tfexample"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			examplePolicy, err := resourcemanager.NewPolicy(ctx, "examplePolicy", &resourcemanager.PolicyArgs{
+//				PolicyName: pulumi.String(name),
+//				PolicyDocument: pulumi.String(`		{
+//				"Statement": [{
+//					"Action": ["oss:*"],
+//					"Effect": "Allow",
+//					"Resource": ["acs:oss:*:*:*"]
+//				}],
+//				"Version": "1"
+//			}
+//
+// `),
+//
+//	})
+//	if err != nil {
+//		return err
+//	}
+//	_, err = resourcemanager.NewPolicyVersion(ctx, "examplePolicyVersion", &resourcemanager.PolicyVersionArgs{
+//		PolicyName: examplePolicy.PolicyName,
+//		PolicyDocument: pulumi.String(`		{
+//		"Statement": [{
+//			"Action": ["oss:*"],
+//			"Effect": "Allow",
+//			"Resource": ["acs:oss:*:*:myphotos"]
+//		}],
+//		"Version": "1"
+//	}
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Resource Manager Policy Version can be imported using the id, e.g.

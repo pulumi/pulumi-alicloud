@@ -9,6 +9,20 @@ import * as utilities from "../utilities";
 /**
  * The `alicloud.mongodb.getInstances` data source provides a collection of MongoDB instances available in Alicloud account.
  * Filters support regular expression for the instance name, engine or instance type.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const mongo = alicloud.mongodb.getInstances({
+ *     availabilityZone: "eu-central-1a",
+ *     instanceClass: "dds.mongo.mid",
+ *     instanceType: "replicate",
+ *     nameRegex: "dds-.+\\d+",
+ * });
+ * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
@@ -98,6 +112,20 @@ export interface GetInstancesResult {
 /**
  * The `alicloud.mongodb.getInstances` data source provides a collection of MongoDB instances available in Alicloud account.
  * Filters support regular expression for the instance name, engine or instance type.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const mongo = alicloud.mongodb.getInstances({
+ *     availabilityZone: "eu-central-1a",
+ *     instanceClass: "dds.mongo.mid",
+ *     instanceType: "replicate",
+ *     nameRegex: "dds-.+\\d+",
+ * });
+ * ```
  */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
     return pulumi.output(args).apply((a: any) => getInstances(a, opts))

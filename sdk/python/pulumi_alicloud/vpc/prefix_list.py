@@ -437,6 +437,36 @@ class PrefixList(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.182.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-testacc-example"
+        default_rg = alicloud.resourcemanager.ResourceGroup("defaultRg",
+            display_name="tf-testacc-chenyi",
+            resource_group_name=name)
+        change_rg = alicloud.resourcemanager.ResourceGroup("changeRg",
+            display_name="tf-testacc-chenyi-change",
+            resource_group_name=f"{name}1")
+        default = alicloud.vpc.PrefixList("default",
+            max_entries=50,
+            resource_group_id=default_rg.id,
+            prefix_list_description="test",
+            ip_version="IPV4",
+            prefix_list_name=name,
+            entrys=[alicloud.vpc.PrefixListEntryArgs(
+                cidr="192.168.0.0/16",
+                description="test",
+            )])
+        ```
+
         ## Import
 
         Vpc Prefix List can be imported using the id, e.g.
@@ -467,6 +497,36 @@ class PrefixList(pulumi.CustomResource):
         For information about Vpc Prefix List and how to use it, see [What is Prefix List](https://www.alibabacloud.com/help/zh/virtual-private-cloud/latest/creatvpcprefixlist).
 
         > **NOTE:** Available in v1.182.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-testacc-example"
+        default_rg = alicloud.resourcemanager.ResourceGroup("defaultRg",
+            display_name="tf-testacc-chenyi",
+            resource_group_name=name)
+        change_rg = alicloud.resourcemanager.ResourceGroup("changeRg",
+            display_name="tf-testacc-chenyi-change",
+            resource_group_name=f"{name}1")
+        default = alicloud.vpc.PrefixList("default",
+            max_entries=50,
+            resource_group_id=default_rg.id,
+            prefix_list_description="test",
+            ip_version="IPV4",
+            prefix_list_name=name,
+            entrys=[alicloud.vpc.PrefixListEntryArgs(
+                cidr="192.168.0.0/16",
+                description="test",
+            )])
+        ```
 
         ## Import
 

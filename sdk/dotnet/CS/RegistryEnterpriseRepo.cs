@@ -18,6 +18,49 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// &gt; **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var exampleRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance", new()
+    ///     {
+    ///         PaymentType = "Subscription",
+    ///         Period = 1,
+    ///         RenewPeriod = 0,
+    ///         RenewalStatus = "ManualRenewal",
+    ///         InstanceType = "Advanced",
+    ///         InstanceName = name,
+    ///     });
+    /// 
+    ///     var exampleRegistryEnterpriseNamespace = new AliCloud.CS.RegistryEnterpriseNamespace("exampleRegistryEnterpriseNamespace", new()
+    ///     {
+    ///         InstanceId = exampleRegistryEnterpriseInstance.Id,
+    ///         AutoCreate = false,
+    ///         DefaultVisibility = "PUBLIC",
+    ///     });
+    /// 
+    ///     var exampleRegistryEnterpriseRepo = new AliCloud.CS.RegistryEnterpriseRepo("exampleRegistryEnterpriseRepo", new()
+    ///     {
+    ///         InstanceId = exampleRegistryEnterpriseInstance.Id,
+    ///         Namespace = exampleRegistryEnterpriseNamespace.Name,
+    ///         Summary = "this is summary of my new repo",
+    ///         RepoType = "PUBLIC",
+    ///         Detail = "this is a public repo",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Container Registry Enterprise Edition repository can be imported using the `{instance_id}:{namespace}:{repository}`, e.g.

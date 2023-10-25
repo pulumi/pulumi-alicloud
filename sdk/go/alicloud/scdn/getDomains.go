@@ -15,6 +15,35 @@ import (
 // This data source provides the Scdn Domains of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.131.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/scdn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			nameRegex, err := scdn.GetDomains(ctx, &scdn.GetDomainsArgs{
+//				NameRegex: pulumi.StringRef("^my-Domain"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("scdnDomainId", nameRegex.Domains[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDomains(ctx *pulumi.Context, args *GetDomainsArgs, opts ...pulumi.InvokeOption) (*GetDomainsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDomainsResult

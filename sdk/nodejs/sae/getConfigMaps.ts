@@ -10,6 +10,35 @@ import * as utilities from "../utilities";
  * This data source provides the Sae Config Maps of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.130.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const configMapName = config.get("configMapName") || "examplename";
+ * const exampleNamespace = new alicloud.sae.Namespace("exampleNamespace", {
+ *     namespaceId: "cn-hangzhou:yourname",
+ *     namespaceName: "example_value",
+ *     namespaceDescription: "your_description",
+ * });
+ * const exampleConfigMap = new alicloud.sae.ConfigMap("exampleConfigMap", {
+ *     data: JSON.stringify({
+ *         "env.home": "/root",
+ *         "env.shell": "/bin/sh",
+ *     }),
+ *     namespaceId: exampleNamespace.namespaceId,
+ * });
+ * const nameRegex = alicloud.sae.getConfigMapsOutput({
+ *     namespaceId: exampleNamespace.namespaceId,
+ *     nameRegex: "^example",
+ * });
+ * export const saeConfigMapId = nameRegex.apply(nameRegex => nameRegex.maps?.[0]?.id);
+ * ```
  */
 export function getConfigMaps(args: GetConfigMapsArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigMapsResult> {
 
@@ -63,6 +92,35 @@ export interface GetConfigMapsResult {
  * This data source provides the Sae Config Maps of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.130.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const configMapName = config.get("configMapName") || "examplename";
+ * const exampleNamespace = new alicloud.sae.Namespace("exampleNamespace", {
+ *     namespaceId: "cn-hangzhou:yourname",
+ *     namespaceName: "example_value",
+ *     namespaceDescription: "your_description",
+ * });
+ * const exampleConfigMap = new alicloud.sae.ConfigMap("exampleConfigMap", {
+ *     data: JSON.stringify({
+ *         "env.home": "/root",
+ *         "env.shell": "/bin/sh",
+ *     }),
+ *     namespaceId: exampleNamespace.namespaceId,
+ * });
+ * const nameRegex = alicloud.sae.getConfigMapsOutput({
+ *     namespaceId: exampleNamespace.namespaceId,
+ *     nameRegex: "^example",
+ * });
+ * export const saeConfigMapId = nameRegex.apply(nameRegex => nameRegex.maps?.[0]?.id);
+ * ```
  */
 export function getConfigMapsOutput(args: GetConfigMapsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigMapsResult> {
     return pulumi.output(args).apply((a: any) => getConfigMaps(a, opts))

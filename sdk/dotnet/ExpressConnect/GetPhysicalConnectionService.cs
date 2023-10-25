@@ -17,6 +17,28 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// For information about Express Connect and how to use it, see [What is Express Connect](https://www.alibabacloud.com/help/doc-detail/275179.htm).
         /// 
         /// &gt; **NOTE:** Available in v1.132.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var open = AliCloud.ExpressConnect.GetPhysicalConnectionService.Invoke(new()
+        ///     {
+        ///         Enable = "On",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPhysicalConnectionServiceResult> InvokeAsync(GetPhysicalConnectionServiceArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPhysicalConnectionServiceResult>("alicloud:expressconnect/getPhysicalConnectionService:getPhysicalConnectionService", args ?? new GetPhysicalConnectionServiceArgs(), options.WithDefaults());
@@ -27,6 +49,28 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// For information about Express Connect and how to use it, see [What is Express Connect](https://www.alibabacloud.com/help/doc-detail/275179.htm).
         /// 
         /// &gt; **NOTE:** Available in v1.132.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var open = AliCloud.ExpressConnect.GetPhysicalConnectionService.Invoke(new()
+        ///     {
+        ///         Enable = "On",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetPhysicalConnectionServiceResult> Invoke(GetPhysicalConnectionServiceInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPhysicalConnectionServiceResult>("alicloud:expressconnect/getPhysicalConnectionService:getPhysicalConnectionService", args ?? new GetPhysicalConnectionServiceInvokeArgs(), options.WithDefaults());

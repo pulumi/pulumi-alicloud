@@ -84,6 +84,16 @@ def get_ack_service(enable: Optional[str] = None,
 
     > **NOTE:** Available in v1.113.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    open = alicloud.cs.get_ack_service(enable="On",
+        type="propayasgo")
+    ```
+
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
     :param str type: Types of services opened. Valid values: `propayasgo`: Container service ack Pro managed version, `edgepayasgo`: Edge container service, `gspayasgo`: Gene computing services.
@@ -113,6 +123,16 @@ def get_ack_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
     For information about Container Service (CS) and how to use it, see [What is Container Service (CS)](https://www.alibabacloud.com/help/en/product/85222.htm).
 
     > **NOTE:** Available in v1.113.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    open = alicloud.cs.get_ack_service(enable="On",
+        type="propayasgo")
+    ```
 
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.

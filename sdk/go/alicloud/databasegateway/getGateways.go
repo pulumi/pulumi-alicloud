@@ -15,6 +15,44 @@ import (
 // This data source provides the Database Gateway Gateways of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.135.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/databasegateway"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := databasegateway.GetGateways(ctx, &databasegateway.GetGatewaysArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("databaseGatewayGatewayId1", ids.Gateways[0].Id)
+//			nameRegex, err := databasegateway.GetGateways(ctx, &databasegateway.GetGatewaysArgs{
+//				NameRegex: pulumi.StringRef("^my-Gateway"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("databaseGatewayGatewayId2", nameRegex.Gateways[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetGateways(ctx *pulumi.Context, args *GetGatewaysArgs, opts ...pulumi.InvokeOption) (*GetGatewaysResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGatewaysResult

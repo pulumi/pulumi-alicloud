@@ -128,6 +128,19 @@ def get_roles(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available since v1.0.0+.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    roles_ds = alicloud.ram.get_roles(name_regex=".*test.*",
+        output_file="roles.txt",
+        policy_name="AliyunACSDefaultAccess",
+        policy_type="Custom")
+    pulumi.export("firstRoleId", roles_ds.roles[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of ram role IDs.
     :param str name_regex: A regex string to filter results by the role name.
@@ -166,6 +179,19 @@ def get_roles_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None
     This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
 
     > **NOTE:** Available since v1.0.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    roles_ds = alicloud.ram.get_roles(name_regex=".*test.*",
+        output_file="roles.txt",
+        policy_name="AliyunACSDefaultAccess",
+        policy_type="Custom")
+    pulumi.export("firstRoleId", roles_ds.roles[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of ram role IDs.

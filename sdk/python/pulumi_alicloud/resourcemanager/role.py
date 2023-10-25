@@ -277,6 +277,36 @@ class Role(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.82.0.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        default = alicloud.get_account()
+        example = alicloud.resourcemanager.Role("example",
+            role_name=name,
+            assume_role_policy_document=f\"\"\"     {{
+                  "Statement": [
+                       {{
+                            "Action": "sts:AssumeRole",
+                            "Effect": "Allow",
+                            "Principal": {{
+                                "RAM":[
+                                        "acs:ram::{default.id}:root"
+                                ]
+                            }}
+                        }}
+                  ],
+                  "Version": "1"
+             }}
+        \"\"\")
+        ```
+
         ## Import
 
         Resource Manager can be imported using the id or role_name, e.g.
@@ -303,6 +333,36 @@ class Role(pulumi.CustomResource):
         For information about Resource Manager role and how to use it, see [What is Resource Manager role](https://www.alibabacloud.com/help/en/doc-detail/111231.htm).
 
         > **NOTE:** Available since v1.82.0.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        default = alicloud.get_account()
+        example = alicloud.resourcemanager.Role("example",
+            role_name=name,
+            assume_role_policy_document=f\"\"\"     {{
+                  "Statement": [
+                       {{
+                            "Action": "sts:AssumeRole",
+                            "Effect": "Allow",
+                            "Principal": {{
+                                "RAM":[
+                                        "acs:ram::{default.id}:root"
+                                ]
+                            }}
+                        }}
+                  ],
+                  "Version": "1"
+             }}
+        \"\"\")
+        ```
 
         ## Import
 

@@ -16,6 +16,37 @@ namespace Pulumi.AliCloud.CR
     /// 
     /// &gt; **NOTE:** You need to set your registry password in Container Registry console before use this resource.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var exampleNamespace = new AliCloud.CR.Namespace("exampleNamespace", new()
+    ///     {
+    ///         AutoCreate = false,
+    ///         DefaultVisibility = "PUBLIC",
+    ///     });
+    /// 
+    ///     var exampleRepo = new AliCloud.CR.Repo("exampleRepo", new()
+    ///     {
+    ///         Namespace = exampleNamespace.Name,
+    ///         Summary = "this is summary of my new repo",
+    ///         RepoType = "PUBLIC",
+    ///         Detail = "this is a public repo",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Container Registry repository can be imported using the `namespace/repository`, e.g.

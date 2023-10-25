@@ -20,6 +20,34 @@ import (
 //
 // > **NOTE:**  Available in 1.40.0+.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.GetSnapshots(ctx, &ecs.GetSnapshotsArgs{
+//				Ids: []string{
+//					"s-123456890abcdef",
+//				},
+//				NameRegex: pulumi.StringRef("tf-testAcc-snapshot"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Argument Reference
 //
 // The following arguments are supported:

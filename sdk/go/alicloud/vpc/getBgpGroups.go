@@ -15,6 +15,44 @@ import (
 // This data source provides the Vpc Bgp Groups of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.152.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := vpc.GetBgpGroups(ctx, &vpc.GetBgpGroupsArgs{
+//				Ids: []string{
+//					"example_value",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcBgpGroupId1", ids.Groups[0].Id)
+//			nameRegex, err := vpc.GetBgpGroups(ctx, &vpc.GetBgpGroupsArgs{
+//				NameRegex: pulumi.StringRef("^my-BgpGroup"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcBgpGroupId2", nameRegex.Groups[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetBgpGroups(ctx *pulumi.Context, args *GetBgpGroupsArgs, opts ...pulumi.InvokeOption) (*GetBgpGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBgpGroupsResult

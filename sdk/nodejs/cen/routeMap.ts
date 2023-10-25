@@ -13,6 +13,78 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.82.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const sourceRegion = config.get("sourceRegion") || "cn-hangzhou";
+ * const destinationRegion = config.get("destinationRegion") || "cn-shanghai";
+ * const hz = new alicloud.Provider("hz", {region: sourceRegion});
+ * const sh = new alicloud.Provider("sh", {region: destinationRegion});
+ * const exampleHzNetwork = new alicloud.vpc.Network("exampleHzNetwork", {
+ *     vpcName: "tf_example",
+ *     cidrBlock: "192.168.0.0/16",
+ * }, {
+ *     provider: alicloud.hz,
+ * });
+ * const exampleShNetwork = new alicloud.vpc.Network("exampleShNetwork", {
+ *     vpcName: "tf_example",
+ *     cidrBlock: "172.16.0.0/12",
+ * }, {
+ *     provider: alicloud.sh,
+ * });
+ * const example = new alicloud.cen.Instance("example", {
+ *     cenInstanceName: "tf_example",
+ *     description: "an example for cen",
+ * });
+ * const exampleHzInstanceAttachment = new alicloud.cen.InstanceAttachment("exampleHzInstanceAttachment", {
+ *     instanceId: example.id,
+ *     childInstanceId: exampleHzNetwork.id,
+ *     childInstanceType: "VPC",
+ *     childInstanceRegionId: sourceRegion,
+ * });
+ * const exampleShInstanceAttachment = new alicloud.cen.InstanceAttachment("exampleShInstanceAttachment", {
+ *     instanceId: example.id,
+ *     childInstanceId: exampleShNetwork.id,
+ *     childInstanceType: "VPC",
+ *     childInstanceRegionId: destinationRegion,
+ * });
+ * const _default = new alicloud.cen.RouteMap("default", {
+ *     cenRegionId: sourceRegion,
+ *     cenId: example.id,
+ *     description: "tf_example",
+ *     priority: 1,
+ *     transmitDirection: "RegionIn",
+ *     mapResult: "Permit",
+ *     nextPriority: 1,
+ *     sourceRegionIds: [sourceRegion],
+ *     sourceInstanceIds: [exampleHzInstanceAttachment.childInstanceId],
+ *     sourceInstanceIdsReverseMatch: false,
+ *     destinationInstanceIds: [exampleShInstanceAttachment.childInstanceId],
+ *     destinationInstanceIdsReverseMatch: false,
+ *     sourceRouteTableIds: [exampleHzNetwork.routeTableId],
+ *     destinationRouteTableIds: [exampleShNetwork.routeTableId],
+ *     sourceChildInstanceTypes: ["VPC"],
+ *     destinationChildInstanceTypes: ["VPC"],
+ *     destinationCidrBlocks: [exampleShNetwork.cidrBlock],
+ *     cidrMatchMode: "Include",
+ *     routeTypes: ["System"],
+ *     matchAsns: ["65501"],
+ *     asPathMatchMode: "Include",
+ *     matchCommunitySets: ["65501:1"],
+ *     communityMatchMode: "Include",
+ *     communityOperateMode: "Additive",
+ *     operateCommunitySets: ["65501:1"],
+ *     preference: 20,
+ *     prependAsPaths: ["65501"],
+ * });
+ * ```
+ *
  * ## Import
  *
  * CEN RouteMap can be imported using the id, e.g.

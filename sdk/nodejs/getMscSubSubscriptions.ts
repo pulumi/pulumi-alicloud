@@ -10,6 +10,18 @@ import * as utilities from "./utilities";
  * This data source provides the Message Center Subscriptions of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.135.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.getMscSubSubscriptions({});
+ * export const mscSubSubscriptionId1 = _default.then(_default => _default.subscriptions?.[0]?.id);
+ * ```
  */
 export function getMscSubSubscriptions(args?: GetMscSubSubscriptionsArgs, opts?: pulumi.InvokeOptions): Promise<GetMscSubSubscriptionsResult> {
     args = args || {};
@@ -45,6 +57,18 @@ export interface GetMscSubSubscriptionsResult {
  * This data source provides the Message Center Subscriptions of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.135.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.getMscSubSubscriptions({});
+ * export const mscSubSubscriptionId1 = _default.then(_default => _default.subscriptions?.[0]?.id);
+ * ```
  */
 export function getMscSubSubscriptionsOutput(args?: GetMscSubSubscriptionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMscSubSubscriptionsResult> {
     return pulumi.output(args).apply((a: any) => getMscSubSubscriptions(a, opts))

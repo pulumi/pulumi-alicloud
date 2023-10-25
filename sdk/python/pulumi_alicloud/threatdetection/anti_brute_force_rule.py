@@ -325,6 +325,22 @@ class AntiBruteForceRule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.195.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.threatdetection.AntiBruteForceRule("default",
+            anti_brute_force_rule_name="apispec_example",
+            fail_count=80,
+            forbidden_time=360,
+            span=10,
+            uuid_lists=["032b618f-b220-4a0d-bd37-fbdc6ef58b6a"])
+        ```
+
         ## Import
 
         Threat Detection Anti Brute Force Rule can be imported using the id, e.g.
@@ -354,6 +370,22 @@ class AntiBruteForceRule(pulumi.CustomResource):
         For information about Threat Detection Anti Brute Force Rule and how to use it, see [What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createantibruteforcerule).
 
         > **NOTE:** Available since v1.195.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.threatdetection.AntiBruteForceRule("default",
+            anti_brute_force_rule_name="apispec_example",
+            fail_count=80,
+            forbidden_time=360,
+            span=10,
+            uuid_lists=["032b618f-b220-4a0d-bd37-fbdc6ef58b6a"])
+        ```
 
         ## Import
 

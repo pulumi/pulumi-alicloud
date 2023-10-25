@@ -16,6 +16,35 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// 
     /// &gt; **NOTE:** Available since v1.202.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new AliCloud.DatabaseFilesystem.AutoSnapShotPolicy("default", new()
+    ///     {
+    ///         PolicyName = "tf-example",
+    ///         RepeatWeekdays = new[]
+    ///         {
+    ///             "2",
+    ///         },
+    ///         RetentionDays = 1,
+    ///         TimePoints = new[]
+    ///         {
+    ///             "01",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Dbfs Auto Snap Shot Policy can be imported using the id, e.g.

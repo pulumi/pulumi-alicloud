@@ -10,6 +10,24 @@ import * as utilities from "../utilities";
  * This data source provides the Simple Application Server Firewall Rules of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.143.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.simpleapplicationserver.getServerFirewallRules({
+ *     instanceId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const simpleApplicationServerFirewallRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
+ * ```
  */
 export function getServerFirewallRules(args: GetServerFirewallRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetServerFirewallRulesResult> {
 
@@ -56,6 +74,24 @@ export interface GetServerFirewallRulesResult {
  * This data source provides the Simple Application Server Firewall Rules of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.143.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.simpleapplicationserver.getServerFirewallRules({
+ *     instanceId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const simpleApplicationServerFirewallRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
+ * ```
  */
 export function getServerFirewallRulesOutput(args: GetServerFirewallRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerFirewallRulesResult> {
     return pulumi.output(args).apply((a: any) => getServerFirewallRules(a, opts))

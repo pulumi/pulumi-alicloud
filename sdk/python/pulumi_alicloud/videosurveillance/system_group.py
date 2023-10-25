@@ -517,6 +517,22 @@ class SystemGroup(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.135.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.videosurveillance.SystemGroup("default",
+            group_name="your_group_name",
+            in_protocol="rtmp",
+            out_protocol="flv",
+            play_domain="your_plan_domain",
+            push_domain="your_push_domain")
+        ```
+
         ## Import
 
         Video Surveillance System Group can be imported using the id, e.g.
@@ -548,6 +564,22 @@ class SystemGroup(pulumi.CustomResource):
         For information about Video Surveillance System Group and how to use it, see [What is Group](https://help.aliyun.com/product/108765.html).
 
         > **NOTE:** Available in v1.135.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.videosurveillance.SystemGroup("default",
+            group_name="your_group_name",
+            in_protocol="rtmp",
+            out_protocol="flv",
+            play_domain="your_plan_domain",
+            push_domain="your_push_domain")
+        ```
 
         ## Import
 

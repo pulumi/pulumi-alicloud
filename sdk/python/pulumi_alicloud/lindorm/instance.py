@@ -1914,6 +1914,36 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:**  The Lindorm Instance does not support updating the specifications of multiple different engines, or the number of nodes at the same time.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        region = "cn-hangzhou"
+        zone_id = "cn-hangzhou-h"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+            zone_id=zone_id)
+        default_instance = alicloud.lindorm.Instance("defaultInstance",
+            disk_category="cloud_efficiency",
+            payment_type="PayAsYouGo",
+            zone_id=zone_id,
+            vswitch_id=default_switches.ids[0],
+            vpc_id=default_networks.ids[0],
+            instance_name=name,
+            table_engine_specification="lindorm.g.4xlarge",
+            table_engine_node_count=2,
+            instance_storage="1920")
+        ```
+
         ## Import
 
         Lindorm Instance can be imported using the id, e.g.
@@ -1982,6 +2012,36 @@ class Instance(pulumi.CustomResource):
         > **NOTE:** Available since v1.132.0.
 
         > **NOTE:**  The Lindorm Instance does not support updating the specifications of multiple different engines, or the number of nodes at the same time.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        region = "cn-hangzhou"
+        zone_id = "cn-hangzhou-h"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+            zone_id=zone_id)
+        default_instance = alicloud.lindorm.Instance("defaultInstance",
+            disk_category="cloud_efficiency",
+            payment_type="PayAsYouGo",
+            zone_id=zone_id,
+            vswitch_id=default_switches.ids[0],
+            vpc_id=default_networks.ids[0],
+            instance_name=name,
+            table_engine_specification="lindorm.g.4xlarge",
+            table_engine_node_count=2,
+            instance_storage="1920")
+        ```
 
         ## Import
 

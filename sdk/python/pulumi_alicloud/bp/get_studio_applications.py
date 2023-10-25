@@ -161,6 +161,20 @@ def get_studio_applications(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.192.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.bp.get_studio_applications(ids=["example_id"])
+    pulumi.export("bpStudioApplicationId1", ids.applications[0].id)
+    name_regex = alicloud.bp.get_studio_applications(name_regex="^my-Application")
+    pulumi.export("bpStudioApplicationId2", name_regex.applications[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Application IDs.
     :param str keyword: The keyword of the Application.
@@ -210,6 +224,20 @@ def get_studio_applications_output(ids: Optional[pulumi.Input[Optional[Sequence[
     This data source provides the Cloud Architect Design Tools (BPStudio) Applications of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.192.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.bp.get_studio_applications(ids=["example_id"])
+    pulumi.export("bpStudioApplicationId1", ids.applications[0].id)
+    name_regex = alicloud.bp.get_studio_applications(name_regex="^my-Application")
+    pulumi.export("bpStudioApplicationId2", name_regex.applications[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Application IDs.

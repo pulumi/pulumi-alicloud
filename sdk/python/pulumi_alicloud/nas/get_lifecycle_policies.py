@@ -109,6 +109,25 @@ def get_lifecycle_policies(file_system_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.153.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.nas.get_lifecycle_policies(file_system_id="example_value",
+        ids=[
+            "my-LifecyclePolicy-1",
+            "my-LifecyclePolicy-2",
+        ])
+    pulumi.export("nasLifecyclePolicyId1", ids.policies[0].id)
+    name_regex = alicloud.nas.get_lifecycle_policies(file_system_id="example_value",
+        name_regex="^my-LifecyclePolicy")
+    pulumi.export("nasLifecyclePolicyId2", name_regex.policies[0].id)
+    ```
+
 
     :param str file_system_id: The ID of the file system.
     :param Sequence[str] ids: A list of Lifecycle Policy IDs.
@@ -143,6 +162,25 @@ def get_lifecycle_policies_output(file_system_id: Optional[pulumi.Input[str]] = 
     This data source provides the Nas Lifecycle Policies of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.153.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.nas.get_lifecycle_policies(file_system_id="example_value",
+        ids=[
+            "my-LifecyclePolicy-1",
+            "my-LifecyclePolicy-2",
+        ])
+    pulumi.export("nasLifecyclePolicyId1", ids.policies[0].id)
+    name_regex = alicloud.nas.get_lifecycle_policies(file_system_id="example_value",
+        name_regex="^my-LifecyclePolicy")
+    pulumi.export("nasLifecyclePolicyId2", name_regex.policies[0].id)
+    ```
 
 
     :param str file_system_id: The ID of the file system.

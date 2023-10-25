@@ -16,6 +16,59 @@ namespace Pulumi.AliCloud.Vpn
     /// 
     /// &gt; **NOTE:** Available in v1.161.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var fooZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new()
+    ///     {
+    ///         VswitchName = "terraform-example",
+    ///         CidrBlock = "172.16.0.0/21",
+    ///         VpcId = fooNetwork.Id,
+    ///         ZoneId = fooZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var fooGateway = new AliCloud.Vpn.Gateway("fooGateway", new()
+    ///     {
+    ///         VpcId = fooNetwork.Id,
+    ///         Bandwidth = 10,
+    ///         EnableSsl = true,
+    ///         InstanceChargeType = "PrePaid",
+    ///         Description = "terraform-example",
+    ///         VswitchId = fooSwitch.Id,
+    ///     });
+    /// 
+    ///     var fooIpsecServer = new AliCloud.Vpn.IpsecServer("fooIpsecServer", new()
+    ///     {
+    ///         ClientIpPool = "10.0.0.0/24",
+    ///         IpsecServerName = "terraform-example",
+    ///         LocalSubnet = "192.168.0.0/24",
+    ///         VpnGatewayId = fooGateway.Id,
+    ///         PskEnabled = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// VPN Ipsec Server can be imported using the id, e.g.

@@ -144,6 +144,16 @@ def get_zones(available_slb_address_ip_version: Optional[str] = None,
 
     > **NOTE:** Available in v1.73.0+.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    zones_ids = alicloud.slb.get_zones(available_slb_address_ip_version="ipv4",
+        available_slb_address_type="vpc")
+    ```
+
 
     :param str available_slb_address_ip_version: Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
     :param str available_slb_address_type: Filter the results by a slb instance network type. Valid values:
@@ -189,6 +199,16 @@ def get_zones_output(available_slb_address_ip_version: Optional[pulumi.Input[Opt
     This data source provides availability zones for SLB that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 
     > **NOTE:** Available in v1.73.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    zones_ids = alicloud.slb.get_zones(available_slb_address_ip_version="ipv4",
+        available_slb_address_type="vpc")
+    ```
 
 
     :param str available_slb_address_ip_version: Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.

@@ -21,6 +21,46 @@ import (
 //
 // > **NOTE:** Only the following regions suppor. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			sagId := "sag-9bifkfaz***"
+//			if param := cfg.Get("sagId"); param != "" {
+//				sagId = param
+//			}
+//			_, err := rocketmq.NewDnatEntry(ctx, "default", &rocketmq.DnatEntryArgs{
+//				SagId:        pulumi.String(sagId),
+//				Type:         pulumi.String("Intranet"),
+//				IpProtocol:   pulumi.String("any"),
+//				ExternalIp:   pulumi.String("172.32.0.2"),
+//				ExternalPort: pulumi.String("any"),
+//				InternalIp:   pulumi.String("172.16.0.4"),
+//				InternalPort: pulumi.String("any"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // The Sag DnatEntry can be imported using the id, e.g.

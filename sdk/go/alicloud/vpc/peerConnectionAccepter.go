@@ -19,6 +19,95 @@ import (
 //
 // > **NOTE:** Available since v1.196.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			acceptingRegion := "cn-beijing"
+//			if param := cfg.Get("acceptingRegion"); param != "" {
+//				acceptingRegion = param
+//			}
+//			acceptUid := "xxxx"
+//			if param := cfg.Get("acceptUid"); param != "" {
+//				acceptUid = param
+//			}
+//			_, err := alicloud.NewProvider(ctx, "accepting", &alicloud.ProviderArgs{
+//				Region: pulumi.String(acceptingRegion),
+//				AssumeRole: &alicloud.ProviderAssumeRoleArgs{
+//					RoleArn: pulumi.String(fmt.Sprintf("acs:ram::%v:role/terraform-example-assume-role", acceptUid)),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = alicloud.NewProvider(ctx, "local", &alicloud.ProviderArgs{
+//				Region: pulumi.String("cn-hangzhou"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			localNetwork, err := vpc.NewNetwork(ctx, "localNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			}, pulumi.Provider(alicloud.Local))
+//			if err != nil {
+//				return err
+//			}
+//			acceptingNetwork, err := vpc.NewNetwork(ctx, "acceptingNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("192.168.0.0/16"),
+//			}, pulumi.Provider(alicloud.Accepting))
+//			if err != nil {
+//				return err
+//			}
+//			acceptingAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultPeerConnection, err := vpc.NewPeerConnection(ctx, "defaultPeerConnection", &vpc.PeerConnectionArgs{
+//				PeerConnectionName: pulumi.String(name),
+//				VpcId:              localNetwork.ID(),
+//				AcceptingAliUid:    *pulumi.String(acceptingAccount.Id),
+//				AcceptingRegionId:  pulumi.String(acceptingRegion),
+//				AcceptingVpcId:     acceptingNetwork.ID(),
+//				Description:        pulumi.String(name),
+//			}, pulumi.Provider(alicloud.Local))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewPeerConnectionAccepter(ctx, "defaultPeerConnectionAccepter", &vpc.PeerConnectionAccepterArgs{
+//				InstanceId: defaultPeerConnection.ID(),
+//			}, pulumi.Provider(alicloud.Accepting))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Vpc Peer Connection Accepter can be imported using the id, e.g.

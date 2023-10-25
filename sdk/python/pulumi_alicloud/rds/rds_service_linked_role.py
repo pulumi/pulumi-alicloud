@@ -158,6 +158,17 @@ class RdsServiceLinkedRole(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.189.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.rds.RdsServiceLinkedRole("default", service_name="AliyunServiceRoleForRdsPgsqlOnEcs")
+        ```
+
         ## Import
 
         RDS Service Linked Role can be imported using the id, e.g.
@@ -182,6 +193,17 @@ class RdsServiceLinkedRole(pulumi.CustomResource):
         For information about RDS Service Linked Role and how to use it, see [What is Service Linked Role.](https://www.alibabacloud.com/help/en/doc-detail/171226.htm).
 
         > **NOTE:** Available since v1.189.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.rds.RdsServiceLinkedRole("default", service_name="AliyunServiceRoleForRdsPgsqlOnEcs")
+        ```
 
         ## Import
 

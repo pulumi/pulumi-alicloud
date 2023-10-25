@@ -15,6 +15,45 @@ namespace Pulumi.AliCloud.DataWorks
         /// This data source provides the Data Works Folders of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.131.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = new AliCloud.DataWorks.Folder("default", new()
+        ///     {
+        ///         ProjectId = "xxxx",
+        ///         FolderPath = "Business Flow/tfTestAcc/folderDi",
+        ///     });
+        /// 
+        ///     var ids = AliCloud.DataWorks.GetFolders.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             @default.FolderId,
+        ///         },
+        ///         ProjectId = @default.ProjectId,
+        ///         ParentFolderPath = "Business Flow/tfTestAcc/folderDi",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataWorksFolderId1"] = ids.Apply(getFoldersResult =&gt; getFoldersResult.Folders[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetFoldersResult> InvokeAsync(GetFoldersArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFoldersResult>("alicloud:dataworks/getFolders:getFolders", args ?? new GetFoldersArgs(), options.WithDefaults());
@@ -23,6 +62,45 @@ namespace Pulumi.AliCloud.DataWorks
         /// This data source provides the Data Works Folders of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.131.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = new AliCloud.DataWorks.Folder("default", new()
+        ///     {
+        ///         ProjectId = "xxxx",
+        ///         FolderPath = "Business Flow/tfTestAcc/folderDi",
+        ///     });
+        /// 
+        ///     var ids = AliCloud.DataWorks.GetFolders.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             @default.FolderId,
+        ///         },
+        ///         ProjectId = @default.ProjectId,
+        ///         ParentFolderPath = "Business Flow/tfTestAcc/folderDi",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataWorksFolderId1"] = ids.Apply(getFoldersResult =&gt; getFoldersResult.Folders[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetFoldersResult> Invoke(GetFoldersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFoldersResult>("alicloud:dataworks/getFolders:getFolders", args ?? new GetFoldersInvokeArgs(), options.WithDefaults());

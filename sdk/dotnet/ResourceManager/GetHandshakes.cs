@@ -15,6 +15,29 @@ namespace Pulumi.AliCloud.ResourceManager
         /// This data source provides the Resource Manager Handshakes of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:**  Available in 1.86.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.ResourceManager.GetHandshakes.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstHandshakeId"] = example.Apply(getHandshakesResult =&gt; getHandshakesResult.Handshakes[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetHandshakesResult> InvokeAsync(GetHandshakesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHandshakesResult>("alicloud:resourcemanager/getHandshakes:getHandshakes", args ?? new GetHandshakesArgs(), options.WithDefaults());
@@ -23,6 +46,29 @@ namespace Pulumi.AliCloud.ResourceManager
         /// This data source provides the Resource Manager Handshakes of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:**  Available in 1.86.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.ResourceManager.GetHandshakes.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstHandshakeId"] = example.Apply(getHandshakesResult =&gt; getHandshakesResult.Handshakes[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetHandshakesResult> Invoke(GetHandshakesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHandshakesResult>("alicloud:resourcemanager/getHandshakes:getHandshakes", args ?? new GetHandshakesInvokeArgs(), options.WithDefaults());

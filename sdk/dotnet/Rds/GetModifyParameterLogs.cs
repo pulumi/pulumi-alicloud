@@ -15,6 +15,32 @@ namespace Pulumi.AliCloud.Rds
         /// This data source provides the Rds Modify Parameter Logs of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.174.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Rds.GetModifyParameterLogs.Invoke(new()
+        ///     {
+        ///         DbInstanceId = "example_value",
+        ///         EndTime = "2022-06-08T13:56Z",
+        ///         StartTime = "2022-06-04T13:56Z",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetModifyParameterLogsResult> InvokeAsync(GetModifyParameterLogsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetModifyParameterLogsResult>("alicloud:rds/getModifyParameterLogs:getModifyParameterLogs", args ?? new GetModifyParameterLogsArgs(), options.WithDefaults());
@@ -23,6 +49,32 @@ namespace Pulumi.AliCloud.Rds
         /// This data source provides the Rds Modify Parameter Logs of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.174.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Rds.GetModifyParameterLogs.Invoke(new()
+        ///     {
+        ///         DbInstanceId = "example_value",
+        ///         EndTime = "2022-06-08T13:56Z",
+        ///         StartTime = "2022-06-04T13:56Z",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetModifyParameterLogsResult> Invoke(GetModifyParameterLogsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetModifyParameterLogsResult>("alicloud:rds/getModifyParameterLogs:getModifyParameterLogs", args ?? new GetModifyParameterLogsInvokeArgs(), options.WithDefaults());

@@ -221,6 +221,18 @@ def get_class_details(class_code: Optional[str] = None,
 
     > **NOTE:** Available since v1.209.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.rds.get_class_details(class_code="mysql.n4.medium.2c",
+        commodity_code="bards",
+        engine="MySQL",
+        engine_version="8.0")
+    ```
+
 
     :param str class_code: The code of the instance type.
     :param str commodity_code: The commodity code of the instance. Valid values:
@@ -277,6 +289,18 @@ def get_class_details_output(class_code: Optional[pulumi.Input[str]] = None,
     For information on RDS class details and how to use it, please refer to [What is RDS class details](https://www.alibabacloud.com/help/zh/apsaradb-for-rds/latest/api-rds-2014-08-15-describeclassdetails).
 
     > **NOTE:** Available since v1.209.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.rds.get_class_details(class_code="mysql.n4.medium.2c",
+        commodity_code="bards",
+        engine="MySQL",
+        engine_version="8.0")
+    ```
 
 
     :param str class_code: The code of the instance type.

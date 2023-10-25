@@ -10,6 +10,22 @@ import * as utilities from "../utilities";
  * This data source provides the Global Accelerator (GA) Forwarding Rules of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.120.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.ga.getForwardingRules({
+ *     acceleratorId: "example_value",
+ *     listenerId: "example_value",
+ *     ids: ["example_value"],
+ * });
+ * export const firstGaForwardingRuleId = example.then(example => example.forwardingRules?.[0]?.id);
+ * ```
  */
 export function getForwardingRules(args: GetForwardingRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetForwardingRulesResult> {
 
@@ -68,6 +84,22 @@ export interface GetForwardingRulesResult {
  * This data source provides the Global Accelerator (GA) Forwarding Rules of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.120.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.ga.getForwardingRules({
+ *     acceleratorId: "example_value",
+ *     listenerId: "example_value",
+ *     ids: ["example_value"],
+ * });
+ * export const firstGaForwardingRuleId = example.then(example => example.forwardingRules?.[0]?.id);
+ * ```
  */
 export function getForwardingRulesOutput(args: GetForwardingRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetForwardingRulesResult> {
     return pulumi.output(args).apply((a: any) => getForwardingRules(a, opts))

@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * This data source provides available notification resources.
  *
  * > **NOTE:** Available in 1.72.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ds = alicloud.ess.getNotifications({
+ *     scalingGroupId: "scaling_group_id",
+ * });
+ * export const firstNotification = ds.then(ds => ds.notifications?.[0]?.id);
+ * ```
  */
 export function getNotifications(args: GetNotificationsArgs, opts?: pulumi.InvokeOptions): Promise<GetNotificationsResult> {
 
@@ -65,6 +77,18 @@ export interface GetNotificationsResult {
  * This data source provides available notification resources.
  *
  * > **NOTE:** Available in 1.72.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ds = alicloud.ess.getNotifications({
+ *     scalingGroupId: "scaling_group_id",
+ * });
+ * export const firstNotification = ds.then(ds => ds.notifications?.[0]?.id);
+ * ```
  */
 export function getNotificationsOutput(args: GetNotificationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNotificationsResult> {
     return pulumi.output(args).apply((a: any) => getNotifications(a, opts))

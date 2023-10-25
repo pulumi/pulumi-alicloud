@@ -16,6 +16,131 @@ namespace Pulumi.AliCloud.Nlb
     /// 
     /// &gt; **NOTE:** Available since v1.191.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var defaultZones = AliCloud.Nlb.GetZones.Invoke();
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var default1 = new AliCloud.Vpc.Switch("default1", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.1.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.Id),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultLoadBalancer = new AliCloud.Nlb.LoadBalancer("defaultLoadBalancer", new()
+    ///     {
+    ///         LoadBalancerName = name,
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///         LoadBalancerType = "Network",
+    ///         AddressType = "Internet",
+    ///         AddressIpVersion = "Ipv4",
+    ///         VpcId = defaultNetwork.Id,
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
+    ///         },
+    ///         ZoneMappings = new[]
+    ///         {
+    ///             new AliCloud.Nlb.Inputs.LoadBalancerZoneMappingArgs
+    ///             {
+    ///                 VswitchId = defaultSwitch.Id,
+    ///                 ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///             },
+    ///             new AliCloud.Nlb.Inputs.LoadBalancerZoneMappingArgs
+    ///             {
+    ///                 VswitchId = default1.Id,
+    ///                 ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.Id),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultServerGroup = new AliCloud.Nlb.ServerGroup("defaultServerGroup", new()
+    ///     {
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///         ServerGroupName = name,
+    ///         ServerGroupType = "Instance",
+    ///         VpcId = defaultNetwork.Id,
+    ///         Scheduler = "Wrr",
+    ///         Protocol = "TCP",
+    ///         ConnectionDrain = true,
+    ///         ConnectionDrainTimeout = 60,
+    ///         AddressIpVersion = "Ipv4",
+    ///         HealthCheck = new AliCloud.Nlb.Inputs.ServerGroupHealthCheckArgs
+    ///         {
+    ///             HealthCheckEnabled = true,
+    ///             HealthCheckType = "TCP",
+    ///             HealthCheckConnectPort = 0,
+    ///             HealthyThreshold = 2,
+    ///             UnhealthyThreshold = 2,
+    ///             HealthCheckConnectTimeout = 5,
+    ///             HealthCheckInterval = 10,
+    ///             HttpCheckMethod = "GET",
+    ///             HealthCheckHttpCodes = new[]
+    ///             {
+    ///                 "http_2xx",
+    ///                 "http_3xx",
+    ///                 "http_4xx",
+    ///             },
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultListener = new AliCloud.Nlb.Listener("defaultListener", new()
+    ///     {
+    ///         ListenerProtocol = "TCP",
+    ///         ListenerPort = 80,
+    ///         ListenerDescription = name,
+    ///         LoadBalancerId = defaultLoadBalancer.Id,
+    ///         ServerGroupId = defaultServerGroup.Id,
+    ///         IdleTimeout = 900,
+    ///         ProxyProtocolEnabled = true,
+    ///         SecSensorEnabled = true,
+    ///         Cps = 10000,
+    ///         Mss = 0,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// NLB Listener can be imported using the id, e.g.

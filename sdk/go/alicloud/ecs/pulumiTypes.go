@@ -5251,6 +5251,29 @@ type GetDisksDisk struct {
 	// Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
 	Status string `pulumi:"status"`
 	// A map of tags assigned to the disks. It must be in the format:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := ecs.GetDisks(ctx, &ecs.GetDisksArgs{
+	// 			Tags: map[string]interface{}{
+	// 				"tagKey1": "tagValue1",
+	// 				"tagKey2": "tagValue2",
+	// 			},
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Disk type. Possible values: `system` and `data`.
 	Type   string `pulumi:"type"`
@@ -5323,6 +5346,29 @@ type GetDisksDiskArgs struct {
 	// Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A map of tags assigned to the disks. It must be in the format:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := ecs.GetDisks(ctx, &ecs.GetDisksArgs{
+	// 			Tags: map[string]interface{}{
+	// 				"tagKey1": "tagValue1",
+	// 				"tagKey2": "tagValue2",
+	// 			},
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// Disk type. Possible values: `system` and `data`.
 	Type   pulumi.StringInput `pulumi:"type"`
@@ -5563,6 +5609,32 @@ func (o GetDisksDiskOutput) Status() pulumi.StringOutput {
 }
 
 // A map of tags assigned to the disks. It must be in the format:
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.GetDisks(ctx, &ecs.GetDisksArgs{
+//				Tags: map[string]interface{}{
+//					"tagKey1": "tagValue1",
+//					"tagKey2": "tagValue2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o GetDisksDiskOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetDisksDisk) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
@@ -14687,6 +14759,29 @@ type GetInstancesInstance struct {
 	// Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
 	Status string `pulumi:"status"`
 	// A map of tags assigned to the ECS instances. It must be in the format:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
+	// 			Tags: map[string]interface{}{
+	// 				"tagKey1": "tagValue1",
+	// 				"tagKey2": "tagValue2",
+	// 			},
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Tags map[string]interface{} `pulumi:"tags"`
 	// ID of the VPC linked to the instances.
 	VpcId string `pulumi:"vpcId"`
@@ -14749,6 +14844,29 @@ type GetInstancesInstanceArgs struct {
 	// Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A map of tags assigned to the ECS instances. It must be in the format:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
+	// 			Tags: map[string]interface{}{
+	// 				"tagKey1": "tagValue1",
+	// 				"tagKey2": "tagValue2",
+	// 			},
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// ID of the VPC linked to the instances.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
@@ -14931,6 +15049,32 @@ func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 }
 
 // A map of tags assigned to the ECS instances. It must be in the format:
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
+//				Tags: map[string]interface{}{
+//					"tagKey1": "tagValue1",
+//					"tagKey2": "tagValue2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
@@ -16575,6 +16719,29 @@ type GetSecurityGroupsGroup struct {
 	// The type of the security group.
 	SecurityGroupType string `pulumi:"securityGroupType"`
 	// A map of tags assigned to the ECS instances. It must be in the format:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := ecs.GetSecurityGroups(ctx, &ecs.GetSecurityGroupsArgs{
+	// 			Tags: map[string]interface{}{
+	// 				"tagKey1": "tagValue1",
+	// 				"tagKey2": "tagValue2",
+	// 			},
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Used to retrieve security groups that belong to the specified VPC ID.
 	VpcId string `pulumi:"vpcId"`
@@ -16607,6 +16774,29 @@ type GetSecurityGroupsGroupArgs struct {
 	// The type of the security group.
 	SecurityGroupType pulumi.StringInput `pulumi:"securityGroupType"`
 	// A map of tags assigned to the ECS instances. It must be in the format:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := ecs.GetSecurityGroups(ctx, &ecs.GetSecurityGroupsArgs{
+	// 			Tags: map[string]interface{}{
+	// 				"tagKey1": "tagValue1",
+	// 				"tagKey2": "tagValue2",
+	// 			},
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// Used to retrieve security groups that belong to the specified VPC ID.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
@@ -16717,6 +16907,32 @@ func (o GetSecurityGroupsGroupOutput) SecurityGroupType() pulumi.StringOutput {
 }
 
 // A map of tags assigned to the ECS instances. It must be in the format:
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.GetSecurityGroups(ctx, &ecs.GetSecurityGroupsArgs{
+//				Tags: map[string]interface{}{
+//					"tagKey1": "tagValue1",
+//					"tagKey2": "tagValue2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o GetSecurityGroupsGroupOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetSecurityGroupsGroup) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }

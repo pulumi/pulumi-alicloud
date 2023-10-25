@@ -12,6 +12,21 @@ import * as utilities from "../utilities";
  * For information about OTS tunnel and how to use it, see [Tunnel overview](https://www.alibabacloud.com/help/en/tablestore/latest/tunnel-service-overview).
  *
  * > **NOTE:** Available in v1.172.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const tunnelsDs = alicloud.ots.getTunnels({
+ *     instanceName: "sample-instance",
+ *     nameRegex: "sample-tunnel",
+ *     outputFile: "tunnels.txt",
+ *     tableName: "sample-table",
+ * });
+ * export const firstTunnelId = tunnelsDs.then(tunnelsDs => tunnelsDs.tunnels?.[0]?.id);
+ * ```
  */
 export function getTunnels(args: GetTunnelsArgs, opts?: pulumi.InvokeOptions): Promise<GetTunnelsResult> {
 
@@ -88,6 +103,21 @@ export interface GetTunnelsResult {
  * For information about OTS tunnel and how to use it, see [Tunnel overview](https://www.alibabacloud.com/help/en/tablestore/latest/tunnel-service-overview).
  *
  * > **NOTE:** Available in v1.172.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const tunnelsDs = alicloud.ots.getTunnels({
+ *     instanceName: "sample-instance",
+ *     nameRegex: "sample-tunnel",
+ *     outputFile: "tunnels.txt",
+ *     tableName: "sample-table",
+ * });
+ * export const firstTunnelId = tunnelsDs.then(tunnelsDs => tunnelsDs.tunnels?.[0]?.id);
+ * ```
  */
 export function getTunnelsOutput(args: GetTunnelsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTunnelsResult> {
     return pulumi.output(args).apply((a: any) => getTunnels(a, opts))

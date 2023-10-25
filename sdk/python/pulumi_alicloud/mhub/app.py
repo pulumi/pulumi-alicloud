@@ -346,6 +346,26 @@ class App(pulumi.CustomResource):
 
         > **NOTE:** At present, the resource only supports cn-shanghai region.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "example_value"
+        default_product = alicloud.mhub.Product("defaultProduct", product_name=name)
+        default_app = alicloud.mhub.App("defaultApp",
+            app_name=name,
+            product_id=default_product.id,
+            package_name="com.test.android",
+            type="Android")
+        ```
+
         ## Import
 
         MHUB App can be imported using the id, e.g.
@@ -378,6 +398,26 @@ class App(pulumi.CustomResource):
         > **NOTE:** Available in v1.138.0+.
 
         > **NOTE:** At present, the resource only supports cn-shanghai region.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "example_value"
+        default_product = alicloud.mhub.Product("defaultProduct", product_name=name)
+        default_app = alicloud.mhub.App("defaultApp",
+            app_name=name,
+            product_id=default_product.id,
+            package_name="com.test.android",
+            type="Android")
+        ```
 
         ## Import
 

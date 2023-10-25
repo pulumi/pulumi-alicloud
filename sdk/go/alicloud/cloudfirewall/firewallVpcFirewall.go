@@ -19,6 +19,71 @@ import (
 //
 // > **NOTE:** Available since v1.194.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			current, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudfirewall.NewFirewallVpcFirewall(ctx, "default", &cloudfirewall.FirewallVpcFirewallArgs{
+//				VpcFirewallName: pulumi.String("tf-example"),
+//				MemberUid:       *pulumi.String(current.Id),
+//				LocalVpc: &cloudfirewall.FirewallVpcFirewallLocalVpcArgs{
+//					VpcId:    pulumi.String("vpc-bp1d065m6hzn1xbw8ibfd"),
+//					RegionNo: pulumi.String("cn-hangzhou"),
+//					LocalVpcCidrTableLists: cloudfirewall.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArray{
+//						&cloudfirewall.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs{
+//							LocalRouteTableId: pulumi.String("vtb-bp1lj0ddg846856chpzrv"),
+//							LocalRouteEntryLists: cloudfirewall.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArray{
+//								&cloudfirewall.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs{
+//									LocalNextHopInstanceId: pulumi.String("ri-bp1uobww3aputjlwwkyrh"),
+//									LocalDestinationCidr:   pulumi.String("10.1.0.0/16"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//				PeerVpc: &cloudfirewall.FirewallVpcFirewallPeerVpcArgs{
+//					VpcId:    pulumi.String("vpc-bp1gcmm64o3caox84v0nz"),
+//					RegionNo: pulumi.String("cn-hangzhou"),
+//					PeerVpcCidrTableLists: cloudfirewall.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArray{
+//						&cloudfirewall.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs{
+//							PeerRouteTableId: pulumi.String("vtb-bp1f516f2hh4sok1ig9b5"),
+//							PeerRouteEntryLists: cloudfirewall.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArray{
+//								&cloudfirewall.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs{
+//									PeerDestinationCidr:   pulumi.String("10.0.0.0/16"),
+//									PeerNextHopInstanceId: pulumi.String("ri-bp1thhtgf6ydr2or52l3n"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//				Status: pulumi.String("open"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Cloud Firewall Vpc Firewall can be imported using the id, e.g.

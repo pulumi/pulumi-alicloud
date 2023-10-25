@@ -10,6 +10,78 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpn
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableDiskCategory = "cloud_efficiency",
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "10.1.0.0/21",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = "terraform-example",
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "10.1.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultGateway = new AliCloud.Vpn.Gateway("defaultGateway", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         Bandwidth = 10,
+    ///         InstanceChargeType = "PrePaid",
+    ///         EnableSsl = false,
+    ///         VswitchId = defaultSwitch.Id,
+    ///     });
+    /// 
+    ///     var defaultCustomerGateway = new AliCloud.Vpn.CustomerGateway("defaultCustomerGateway", new()
+    ///     {
+    ///         IpAddress = "192.168.1.1",
+    ///     });
+    /// 
+    ///     var defaultConnection = new AliCloud.Vpn.Connection("defaultConnection", new()
+    ///     {
+    ///         CustomerGatewayId = defaultCustomerGateway.Id,
+    ///         VpnGatewayId = defaultGateway.Id,
+    ///         LocalSubnets = new[]
+    ///         {
+    ///             "192.168.2.0/24",
+    ///         },
+    ///         RemoteSubnets = new[]
+    ///         {
+    ///             "192.168.3.0/24",
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultRouteEntry = new AliCloud.Vpn.RouteEntry("defaultRouteEntry", new()
+    ///     {
+    ///         VpnGatewayId = defaultGateway.Id,
+    ///         RouteDest = "10.0.0.0/24",
+    ///         NextHop = defaultConnection.Id,
+    ///         Weight = 0,
+    ///         PublishVpc = false,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// VPN route entry can be imported using the id(VpnGatewayId +":"+ NextHop +":"+ RouteDest), e.g.

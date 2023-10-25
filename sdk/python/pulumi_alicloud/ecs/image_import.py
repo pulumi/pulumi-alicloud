@@ -346,6 +346,25 @@ class ImageImport(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.69.0+.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        this = alicloud.ecs.ImageImport("this",
+            architecture="x86_64",
+            description="test import image",
+            disk_device_mappings=[alicloud.ecs.ImageImportDiskDeviceMappingArgs(
+                disk_image_size=5,
+                oss_bucket="testimportimage",
+                oss_object="root.img",
+            )],
+            image_name="test-import-image",
+            license_type="Auto",
+            os_type="linux",
+            platform="Ubuntu")
+        ```
         ## Attributes Reference0
 
          The following attributes are exported:
@@ -387,6 +406,25 @@ class ImageImport(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.69.0+.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        this = alicloud.ecs.ImageImport("this",
+            architecture="x86_64",
+            description="test import image",
+            disk_device_mappings=[alicloud.ecs.ImageImportDiskDeviceMappingArgs(
+                disk_image_size=5,
+                oss_bucket="testimportimage",
+                oss_object="root.img",
+            )],
+            image_name="test-import-image",
+            license_type="Auto",
+            os_type="linux",
+            platform="Ubuntu")
+        ```
         ## Attributes Reference0
 
          The following attributes are exported:

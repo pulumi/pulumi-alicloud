@@ -15,6 +15,46 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// This data source provides the Cloud Storage Gateway Gateway File Shares of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.144.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.CloudStorageGateway.GetGatewayFileShares.Invoke(new()
+        ///     {
+        ///         GatewayId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.CloudStorageGateway.GetGatewayFileShares.Invoke(new()
+        ///     {
+        ///         GatewayId = "example_value",
+        ///         NameRegex = "^my-GatewayFileShare",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cloudStorageGatewayGatewayFileShareId1"] = ids.Apply(getGatewayFileSharesResult =&gt; getGatewayFileSharesResult.Shares[0]?.Id),
+        ///         ["cloudStorageGatewayGatewayFileShareId2"] = nameRegex.Apply(getGatewayFileSharesResult =&gt; getGatewayFileSharesResult.Shares[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGatewayFileSharesResult> InvokeAsync(GetGatewayFileSharesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGatewayFileSharesResult>("alicloud:cloudstoragegateway/getGatewayFileShares:getGatewayFileShares", args ?? new GetGatewayFileSharesArgs(), options.WithDefaults());
@@ -23,6 +63,46 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// This data source provides the Cloud Storage Gateway Gateway File Shares of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.144.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.CloudStorageGateway.GetGatewayFileShares.Invoke(new()
+        ///     {
+        ///         GatewayId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.CloudStorageGateway.GetGatewayFileShares.Invoke(new()
+        ///     {
+        ///         GatewayId = "example_value",
+        ///         NameRegex = "^my-GatewayFileShare",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cloudStorageGatewayGatewayFileShareId1"] = ids.Apply(getGatewayFileSharesResult =&gt; getGatewayFileSharesResult.Shares[0]?.Id),
+        ///         ["cloudStorageGatewayGatewayFileShareId2"] = nameRegex.Apply(getGatewayFileSharesResult =&gt; getGatewayFileSharesResult.Shares[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetGatewayFileSharesResult> Invoke(GetGatewayFileSharesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewayFileSharesResult>("alicloud:cloudstoragegateway/getGatewayFileShares:getGatewayFileShares", args ?? new GetGatewayFileSharesInvokeArgs(), options.WithDefaults());

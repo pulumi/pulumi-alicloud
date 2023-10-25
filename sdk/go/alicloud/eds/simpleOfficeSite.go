@@ -19,6 +19,37 @@ import (
 //
 // > **NOTE:** Available since v1.140.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := eds.NewSimpleOfficeSite(ctx, "default", &eds.SimpleOfficeSiteArgs{
+//				CidrBlock:         pulumi.String("172.16.0.0/12"),
+//				DesktopAccessType: pulumi.String("Internet"),
+//				EnableAdminAccess: pulumi.Bool(true),
+//				OfficeSiteName:    pulumi.String("terraform-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ECD Simple Office Site can be imported using the id, e.g.

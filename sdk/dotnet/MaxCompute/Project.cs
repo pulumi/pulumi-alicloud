@@ -15,6 +15,31 @@ namespace Pulumi.AliCloud.MaxCompute
     /// For information about Max Compute Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/maxcompute).
     /// 
     /// &gt; **NOTE:** Available since v1.77.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var @default = new AliCloud.MaxCompute.Project("default", new()
+    ///     {
+    ///         DefaultQuota = "默认后付费Quota",
+    ///         ProjectName = name,
+    ///         Comment = name,
+    ///         ProductType = "PayAsYouGo",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:maxcompute/project:Project")]
     public partial class Project : global::Pulumi.CustomResource

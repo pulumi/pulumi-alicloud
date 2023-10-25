@@ -16,6 +16,73 @@ namespace Pulumi.AliCloud.ApiGateway
     /// 
     /// &gt; **NOTE:** Available since v1.185.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Threading.Tasks;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(async() =&gt; 
+    /// {
+    ///     var defaultLogConfigs = await AliCloud.ApiGateway.GetLogConfigs.InvokeAsync(new()
+    ///     {
+    ///         LogType = "PROVIDER",
+    ///     });
+    /// 
+    ///     var count = defaultLogConfigs.Configs.Length &gt; 0 ? 0 : 1;
+    /// 
+    ///     var defaultRandomInteger = new List&lt;Random.RandomInteger&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; count; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultRandomInteger.Add(new Random.RandomInteger($"defaultRandomInteger-{range.Value}", new()
+    ///         {
+    ///             Max = 99999,
+    ///             Min = 10000,
+    ///         }));
+    ///     }
+    ///     var exampleProject = new List&lt;AliCloud.Log.Project&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; count; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         exampleProject.Add(new AliCloud.Log.Project($"exampleProject-{range.Value}", new()
+    ///         {
+    ///             Description = "terraform-example",
+    ///         }));
+    ///     }
+    ///     var exampleStore = new List&lt;AliCloud.Log.Store&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; count; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         exampleStore.Add(new AliCloud.Log.Store($"exampleStore-{range.Value}", new()
+    ///         {
+    ///             Project = exampleProject[0].Name,
+    ///             ShardCount = 3,
+    ///             AutoSplit = true,
+    ///             MaxSplitShardCount = 60,
+    ///             AppendMeta = true,
+    ///         }));
+    ///     }
+    ///     var exampleLogConfig = new List&lt;AliCloud.ApiGateway.LogConfig&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; count; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         exampleLogConfig.Add(new AliCloud.ApiGateway.LogConfig($"exampleLogConfig-{range.Value}", new()
+    ///         {
+    ///             SlsProject = exampleProject[0].Name,
+    ///             SlsLogStore = exampleStore[0].Name,
+    ///             LogType = "PROVIDER",
+    ///         }));
+    ///     }
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Api Gateway Log Config can be imported using the id, e.g.

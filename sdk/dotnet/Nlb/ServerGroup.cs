@@ -16,6 +16,66 @@ namespace Pulumi.AliCloud.Nlb
     /// 
     /// &gt; **NOTE:** Available since v1.186.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultServerGroup = new AliCloud.Nlb.ServerGroup("defaultServerGroup", new()
+    ///     {
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///         ServerGroupName = name,
+    ///         ServerGroupType = "Instance",
+    ///         VpcId = defaultNetwork.Id,
+    ///         Scheduler = "Wrr",
+    ///         Protocol = "TCP",
+    ///         ConnectionDrain = true,
+    ///         ConnectionDrainTimeout = 60,
+    ///         AddressIpVersion = "Ipv4",
+    ///         HealthCheck = new AliCloud.Nlb.Inputs.ServerGroupHealthCheckArgs
+    ///         {
+    ///             HealthCheckEnabled = true,
+    ///             HealthCheckType = "TCP",
+    ///             HealthCheckConnectPort = 0,
+    ///             HealthyThreshold = 2,
+    ///             UnhealthyThreshold = 2,
+    ///             HealthCheckConnectTimeout = 5,
+    ///             HealthCheckInterval = 10,
+    ///             HttpCheckMethod = "GET",
+    ///             HealthCheckHttpCodes = new[]
+    ///             {
+    ///                 "http_2xx",
+    ///                 "http_3xx",
+    ///                 "http_4xx",
+    ///             },
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// NLB Server Group can be imported using the id, e.g.

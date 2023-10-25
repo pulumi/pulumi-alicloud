@@ -435,6 +435,60 @@ class Table(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.9.2.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_instance = alicloud.ots.Instance("defaultInstance",
+            description=name,
+            accessed_by="Any",
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        default_table = alicloud.ots.Table("defaultTable",
+            instance_name=default_instance.name,
+            table_name="tf_example",
+            time_to_live=-1,
+            max_version=1,
+            enable_sse=True,
+            sse_key_type="SSE_KMS_SERVICE",
+            primary_keys=[
+                alicloud.ots.TablePrimaryKeyArgs(
+                    name="pk1",
+                    type="Integer",
+                ),
+                alicloud.ots.TablePrimaryKeyArgs(
+                    name="pk2",
+                    type="String",
+                ),
+                alicloud.ots.TablePrimaryKeyArgs(
+                    name="pk3",
+                    type="Binary",
+                ),
+            ],
+            defined_columns=[
+                alicloud.ots.TableDefinedColumnArgs(
+                    name="col1",
+                    type="Integer",
+                ),
+                alicloud.ots.TableDefinedColumnArgs(
+                    name="col2",
+                    type="String",
+                ),
+                alicloud.ots.TableDefinedColumnArgs(
+                    name="col3",
+                    type="Binary",
+                ),
+            ])
+        ```
+
         ## Import
 
         OTS table can be imported using id, e.g.
@@ -468,6 +522,60 @@ class Table(pulumi.CustomResource):
         you should use resource alicloud_ots_table's new field 'instance_name' and 'table_name' to re-import this resource.
 
         > **NOTE:** Available since v1.9.2.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_instance = alicloud.ots.Instance("defaultInstance",
+            description=name,
+            accessed_by="Any",
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        default_table = alicloud.ots.Table("defaultTable",
+            instance_name=default_instance.name,
+            table_name="tf_example",
+            time_to_live=-1,
+            max_version=1,
+            enable_sse=True,
+            sse_key_type="SSE_KMS_SERVICE",
+            primary_keys=[
+                alicloud.ots.TablePrimaryKeyArgs(
+                    name="pk1",
+                    type="Integer",
+                ),
+                alicloud.ots.TablePrimaryKeyArgs(
+                    name="pk2",
+                    type="String",
+                ),
+                alicloud.ots.TablePrimaryKeyArgs(
+                    name="pk3",
+                    type="Binary",
+                ),
+            ],
+            defined_columns=[
+                alicloud.ots.TableDefinedColumnArgs(
+                    name="col1",
+                    type="Integer",
+                ),
+                alicloud.ots.TableDefinedColumnArgs(
+                    name="col2",
+                    type="String",
+                ),
+                alicloud.ots.TableDefinedColumnArgs(
+                    name="col3",
+                    type="Binary",
+                ),
+            ])
+        ```
 
         ## Import
 

@@ -10,6 +10,26 @@ import * as utilities from "../utilities";
  * This data source provides the Cen Transit Router Multicast Domains of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.195.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cen.getTransitRouterMulticastDomains({
+ *     ids: ["example_id"],
+ *     transitRouterId: "your_transit_router_id",
+ * });
+ * export const cenTransitRouterMulticastDomainId0 = ids.then(ids => ids.domains?.[0]?.id);
+ * const nameRegex = alicloud.cen.getTransitRouterMulticastDomains({
+ *     nameRegex: "^my-name",
+ *     transitRouterId: "your_transit_router_id",
+ * });
+ * export const cenTransitRouterMulticastDomainId1 = nameRegex.then(nameRegex => nameRegex.domains?.[0]?.id);
+ * ```
  */
 export function getTransitRouterMulticastDomains(args: GetTransitRouterMulticastDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterMulticastDomainsResult> {
 
@@ -90,6 +110,26 @@ export interface GetTransitRouterMulticastDomainsResult {
  * This data source provides the Cen Transit Router Multicast Domains of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.195.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cen.getTransitRouterMulticastDomains({
+ *     ids: ["example_id"],
+ *     transitRouterId: "your_transit_router_id",
+ * });
+ * export const cenTransitRouterMulticastDomainId0 = ids.then(ids => ids.domains?.[0]?.id);
+ * const nameRegex = alicloud.cen.getTransitRouterMulticastDomains({
+ *     nameRegex: "^my-name",
+ *     transitRouterId: "your_transit_router_id",
+ * });
+ * export const cenTransitRouterMulticastDomainId1 = nameRegex.then(nameRegex => nameRegex.domains?.[0]?.id);
+ * ```
  */
 export function getTransitRouterMulticastDomainsOutput(args: GetTransitRouterMulticastDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterMulticastDomainsResult> {
     return pulumi.output(args).apply((a: any) => getTransitRouterMulticastDomains(a, opts))

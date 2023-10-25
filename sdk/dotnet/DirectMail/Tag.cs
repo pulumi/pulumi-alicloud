@@ -16,6 +16,28 @@ namespace Pulumi.AliCloud.DirectMail
     /// 
     /// &gt; **NOTE:** Available since v1.144.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "example";
+    ///     var example = new AliCloud.DirectMail.Tag("example", new()
+    ///     {
+    ///         TagName = name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Direct Mail Tag can be imported using the id, e.g.

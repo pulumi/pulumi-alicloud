@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides Threat Detection Honeypot Preset available to the user.
  *
  * > **NOTE:** Available in 1.195.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.threatdetection.getHoneypotPresets({
+ *     ids: [alicloud_threat_detection_honeypot_preset["default"].id],
+ *     honeypotImageName: "shiro",
+ *     nodeId: "example_value",
+ *     presetName: "apiapec_test",
+ * });
+ * export const alicloudThreatDetectionHoneypotPresetExampleId = _default.then(_default => _default.presets?.[0]?.id);
+ * ```
  */
 export function getHoneypotPresets(args?: GetHoneypotPresetsArgs, opts?: pulumi.InvokeOptions): Promise<GetHoneypotPresetsResult> {
     args = args || {};
@@ -105,6 +120,21 @@ export interface GetHoneypotPresetsResult {
  * This data source provides Threat Detection Honeypot Preset available to the user.
  *
  * > **NOTE:** Available in 1.195.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.threatdetection.getHoneypotPresets({
+ *     ids: [alicloud_threat_detection_honeypot_preset["default"].id],
+ *     honeypotImageName: "shiro",
+ *     nodeId: "example_value",
+ *     presetName: "apiapec_test",
+ * });
+ * export const alicloudThreatDetectionHoneypotPresetExampleId = _default.then(_default => _default.presets?.[0]?.id);
+ * ```
  */
 export function getHoneypotPresetsOutput(args?: GetHoneypotPresetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHoneypotPresetsResult> {
     return pulumi.output(args).apply((a: any) => getHoneypotPresets(a, opts))

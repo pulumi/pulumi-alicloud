@@ -166,6 +166,57 @@ class ShardingNetworkPublicAddress(pulumi.CustomResource):
 
         > **NOTE:** This operation supports sharded cluster instances only.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_zones = alicloud.mongodb.get_zones()
+        index = len(default_zones.zones) - 1
+        zone_id = default_zones.zones[index].id
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.17.3.0/24")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="172.17.3.0/24",
+            vpc_id=default_network.id,
+            zone_id=zone_id)
+        default_sharding_instance = alicloud.mongodb.ShardingInstance("defaultShardingInstance",
+            zone_id=zone_id,
+            vswitch_id=default_switch.id,
+            engine_version="4.2",
+            shard_lists=[
+                alicloud.mongodb.ShardingInstanceShardListArgs(
+                    node_class="dds.shard.mid",
+                    node_storage=10,
+                ),
+                alicloud.mongodb.ShardingInstanceShardListArgs(
+                    node_class="dds.shard.standard",
+                    node_storage=20,
+                    readonly_replicas=1,
+                ),
+            ],
+            mongo_lists=[
+                alicloud.mongodb.ShardingInstanceMongoListArgs(
+                    node_class="dds.mongos.mid",
+                ),
+                alicloud.mongodb.ShardingInstanceMongoListArgs(
+                    node_class="dds.mongos.mid",
+                ),
+            ])
+        example = alicloud.mongodb.ShardingNetworkPublicAddress("example",
+            db_instance_id=default_sharding_instance.id,
+            node_id=default_sharding_instance.mongo_lists[0].node_id)
+        ```
+
         ## Import
 
         MongoDB Sharding Network Public Address can be imported using the id, e.g.
@@ -193,6 +244,57 @@ class ShardingNetworkPublicAddress(pulumi.CustomResource):
         > **NOTE:** Available since v1.149.0.
 
         > **NOTE:** This operation supports sharded cluster instances only.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_zones = alicloud.mongodb.get_zones()
+        index = len(default_zones.zones) - 1
+        zone_id = default_zones.zones[index].id
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.17.3.0/24")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="172.17.3.0/24",
+            vpc_id=default_network.id,
+            zone_id=zone_id)
+        default_sharding_instance = alicloud.mongodb.ShardingInstance("defaultShardingInstance",
+            zone_id=zone_id,
+            vswitch_id=default_switch.id,
+            engine_version="4.2",
+            shard_lists=[
+                alicloud.mongodb.ShardingInstanceShardListArgs(
+                    node_class="dds.shard.mid",
+                    node_storage=10,
+                ),
+                alicloud.mongodb.ShardingInstanceShardListArgs(
+                    node_class="dds.shard.standard",
+                    node_storage=20,
+                    readonly_replicas=1,
+                ),
+            ],
+            mongo_lists=[
+                alicloud.mongodb.ShardingInstanceMongoListArgs(
+                    node_class="dds.mongos.mid",
+                ),
+                alicloud.mongodb.ShardingInstanceMongoListArgs(
+                    node_class="dds.mongos.mid",
+                ),
+            ])
+        example = alicloud.mongodb.ShardingNetworkPublicAddress("example",
+            db_instance_id=default_sharding_instance.id,
+            node_id=default_sharding_instance.mongo_lists[0].node_id)
+        ```
 
         ## Import
 

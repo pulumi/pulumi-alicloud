@@ -11,6 +11,17 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.200.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.wafv3.Instance("default", {});
+ * ```
+ *
  * ## Import
  *
  * Wafv3 Instance can be imported using the id, e.g.

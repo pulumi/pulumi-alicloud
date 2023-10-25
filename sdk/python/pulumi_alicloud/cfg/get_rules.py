@@ -175,6 +175,17 @@ def get_rules(config_rule_state: Optional[str] = None,
 
     > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cfg.get_rules(ids=["cr-ed4bad756057********"],
+        name_regex="tftest")
+    pulumi.export("firstConfigRuleId", example.rules[0].id)
+    ```
+
 
     :param str config_rule_state: Field `config_rule_state` has been deprecated from provider version 1.124.1. New field `status` instead.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -227,6 +238,17 @@ def get_rules_output(config_rule_state: Optional[pulumi.Input[Optional[str]]] = 
     > **NOTE:**  Available in 1.99.0+.
 
     > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cfg.get_rules(ids=["cr-ed4bad756057********"],
+        name_regex="tftest")
+    pulumi.export("firstConfigRuleId", example.rules[0].id)
+    ```
 
 
     :param str config_rule_state: Field `config_rule_state` has been deprecated from provider version 1.124.1. New field `status` instead.

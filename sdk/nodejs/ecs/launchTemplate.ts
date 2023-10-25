@@ -13,6 +13,67 @@ import * as utilities from "../utilities";
  *
  * > **DEPRECATED:**  This resource  has been deprecated from version `1.120.0`. Please use new resource alicloud_ecs_launch_template.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const images = alicloud.ecs.getImages({
+ *     owners: "system",
+ * });
+ * const instances = alicloud.ecs.getInstances({});
+ * const template = new alicloud.ecs.LaunchTemplate("template", {
+ *     description: "test1",
+ *     imageId: images.then(images => images.images?.[0]?.id),
+ *     hostName: "tf-test-host",
+ *     instanceChargeType: "PrePaid",
+ *     instanceName: "tf-instance-name",
+ *     instanceType: instances.then(instances => instances.instances?.[0]?.instanceType),
+ *     internetChargeType: "PayByBandwidth",
+ *     internetMaxBandwidthIn: 5,
+ *     internetMaxBandwidthOut: 0,
+ *     ioOptimized: "none",
+ *     keyPairName: "test-key-pair",
+ *     ramRoleName: "xxxxx",
+ *     networkType: "vpc",
+ *     securityEnhancementStrategy: "Active",
+ *     spotPriceLimit: 5,
+ *     spotStrategy: "SpotWithPriceLimit",
+ *     securityGroupId: "sg-zxcvj0lasdf102350asdf9a",
+ *     systemDiskCategory: "cloud_ssd",
+ *     systemDiskDescription: "test disk",
+ *     systemDiskName: "hello",
+ *     systemDiskSize: 40,
+ *     resourceGroupId: "rg-zkdfjahg9zxncv0",
+ *     userdata: "xxxxxxxxxxxxxx",
+ *     vswitchId: "sw-ljkngaksdjfj0nnasdf",
+ *     vpcId: "vpc-asdfnbg0as8dfk1nb2",
+ *     zoneId: "beijing-a",
+ *     tags: {
+ *         tag1: "hello",
+ *         tag2: "world",
+ *     },
+ *     networkInterfaces: {
+ *         name: "eth0",
+ *         description: "hello1",
+ *         primaryIp: "10.0.0.2",
+ *         securityGroupId: "xxxx",
+ *         vswitchId: "xxxxxxx",
+ *     },
+ *     dataDisks: [
+ *         {
+ *             name: "disk1",
+ *             description: "test1",
+ *         },
+ *         {
+ *             name: "disk2",
+ *             description: "test2",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Launch Template can be imported using the id, e.g.

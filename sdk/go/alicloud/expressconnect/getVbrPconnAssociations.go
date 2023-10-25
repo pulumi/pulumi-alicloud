@@ -15,6 +15,36 @@ import (
 // This data source provides Express Connect Vbr Pconn Association available to the user.
 //
 // > **NOTE:** Available in 1.196.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := expressconnect.GetVbrPconnAssociations(ctx, &expressconnect.GetVbrPconnAssociationsArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//				VbrId: pulumi.StringRef(alicloud_express_connect_vbr_pconn_association.Default.Vbr_id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudExpressConnectVbrPconnAssociationExampleId", _default.Associations[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetVbrPconnAssociations(ctx *pulumi.Context, args *GetVbrPconnAssociationsArgs, opts ...pulumi.InvokeOption) (*GetVbrPconnAssociationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVbrPconnAssociationsResult

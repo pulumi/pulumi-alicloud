@@ -15,6 +15,35 @@ namespace Pulumi.AliCloud.Ecs
         /// This data source provides Ecs Elasticity Assurance available to the user.
         /// 
         /// &gt; **NOTE:** Available in 1.196.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Ecs.GetElasticityAssurances.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             alicloud_ecs_elasticity_assurance.Default.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudEcsElasticityAssuranceExampleId"] = @default.Apply(@default =&gt; @default.Apply(getElasticityAssurancesResult =&gt; getElasticityAssurancesResult.Assurances[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetElasticityAssurancesResult> InvokeAsync(GetElasticityAssurancesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetElasticityAssurancesResult>("alicloud:ecs/getElasticityAssurances:getElasticityAssurances", args ?? new GetElasticityAssurancesArgs(), options.WithDefaults());
@@ -23,6 +52,35 @@ namespace Pulumi.AliCloud.Ecs
         /// This data source provides Ecs Elasticity Assurance available to the user.
         /// 
         /// &gt; **NOTE:** Available in 1.196.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Ecs.GetElasticityAssurances.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             alicloud_ecs_elasticity_assurance.Default.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudEcsElasticityAssuranceExampleId"] = @default.Apply(@default =&gt; @default.Apply(getElasticityAssurancesResult =&gt; getElasticityAssurancesResult.Assurances[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetElasticityAssurancesResult> Invoke(GetElasticityAssurancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetElasticityAssurancesResult>("alicloud:ecs/getElasticityAssurances:getElasticityAssurances", args ?? new GetElasticityAssurancesInvokeArgs(), options.WithDefaults());

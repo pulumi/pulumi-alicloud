@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * This data source provides the Cms Namespaces of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.171.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cms.getNamespaces({
+ *     ids: ["example_id"],
+ * });
+ * export const cmsNamespaceId1 = ids.then(ids => ids.namespaces?.[0]?.id);
+ * ```
  */
 export function getNamespaces(args?: GetNamespacesArgs, opts?: pulumi.InvokeOptions): Promise<GetNamespacesResult> {
     args = args || {};
@@ -63,6 +77,20 @@ export interface GetNamespacesResult {
  * This data source provides the Cms Namespaces of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.171.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cms.getNamespaces({
+ *     ids: ["example_id"],
+ * });
+ * export const cmsNamespaceId1 = ids.then(ids => ids.namespaces?.[0]?.id);
+ * ```
  */
 export function getNamespacesOutput(args?: GetNamespacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNamespacesResult> {
     return pulumi.output(args).apply((a: any) => getNamespaces(a, opts))

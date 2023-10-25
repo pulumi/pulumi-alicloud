@@ -16,6 +16,46 @@ namespace Pulumi.AliCloud.Bp
     /// 
     /// &gt; **NOTE:** Available in v1.192.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new AliCloud.Bp.StudioApplication("default", new()
+    ///     {
+    ///         ApplicationName = "example_value",
+    ///         AreaId = "example_value",
+    ///         Configuration = 
+    ///         {
+    ///             { "enableMonitor", "1" },
+    ///         },
+    ///         Instances = new[]
+    ///         {
+    ///             new AliCloud.Bp.Inputs.StudioApplicationInstanceArgs
+    ///             {
+    ///                 Id = "example_value",
+    ///                 NodeName = "example_value",
+    ///                 NodeType = "ecs",
+    ///             },
+    ///         },
+    ///         ResourceGroupId = "example_value",
+    ///         TemplateId = "example_value",
+    ///         Variables = 
+    ///         {
+    ///             { "test", "1" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Cloud Architect Design Tools Application can be imported using the id, e.g.

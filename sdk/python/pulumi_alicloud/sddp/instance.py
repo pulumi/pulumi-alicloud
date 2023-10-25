@@ -757,6 +757,25 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** The Data Security Center Instance is not support in the international site.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.sddp.Instance("default",
+            dataphin="yes",
+            payment_type="Subscription",
+            period=1,
+            sd_cbool="yes",
+            sdc="3",
+            sddp_version="version_company",
+            ud_cbool="yes",
+            udc="2000")
+        ```
+
         ## Import
 
         Data Security Center Instance can be imported using the id, e.g.
@@ -796,6 +815,25 @@ class Instance(pulumi.CustomResource):
         > **NOTE:** Available in v1.136.0+.
 
         > **NOTE:** The Data Security Center Instance is not support in the international site.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.sddp.Instance("default",
+            dataphin="yes",
+            payment_type="Subscription",
+            period=1,
+            sd_cbool="yes",
+            sdc="3",
+            sddp_version="version_company",
+            ud_cbool="yes",
+            udc="2000")
+        ```
 
         ## Import
 

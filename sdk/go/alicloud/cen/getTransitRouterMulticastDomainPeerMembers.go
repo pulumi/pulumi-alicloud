@@ -15,6 +15,35 @@ import (
 // This data source provides Cen Transit Router Multicast Domain Peer Member available to the user. [What is Transit Router Multicast Domain Peer Member](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupmembers)
 //
 // > **NOTE:** Available since v1.195.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := cen.GetTransitRouterMulticastDomainPeerMembers(ctx, &cen.GetTransitRouterMulticastDomainPeerMembersArgs{
+//				TransitRouterMulticastDomainId: "tr-mcast-domain-2d9oq455uk533zfrxx",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudCenTransitRouterMulticastDomainPeerMemberExampleId", _default.Members[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetTransitRouterMulticastDomainPeerMembers(ctx *pulumi.Context, args *GetTransitRouterMulticastDomainPeerMembersArgs, opts ...pulumi.InvokeOption) (*GetTransitRouterMulticastDomainPeerMembersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTransitRouterMulticastDomainPeerMembersResult

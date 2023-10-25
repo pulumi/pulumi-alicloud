@@ -16,6 +16,61 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// &gt; **NOTE:** Available since v1.188.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var examplePrefixList = new AliCloud.Vpc.PrefixList("examplePrefixList", new()
+    ///     {
+    ///         Entrys = new[]
+    ///         {
+    ///             new AliCloud.Vpc.Inputs.PrefixListEntryArgs
+    ///             {
+    ///                 Cidr = "192.168.0.0/16",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
+    ///     {
+    ///         CenInstanceName = "tf_example",
+    ///         Description = "an example for cen",
+    ///     });
+    /// 
+    ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("exampleTransitRouter", new()
+    ///     {
+    ///         TransitRouterName = "tf_example",
+    ///         CenId = exampleInstance.Id,
+    ///     });
+    /// 
+    ///     var exampleTransitRouterRouteTable = new AliCloud.Cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", new()
+    ///     {
+    ///         TransitRouterId = exampleTransitRouter.TransitRouterId,
+    ///     });
+    /// 
+    ///     var exampleTransitRouterPrefixListAssociation = new AliCloud.Cen.TransitRouterPrefixListAssociation("exampleTransitRouterPrefixListAssociation", new()
+    ///     {
+    ///         PrefixListId = examplePrefixList.Id,
+    ///         TransitRouterId = exampleTransitRouter.TransitRouterId,
+    ///         TransitRouterTableId = exampleTransitRouterRouteTable.TransitRouterRouteTableId,
+    ///         NextHop = "BlackHole",
+    ///         NextHopType = "BlackHole",
+    ///         OwnerUid = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Cloud Enterprise Network (CEN) Transit Router Prefix List Association can be imported using the id, e.g.

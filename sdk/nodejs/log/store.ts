@@ -11,6 +11,65 @@ import * as utilities from "../utilities";
  * and each project can create multiple Logstores. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48874.htm)
  *
  * > **NOTE:** Available since v1.0.0.
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const exampleProject = new alicloud.log.Project("exampleProject", {description: "terraform-example"});
+ * const exampleStore = new alicloud.log.Store("exampleStore", {
+ *     project: exampleProject.name,
+ *     shardCount: 3,
+ *     autoSplit: true,
+ *     maxSplitShardCount: 60,
+ *     appendMeta: true,
+ * });
+ * ```
+ *
+ * Encrypt Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const config = new pulumi.Config();
+ * const region = config.get("region") || "cn-hangzhou";
+ * const exampleAccount = alicloud.getAccount({});
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const exampleKey = new alicloud.kms.Key("exampleKey", {
+ *     description: "terraform-example",
+ *     pendingWindowInDays: 7,
+ *     status: "Enabled",
+ * });
+ * const exampleProject = new alicloud.log.Project("exampleProject", {description: "terraform-example"});
+ * const exampleStore = new alicloud.log.Store("exampleStore", {
+ *     project: exampleProject.name,
+ *     shardCount: 1,
+ *     autoSplit: true,
+ *     maxSplitShardCount: 60,
+ *     encryptConf: {
+ *         enable: true,
+ *         encryptType: "default",
+ *         userCmkInfo: {
+ *             cmkKeyId: exampleKey.id,
+ *             arn: exampleAccount.then(exampleAccount => `acs:ram::${exampleAccount.id}:role/aliyunlogdefaultrole`),
+ *             regionId: region,
+ *         },
+ *     },
+ * });
+ * ```
  * ## Module Support
  *
  * You can use the existing sls module

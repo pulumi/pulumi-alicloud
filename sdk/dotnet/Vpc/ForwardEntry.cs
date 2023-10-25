@@ -12,6 +12,72 @@ namespace Pulumi.AliCloud.Vpc
     /// <summary>
     /// Provides a forward resource.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "forward-entry-example-name";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/21",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var defaultNatGateway = new AliCloud.Vpc.NatGateway("defaultNatGateway", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         InternetChargeType = "PayByLcu",
+    ///         NatGatewayName = name,
+    ///         NatType = "Enhanced",
+    ///         VswitchId = defaultSwitch.Id,
+    ///     });
+    /// 
+    ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("defaultEipAddress", new()
+    ///     {
+    ///         AddressName = name,
+    ///     });
+    /// 
+    ///     var defaultEipAssociation = new AliCloud.Ecs.EipAssociation("defaultEipAssociation", new()
+    ///     {
+    ///         AllocationId = defaultEipAddress.Id,
+    ///         InstanceId = defaultNatGateway.Id,
+    ///     });
+    /// 
+    ///     var defaultForwardEntry = new AliCloud.Vpc.ForwardEntry("defaultForwardEntry", new()
+    ///     {
+    ///         ForwardTableId = defaultNatGateway.ForwardTableIds,
+    ///         ExternalIp = defaultEipAddress.IpAddress,
+    ///         ExternalPort = "80",
+    ///         IpProtocol = "tcp",
+    ///         InternalIp = "172.16.0.3",
+    ///         InternalPort = "8080",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Forward Entry can be imported using the id, e.g.

@@ -8,6 +8,16 @@ import * as utilities from "../utilities";
  * > **DEPRECATED:**  This resource  has been deprecated from version `1.84.0`. Please use new resource alicloud_alidns_domain_group.
  *
  * Provides a DNS Group resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * // Add a new Domain group.
+ * const group = new alicloud.dns.Group("group", {});
+ * ```
  */
 export class Group extends pulumi.CustomResource {
     /**

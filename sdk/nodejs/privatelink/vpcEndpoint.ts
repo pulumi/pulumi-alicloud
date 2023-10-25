@@ -11,6 +11,34 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.109.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const exampleVpcEndpointService = new alicloud.privatelink.VpcEndpointService("exampleVpcEndpointService", {
+ *     serviceDescription: name,
+ *     connectBandwidth: 103,
+ *     autoAcceptConnection: false,
+ * });
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.0.0.0/8",
+ * });
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("exampleSecurityGroup", {vpcId: exampleNetwork.id});
+ * const exampleVpcEndpoint = new alicloud.privatelink.VpcEndpoint("exampleVpcEndpoint", {
+ *     serviceId: exampleVpcEndpointService.id,
+ *     securityGroupIds: [exampleSecurityGroup.id],
+ *     vpcId: exampleNetwork.id,
+ *     vpcEndpointName: name,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Private Link Vpc Endpoint can be imported using the id, e.g.

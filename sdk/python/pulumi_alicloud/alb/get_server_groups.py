@@ -187,6 +187,20 @@ def get_server_groups(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available since v1.131.0.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.alb.get_server_groups()
+    pulumi.export("albServerGroupId1", ids.groups[0].id)
+    name_regex = alicloud.alb.get_server_groups(name_regex="^my-ServerGroup")
+    pulumi.export("albServerGroupId2", name_regex.groups[0].id)
+    ```
+
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Server Group IDs.
@@ -245,6 +259,20 @@ def get_server_groups_output(enable_details: Optional[pulumi.Input[Optional[bool
     This data source provides the Alb Server Groups of the current Alibaba Cloud user.
 
     > **NOTE:** Available since v1.131.0.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.alb.get_server_groups()
+    pulumi.export("albServerGroupId1", ids.groups[0].id)
+    name_regex = alicloud.alb.get_server_groups(name_regex="^my-ServerGroup")
+    pulumi.export("albServerGroupId2", name_regex.groups[0].id)
+    ```
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

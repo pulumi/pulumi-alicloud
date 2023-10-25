@@ -11,6 +11,36 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.132.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const domestic = new alicloud.expressconnect.PhysicalConnection("domestic", {
+ *     accessPointId: "ap-cn-hangzhou-yh-B",
+ *     bandwidth: "100",
+ *     description: "my domestic connection",
+ *     lineOperator: "CT",
+ *     peerLocation: "example_value",
+ *     physicalConnectionName: "example_value",
+ *     portType: "1000Base-LX",
+ *     type: "VPC",
+ * });
+ * const international = new alicloud.expressconnect.PhysicalConnection("international", {
+ *     accessPointId: "ap-sg-singpore-A",
+ *     bandwidth: "100",
+ *     description: "my domestic connection",
+ *     lineOperator: "Other",
+ *     peerLocation: "example_value",
+ *     physicalConnectionName: "example_value",
+ *     portType: "1000Base-LX",
+ *     type: "VPC",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Express Connect Physical Connection can be imported using the id, e.g.

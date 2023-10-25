@@ -16,6 +16,67 @@ namespace Pulumi.AliCloud.Waf
     /// 
     /// &gt; **NOTE:** Available in v1.141.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultInstances = AliCloud.Waf.GetInstances.Invoke();
+    /// 
+    ///     var defaultDomain = new AliCloud.Waf.Domain("defaultDomain", new()
+    ///     {
+    ///         DomainName = "you domain",
+    ///         InstanceId = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
+    ///         IsAccessProduct = "On",
+    ///         SourceIps = new[]
+    ///         {
+    ///             "1.1.1.1",
+    ///         },
+    ///         ClusterType = "PhysicalCluster",
+    ///         Http2Ports = new[]
+    ///         {
+    ///             "443",
+    ///         },
+    ///         HttpPorts = new[]
+    ///         {
+    ///             "80",
+    ///         },
+    ///         HttpsPorts = new[]
+    ///         {
+    ///             "443",
+    ///         },
+    ///         HttpToUserIp = "Off",
+    ///         HttpsRedirect = "Off",
+    ///         LoadBalancing = "IpHash",
+    ///         LogHeaders = new[]
+    ///         {
+    ///             new AliCloud.Waf.Inputs.DomainLogHeaderArgs
+    ///             {
+    ///                 Key = "foo",
+    ///                 Value = "http",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultProtectionModule = new AliCloud.Waf.ProtectionModule("defaultProtectionModule", new()
+    ///     {
+    ///         InstanceId = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
+    ///         Domain = defaultDomain.DomainName,
+    ///         DefenseType = "ac_cc",
+    ///         Mode = 0,
+    ///         Status = 0,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Web Application Firewall(WAF) Protection Module can be imported using the id, e.g.

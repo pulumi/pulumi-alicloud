@@ -14,6 +14,36 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// For information about VPC Route Table and how to use it, see [What is Route Table](https://www.alibabacloud.com/help/doc-detail/87057.htm).
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultVpc = new AliCloud.Vpc.Network("defaultVpc", new()
+    ///     {
+    ///         VpcName = name,
+    ///     });
+    /// 
+    ///     var @default = new AliCloud.Vpc.RouteTable("default", new()
+    ///     {
+    ///         Description = "test-description",
+    ///         VpcId = defaultVpc.Id,
+    ///         RouteTableName = name,
+    ///         AssociateType = "VSwitch",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// VPC Route Table can be imported using the id, e.g.

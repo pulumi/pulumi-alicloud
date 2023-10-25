@@ -15,6 +15,59 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** This operation supports sharded cluster instances only.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultZones = alicloud.mongodb.getZones({});
+ * const index = defaultZones.then(defaultZones => defaultZones.zones).length.then(length => length - 1);
+ * const zoneId = defaultZones.then(defaultZones => defaultZones.zones[index].id);
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: zoneId,
+ * });
+ * const defaultShardingInstance = new alicloud.mongodb.ShardingInstance("defaultShardingInstance", {
+ *     zoneId: zoneId,
+ *     vswitchId: defaultSwitch.id,
+ *     engineVersion: "4.2",
+ *     shardLists: [
+ *         {
+ *             nodeClass: "dds.shard.mid",
+ *             nodeStorage: 10,
+ *         },
+ *         {
+ *             nodeClass: "dds.shard.standard",
+ *             nodeStorage: 20,
+ *             readonlyReplicas: 1,
+ *         },
+ *     ],
+ *     mongoLists: [
+ *         {
+ *             nodeClass: "dds.mongos.mid",
+ *         },
+ *         {
+ *             nodeClass: "dds.mongos.mid",
+ *         },
+ *     ],
+ * });
+ * const example = new alicloud.mongodb.ShardingNetworkPublicAddress("example", {
+ *     dbInstanceId: defaultShardingInstance.id,
+ *     nodeId: defaultShardingInstance.mongoLists.apply(mongoLists => mongoLists[0].nodeId),
+ * });
+ * ```
+ *
  * ## Import
  *
  * MongoDB Sharding Network Public Address can be imported using the id, e.g.

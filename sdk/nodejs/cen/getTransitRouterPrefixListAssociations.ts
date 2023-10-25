@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides the Cen Transit Router Prefix List Associations of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.188.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.cen.getTransitRouterPrefixListAssociations({
+ *     transitRouterId: "tr-6ehx7q2jze8ch5ji0****",
+ *     transitRouterTableId: "vtb-6ehgc262hr170qgyc****",
+ * });
+ * export const cenTransitRouterPrefixListAssociationId = _default.then(_default => _default.associations?.[0]?.id);
+ * ```
  */
 export function getTransitRouterPrefixListAssociations(args: GetTransitRouterPrefixListAssociationsArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterPrefixListAssociationsResult> {
 
@@ -86,6 +101,21 @@ export interface GetTransitRouterPrefixListAssociationsResult {
  * This data source provides the Cen Transit Router Prefix List Associations of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.188.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.cen.getTransitRouterPrefixListAssociations({
+ *     transitRouterId: "tr-6ehx7q2jze8ch5ji0****",
+ *     transitRouterTableId: "vtb-6ehgc262hr170qgyc****",
+ * });
+ * export const cenTransitRouterPrefixListAssociationId = _default.then(_default => _default.associations?.[0]?.id);
+ * ```
  */
 export function getTransitRouterPrefixListAssociationsOutput(args: GetTransitRouterPrefixListAssociationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterPrefixListAssociationsResult> {
     return pulumi.output(args).apply((a: any) => getTransitRouterPrefixListAssociations(a, opts))

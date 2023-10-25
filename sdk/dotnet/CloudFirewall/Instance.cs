@@ -16,6 +16,32 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// 
     /// &gt; **NOTE:** Available since v1.139.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AliCloud.CloudFirewall.Instance("example", new()
+    ///     {
+    ///         BandWidth = 10,
+    ///         CfwLog = true,
+    ///         CfwLogStorage = 1000,
+    ///         IpNumber = 20,
+    ///         PaymentType = "Subscription",
+    ///         Period = 1,
+    ///         Spec = "premium_version",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Cloud Firewall Instance can be imported using the id, e.g.

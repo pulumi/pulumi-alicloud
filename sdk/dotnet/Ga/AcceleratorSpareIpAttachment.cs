@@ -16,6 +16,55 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// &gt; **NOTE:** Available since v1.167.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultAccelerator = new AliCloud.Ga.Accelerator("defaultAccelerator", new()
+    ///     {
+    ///         Duration = 1,
+    ///         Spec = "1",
+    ///         AcceleratorName = "terraform-example",
+    ///         AutoUseCoupon = true,
+    ///         Description = "terraform-example",
+    ///     });
+    /// 
+    ///     var defaultBandwidthPackage = new AliCloud.Ga.BandwidthPackage("defaultBandwidthPackage", new()
+    ///     {
+    ///         Bandwidth = 100,
+    ///         Type = "Basic",
+    ///         BandwidthType = "Basic",
+    ///         PaymentType = "PayAsYouGo",
+    ///         BillingType = "PayBy95",
+    ///         Ratio = 30,
+    ///         BandwidthPackageName = "terraform-example",
+    ///         AutoPay = true,
+    ///         AutoUseCoupon = true,
+    ///     });
+    /// 
+    ///     var defaultBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", new()
+    ///     {
+    ///         AcceleratorId = defaultAccelerator.Id,
+    ///         BandwidthPackageId = defaultBandwidthPackage.Id,
+    ///     });
+    /// 
+    ///     var defaultAcceleratorSpareIpAttachment = new AliCloud.Ga.AcceleratorSpareIpAttachment("defaultAcceleratorSpareIpAttachment", new()
+    ///     {
+    ///         AcceleratorId = defaultBandwidthPackageAttachment.AcceleratorId,
+    ///         SpareIp = "127.0.0.1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Global Accelerator (GA) Accelerator Spare Ip Attachment can be imported using the id, e.g.

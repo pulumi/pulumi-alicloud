@@ -115,6 +115,17 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.200.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.wafv3.Instance("default")
+        ```
+
         ## Import
 
         Wafv3 Instance can be imported using the id, e.g.
@@ -138,6 +149,17 @@ class Instance(pulumi.CustomResource):
         For information about Wafv3 Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/web-application-firewall/latest/what-is-waf).
 
         > **NOTE:** Available in v1.200.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.wafv3.Instance("default")
+        ```
 
         ## Import
 

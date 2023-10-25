@@ -98,6 +98,19 @@ class AccountAlias(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.0.0.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        alias = alicloud.ram.AccountAlias("alias", account_alias=name)
+        ```
+
         ## Import
 
         RAM account alias can be imported using the id, e.g.
@@ -120,6 +133,19 @@ class AccountAlias(pulumi.CustomResource):
         Provides a RAM cloud account alias.
 
         > **NOTE:** Available since v1.0.0.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        alias = alicloud.ram.AccountAlias("alias", account_alias=name)
+        ```
 
         ## Import
 

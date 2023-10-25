@@ -19,6 +19,50 @@ import (
 //
 // > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			exampleNamespace, err := cr.NewNamespace(ctx, "exampleNamespace", &cr.NamespaceArgs{
+//				AutoCreate:        pulumi.Bool(false),
+//				DefaultVisibility: pulumi.String("PUBLIC"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cr.NewRepo(ctx, "exampleRepo", &cr.RepoArgs{
+//				Namespace: exampleNamespace.Name,
+//				Summary:   pulumi.String("this is summary of my new repo"),
+//				RepoType:  pulumi.String("PUBLIC"),
+//				Detail:    pulumi.String("this is a public repo"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Container Registry repository can be imported using the `namespace/repository`, e.g.

@@ -10,6 +10,19 @@ import * as utilities from "../utilities";
  * This data source provides the Cen Transit Router Available Resources of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.163.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cen.getTransitRouterAvailableResources({});
+ * export const masterId = data.alicloud_cen_transit_router_available_resources["default"].resources[0].master_zones[0];
+ * export const slaveId = data.alicloud_cen_transit_router_available_resources["default"].resources[0].slave_zones[0];
+ * ```
  */
 export function getTransitRouterAvailableResources(args?: GetTransitRouterAvailableResourcesArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterAvailableResourcesResult> {
     args = args || {};
@@ -45,6 +58,19 @@ export interface GetTransitRouterAvailableResourcesResult {
  * This data source provides the Cen Transit Router Available Resources of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.163.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cen.getTransitRouterAvailableResources({});
+ * export const masterId = data.alicloud_cen_transit_router_available_resources["default"].resources[0].master_zones[0];
+ * export const slaveId = data.alicloud_cen_transit_router_available_resources["default"].resources[0].slave_zones[0];
+ * ```
  */
 export function getTransitRouterAvailableResourcesOutput(args?: GetTransitRouterAvailableResourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterAvailableResourcesResult> {
     return pulumi.output(args).apply((a: any) => getTransitRouterAvailableResources(a, opts))

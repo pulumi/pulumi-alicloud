@@ -15,6 +15,31 @@ namespace Pulumi.AliCloud.Hbr
         /// This data source provides the HBR Replication Vault Regions of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.152.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Hbr.GetReplicationVaultRegions.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["hbrReplicationVaultRegionRegionId1"] = @default.Apply(@default =&gt; @default.Apply(getReplicationVaultRegionsResult =&gt; getReplicationVaultRegionsResult.Regions[0]?.ReplicationRegionId)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetReplicationVaultRegionsResult> InvokeAsync(GetReplicationVaultRegionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetReplicationVaultRegionsResult>("alicloud:hbr/getReplicationVaultRegions:getReplicationVaultRegions", args ?? new GetReplicationVaultRegionsArgs(), options.WithDefaults());
@@ -23,6 +48,31 @@ namespace Pulumi.AliCloud.Hbr
         /// This data source provides the HBR Replication Vault Regions of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.152.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Hbr.GetReplicationVaultRegions.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["hbrReplicationVaultRegionRegionId1"] = @default.Apply(@default =&gt; @default.Apply(getReplicationVaultRegionsResult =&gt; getReplicationVaultRegionsResult.Regions[0]?.ReplicationRegionId)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetReplicationVaultRegionsResult> Invoke(GetReplicationVaultRegionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetReplicationVaultRegionsResult>("alicloud:hbr/getReplicationVaultRegions:getReplicationVaultRegions", args ?? new GetReplicationVaultRegionsInvokeArgs(), options.WithDefaults());

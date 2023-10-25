@@ -183,6 +183,19 @@ def get_provisioned_products(access_level_filter: Optional[str] = None,
 
     > **NOTE:** Available since v1.196.0.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.servicecatalog.get_provisioned_products(ids=["IdExample"],
+        name_regex="NameRegexExample")
+    pulumi.export("alicloudServiceCatalogProvisionedProductExampleId", default.provisioned_products[0].id)
+    ```
+
 
     :param str access_level_filter: The access filter.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -236,6 +249,19 @@ def get_provisioned_products_output(access_level_filter: Optional[pulumi.Input[O
     This data source provides Service Catalog Provisioned Product available to the user. [What is Provisioned Product](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-launchproduct)
 
     > **NOTE:** Available since v1.196.0.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.servicecatalog.get_provisioned_products(ids=["IdExample"],
+        name_regex="NameRegexExample")
+    pulumi.export("alicloudServiceCatalogProvisionedProductExampleId", default.provisioned_products[0].id)
+    ```
 
 
     :param str access_level_filter: The access filter.

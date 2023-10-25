@@ -563,6 +563,38 @@ class PolardbxInstance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.211.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_network = alicloud.vpc.Network("exampleNetwork", vpc_name=name)
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vpc_id=example_network.id,
+            zone_id=default_zones.zones[0].id,
+            cidr_block="172.16.0.0/24",
+            vswitch_name=name)
+        default_polardbx_instance = alicloud.drds.PolardbxInstance("defaultPolardbxInstance",
+            topology_type="3azones",
+            vswitch_id=example_switch.id,
+            primary_zone="ap-southeast-1a",
+            cn_node_count=2,
+            dn_class="mysql.n4.medium.25",
+            cn_class="polarx.x4.medium.2e",
+            dn_node_count=2,
+            secondary_zone="ap-southeast-1b",
+            tertiary_zone="ap-southeast-1c",
+            vpc_id=example_network.id)
+        ```
+
         ## Import
 
         DRDS Polardb X Instance can be imported using the id, e.g.
@@ -599,6 +631,38 @@ class PolardbxInstance(pulumi.CustomResource):
         For information about DRDS Polardb X Instance and how to use it, see [What is Polardb X Instance](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1).
 
         > **NOTE:** Available since v1.211.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_network = alicloud.vpc.Network("exampleNetwork", vpc_name=name)
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vpc_id=example_network.id,
+            zone_id=default_zones.zones[0].id,
+            cidr_block="172.16.0.0/24",
+            vswitch_name=name)
+        default_polardbx_instance = alicloud.drds.PolardbxInstance("defaultPolardbxInstance",
+            topology_type="3azones",
+            vswitch_id=example_switch.id,
+            primary_zone="ap-southeast-1a",
+            cn_node_count=2,
+            dn_class="mysql.n4.medium.25",
+            cn_class="polarx.x4.medium.2e",
+            dn_node_count=2,
+            secondary_zone="ap-southeast-1b",
+            tertiary_zone="ap-southeast-1c",
+            vpc_id=example_network.id)
+        ```
 
         ## Import
 

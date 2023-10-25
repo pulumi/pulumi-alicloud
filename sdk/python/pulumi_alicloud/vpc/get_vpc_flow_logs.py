@@ -179,6 +179,19 @@ def get_vpc_flow_logs(description: Optional[str] = None,
 
     > **NOTE:** Available in v1.122.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.vpc.get_vpc_flow_logs(ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstVpcFlowLogId", example.logs[0].id)
+    ```
+
 
     :param str description: The Description of flow log.
     :param str flow_log_name: The flow log name.
@@ -241,6 +254,19 @@ def get_vpc_flow_logs_output(description: Optional[pulumi.Input[Optional[str]]] 
     This data source provides the Vpc Flow Logs of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.122.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.vpc.get_vpc_flow_logs(ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstVpcFlowLogId", example.logs[0].id)
+    ```
 
 
     :param str description: The Description of flow log.

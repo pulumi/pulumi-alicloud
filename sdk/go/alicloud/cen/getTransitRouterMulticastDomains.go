@@ -15,6 +15,46 @@ import (
 // This data source provides the Cen Transit Router Multicast Domains of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.195.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := cen.GetTransitRouterMulticastDomains(ctx, &cen.GetTransitRouterMulticastDomainsArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//				TransitRouterId: "your_transit_router_id",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cenTransitRouterMulticastDomainId0", ids.Domains[0].Id)
+//			nameRegex, err := cen.GetTransitRouterMulticastDomains(ctx, &cen.GetTransitRouterMulticastDomainsArgs{
+//				NameRegex:       pulumi.StringRef("^my-name"),
+//				TransitRouterId: "your_transit_router_id",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cenTransitRouterMulticastDomainId1", nameRegex.Domains[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetTransitRouterMulticastDomains(ctx *pulumi.Context, args *GetTransitRouterMulticastDomainsArgs, opts ...pulumi.InvokeOption) (*GetTransitRouterMulticastDomainsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTransitRouterMulticastDomainsResult

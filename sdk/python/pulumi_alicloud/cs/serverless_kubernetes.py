@@ -1374,6 +1374,56 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
         > **NOTE:** From version 1.162.0, support for creating professional serverless cluster.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "ask-example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.1.0.0/21")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            vpc_id=default_network.id,
+            cidr_block="10.1.1.0/24",
+            zone_id=default_zones.zones[0].id)
+        serverless = alicloud.cs.ServerlessKubernetes("serverless",
+            name_prefix=name,
+            vpc_id=default_network.id,
+            vswitch_ids=[default_switch.id],
+            new_nat_gateway=True,
+            endpoint_public_access_enabled=True,
+            deletion_protection=False,
+            load_balancer_spec="slb.s2.small",
+            time_zone="Asia/Shanghai",
+            service_cidr="172.21.0.0/20",
+            service_discovery_types=["PrivateZone"],
+            logging_type="SLS",
+            tags={
+                "k-aa": "v-aa",
+                "k-bb": "v-aa",
+            },
+            addons=[
+                alicloud.cs.ServerlessKubernetesAddonArgs(
+                    name="alb-ingress-controller",
+                ),
+                alicloud.cs.ServerlessKubernetesAddonArgs(
+                    name="metrics-server",
+                ),
+                alicloud.cs.ServerlessKubernetesAddonArgs(
+                    name="knative",
+                ),
+            ])
+        ```
+
         ## Import
 
         Serverless Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
@@ -1446,6 +1496,56 @@ class ServerlessKubernetes(pulumi.CustomResource):
         Please refer to the `Authorization management` and `Cluster management` sections in the [Document Center](https://www.alibabacloud.com/help/doc-detail/86488.htm).
 
         > **NOTE:** From version 1.162.0, support for creating professional serverless cluster.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "ask-example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.1.0.0/21")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            vpc_id=default_network.id,
+            cidr_block="10.1.1.0/24",
+            zone_id=default_zones.zones[0].id)
+        serverless = alicloud.cs.ServerlessKubernetes("serverless",
+            name_prefix=name,
+            vpc_id=default_network.id,
+            vswitch_ids=[default_switch.id],
+            new_nat_gateway=True,
+            endpoint_public_access_enabled=True,
+            deletion_protection=False,
+            load_balancer_spec="slb.s2.small",
+            time_zone="Asia/Shanghai",
+            service_cidr="172.21.0.0/20",
+            service_discovery_types=["PrivateZone"],
+            logging_type="SLS",
+            tags={
+                "k-aa": "v-aa",
+                "k-bb": "v-aa",
+            },
+            addons=[
+                alicloud.cs.ServerlessKubernetesAddonArgs(
+                    name="alb-ingress-controller",
+                ),
+                alicloud.cs.ServerlessKubernetesAddonArgs(
+                    name="metrics-server",
+                ),
+                alicloud.cs.ServerlessKubernetesAddonArgs(
+                    name="knative",
+                ),
+            ])
+        ```
 
         ## Import
 

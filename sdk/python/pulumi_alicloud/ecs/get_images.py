@@ -283,6 +283,17 @@ def get_images(action_type: Optional[str] = None,
     This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud,
     other public images and the ones available on the image market.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    images_ds = alicloud.ecs.get_images(name_regex="^centos_6",
+        owners="system")
+    pulumi.export("firstImageId", images_ds.images[0].id)
+    ```
+
 
     :param str action_type: The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
     :param str architecture: The image architecture. Valid values: `i386` and `x86_64`.
@@ -382,6 +393,17 @@ def get_images_output(action_type: Optional[pulumi.Input[Optional[str]]] = None,
     """
     This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud,
     other public images and the ones available on the image market.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    images_ds = alicloud.ecs.get_images(name_regex="^centos_6",
+        owners="system")
+    pulumi.export("firstImageId", images_ds.images[0].id)
+    ```
 
 
     :param str action_type: The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:

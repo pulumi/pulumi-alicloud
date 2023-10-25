@@ -11,6 +11,26 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in 1.53.0+
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "onsInstanceName";
+ * const topic = config.get("topic") || "onsTopicName";
+ * const defaultInstance = new alicloud.rocketmq.Instance("defaultInstance", {remark: "default_ons_instance_remark"});
+ * const defaultTopic = new alicloud.rocketmq.Topic("defaultTopic", {
+ *     topicName: topic,
+ *     instanceId: defaultInstance.id,
+ *     messageType: 0,
+ *     remark: "dafault_ons_topic_remark",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ONS TOPIC can be imported using the id, e.g.

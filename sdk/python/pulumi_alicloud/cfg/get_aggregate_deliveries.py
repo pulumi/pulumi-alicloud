@@ -119,6 +119,22 @@ def get_aggregate_deliveries(aggregator_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.172.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cfg.get_aggregate_deliveries(aggregator_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("configAggregateDeliveryId1", ids.deliveries[0].id)
+    ```
+
 
     :param str aggregator_id: The ID of the Aggregator.
     :param Sequence[str] ids: A list of Aggregate Delivery IDs.
@@ -156,6 +172,22 @@ def get_aggregate_deliveries_output(aggregator_id: Optional[pulumi.Input[str]] =
     This data source provides the Config Aggregate Deliveries of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.172.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cfg.get_aggregate_deliveries(aggregator_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("configAggregateDeliveryId1", ids.deliveries[0].id)
+    ```
 
 
     :param str aggregator_id: The ID of the Aggregator.

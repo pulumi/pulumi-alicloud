@@ -150,6 +150,19 @@ def get_transit_router_prefix_list_associations(ids: Optional[Sequence[str]] = N
 
     > **NOTE:** Available in v1.188.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cen.get_transit_router_prefix_list_associations(transit_router_id="tr-6ehx7q2jze8ch5ji0****",
+        transit_router_table_id="vtb-6ehgc262hr170qgyc****")
+    pulumi.export("cenTransitRouterPrefixListAssociationId", default.associations[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Cen Transit Router Prefix List Association IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -201,6 +214,19 @@ def get_transit_router_prefix_list_associations_output(ids: Optional[pulumi.Inpu
     This data source provides the Cen Transit Router Prefix List Associations of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.188.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cen.get_transit_router_prefix_list_associations(transit_router_id="tr-6ehx7q2jze8ch5ji0****",
+        transit_router_table_id="vtb-6ehgc262hr170qgyc****")
+    pulumi.export("cenTransitRouterPrefixListAssociationId", default.associations[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Cen Transit Router Prefix List Association IDs.

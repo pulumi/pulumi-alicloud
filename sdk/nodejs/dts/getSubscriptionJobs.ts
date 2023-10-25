@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * This data source provides the Dts Subscription Jobs of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.138.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.dts.getSubscriptionJobs({});
+ * export const dtsSubscriptionJobId1 = ids.then(ids => ids.jobs?.[0]?.id);
+ * ```
  */
 export function getSubscriptionJobs(args?: GetSubscriptionJobsArgs, opts?: pulumi.InvokeOptions): Promise<GetSubscriptionJobsResult> {
     args = args || {};
@@ -73,6 +85,18 @@ export interface GetSubscriptionJobsResult {
  * This data source provides the Dts Subscription Jobs of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.138.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.dts.getSubscriptionJobs({});
+ * export const dtsSubscriptionJobId1 = ids.then(ids => ids.jobs?.[0]?.id);
+ * ```
  */
 export function getSubscriptionJobsOutput(args?: GetSubscriptionJobsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubscriptionJobsResult> {
     return pulumi.output(args).apply((a: any) => getSubscriptionJobs(a, opts))

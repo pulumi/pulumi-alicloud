@@ -263,6 +263,28 @@ class Alias(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.104.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_service = alicloud.fc.Service("defaultService",
+            description="example-value",
+            publish=True)
+        example = alicloud.fc.Alias("example",
+            alias_name="example-value",
+            description="example-value",
+            service_name=default_service.name,
+            service_version="1")
+        ```
+
         ## Import
 
         Function Compute alias can be imported using the id, e.g.
@@ -290,6 +312,28 @@ class Alias(pulumi.CustomResource):
          For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/fc/developer-reference/api-createalias).
 
         > **NOTE:** Available since v1.104.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_service = alicloud.fc.Service("defaultService",
+            description="example-value",
+            publish=True)
+        example = alicloud.fc.Alias("example",
+            alias_name="example-value",
+            description="example-value",
+            service_name=default_service.name,
+            service_version="1")
+        ```
 
         ## Import
 

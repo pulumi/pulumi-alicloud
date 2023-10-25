@@ -8,6 +8,18 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides the OSS buckets of the current Alibaba Cloud user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ossBucketsDs = alicloud.oss.getBuckets({
+ *     nameRegex: "sample_oss_bucket",
+ * });
+ * export const firstOssBucketName = ossBucketsDs.then(ossBucketsDs => ossBucketsDs.buckets?.[0]?.name);
+ * ```
  */
 export function getBuckets(args?: GetBucketsArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketsResult> {
     args = args || {};
@@ -54,6 +66,18 @@ export interface GetBucketsResult {
 }
 /**
  * This data source provides the OSS buckets of the current Alibaba Cloud user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ossBucketsDs = alicloud.oss.getBuckets({
+ *     nameRegex: "sample_oss_bucket",
+ * });
+ * export const firstOssBucketName = ossBucketsDs.then(ossBucketsDs => ossBucketsDs.buckets?.[0]?.name);
+ * ```
  */
 export function getBucketsOutput(args?: GetBucketsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketsResult> {
     return pulumi.output(args).apply((a: any) => getBuckets(a, opts))

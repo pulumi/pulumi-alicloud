@@ -309,6 +309,22 @@ class User(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.136.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.quickbi.User("example",
+            account_name="example_value",
+            admin_user=False,
+            auth_admin_user=False,
+            nick_name="example_value",
+            user_type="Analyst")
+        ```
+
         ## Import
 
         Quick BI User can be imported using the id, e.g.
@@ -338,6 +354,22 @@ class User(pulumi.CustomResource):
         For information about Quick BI User and how to use it, see [What is User](https://www.alibabacloud.com/help/doc-detail/33813.htm).
 
         > **NOTE:** Available in v1.136.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.quickbi.User("example",
+            account_name="example_value",
+            admin_user=False,
+            auth_admin_user=False,
+            nick_name="example_value",
+            user_type="Analyst")
+        ```
 
         ## Import
 

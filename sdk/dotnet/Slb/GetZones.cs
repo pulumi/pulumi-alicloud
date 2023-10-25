@@ -15,6 +15,29 @@ namespace Pulumi.AliCloud.Slb
         /// This data source provides availability zones for SLB that can be accessed by an Alibaba Cloud account within the region configured in the provider.
         /// 
         /// &gt; **NOTE:** Available in v1.73.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var zonesIds = AliCloud.Slb.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableSlbAddressIpVersion = "ipv4",
+        ///         AvailableSlbAddressType = "vpc",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:slb/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
@@ -23,6 +46,29 @@ namespace Pulumi.AliCloud.Slb
         /// This data source provides availability zones for SLB that can be accessed by an Alibaba Cloud account within the region configured in the provider.
         /// 
         /// &gt; **NOTE:** Available in v1.73.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var zonesIds = AliCloud.Slb.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableSlbAddressIpVersion = "ipv4",
+        ///         AvailableSlbAddressType = "vpc",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:slb/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());

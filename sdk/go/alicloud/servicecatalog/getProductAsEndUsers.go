@@ -18,6 +18,33 @@ import (
 // This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listproductsasenduser)
 //
 // > **NOTE:** Available in 1.196.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/servicecatalog"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := servicecatalog.GetProductAsEndUsers(ctx, &servicecatalog.GetProductAsEndUsersArgs{
+//				NameRegex: pulumi.StringRef("ram模板创建"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudServiceCatalogProductAsEndUserExampleId", _default.Users[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetProductAsEndUsers(ctx *pulumi.Context, args *GetProductAsEndUsersArgs, opts ...pulumi.InvokeOption) (*GetProductAsEndUsersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProductAsEndUsersResult

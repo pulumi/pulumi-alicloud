@@ -433,6 +433,23 @@ class MscSubSubscription(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.135.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.MscSubSubscription("example",
+            email_status=1,
+            item_name="Notifications of Product Expiration",
+            pmsg_status=1,
+            sms_status=1,
+            tts_status=1,
+            webhook_status=0)
+        ```
+
         ## Import
 
         Msc Sub Subscription can be imported using the id, e.g.
@@ -465,6 +482,23 @@ class MscSubSubscription(pulumi.CustomResource):
         Provides a Msc Sub Subscription resource.
 
         > **NOTE:** Available since v1.135.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.MscSubSubscription("example",
+            email_status=1,
+            item_name="Notifications of Product Expiration",
+            pmsg_status=1,
+            sms_status=1,
+            tts_status=1,
+            webhook_status=0)
+        ```
 
         ## Import
 

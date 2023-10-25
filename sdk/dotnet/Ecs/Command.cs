@@ -16,6 +16,29 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **NOTE:** Available in v1.116.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AliCloud.Ecs.Command("example", new()
+    ///     {
+    ///         CommandContent = "bHMK",
+    ///         Description = "For Terraform Test",
+    ///         Type = "RunShellScript",
+    ///         WorkingDir = "/root",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ECS Command can be imported using the id, e.g.

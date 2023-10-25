@@ -84,6 +84,16 @@ def get_cross_regions(output_file: Optional[str] = None,
     This data source provides an available area for remote disaster recovery for RDS.
 
     > **NOTE:** Available in v1.193.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    cross_regions = alicloud.rds.get_cross_regions()
+    pulumi.export("firstRdsCrossRegions", data["alicloud_rds_cross_regions"]["regions"]["ids"])
+    ```
     """
     __args__ = dict()
     __args__['outputFile'] = output_file
@@ -104,5 +114,15 @@ def get_cross_regions_output(output_file: Optional[pulumi.Input[Optional[str]]] 
     This data source provides an available area for remote disaster recovery for RDS.
 
     > **NOTE:** Available in v1.193.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    cross_regions = alicloud.rds.get_cross_regions()
+    pulumi.export("firstRdsCrossRegions", data["alicloud_rds_cross_regions"]["regions"]["ids"])
+    ```
     """
     ...

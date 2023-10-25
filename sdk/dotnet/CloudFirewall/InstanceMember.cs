@@ -16,6 +16,34 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// 
     /// &gt; **NOTE:** Available in v1.194.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "AliyunTerraform";
+    ///     var defaultAccount = new AliCloud.ResourceManager.Account("defaultAccount", new()
+    ///     {
+    ///         DisplayName = name,
+    ///     });
+    /// 
+    ///     var defaultInstanceMember = new AliCloud.CloudFirewall.InstanceMember("defaultInstanceMember", new()
+    ///     {
+    ///         MemberDesc = name,
+    ///         MemberUid = defaultAccount.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Cloud Firewall Instance Member can be imported using the id, e.g.

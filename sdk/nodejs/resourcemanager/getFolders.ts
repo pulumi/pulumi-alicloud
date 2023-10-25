@@ -12,6 +12,18 @@ import * as utilities from "../utilities";
  * > **NOTE:**  Available in 1.84.0+.
  *
  * > **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.resourcemanager.getFolders({
+ *     nameRegex: "tftest",
+ * });
+ * export const firstFolderId = example.then(example => example.folders?.[0]?.id);
+ * ```
  */
 export function getFolders(args?: GetFoldersArgs, opts?: pulumi.InvokeOptions): Promise<GetFoldersResult> {
     args = args || {};
@@ -92,6 +104,18 @@ export interface GetFoldersResult {
  * > **NOTE:**  Available in 1.84.0+.
  *
  * > **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.resourcemanager.getFolders({
+ *     nameRegex: "tftest",
+ * });
+ * export const firstFolderId = example.then(example => example.folders?.[0]?.id);
+ * ```
  */
 export function getFoldersOutput(args?: GetFoldersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFoldersResult> {
     return pulumi.output(args).apply((a: any) => getFolders(a, opts))

@@ -10,6 +10,19 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in v1.162.0+.
  *
  * The data source lists a number of VPN Pbr Route Entries resource information owned by an Alicloud account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.vpc.getPbrRouteEntries({
+ *     vpnGatewayId: "example_vpn_gateway_id",
+ *     ids: ["example_id"],
+ * });
+ * export const vpnIpsecServerId1 = ids.then(ids => ids.entries?.[0]?.id);
+ * ```
  */
 export function getPbrRouteEntries(args: GetPbrRouteEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetPbrRouteEntriesResult> {
 
@@ -62,6 +75,19 @@ export interface GetPbrRouteEntriesResult {
  * > **NOTE:** Available in v1.162.0+.
  *
  * The data source lists a number of VPN Pbr Route Entries resource information owned by an Alicloud account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.vpc.getPbrRouteEntries({
+ *     vpnGatewayId: "example_vpn_gateway_id",
+ *     ids: ["example_id"],
+ * });
+ * export const vpnIpsecServerId1 = ids.then(ids => ids.entries?.[0]?.id);
+ * ```
  */
 export function getPbrRouteEntriesOutput(args: GetPbrRouteEntriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPbrRouteEntriesResult> {
     return pulumi.output(args).apply((a: any) => getPbrRouteEntries(a, opts))

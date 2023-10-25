@@ -15,6 +15,43 @@ namespace Pulumi.AliCloud.Ga
         /// This data source provides the Global Accelerator (GA) Basic Accelerators of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.194.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Ga.GetBasicAccelerators.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Ga.GetBasicAccelerators.Invoke(new()
+        ///     {
+        ///         NameRegex = "tf-example",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["gaBasicAcceleratorId1"] = ids.Apply(getBasicAcceleratorsResult =&gt; getBasicAcceleratorsResult.Accelerators[0]?.Id),
+        ///         ["gaBasicAcceleratorId2"] = nameRegex.Apply(getBasicAcceleratorsResult =&gt; getBasicAcceleratorsResult.Accelerators[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetBasicAcceleratorsResult> InvokeAsync(GetBasicAcceleratorsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBasicAcceleratorsResult>("alicloud:ga/getBasicAccelerators:getBasicAccelerators", args ?? new GetBasicAcceleratorsArgs(), options.WithDefaults());
@@ -23,6 +60,43 @@ namespace Pulumi.AliCloud.Ga
         /// This data source provides the Global Accelerator (GA) Basic Accelerators of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.194.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Ga.GetBasicAccelerators.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Ga.GetBasicAccelerators.Invoke(new()
+        ///     {
+        ///         NameRegex = "tf-example",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["gaBasicAcceleratorId1"] = ids.Apply(getBasicAcceleratorsResult =&gt; getBasicAcceleratorsResult.Accelerators[0]?.Id),
+        ///         ["gaBasicAcceleratorId2"] = nameRegex.Apply(getBasicAcceleratorsResult =&gt; getBasicAcceleratorsResult.Accelerators[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetBasicAcceleratorsResult> Invoke(GetBasicAcceleratorsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBasicAcceleratorsResult>("alicloud:ga/getBasicAccelerators:getBasicAccelerators", args ?? new GetBasicAcceleratorsInvokeArgs(), options.WithDefaults());

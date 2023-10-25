@@ -10,6 +10,22 @@ import * as utilities from "../utilities";
  * This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available since v1.0.0.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const recordsDs = alicloud.dns.getRecords({
+ *     domainName: "xiaozhu.top",
+ *     hostRecordRegex: "^@",
+ *     isLocked: false,
+ *     outputFile: "records.txt",
+ *     type: "A",
+ * });
+ * export const firstRecordId = recordsDs.then(recordsDs => recordsDs.records?.[0]?.recordId);
+ * ```
  */
 export function getRecords(args: GetRecordsArgs, opts?: pulumi.InvokeOptions): Promise<GetRecordsResult> {
 
@@ -114,6 +130,22 @@ export interface GetRecordsResult {
  * This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available since v1.0.0.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const recordsDs = alicloud.dns.getRecords({
+ *     domainName: "xiaozhu.top",
+ *     hostRecordRegex: "^@",
+ *     isLocked: false,
+ *     outputFile: "records.txt",
+ *     type: "A",
+ * });
+ * export const firstRecordId = recordsDs.then(recordsDs => recordsDs.records?.[0]?.recordId);
+ * ```
  */
 export function getRecordsOutput(args: GetRecordsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRecordsResult> {
     return pulumi.output(args).apply((a: any) => getRecords(a, opts))

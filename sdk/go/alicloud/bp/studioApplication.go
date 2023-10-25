@@ -19,6 +19,50 @@ import (
 //
 // > **NOTE:** Available in v1.192.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bp"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bp.NewStudioApplication(ctx, "default", &bp.StudioApplicationArgs{
+//				ApplicationName: pulumi.String("example_value"),
+//				AreaId:          pulumi.String("example_value"),
+//				Configuration: pulumi.Map{
+//					"enableMonitor": pulumi.Any("1"),
+//				},
+//				Instances: bp.StudioApplicationInstanceArray{
+//					&bp.StudioApplicationInstanceArgs{
+//						Id:       pulumi.String("example_value"),
+//						NodeName: pulumi.String("example_value"),
+//						NodeType: pulumi.String("ecs"),
+//					},
+//				},
+//				ResourceGroupId: pulumi.String("example_value"),
+//				TemplateId:      pulumi.String("example_value"),
+//				Variables: pulumi.Map{
+//					"test": pulumi.Any("1"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Cloud Architect Design Tools Application can be imported using the id, e.g.

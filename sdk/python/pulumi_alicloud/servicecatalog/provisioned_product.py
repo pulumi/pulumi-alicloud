@@ -660,6 +660,33 @@ class ProvisionedProduct(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.196.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-testAccServiceCatalogProvisionedProduct"
+        default = alicloud.servicecatalog.ProvisionedProduct("default",
+            provisioned_product_name=name,
+            stack_region_id="cn-hangzhou",
+            product_version_id="pv-bp1d7dxy2pcc1g",
+            product_id="prod-bp1u3dkc282cwd",
+            portfolio_id="port-bp119dvn27jccw",
+            tags={
+                "v1": "tf-test",
+            },
+            parameters=[alicloud.servicecatalog.ProvisionedProductParameterArgs(
+                parameter_key="role_name",
+                parameter_value=name,
+            )])
+        ```
+
         ## Import
 
         Service Catalog Provisioned Product can be imported using the id, e.g.
@@ -691,6 +718,33 @@ class ProvisionedProduct(pulumi.CustomResource):
         For information about Service Catalog Provisioned Product and how to use it, see [What is Provisioned Product](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-launchproduct).
 
         > **NOTE:** Available in v1.196.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-testAccServiceCatalogProvisionedProduct"
+        default = alicloud.servicecatalog.ProvisionedProduct("default",
+            provisioned_product_name=name,
+            stack_region_id="cn-hangzhou",
+            product_version_id="pv-bp1d7dxy2pcc1g",
+            product_id="prod-bp1u3dkc282cwd",
+            portfolio_id="port-bp119dvn27jccw",
+            tags={
+                "v1": "tf-test",
+            },
+            parameters=[alicloud.servicecatalog.ProvisionedProductParameterArgs(
+                parameter_key="role_name",
+                parameter_value=name,
+            )])
+        ```
 
         ## Import
 

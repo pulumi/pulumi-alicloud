@@ -583,6 +583,23 @@ class StackGroup(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.107.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ros.StackGroup("example",
+            stack_group_name="example_value",
+            template_body=\"\"\"    {
+            	"ROSTemplateFormatVersion": "2015-09-01"
+            }
+            
+        \"\"\")
+        ```
+
         ## Import
 
         ROS Stack Group can be imported using the id, e.g.
@@ -618,6 +635,23 @@ class StackGroup(pulumi.CustomResource):
         For information about ROS Stack Group and how to use it, see [What is Stack Group](https://www.alibabacloud.com/help/en/doc-detail/151333.htm).
 
         > **NOTE:** Available in v1.107.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ros.StackGroup("example",
+            stack_group_name="example_value",
+            template_body=\"\"\"    {
+            	"ROSTemplateFormatVersion": "2015-09-01"
+            }
+            
+        \"\"\")
+        ```
 
         ## Import
 

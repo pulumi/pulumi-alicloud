@@ -12,6 +12,26 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in v1.189.0+.
  *
  * > **NOTE:** Only users who have the required permissions can use the IP address pool feature of Elastic IP Address (EIP). To apply for the required permissions, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.vpc.getPublicIpAddressPoolCidrBlocks({
+ *     ids: ["example_id"],
+ *     publicIpAddressPoolId: "example_value",
+ * });
+ * export const vpcPublicIpAddressPoolCidrBlockId1 = ids.then(ids => ids.blocks?.[0]?.id);
+ * const cidrBlock = alicloud.vpc.getPublicIpAddressPoolCidrBlocks({
+ *     publicIpAddressPoolId: "example_value",
+ *     cidrBlock: "example_value",
+ * });
+ * export const vpcPublicIpAddressPoolCidrBlockId2 = cidrBlock.then(cidrBlock => cidrBlock.blocks?.[0]?.id);
+ * ```
  */
 export function getPublicIpAddressPoolCidrBlocks(args: GetPublicIpAddressPoolCidrBlocksArgs, opts?: pulumi.InvokeOptions): Promise<GetPublicIpAddressPoolCidrBlocksResult> {
 
@@ -84,6 +104,26 @@ export interface GetPublicIpAddressPoolCidrBlocksResult {
  * > **NOTE:** Available in v1.189.0+.
  *
  * > **NOTE:** Only users who have the required permissions can use the IP address pool feature of Elastic IP Address (EIP). To apply for the required permissions, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.vpc.getPublicIpAddressPoolCidrBlocks({
+ *     ids: ["example_id"],
+ *     publicIpAddressPoolId: "example_value",
+ * });
+ * export const vpcPublicIpAddressPoolCidrBlockId1 = ids.then(ids => ids.blocks?.[0]?.id);
+ * const cidrBlock = alicloud.vpc.getPublicIpAddressPoolCidrBlocks({
+ *     publicIpAddressPoolId: "example_value",
+ *     cidrBlock: "example_value",
+ * });
+ * export const vpcPublicIpAddressPoolCidrBlockId2 = cidrBlock.then(cidrBlock => cidrBlock.blocks?.[0]?.id);
+ * ```
  */
 export function getPublicIpAddressPoolCidrBlocksOutput(args: GetPublicIpAddressPoolCidrBlocksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPublicIpAddressPoolCidrBlocksResult> {
     return pulumi.output(args).apply((a: any) => getPublicIpAddressPoolCidrBlocks(a, opts))

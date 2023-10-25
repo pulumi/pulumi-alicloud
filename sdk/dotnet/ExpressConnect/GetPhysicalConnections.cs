@@ -15,6 +15,43 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// This data source provides the Express Connect Physical Connections of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.132.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "pc-2345678",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-PhysicalConnection",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["expressConnectPhysicalConnectionId1"] = ids.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id),
+        ///         ["expressConnectPhysicalConnectionId2"] = nameRegex.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPhysicalConnectionsResult> InvokeAsync(GetPhysicalConnectionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPhysicalConnectionsResult>("alicloud:expressconnect/getPhysicalConnections:getPhysicalConnections", args ?? new GetPhysicalConnectionsArgs(), options.WithDefaults());
@@ -23,6 +60,43 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// This data source provides the Express Connect Physical Connections of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.132.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "pc-2345678",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-PhysicalConnection",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["expressConnectPhysicalConnectionId1"] = ids.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id),
+        ///         ["expressConnectPhysicalConnectionId2"] = nameRegex.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetPhysicalConnectionsResult> Invoke(GetPhysicalConnectionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPhysicalConnectionsResult>("alicloud:expressconnect/getPhysicalConnections:getPhysicalConnections", args ?? new GetPhysicalConnectionsInvokeArgs(), options.WithDefaults());

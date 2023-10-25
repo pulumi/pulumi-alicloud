@@ -250,6 +250,28 @@ class MachineGroup(pulumi.CustomResource):
         Log Service manages all the ECS instances whose logs need to be collected by using the Logtail client in the form of machine groups.
          [Refer to details](https://www.alibabacloud.com/help/doc-detail/28966.htm)
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
+        example_machine_group = alicloud.log.MachineGroup("exampleMachineGroup",
+            project=example_project.name,
+            identify_type="ip",
+            topic="terraform",
+            identify_lists=[
+                "10.0.0.1",
+                "10.0.0.2",
+            ])
+        ```
         ## Module Support
 
         You can use the existing sls-logtail module
@@ -281,6 +303,28 @@ class MachineGroup(pulumi.CustomResource):
         Log Service manages all the ECS instances whose logs need to be collected by using the Logtail client in the form of machine groups.
          [Refer to details](https://www.alibabacloud.com/help/doc-detail/28966.htm)
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
+        example_machine_group = alicloud.log.MachineGroup("exampleMachineGroup",
+            project=example_project.name,
+            identify_type="ip",
+            topic="terraform",
+            identify_lists=[
+                "10.0.0.1",
+                "10.0.0.2",
+            ])
+        ```
         ## Module Support
 
         You can use the existing sls-logtail module

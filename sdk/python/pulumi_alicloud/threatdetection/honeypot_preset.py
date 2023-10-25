@@ -244,6 +244,33 @@ class HoneypotPreset(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.195.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        default_honeypot_images = alicloud.threatdetection.get_honeypot_images(name_regex="^ruoyi")
+        default_honeypot_node = alicloud.threatdetection.HoneypotNode("defaultHoneypotNode",
+            node_name=name,
+            available_probe_num=20,
+            security_group_probe_ip_lists=["0.0.0.0/0"])
+        default_honeypot_preset = alicloud.threatdetection.HoneypotPreset("defaultHoneypotPreset",
+            preset_name=name,
+            node_id=default_honeypot_node.id,
+            honeypot_image_name=default_honeypot_images.images[0].honeypot_image_name,
+            meta=alicloud.threatdetection.HoneypotPresetMetaArgs(
+                portrait_option=True,
+                burp="open",
+            ))
+        ```
+
         ## Import
 
         Threat Detection Honeypot Preset can be imported using the id, e.g.
@@ -271,6 +298,33 @@ class HoneypotPreset(pulumi.CustomResource):
         For information about Threat Detection Honeypot Preset and how to use it, see [What is Honeypot Preset](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotpreset).
 
         > **NOTE:** Available since v1.195.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        default_honeypot_images = alicloud.threatdetection.get_honeypot_images(name_regex="^ruoyi")
+        default_honeypot_node = alicloud.threatdetection.HoneypotNode("defaultHoneypotNode",
+            node_name=name,
+            available_probe_num=20,
+            security_group_probe_ip_lists=["0.0.0.0/0"])
+        default_honeypot_preset = alicloud.threatdetection.HoneypotPreset("defaultHoneypotPreset",
+            preset_name=name,
+            node_id=default_honeypot_node.id,
+            honeypot_image_name=default_honeypot_images.images[0].honeypot_image_name,
+            meta=alicloud.threatdetection.HoneypotPresetMetaArgs(
+                portrait_option=True,
+                burp="open",
+            ))
+        ```
 
         ## Import
 

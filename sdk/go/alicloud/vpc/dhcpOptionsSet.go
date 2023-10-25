@@ -18,6 +18,47 @@ import (
 //
 // > **NOTE:** Available since v1.134.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			domain := "terraform-example.com"
+//			if param := cfg.Get("domain"); param != "" {
+//				domain = param
+//			}
+//			_, err := vpc.NewDhcpOptionsSet(ctx, "example", &vpc.DhcpOptionsSetArgs{
+//				DhcpOptionsSetName:        pulumi.String(name),
+//				DhcpOptionsSetDescription: pulumi.String(name),
+//				DomainName:                pulumi.String(domain),
+//				DomainNameServers:         pulumi.String("100.100.2.136"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // VPC Dhcp Options Set can be imported using the id, e.g.

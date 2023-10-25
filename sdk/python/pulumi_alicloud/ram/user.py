@@ -286,6 +286,22 @@ class User(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.0.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new RAM user.
+        user = alicloud.ram.User("user",
+            comments="yoyoyo",
+            display_name="user_display_name",
+            email="hello.uuu@aaa.com",
+            mobile="86-18688888888")
+        ```
+
         ## Import
 
         RAM User can be imported using the id, e.g.
@@ -317,6 +333,22 @@ class User(pulumi.CustomResource):
         > **NOTE:** When you want to destroy this resource forcefully(means release all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
 
         > **NOTE:** Available since v1.0.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new RAM user.
+        user = alicloud.ram.User("user",
+            comments="yoyoyo",
+            display_name="user_display_name",
+            email="hello.uuu@aaa.com",
+            mobile="86-18688888888")
+        ```
 
         ## Import
 

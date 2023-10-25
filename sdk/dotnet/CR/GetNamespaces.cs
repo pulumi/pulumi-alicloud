@@ -15,6 +15,33 @@ namespace Pulumi.AliCloud.CR
         /// This data source provides a list Container Registry namespaces on Alibaba Cloud.
         /// 
         /// &gt; **NOTE:** Available in v1.35.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myNamespaces = AliCloud.CR.GetNamespaces.Invoke(new()
+        ///     {
+        ///         NameRegex = "my-namespace",
+        ///         OutputFile = "my-namespace-json",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["output"] = myNamespaces.Apply(getNamespacesResult =&gt; getNamespacesResult.Namespaces),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNamespacesResult> InvokeAsync(GetNamespacesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNamespacesResult>("alicloud:cr/getNamespaces:getNamespaces", args ?? new GetNamespacesArgs(), options.WithDefaults());
@@ -23,6 +50,33 @@ namespace Pulumi.AliCloud.CR
         /// This data source provides a list Container Registry namespaces on Alibaba Cloud.
         /// 
         /// &gt; **NOTE:** Available in v1.35.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myNamespaces = AliCloud.CR.GetNamespaces.Invoke(new()
+        ///     {
+        ///         NameRegex = "my-namespace",
+        ///         OutputFile = "my-namespace-json",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["output"] = myNamespaces.Apply(getNamespacesResult =&gt; getNamespacesResult.Namespaces),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetNamespacesResult> Invoke(GetNamespacesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNamespacesResult>("alicloud:cr/getNamespaces:getNamespaces", args ?? new GetNamespacesInvokeArgs(), options.WithDefaults());

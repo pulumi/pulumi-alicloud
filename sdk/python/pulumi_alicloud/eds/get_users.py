@@ -90,6 +90,23 @@ def get_users(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.142.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.eds.User("default",
+        end_user_id="example_value",
+        email="your_email",
+        phone="your_phone",
+        password="your_password")
+    ids = alicloud.eds.get_users()
+    pulumi.export("ecdUserId1", ids.users[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of User IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -119,6 +136,23 @@ def get_users_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None
     This data source provides the Elastic Desktop Service (ECD) Users of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.142.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.eds.User("default",
+        end_user_id="example_value",
+        email="your_email",
+        phone="your_phone",
+        password="your_password")
+    ids = alicloud.eds.get_users()
+    pulumi.export("ecdUserId1", ids.users[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of User IDs.

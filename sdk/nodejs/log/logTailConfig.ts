@@ -9,6 +9,46 @@ import * as utilities from "../utilities";
  * You can use Logtail to collect logs from servers such as Alibaba Cloud Elastic
  * Compute Service (ECS) instances in real time in the Log Service console. [Refer to details](https://www.alibabacloud.com/help/doc-detail/29058.htm)
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const exampleProject = new alicloud.log.Project("exampleProject", {description: "terraform-example"});
+ * const exampleStore = new alicloud.log.Store("exampleStore", {
+ *     project: exampleProject.name,
+ *     retentionPeriod: 3650,
+ *     shardCount: 3,
+ *     autoSplit: true,
+ *     maxSplitShardCount: 60,
+ *     appendMeta: true,
+ * });
+ * const exampleLogTailConfig = new alicloud.log.LogTailConfig("exampleLogTailConfig", {
+ *     project: exampleProject.name,
+ *     logstore: exampleStore.name,
+ *     inputType: "file",
+ *     outputType: "LogService",
+ *     inputDetail: `  	{
+ * 		"logPath": "/logPath",
+ * 		"filePattern": "access.log",
+ * 		"logType": "json_log",
+ * 		"topicFormat": "default",
+ * 		"discardUnmatch": false,
+ * 		"enableRawLog": true,
+ * 		"fileEncoding": "gbk",
+ * 		"maxDepth": 10
+ * 	}
+ * `,
+ * });
+ * ```
  * ## Module Support
  *
  * You can use the existing sls-logtail module

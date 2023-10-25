@@ -13,6 +13,52 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.172.0.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultInstance = new alicloud.ots.Instance("defaultInstance", {
+ *     description: name,
+ *     accessedBy: "Any",
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
+ * });
+ * const defaultTable = new alicloud.ots.Table("defaultTable", {
+ *     instanceName: defaultInstance.name,
+ *     tableName: "tf_example",
+ *     timeToLive: -1,
+ *     maxVersion: 1,
+ *     enableSse: true,
+ *     sseKeyType: "SSE_KMS_SERVICE",
+ *     primaryKeys: [
+ *         {
+ *             name: "pk1",
+ *             type: "Integer",
+ *         },
+ *         {
+ *             name: "pk2",
+ *             type: "String",
+ *         },
+ *         {
+ *             name: "pk3",
+ *             type: "Binary",
+ *         },
+ *     ],
+ * });
+ * const defaultTunnel = new alicloud.ots.Tunnel("defaultTunnel", {
+ *     instanceName: defaultInstance.name,
+ *     tableName: defaultTable.tableName,
+ *     tunnelName: "tf_example",
+ *     tunnelType: "BaseAndStream",
+ * });
+ * ```
+ *
  * ## Import
  *
  * OTS tunnel can be imported using id, e.g.

@@ -11,6 +11,26 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.113.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.cms.MonitorGroup("example", {monitorGroupName: "tf-example-accmonitorgroup"});
+ * const default2 = new alicloud.cms.MonitorGroup("default2", {
+ *     contactGroups: ["your_contact_groups"],
+ *     resourceGroupId: "your_resource_group_id",
+ *     resourceGroupName: "resource_group_name",
+ *     tags: {
+ *         Created: "TF",
+ *         For: "Acceptance-example",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Cloud Monitor Service Monitor Group can be imported using the id, e.g.

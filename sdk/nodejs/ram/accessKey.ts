@@ -12,6 +12,47 @@ import * as utilities from "../utilities";
  * > **NOTE:**  From version 1.98.0, if not set `pgpKey`, the resource will output the access key secret to field `secret` and please protect your backend state file judiciously
  *
  * > **NOTE:** Available since v1.0.0+.
+ *
+ * ## Example Usage
+ *
+ * Output the secret to a file.
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * // Create a new RAM access key for user.
+ * const user = new alicloud.ram.User("user", {
+ *     displayName: "user_display_name",
+ *     mobile: "86-18688888888",
+ *     email: "hello.uuu@aaa.com",
+ *     comments: "yoyoyo",
+ *     force: true,
+ * });
+ * const ak = new alicloud.ram.AccessKey("ak", {
+ *     userName: user.name,
+ *     secretFile: "/xxx/xxx/xxx.txt",
+ * });
+ * ```
+ *
+ * Using `pgpKey` to encrypt the secret.
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * // Create a new RAM access key for user.
+ * const user = new alicloud.ram.User("user", {
+ *     displayName: "user_display_name",
+ *     mobile: "86-18688888888",
+ *     email: "hello.uuu@aaa.com",
+ *     comments: "yoyoyo",
+ *     force: true,
+ * });
+ * const encrypt = new alicloud.ram.AccessKey("encrypt", {
+ *     userName: user.name,
+ *     pgpKey: "keybase:some_person_that_exists",
+ * });
+ * export const secret = encrypt.encryptedSecret;
+ * ```
  */
 export class AccessKey extends pulumi.CustomResource {
     /**

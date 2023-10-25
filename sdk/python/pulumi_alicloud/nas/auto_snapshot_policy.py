@@ -278,6 +278,29 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.153.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.nas.AutoSnapshotPolicy("example",
+            auto_snapshot_policy_name="example_value",
+            repeat_weekdays=[
+                "3",
+                "4",
+                "5",
+            ],
+            retention_days=30,
+            time_points=[
+                "3",
+                "4",
+                "5",
+            ])
+        ```
+
         ## Import
 
         Network Attached Storage (NAS) Auto Snapshot Policy can be imported using the id, e.g.
@@ -314,6 +337,29 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
         For information about Network Attached Storage (NAS) Auto Snapshot Policy and how to use it, see [What is Auto Snapshot Policy](https://www.alibabacloud.com/help/en/doc-detail/135662.html).
 
         > **NOTE:** Available in v1.153.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.nas.AutoSnapshotPolicy("example",
+            auto_snapshot_policy_name="example_value",
+            repeat_weekdays=[
+                "3",
+                "4",
+                "5",
+            ],
+            retention_days=30,
+            time_points=[
+                "3",
+                "4",
+                "5",
+            ])
+        ```
 
         ## Import
 

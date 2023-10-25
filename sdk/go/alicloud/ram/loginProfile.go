@@ -17,6 +17,43 @@ import (
 //
 // > **NOTE:** Available since v1.0.0+.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			user, err := ram.NewUser(ctx, "user", &ram.UserArgs{
+//				DisplayName: pulumi.String("terraform_example"),
+//				Mobile:      pulumi.String("86-18688888888"),
+//				Email:       pulumi.String("hello.uuu@aaa.com"),
+//				Comments:    pulumi.String("terraform_example"),
+//				Force:       pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ram.NewLoginProfile(ctx, "profile", &ram.LoginProfileArgs{
+//				UserName: user.Name,
+//				Password: pulumi.String("Example_1234"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // RAM login profile can be imported using the id or user name, e.g.

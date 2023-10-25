@@ -139,6 +139,26 @@ def get_ecs_dedicated_host_clusters(dedicated_host_cluster_ids: Optional[Sequenc
 
     > **NOTE:** Available in v1.146.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.ecs.get_ecs_dedicated_host_clusters(ids=["example_id"])
+    pulumi.export("ecsDedicatedHostClusterId1", ids.clusters[0].id)
+    name_regex = alicloud.ecs.get_ecs_dedicated_host_clusters(name_regex="^my-DedicatedHostCluster")
+    pulumi.export("ecsDedicatedHostClusterId2", name_regex.clusters[0].id)
+    zone_id = alicloud.ecs.get_ecs_dedicated_host_clusters(zone_id="example_value")
+    pulumi.export("ecsDedicatedHostClusterId3", zone_id.clusters[0].id)
+    cluster_name = alicloud.ecs.get_ecs_dedicated_host_clusters(dedicated_host_cluster_name="example_value")
+    pulumi.export("ecsDedicatedHostClusterId4", cluster_name.clusters[0].id)
+    cluster_ids = alicloud.ecs.get_ecs_dedicated_host_clusters(dedicated_host_cluster_ids=["example_id"])
+    pulumi.export("ecsDedicatedHostClusterId5", cluster_ids.clusters[0].id)
+    ```
+
 
     :param Sequence[str] dedicated_host_cluster_ids: The IDs of dedicated host clusters.
     :param str dedicated_host_cluster_name: The name of the dedicated host cluster.
@@ -185,6 +205,26 @@ def get_ecs_dedicated_host_clusters_output(dedicated_host_cluster_ids: Optional[
     This data source provides the Ecs Dedicated Host Clusters of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.146.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.ecs.get_ecs_dedicated_host_clusters(ids=["example_id"])
+    pulumi.export("ecsDedicatedHostClusterId1", ids.clusters[0].id)
+    name_regex = alicloud.ecs.get_ecs_dedicated_host_clusters(name_regex="^my-DedicatedHostCluster")
+    pulumi.export("ecsDedicatedHostClusterId2", name_regex.clusters[0].id)
+    zone_id = alicloud.ecs.get_ecs_dedicated_host_clusters(zone_id="example_value")
+    pulumi.export("ecsDedicatedHostClusterId3", zone_id.clusters[0].id)
+    cluster_name = alicloud.ecs.get_ecs_dedicated_host_clusters(dedicated_host_cluster_name="example_value")
+    pulumi.export("ecsDedicatedHostClusterId4", cluster_name.clusters[0].id)
+    cluster_ids = alicloud.ecs.get_ecs_dedicated_host_clusters(dedicated_host_cluster_ids=["example_id"])
+    pulumi.export("ecsDedicatedHostClusterId5", cluster_ids.clusters[0].id)
+    ```
 
 
     :param Sequence[str] dedicated_host_cluster_ids: The IDs of dedicated host clusters.

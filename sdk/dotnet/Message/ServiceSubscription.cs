@@ -16,6 +16,41 @@ namespace Pulumi.AliCloud.Message
     /// 
     /// &gt; **NOTE:** Available since v1.188.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultServiceTopic = new AliCloud.Message.ServiceTopic("defaultServiceTopic", new()
+    ///     {
+    ///         TopicName = name,
+    ///         MaxMessageSize = 12357,
+    ///         LoggingEnabled = true,
+    ///     });
+    /// 
+    ///     var defaultServiceSubscription = new AliCloud.Message.ServiceSubscription("defaultServiceSubscription", new()
+    ///     {
+    ///         TopicName = defaultServiceTopic.TopicName,
+    ///         SubscriptionName = name,
+    ///         Endpoint = "http://example.com",
+    ///         PushType = "http",
+    ///         FilterTag = "tf-example",
+    ///         NotifyContentFormat = "XML",
+    ///         NotifyStrategy = "BACKOFF_RETRY",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Message Notification Service Subscription can be imported using the id, e.g.

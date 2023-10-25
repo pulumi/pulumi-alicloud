@@ -16,6 +16,59 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// &gt; **NOTE:** Available in v1.153.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZones = AliCloud.Nas.GetZones.Invoke(new()
+    ///     {
+    ///         FileSystemType = "cpfs",
+    ///     });
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
+    ///     {
+    ///         VswitchName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///         VpcId = exampleNetwork.Id,
+    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.ZoneId),
+    ///     });
+    /// 
+    ///     var exampleFileSystem = new AliCloud.Nas.FileSystem("exampleFileSystem", new()
+    ///     {
+    ///         ProtocolType = "cpfs",
+    ///         StorageType = "advance_200",
+    ///         FileSystemType = "cpfs",
+    ///         Capacity = 3600,
+    ///         Description = "terraform-example",
+    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.ZoneId),
+    ///         VpcId = exampleNetwork.Id,
+    ///         VswitchId = exampleSwitch.Id,
+    ///     });
+    /// 
+    ///     var exampleFileset = new AliCloud.Nas.Fileset("exampleFileset", new()
+    ///     {
+    ///         FileSystemId = exampleFileSystem.Id,
+    ///         Description = "terraform-example",
+    ///         FileSystemPath = "/example_path/",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Network Attached Storage (NAS) Fileset can be imported using the id, e.g.

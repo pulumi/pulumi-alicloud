@@ -100,6 +100,33 @@ def get_dynamic_tag_groups(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.142.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "example_value"
+    default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup",
+        alarm_contact_group_name=name,
+        describe="example_value",
+        enable_subscribed=True)
+    default_dynamic_tag_group = alicloud.cms.DynamicTagGroup("defaultDynamicTagGroup",
+        contact_group_lists=[default_alarm_contact_group.id],
+        tag_key="your_tag_key",
+        match_expresses=[alicloud.cms.DynamicTagGroupMatchExpressArgs(
+            tag_value="your_tag_value",
+            tag_value_match_function="all",
+        )])
+    ids = alicloud.cms.get_dynamic_tag_groups_output(ids=[default_dynamic_tag_group.id])
+    pulumi.export("cmsDynamicTagGroupId1", ids.groups[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Dynamic Tag Group IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -133,6 +160,33 @@ def get_dynamic_tag_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     This data source provides the Cms Dynamic Tag Groups of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.142.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "example_value"
+    default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup",
+        alarm_contact_group_name=name,
+        describe="example_value",
+        enable_subscribed=True)
+    default_dynamic_tag_group = alicloud.cms.DynamicTagGroup("defaultDynamicTagGroup",
+        contact_group_lists=[default_alarm_contact_group.id],
+        tag_key="your_tag_key",
+        match_expresses=[alicloud.cms.DynamicTagGroupMatchExpressArgs(
+            tag_value="your_tag_value",
+            tag_value_match_function="all",
+        )])
+    ids = alicloud.cms.get_dynamic_tag_groups_output(ids=[default_dynamic_tag_group.id])
+    pulumi.export("cmsDynamicTagGroupId1", ids.groups[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Dynamic Tag Group IDs.

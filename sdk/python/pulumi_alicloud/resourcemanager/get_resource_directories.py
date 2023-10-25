@@ -73,6 +73,16 @@ def get_resource_directories(output_file: Optional[str] = None,
 
     > **NOTE:**  Available in 1.86.0+.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.resourcemanager.get_resource_directories()
+    pulumi.export("resourceDirectoryId", default.directories[0].id)
+    ```
+
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
@@ -94,6 +104,16 @@ def get_resource_directories_output(output_file: Optional[pulumi.Input[Optional[
     This data source provides the Resource Manager Resource Directories of the current Alibaba Cloud user.
 
     > **NOTE:**  Available in 1.86.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.resourcemanager.get_resource_directories()
+    pulumi.export("resourceDirectoryId", default.directories[0].id)
+    ```
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

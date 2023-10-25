@@ -13,6 +13,53 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.104.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultAlarmContactGroup = new alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", {
+ *     alarmContactGroupName: name,
+ *     describe: name,
+ * });
+ * const defaultMonitorGroup = new alicloud.cms.MonitorGroup("defaultMonitorGroup", {
+ *     monitorGroupName: name,
+ *     contactGroups: [defaultAlarmContactGroup.id],
+ * });
+ * const _this = new alicloud.cms.GroupMetricRule("this", {
+ *     groupId: defaultMonitorGroup.id,
+ *     groupMetricRuleName: name,
+ *     category: "ecs",
+ *     metricName: "cpu_total",
+ *     namespace: "acs_ecs_dashboard",
+ *     ruleId: name,
+ *     period: 60,
+ *     interval: "3600",
+ *     silenceTime: 85800,
+ *     noEffectiveInterval: "00:00-05:30",
+ *     webhook: "http://www.aliyun.com",
+ *     escalations: {
+ *         warn: {
+ *             comparisonOperator: "GreaterThanOrEqualToThreshold",
+ *             statistics: "Average",
+ *             threshold: "90",
+ *             times: 3,
+ *         },
+ *         info: {
+ *             comparisonOperator: "LessThanLastWeek",
+ *             statistics: "Average",
+ *             threshold: "90",
+ *             times: 5,
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Cloud Monitor Service Group Metric Rule can be imported using the id, e.g.

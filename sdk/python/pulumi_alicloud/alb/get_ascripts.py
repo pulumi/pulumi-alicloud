@@ -144,6 +144,19 @@ def get_ascripts(ascript_name: Optional[str] = None,
 
     > **NOTE:** Available in 1.195.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.alb.get_ascripts(ids=[alicloud_alb_ascript["default"]["id"]],
+        name_regex=alicloud_alb_ascript["default"]["name"],
+        ascript_name="test",
+        listener_id=var["listenerId"])
+    pulumi.export("alicloudAlbAscriptExampleId", default.ascripts[0].id)
+    ```
+
 
     :param str ascript_name: Script name.
     :param Sequence[str] ids: A list of AScript IDs.
@@ -185,6 +198,19 @@ def get_ascripts_output(ascript_name: Optional[pulumi.Input[Optional[str]]] = No
     This data source provides Alb Ascript available to the user.
 
     > **NOTE:** Available in 1.195.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.alb.get_ascripts(ids=[alicloud_alb_ascript["default"]["id"]],
+        name_regex=alicloud_alb_ascript["default"]["name"],
+        ascript_name="test",
+        listener_id=var["listenerId"])
+    pulumi.export("alicloudAlbAscriptExampleId", default.ascripts[0].id)
+    ```
 
 
     :param str ascript_name: Script name.

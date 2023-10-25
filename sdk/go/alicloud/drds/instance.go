@@ -23,6 +23,37 @@ import (
 //
 // > **NOTE:** Currently, this resource only support `Domestic Site Account`.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/drds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := drds.NewInstance(ctx, "default", &drds.InstanceArgs{
+//				Description:        pulumi.String("drds instance"),
+//				InstanceChargeType: pulumi.String("PostPaid"),
+//				InstanceSeries:     pulumi.String("drds.sn1.4c8g"),
+//				Specification:      pulumi.String("drds.sn1.4c8g.8C16G"),
+//				VswitchId:          pulumi.String("vsw-bp1jlu3swk8rq2yoi40ey"),
+//				ZoneId:             pulumi.String("cn-hangzhou-e"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Distributed Relational Database Service (DRDS) can be imported using the id, e.g.

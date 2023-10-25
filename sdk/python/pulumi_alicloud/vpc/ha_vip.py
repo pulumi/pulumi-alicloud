@@ -502,6 +502,32 @@ class HAVip(pulumi.CustomResource):
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=example_network.id,
+            zone_id=default.zones[0].id)
+        example_ha_vip = alicloud.vpc.HAVip("exampleHAVip",
+            vswitch_id=example_switch.id,
+            description=name)
+        ```
+
         ## Import
 
         The havip can be imported using the id, e.g.
@@ -527,6 +553,32 @@ class HAVip(pulumi.CustomResource):
                  args: HAVipArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=example_network.id,
+            zone_id=default.zones[0].id)
+        example_ha_vip = alicloud.vpc.HAVip("exampleHAVip",
+            vswitch_id=example_switch.id,
+            description=name)
+        ```
+
         ## Import
 
         The havip can be imported using the id, e.g.

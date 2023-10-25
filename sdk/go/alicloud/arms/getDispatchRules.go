@@ -15,6 +15,40 @@ import (
 // This data source provides the Arms Dispatch Rules of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.136.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/arms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := arms.GetDispatchRules(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("armsDispatchRuleId1", ids.Rules[0].Id)
+//			nameRegex, err := arms.GetDispatchRules(ctx, &arms.GetDispatchRulesArgs{
+//				NameRegex: pulumi.StringRef("^my-DispatchRule"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("armsDispatchRuleId2", nameRegex.Rules[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDispatchRules(ctx *pulumi.Context, args *GetDispatchRulesArgs, opts ...pulumi.InvokeOption) (*GetDispatchRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDispatchRulesResult

@@ -469,6 +469,21 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Currently, this resource only support `Domestic Site Account`.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.drds.Instance("default",
+            description="drds instance",
+            instance_charge_type="PostPaid",
+            instance_series="drds.sn1.4c8g",
+            specification="drds.sn1.4c8g.8C16G",
+            vswitch_id="vsw-bp1jlu3swk8rq2yoi40ey",
+            zone_id="cn-hangzhou-e")
+        ```
+
         ## Import
 
         Distributed Relational Database Service (DRDS) can be imported using the id, e.g.
@@ -515,6 +530,21 @@ class Instance(pulumi.CustomResource):
         > **NOTE:** At present, DRDS instance only can be supported in the regions: cn-shenzhen, cn-beijing, cn-hangzhou, cn-hongkong, cn-qingdao, ap-southeast-1.
 
         > **NOTE:** Currently, this resource only support `Domestic Site Account`.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.drds.Instance("default",
+            description="drds instance",
+            instance_charge_type="PostPaid",
+            instance_series="drds.sn1.4c8g",
+            specification="drds.sn1.4c8g.8C16G",
+            vswitch_id="vsw-bp1jlu3swk8rq2yoi40ey",
+            zone_id="cn-hangzhou-e")
+        ```
 
         ## Import
 

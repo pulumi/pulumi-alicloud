@@ -15,6 +15,33 @@ namespace Pulumi.AliCloud.Slb
         /// This data source provides the domain extensions associated with a server load balancer listener.
         /// 
         /// &gt; **NOTE:** Available in 1.60.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = AliCloud.Slb.GetDomainExtensions.Invoke(new()
+        ///     {
+        ///         FrontendPort = "fake-port",
+        ///         Ids = new[]
+        ///         {
+        ///             "fake-de-id",
+        ///         },
+        ///         LoadBalancerId = "fake-lb-id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDomainExtensionsResult> InvokeAsync(GetDomainExtensionsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainExtensionsResult>("alicloud:slb/getDomainExtensions:getDomainExtensions", args ?? new GetDomainExtensionsArgs(), options.WithDefaults());
@@ -23,6 +50,33 @@ namespace Pulumi.AliCloud.Slb
         /// This data source provides the domain extensions associated with a server load balancer listener.
         /// 
         /// &gt; **NOTE:** Available in 1.60.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = AliCloud.Slb.GetDomainExtensions.Invoke(new()
+        ///     {
+        ///         FrontendPort = "fake-port",
+        ///         Ids = new[]
+        ///         {
+        ///             "fake-de-id",
+        ///         },
+        ///         LoadBalancerId = "fake-lb-id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDomainExtensionsResult> Invoke(GetDomainExtensionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainExtensionsResult>("alicloud:slb/getDomainExtensions:getDomainExtensions", args ?? new GetDomainExtensionsInvokeArgs(), options.WithDefaults());

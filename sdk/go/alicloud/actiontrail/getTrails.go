@@ -15,6 +15,33 @@ import (
 // This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
 //
 // > **NOTE:** Available in 1.95.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := actiontrail.GetTrails(ctx, &actiontrail.GetTrailsArgs{
+//				NameRegex: pulumi.StringRef("tf-testacc-actiontrail"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("trailName", _default.Trails[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetTrails(ctx *pulumi.Context, args *GetTrailsArgs, opts ...pulumi.InvokeOption) (*GetTrailsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTrailsResult

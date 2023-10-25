@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * This data source provides the Chatbot Agents of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.203.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const nameRegex = alicloud.chatbot.getAgents({
+ *     nameRegex: "^my-Agent",
+ * });
+ * export const alicloudChatbotAgentsId1 = nameRegex.then(nameRegex => nameRegex.agents?.[0]?.id);
+ * ```
  */
 export function getAgents(args?: GetAgentsArgs, opts?: pulumi.InvokeOptions): Promise<GetAgentsResult> {
     args = args || {};
@@ -74,6 +86,18 @@ export interface GetAgentsResult {
  * This data source provides the Chatbot Agents of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.203.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const nameRegex = alicloud.chatbot.getAgents({
+ *     nameRegex: "^my-Agent",
+ * });
+ * export const alicloudChatbotAgentsId1 = nameRegex.then(nameRegex => nameRegex.agents?.[0]?.id);
+ * ```
  */
 export function getAgentsOutput(args?: GetAgentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAgentsResult> {
     return pulumi.output(args).apply((a: any) => getAgents(a, opts))

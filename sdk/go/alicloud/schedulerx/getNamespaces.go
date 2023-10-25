@@ -15,6 +15,40 @@ import (
 // This data source provides the Schedulerx Namespaces of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.173.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/schedulerx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := schedulerx.GetNamespaces(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("schedulerxNamespaceId1", ids.Namespaces[0].Id)
+//			nameRegex, err := schedulerx.GetNamespaces(ctx, &schedulerx.GetNamespacesArgs{
+//				NameRegex: pulumi.StringRef("^my-Namespace"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("schedulerxNamespaceId2", nameRegex.Namespaces[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetNamespaces(ctx *pulumi.Context, args *GetNamespacesArgs, opts ...pulumi.InvokeOption) (*GetNamespacesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNamespacesResult

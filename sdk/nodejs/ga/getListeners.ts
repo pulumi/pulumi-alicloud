@@ -10,6 +10,22 @@ import * as utilities from "../utilities";
  * This data source provides the Global Accelerator (GA) Listeners of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.111.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.ga.getListeners({
+ *     acceleratorId: "example_value",
+ *     ids: ["example_value"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstGaListenerId = example.then(example => example.listeners?.[0]?.id);
+ * ```
  */
 export function getListeners(args: GetListenersArgs, opts?: pulumi.InvokeOptions): Promise<GetListenersResult> {
 
@@ -69,6 +85,22 @@ export interface GetListenersResult {
  * This data source provides the Global Accelerator (GA) Listeners of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.111.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.ga.getListeners({
+ *     acceleratorId: "example_value",
+ *     ids: ["example_value"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstGaListenerId = example.then(example => example.listeners?.[0]?.id);
+ * ```
  */
 export function getListenersOutput(args: GetListenersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetListenersResult> {
     return pulumi.output(args).apply((a: any) => getListeners(a, opts))
