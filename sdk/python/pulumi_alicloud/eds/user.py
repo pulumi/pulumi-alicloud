@@ -249,6 +249,21 @@ class User(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.142.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.eds.User("default",
+            email="tf.example@abc.com",
+            end_user_id="terraform_example123",
+            password="Example_123",
+            phone="18888888888")
+        ```
+
         ## Import
 
         ECD User can be imported using the id, e.g.
@@ -277,6 +292,21 @@ class User(pulumi.CustomResource):
         For information about Elastic Desktop Service (ECD) User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-eds-user-2021-03-08-createusers-desktop).
 
         > **NOTE:** Available since v1.142.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.eds.User("default",
+            email="tf.example@abc.com",
+            end_user_id="terraform_example123",
+            password="Example_123",
+            phone="18888888888")
+        ```
 
         ## Import
 

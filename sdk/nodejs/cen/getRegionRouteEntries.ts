@@ -8,6 +8,19 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides CEN Regional Route Entries available to the user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const entry = alicloud.cen.getRegionRouteEntries({
+ *     instanceId: "cen-id1",
+ *     regionId: "cn-beijing",
+ * });
+ * export const firstRegionRouteEntriesRouteEntryCidrBlock = entry.then(entry => entry.entries?.[0]?.cidrBlock);
+ * ```
  */
 export function getRegionRouteEntries(args: GetRegionRouteEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionRouteEntriesResult> {
 
@@ -52,6 +65,19 @@ export interface GetRegionRouteEntriesResult {
 }
 /**
  * This data source provides CEN Regional Route Entries available to the user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const entry = alicloud.cen.getRegionRouteEntries({
+ *     instanceId: "cen-id1",
+ *     regionId: "cn-beijing",
+ * });
+ * export const firstRegionRouteEntriesRouteEntryCidrBlock = entry.then(entry => entry.entries?.[0]?.cidrBlock);
+ * ```
  */
 export function getRegionRouteEntriesOutput(args: GetRegionRouteEntriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionRouteEntriesResult> {
     return pulumi.output(args).apply((a: any) => getRegionRouteEntries(a, opts))

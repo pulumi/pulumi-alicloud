@@ -145,6 +145,21 @@ class CustomProperty(pulumi.CustomResource):
 
         > **NOTE:** Up to 10 different attributes can be created under an alibaba cloud account. Up to 50 different attribute values can be added under an attribute.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.eds.CustomProperty("example",
+            property_key="example_key",
+            property_values=[alicloud.eds.CustomPropertyPropertyValueArgs(
+                property_value="example_value",
+            )])
+        ```
+
         ## Import
 
         ECD Custom Property can be imported using the id, e.g.
@@ -172,6 +187,21 @@ class CustomProperty(pulumi.CustomResource):
         > **NOTE:** Available since v1.176.0.
 
         > **NOTE:** Up to 10 different attributes can be created under an alibaba cloud account. Up to 50 different attribute values can be added under an attribute.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.eds.CustomProperty("example",
+            property_key="example_key",
+            property_values=[alicloud.eds.CustomPropertyPropertyValueArgs(
+                property_value="example_value",
+            )])
+        ```
 
         ## Import
 

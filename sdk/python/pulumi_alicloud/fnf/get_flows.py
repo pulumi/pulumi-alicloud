@@ -109,6 +109,19 @@ def get_flows(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.105.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.fnf.get_flows(ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstFnfFlowId", example.flows[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Flow IDs.
     :param int limit: The number of resource queries.
@@ -143,6 +156,19 @@ def get_flows_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None
     This data source provides the Fnf Flows of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.105.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.fnf.get_flows(ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstFnfFlowId", example.flows[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Flow IDs.

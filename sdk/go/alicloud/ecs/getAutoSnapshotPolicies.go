@@ -15,6 +15,38 @@ import (
 // This data source provides the Ecs Auto Snapshot Policies of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.117.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := ecs.GetAutoSnapshotPolicies(ctx, &ecs.GetAutoSnapshotPoliciesArgs{
+//				Ids: []string{
+//					"sp-bp14e66xxxxxxxx",
+//				},
+//				NameRegex: pulumi.StringRef("tf-testAcc"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstEcsAutoSnapshotPolicyId", example.Policies[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetAutoSnapshotPolicies(ctx *pulumi.Context, args *GetAutoSnapshotPoliciesArgs, opts ...pulumi.InvokeOption) (*GetAutoSnapshotPoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAutoSnapshotPoliciesResult

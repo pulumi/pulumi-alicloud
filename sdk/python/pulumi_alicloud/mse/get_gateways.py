@@ -139,6 +139,22 @@ def get_gateways(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.157.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.mse.get_gateways(ids=["example_id"])
+    pulumi.export("mseGatewayId1", ids.gateways[0].id)
+    name_regex = alicloud.mse.get_gateways(name_regex="^my-Gateway")
+    pulumi.export("mseGatewayId2", name_regex.gateways[0].id)
+    status = alicloud.mse.get_gateways(status="2")
+    pulumi.export("mseGatewayId3", status.gateways[0].id)
+    ```
+
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param str gateway_name: The name of the Gateway.
@@ -185,6 +201,22 @@ def get_gateways_output(enable_details: Optional[pulumi.Input[Optional[bool]]] =
     This data source provides the Mse Gateways of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.157.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.mse.get_gateways(ids=["example_id"])
+    pulumi.export("mseGatewayId1", ids.gateways[0].id)
+    name_regex = alicloud.mse.get_gateways(name_regex="^my-Gateway")
+    pulumi.export("mseGatewayId2", name_regex.gateways[0].id)
+    status = alicloud.mse.get_gateways(status="2")
+    pulumi.export("mseGatewayId3", status.gateways[0].id)
+    ```
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

@@ -351,6 +351,76 @@ class SecondaryIndex(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.187.0.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_instance = alicloud.ots.Instance("defaultInstance",
+            description=name,
+            accessed_by="Any",
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        default_table = alicloud.ots.Table("defaultTable",
+            instance_name=default_instance.name,
+            table_name="tf_example",
+            time_to_live=-1,
+            max_version=1,
+            enable_sse=True,
+            sse_key_type="SSE_KMS_SERVICE",
+            primary_keys=[
+                alicloud.ots.TablePrimaryKeyArgs(
+                    name="pk1",
+                    type="Integer",
+                ),
+                alicloud.ots.TablePrimaryKeyArgs(
+                    name="pk2",
+                    type="String",
+                ),
+                alicloud.ots.TablePrimaryKeyArgs(
+                    name="pk3",
+                    type="Binary",
+                ),
+            ],
+            defined_columns=[
+                alicloud.ots.TableDefinedColumnArgs(
+                    name="col1",
+                    type="Integer",
+                ),
+                alicloud.ots.TableDefinedColumnArgs(
+                    name="col2",
+                    type="String",
+                ),
+                alicloud.ots.TableDefinedColumnArgs(
+                    name="col3",
+                    type="Binary",
+                ),
+            ])
+        default_secondary_index = alicloud.ots.SecondaryIndex("defaultSecondaryIndex",
+            instance_name=default_instance.name,
+            table_name=default_table.table_name,
+            index_name="example_index",
+            index_type="Global",
+            include_base_data=True,
+            primary_keys=[
+                "pk1",
+                "pk2",
+                "pk3",
+            ],
+            defined_columns=[
+                "col1",
+                "col2",
+                "col3",
+            ])
+        ```
+
         ## Import
 
         OTS secondary index can be imported using id, e.g.
@@ -381,6 +451,76 @@ class SecondaryIndex(pulumi.CustomResource):
         For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
 
         > **NOTE:** Available since v1.187.0.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_instance = alicloud.ots.Instance("defaultInstance",
+            description=name,
+            accessed_by="Any",
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        default_table = alicloud.ots.Table("defaultTable",
+            instance_name=default_instance.name,
+            table_name="tf_example",
+            time_to_live=-1,
+            max_version=1,
+            enable_sse=True,
+            sse_key_type="SSE_KMS_SERVICE",
+            primary_keys=[
+                alicloud.ots.TablePrimaryKeyArgs(
+                    name="pk1",
+                    type="Integer",
+                ),
+                alicloud.ots.TablePrimaryKeyArgs(
+                    name="pk2",
+                    type="String",
+                ),
+                alicloud.ots.TablePrimaryKeyArgs(
+                    name="pk3",
+                    type="Binary",
+                ),
+            ],
+            defined_columns=[
+                alicloud.ots.TableDefinedColumnArgs(
+                    name="col1",
+                    type="Integer",
+                ),
+                alicloud.ots.TableDefinedColumnArgs(
+                    name="col2",
+                    type="String",
+                ),
+                alicloud.ots.TableDefinedColumnArgs(
+                    name="col3",
+                    type="Binary",
+                ),
+            ])
+        default_secondary_index = alicloud.ots.SecondaryIndex("defaultSecondaryIndex",
+            instance_name=default_instance.name,
+            table_name=default_table.table_name,
+            index_name="example_index",
+            index_type="Global",
+            include_base_data=True,
+            primary_keys=[
+                "pk1",
+                "pk2",
+                "pk3",
+            ],
+            defined_columns=[
+                "col1",
+                "col2",
+                "col3",
+            ])
+        ```
 
         ## Import
 

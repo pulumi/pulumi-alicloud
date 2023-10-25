@@ -12,6 +12,19 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** A maximum of five levels of folders can be created under the root folder.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const example = new alicloud.resourcemanager.Folder("example", {folderName: name});
+ * ```
+ *
  * ## Import
  *
  * Resource Manager Folder can be imported using the id, e.g.

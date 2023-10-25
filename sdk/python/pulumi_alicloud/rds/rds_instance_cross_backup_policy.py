@@ -382,6 +382,49 @@ class RdsInstanceCrossBackupPolicy(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.195.0.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="8.0",
+            db_instance_storage_type="local_ssd",
+            category="HighAvailability")
+        default_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_zones.ids[0],
+            engine="MySQL",
+            engine_version="8.0",
+            db_instance_storage_type="local_ssd",
+            category="HighAvailability")
+        regions = alicloud.rds.get_cross_regions()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.ids[0],
+            vswitch_name=name)
+        default_instance = alicloud.rds.Instance("defaultInstance",
+            engine="MySQL",
+            engine_version="8.0",
+            instance_type=default_instance_classes.instance_classes[0].instance_class,
+            instance_storage=default_instance_classes.instance_classes[0].storage_range.min,
+            instance_charge_type="Postpaid",
+            category="HighAvailability",
+            instance_name=name,
+            vswitch_id=default_switch.id,
+            db_instance_storage_type="local_ssd")
+        default_rds_instance_cross_backup_policy = alicloud.rds.RdsInstanceCrossBackupPolicy("defaultRdsInstanceCrossBackupPolicy",
+            instance_id=default_instance.id,
+            cross_backup_region=regions.ids[0])
+        ```
+
         ## Import
 
         RDS remote disaster recovery policies can be imported using id or instance id, e.g.
@@ -411,6 +454,49 @@ class RdsInstanceCrossBackupPolicy(pulumi.CustomResource):
         For information about RDS cross region backup settings and how to use them, see [What is cross region backup](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/modify-cross-region-backup-settings).
 
         > **NOTE:** Available since v1.195.0.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="8.0",
+            db_instance_storage_type="local_ssd",
+            category="HighAvailability")
+        default_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_zones.ids[0],
+            engine="MySQL",
+            engine_version="8.0",
+            db_instance_storage_type="local_ssd",
+            category="HighAvailability")
+        regions = alicloud.rds.get_cross_regions()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.ids[0],
+            vswitch_name=name)
+        default_instance = alicloud.rds.Instance("defaultInstance",
+            engine="MySQL",
+            engine_version="8.0",
+            instance_type=default_instance_classes.instance_classes[0].instance_class,
+            instance_storage=default_instance_classes.instance_classes[0].storage_range.min,
+            instance_charge_type="Postpaid",
+            category="HighAvailability",
+            instance_name=name,
+            vswitch_id=default_switch.id,
+            db_instance_storage_type="local_ssd")
+        default_rds_instance_cross_backup_policy = alicloud.rds.RdsInstanceCrossBackupPolicy("defaultRdsInstanceCrossBackupPolicy",
+            instance_id=default_instance.id,
+            cross_backup_region=regions.ids[0])
+        ```
 
         ## Import
 

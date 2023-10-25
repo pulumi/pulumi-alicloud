@@ -13,6 +13,37 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.182.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-testacc-example";
+ * const defaultRg = new alicloud.resourcemanager.ResourceGroup("defaultRg", {
+ *     displayName: "tf-testacc-chenyi",
+ *     resourceGroupName: name,
+ * });
+ * const changeRg = new alicloud.resourcemanager.ResourceGroup("changeRg", {
+ *     displayName: "tf-testacc-chenyi-change",
+ *     resourceGroupName: `${name}1`,
+ * });
+ * const _default = new alicloud.vpc.PrefixList("default", {
+ *     maxEntries: 50,
+ *     resourceGroupId: defaultRg.id,
+ *     prefixListDescription: "test",
+ *     ipVersion: "IPV4",
+ *     prefixListName: name,
+ *     entrys: [{
+ *         cidr: "192.168.0.0/16",
+ *         description: "test",
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Vpc Prefix List can be imported using the id, e.g.

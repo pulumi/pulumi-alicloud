@@ -891,6 +891,33 @@ class Stack(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.106.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ros.Stack("example",
+            stack_name="tf-testaccstack",
+            stack_policy_body=\"\"\"    {
+            	"Statement": [{
+            		"Action": "Update:Delete",
+            		"Resource": "*",
+            		"Effect": "Allow",
+            		"Principal": "*"
+            	}]
+            }
+            
+        \"\"\",
+            template_body=\"\"\"    {
+            	"ROSTemplateFormatVersion": "2015-09-01"
+            }
+            
+        \"\"\")
+        ```
+
         ## Import
 
         ROS Stack can be imported using the id, e.g.
@@ -934,6 +961,33 @@ class Stack(pulumi.CustomResource):
         For information about ROS Stack and how to use it, see [What is Stack](https://www.alibabacloud.com/help/en/doc-detail/132086.htm).
 
         > **NOTE:** Available in v1.106.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ros.Stack("example",
+            stack_name="tf-testaccstack",
+            stack_policy_body=\"\"\"    {
+            	"Statement": [{
+            		"Action": "Update:Delete",
+            		"Resource": "*",
+            		"Effect": "Allow",
+            		"Principal": "*"
+            	}]
+            }
+            
+        \"\"\",
+            template_body=\"\"\"    {
+            	"ROSTemplateFormatVersion": "2015-09-01"
+            }
+            
+        \"\"\")
+        ```
 
         ## Import
 

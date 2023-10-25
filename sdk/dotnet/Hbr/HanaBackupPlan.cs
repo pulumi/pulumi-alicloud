@@ -16,6 +16,58 @@ namespace Pulumi.AliCloud.Hbr
     /// 
     /// &gt; **NOTE:** Available in v1.179.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     {
+    ///         Status = "OK",
+    ///     });
+    /// 
+    ///     var exampleVault = new AliCloud.Hbr.Vault("exampleVault", new()
+    ///     {
+    ///         VaultName = "terraform-example",
+    ///     });
+    /// 
+    ///     var exampleHanaInstance = new AliCloud.Hbr.HanaInstance("exampleHanaInstance", new()
+    ///     {
+    ///         AlertSetting = "INHERITED",
+    ///         HanaName = "terraform-example",
+    ///         Host = "1.1.1.1",
+    ///         InstanceNumber = 1,
+    ///         Password = "YouPassword123",
+    ///         ResourceGroupId = exampleResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         Sid = "HXE",
+    ///         UseSsl = false,
+    ///         UserName = "admin",
+    ///         ValidateCertificate = false,
+    ///         VaultId = exampleVault.Id,
+    ///     });
+    /// 
+    ///     var exampleHanaBackupPlan = new AliCloud.Hbr.HanaBackupPlan("exampleHanaBackupPlan", new()
+    ///     {
+    ///         BackupPrefix = "DIFF_DATA_BACKUP",
+    ///         BackupType = "COMPLETE",
+    ///         ClusterId = exampleHanaInstance.HanaInstanceId,
+    ///         DatabaseName = "SYSTEMDB",
+    ///         PlanName = "terraform-example",
+    ///         ResourceGroupId = exampleResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         Schedule = "I|1602673264|P1D",
+    ///         VaultId = exampleHanaInstance.VaultId,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Hybrid Backup Recovery (HBR) Hana Backup Plan can be imported using the id, e.g.

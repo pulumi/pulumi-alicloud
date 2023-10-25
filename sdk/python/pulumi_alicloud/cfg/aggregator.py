@@ -240,6 +240,30 @@ class Aggregator(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.124.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_accounts = alicloud.resourcemanager.get_accounts(status="CreateSuccess")
+        default_aggregator = alicloud.cfg.Aggregator("defaultAggregator",
+            aggregator_accounts=[alicloud.cfg.AggregatorAggregatorAccountArgs(
+                account_id=default_accounts.accounts[0].account_id,
+                account_name=default_accounts.accounts[0].display_name,
+                account_type="ResourceDirectory",
+            )],
+            aggregator_name=name,
+            description=name,
+            aggregator_type="CUSTOM")
+        ```
+
         ## Import
 
         Cloud Config Aggregator can be imported using the id, e.g.
@@ -267,6 +291,30 @@ class Aggregator(pulumi.CustomResource):
         For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregator](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createaggregator).
 
         > **NOTE:** Available since v1.124.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_accounts = alicloud.resourcemanager.get_accounts(status="CreateSuccess")
+        default_aggregator = alicloud.cfg.Aggregator("defaultAggregator",
+            aggregator_accounts=[alicloud.cfg.AggregatorAggregatorAccountArgs(
+                account_id=default_accounts.accounts[0].account_id,
+                account_name=default_accounts.accounts[0].display_name,
+                account_type="ResourceDirectory",
+            )],
+            aggregator_name=name,
+            description=name,
+            aggregator_type="CUSTOM")
+        ```
 
         ## Import
 

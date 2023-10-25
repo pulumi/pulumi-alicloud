@@ -11,6 +11,36 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.194.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const region = config.get("region") || "cn-hangzhou";
+ * const defaultBasicAccelerator = new alicloud.ga.BasicAccelerator("defaultBasicAccelerator", {
+ *     duration: 1,
+ *     basicAcceleratorName: "terraform-example",
+ *     description: "terraform-example",
+ *     bandwidthBillingType: "CDT",
+ *     autoUseCoupon: "true",
+ *     autoPay: true,
+ * });
+ * const defaultBasicIpSet = new alicloud.ga.BasicIpSet("defaultBasicIpSet", {
+ *     acceleratorId: defaultBasicAccelerator.id,
+ *     accelerateRegionId: region,
+ *     ispType: "BGP",
+ *     bandwidth: 5,
+ * });
+ * const defaultBasicAccelerateIp = new alicloud.ga.BasicAccelerateIp("defaultBasicAccelerateIp", {
+ *     acceleratorId: defaultBasicAccelerator.id,
+ *     ipSetId: defaultBasicIpSet.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Global Accelerator (GA) Basic Accelerate IP can be imported using the id, e.g.

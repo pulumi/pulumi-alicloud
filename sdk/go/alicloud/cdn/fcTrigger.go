@@ -19,6 +19,52 @@ import (
 //
 // > **NOTE:** Available in v1.165.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cdn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cdn.NewFcTrigger(ctx, "example", &cdn.FcTriggerArgs{
+//				EventMetaName:    pulumi.String("LogFileCreated"),
+//				EventMetaVersion: pulumi.String("1.0.0"),
+//				Notes:            pulumi.String("example_value"),
+//				RoleArn:          pulumi.String(fmt.Sprintf("acs:ram::%v:role/aliyuncdneventnotificationrole", defaultAccount.Id)),
+//				SourceArn:        pulumi.String(fmt.Sprintf("acs:cdn:*:%v:domain/example.com", defaultAccount.Id)),
+//				TriggerArn:       pulumi.String(fmt.Sprintf("acs:fc:%v:%v:services/FCTestService/functions/printEvent/triggers/testtrigger", defaultRegions.Regions[0].Id, defaultAccount.Id)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // CDN Fc Trigger can be imported using the id, e.g.

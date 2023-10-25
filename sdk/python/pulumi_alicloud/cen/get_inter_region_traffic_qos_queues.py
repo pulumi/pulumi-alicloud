@@ -121,6 +121,18 @@ def get_inter_region_traffic_qos_queues(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in 1.195.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cen.get_inter_region_traffic_qos_queues(ids=[alicloud_cen_inter_region_traffic_qos_queue["default"]["id"]],
+        name_regex=alicloud_cen_inter_region_traffic_qos_queue["default"]["name"],
+        traffic_qos_policy_id="qos-xxxxxxx")
+    pulumi.export("alicloudCenInterRegionTrafficQosQueueExampleId", default.queues[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Inter Region Traffic Qos Queue IDs.
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
@@ -155,6 +167,18 @@ def get_inter_region_traffic_qos_queues_output(ids: Optional[pulumi.Input[Option
     This data source provides Cen Inter Region Traffic Qos Queue available to the user.
 
     > **NOTE:** Available in 1.195.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cen.get_inter_region_traffic_qos_queues(ids=[alicloud_cen_inter_region_traffic_qos_queue["default"]["id"]],
+        name_regex=alicloud_cen_inter_region_traffic_qos_queue["default"]["name"],
+        traffic_qos_policy_id="qos-xxxxxxx")
+    pulumi.export("alicloudCenInterRegionTrafficQosQueueExampleId", default.queues[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Inter Region Traffic Qos Queue IDs.

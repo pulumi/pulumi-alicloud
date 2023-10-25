@@ -115,6 +115,19 @@ def get_saml_providers(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available since v1.114.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.ram.get_saml_providers(ids=["samlProviderName"],
+        name_regex="tf-testAcc")
+    pulumi.export("firstRamSamlProviderId", example.providers[0].id)
+    ```
+
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of SAML Provider IDs.
@@ -149,6 +162,19 @@ def get_saml_providers_output(enable_details: Optional[pulumi.Input[Optional[boo
     This data source provides the Ram Saml Providers of the current Alibaba Cloud user.
 
     > **NOTE:** Available since v1.114.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.ram.get_saml_providers(ids=["samlProviderName"],
+        name_regex="tf-testAcc")
+    pulumi.export("firstRamSamlProviderId", example.providers[0].id)
+    ```
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

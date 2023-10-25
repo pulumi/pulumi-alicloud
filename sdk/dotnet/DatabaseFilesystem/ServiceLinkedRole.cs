@@ -16,6 +16,24 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// 
     /// &gt; **NOTE:** Available since v1.157.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var serviceLinkedRole = new AliCloud.DatabaseFilesystem.ServiceLinkedRole("serviceLinkedRole", new()
+    ///     {
+    ///         ProductName = "AliyunServiceRoleForDbfs",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Dbfs service-linked roles(SLR) can be imported using the id, e.g.

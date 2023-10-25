@@ -10,6 +10,19 @@ import * as utilities from "../utilities";
  * This data source provides Adb Resource Group available to the user.[What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describedbresourcegroup)
  *
  * > **NOTE:** Available since v1.195.0.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.adb.getResourceGroups({
+ *     dbClusterId: "am-bp1a16357gty69185",
+ *     groupName: "TESTOPENAPI",
+ * });
+ * export const alicloudAdbResourceGroupExampleId = _default.then(_default => _default.groups?.[0]?.id);
+ * ```
  */
 export function getResourceGroups(args: GetResourceGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceGroupsResult> {
 
@@ -71,6 +84,19 @@ export interface GetResourceGroupsResult {
  * This data source provides Adb Resource Group available to the user.[What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describedbresourcegroup)
  *
  * > **NOTE:** Available since v1.195.0.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.adb.getResourceGroups({
+ *     dbClusterId: "am-bp1a16357gty69185",
+ *     groupName: "TESTOPENAPI",
+ * });
+ * export const alicloudAdbResourceGroupExampleId = _default.then(_default => _default.groups?.[0]?.id);
+ * ```
  */
 export function getResourceGroupsOutput(args: GetResourceGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceGroupsResult> {
     return pulumi.output(args).apply((a: any) => getResourceGroups(a, opts))

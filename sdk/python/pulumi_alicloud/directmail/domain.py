@@ -118,6 +118,21 @@ class Domain(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.134.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "alicloud-provider.online"
+        example = alicloud.directmail.Domain("example", domain_name=domain_name)
+        ```
+
         ## Import
 
         Direct Mail Domain can be imported using the id, e.g.
@@ -142,6 +157,21 @@ class Domain(pulumi.CustomResource):
         For information about Direct Mail Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/doc-detail/29414.htm).
 
         > **NOTE:** Available since v1.134.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "alicloud-provider.online"
+        example = alicloud.directmail.Domain("example", domain_name=domain_name)
+        ```
 
         ## Import
 

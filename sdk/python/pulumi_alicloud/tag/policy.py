@@ -229,6 +229,25 @@ class Policy(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.203.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        example = alicloud.tag.Policy("example",
+            policy_name=name,
+            policy_desc=name,
+            user_type="USER",
+            policy_content="		{\\"tags\\":{\\"CostCenter\\":{\\"tag_value\\":{\\"@@assign\\":[\\"Beijing\\",\\"Shanghai\\"]},\\"tag_key\\":{\\"@@assign\\":\\"CostCenter\\"}}}}\\n")
+        ```
+
         ## Import
 
         Tag Policy can be imported using the id, e.g.
@@ -258,6 +277,25 @@ class Policy(pulumi.CustomResource):
         see [What is Policy](https://www.alibabacloud.com/help/en/resource-management/latest/create-policy).
 
         > **NOTE:** Available since v1.203.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        example = alicloud.tag.Policy("example",
+            policy_name=name,
+            policy_desc=name,
+            user_type="USER",
+            policy_content="		{\\"tags\\":{\\"CostCenter\\":{\\"tag_value\\":{\\"@@assign\\":[\\"Beijing\\",\\"Shanghai\\"]},\\"tag_key\\":{\\"@@assign\\":\\"CostCenter\\"}}}}\\n")
+        ```
 
         ## Import
 

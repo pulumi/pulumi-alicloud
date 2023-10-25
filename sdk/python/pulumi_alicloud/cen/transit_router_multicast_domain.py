@@ -237,6 +237,27 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.195.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+            transit_router_name="tf_example",
+            cen_id=example_instance.id,
+            support_multicast=True)
+        example_transit_router_multicast_domain = alicloud.cen.TransitRouterMulticastDomain("exampleTransitRouterMulticastDomain",
+            transit_router_id=example_transit_router.transit_router_id,
+            transit_router_multicast_domain_name="tf_example",
+            transit_router_multicast_domain_description="tf_example")
+        ```
+
         ## Import
 
         Cloud Enterprise Network (CEN) Transit Router Multicast Domain can be imported using the id, e.g.
@@ -264,6 +285,27 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
         For information about Cloud Enterprise Network (CEN) Transit Router Multicast Domain and how to use it, see [What is Transit Router Multicast Domain](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutermulticastdomain).
 
         > **NOTE:** Available since v1.195.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+            transit_router_name="tf_example",
+            cen_id=example_instance.id,
+            support_multicast=True)
+        example_transit_router_multicast_domain = alicloud.cen.TransitRouterMulticastDomain("exampleTransitRouterMulticastDomain",
+            transit_router_id=example_transit_router.transit_router_id,
+            transit_router_multicast_domain_name="tf_example",
+            transit_router_multicast_domain_description="tf_example")
+        ```
 
         ## Import
 

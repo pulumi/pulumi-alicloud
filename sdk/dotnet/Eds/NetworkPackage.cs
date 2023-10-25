@@ -16,6 +16,37 @@ namespace Pulumi.AliCloud.Eds
     /// 
     /// &gt; **NOTE:** Available since v1.142.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("defaultSimpleOfficeSite", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/12",
+    ///         EnableAdminAccess = false,
+    ///         DesktopAccessType = "Internet",
+    ///         OfficeSiteName = name,
+    ///     });
+    /// 
+    ///     var defaultNetworkPackage = new AliCloud.Eds.NetworkPackage("defaultNetworkPackage", new()
+    ///     {
+    ///         Bandwidth = 10,
+    ///         OfficeSiteId = defaultSimpleOfficeSite.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ECD Network Package can be imported using the id, e.g.

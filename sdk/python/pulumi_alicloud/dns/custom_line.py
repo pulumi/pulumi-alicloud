@@ -223,6 +223,23 @@ class CustomLine(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.151.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.dns.CustomLine("default",
+            custom_line_name="tf-example",
+            domain_name="alicloud-provider.com",
+            ip_segment_lists=[alicloud.dns.CustomLineIpSegmentListArgs(
+                end_ip="192.0.2.125",
+                start_ip="192.0.2.123",
+            )])
+        ```
+
         ## Import
 
         Alidns Custom Line can be imported using the id, e.g.
@@ -250,6 +267,23 @@ class CustomLine(pulumi.CustomResource):
         For information about Alidns Custom Line and how to use it, see [What is Custom Line](https://www.alibabacloud.com/help/en/doc-detail/145059.html).
 
         > **NOTE:** Available since v1.151.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.dns.CustomLine("default",
+            custom_line_name="tf-example",
+            domain_name="alicloud-provider.com",
+            ip_segment_lists=[alicloud.dns.CustomLineIpSegmentListArgs(
+                end_ip="192.0.2.125",
+                start_ip="192.0.2.123",
+            )])
+        ```
 
         ## Import
 

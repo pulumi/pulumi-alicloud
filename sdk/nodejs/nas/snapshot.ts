@@ -13,6 +13,35 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Only Extreme NAS file systems support the snapshot feature.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "testacc";
+ * const defaultZones = alicloud.nas.getZones({
+ *     fileSystemType: "extreme",
+ * });
+ * const defaultFileSystem = new alicloud.nas.FileSystem("defaultFileSystem", {
+ *     fileSystemType: "extreme",
+ *     protocolType: "NFS",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.zoneId),
+ *     storageType: "standard",
+ *     description: name,
+ *     capacity: 100,
+ * });
+ * const defaultSnapshot = new alicloud.nas.Snapshot("defaultSnapshot", {
+ *     fileSystemId: defaultFileSystem.id,
+ *     description: name,
+ *     retentionDays: 20,
+ *     snapshotName: name,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Network Attached Storage (NAS) Snapshot can be imported using the id, e.g.

@@ -15,6 +15,46 @@ import (
 // This data source provides the Gpdb Db Instance Plans of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.189.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/gpdb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := gpdb.GetDbInstancePlans(ctx, &gpdb.GetDbInstancePlansArgs{
+//				DbInstanceId: "example_value",
+//				Ids: []string{
+//					"example_value",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("gpdbDbInstancePlanId1", ids.Plans[0].Id)
+//			nameRegex, err := gpdb.GetDbInstancePlans(ctx, &gpdb.GetDbInstancePlansArgs{
+//				DbInstanceId: "example_value",
+//				NameRegex:    pulumi.StringRef("^my-DBInstancePlan"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("gpdbDbInstancePlanId2", nameRegex.Plans[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDbInstancePlans(ctx *pulumi.Context, args *GetDbInstancePlansArgs, opts ...pulumi.InvokeOption) (*GetDbInstancePlansResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDbInstancePlansResult

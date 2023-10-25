@@ -216,6 +216,19 @@ def get_subnets(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in 1.204.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.eflo.get_subnets(name_regex=alicloud_eflo_subnet["default"]["name"],
+        subnet_name="SubnetTestForTerraform",
+        vpd_id=var["vpdId"],
+        zone_id=var["zoneId"])
+    pulumi.export("alicloudEfloSubnetExampleId", default.subnets[0].id)
+    ```
+
 
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -282,6 +295,19 @@ def get_subnets_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
     This data source provides Eflo Subnet available to the user.[What is Subnet](https://help.aliyun.com/document_detail/604977.html)
 
     > **NOTE:** Available in 1.204.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.eflo.get_subnets(name_regex=alicloud_eflo_subnet["default"]["name"],
+        subnet_name="SubnetTestForTerraform",
+        vpd_id=var["vpdId"],
+        zone_id=var["zoneId"])
+    pulumi.export("alicloudEfloSubnetExampleId", default.subnets[0].id)
+    ```
 
 
     :param str name_regex: A regex string to filter results by Group Metric Rule name.

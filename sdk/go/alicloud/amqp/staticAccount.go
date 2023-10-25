@@ -19,6 +19,59 @@ import (
 //
 // > **NOTE:** Available since v1.195.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/amqp"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			accessKey := "access_key"
+//			if param := cfg.Get("accessKey"); param != "" {
+//				accessKey = param
+//			}
+//			secretKey := "secret_key"
+//			if param := cfg.Get("secretKey"); param != "" {
+//				secretKey = param
+//			}
+//			defaultInstance, err := amqp.NewInstance(ctx, "defaultInstance", &amqp.InstanceArgs{
+//				InstanceType:  pulumi.String("enterprise"),
+//				MaxTps:        pulumi.String("3000"),
+//				QueueCapacity: pulumi.String("200"),
+//				StorageSize:   pulumi.String("700"),
+//				SupportEip:    pulumi.Bool(false),
+//				MaxEipTps:     pulumi.String("128"),
+//				PaymentType:   pulumi.String("Subscription"),
+//				Period:        pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = amqp.NewStaticAccount(ctx, "defaultStaticAccount", &amqp.StaticAccountArgs{
+//				InstanceId: defaultInstance.ID(),
+//				AccessKey:  pulumi.String(accessKey),
+//				SecretKey:  pulumi.String(secretKey),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Amqp Static Account can be imported using the id, e.g.

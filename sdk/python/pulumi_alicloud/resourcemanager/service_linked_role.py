@@ -236,6 +236,17 @@ class ServiceLinkedRole(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.157.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.resourcemanager.ServiceLinkedRole("default", service_name="ops.elasticsearch.aliyuncs.com")
+        ```
+
         ## Import
 
         Resource Manager Service Linked Role can be imported using the id, e.g.
@@ -262,6 +273,17 @@ class ServiceLinkedRole(pulumi.CustomResource):
         For information about Resource Manager Service Linked Role and how to use it, see [What is Service Linked Role.](https://www.alibabacloud.com/help/en/doc-detail/171226.htm).
 
         > **NOTE:** Available since v1.157.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.resourcemanager.ServiceLinkedRole("default", service_name="ops.elasticsearch.aliyuncs.com")
+        ```
 
         ## Import
 

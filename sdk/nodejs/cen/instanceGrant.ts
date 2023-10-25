@@ -11,6 +11,66 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.37.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const anotherUid = config.get("anotherUid") || "xxxx";
+ * // Method 1: Use assume_role to operate resources in the target cen account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
+ * const childAccount = new alicloud.Provider("childAccount", {
+ *     region: "cn-hangzhou",
+ *     assumeRole: {
+ *         roleArn: `acs:ram::${anotherUid}:role/terraform-example-assume-role`,
+ *     },
+ * });
+ * // Method 2: Use the target cen account's access_key, secret_key
+ * // provider "alicloud" {
+ * //   region     = "cn-hangzhou"
+ * //   access_key = "access_key"
+ * //   secret_key = "secret_key"
+ * //   alias      = "child_account"
+ * // }
+ * const yourAccount = new alicloud.Provider("yourAccount", {});
+ * const yourAccountAccount = alicloud.getAccount({});
+ * const childAccountAccount = alicloud.getAccount({});
+ * const default = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ *     cenInstanceName: "tf_example",
+ *     description: "an example for cen",
+ * }, {
+ *     provider: alicloud.your_account,
+ * });
+ * const childAccountNetwork = new alicloud.vpc.Network("childAccountNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ * }, {
+ *     provider: alicloud.child_account,
+ * });
+ * const childAccountInstanceGrant = new alicloud.cen.InstanceGrant("childAccountInstanceGrant", {
+ *     cenId: exampleInstance.id,
+ *     childInstanceId: childAccountNetwork.id,
+ *     cenOwnerId: yourAccountAccount.then(yourAccountAccount => yourAccountAccount.id),
+ * }, {
+ *     provider: alicloud.child_account,
+ * });
+ * const exampleInstanceAttachment = new alicloud.cen.InstanceAttachment("exampleInstanceAttachment", {
+ *     instanceId: exampleInstance.id,
+ *     childInstanceId: childAccountInstanceGrant.childInstanceId,
+ *     childInstanceType: "VPC",
+ *     childInstanceRegionId: _default.then(_default => _default.regions?.[0]?.id),
+ *     childInstanceOwnerId: childAccountAccount.then(childAccountAccount => childAccountAccount.id),
+ * }, {
+ *     provider: alicloud.your_account,
+ * });
+ * ```
+ *
  * ## Import
  *
  * CEN instance can be imported using the id, e.g.

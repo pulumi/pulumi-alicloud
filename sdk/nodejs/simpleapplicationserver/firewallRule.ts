@@ -11,6 +11,34 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.143.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const defaultImages = alicloud.simpleapplicationserver.getImages({});
+ * const defaultServerPlans = alicloud.simpleapplicationserver.getServerPlans({});
+ * const defaultInstance = new alicloud.simpleapplicationserver.Instance("defaultInstance", {
+ *     paymentType: "Subscription",
+ *     planId: defaultServerPlans.then(defaultServerPlans => defaultServerPlans.plans?.[0]?.id),
+ *     instanceName: name,
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
+ *     period: 1,
+ *     dataDiskSize: 100,
+ * });
+ * const defaultFirewallRule = new alicloud.simpleapplicationserver.FirewallRule("defaultFirewallRule", {
+ *     instanceId: defaultInstance.id,
+ *     ruleProtocol: "Tcp",
+ *     port: "9999",
+ *     remark: name,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Simple Application Server Firewall Rule can be imported using the id, e.g.

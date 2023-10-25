@@ -13,6 +13,31 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example-name";
+ * const exampleRegistryEnterpriseInstance = new alicloud.cr.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance", {
+ *     paymentType: "Subscription",
+ *     period: 1,
+ *     renewPeriod: 0,
+ *     renewalStatus: "ManualRenewal",
+ *     instanceType: "Advanced",
+ *     instanceName: name,
+ * });
+ * const exampleRegistryEnterpriseNamespace = new alicloud.cs.RegistryEnterpriseNamespace("exampleRegistryEnterpriseNamespace", {
+ *     instanceId: exampleRegistryEnterpriseInstance.id,
+ *     autoCreate: false,
+ *     defaultVisibility: "PUBLIC",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Container Registry Enterprise Edition namespace can be imported using the `{instance_id}:{namespace}`, e.g.

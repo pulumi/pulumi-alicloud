@@ -130,6 +130,18 @@ def get_rds_backups(backup_mode: Optional[str] = None,
 
     > **NOTE:** Available in v1.149.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.rds.get_rds_backups(db_instance_id="example_value")
+    pulumi.export("firstRdsBackupId", example.backups[0].id)
+    ```
+
 
     :param str backup_mode: BackupMode.
     :param str backup_status: Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
@@ -182,6 +194,18 @@ def get_rds_backups_output(backup_mode: Optional[pulumi.Input[Optional[str]]] = 
     This data source provides the Rds Backups of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.149.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.rds.get_rds_backups(db_instance_id="example_value")
+    pulumi.export("firstRdsBackupId", example.backups[0].id)
+    ```
 
 
     :param str backup_mode: BackupMode.

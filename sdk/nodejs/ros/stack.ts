@@ -13,6 +13,34 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.106.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.ros.Stack("example", {
+ *     stackName: "tf-testaccstack",
+ *     stackPolicyBody: `    {
+ *     	"Statement": [{
+ *     		"Action": "Update:Delete",
+ *     		"Resource": "*",
+ *     		"Effect": "Allow",
+ *     		"Principal": "*"
+ *     	}]
+ *     }
+ *     
+ * `,
+ *     templateBody: `    {
+ *     	"ROSTemplateFormatVersion": "2015-09-01"
+ *     }
+ *     
+ * `,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ROS Stack can be imported using the id, e.g.

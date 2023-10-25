@@ -11,6 +11,87 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.138.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const exampleRegions = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const exampleZones = alicloud.rds.getZones({
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     instanceChargeType: "PostPaid",
+ *     category: "Basic",
+ *     dbInstanceStorageType: "cloud_essd",
+ * });
+ * const exampleInstanceClasses = exampleZones.then(exampleZones => alicloud.rds.getInstanceClasses({
+ *     zoneId: exampleZones.zones?.[0]?.id,
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     instanceChargeType: "PostPaid",
+ *     category: "Basic",
+ *     dbInstanceStorageType: "cloud_essd",
+ * }));
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ *     vpcId: exampleNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ *     vswitchName: name,
+ * });
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("exampleSecurityGroup", {vpcId: exampleNetwork.id});
+ * const exampleInstance = new alicloud.rds.Instance("exampleInstance", {
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     instanceType: exampleInstanceClasses.then(exampleInstanceClasses => exampleInstanceClasses.instanceClasses?.[0]?.instanceClass),
+ *     instanceStorage: exampleInstanceClasses.then(exampleInstanceClasses => exampleInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceChargeType: "Postpaid",
+ *     instanceName: name,
+ *     vswitchId: exampleSwitch.id,
+ *     monitoringPeriod: 60,
+ *     dbInstanceStorageType: "cloud_essd",
+ *     securityGroupIds: [exampleSecurityGroup.id],
+ * });
+ * const exampleRdsAccount = new alicloud.rds.RdsAccount("exampleRdsAccount", {
+ *     dbInstanceId: exampleInstance.id,
+ *     accountName: "example_name",
+ *     accountPassword: "example_password",
+ * });
+ * const exampleDatabase = new alicloud.rds.Database("exampleDatabase", {instanceId: exampleInstance.id});
+ * const exampleAccountPrivilege = new alicloud.rds.AccountPrivilege("exampleAccountPrivilege", {
+ *     instanceId: exampleInstance.id,
+ *     accountName: exampleRdsAccount.name,
+ *     privilege: "ReadWrite",
+ *     dbNames: [exampleDatabase.name],
+ * });
+ * const exampleSubscriptionJob = new alicloud.dts.SubscriptionJob("exampleSubscriptionJob", {
+ *     dtsJobName: name,
+ *     paymentType: "PayAsYouGo",
+ *     sourceEndpointEngineName: "MySQL",
+ *     sourceEndpointRegion: exampleRegions.then(exampleRegions => exampleRegions.regions?.[0]?.id),
+ *     sourceEndpointInstanceType: "RDS",
+ *     sourceEndpointInstanceId: exampleInstance.id,
+ *     sourceEndpointDatabaseName: exampleDatabase.name,
+ *     sourceEndpointUserName: exampleRdsAccount.accountName,
+ *     sourceEndpointPassword: exampleRdsAccount.accountPassword,
+ *     dbList: pulumi.interpolate`{"${exampleDatabase.name}":{"name":"${exampleDatabase.name}","all":true}}`,
+ *     subscriptionInstanceNetworkType: "vpc",
+ *     subscriptionInstanceVpcId: exampleNetwork.id,
+ *     subscriptionInstanceVswitchId: exampleSwitch.id,
+ *     status: "Normal",
+ * });
+ * ```
+ *
  * ## Import
  *
  * DTS Subscription Job can be imported using the id, e.g.

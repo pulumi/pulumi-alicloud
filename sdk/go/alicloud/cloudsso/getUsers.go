@@ -17,6 +17,69 @@ import (
 // > **NOTE:** Available in v1.140.0+.
 //
 // > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudsso"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := cloudsso.GetUsers(ctx, &cloudsso.GetUsersArgs{
+//				DirectoryId: "example_value",
+//				Ids: []string{
+//					"example_value-1",
+//					"example_value-2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cloudSsoUserId1", ids.Users[0].Id)
+//			nameRegex, err := cloudsso.GetUsers(ctx, &cloudsso.GetUsersArgs{
+//				DirectoryId: "example_value",
+//				NameRegex:   pulumi.StringRef("^my-User"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cloudSsoUserId2", nameRegex.Users[0].Id)
+//			provisionType, err := cloudsso.GetUsers(ctx, &cloudsso.GetUsersArgs{
+//				DirectoryId: "example_value",
+//				Ids: []string{
+//					"example_value-1",
+//				},
+//				ProvisionType: pulumi.StringRef("Manual"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cloudSsoUserId3", provisionType.Users[0].Id)
+//			status, err := cloudsso.GetUsers(ctx, &cloudsso.GetUsersArgs{
+//				DirectoryId: "example_value",
+//				Ids: []string{
+//					"example_value-1",
+//				},
+//				Status: pulumi.StringRef("Enabled"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cloudSsoUserId4", status.Users[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetUsers(ctx *pulumi.Context, args *GetUsersArgs, opts ...pulumi.InvokeOption) (*GetUsersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetUsersResult

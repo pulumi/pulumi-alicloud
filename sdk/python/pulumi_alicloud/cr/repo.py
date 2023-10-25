@@ -272,6 +272,28 @@ class Repo(pulumi.CustomResource):
 
         > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example_namespace = alicloud.cr.Namespace("exampleNamespace",
+            auto_create=False,
+            default_visibility="PUBLIC")
+        example_repo = alicloud.cr.Repo("exampleRepo",
+            namespace=example_namespace.name,
+            summary="this is summary of my new repo",
+            repo_type="PUBLIC",
+            detail="this is a public repo")
+        ```
+
         ## Import
 
         Container Registry repository can be imported using the `namespace/repository`, e.g.
@@ -300,6 +322,28 @@ class Repo(pulumi.CustomResource):
         > **NOTE:** Available since v1.35.0.
 
         > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example_namespace = alicloud.cr.Namespace("exampleNamespace",
+            auto_create=False,
+            default_visibility="PUBLIC")
+        example_repo = alicloud.cr.Repo("exampleRepo",
+            namespace=example_namespace.name,
+            summary="this is summary of my new repo",
+            repo_type="PUBLIC",
+            detail="this is a public repo")
+        ```
 
         ## Import
 

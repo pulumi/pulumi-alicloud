@@ -119,6 +119,18 @@ def get_vaults(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.129.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.hbr.get_vaults(name_regex="^my-Vault")
+    pulumi.export("hbrVaultId1", ids.vaults[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Vault IDs.
     :param str name_regex: A regex string to filter results by Vault name.
@@ -157,6 +169,18 @@ def get_vaults_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
     This data source provides the Hbr Vaults of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.129.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.hbr.get_vaults(name_regex="^my-Vault")
+    pulumi.export("hbrVaultId1", ids.vaults[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Vault IDs.

@@ -119,6 +119,20 @@ def get_prefix_lists(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.182.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.vpc.get_prefix_lists()
+    pulumi.export("vpcPrefixListId1", ids.lists[0].id)
+    name_regex = alicloud.vpc.get_prefix_lists(name_regex="^my-PrefixList")
+    pulumi.export("vpcPrefixListId2", name_regex.lists[0].id)
+    ```
+
 
     :param bool enable_details: Default to `true`. Set it to `false` can hide the `entrys` to output.
     :param Sequence[str] ids: A list of Prefix List IDs.
@@ -157,6 +171,20 @@ def get_prefix_lists_output(enable_details: Optional[pulumi.Input[Optional[bool]
     This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.182.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.vpc.get_prefix_lists()
+    pulumi.export("vpcPrefixListId1", ids.lists[0].id)
+    name_regex = alicloud.vpc.get_prefix_lists(name_regex="^my-PrefixList")
+    pulumi.export("vpcPrefixListId2", name_regex.lists[0].id)
+    ```
 
 
     :param bool enable_details: Default to `true`. Set it to `false` can hide the `entrys` to output.

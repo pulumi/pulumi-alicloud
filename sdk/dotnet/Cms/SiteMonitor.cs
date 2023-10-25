@@ -15,6 +15,37 @@ namespace Pulumi.AliCloud.Cms
     /// 
     /// &gt; **NOTE:** Available since v1.72.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var basic = new AliCloud.Cms.SiteMonitor("basic", new()
+    ///     {
+    ///         Address = "http://www.alibabacloud.com",
+    ///         Interval = 5,
+    ///         IspCities = new[]
+    ///         {
+    ///             new AliCloud.Cms.Inputs.SiteMonitorIspCityArgs
+    ///             {
+    ///                 City = "546",
+    ///                 Isp = "465",
+    ///             },
+    ///         },
+    ///         TaskName = "tf-example",
+    ///         TaskType = "HTTP",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Cloud Monitor Service Site Monitor can be imported using the id, e.g.

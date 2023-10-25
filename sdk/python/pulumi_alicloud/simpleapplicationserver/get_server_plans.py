@@ -140,6 +140,22 @@ def get_server_plans(bandwidth: Optional[int] = None,
 
     > **NOTE:** Available in v1.135.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.simpleapplicationserver.get_server_plans(memory=1,
+        bandwidth=3,
+        disk_size=40,
+        flow=6,
+        core=2)
+    pulumi.export("simpleApplicationServerPlanId1", data["alicloud_simple_application_server_plans"]["ids"]["plans"][0]["id"])
+    ```
+
 
     :param int bandwidth: The peak bandwidth. Unit: Mbit/s.
     :param int core: The number of CPU cores.
@@ -189,6 +205,22 @@ def get_server_plans_output(bandwidth: Optional[pulumi.Input[Optional[int]]] = N
     This data source provides the Simple Application Server Plans of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.135.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.simpleapplicationserver.get_server_plans(memory=1,
+        bandwidth=3,
+        disk_size=40,
+        flow=6,
+        core=2)
+    pulumi.export("simpleApplicationServerPlanId1", data["alicloud_simple_application_server_plans"]["ids"]["plans"][0]["id"])
+    ```
 
 
     :param int bandwidth: The peak bandwidth. Unit: Mbit/s.

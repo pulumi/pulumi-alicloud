@@ -76,6 +76,17 @@ def get_service(enable: Optional[str] = None,
 
     > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    open = alicloud.cloudsso.get_service(enable="On")
+    ```
+
 
     :param str enable: Setting the value to `On` to enable the service. Valid values: `On` or `Off`. 
            
@@ -103,6 +114,17 @@ def get_service_output(enable: Optional[pulumi.Input[str]] = None,
     > **NOTE:** Available in v1.148.0+.
 
     > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    open = alicloud.cloudsso.get_service(enable="On")
+    ```
 
 
     :param str enable: Setting the value to `On` to enable the service. Valid values: `On` or `Off`. 

@@ -1000,6 +1000,32 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.199.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.threatdetection.Instance("default",
+            buy_number="30",
+            container_image_scan="100",
+            honeypot="32",
+            honeypot_switch="1",
+            payment_type="Subscription",
+            period=12,
+            renewal_status="ManualRenewal",
+            sas_anti_ransomware="100",
+            sas_sc=True,
+            sas_sdk="1000",
+            sas_sdk_switch="1",
+            sas_sls_storage="100",
+            sas_webguard_order_num="100",
+            v_core="100",
+            version_code="level2")
+        ```
+
         ## Import
 
         Threat Detection Instance do not support import.
@@ -1043,6 +1069,32 @@ class Instance(pulumi.CustomResource):
         For information about Threat Detection Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/security-center/latest/what-is-security-center).
 
         > **NOTE:** Available in v1.199.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.threatdetection.Instance("default",
+            buy_number="30",
+            container_image_scan="100",
+            honeypot="32",
+            honeypot_switch="1",
+            payment_type="Subscription",
+            period=12,
+            renewal_status="ManualRenewal",
+            sas_anti_ransomware="100",
+            sas_sc=True,
+            sas_sdk="1000",
+            sas_sdk_switch="1",
+            sas_sls_storage="100",
+            sas_webguard_order_num="100",
+            v_core="100",
+            version_code="level2")
+        ```
 
         ## Import
 

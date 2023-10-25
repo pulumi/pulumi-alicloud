@@ -11,6 +11,35 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.203.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultZones = alicloud.getZones({});
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultBaseInstance = new alicloud.ocean.BaseInstance("defaultBaseInstance", {
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
+ *     zones: [
+ *         Promise.all([defaultZones, defaultZones.then(defaultZones => defaultZones.ids).length]).then(([defaultZones, length]) => defaultZones.ids[length - 2]),
+ *         Promise.all([defaultZones, defaultZones.then(defaultZones => defaultZones.ids).length]).then(([defaultZones, length]) => defaultZones.ids[length - 3]),
+ *         Promise.all([defaultZones, defaultZones.then(defaultZones => defaultZones.ids).length]).then(([defaultZones, length]) => defaultZones.ids[length - 4]),
+ *     ],
+ *     autoRenew: false,
+ *     diskSize: 100,
+ *     paymentType: "PayAsYouGo",
+ *     instanceClass: "8C32GB",
+ *     backupRetainMode: "delete_all",
+ *     series: "normal",
+ *     instanceName: name,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Ocean Base Instance can be imported using the id, e.g.

@@ -16,6 +16,41 @@ namespace Pulumi.AliCloud.Vod
     /// 
     /// &gt; **NOTE:** Available in v1.136.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new AliCloud.Vod.Domain("default", new()
+    ///     {
+    ///         DomainName = "your_domain_name",
+    ///         Scope = "domestic",
+    ///         Sources = new[]
+    ///         {
+    ///             new AliCloud.Vod.Inputs.DomainSourceArgs
+    ///             {
+    ///                 SourceContent = "your_source_content",
+    ///                 SourcePort = "80",
+    ///                 SourceType = "domain",
+    ///             },
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "key1", "value1" },
+    ///             { "key2", "value2" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// VOD Domain can be imported using the id, e.g.

@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * This data source provides a list of DMS User Tenants in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in 1.161.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.dms.getUserTenants({
+ *     status: "ACTIVE",
+ * });
+ * export const tid = _default.then(_default => _default.ids?.[0]);
+ * ```
  */
 export function getUserTenants(args?: GetUserTenantsArgs, opts?: pulumi.InvokeOptions): Promise<GetUserTenantsResult> {
     args = args || {};
@@ -70,6 +82,18 @@ export interface GetUserTenantsResult {
  * This data source provides a list of DMS User Tenants in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in 1.161.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.dms.getUserTenants({
+ *     status: "ACTIVE",
+ * });
+ * export const tid = _default.then(_default => _default.ids?.[0]);
+ * ```
  */
 export function getUserTenantsOutput(args?: GetUserTenantsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserTenantsResult> {
     return pulumi.output(args).apply((a: any) => getUserTenants(a, opts))

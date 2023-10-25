@@ -19,6 +19,75 @@ import (
 //
 // > **NOTE:** Available since v1.188.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			examplePrefixList, err := vpc.NewPrefixList(ctx, "examplePrefixList", &vpc.PrefixListArgs{
+//				Entrys: vpc.PrefixListEntryArray{
+//					&vpc.PrefixListEntryArgs{
+//						Cidr: pulumi.String("192.168.0.0/16"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String("tf_example"),
+//				Description:     pulumi.String("an example for cen"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "exampleTransitRouter", &cen.TransitRouterArgs{
+//				TransitRouterName: pulumi.String("tf_example"),
+//				CenId:             exampleInstance.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleTransitRouterRouteTable, err := cen.NewTransitRouterRouteTable(ctx, "exampleTransitRouterRouteTable", &cen.TransitRouterRouteTableArgs{
+//				TransitRouterId: exampleTransitRouter.TransitRouterId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cen.NewTransitRouterPrefixListAssociation(ctx, "exampleTransitRouterPrefixListAssociation", &cen.TransitRouterPrefixListAssociationArgs{
+//				PrefixListId:         examplePrefixList.ID(),
+//				TransitRouterId:      exampleTransitRouter.TransitRouterId,
+//				TransitRouterTableId: exampleTransitRouterRouteTable.TransitRouterRouteTableId,
+//				NextHop:              pulumi.String("BlackHole"),
+//				NextHopType:          pulumi.String("BlackHole"),
+//				OwnerUid:             *pulumi.String(_default.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Cloud Enterprise Network (CEN) Transit Router Prefix List Association can be imported using the id, e.g.

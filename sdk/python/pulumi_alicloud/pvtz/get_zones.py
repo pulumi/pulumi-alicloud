@@ -179,6 +179,16 @@ def get_zones(enable_details: Optional[bool] = None,
     """
     This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    pvtz_zones_ds = alicloud.pvtz.get_zones(keyword=alicloud_pvtz_zone["basic"]["zone_name"])
+    pulumi.export("firstZoneId", pvtz_zones_ds.zones[0].id)
+    ```
+
 
     :param bool enable_details: Default to `false`. Set it to true can output more details.
     :param Sequence[str] ids: A list of zone IDs.
@@ -236,6 +246,16 @@ def get_zones_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = No
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZonesResult]:
     """
     This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    pvtz_zones_ds = alicloud.pvtz.get_zones(keyword=alicloud_pvtz_zone["basic"]["zone_name"])
+    pulumi.export("firstZoneId", pvtz_zones_ds.zones[0].id)
+    ```
 
 
     :param bool enable_details: Default to `false`. Set it to true can output more details.

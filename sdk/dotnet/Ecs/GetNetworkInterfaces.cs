@@ -18,6 +18,107 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// For information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)
         /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "networkInterfacesName";
+        ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+        ///     {
+        ///         CidrBlock = "192.168.0.0/24",
+        ///         VpcName = name,
+        ///     });
+        /// 
+        ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var vswitch = new AliCloud.Vpc.Switch("vswitch", new()
+        ///     {
+        ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         CidrBlock = "192.168.0.0/24",
+        ///         VpcId = vpc.Id,
+        ///         VswitchName = name,
+        ///     });
+        /// 
+        ///     var @group = new AliCloud.Ecs.SecurityGroup("group", new()
+        ///     {
+        ///         VpcId = vpc.Id,
+        ///     });
+        /// 
+        ///     var @interface = new AliCloud.Vpc.NetworkInterface("interface", new()
+        ///     {
+        ///         Description = "Basic test",
+        ///         PrivateIp = "192.168.0.2",
+        ///         SecurityGroups = new[]
+        ///         {
+        ///             @group.Id,
+        ///         },
+        ///         Tags = 
+        ///         {
+        ///             { "TF-VER", "0.11.3" },
+        ///         },
+        ///         VswitchId = vswitch.Id,
+        ///     });
+        /// 
+        ///     var instance = new AliCloud.Ecs.Instance("instance", new()
+        ///     {
+        ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         ImageId = "centos_7_04_64_20G_alibase_201701015.vhd",
+        ///         InstanceName = name,
+        ///         InstanceType = "ecs.e3.xlarge",
+        ///         InternetMaxBandwidthOut = 10,
+        ///         SecurityGroups = new[]
+        ///         {
+        ///             @group.Id,
+        ///         },
+        ///         SystemDiskCategory = "cloud_efficiency",
+        ///         VswitchId = vswitch.Id,
+        ///     });
+        /// 
+        ///     var attachment = new AliCloud.Vpc.NetworkInterfaceAttachment("attachment", new()
+        ///     {
+        ///         InstanceId = instance.Id,
+        ///         NetworkInterfaceId = @interface.Id,
+        ///     });
+        /// 
+        ///     var defaultNetworkInterfaces = AliCloud.Ecs.GetNetworkInterfaces.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             attachment.NetworkInterfaceId,
+        ///         },
+        ///         InstanceId = instance.Id,
+        ///         NameRegex = name,
+        ///         PrivateIp = "192.168.0.2",
+        ///         SecurityGroupId = @group.Id,
+        ///         Tags = 
+        ///         {
+        ///             { "TF-VER", "0.11.3" },
+        ///         },
+        ///         Type = "Secondary",
+        ///         VpcId = vpc.Id,
+        ///         VswitchId = vswitch.Id,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["eni0Name"] = defaultNetworkInterfaces.Apply(getNetworkInterfacesResult =&gt; getNetworkInterfacesResult.Interfaces[0]?.Name),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// ##  Argument Reference
         /// 
         /// The following arguments are supported:
@@ -45,6 +146,107 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// For information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)
         /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "networkInterfacesName";
+        ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+        ///     {
+        ///         CidrBlock = "192.168.0.0/24",
+        ///         VpcName = name,
+        ///     });
+        /// 
+        ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var vswitch = new AliCloud.Vpc.Switch("vswitch", new()
+        ///     {
+        ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         CidrBlock = "192.168.0.0/24",
+        ///         VpcId = vpc.Id,
+        ///         VswitchName = name,
+        ///     });
+        /// 
+        ///     var @group = new AliCloud.Ecs.SecurityGroup("group", new()
+        ///     {
+        ///         VpcId = vpc.Id,
+        ///     });
+        /// 
+        ///     var @interface = new AliCloud.Vpc.NetworkInterface("interface", new()
+        ///     {
+        ///         Description = "Basic test",
+        ///         PrivateIp = "192.168.0.2",
+        ///         SecurityGroups = new[]
+        ///         {
+        ///             @group.Id,
+        ///         },
+        ///         Tags = 
+        ///         {
+        ///             { "TF-VER", "0.11.3" },
+        ///         },
+        ///         VswitchId = vswitch.Id,
+        ///     });
+        /// 
+        ///     var instance = new AliCloud.Ecs.Instance("instance", new()
+        ///     {
+        ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         ImageId = "centos_7_04_64_20G_alibase_201701015.vhd",
+        ///         InstanceName = name,
+        ///         InstanceType = "ecs.e3.xlarge",
+        ///         InternetMaxBandwidthOut = 10,
+        ///         SecurityGroups = new[]
+        ///         {
+        ///             @group.Id,
+        ///         },
+        ///         SystemDiskCategory = "cloud_efficiency",
+        ///         VswitchId = vswitch.Id,
+        ///     });
+        /// 
+        ///     var attachment = new AliCloud.Vpc.NetworkInterfaceAttachment("attachment", new()
+        ///     {
+        ///         InstanceId = instance.Id,
+        ///         NetworkInterfaceId = @interface.Id,
+        ///     });
+        /// 
+        ///     var defaultNetworkInterfaces = AliCloud.Ecs.GetNetworkInterfaces.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             attachment.NetworkInterfaceId,
+        ///         },
+        ///         InstanceId = instance.Id,
+        ///         NameRegex = name,
+        ///         PrivateIp = "192.168.0.2",
+        ///         SecurityGroupId = @group.Id,
+        ///         Tags = 
+        ///         {
+        ///             { "TF-VER", "0.11.3" },
+        ///         },
+        ///         Type = "Secondary",
+        ///         VpcId = vpc.Id,
+        ///         VswitchId = vswitch.Id,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["eni0Name"] = defaultNetworkInterfaces.Apply(getNetworkInterfacesResult =&gt; getNetworkInterfacesResult.Interfaces[0]?.Name),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// ##  Argument Reference
         /// 
         /// The following arguments are supported:

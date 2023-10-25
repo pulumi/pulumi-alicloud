@@ -11,6 +11,25 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.197.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultAccelerator = new alicloud.ga.Accelerator("defaultAccelerator", {
+ *     duration: 1,
+ *     autoUseCoupon: true,
+ *     spec: "1",
+ * });
+ * const defaultDomain = new alicloud.ga.Domain("defaultDomain", {
+ *     domain: "changes.com.cn",
+ *     acceleratorId: defaultAccelerator.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Ga Domain can be imported using the id, e.g.

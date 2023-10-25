@@ -110,6 +110,18 @@ def get_server_group_server_attachments(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.192.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.nlb.get_server_group_server_attachments(ids=["example_value"])
+    pulumi.export("nlbServerGroupServerAttachmentId1", ids.attachments[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Server Group Server Attachment IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -147,6 +159,18 @@ def get_server_group_server_attachments_output(ids: Optional[pulumi.Input[Option
     This data source provides the Nlb Server Group Server Attachments of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.192.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.nlb.get_server_group_server_attachments(ids=["example_value"])
+    pulumi.export("nlbServerGroupServerAttachmentId1", ids.attachments[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Server Group Server Attachment IDs.

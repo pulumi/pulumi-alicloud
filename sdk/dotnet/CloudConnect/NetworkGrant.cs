@@ -18,6 +18,74 @@ namespace Pulumi.AliCloud.CloudConnect
     /// 
     /// &gt; **NOTE:** Only the following regions support create Cloud Connect Network Grant. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var cenUid = config.GetDouble("cenUid") ?? 123456789;
+    ///     var @default = new AliCloud.Provider("default", new()
+    ///     {
+    ///         Region = "cn-shanghai",
+    ///     });
+    /// 
+    ///     // Method 1: Use assume_role to operate resources in the target cen account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
+    ///     var cenAccount = new AliCloud.Provider("cenAccount", new()
+    ///     {
+    ///         Region = "cn-hangzhou",
+    ///         AssumeRole = new AliCloud.Inputs.ProviderAssumeRoleArgs
+    ///         {
+    ///             RoleArn = $"acs:ram::{cenUid}:role/terraform-example-assume-role",
+    ///         },
+    ///     });
+    /// 
+    ///     // Method 2: Use the target cen account's access_key, secret_key
+    ///     // provider "alicloud" {
+    ///     //   region     = "cn-hangzhou"
+    ///     //   access_key = "access_key"
+    ///     //   secret_key = "secret_key"
+    ///     //   alias      = "cen_account"
+    ///     // }
+    ///     var defaultNetwork = new AliCloud.CloudConnect.Network("defaultNetwork", new()
+    ///     {
+    ///         Description = name,
+    ///         CidrBlock = "192.168.0.0/24",
+    ///         IsDefault = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Default,
+    ///     });
+    /// 
+    ///     var cen = new AliCloud.Cen.Instance("cen", new()
+    ///     {
+    ///         CenInstanceName = name,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Cen_account,
+    ///     });
+    /// 
+    ///     var defaultNetworkGrant = new AliCloud.CloudConnect.NetworkGrant("defaultNetworkGrant", new()
+    ///     {
+    ///         CcnId = defaultNetwork.Id,
+    ///         CenId = cen.Id,
+    ///         CenUid = cenUid,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Default,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// The Cloud Connect Network Grant can be imported using the instance_id, e.g.

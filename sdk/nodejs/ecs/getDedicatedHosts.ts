@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * This data source provides a list of ECS Dedicated Hosts in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in v1.91.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const dedicatedHostsDs = alicloud.ecs.getDedicatedHosts({
+ *     dedicatedHostType: "ddh.g5",
+ *     nameRegex: "tf-testAcc",
+ *     status: "Available",
+ * });
+ * export const firstDedicatedHostsId = dedicatedHostsDs.then(dedicatedHostsDs => dedicatedHostsDs.hosts?.[0]?.id);
+ * ```
  */
 export function getDedicatedHosts(args?: GetDedicatedHostsArgs, opts?: pulumi.InvokeOptions): Promise<GetDedicatedHostsResult> {
     args = args || {};
@@ -133,6 +147,20 @@ export interface GetDedicatedHostsResult {
  * This data source provides a list of ECS Dedicated Hosts in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in v1.91.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const dedicatedHostsDs = alicloud.ecs.getDedicatedHosts({
+ *     dedicatedHostType: "ddh.g5",
+ *     nameRegex: "tf-testAcc",
+ *     status: "Available",
+ * });
+ * export const firstDedicatedHostsId = dedicatedHostsDs.then(dedicatedHostsDs => dedicatedHostsDs.hosts?.[0]?.id);
+ * ```
  */
 export function getDedicatedHostsOutput(args?: GetDedicatedHostsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDedicatedHostsResult> {
     return pulumi.output(args).apply((a: any) => getDedicatedHosts(a, opts))

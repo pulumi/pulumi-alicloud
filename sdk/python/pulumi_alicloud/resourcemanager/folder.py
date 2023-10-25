@@ -142,6 +142,21 @@ class Folder(pulumi.CustomResource):
 
         > **NOTE:** A maximum of five levels of folders can be created under the root folder.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example = alicloud.resourcemanager.Folder("example", folder_name=name)
+        ```
+
         ## Import
 
         Resource Manager Folder can be imported using the id, e.g.
@@ -168,6 +183,21 @@ class Folder(pulumi.CustomResource):
         > **NOTE:** Available since v1.82.0.
 
         > **NOTE:** A maximum of five levels of folders can be created under the root folder.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example = alicloud.resourcemanager.Folder("example", folder_name=name)
+        ```
 
         ## Import
 

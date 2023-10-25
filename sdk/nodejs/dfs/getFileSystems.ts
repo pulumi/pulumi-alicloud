@@ -10,6 +10,24 @@ import * as utilities from "../utilities";
  * This data source provides the Dfs File Systems of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.140.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.dfs.getFileSystems({
+ *     ids: ["example_id"],
+ * });
+ * export const dfsFileSystemId1 = ids.then(ids => ids.systems?.[0]?.id);
+ * const nameRegex = alicloud.dfs.getFileSystems({
+ *     nameRegex: "^my-FileSystem",
+ * });
+ * export const dfsFileSystemId2 = nameRegex.then(nameRegex => nameRegex.systems?.[0]?.id);
+ * ```
  */
 export function getFileSystems(args?: GetFileSystemsArgs, opts?: pulumi.InvokeOptions): Promise<GetFileSystemsResult> {
     args = args || {};
@@ -58,6 +76,24 @@ export interface GetFileSystemsResult {
  * This data source provides the Dfs File Systems of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.140.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.dfs.getFileSystems({
+ *     ids: ["example_id"],
+ * });
+ * export const dfsFileSystemId1 = ids.then(ids => ids.systems?.[0]?.id);
+ * const nameRegex = alicloud.dfs.getFileSystems({
+ *     nameRegex: "^my-FileSystem",
+ * });
+ * export const dfsFileSystemId2 = nameRegex.then(nameRegex => nameRegex.systems?.[0]?.id);
+ * ```
  */
 export function getFileSystemsOutput(args?: GetFileSystemsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFileSystemsResult> {
     return pulumi.output(args).apply((a: any) => getFileSystems(a, opts))

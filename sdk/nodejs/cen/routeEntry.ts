@@ -11,6 +11,72 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.20.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const exampleZones = alicloud.getZones({
+ *     availableResourceCreation: "Instance",
+ * });
+ * const exampleInstanceTypes = exampleZones.then(exampleZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: exampleZones.zones?.[0]?.id,
+ *     cpuCoreCount: 1,
+ *     memorySize: 2,
+ * }));
+ * const exampleImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
+ *     owners: "system",
+ * });
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: exampleNetwork.id,
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ * });
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("exampleSecurityGroup", {vpcId: exampleNetwork.id});
+ * const exampleInstance = new alicloud.ecs.Instance("exampleInstance", {
+ *     availabilityZone: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ *     instanceName: "terraform-example",
+ *     imageId: exampleImages.then(exampleImages => exampleImages.images?.[0]?.id),
+ *     instanceType: exampleInstanceTypes.then(exampleInstanceTypes => exampleInstanceTypes.instanceTypes?.[0]?.id),
+ *     securityGroups: [exampleSecurityGroup.id],
+ *     vswitchId: exampleSwitch.id,
+ *     internetMaxBandwidthOut: 5,
+ * });
+ * const exampleCen_instanceInstance = new alicloud.cen.Instance("exampleCen/instanceInstance", {
+ *     cenInstanceName: "tf_example",
+ *     description: "an example for cen",
+ * });
+ * const exampleInstanceAttachment = new alicloud.cen.InstanceAttachment("exampleInstanceAttachment", {
+ *     instanceId: exampleCen / instanceInstance.id,
+ *     childInstanceId: exampleNetwork.id,
+ *     childInstanceType: "VPC",
+ *     childInstanceRegionId: _default.then(_default => _default.regions?.[0]?.id),
+ * });
+ * const exampleRouteEntry = new alicloud.vpc.RouteEntry("exampleRouteEntry", {
+ *     routeTableId: exampleNetwork.routeTableId,
+ *     destinationCidrblock: "11.0.0.0/16",
+ *     nexthopType: "Instance",
+ *     nexthopId: exampleInstance.id,
+ * });
+ * const exampleCen_routeEntryRouteEntry = new alicloud.cen.RouteEntry("exampleCen/routeEntryRouteEntry", {
+ *     instanceId: exampleInstanceAttachment.instanceId,
+ *     routeTableId: exampleNetwork.routeTableId,
+ *     cidrBlock: exampleRouteEntry.destinationCidrblock,
+ * });
+ * ```
+ *
  * ## Import
  *
  * CEN instance can be imported using the id, e.g.

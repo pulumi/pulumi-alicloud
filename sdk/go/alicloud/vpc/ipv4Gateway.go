@@ -19,6 +19,67 @@ import (
 //
 // > **NOTE:** Available in v1.181.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-testacc-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultResourceGroup, err := resourcemanager.NewResourceGroup(ctx, "defaultResourceGroup", &resourcemanager.ResourceGroupArgs{
+//				DisplayName:       pulumi.String("tf-testAcc-rg665"),
+//				ResourceGroupName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = resourcemanager.NewResourceGroup(ctx, "modify", &resourcemanager.ResourceGroupArgs{
+//				DisplayName:       pulumi.String("tf-testAcc-rg298"),
+//				ResourceGroupName: pulumi.String(fmt.Sprintf("%v1", name)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(fmt.Sprintf("%v2", name)),
+//				CidrBlock: pulumi.String("10.0.0.0/8"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewIpv4Gateway(ctx, "defaultIpv4Gateway", &vpc.Ipv4GatewayArgs{
+//				Ipv4GatewayName:        pulumi.String(name),
+//				Ipv4GatewayDescription: pulumi.String("tf-testAcc-Ipv4Gateway"),
+//				ResourceGroupId:        defaultResourceGroup.ID(),
+//				VpcId:                  defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Vpc Ipv4 Gateway can be imported using the id, e.g.

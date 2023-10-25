@@ -10,6 +10,24 @@ import * as utilities from "../utilities";
  * This data source provides the Cr Chart Repositories of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.149.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cr.getChartRepositories({
+ *     instanceId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const crChartRepositoryId1 = data.alicloud_cr_chart_repositories["default"].ids[0];
+ * ```
  */
 export function getChartRepositories(args: GetChartRepositoriesArgs, opts?: pulumi.InvokeOptions): Promise<GetChartRepositoriesResult> {
 
@@ -63,6 +81,24 @@ export interface GetChartRepositoriesResult {
  * This data source provides the Cr Chart Repositories of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.149.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cr.getChartRepositories({
+ *     instanceId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const crChartRepositoryId1 = data.alicloud_cr_chart_repositories["default"].ids[0];
+ * ```
  */
 export function getChartRepositoriesOutput(args: GetChartRepositoriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChartRepositoriesResult> {
     return pulumi.output(args).apply((a: any) => getChartRepositories(a, opts))

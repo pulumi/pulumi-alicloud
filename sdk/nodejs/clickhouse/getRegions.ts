@@ -10,6 +10,22 @@ import * as utilities from "../utilities";
  * This data source provides the Click House Accounts of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.138.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default1 = alicloud.clickhouse.getRegions({
+ *     current: true,
+ * });
+ * const default2 = alicloud.clickhouse.getRegions({
+ *     regionId: "cn-hangzhou",
+ * });
+ * ```
  */
 export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> {
     args = args || {};
@@ -57,6 +73,22 @@ export interface GetRegionsResult {
  * This data source provides the Click House Accounts of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.138.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default1 = alicloud.clickhouse.getRegions({
+ *     current: true,
+ * });
+ * const default2 = alicloud.clickhouse.getRegions({
+ *     regionId: "cn-hangzhou",
+ * });
+ * ```
  */
 export function getRegionsOutput(args?: GetRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionsResult> {
     return pulumi.output(args).apply((a: any) => getRegions(a, opts))

@@ -27,6 +27,59 @@ import (
 // > **NOTE:**  Create Cassandra dataCenter or change dataCenter type and storage would cost 30 minutes. Please make full preparation.
 //
 // ## Example Usage
+// ### Create a cassandra dataCenter
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cassandra"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultCluster, err := cassandra.NewCluster(ctx, "defaultCluster", &cassandra.ClusterArgs{
+//				ClusterName:       pulumi.String("cassandra-cluster-name-tf"),
+//				DataCenterName:    pulumi.String("dc-1"),
+//				AutoRenew:         pulumi.Bool(false),
+//				InstanceType:      pulumi.String("cassandra.c.large"),
+//				MajorVersion:      pulumi.String("3.11"),
+//				NodeCount:         pulumi.Int(2),
+//				PayType:           pulumi.String("PayAsYouGo"),
+//				VswitchId:         pulumi.String("vsw-xxxx1"),
+//				DiskSize:          pulumi.Int(160),
+//				DiskType:          pulumi.String("cloud_ssd"),
+//				MaintainStartTime: pulumi.String("18:00Z"),
+//				MaintainEndTime:   pulumi.String("20:00Z"),
+//				IpWhite:           pulumi.String("127.0.0.1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cassandra.NewDataCenter(ctx, "defaultDataCenter", &cassandra.DataCenterArgs{
+//				ClusterId:      defaultCluster.ID(),
+//				DataCenterName: pulumi.String("dc-2"),
+//				AutoRenew:      pulumi.Bool(false),
+//				InstanceType:   pulumi.String("cassandra.c.large"),
+//				NodeCount:      pulumi.Int(2),
+//				PayType:        pulumi.String("PayAsYouGo"),
+//				VswitchId:      pulumi.String("vsw-xxxx2"),
+//				DiskSize:       pulumi.Int(160),
+//				DiskType:       pulumi.String("cloud_ssd"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// This is a example for class netType dataCenter. You can find more detail with the examples/cassandra_data_center dir.
 //
 // ## Import
 //

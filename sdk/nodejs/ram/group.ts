@@ -11,6 +11,16 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.0.0+.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * // Create a new RAM Group.
+ * const group = new alicloud.ram.Group("group", {comments: "this is a group comments."});
+ * ```
+ *
  * ## Import
  *
  * RAM group can be imported using the id or name, e.g.

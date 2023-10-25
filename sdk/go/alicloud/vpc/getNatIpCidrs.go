@@ -15,6 +15,78 @@ import (
 // This data source provides the Vpc Nat Ip Cidrs of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.136.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := vpc.GetNatIpCidrs(ctx, &vpc.GetNatIpCidrsArgs{
+//				NatGatewayId: "example_value",
+//				Ids: []string{
+//					"example_value-1",
+//					"example_value-2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcNatIpCidrId1", ids.Cidrs[0].Id)
+//			nameRegex, err := vpc.GetNatIpCidrs(ctx, &vpc.GetNatIpCidrsArgs{
+//				NatGatewayId: "example_value",
+//				NameRegex:    pulumi.StringRef("^my-NatIpCidr"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcNatIpCidrId2", nameRegex.Cidrs[0].Id)
+//			status, err := vpc.GetNatIpCidrs(ctx, &vpc.GetNatIpCidrsArgs{
+//				NatGatewayId: "example_value",
+//				Ids: []string{
+//					"example_value-1",
+//				},
+//				Status: pulumi.StringRef("Available"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcNatIpCidrId3", status.Cidrs[0].Id)
+//			natIpCidr, err := vpc.GetNatIpCidrs(ctx, &vpc.GetNatIpCidrsArgs{
+//				NatGatewayId: "example_value",
+//				NatIpCidrs: []string{
+//					"example_value-1",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcNatIpCidrId4", natIpCidr.Cidrs[0].Id)
+//			atIpCidrName, err := vpc.GetNatIpCidrs(ctx, &vpc.GetNatIpCidrsArgs{
+//				NatGatewayId: "example_value",
+//				NatIpCidrNames: []string{
+//					"example_value-1",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcNatIpCidrId5", atIpCidrName.Cidrs[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetNatIpCidrs(ctx *pulumi.Context, args *GetNatIpCidrsArgs, opts ...pulumi.InvokeOption) (*GetNatIpCidrsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNatIpCidrsResult

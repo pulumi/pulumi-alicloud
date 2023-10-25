@@ -109,6 +109,18 @@ def get_migration_jobs(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.157.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.dts.get_migration_jobs(ids=["dts_job_id"])
+    pulumi.export("dtsMigrationJobId1", ids.jobs[0].id)
+    ```
+
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Synchronization Job IDs.
@@ -143,6 +155,18 @@ def get_migration_jobs_output(enable_details: Optional[pulumi.Input[Optional[boo
     This data source provides the Dts Migration Jobs of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.157.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.dts.get_migration_jobs(ids=["dts_job_id"])
+    pulumi.export("dtsMigrationJobId1", ids.jobs[0].id)
+    ```
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

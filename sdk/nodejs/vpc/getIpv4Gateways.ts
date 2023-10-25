@@ -10,6 +10,22 @@ import * as utilities from "../utilities";
  * This data source provides the Vpc Ipv4 Gateways of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.181.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.vpc.getIpv4Gateways({});
+ * export const vpcIpv4GatewayId1 = ids.then(ids => ids.gateways?.[0]?.id);
+ * const nameRegex = alicloud.vpc.getIpv4Gateways({
+ *     nameRegex: "^my-Ipv4Gateway",
+ * });
+ * export const vpcIpv4GatewayId2 = nameRegex.then(nameRegex => nameRegex.gateways?.[0]?.id);
+ * ```
  */
 export function getIpv4Gateways(args?: GetIpv4GatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetIpv4GatewaysResult> {
     args = args || {};
@@ -76,6 +92,22 @@ export interface GetIpv4GatewaysResult {
  * This data source provides the Vpc Ipv4 Gateways of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.181.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.vpc.getIpv4Gateways({});
+ * export const vpcIpv4GatewayId1 = ids.then(ids => ids.gateways?.[0]?.id);
+ * const nameRegex = alicloud.vpc.getIpv4Gateways({
+ *     nameRegex: "^my-Ipv4Gateway",
+ * });
+ * export const vpcIpv4GatewayId2 = nameRegex.then(nameRegex => nameRegex.gateways?.[0]?.id);
+ * ```
  */
 export function getIpv4GatewaysOutput(args?: GetIpv4GatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpv4GatewaysResult> {
     return pulumi.output(args).apply((a: any) => getIpv4Gateways(a, opts))

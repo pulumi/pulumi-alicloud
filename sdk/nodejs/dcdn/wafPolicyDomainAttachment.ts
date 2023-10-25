@@ -11,6 +11,44 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.186.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const domainName = config.get("domainName") || "example.com";
+ * const exampleDomain = new alicloud.dcdn.Domain("exampleDomain", {
+ *     domainName: domainName,
+ *     scope: "overseas",
+ *     sources: [{
+ *         content: "1.1.1.1",
+ *         port: 80,
+ *         priority: "20",
+ *         type: "ipaddr",
+ *         weight: "10",
+ *     }],
+ * });
+ * const exampleWafDomain = new alicloud.dcdn.WafDomain("exampleWafDomain", {
+ *     domainName: exampleDomain.domainName,
+ *     clientIpTag: "X-Forwarded-For",
+ * });
+ * const exampleWafPolicy = new alicloud.dcdn.WafPolicy("exampleWafPolicy", {
+ *     defenseScene: "waf_group",
+ *     policyName: name,
+ *     policyType: "custom",
+ *     status: "on",
+ * });
+ * const exampleWafPolicyDomainAttachment = new alicloud.dcdn.WafPolicyDomainAttachment("exampleWafPolicyDomainAttachment", {
+ *     domainName: exampleWafDomain.domainName,
+ *     policyId: exampleWafPolicy.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * DCDN Waf Policy Domain Attachment can be imported using the id, e.g.

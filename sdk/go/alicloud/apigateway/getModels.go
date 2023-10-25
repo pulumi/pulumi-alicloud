@@ -15,6 +15,45 @@ import (
 // This data source provides the Api Gateway Models of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.187.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/apigateway"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := apigateway.GetModels(ctx, &apigateway.GetModelsArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//				GroupId: "example_group_id",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("apiGatewayModelId1", ids.Models[0].Id)
+//			groupId, err := apigateway.GetModels(ctx, &apigateway.GetModelsArgs{
+//				GroupId: "example_group_id",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("apiGatewayModelId2", groupId.Models[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetModels(ctx *pulumi.Context, args *GetModelsArgs, opts ...pulumi.InvokeOption) (*GetModelsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetModelsResult

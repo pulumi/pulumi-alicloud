@@ -19,6 +19,36 @@ import (
 //
 // > **NOTE:** Available in v1.195.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/threatdetection"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := threatdetection.NewVulWhitelist(ctx, "default", &threatdetection.VulWhitelistArgs{
+//				Reason:     pulumi.String("tf-example-reason"),
+//				TargetInfo: pulumi.String("{\"type\":\"GroupId\",\"uuids\":[],\"groupIds\":[10782678]}"),
+//				Whitelist:  pulumi.String("[{\"aliasName\":\"RHSA-2021:2260: libwebp 安全更新\",\"name\":\"RHSA-2021:2260: libwebp 安全更新\",\"type\":\"cve\"}]"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Threat Detection Vul Whitelist can be imported using the id, e.g.

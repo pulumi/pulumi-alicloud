@@ -401,6 +401,25 @@ class SiteMonitor(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.72.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        basic = alicloud.cms.SiteMonitor("basic",
+            address="http://www.alibabacloud.com",
+            interval=5,
+            isp_cities=[alicloud.cms.SiteMonitorIspCityArgs(
+                city="546",
+                isp="465",
+            )],
+            task_name="tf-example",
+            task_type="HTTP")
+        ```
+
         ## Import
 
         Cloud Monitor Service Site Monitor can be imported using the id, e.g.
@@ -430,6 +449,25 @@ class SiteMonitor(pulumi.CustomResource):
         Details at https://www.alibabacloud.com/help/doc-detail/67907.htm
 
         > **NOTE:** Available since v1.72.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        basic = alicloud.cms.SiteMonitor("basic",
+            address="http://www.alibabacloud.com",
+            interval=5,
+            isp_cities=[alicloud.cms.SiteMonitorIspCityArgs(
+                city="546",
+                isp="465",
+            )],
+            task_name="tf-example",
+            task_type="HTTP")
+        ```
 
         ## Import
 

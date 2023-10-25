@@ -598,6 +598,30 @@ class NasBackupPlan(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.132.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_vault = alicloud.hbr.Vault("defaultVault", vault_name="terraform-example2")
+        default_file_system = alicloud.nas.FileSystem("defaultFileSystem",
+            protocol_type="NFS",
+            storage_type="Performance",
+            description="terraform-example",
+            encrypt_type=1)
+        default_nas_backup_plan = alicloud.hbr.NasBackupPlan("defaultNasBackupPlan",
+            nas_backup_plan_name="terraform-example",
+            file_system_id=default_file_system.id,
+            schedule="I|1602673264|PT2H",
+            backup_type="COMPLETE",
+            vault_id=default_vault.id,
+            retention="2",
+            paths=["/"])
+        ```
+
         ## Import
 
         HBR Nas Backup Plan can be imported using the id, e.g.
@@ -636,6 +660,30 @@ class NasBackupPlan(pulumi.CustomResource):
         For information about HBR Nas Backup Plan and how to use it, see [What is Nas Backup Plan](https://www.alibabacloud.com/help/doc-detail/132248.htm).
 
         > **NOTE:** Available in v1.132.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_vault = alicloud.hbr.Vault("defaultVault", vault_name="terraform-example2")
+        default_file_system = alicloud.nas.FileSystem("defaultFileSystem",
+            protocol_type="NFS",
+            storage_type="Performance",
+            description="terraform-example",
+            encrypt_type=1)
+        default_nas_backup_plan = alicloud.hbr.NasBackupPlan("defaultNasBackupPlan",
+            nas_backup_plan_name="terraform-example",
+            file_system_id=default_file_system.id,
+            schedule="I|1602673264|PT2H",
+            backup_type="COMPLETE",
+            vault_id=default_vault.id,
+            retention="2",
+            paths=["/"])
+        ```
 
         ## Import
 

@@ -16,6 +16,41 @@ namespace Pulumi.AliCloud.Ims
     /// 
     /// &gt; **NOTE:** Available since v1.210.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var oidcProviderName = config.Get("oidcProviderName") ?? "amp-resource-example-oidc-provider";
+    ///     var @default = new AliCloud.Ims.OidcProvider("default", new()
+    ///     {
+    ///         Description = oidcProviderName,
+    ///         IssuerUrl = "https://oauth.aliyun.com",
+    ///         Fingerprints = new[]
+    ///         {
+    ///             "902ef2deeb3c5b13ea4c3d5193629309e231ae55",
+    ///         },
+    ///         IssuanceLimitTime = 12,
+    ///         OidcProviderName = name,
+    ///         ClientIds = new[]
+    ///         {
+    ///             "123",
+    ///             "456",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// IMS Oidc Provider can be imported using the id, e.g.

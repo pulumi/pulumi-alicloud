@@ -142,6 +142,30 @@ class DelegatedAdministrator(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.181.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        display_name = config.get("displayName")
+        if display_name is None:
+            display_name = "EAccount"
+        example_folder = alicloud.resourcemanager.Folder("exampleFolder", folder_name=name)
+        example_account = alicloud.resourcemanager.Account("exampleAccount",
+            display_name=display_name,
+            folder_id=example_folder.id)
+        example_delegated_administrator = alicloud.resourcemanager.DelegatedAdministrator("exampleDelegatedAdministrator",
+            account_id=example_account.id,
+            service_principal="cloudfw.aliyuncs.com")
+        ```
+
         ## Import
 
         Resource Manager Delegated Administrator can be imported using the id, e.g.
@@ -167,6 +191,30 @@ class DelegatedAdministrator(pulumi.CustomResource):
         For information about Resource Manager Delegated Administrator and how to use it, see [What is Delegated Administrator](https://www.alibabacloud.com/help/en/resource-management/latest/registerdelegatedadministrator#doc-api-ResourceManager-RegisterDelegatedAdministrator).
 
         > **NOTE:** Available since v1.181.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        display_name = config.get("displayName")
+        if display_name is None:
+            display_name = "EAccount"
+        example_folder = alicloud.resourcemanager.Folder("exampleFolder", folder_name=name)
+        example_account = alicloud.resourcemanager.Account("exampleAccount",
+            display_name=display_name,
+            folder_id=example_folder.id)
+        example_delegated_administrator = alicloud.resourcemanager.DelegatedAdministrator("exampleDelegatedAdministrator",
+            account_id=example_account.id,
+            service_principal="cloudfw.aliyuncs.com")
+        ```
 
         ## Import
 

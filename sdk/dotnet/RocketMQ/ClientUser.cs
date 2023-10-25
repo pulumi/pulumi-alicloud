@@ -18,6 +18,34 @@ namespace Pulumi.AliCloud.RocketMQ
     /// 
     /// &gt; **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var sagId = config.Get("sagId") ?? "sag-9bifkfaz4fg***";
+    ///     var @default = new AliCloud.RocketMQ.ClientUser("default", new()
+    ///     {
+    ///         SagId = sagId,
+    ///         Bandwidth = 20,
+    ///         UserMail = "tf-example@abc.com",
+    ///         UserName = name,
+    ///         Password = "example1234",
+    ///         ClientIp = "192.1.10.0",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// The Sag ClientUser can be imported using the name, e.g.

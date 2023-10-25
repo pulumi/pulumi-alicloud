@@ -126,6 +126,18 @@ def get_triggers(function_name: Optional[str] = None,
     """
     This data source provides the Function Compute triggers of the current Alibaba Cloud user.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    fc_triggers_ds = alicloud.fc.get_triggers(function_name="sample_function",
+        name_regex="sample_fc_trigger",
+        service_name="sample_service")
+    pulumi.export("firstFcTriggerName", fc_triggers_ds.triggers[0].name)
+    ```
+
 
     :param str function_name: FC function name.
     :param Sequence[str] ids: A list of FC triggers ids.
@@ -162,6 +174,18 @@ def get_triggers_output(function_name: Optional[pulumi.Input[str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTriggersResult]:
     """
     This data source provides the Function Compute triggers of the current Alibaba Cloud user.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    fc_triggers_ds = alicloud.fc.get_triggers(function_name="sample_function",
+        name_regex="sample_fc_trigger",
+        service_name="sample_service")
+    pulumi.export("firstFcTriggerName", fc_triggers_ds.triggers[0].name)
+    ```
 
 
     :param str function_name: FC function name.

@@ -14,6 +14,29 @@ namespace Pulumi.AliCloud.Pvtz
     /// 
     /// &gt; **NOTE:** Available since v1.138.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var authorizedUserId = config.GetDouble("authorizedUserId") ?? 123456789;
+    ///     var example = new AliCloud.Pvtz.UserVpcAuthorization("example", new()
+    ///     {
+    ///         AuthorizedUserId = authorizedUserId,
+    ///         AuthChannel = "RESOURCE_DIRECTORY",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Private Zone User Vpc Authorization can be imported using the id, e.g.

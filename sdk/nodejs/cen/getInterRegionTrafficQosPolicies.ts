@@ -10,6 +10,28 @@ import * as utilities from "../utilities";
  * This data source provides the Cen Inter Region Traffic Qos Policies of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.195.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cen.getInterRegionTrafficQosPolicies({
+ *     ids: ["example_id"],
+ *     transitRouterId: "your_transit_router_id",
+ *     transitRouterAttachmentId: "your_transit_router_attachment_id",
+ * });
+ * export const cenInterRegionTrafficQosPolicyId0 = ids.then(ids => ids.policies?.[0]?.id);
+ * const nameRegex = alicloud.cen.getInterRegionTrafficQosPolicies({
+ *     nameRegex: "^my-name",
+ *     transitRouterId: "your_transit_router_id",
+ *     transitRouterAttachmentId: "your_transit_router_attachment_id",
+ * });
+ * export const cenInterRegionTrafficQosPolicyId1 = nameRegex.then(nameRegex => nameRegex.policies?.[0]?.id);
+ * ```
  */
 export function getInterRegionTrafficQosPolicies(args: GetInterRegionTrafficQosPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetInterRegionTrafficQosPoliciesResult> {
 
@@ -108,6 +130,28 @@ export interface GetInterRegionTrafficQosPoliciesResult {
  * This data source provides the Cen Inter Region Traffic Qos Policies of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.195.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cen.getInterRegionTrafficQosPolicies({
+ *     ids: ["example_id"],
+ *     transitRouterId: "your_transit_router_id",
+ *     transitRouterAttachmentId: "your_transit_router_attachment_id",
+ * });
+ * export const cenInterRegionTrafficQosPolicyId0 = ids.then(ids => ids.policies?.[0]?.id);
+ * const nameRegex = alicloud.cen.getInterRegionTrafficQosPolicies({
+ *     nameRegex: "^my-name",
+ *     transitRouterId: "your_transit_router_id",
+ *     transitRouterAttachmentId: "your_transit_router_attachment_id",
+ * });
+ * export const cenInterRegionTrafficQosPolicyId1 = nameRegex.then(nameRegex => nameRegex.policies?.[0]?.id);
+ * ```
  */
 export function getInterRegionTrafficQosPoliciesOutput(args: GetInterRegionTrafficQosPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInterRegionTrafficQosPoliciesResult> {
     return pulumi.output(args).apply((a: any) => getInterRegionTrafficQosPolicies(a, opts))

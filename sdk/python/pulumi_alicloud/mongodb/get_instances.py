@@ -156,6 +156,18 @@ def get_instances(availability_zone: Optional[str] = None,
     The `mongodb_get_instances` data source provides a collection of MongoDB instances available in Alicloud account.
     Filters support regular expression for the instance name, engine or instance type.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    mongo = alicloud.mongodb.get_instances(availability_zone="eu-central-1a",
+        instance_class="dds.mongo.mid",
+        instance_type="replicate",
+        name_regex="dds-.+\\\\d+")
+    ```
+
 
     :param str availability_zone: Instance availability zone.
     :param Sequence[str] ids: The ids list of MongoDB instances
@@ -201,6 +213,18 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]
     """
     The `mongodb_get_instances` data source provides a collection of MongoDB instances available in Alicloud account.
     Filters support regular expression for the instance name, engine or instance type.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    mongo = alicloud.mongodb.get_instances(availability_zone="eu-central-1a",
+        instance_class="dds.mongo.mid",
+        instance_type="replicate",
+        name_regex="dds-.+\\\\d+")
+    ```
 
 
     :param str availability_zone: Instance availability zone.

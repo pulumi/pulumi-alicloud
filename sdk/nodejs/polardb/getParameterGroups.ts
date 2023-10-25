@@ -10,6 +10,28 @@ import * as utilities from "../utilities";
  * This data source provides the PolarDB Parameter Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available since v1.183.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.polardb.getParameterGroups({
+ *     dbType: "MySQL",
+ *     dbVersion: "8.0",
+ * });
+ * const ids = _default.then(_default => alicloud.polardb.getParameterGroups({
+ *     ids: [_default.groups?.[0]?.id],
+ * }));
+ * export const polardbParameterGroupId1 = ids.then(ids => ids.groups?.[0]?.id);
+ * const nameRegex = _default.then(_default => alicloud.polardb.getParameterGroups({
+ *     nameRegex: _default.groups?.[0]?.parameterGroupName,
+ * }));
+ * export const polardbParameterGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
+ * ```
  */
 export function getParameterGroups(args?: GetParameterGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetParameterGroupsResult> {
     args = args || {};
@@ -82,6 +104,28 @@ export interface GetParameterGroupsResult {
  * This data source provides the PolarDB Parameter Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available since v1.183.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.polardb.getParameterGroups({
+ *     dbType: "MySQL",
+ *     dbVersion: "8.0",
+ * });
+ * const ids = _default.then(_default => alicloud.polardb.getParameterGroups({
+ *     ids: [_default.groups?.[0]?.id],
+ * }));
+ * export const polardbParameterGroupId1 = ids.then(ids => ids.groups?.[0]?.id);
+ * const nameRegex = _default.then(_default => alicloud.polardb.getParameterGroups({
+ *     nameRegex: _default.groups?.[0]?.parameterGroupName,
+ * }));
+ * export const polardbParameterGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
+ * ```
  */
 export function getParameterGroupsOutput(args?: GetParameterGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetParameterGroupsResult> {
     return pulumi.output(args).apply((a: any) => getParameterGroups(a, opts))

@@ -100,6 +100,18 @@ def get_data_limits(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.159.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.sddp.get_data_limits()
+    pulumi.export("sddpDataLimitId1", ids.limits[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Data Limit IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -133,6 +145,18 @@ def get_data_limits_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] 
     This data source provides the Sddp Data Limits of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.159.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.sddp.get_data_limits()
+    pulumi.export("sddpDataLimitId1", ids.limits[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Data Limit IDs.

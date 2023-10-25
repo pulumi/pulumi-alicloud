@@ -10,6 +10,22 @@ import * as utilities from "../utilities";
  * This data source provides the Cloud Storage Gateway Express Syncs of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.144.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cloudstoragegateway.getExpressSyncs({});
+ * export const cloudStorageGatewayExpressSyncId1 = ids.then(ids => ids.syncs?.[0]?.id);
+ * const nameRegex = alicloud.cloudstoragegateway.getExpressSyncs({
+ *     nameRegex: "^my-ExpressSync",
+ * });
+ * export const cloudStorageGatewayExpressSyncId2 = nameRegex.then(nameRegex => nameRegex.syncs?.[0]?.id);
+ * ```
  */
 export function getExpressSyncs(args?: GetExpressSyncsArgs, opts?: pulumi.InvokeOptions): Promise<GetExpressSyncsResult> {
     args = args || {};
@@ -58,6 +74,22 @@ export interface GetExpressSyncsResult {
  * This data source provides the Cloud Storage Gateway Express Syncs of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.144.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cloudstoragegateway.getExpressSyncs({});
+ * export const cloudStorageGatewayExpressSyncId1 = ids.then(ids => ids.syncs?.[0]?.id);
+ * const nameRegex = alicloud.cloudstoragegateway.getExpressSyncs({
+ *     nameRegex: "^my-ExpressSync",
+ * });
+ * export const cloudStorageGatewayExpressSyncId2 = nameRegex.then(nameRegex => nameRegex.syncs?.[0]?.id);
+ * ```
  */
 export function getExpressSyncsOutput(args?: GetExpressSyncsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExpressSyncsResult> {
     return pulumi.output(args).apply((a: any) => getExpressSyncs(a, opts))

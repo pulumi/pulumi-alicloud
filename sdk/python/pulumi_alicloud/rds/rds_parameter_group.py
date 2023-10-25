@@ -265,6 +265,35 @@ class RdsParameterGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.119.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.rds.RdsParameterGroup("default",
+            engine="mysql",
+            engine_version="5.7",
+            param_details=[
+                alicloud.rds.RdsParameterGroupParamDetailArgs(
+                    param_name="back_log",
+                    param_value="4000",
+                ),
+                alicloud.rds.RdsParameterGroupParamDetailArgs(
+                    param_name="wait_timeout",
+                    param_value="86460",
+                ),
+            ],
+            parameter_group_desc=name,
+            parameter_group_name=name)
+        ```
+
         ## Import
 
         RDS Parameter Group can be imported using the id, e.g.
@@ -293,6 +322,35 @@ class RdsParameterGroup(pulumi.CustomResource):
         For information about RDS Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/doc-detail/144839.htm).
 
         > **NOTE:** Available since v1.119.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.rds.RdsParameterGroup("default",
+            engine="mysql",
+            engine_version="5.7",
+            param_details=[
+                alicloud.rds.RdsParameterGroupParamDetailArgs(
+                    param_name="back_log",
+                    param_value="4000",
+                ),
+                alicloud.rds.RdsParameterGroupParamDetailArgs(
+                    param_name="wait_timeout",
+                    param_value="86460",
+                ),
+            ],
+            parameter_group_desc=name,
+            parameter_group_name=name)
+        ```
 
         ## Import
 

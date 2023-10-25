@@ -14,6 +14,31 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// &gt; **NOTE:** Available since v1.95.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AliCloud.Dns.AlidnsInstance("example", new()
+    ///     {
+    ///         DnsSecurity = "no",
+    ///         DomainNumbers = "2",
+    ///         Period = 1,
+    ///         RenewPeriod = 1,
+    ///         RenewalStatus = "ManualRenewal",
+    ///         VersionCode = "version_personal",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// DNS instance be imported using the id, e.g.

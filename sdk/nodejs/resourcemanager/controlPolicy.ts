@@ -11,6 +11,39 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.120.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const example = new alicloud.resourcemanager.ControlPolicy("example", {
+ *     controlPolicyName: name,
+ *     description: name,
+ *     effectScope: "RAM",
+ *     policyDocument: `  {
+ *     "Version": "1",
+ *     "Statement": [
+ *       {
+ *         "Effect": "Deny",
+ *         "Action": [
+ *           "ram:UpdateRole",
+ *           "ram:DeleteRole",
+ *           "ram:AttachPolicyToRole",
+ *           "ram:DetachPolicyFromRole"
+ *         ],
+ *         "Resource": "acs:ram:*:*:role/ResourceDirectoryAccountAccessRole"
+ *       }
+ *     ]
+ *   }
+ * `,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Resource Manager Control Policy can be imported using the id, e.g.

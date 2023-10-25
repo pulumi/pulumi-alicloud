@@ -19,6 +19,41 @@ import (
 //
 // > **NOTE:** Available since v1.194.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudfirewall.NewFirewallVpcFirewallCen(ctx, "default", &cloudfirewall.FirewallVpcFirewallCenArgs{
+//				CenId: pulumi.String("cen-cjok7uyb5w2b27573v"),
+//				LocalVpc: &cloudfirewall.FirewallVpcFirewallCenLocalVpcArgs{
+//					NetworkInstanceId: pulumi.String("vpc-a2d4wzzfuumzuq6uog5w4"),
+//				},
+//				MemberUid:       pulumi.String("1415189284827022"),
+//				Status:          pulumi.String("open"),
+//				VpcFirewallName: pulumi.String("tf-vpc-firewall-name"),
+//				VpcRegion:       pulumi.String("ap-south-1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Cloud Firewall Vpc Firewall Cen can be imported using the id, e.g.

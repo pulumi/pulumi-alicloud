@@ -15,6 +15,56 @@ import (
 // This data source provides the Rdc Organizations of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.137.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rdc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-testAccOrganizations-Organizations"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := rdc.NewOrganization(ctx, "default", &rdc.OrganizationArgs{
+//				OrganizationName: pulumi.String(name),
+//				Source:           pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ids := rdc.GetOrganizationsOutput(ctx, rdc.GetOrganizationsOutputArgs{
+//				Ids: pulumi.StringArray{
+//					_default.ID(),
+//				},
+//			}, nil)
+//			ctx.Export("rdcOrganizationId1", ids.ApplyT(func(ids rdc.GetOrganizationsResult) (*string, error) {
+//				return &ids.Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			nameRegex, err := rdc.GetOrganizations(ctx, &rdc.GetOrganizationsArgs{
+//				NameRegex: pulumi.StringRef("^my-Organization"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("rdcOrganizationId2", nameRegex.Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetOrganizations(ctx *pulumi.Context, args *GetOrganizationsArgs, opts ...pulumi.InvokeOption) (*GetOrganizationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOrganizationsResult

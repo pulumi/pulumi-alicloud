@@ -437,6 +437,58 @@ class EcsSnapshotGroup(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.160.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_zones = alicloud.get_zones(available_resource_creation="Instance",
+            available_disk_category="cloud_essd")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            system_disk_category="cloud_essd")
+        default_images = alicloud.ecs.get_images(owners="system")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("defaultInstance",
+            availability_zone=default_zones.zones[0].id,
+            instance_name="terraform-example",
+            security_groups=[default_security_group.id],
+            vswitch_id=default_switch.id,
+            instance_type=default_instance_types.instance_types[0].id,
+            image_id=default_images.images[0].id,
+            internet_max_bandwidth_out=10)
+        default_ecs_disk = alicloud.ecs.EcsDisk("defaultEcsDisk",
+            zone_id=default_zones.zones[0].id,
+            disk_name="terraform-example",
+            description="terraform-example",
+            category="cloud_essd",
+            size=30)
+        default_disk_attachment = alicloud.ecs.DiskAttachment("defaultDiskAttachment",
+            disk_id=default_ecs_disk.id,
+            instance_id=default_instance.id)
+        default_ecs_snapshot_group = alicloud.ecs.EcsSnapshotGroup("defaultEcsSnapshotGroup",
+            description="terraform-example",
+            disk_ids=[default_ecs_disk.id],
+            snapshot_group_name="terraform-example",
+            instance_id=default_instance.id,
+            instant_access=True,
+            instant_access_retention_days=1,
+            tags={
+                "Created": "TF",
+                "For": "Acceptance",
+            })
+        ```
+
         ## Import
 
         ECS Snapshot Group can be imported using the id, e.g.
@@ -469,6 +521,58 @@ class EcsSnapshotGroup(pulumi.CustomResource):
         For information about ECS Snapshot Group and how to use it, see [What is Snapshot Group](https://www.alibabacloud.com/help/en/doc-detail/210939.html).
 
         > **NOTE:** Available in v1.160.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_zones = alicloud.get_zones(available_resource_creation="Instance",
+            available_disk_category="cloud_essd")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            system_disk_category="cloud_essd")
+        default_images = alicloud.ecs.get_images(owners="system")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("defaultInstance",
+            availability_zone=default_zones.zones[0].id,
+            instance_name="terraform-example",
+            security_groups=[default_security_group.id],
+            vswitch_id=default_switch.id,
+            instance_type=default_instance_types.instance_types[0].id,
+            image_id=default_images.images[0].id,
+            internet_max_bandwidth_out=10)
+        default_ecs_disk = alicloud.ecs.EcsDisk("defaultEcsDisk",
+            zone_id=default_zones.zones[0].id,
+            disk_name="terraform-example",
+            description="terraform-example",
+            category="cloud_essd",
+            size=30)
+        default_disk_attachment = alicloud.ecs.DiskAttachment("defaultDiskAttachment",
+            disk_id=default_ecs_disk.id,
+            instance_id=default_instance.id)
+        default_ecs_snapshot_group = alicloud.ecs.EcsSnapshotGroup("defaultEcsSnapshotGroup",
+            description="terraform-example",
+            disk_ids=[default_ecs_disk.id],
+            snapshot_group_name="terraform-example",
+            instance_id=default_instance.id,
+            instant_access=True,
+            instant_access_retention_days=1,
+            tags={
+                "Created": "TF",
+                "For": "Acceptance",
+            })
+        ```
 
         ## Import
 

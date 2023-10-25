@@ -15,6 +15,35 @@ import (
 // This data source provides the KVStore Accounts of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.102.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kvstore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := kvstore.GetAccounts(ctx, &kvstore.GetAccountsArgs{
+//				InstanceId: "example_value",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstKvstoreAccountId", example.Accounts[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetAccounts(ctx *pulumi.Context, args *GetAccountsArgs, opts ...pulumi.InvokeOption) (*GetAccountsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountsResult

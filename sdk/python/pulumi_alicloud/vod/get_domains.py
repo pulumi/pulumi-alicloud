@@ -129,6 +129,34 @@ def get_domains(domain_search_type: Optional[str] = None,
 
     > **NOTE:** Available in v1.136.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default_domain = alicloud.vod.Domain("defaultDomain",
+        domain_name="your_domain_name",
+        scope="domestic",
+        sources=[alicloud.vod.DomainSourceArgs(
+            source_type="domain",
+            source_content="your_source_content",
+            source_port="80",
+        )],
+        tags={
+            "key1": "value1",
+            "key2": "value2",
+        })
+    default_domains = alicloud.vod.get_domains_output(ids=[default_domain.id],
+        tags={
+            "key1": "value1",
+            "key2": "value2",
+        })
+    pulumi.export("vodDomain", default_domains.domains[0])
+    ```
+
 
     :param str domain_search_type: The search method. Valid values:
     :param Sequence[str] ids: A list of Domain IDs. Its element value is same as Domain Name.
@@ -171,6 +199,34 @@ def get_domains_output(domain_search_type: Optional[pulumi.Input[Optional[str]]]
     This data source provides the Vod Domains of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.136.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default_domain = alicloud.vod.Domain("defaultDomain",
+        domain_name="your_domain_name",
+        scope="domestic",
+        sources=[alicloud.vod.DomainSourceArgs(
+            source_type="domain",
+            source_content="your_source_content",
+            source_port="80",
+        )],
+        tags={
+            "key1": "value1",
+            "key2": "value2",
+        })
+    default_domains = alicloud.vod.get_domains_output(ids=[default_domain.id],
+        tags={
+            "key1": "value1",
+            "key2": "value2",
+        })
+    pulumi.export("vodDomain", default_domains.domains[0])
+    ```
 
 
     :param str domain_search_type: The search method. Valid values:

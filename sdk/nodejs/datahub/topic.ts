@@ -9,6 +9,40 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.19.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const example = new alicloud.datahub.Project("example", {comment: "created by terraform"});
+ * const exampleBlob = new alicloud.datahub.Topic("exampleBlob", {
+ *     projectName: example.name,
+ *     recordType: "BLOB",
+ *     shardCount: 3,
+ *     lifeCycle: 7,
+ *     comment: "created by terraform",
+ * });
+ * const exampleTuple = new alicloud.datahub.Topic("exampleTuple", {
+ *     projectName: example.name,
+ *     recordType: "TUPLE",
+ *     recordSchema: {
+ *         bigint_field: "BIGINT",
+ *         timestamp_field: "TIMESTAMP",
+ *         string_field: "STRING",
+ *         double_field: "DOUBLE",
+ *         boolean_field: "BOOLEAN",
+ *     },
+ *     shardCount: 3,
+ *     lifeCycle: 7,
+ *     comment: "created by terraform",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Datahub topic can be imported using the ID, e.g.

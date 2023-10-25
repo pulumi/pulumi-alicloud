@@ -10,6 +10,19 @@ import * as utilities from "../utilities";
  * This data source provides FileSystems available to the user.
  *
  * > **NOTE**: Available in 1.35.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const fs = alicloud.nas.getFileSystems({
+ *     descriptionRegex: alicloud_nas_file_system.foo.description,
+ *     protocolType: "NFS",
+ * });
+ * export const alicloudNasFileSystemsId = fs.then(fs => fs.systems?.[0]?.id);
+ * ```
  */
 export function getFileSystems(args?: GetFileSystemsArgs, opts?: pulumi.InvokeOptions): Promise<GetFileSystemsResult> {
     args = args || {};
@@ -89,6 +102,19 @@ export interface GetFileSystemsResult {
  * This data source provides FileSystems available to the user.
  *
  * > **NOTE**: Available in 1.35.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const fs = alicloud.nas.getFileSystems({
+ *     descriptionRegex: alicloud_nas_file_system.foo.description,
+ *     protocolType: "NFS",
+ * });
+ * export const alicloudNasFileSystemsId = fs.then(fs => fs.systems?.[0]?.id);
+ * ```
  */
 export function getFileSystemsOutput(args?: GetFileSystemsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFileSystemsResult> {
     return pulumi.output(args).apply((a: any) => getFileSystems(a, opts))

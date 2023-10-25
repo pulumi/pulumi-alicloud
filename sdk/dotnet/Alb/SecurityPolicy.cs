@@ -16,6 +16,35 @@ namespace Pulumi.AliCloud.Alb
     /// 
     /// &gt; **NOTE:** Available since v1.130.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new AliCloud.Alb.SecurityPolicy("default", new()
+    ///     {
+    ///         Ciphers = new[]
+    ///         {
+    ///             "ECDHE-ECDSA-AES128-SHA",
+    ///             "AES256-SHA",
+    ///         },
+    ///         SecurityPolicyName = "tf_example",
+    ///         TlsVersions = new[]
+    ///         {
+    ///             "TLSv1.0",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ALB Security Policy can be imported using the id, e.g.

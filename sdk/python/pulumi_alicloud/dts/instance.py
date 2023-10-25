@@ -1212,6 +1212,27 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.198.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_regions = alicloud.get_regions(current=True)
+        default_instance = alicloud.dts.Instance("defaultInstance",
+            type="sync",
+            resource_group_id=default_resource_groups.ids[0],
+            payment_type="Subscription",
+            instance_class="large",
+            source_endpoint_engine_name="MySQL",
+            source_region=default_regions.regions[0].id,
+            destination_endpoint_engine_name="MySQL",
+            destination_region=default_regions.regions[0].id)
+        ```
+
         ## Import
 
         Dts Instance can be imported using the id, e.g.
@@ -1323,6 +1344,27 @@ class Instance(pulumi.CustomResource):
         For information about Dts Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/data-transmission-service/latest/createdtsinstance).
 
         > **NOTE:** Available since v1.198.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_regions = alicloud.get_regions(current=True)
+        default_instance = alicloud.dts.Instance("defaultInstance",
+            type="sync",
+            resource_group_id=default_resource_groups.ids[0],
+            payment_type="Subscription",
+            instance_class="large",
+            source_endpoint_engine_name="MySQL",
+            source_region=default_regions.regions[0].id,
+            destination_endpoint_engine_name="MySQL",
+            destination_region=default_regions.regions[0].id)
+        ```
 
         ## Import
 

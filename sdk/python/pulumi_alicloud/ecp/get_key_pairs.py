@@ -109,6 +109,20 @@ def get_key_pairs(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.130.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.ecp.get_key_pairs()
+    pulumi.export("ecpKeyPairId1", ids.pairs[0].id)
+    name_regex = alicloud.ecp.get_key_pairs(name_regex="^my-KeyPair")
+    pulumi.export("ecpKeyPairId2", name_regex.pairs[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Key Pair IDs. Its element value is same as Key Pair Name.
     :param str key_pair_finger_print: The Private Key of the Fingerprint.
@@ -143,6 +157,20 @@ def get_key_pairs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     This data source provides the Ecp Key Pairs of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.130.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.ecp.get_key_pairs()
+    pulumi.export("ecpKeyPairId1", ids.pairs[0].id)
+    name_regex = alicloud.ecp.get_key_pairs(name_regex="^my-KeyPair")
+    pulumi.export("ecpKeyPairId2", name_regex.pairs[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Key Pair IDs. Its element value is same as Key Pair Name.

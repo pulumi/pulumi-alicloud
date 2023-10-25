@@ -605,6 +605,24 @@ class BasicAccelerator(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.194.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ga.BasicAccelerator("default",
+            auto_pay=True,
+            auto_use_coupon="true",
+            bandwidth_billing_type="BandwidthPackage",
+            basic_accelerator_name="tf-example-value",
+            description="tf-example-value",
+            duration=1,
+            pricing_cycle="Month")
+        ```
+
         ## Import
 
         Global Accelerator (GA) Basic Accelerator can be imported using the id, e.g.
@@ -643,6 +661,24 @@ class BasicAccelerator(pulumi.CustomResource):
         For information about Global Accelerator (GA) Basic Accelerator and how to use it, see [What is Basic Accelerator](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createbasicaccelerator).
 
         > **NOTE:** Available since v1.194.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ga.BasicAccelerator("default",
+            auto_pay=True,
+            auto_use_coupon="true",
+            bandwidth_billing_type="BandwidthPackage",
+            basic_accelerator_name="tf-example-value",
+            description="tf-example-value",
+            duration=1,
+            pricing_cycle="Month")
+        ```
 
         ## Import
 

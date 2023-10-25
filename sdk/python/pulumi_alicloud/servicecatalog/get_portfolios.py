@@ -168,6 +168,17 @@ def get_portfolios(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in 1.204.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.servicecatalog.get_portfolios(ids=[alicloud_service_catalog_portfolio["default"]["id"]],
+        name_regex=alicloud_service_catalog_portfolio["default"]["name"])
+    pulumi.export("alicloudServiceCatalogPortfolioExampleId", default.portfolios[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Portfolio IDs.
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
@@ -220,6 +231,17 @@ def get_portfolios_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] =
     This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createportfolio)
 
     > **NOTE:** Available in 1.204.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.servicecatalog.get_portfolios(ids=[alicloud_service_catalog_portfolio["default"]["id"]],
+        name_regex=alicloud_service_catalog_portfolio["default"]["name"])
+    pulumi.export("alicloudServiceCatalogPortfolioExampleId", default.portfolios[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Portfolio IDs.

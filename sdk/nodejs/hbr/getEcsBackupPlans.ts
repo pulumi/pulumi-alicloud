@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * This data source provides the Hbr EcsBackupPlans of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.132.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.hbr.getEcsBackupPlans({
+ *     nameRegex: "plan-name",
+ * });
+ * export const hbrEcsBackupPlanId = ids.then(ids => ids.plans?.[0]?.id);
+ * ```
  */
 export function getEcsBackupPlans(args?: GetEcsBackupPlansArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsBackupPlansResult> {
     args = args || {};
@@ -70,6 +84,20 @@ export interface GetEcsBackupPlansResult {
  * This data source provides the Hbr EcsBackupPlans of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.132.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.hbr.getEcsBackupPlans({
+ *     nameRegex: "plan-name",
+ * });
+ * export const hbrEcsBackupPlanId = ids.then(ids => ids.plans?.[0]?.id);
+ * ```
  */
 export function getEcsBackupPlansOutput(args?: GetEcsBackupPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsBackupPlansResult> {
     return pulumi.output(args).apply((a: any) => getEcsBackupPlans(a, opts))

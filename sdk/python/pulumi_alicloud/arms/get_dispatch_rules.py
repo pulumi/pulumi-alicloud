@@ -119,6 +119,20 @@ def get_dispatch_rules(dispatch_rule_name: Optional[str] = None,
 
     > **NOTE:** Available in v1.136.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.arms.get_dispatch_rules()
+    pulumi.export("armsDispatchRuleId1", ids.rules[0].id)
+    name_regex = alicloud.arms.get_dispatch_rules(name_regex="^my-DispatchRule")
+    pulumi.export("armsDispatchRuleId2", name_regex.rules[0].id)
+    ```
+
 
     :param str dispatch_rule_name: The name of the dispatch rule.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -157,6 +171,20 @@ def get_dispatch_rules_output(dispatch_rule_name: Optional[pulumi.Input[Optional
     This data source provides the Arms Dispatch Rules of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.136.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.arms.get_dispatch_rules()
+    pulumi.export("armsDispatchRuleId1", ids.rules[0].id)
+    name_regex = alicloud.arms.get_dispatch_rules(name_regex="^my-DispatchRule")
+    pulumi.export("armsDispatchRuleId2", name_regex.rules[0].id)
+    ```
 
 
     :param str dispatch_rule_name: The name of the dispatch rule.

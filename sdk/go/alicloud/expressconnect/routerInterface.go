@@ -19,6 +19,62 @@ import (
 //
 // > **NOTE:** Available since v1.199.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = expressconnect.NewRouterInterface(ctx, "defaultRouterInterface", &expressconnect.RouterInterfaceArgs{
+//				Description:         pulumi.String(name),
+//				OppositeRegionId:    *pulumi.String(defaultRegions.Regions[0].Id),
+//				RouterId:            defaultNetwork.RouterId,
+//				Role:                pulumi.String("InitiatingSide"),
+//				RouterType:          pulumi.String("VRouter"),
+//				PaymentType:         pulumi.String("PayAsYouGo"),
+//				RouterInterfaceName: pulumi.String(name),
+//				Spec:                pulumi.String("Mini.2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Express Connect Router Interface can be imported using the id, e.g.

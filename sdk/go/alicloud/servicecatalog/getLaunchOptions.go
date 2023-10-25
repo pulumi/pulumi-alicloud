@@ -15,6 +15,41 @@ import (
 // This data source provides Service Catalog Launch Option available to the user. [What is Launch Option](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listlaunchoptions).
 //
 // > **NOTE:** Available since v1.196.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/servicecatalog"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := servicecatalog.GetEndUserProducts(ctx, &servicecatalog.GetEndUserProductsArgs{
+//				NameRegex: pulumi.StringRef("ram模板创建"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultLaunchOptions, err := servicecatalog.GetLaunchOptions(ctx, &servicecatalog.GetLaunchOptionsArgs{
+//				ProductId: "data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudServiceCatalogLaunchOptionExampleId", defaultLaunchOptions.LaunchOptions[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetLaunchOptions(ctx *pulumi.Context, args *GetLaunchOptionsArgs, opts ...pulumi.InvokeOption) (*GetLaunchOptionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLaunchOptionsResult

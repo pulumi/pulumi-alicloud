@@ -11,6 +11,42 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.167.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultAccelerator = new alicloud.ga.Accelerator("defaultAccelerator", {
+ *     duration: 1,
+ *     spec: "1",
+ *     acceleratorName: "terraform-example",
+ *     autoUseCoupon: true,
+ *     description: "terraform-example",
+ * });
+ * const defaultBandwidthPackage = new alicloud.ga.BandwidthPackage("defaultBandwidthPackage", {
+ *     bandwidth: 100,
+ *     type: "Basic",
+ *     bandwidthType: "Basic",
+ *     paymentType: "PayAsYouGo",
+ *     billingType: "PayBy95",
+ *     ratio: 30,
+ *     bandwidthPackageName: "terraform-example",
+ *     autoPay: true,
+ *     autoUseCoupon: true,
+ * });
+ * const defaultBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", {
+ *     acceleratorId: defaultAccelerator.id,
+ *     bandwidthPackageId: defaultBandwidthPackage.id,
+ * });
+ * const defaultAcceleratorSpareIpAttachment = new alicloud.ga.AcceleratorSpareIpAttachment("defaultAcceleratorSpareIpAttachment", {
+ *     acceleratorId: defaultBandwidthPackageAttachment.acceleratorId,
+ *     spareIp: "127.0.0.1",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Global Accelerator (GA) Accelerator Spare Ip Attachment can be imported using the id, e.g.

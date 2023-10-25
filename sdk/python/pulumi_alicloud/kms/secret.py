@@ -704,6 +704,22 @@ class Secret(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.76.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.kms.Secret("default",
+            description="from terraform",
+            force_delete_without_recovery=True,
+            secret_data="Secret data.",
+            secret_name="secret-foo",
+            version_id="000000000001")
+        ```
+
         ## Import
 
         KMS secret can be imported using the id, e.g.
@@ -740,6 +756,22 @@ class Secret(pulumi.CustomResource):
         This resouce used to create a secret and store its initial version.
 
         > **NOTE:** Available in 1.76.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.kms.Secret("default",
+            description="from terraform",
+            force_delete_without_recovery=True,
+            secret_data="Secret data.",
+            secret_name="secret-foo",
+            version_id="000000000001")
+        ```
 
         ## Import
 

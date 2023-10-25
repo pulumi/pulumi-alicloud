@@ -286,6 +286,27 @@ class DynamicTagGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.142.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup",
+            alarm_contact_group_name="example_value",
+            describe="example_value",
+            enable_subscribed=True)
+        default_dynamic_tag_group = alicloud.cms.DynamicTagGroup("defaultDynamicTagGroup",
+            contact_group_lists=[default_alarm_contact_group.id],
+            tag_key="your_tag_key",
+            match_expresses=[alicloud.cms.DynamicTagGroupMatchExpressArgs(
+                tag_value="your_tag_value",
+                tag_value_match_function="all",
+            )])
+        ```
+
         ## Import
 
         Cloud Monitor Service Dynamic Tag Group can be imported using the id, e.g.
@@ -314,6 +335,27 @@ class DynamicTagGroup(pulumi.CustomResource):
         For information about Cloud Monitor Service Dynamic Tag Group and how to use it, see [What is Dynamic Tag Group](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createdynamictaggroup).
 
         > **NOTE:** Available since v1.142.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup",
+            alarm_contact_group_name="example_value",
+            describe="example_value",
+            enable_subscribed=True)
+        default_dynamic_tag_group = alicloud.cms.DynamicTagGroup("defaultDynamicTagGroup",
+            contact_group_lists=[default_alarm_contact_group.id],
+            tag_key="your_tag_key",
+            match_expresses=[alicloud.cms.DynamicTagGroupMatchExpressArgs(
+                tag_value="your_tag_value",
+                tag_value_match_function="all",
+            )])
+        ```
 
         ## Import
 

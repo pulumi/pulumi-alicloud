@@ -288,6 +288,22 @@ class EcsDeploymentSet(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.140.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ecs.EcsDeploymentSet("default",
+            deployment_set_name="example_value",
+            description="example_value",
+            domain="Default",
+            granularity="Host",
+            strategy="Availability")
+        ```
+
         ## Import
 
         ECS Deployment Set can be imported using the id, e.g.
@@ -317,6 +333,22 @@ class EcsDeploymentSet(pulumi.CustomResource):
         For information about ECS Deployment Set and how to use it, see [What is Deployment Set](https://www.alibabacloud.com/help/en/doc-detail/91269.htm).
 
         > **NOTE:** Available in v1.140.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ecs.EcsDeploymentSet("default",
+            deployment_set_name="example_value",
+            description="example_value",
+            domain="Default",
+            granularity="Host",
+            strategy="Availability")
+        ```
 
         ## Import
 

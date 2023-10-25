@@ -74,6 +74,15 @@ def get_industrial_serice(enable: Optional[str] = None,
 
     > **NOTE:** The Brain Industrial service is not support in the international site.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    open = alicloud.brain.get_industrial_serice(enable="On")
+    ```
+
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
            
@@ -99,6 +108,15 @@ def get_industrial_serice_output(enable: Optional[pulumi.Input[Optional[str]]] =
     > **NOTE:** Available in v1.115.0+
 
     > **NOTE:** The Brain Industrial service is not support in the international site.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    open = alicloud.brain.get_industrial_serice(enable="On")
+    ```
 
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.

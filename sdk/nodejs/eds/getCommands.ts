@@ -10,6 +10,56 @@ import * as utilities from "../utilities";
  * This data source provides the Ecd Commands of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.146.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite", {
+ *     cidrBlock: "172.16.0.0/12",
+ *     desktopAccessType: "Internet",
+ *     officeSiteName: "your_office_site_name",
+ * });
+ * const defaultBundles = alicloud.eds.getBundles({
+ *     bundleType: "SYSTEM",
+ *     nameRegex: "windows",
+ * });
+ * const defaultEcdPolicyGroup = new alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup", {
+ *     policyGroupName: "your_policy_group_name",
+ *     clipboard: "readwrite",
+ *     localDrive: "read",
+ *     authorizeAccessPolicyRules: [{
+ *         description: "example_value",
+ *         cidrIp: "1.2.3.4/24",
+ *     }],
+ *     authorizeSecurityPolicyRules: [{
+ *         type: "inflow",
+ *         policy: "accept",
+ *         description: "example_value",
+ *         portRange: "80/80",
+ *         ipProtocol: "TCP",
+ *         priority: "1",
+ *         cidrIp: "0.0.0.0/0",
+ *     }],
+ * });
+ * const defaultDesktop = new alicloud.eds.Desktop("defaultDesktop", {
+ *     officeSiteId: defaultSimpleOfficeSite.id,
+ *     policyGroupId: defaultEcdPolicyGroup.id,
+ *     bundleId: defaultBundles.then(defaultBundles => defaultBundles.bundles?.[0]?.id),
+ *     desktopName: _var.name,
+ * });
+ * const defaultCommand = new alicloud.eds.Command("defaultCommand", {
+ *     commandContent: "ipconfig",
+ *     commandType: "RunPowerShellScript",
+ *     desktopId: defaultDesktop.id,
+ * });
+ * const ids = alicloud.eds.getCommands({});
+ * export const ecdCommandId1 = ids.then(ids => ids.commands?.[0]?.id);
+ * ```
  */
 export function getCommands(args?: GetCommandsArgs, opts?: pulumi.InvokeOptions): Promise<GetCommandsResult> {
     args = args || {};
@@ -75,6 +125,56 @@ export interface GetCommandsResult {
  * This data source provides the Ecd Commands of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.146.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite", {
+ *     cidrBlock: "172.16.0.0/12",
+ *     desktopAccessType: "Internet",
+ *     officeSiteName: "your_office_site_name",
+ * });
+ * const defaultBundles = alicloud.eds.getBundles({
+ *     bundleType: "SYSTEM",
+ *     nameRegex: "windows",
+ * });
+ * const defaultEcdPolicyGroup = new alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup", {
+ *     policyGroupName: "your_policy_group_name",
+ *     clipboard: "readwrite",
+ *     localDrive: "read",
+ *     authorizeAccessPolicyRules: [{
+ *         description: "example_value",
+ *         cidrIp: "1.2.3.4/24",
+ *     }],
+ *     authorizeSecurityPolicyRules: [{
+ *         type: "inflow",
+ *         policy: "accept",
+ *         description: "example_value",
+ *         portRange: "80/80",
+ *         ipProtocol: "TCP",
+ *         priority: "1",
+ *         cidrIp: "0.0.0.0/0",
+ *     }],
+ * });
+ * const defaultDesktop = new alicloud.eds.Desktop("defaultDesktop", {
+ *     officeSiteId: defaultSimpleOfficeSite.id,
+ *     policyGroupId: defaultEcdPolicyGroup.id,
+ *     bundleId: defaultBundles.then(defaultBundles => defaultBundles.bundles?.[0]?.id),
+ *     desktopName: _var.name,
+ * });
+ * const defaultCommand = new alicloud.eds.Command("defaultCommand", {
+ *     commandContent: "ipconfig",
+ *     commandType: "RunPowerShellScript",
+ *     desktopId: defaultDesktop.id,
+ * });
+ * const ids = alicloud.eds.getCommands({});
+ * export const ecdCommandId1 = ids.then(ids => ids.commands?.[0]?.id);
+ * ```
  */
 export function getCommandsOutput(args?: GetCommandsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCommandsResult> {
     return pulumi.output(args).apply((a: any) => getCommands(a, opts))

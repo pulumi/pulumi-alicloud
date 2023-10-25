@@ -337,6 +337,27 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.173.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+            transit_router_name="tf_example",
+            cen_id=example_instance.id)
+        example_traffic_marking_policy = alicloud.cen.TrafficMarkingPolicy("exampleTrafficMarkingPolicy",
+            marking_dscp=1,
+            priority=1,
+            traffic_marking_policy_name="tf_example",
+            transit_router_id=example_transit_router.transit_router_id)
+        ```
+
         ## Import
 
         Cloud Enterprise Network (CEN) Traffic Marking Policy can be imported using the id, e.g.
@@ -366,6 +387,27 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
         For information about Cloud Enterprise Network (CEN) Traffic Marking Policy and how to use it, see [What is Traffic Marking Policy](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtrafficmarkingpolicy).
 
         > **NOTE:** Available since v1.173.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+            transit_router_name="tf_example",
+            cen_id=example_instance.id)
+        example_traffic_marking_policy = alicloud.cen.TrafficMarkingPolicy("exampleTrafficMarkingPolicy",
+            marking_dscp=1,
+            priority=1,
+            traffic_marking_policy_name="tf_example",
+            transit_router_id=example_transit_router.transit_router_id)
+        ```
 
         ## Import
 

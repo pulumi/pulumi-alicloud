@@ -431,6 +431,35 @@ class Bundle(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.170.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_images = alicloud.eds.get_images(image_type="SYSTEM",
+            os_type="Windows",
+            desktop_instance_type="eds.hf.4c8g")
+        default_desktop_types = alicloud.eds.get_desktop_types(instance_type_family="eds.hf",
+            cpu_count=4,
+            memory_size=8192)
+        default_bundle = alicloud.eds.Bundle("defaultBundle",
+            description=name,
+            desktop_type=default_desktop_types.ids[0],
+            bundle_name=name,
+            image_id=default_images.ids[0],
+            user_disk_size_gibs=[70],
+            root_disk_size_gib=80,
+            root_disk_performance_level="PL1",
+            user_disk_performance_level="PL1")
+        ```
+
         ## Import
 
         ECD Bundle can be imported using the id, e.g.
@@ -465,6 +494,35 @@ class Bundle(pulumi.CustomResource):
         For information about ECD Bundle and how to use it, see [What is Bundle](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createbundle).
 
         > **NOTE:** Available since v1.170.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_images = alicloud.eds.get_images(image_type="SYSTEM",
+            os_type="Windows",
+            desktop_instance_type="eds.hf.4c8g")
+        default_desktop_types = alicloud.eds.get_desktop_types(instance_type_family="eds.hf",
+            cpu_count=4,
+            memory_size=8192)
+        default_bundle = alicloud.eds.Bundle("defaultBundle",
+            description=name,
+            desktop_type=default_desktop_types.ids[0],
+            bundle_name=name,
+            image_id=default_images.ids[0],
+            user_disk_size_gibs=[70],
+            root_disk_size_gib=80,
+            root_disk_performance_level="PL1",
+            user_disk_performance_level="PL1")
+        ```
 
         ## Import
 

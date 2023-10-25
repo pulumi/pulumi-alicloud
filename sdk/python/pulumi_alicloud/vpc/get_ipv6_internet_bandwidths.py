@@ -110,6 +110,24 @@ def get_ipv6_internet_bandwidths(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.143.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.vpc.get_ipv6_internet_bandwidths(ids=["example_id"])
+    pulumi.export("vpcIpv6InternetBandwidthId1", ids.bandwidths[0].id)
+    ipv6_internet_bandwidth_id = alicloud.vpc.get_ipv6_internet_bandwidths(ipv6_internet_bandwidth_id="example_value")
+    pulumi.export("vpcIpv6InternetBandwidthId2", ipv6_internet_bandwidth_id.bandwidths[0].id)
+    ipv6_address_id = alicloud.vpc.get_ipv6_internet_bandwidths(ipv6_address_id="example_value")
+    pulumi.export("vpcIpv6InternetBandwidthId3", ipv6_address_id.bandwidths[0].id)
+    status = alicloud.vpc.get_ipv6_internet_bandwidths(status="Normal")
+    pulumi.export("vpcIpv6InternetBandwidthId4", status.bandwidths[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Ipv6 Internet Bandwidth IDs.
     :param str ipv6_address_id: The ID of the IPv6 address.
@@ -147,6 +165,24 @@ def get_ipv6_internet_bandwidths_output(ids: Optional[pulumi.Input[Optional[Sequ
     This data source provides the Vpc Ipv6 Internet Bandwidths of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.143.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.vpc.get_ipv6_internet_bandwidths(ids=["example_id"])
+    pulumi.export("vpcIpv6InternetBandwidthId1", ids.bandwidths[0].id)
+    ipv6_internet_bandwidth_id = alicloud.vpc.get_ipv6_internet_bandwidths(ipv6_internet_bandwidth_id="example_value")
+    pulumi.export("vpcIpv6InternetBandwidthId2", ipv6_internet_bandwidth_id.bandwidths[0].id)
+    ipv6_address_id = alicloud.vpc.get_ipv6_internet_bandwidths(ipv6_address_id="example_value")
+    pulumi.export("vpcIpv6InternetBandwidthId3", ipv6_address_id.bandwidths[0].id)
+    status = alicloud.vpc.get_ipv6_internet_bandwidths(status="Normal")
+    pulumi.export("vpcIpv6InternetBandwidthId4", status.bandwidths[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Ipv6 Internet Bandwidth IDs.

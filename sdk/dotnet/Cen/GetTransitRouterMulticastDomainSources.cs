@@ -15,6 +15,32 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupsources)
         /// 
         /// &gt; **NOTE:** Available since v1.195.0.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Cen.GetTransitRouterMulticastDomainSources.Invoke(new()
+        ///     {
+        ///         TransitRouterMulticastDomainId = "tr-mcast-domain-xxxxxx",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudCenTransitRouterMulticastDomainSourceExampleId"] = @default.Apply(@default =&gt; @default.Apply(getTransitRouterMulticastDomainSourcesResult =&gt; getTransitRouterMulticastDomainSourcesResult.Sources[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTransitRouterMulticastDomainSourcesResult> InvokeAsync(GetTransitRouterMulticastDomainSourcesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterMulticastDomainSourcesResult>("alicloud:cen/getTransitRouterMulticastDomainSources:getTransitRouterMulticastDomainSources", args ?? new GetTransitRouterMulticastDomainSourcesArgs(), options.WithDefaults());
@@ -23,6 +49,32 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupsources)
         /// 
         /// &gt; **NOTE:** Available since v1.195.0.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Cen.GetTransitRouterMulticastDomainSources.Invoke(new()
+        ///     {
+        ///         TransitRouterMulticastDomainId = "tr-mcast-domain-xxxxxx",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudCenTransitRouterMulticastDomainSourceExampleId"] = @default.Apply(@default =&gt; @default.Apply(getTransitRouterMulticastDomainSourcesResult =&gt; getTransitRouterMulticastDomainSourcesResult.Sources[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetTransitRouterMulticastDomainSourcesResult> Invoke(GetTransitRouterMulticastDomainSourcesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterMulticastDomainSourcesResult>("alicloud:cen/getTransitRouterMulticastDomainSources:getTransitRouterMulticastDomainSources", args ?? new GetTransitRouterMulticastDomainSourcesInvokeArgs(), options.WithDefaults());

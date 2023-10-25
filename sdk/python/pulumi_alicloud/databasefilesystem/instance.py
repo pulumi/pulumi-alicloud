@@ -610,6 +610,26 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.136.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example = alicloud.databasefilesystem.Instance("example",
+            category="standard",
+            zone_id="cn-hangzhou-i",
+            performance_level="PL1",
+            instance_name=name,
+            size=100)
+        ```
+
         ## Import
 
         DBFS Instance can be imported using the id, e.g.
@@ -646,6 +666,26 @@ class Instance(pulumi.CustomResource):
         For information about DBFS Instance and how to use it.
 
         > **NOTE:** Available since v1.136.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example = alicloud.databasefilesystem.Instance("example",
+            category="standard",
+            zone_id="cn-hangzhou-i",
+            performance_level="PL1",
+            instance_name=name,
+            size=100)
+        ```
 
         ## Import
 

@@ -15,6 +15,33 @@ import (
 // This data source provides the Sddp Instances of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.136.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sddp"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := sddp.GetInstances(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("sddpInstanceId", _default.Instances[0])
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstancesResult

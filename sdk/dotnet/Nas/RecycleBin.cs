@@ -16,6 +16,41 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// &gt; **NOTE:** Available in v1.155.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZones = AliCloud.Nas.GetZones.Invoke(new()
+    ///     {
+    ///         FileSystemType = "standard",
+    ///     });
+    /// 
+    ///     var exampleFileSystem = new AliCloud.Nas.FileSystem("exampleFileSystem", new()
+    ///     {
+    ///         ProtocolType = "NFS",
+    ///         StorageType = "Performance",
+    ///         Description = "terraform-example",
+    ///         EncryptType = 1,
+    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
+    ///     });
+    /// 
+    ///     var exampleRecycleBin = new AliCloud.Nas.RecycleBin("exampleRecycleBin", new()
+    ///     {
+    ///         FileSystemId = exampleFileSystem.Id,
+    ///         ReservedDays = 3,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Network Attached Storage (NAS) Recycle Bin can be imported using the id, e.g.

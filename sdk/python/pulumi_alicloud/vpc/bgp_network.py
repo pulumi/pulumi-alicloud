@@ -160,6 +160,38 @@ class BgpNetwork(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.153.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
+        vlan_id = random.RandomInteger("vlanId",
+            max=2999,
+            min=1)
+        example_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter",
+            local_gateway_ip="10.0.0.1",
+            peer_gateway_ip="10.0.0.2",
+            peering_subnet_mask="255.255.255.252",
+            physical_connection_id=example_physical_connections.connections[0].id,
+            virtual_border_router_name=name,
+            vlan_id=vlan_id.id,
+            min_rx_interval=1000,
+            min_tx_interval=1000,
+            detect_multiplier=10)
+        example_bgp_network = alicloud.vpc.BgpNetwork("exampleBgpNetwork",
+            dst_cidr_block="192.168.0.0/24",
+            router_id=example_virtual_border_router.id)
+        ```
+
         ## Import
 
         VPC Bgp Network can be imported using the id, e.g.
@@ -185,6 +217,38 @@ class BgpNetwork(pulumi.CustomResource):
         For information about VPC Bgp Network and how to use it, see [What is Bgp Network](https://www.alibabacloud.com/help/en/doc-detail/91267.html).
 
         > **NOTE:** Available since v1.153.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
+        vlan_id = random.RandomInteger("vlanId",
+            max=2999,
+            min=1)
+        example_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter",
+            local_gateway_ip="10.0.0.1",
+            peer_gateway_ip="10.0.0.2",
+            peering_subnet_mask="255.255.255.252",
+            physical_connection_id=example_physical_connections.connections[0].id,
+            virtual_border_router_name=name,
+            vlan_id=vlan_id.id,
+            min_rx_interval=1000,
+            min_tx_interval=1000,
+            detect_multiplier=10)
+        example_bgp_network = alicloud.vpc.BgpNetwork("exampleBgpNetwork",
+            dst_cidr_block="192.168.0.0/24",
+            router_id=example_virtual_border_router.id)
+        ```
 
         ## Import
 

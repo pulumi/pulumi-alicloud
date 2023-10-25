@@ -19,6 +19,54 @@ import (
 //
 // > **NOTE:** Available since v1.210.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ims"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			oidcProviderName := "amp-resource-example-oidc-provider"
+//			if param := cfg.Get("oidcProviderName"); param != "" {
+//				oidcProviderName = param
+//			}
+//			_, err := ims.NewOidcProvider(ctx, "default", &ims.OidcProviderArgs{
+//				Description: pulumi.String(oidcProviderName),
+//				IssuerUrl:   pulumi.String("https://oauth.aliyun.com"),
+//				Fingerprints: pulumi.StringArray{
+//					pulumi.String("902ef2deeb3c5b13ea4c3d5193629309e231ae55"),
+//				},
+//				IssuanceLimitTime: pulumi.Int(12),
+//				OidcProviderName:  pulumi.String(name),
+//				ClientIds: pulumi.StringArray{
+//					pulumi.String("123"),
+//					pulumi.String("456"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // IMS Oidc Provider can be imported using the id, e.g.

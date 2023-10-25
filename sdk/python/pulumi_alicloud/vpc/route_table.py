@@ -377,6 +377,26 @@ class RouteTable(pulumi.CustomResource):
 
         For information about VPC Route Table and how to use it, see [What is Route Table](https://www.alibabacloud.com/help/doc-detail/87057.htm).
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_vpc = alicloud.vpc.Network("defaultVpc", vpc_name=name)
+        default = alicloud.vpc.RouteTable("default",
+            description="test-description",
+            vpc_id=default_vpc.id,
+            route_table_name=name,
+            associate_type="VSwitch")
+        ```
+
         ## Import
 
         VPC Route Table can be imported using the id, e.g.
@@ -408,6 +428,26 @@ class RouteTable(pulumi.CustomResource):
         Provides a VPC Route Table resource. Currently, customized route tables are available in most regions apart from China (Beijing), China (Hangzhou), and China (Shenzhen) regions.
 
         For information about VPC Route Table and how to use it, see [What is Route Table](https://www.alibabacloud.com/help/doc-detail/87057.htm).
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_vpc = alicloud.vpc.Network("defaultVpc", vpc_name=name)
+        default = alicloud.vpc.RouteTable("default",
+            description="test-description",
+            vpc_id=default_vpc.id,
+            route_table_name=name,
+            associate_type="VSwitch")
+        ```
 
         ## Import
 

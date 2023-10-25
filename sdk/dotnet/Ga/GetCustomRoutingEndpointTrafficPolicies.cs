@@ -15,6 +15,38 @@ namespace Pulumi.AliCloud.Ga
         /// This data source provides the Global Accelerator (GA) Custom Routing Endpoint Traffic Policies of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in 1.197.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Ga.GetCustomRoutingEndpointTrafficPolicies.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         AcceleratorId = "your_accelerator_id",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["gaCustomRoutingEndpointTrafficPoliciesId1"] = ids.Apply(getCustomRoutingEndpointTrafficPoliciesResult =&gt; getCustomRoutingEndpointTrafficPoliciesResult.CustomRoutingEndpointTrafficPolicies[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetCustomRoutingEndpointTrafficPoliciesResult> InvokeAsync(GetCustomRoutingEndpointTrafficPoliciesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCustomRoutingEndpointTrafficPoliciesResult>("alicloud:ga/getCustomRoutingEndpointTrafficPolicies:getCustomRoutingEndpointTrafficPolicies", args ?? new GetCustomRoutingEndpointTrafficPoliciesArgs(), options.WithDefaults());
@@ -23,6 +55,38 @@ namespace Pulumi.AliCloud.Ga
         /// This data source provides the Global Accelerator (GA) Custom Routing Endpoint Traffic Policies of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in 1.197.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Ga.GetCustomRoutingEndpointTrafficPolicies.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         AcceleratorId = "your_accelerator_id",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["gaCustomRoutingEndpointTrafficPoliciesId1"] = ids.Apply(getCustomRoutingEndpointTrafficPoliciesResult =&gt; getCustomRoutingEndpointTrafficPoliciesResult.CustomRoutingEndpointTrafficPolicies[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetCustomRoutingEndpointTrafficPoliciesResult> Invoke(GetCustomRoutingEndpointTrafficPoliciesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCustomRoutingEndpointTrafficPoliciesResult>("alicloud:ga/getCustomRoutingEndpointTrafficPolicies:getCustomRoutingEndpointTrafficPolicies", args ?? new GetCustomRoutingEndpointTrafficPoliciesInvokeArgs(), options.WithDefaults());

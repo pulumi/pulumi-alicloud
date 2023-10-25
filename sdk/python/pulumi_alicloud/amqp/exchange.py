@@ -391,6 +391,34 @@ class Exchange(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.128.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_instance = alicloud.amqp.Instance("defaultInstance",
+            instance_type="professional",
+            max_tps="1000",
+            queue_capacity="50",
+            support_eip=True,
+            max_eip_tps="128",
+            payment_type="Subscription",
+            period=1)
+        default_virtual_host = alicloud.amqp.VirtualHost("defaultVirtualHost",
+            instance_id=default_instance.id,
+            virtual_host_name="tf-example")
+        default_exchange = alicloud.amqp.Exchange("defaultExchange",
+            auto_delete_state=False,
+            exchange_name="tf-example",
+            exchange_type="DIRECT",
+            instance_id=default_instance.id,
+            internal=False,
+            virtual_host_name=default_virtual_host.virtual_host_name)
+        ```
+
         ## Import
 
         RabbitMQ (AMQP) Exchange can be imported using the id, e.g.
@@ -432,6 +460,34 @@ class Exchange(pulumi.CustomResource):
         For information about RabbitMQ (AMQP) Exchange and how to use it, see [What is Exchange](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createexchange).
 
         > **NOTE:** Available since v1.128.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_instance = alicloud.amqp.Instance("defaultInstance",
+            instance_type="professional",
+            max_tps="1000",
+            queue_capacity="50",
+            support_eip=True,
+            max_eip_tps="128",
+            payment_type="Subscription",
+            period=1)
+        default_virtual_host = alicloud.amqp.VirtualHost("defaultVirtualHost",
+            instance_id=default_instance.id,
+            virtual_host_name="tf-example")
+        default_exchange = alicloud.amqp.Exchange("defaultExchange",
+            auto_delete_state=False,
+            exchange_name="tf-example",
+            exchange_type="DIRECT",
+            instance_id=default_instance.id,
+            internal=False,
+            virtual_host_name=default_virtual_host.virtual_host_name)
+        ```
 
         ## Import
 

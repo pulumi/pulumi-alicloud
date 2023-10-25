@@ -13,6 +13,22 @@ namespace Pulumi.AliCloud.Dns
     /// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.84.0`. Please use new resource alicloud_alidns_domain_group.
     /// 
     /// Provides a DNS Group resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Add a new Domain group.
+    ///     var @group = new AliCloud.Dns.Group("group");
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dns/group:Group")]
     public partial class Group : global::Pulumi.CustomResource

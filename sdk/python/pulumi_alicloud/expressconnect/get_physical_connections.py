@@ -119,6 +119,20 @@ def get_physical_connections(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.132.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.expressconnect.get_physical_connections(ids=["pc-2345678"])
+    pulumi.export("expressConnectPhysicalConnectionId1", ids.connections[0].id)
+    name_regex = alicloud.expressconnect.get_physical_connections(name_regex="^my-PhysicalConnection")
+    pulumi.export("expressConnectPhysicalConnectionId2", name_regex.connections[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Physical Connection IDs.
     :param bool include_reservation_data: The include reservation data.
@@ -157,6 +171,20 @@ def get_physical_connections_output(ids: Optional[pulumi.Input[Optional[Sequence
     This data source provides the Express Connect Physical Connections of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.132.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.expressconnect.get_physical_connections(ids=["pc-2345678"])
+    pulumi.export("expressConnectPhysicalConnectionId1", ids.connections[0].id)
+    name_regex = alicloud.expressconnect.get_physical_connections(name_regex="^my-PhysicalConnection")
+    pulumi.export("expressConnectPhysicalConnectionId2", name_regex.connections[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Physical Connection IDs.

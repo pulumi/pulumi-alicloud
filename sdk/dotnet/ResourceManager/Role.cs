@@ -15,6 +15,43 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// &gt; **NOTE:** Available since v1.82.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tfexample";
+    ///     var @default = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var example = new AliCloud.ResourceManager.Role("example", new()
+    ///     {
+    ///         RoleName = name,
+    ///         AssumeRolePolicyDocument = @default.Apply(@default =&gt; @$"     {{
+    ///           ""Statement"": [
+    ///                {{
+    ///                     ""Action"": ""sts:AssumeRole"",
+    ///                     ""Effect"": ""Allow"",
+    ///                     ""Principal"": {{
+    ///                         ""RAM"":[
+    ///                                 ""acs:ram::{@default.Apply(getAccountResult =&gt; getAccountResult.Id)}:root""
+    ///                         ]
+    ///                     }}
+    ///                 }}
+    ///           ],
+    ///           ""Version"": ""1""
+    ///      }}
+    /// "),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Resource Manager can be imported using the id or role_name, e.g.

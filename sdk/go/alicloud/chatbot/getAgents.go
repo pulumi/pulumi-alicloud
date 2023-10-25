@@ -15,6 +15,33 @@ import (
 // This data source provides the Chatbot Agents of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.203.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/chatbot"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			nameRegex, err := chatbot.GetAgents(ctx, &chatbot.GetAgentsArgs{
+//				NameRegex: pulumi.StringRef("^my-Agent"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudChatbotAgentsId1", nameRegex.Agents[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetAgents(ctx *pulumi.Context, args *GetAgentsArgs, opts ...pulumi.InvokeOption) (*GetAgentsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAgentsResult

@@ -15,6 +15,37 @@ namespace Pulumi.AliCloud.Nlb
         /// This data source provides the Nlb Server Group Server Attachments of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.192.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Nlb.GetServerGroupServerAttachments.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["nlbServerGroupServerAttachmentId1"] = ids.Apply(getServerGroupServerAttachmentsResult =&gt; getServerGroupServerAttachmentsResult.Attachments[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServerGroupServerAttachmentsResult> InvokeAsync(GetServerGroupServerAttachmentsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerGroupServerAttachmentsResult>("alicloud:nlb/getServerGroupServerAttachments:getServerGroupServerAttachments", args ?? new GetServerGroupServerAttachmentsArgs(), options.WithDefaults());
@@ -23,6 +54,37 @@ namespace Pulumi.AliCloud.Nlb
         /// This data source provides the Nlb Server Group Server Attachments of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.192.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Nlb.GetServerGroupServerAttachments.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["nlbServerGroupServerAttachmentId1"] = ids.Apply(getServerGroupServerAttachmentsResult =&gt; getServerGroupServerAttachmentsResult.Attachments[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetServerGroupServerAttachmentsResult> Invoke(GetServerGroupServerAttachmentsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerGroupServerAttachmentsResult>("alicloud:nlb/getServerGroupServerAttachments:getServerGroupServerAttachments", args ?? new GetServerGroupServerAttachmentsInvokeArgs(), options.WithDefaults());

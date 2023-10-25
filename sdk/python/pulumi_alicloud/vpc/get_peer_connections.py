@@ -129,6 +129,20 @@ def get_peer_connections(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.186.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.vpc.get_peer_connections()
+    pulumi.export("vpcPeerConnectionId1", ids.connections[0].id)
+    name_regex = alicloud.vpc.get_peer_connections(name_regex="^my-PeerConnection")
+    pulumi.export("vpcPeerConnectionId2", name_regex.connections[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of PeerConnection IDs.
     :param str name_regex: A regex string to filter results by PeerConnection name.
@@ -171,6 +185,20 @@ def get_peer_connections_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     This data source provides the Vpc Peer Connections of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.186.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.vpc.get_peer_connections()
+    pulumi.export("vpcPeerConnectionId1", ids.connections[0].id)
+    name_regex = alicloud.vpc.get_peer_connections(name_regex="^my-PeerConnection")
+    pulumi.export("vpcPeerConnectionId2", name_regex.connections[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of PeerConnection IDs.

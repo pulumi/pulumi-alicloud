@@ -16,6 +16,73 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// &gt; **NOTE:** Available since v1.195.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultZones = AliCloud.Rds.GetZones.Invoke(new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         DbInstanceStorageType = "local_ssd",
+    ///         Category = "HighAvailability",
+    ///     });
+    /// 
+    ///     var defaultInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
+    ///     {
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         DbInstanceStorageType = "local_ssd",
+    ///         Category = "HighAvailability",
+    ///     });
+    /// 
+    ///     var regions = AliCloud.Rds.GetCrossRegions.Invoke();
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Rds.Instance("defaultInstance", new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         InstanceType = defaultInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
+    ///         InstanceStorage = defaultInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         InstanceChargeType = "Postpaid",
+    ///         Category = "HighAvailability",
+    ///         InstanceName = name,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         DbInstanceStorageType = "local_ssd",
+    ///     });
+    /// 
+    ///     var defaultRdsInstanceCrossBackupPolicy = new AliCloud.Rds.RdsInstanceCrossBackupPolicy("defaultRdsInstanceCrossBackupPolicy", new()
+    ///     {
+    ///         InstanceId = defaultInstance.Id,
+    ///         CrossBackupRegion = regions.Apply(getCrossRegionsResult =&gt; getCrossRegionsResult.Ids[0]),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// RDS remote disaster recovery policies can be imported using id or instance id, e.g.

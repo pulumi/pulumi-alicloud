@@ -12,6 +12,17 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in v1.118.0+
  *
  * > **NOTE:** The MNS service is not support in the international site.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const open = alicloud.mns.getService({
+ *     enable: "On",
+ * });
+ * ```
  */
 export function getService(args?: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
     args = args || {};
@@ -56,6 +67,17 @@ export interface GetServiceResult {
  * > **NOTE:** Available in v1.118.0+
  *
  * > **NOTE:** The MNS service is not support in the international site.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const open = alicloud.mns.getService({
+ *     enable: "On",
+ * });
+ * ```
  */
 export function getServiceOutput(args?: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
     return pulumi.output(args).apply((a: any) => getService(a, opts))

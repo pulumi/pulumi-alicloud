@@ -15,6 +15,35 @@ namespace Pulumi.AliCloud.Ebs
         /// This data source provides Ebs Disk Replica Pair available to the user.
         /// 
         /// &gt; **NOTE:** Available in 1.196.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Ebs.GetDiskReplicaPairs.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             alicloud_ebs_disk_replica_pair.Default.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudEbsDiskReplicaPairExampleId"] = @default.Apply(@default =&gt; @default.Apply(getDiskReplicaPairsResult =&gt; getDiskReplicaPairsResult.Pairs[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDiskReplicaPairsResult> InvokeAsync(GetDiskReplicaPairsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDiskReplicaPairsResult>("alicloud:ebs/getDiskReplicaPairs:getDiskReplicaPairs", args ?? new GetDiskReplicaPairsArgs(), options.WithDefaults());
@@ -23,6 +52,35 @@ namespace Pulumi.AliCloud.Ebs
         /// This data source provides Ebs Disk Replica Pair available to the user.
         /// 
         /// &gt; **NOTE:** Available in 1.196.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Ebs.GetDiskReplicaPairs.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             alicloud_ebs_disk_replica_pair.Default.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudEbsDiskReplicaPairExampleId"] = @default.Apply(@default =&gt; @default.Apply(getDiskReplicaPairsResult =&gt; getDiskReplicaPairsResult.Pairs[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDiskReplicaPairsResult> Invoke(GetDiskReplicaPairsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDiskReplicaPairsResult>("alicloud:ebs/getDiskReplicaPairs:getDiskReplicaPairs", args ?? new GetDiskReplicaPairsInvokeArgs(), options.WithDefaults());

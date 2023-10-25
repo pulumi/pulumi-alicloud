@@ -8,6 +8,18 @@ import * as utilities from "./utilities";
  * This data source compute file crc64 checksum.
  *
  * > **NOTE:** Available in 1.59.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.getFileCrc64Checksum({
+ *     filename: "exampleFileName",
+ * });
+ * export const fileCrc64Checksum = data.alicloud_file_crc64_checksum.defualt.checksum;
+ * ```
  */
 export function getFileCrc64Checksum(args: GetFileCrc64ChecksumArgs, opts?: pulumi.InvokeOptions): Promise<GetFileCrc64ChecksumResult> {
 
@@ -48,6 +60,18 @@ export interface GetFileCrc64ChecksumResult {
  * This data source compute file crc64 checksum.
  *
  * > **NOTE:** Available in 1.59.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.getFileCrc64Checksum({
+ *     filename: "exampleFileName",
+ * });
+ * export const fileCrc64Checksum = data.alicloud_file_crc64_checksum.defualt.checksum;
+ * ```
  */
 export function getFileCrc64ChecksumOutput(args: GetFileCrc64ChecksumOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFileCrc64ChecksumResult> {
     return pulumi.output(args).apply((a: any) => getFileCrc64Checksum(a, opts))

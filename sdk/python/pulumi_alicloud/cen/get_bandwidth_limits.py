@@ -81,6 +81,16 @@ def get_bandwidth_limits(instance_ids: Optional[Sequence[str]] = None,
     """
     This data source provides CEN Bandwidth Limits available to the user.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    bwl = alicloud.cen.get_bandwidth_limits(instance_ids=["cen-id1"])
+    pulumi.export("firstCenBandwidthLimitsLocalRegionId", bwl.limits[0].local_region_id)
+    ```
+
 
     :param Sequence[str] instance_ids: A list of CEN instances IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -104,6 +114,16 @@ def get_bandwidth_limits_output(instance_ids: Optional[pulumi.Input[Optional[Seq
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBandwidthLimitsResult]:
     """
     This data source provides CEN Bandwidth Limits available to the user.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    bwl = alicloud.cen.get_bandwidth_limits(instance_ids=["cen-id1"])
+    pulumi.export("firstCenBandwidthLimitsLocalRegionId", bwl.limits[0].local_region_id)
+    ```
 
 
     :param Sequence[str] instance_ids: A list of CEN instances IDs.

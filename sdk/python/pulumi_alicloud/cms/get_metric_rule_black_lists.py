@@ -177,6 +177,18 @@ def get_metric_rule_black_lists(category: Optional[str] = None,
 
     > **NOTE:** Available in 1.194.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cms.get_metric_rule_black_lists(ids=[alicloud_cms_metric_rule_black_lists["default"]["id"]],
+        category="ecs",
+        namespace="acs_ecs_dashboard")
+    pulumi.export("alicloudCmsRuleBlackListExampleId", data["alicloud_cms_metric_rule_black_lists"]["lists"][0]["id"])
+    ```
+
 
     :param str category: Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
     :param Sequence[str] ids: A list of Metric Rule Black List IDs.
@@ -228,6 +240,18 @@ def get_metric_rule_black_lists_output(category: Optional[pulumi.Input[Optional[
     This data source provides Cloud Monitor Service Metric Rule Black List available to the user.[What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist)
 
     > **NOTE:** Available in 1.194.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cms.get_metric_rule_black_lists(ids=[alicloud_cms_metric_rule_black_lists["default"]["id"]],
+        category="ecs",
+        namespace="acs_ecs_dashboard")
+    pulumi.export("alicloudCmsRuleBlackListExampleId", data["alicloud_cms_metric_rule_black_lists"]["lists"][0]["id"])
+    ```
 
 
     :param str category: Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.

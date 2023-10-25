@@ -809,6 +809,34 @@ class VirtualPhysicalConnection(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.196.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
+        vlan_id = random.RandomInteger("vlanId",
+            max=2999,
+            min=1)
+        default = alicloud.get_account()
+        example_virtual_physical_connection = alicloud.expressconnect.VirtualPhysicalConnection("exampleVirtualPhysicalConnection",
+            virtual_physical_connection_name=name,
+            description=name,
+            order_mode="PayByPhysicalConnectionOwner",
+            parent_physical_connection_id=example_physical_connections.ids[0],
+            spec="50M",
+            vlan_id=vlan_id.id,
+            vpconn_ali_uid=default.id)
+        ```
+
         ## Import
 
         Express Connect Virtual Physical Connection can be imported using the id, e.g.
@@ -844,6 +872,34 @@ class VirtualPhysicalConnection(pulumi.CustomResource):
         For information about Express Connect Virtual Physical Connection and how to use it, see [What is Virtual Physical Connection](https://www.alibabacloud.com/help/en/express-connect/latest/createvirtualphysicalconnection#doc-api-Vpc-CreateVirtualPhysicalConnection).
 
         > **NOTE:** Available since v1.196.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
+        vlan_id = random.RandomInteger("vlanId",
+            max=2999,
+            min=1)
+        default = alicloud.get_account()
+        example_virtual_physical_connection = alicloud.expressconnect.VirtualPhysicalConnection("exampleVirtualPhysicalConnection",
+            virtual_physical_connection_name=name,
+            description=name,
+            order_mode="PayByPhysicalConnectionOwner",
+            parent_physical_connection_id=example_physical_connections.ids[0],
+            spec="50M",
+            vlan_id=vlan_id.id,
+            vpconn_ali_uid=default.id)
+        ```
 
         ## Import
 

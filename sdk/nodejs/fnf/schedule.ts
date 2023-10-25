@@ -11,6 +11,34 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.105.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const exampleFlow = new alicloud.fnf.Flow("exampleFlow", {
+ *     definition: `  version: v1beta1
+ *   type: flow
+ *   steps:
+ *     - type: pass
+ *       name: helloworld
+ * `,
+ *     description: "tf-testaccFnFFlow983041",
+ *     type: "FDL",
+ * });
+ * const exampleSchedule = new alicloud.fnf.Schedule("exampleSchedule", {
+ *     cronExpression: "30 9 * * * *",
+ *     description: "tf-testaccFnFSchedule983041",
+ *     enable: true,
+ *     flowName: exampleFlow.name,
+ *     payload: "{\"tf-test\": \"test success\"}",
+ *     scheduleName: "tf-testaccFnFSchedule983041",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Serverless Workflow Schedule can be imported using the id, e.g.

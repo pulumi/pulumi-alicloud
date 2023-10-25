@@ -135,6 +135,19 @@ def get_open_api_pricing_modules(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in 1.195.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.bss.get_open_api_pricing_modules(name_regex="国内月均日峰值带宽",
+        product_code="cdn",
+        product_type="CDN",
+        subscription_type="PayAsYouGo")
+    pulumi.export("alicloudBssOpenapiPricingModuleExampleId", default.modules[0].code)
+    ```
+
 
     :param str name_regex: A regex string to filter results by Property name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -178,6 +191,19 @@ def get_open_api_pricing_modules_output(ids: Optional[pulumi.Input[Optional[Sequ
     This data source provides Bss Open Api Pricing Module available to the user.[What is Pricing Module](https://www.alibabacloud.com/help/en/bss-openapi/latest/describepricingmodule#doc-api-BssOpenApi-DescribePricingModule)
 
     > **NOTE:** Available in 1.195.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.bss.get_open_api_pricing_modules(name_regex="国内月均日峰值带宽",
+        product_code="cdn",
+        product_type="CDN",
+        subscription_type="PayAsYouGo")
+    pulumi.export("alicloudBssOpenapiPricingModuleExampleId", default.modules[0].code)
+    ```
 
 
     :param str name_regex: A regex string to filter results by Property name.

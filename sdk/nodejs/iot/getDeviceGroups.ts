@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * This data source provides the Iot Device Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.134.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.iot.getDeviceGroups({});
+ * export const iotDeviceGroupId1 = ids.then(ids => ids.groups?.[0]?.id);
+ * ```
  */
 export function getDeviceGroups(args?: GetDeviceGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDeviceGroupsResult> {
     args = args || {};
@@ -81,6 +93,18 @@ export interface GetDeviceGroupsResult {
  * This data source provides the Iot Device Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.134.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.iot.getDeviceGroups({});
+ * export const iotDeviceGroupId1 = ids.then(ids => ids.groups?.[0]?.id);
+ * ```
  */
 export function getDeviceGroupsOutput(args?: GetDeviceGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeviceGroupsResult> {
     return pulumi.output(args).apply((a: any) => getDeviceGroups(a, opts))

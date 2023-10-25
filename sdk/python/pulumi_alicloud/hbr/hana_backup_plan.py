@@ -445,6 +445,39 @@ class HanaBackupPlan(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.179.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        example_vault = alicloud.hbr.Vault("exampleVault", vault_name="terraform-example")
+        example_hana_instance = alicloud.hbr.HanaInstance("exampleHanaInstance",
+            alert_setting="INHERITED",
+            hana_name="terraform-example",
+            host="1.1.1.1",
+            instance_number=1,
+            password="YouPassword123",
+            resource_group_id=example_resource_groups.groups[0].id,
+            sid="HXE",
+            use_ssl=False,
+            user_name="admin",
+            validate_certificate=False,
+            vault_id=example_vault.id)
+        example_hana_backup_plan = alicloud.hbr.HanaBackupPlan("exampleHanaBackupPlan",
+            backup_prefix="DIFF_DATA_BACKUP",
+            backup_type="COMPLETE",
+            cluster_id=example_hana_instance.hana_instance_id,
+            database_name="SYSTEMDB",
+            plan_name="terraform-example",
+            resource_group_id=example_resource_groups.groups[0].id,
+            schedule="I|1602673264|P1D",
+            vault_id=example_hana_instance.vault_id)
+        ```
+
         ## Import
 
         Hybrid Backup Recovery (HBR) Hana Backup Plan can be imported using the id, e.g.
@@ -477,6 +510,39 @@ class HanaBackupPlan(pulumi.CustomResource):
         For information about Hybrid Backup Recovery (HBR) Hana Backup Plan and how to use it, see [What is Hana Backup Plan](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createhanabackupplan).
 
         > **NOTE:** Available in v1.179.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        example_vault = alicloud.hbr.Vault("exampleVault", vault_name="terraform-example")
+        example_hana_instance = alicloud.hbr.HanaInstance("exampleHanaInstance",
+            alert_setting="INHERITED",
+            hana_name="terraform-example",
+            host="1.1.1.1",
+            instance_number=1,
+            password="YouPassword123",
+            resource_group_id=example_resource_groups.groups[0].id,
+            sid="HXE",
+            use_ssl=False,
+            user_name="admin",
+            validate_certificate=False,
+            vault_id=example_vault.id)
+        example_hana_backup_plan = alicloud.hbr.HanaBackupPlan("exampleHanaBackupPlan",
+            backup_prefix="DIFF_DATA_BACKUP",
+            backup_type="COMPLETE",
+            cluster_id=example_hana_instance.hana_instance_id,
+            database_name="SYSTEMDB",
+            plan_name="terraform-example",
+            resource_group_id=example_resource_groups.groups[0].id,
+            schedule="I|1602673264|P1D",
+            vault_id=example_hana_instance.vault_id)
+        ```
 
         ## Import
 

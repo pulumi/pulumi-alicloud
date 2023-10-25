@@ -15,6 +15,33 @@ import (
 // This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://help.aliyun.com/document_detail/261219.html)
 //
 // > **NOTE:** Available in 1.126.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := cen.GetTransitRouters(ctx, &cen.GetTransitRoutersArgs{
+//				CenId: "cen-id1",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstTransitRoutersType", _default.TransitRouters[0].Type)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetTransitRouters(ctx *pulumi.Context, args *GetTransitRoutersArgs, opts ...pulumi.InvokeOption) (*GetTransitRoutersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTransitRoutersResult

@@ -172,6 +172,21 @@ class Project(pulumi.CustomResource):
 
         > **NOTE:** Currently Datahub service only can be supported in the regions: cn-beijing, cn-hangzhou, cn-shanghai, cn-shenzhen,  ap-southeast-1.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        example = alicloud.datahub.Project("example", comment="created by terraform")
+        ```
+
         ## Import
 
         Datahub project can be imported using the *name* or ID, e.g.
@@ -197,6 +212,21 @@ class Project(pulumi.CustomResource):
         > **NOTE:** Available since v1.19.0.
 
         > **NOTE:** Currently Datahub service only can be supported in the regions: cn-beijing, cn-hangzhou, cn-shanghai, cn-shenzhen,  ap-southeast-1.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        example = alicloud.datahub.Project("example", comment="created by terraform")
+        ```
 
         ## Import
 

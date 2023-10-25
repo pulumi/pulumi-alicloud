@@ -15,6 +15,39 @@ import (
 // This data source provides the Resource Manager Resource Shares of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.111.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := resourcemanager.GetResourceShares(ctx, &resourcemanager.GetResourceSharesArgs{
+//				ResourceShareOwner: "Self",
+//				Ids: []string{
+//					"example_value",
+//				},
+//				NameRegex: pulumi.StringRef("the_resource_name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstResourceManagerResourceShareId", example.Shares[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetResourceShares(ctx *pulumi.Context, args *GetResourceSharesArgs, opts ...pulumi.InvokeOption) (*GetResourceSharesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetResourceSharesResult

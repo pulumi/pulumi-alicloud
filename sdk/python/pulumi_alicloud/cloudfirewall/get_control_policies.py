@@ -179,6 +179,17 @@ def get_control_policies(acl_action: Optional[str] = None,
 
     > **NOTE:** Available in v1.129.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cloudfirewall.get_control_policies(direction="in")
+    ```
+
 
     :param str acl_action: The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
     :param str acl_uuid: The unique ID of the access control policy.
@@ -241,6 +252,17 @@ def get_control_policies_output(acl_action: Optional[pulumi.Input[Optional[str]]
     This data source provides the Cloud Firewall Control Policies of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.129.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cloudfirewall.get_control_policies(direction="in")
+    ```
 
 
     :param str acl_action: The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.

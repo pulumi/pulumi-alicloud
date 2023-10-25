@@ -19,6 +19,56 @@ import (
 //
 // > **NOTE:** Available since v1.134.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := cms.NewMetricRuleTemplate(ctx, "example", &cms.MetricRuleTemplateArgs{
+//				MetricRuleTemplateName: pulumi.String(name),
+//				AlertTemplates: cms.MetricRuleTemplateAlertTemplateArray{
+//					&cms.MetricRuleTemplateAlertTemplateArgs{
+//						Category:   pulumi.String("ecs"),
+//						MetricName: pulumi.String("cpu_total"),
+//						Namespace:  pulumi.String("acs_ecs_dashboard"),
+//						RuleName:   pulumi.String("tf_example"),
+//						Escalations: &cms.MetricRuleTemplateAlertTemplateEscalationsArgs{
+//							Critical: &cms.MetricRuleTemplateAlertTemplateEscalationsCriticalArgs{
+//								ComparisonOperator: pulumi.String("GreaterThanThreshold"),
+//								Statistics:         pulumi.String("Average"),
+//								Threshold:          pulumi.String("90"),
+//								Times:              pulumi.String("3"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Cloud Monitor Service Metric Rule Template can be imported using the id, e.g.

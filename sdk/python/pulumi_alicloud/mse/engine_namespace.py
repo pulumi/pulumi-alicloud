@@ -225,6 +225,41 @@ class EngineNamespace(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.166.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=example_network.id,
+            zone_id=example_zones.zones[0].id)
+        example_cluster = alicloud.mse.Cluster("exampleCluster",
+            cluster_specification="MSE_SC_1_2_60_c",
+            cluster_type="Nacos-Ans",
+            cluster_version="NACOS_2_0_0",
+            instance_count=1,
+            net_type="privatenet",
+            pub_network_flow="1",
+            connection_type="slb",
+            cluster_alias_name="terraform-example",
+            mse_version="mse_dev",
+            vswitch_id=example_switch.id,
+            vpc_id=example_network.id)
+        example_engine_namespace = alicloud.mse.EngineNamespace("exampleEngineNamespace",
+            cluster_id=example_cluster.cluster_id,
+            namespace_show_name="terraform-example",
+            namespace_id="terraform-example")
+        ```
+
         ## Import
 
         Microservice Engine (MSE) Engine Namespace can be imported using the id, e.g.
@@ -252,6 +287,41 @@ class EngineNamespace(pulumi.CustomResource):
         For information about Microservice Engine (MSE) Engine Namespace and how to use it, see [What is Engine Namespace](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createenginenamespace).
 
         > **NOTE:** Available in v1.166.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=example_network.id,
+            zone_id=example_zones.zones[0].id)
+        example_cluster = alicloud.mse.Cluster("exampleCluster",
+            cluster_specification="MSE_SC_1_2_60_c",
+            cluster_type="Nacos-Ans",
+            cluster_version="NACOS_2_0_0",
+            instance_count=1,
+            net_type="privatenet",
+            pub_network_flow="1",
+            connection_type="slb",
+            cluster_alias_name="terraform-example",
+            mse_version="mse_dev",
+            vswitch_id=example_switch.id,
+            vpc_id=example_network.id)
+        example_engine_namespace = alicloud.mse.EngineNamespace("exampleEngineNamespace",
+            cluster_id=example_cluster.cluster_id,
+            namespace_show_name="terraform-example",
+            namespace_id="terraform-example")
+        ```
 
         ## Import
 

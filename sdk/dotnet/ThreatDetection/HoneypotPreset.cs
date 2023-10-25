@@ -16,6 +16,50 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// 
     /// &gt; **NOTE:** Available since v1.195.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tfexample";
+    ///     var defaultHoneypotImages = AliCloud.ThreatDetection.GetHoneypotImages.Invoke(new()
+    ///     {
+    ///         NameRegex = "^ruoyi",
+    ///     });
+    /// 
+    ///     var defaultHoneypotNode = new AliCloud.ThreatDetection.HoneypotNode("defaultHoneypotNode", new()
+    ///     {
+    ///         NodeName = name,
+    ///         AvailableProbeNum = 20,
+    ///         SecurityGroupProbeIpLists = new[]
+    ///         {
+    ///             "0.0.0.0/0",
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultHoneypotPreset = new AliCloud.ThreatDetection.HoneypotPreset("defaultHoneypotPreset", new()
+    ///     {
+    ///         PresetName = name,
+    ///         NodeId = defaultHoneypotNode.Id,
+    ///         HoneypotImageName = defaultHoneypotImages.Apply(getHoneypotImagesResult =&gt; getHoneypotImagesResult.Images[0]?.HoneypotImageName),
+    ///         Meta = new AliCloud.ThreatDetection.Inputs.HoneypotPresetMetaArgs
+    ///         {
+    ///             PortraitOption = true,
+    ///             Burp = "open",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Threat Detection Honeypot Preset can be imported using the id, e.g.

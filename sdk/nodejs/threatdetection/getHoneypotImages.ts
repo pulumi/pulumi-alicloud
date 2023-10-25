@@ -10,6 +10,19 @@ import * as utilities from "../utilities";
  * This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
  *
  * > **NOTE:** Available in 1.195.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.threatdetection.getHoneypotImages({
+ *     ids: ["sha256:02882320c9a55303410127c5dc4ae2dc470150f9d7f2483102d994f5e5f4d9df"],
+ *     nameRegex: "^meta",
+ * });
+ * export const alicloudThreatDetectionHoneypotImageExampleId = _default.then(_default => _default.images?.[0]?.id);
+ * ```
  */
 export function getHoneypotImages(args?: GetHoneypotImagesArgs, opts?: pulumi.InvokeOptions): Promise<GetHoneypotImagesResult> {
     args = args || {};
@@ -70,6 +83,19 @@ export interface GetHoneypotImagesResult {
  * This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
  *
  * > **NOTE:** Available in 1.195.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.threatdetection.getHoneypotImages({
+ *     ids: ["sha256:02882320c9a55303410127c5dc4ae2dc470150f9d7f2483102d994f5e5f4d9df"],
+ *     nameRegex: "^meta",
+ * });
+ * export const alicloudThreatDetectionHoneypotImageExampleId = _default.then(_default => _default.images?.[0]?.id);
+ * ```
  */
 export function getHoneypotImagesOutput(args?: GetHoneypotImagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHoneypotImagesResult> {
     return pulumi.output(args).apply((a: any) => getHoneypotImages(a, opts))

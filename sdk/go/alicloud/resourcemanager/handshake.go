@@ -18,6 +18,34 @@ import (
 //
 // > **NOTE:** Available in v1.82.0+.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := resourcemanager.NewHandshake(ctx, "example", &resourcemanager.HandshakeArgs{
+//				Note:         pulumi.String("test resource manager handshake"),
+//				TargetEntity: pulumi.String("1182775234******"),
+//				TargetType:   pulumi.String("Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Resource Manager handshake can be imported using the id, e.g.

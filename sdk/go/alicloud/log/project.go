@@ -17,6 +17,101 @@ import (
 //
 // > **NOTE:** Available since v1.9.5.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = log.NewProject(ctx, "example", &log.ProjectArgs{
+//				Description: pulumi.String("terraform-example"),
+//				Tags: pulumi.Map{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("example"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # Project With Policy Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = log.NewProject(ctx, "examplePolicy", &log.ProjectArgs{
+//				Description: pulumi.String("terraform-example"),
+//				Policy: pulumi.String(`{
+//	  "Statement": [
+//	    {
+//	      "Action": [
+//	        "log:PostLogStoreLogs"
+//	      ],
+//	      "Condition": {
+//	        "StringNotLike": {
+//	          "acs:SourceVpc": [
+//	            "vpc-*"
+//	          ]
+//	        }
+//	      },
+//	      "Effect": "Deny",
+//	      "Resource": "acs:log:*:*:project/tf-log/*"
+//	    }
+//	  ],
+//	  "Version": "1"
+//	}
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Module Support
 //
 // You can use the existing sls module

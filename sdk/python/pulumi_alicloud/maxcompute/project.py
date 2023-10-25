@@ -394,6 +394,25 @@ class Project(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.77.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.maxcompute.Project("default",
+            default_quota="默认后付费Quota",
+            project_name=name,
+            comment=name,
+            product_type="PayAsYouGo")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: Comments of project
@@ -416,6 +435,25 @@ class Project(pulumi.CustomResource):
         For information about Max Compute Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/maxcompute).
 
         > **NOTE:** Available since v1.77.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.maxcompute.Project("default",
+            default_quota="默认后付费Quota",
+            project_name=name,
+            comment=name,
+            product_type="PayAsYouGo")
+        ```
 
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.

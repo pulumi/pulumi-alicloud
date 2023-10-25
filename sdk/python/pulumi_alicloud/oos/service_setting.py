@@ -263,6 +263,30 @@ class ServiceSetting(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.147.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-testaccoossetting"
+        default_bucket = alicloud.oss.Bucket("defaultBucket",
+            bucket=name,
+            acl="public-read-write")
+        default_project = alicloud.log.Project("defaultProject")
+        default_service_setting = alicloud.oos.ServiceSetting("defaultServiceSetting",
+            delivery_oss_enabled=True,
+            delivery_oss_key_prefix="path1/",
+            delivery_oss_bucket_name=default_bucket.bucket,
+            delivery_sls_enabled=True,
+            delivery_sls_project_name=default_project.name)
+        ```
+
         ## Import
 
         OOS Service Setting can be imported using the id, e.g.
@@ -291,6 +315,30 @@ class ServiceSetting(pulumi.CustomResource):
         For information about OOS Service Setting and how to use it, see [What is Service Setting](https://www.alibabacloud.com/help/en/doc-detail/268700.html).
 
         > **NOTE:** Available in v1.147.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-testaccoossetting"
+        default_bucket = alicloud.oss.Bucket("defaultBucket",
+            bucket=name,
+            acl="public-read-write")
+        default_project = alicloud.log.Project("defaultProject")
+        default_service_setting = alicloud.oos.ServiceSetting("defaultServiceSetting",
+            delivery_oss_enabled=True,
+            delivery_oss_key_prefix="path1/",
+            delivery_oss_bucket_name=default_bucket.bucket,
+            delivery_sls_enabled=True,
+            delivery_sls_project_name=default_project.name)
+        ```
 
         ## Import
 

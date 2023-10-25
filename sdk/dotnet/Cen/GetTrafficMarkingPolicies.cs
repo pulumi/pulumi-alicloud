@@ -15,6 +15,46 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides the Cen Traffic Marking Policies of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.173.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Cen.GetTrafficMarkingPolicies.Invoke(new()
+        ///     {
+        ///         TransitRouterId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Cen.GetTrafficMarkingPolicies.Invoke(new()
+        ///     {
+        ///         TransitRouterId = "example_value",
+        ///         NameRegex = "^my-TrafficMarkingPolicy",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cenTrafficMarkingPolicyId1"] = ids.Apply(getTrafficMarkingPoliciesResult =&gt; getTrafficMarkingPoliciesResult.Policies[0]?.Id),
+        ///         ["cenTrafficMarkingPolicyId2"] = nameRegex.Apply(getTrafficMarkingPoliciesResult =&gt; getTrafficMarkingPoliciesResult.Policies[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTrafficMarkingPoliciesResult> InvokeAsync(GetTrafficMarkingPoliciesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTrafficMarkingPoliciesResult>("alicloud:cen/getTrafficMarkingPolicies:getTrafficMarkingPolicies", args ?? new GetTrafficMarkingPoliciesArgs(), options.WithDefaults());
@@ -23,6 +63,46 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides the Cen Traffic Marking Policies of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.173.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Cen.GetTrafficMarkingPolicies.Invoke(new()
+        ///     {
+        ///         TransitRouterId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Cen.GetTrafficMarkingPolicies.Invoke(new()
+        ///     {
+        ///         TransitRouterId = "example_value",
+        ///         NameRegex = "^my-TrafficMarkingPolicy",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cenTrafficMarkingPolicyId1"] = ids.Apply(getTrafficMarkingPoliciesResult =&gt; getTrafficMarkingPoliciesResult.Policies[0]?.Id),
+        ///         ["cenTrafficMarkingPolicyId2"] = nameRegex.Apply(getTrafficMarkingPoliciesResult =&gt; getTrafficMarkingPoliciesResult.Policies[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetTrafficMarkingPoliciesResult> Invoke(GetTrafficMarkingPoliciesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTrafficMarkingPoliciesResult>("alicloud:cen/getTrafficMarkingPolicies:getTrafficMarkingPolicies", args ?? new GetTrafficMarkingPoliciesInvokeArgs(), options.WithDefaults());

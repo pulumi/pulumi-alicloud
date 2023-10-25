@@ -139,6 +139,20 @@ def get_change_sets(change_set_name: Optional[str] = None,
 
     > **NOTE:** Available in v1.105.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.ros.get_change_sets(stack_id="example_value",
+        ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstRosChangeSetId", example.sets[0].id)
+    ```
+
 
     :param str change_set_name: The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -185,6 +199,20 @@ def get_change_sets_output(change_set_name: Optional[pulumi.Input[Optional[str]]
     This data source provides the Ros Change Sets of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.105.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.ros.get_change_sets(stack_id="example_value",
+        ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstRosChangeSetId", example.sets[0].id)
+    ```
 
 
     :param str change_set_name: The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.

@@ -18,6 +18,81 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// &gt; **NOTE:** One logtail configure can be attached to multiple machine groups and one machine group can attach several logtail configures.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
+    ///     {
+    ///         Description = "terraform-example",
+    ///     });
+    /// 
+    ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
+    ///     {
+    ///         Project = exampleProject.Name,
+    ///         RetentionPeriod = 3650,
+    ///         ShardCount = 3,
+    ///         AutoSplit = true,
+    ///         MaxSplitShardCount = 60,
+    ///         AppendMeta = true,
+    ///     });
+    /// 
+    ///     var exampleLogTailConfig = new AliCloud.Log.LogTailConfig("exampleLogTailConfig", new()
+    ///     {
+    ///         Project = exampleProject.Name,
+    ///         Logstore = exampleStore.Name,
+    ///         InputType = "file",
+    ///         OutputType = "LogService",
+    ///         InputDetail = @"  	{
+    /// 		""logPath"": ""/logPath"",
+    /// 		""filePattern"": ""access.log"",
+    /// 		""logType"": ""json_log"",
+    /// 		""topicFormat"": ""default"",
+    /// 		""discardUnmatch"": false,
+    /// 		""enableRawLog"": true,
+    /// 		""fileEncoding"": ""gbk"",
+    /// 		""maxDepth"": 10
+    /// 	}
+    /// ",
+    ///     });
+    /// 
+    ///     var exampleMachineGroup = new AliCloud.Log.MachineGroup("exampleMachineGroup", new()
+    ///     {
+    ///         Project = exampleProject.Name,
+    ///         IdentifyType = "ip",
+    ///         Topic = "terraform",
+    ///         IdentifyLists = new[]
+    ///         {
+    ///             "10.0.0.1",
+    ///             "10.0.0.2",
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleLogTailAttachment = new AliCloud.Log.LogTailAttachment("exampleLogTailAttachment", new()
+    ///     {
+    ///         Project = exampleProject.Name,
+    ///         LogtailConfigName = exampleLogTailConfig.Name,
+    ///         MachineGroupName = exampleMachineGroup.Name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Logtial to machine group can be imported using the id, e.g.

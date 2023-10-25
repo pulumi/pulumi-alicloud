@@ -129,6 +129,20 @@ def get_sls_groups(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.171.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cms.get_sls_groups(ids=["example_id"])
+    pulumi.export("cmsSlsGroupId1", ids.groups[0].id)
+    name_regex = alicloud.cms.get_sls_groups(name_regex="^my-SlsGroup")
+    pulumi.export("cmsSlsGroupId2", name_regex.groups[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Sls Group IDs. Its element value is same as Sls Group Name.
     :param str keyword: The keywords of the `sls_group_name` or `sls_group_description` of the Sls Group.
@@ -169,6 +183,20 @@ def get_sls_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] =
     This data source provides the Cms Sls Groups of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.171.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cms.get_sls_groups(ids=["example_id"])
+    pulumi.export("cmsSlsGroupId1", ids.groups[0].id)
+    name_regex = alicloud.cms.get_sls_groups(name_regex="^my-SlsGroup")
+    pulumi.export("cmsSlsGroupId2", name_regex.groups[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Sls Group IDs. Its element value is same as Sls Group Name.

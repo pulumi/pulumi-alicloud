@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * This data source provides the Dcdn Waf Policies of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.184.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.dcdn.getWafPolicies({});
+ * export const dcdnWafPolicyId1 = ids.then(ids => ids.policies?.[0]?.id);
+ * ```
  */
 export function getWafPolicies(args?: GetWafPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetWafPoliciesResult> {
     args = args || {};
@@ -67,6 +79,18 @@ export interface GetWafPoliciesResult {
  * This data source provides the Dcdn Waf Policies of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.184.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.dcdn.getWafPolicies({});
+ * export const dcdnWafPolicyId1 = ids.then(ids => ids.policies?.[0]?.id);
+ * ```
  */
 export function getWafPoliciesOutput(args?: GetWafPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWafPoliciesResult> {
     return pulumi.output(args).apply((a: any) => getWafPolicies(a, opts))

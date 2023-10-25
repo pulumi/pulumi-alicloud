@@ -170,6 +170,19 @@ def get_flowlogs(cen_id: Optional[str] = None,
 
     > **NOTE:** Available in 1.78.0+
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cen.get_flowlogs(ids=["flowlog-tig1xxxxx"],
+        name_regex="^foo")
+    pulumi.export("firstCenFlowlogId", data["alicloud_cen_instances"]["default"]["flowlogs"][0]["id"])
+    ```
+
 
     :param str cen_id: The ID of the CEN Instance.
     :param str description: The description of flowlog.
@@ -220,6 +233,19 @@ def get_flowlogs_output(cen_id: Optional[pulumi.Input[Optional[str]]] = None,
     This data source provides CEN flow logs available to the user.
 
     > **NOTE:** Available in 1.78.0+
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cen.get_flowlogs(ids=["flowlog-tig1xxxxx"],
+        name_regex="^foo")
+    pulumi.export("firstCenFlowlogId", data["alicloud_cen_instances"]["default"]["flowlogs"][0]["id"])
+    ```
 
 
     :param str cen_id: The ID of the CEN Instance.

@@ -16,6 +16,30 @@ namespace Pulumi.AliCloud.ApiGateway
     /// 
     /// &gt; **NOTE:** Available since v1.181.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var @default = new AliCloud.ApiGateway.Backend("default", new()
+    ///     {
+    ///         BackendName = name,
+    ///         Description = name,
+    ///         BackendType = "HTTP",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Api Gateway Backend can be imported using the id, e.g.

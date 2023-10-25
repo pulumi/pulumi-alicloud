@@ -99,6 +99,15 @@ class GlobalEventsStorageRegion(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.201.0.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo = alicloud.actiontrail.GlobalEventsStorageRegion("foo", storage_region="cn-hangzhou")
+        ```
+
         ## Import
 
         Global events storage region not can be imported.
@@ -119,6 +128,15 @@ class GlobalEventsStorageRegion(pulumi.CustomResource):
         For information about global events storage region and how to use it, see [What is Global Events Storage Region](https://www.alibabacloud.com/help/en/actiontrail/latest/api-actiontrail-2020-07-06-updateglobaleventsstorageregion).
 
         > **NOTE:** Available since v1.201.0.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo = alicloud.actiontrail.GlobalEventsStorageRegion("foo", storage_region="cn-hangzhou")
+        ```
 
         ## Import
 

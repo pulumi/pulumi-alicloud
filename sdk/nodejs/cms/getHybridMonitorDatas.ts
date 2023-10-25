@@ -10,6 +10,23 @@ import * as utilities from "../utilities";
  * This data source provides the Cms Hybrid Monitor Datas of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.177.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.cms.getHybridMonitorDatas({
+ *     namespace: "example_value",
+ *     promSql: "AliyunEcs_cpu_total",
+ *     start: "1657505665",
+ *     end: "1657520065",
+ * });
+ * export const cmsMetricRuleTemplateId1 = _default.then(_default => _default.datas?.[0]);
+ * ```
  */
 export function getHybridMonitorDatas(args: GetHybridMonitorDatasArgs, opts?: pulumi.InvokeOptions): Promise<GetHybridMonitorDatasResult> {
 
@@ -74,6 +91,23 @@ export interface GetHybridMonitorDatasResult {
  * This data source provides the Cms Hybrid Monitor Datas of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.177.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.cms.getHybridMonitorDatas({
+ *     namespace: "example_value",
+ *     promSql: "AliyunEcs_cpu_total",
+ *     start: "1657505665",
+ *     end: "1657520065",
+ * });
+ * export const cmsMetricRuleTemplateId1 = _default.then(_default => _default.datas?.[0]);
+ * ```
  */
 export function getHybridMonitorDatasOutput(args: GetHybridMonitorDatasOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHybridMonitorDatasResult> {
     return pulumi.output(args).apply((a: any) => getHybridMonitorDatas(a, opts))

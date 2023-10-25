@@ -270,6 +270,39 @@ class EditingProject(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.187.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        default = alicloud.get_regions(current=True)
+        example = alicloud.vod.EditingProject("example",
+            editing_project_name=name,
+            title=name,
+            timeline=\"\"\"  {
+            "VideoTracks":[
+              {
+                "VideoTrackClips":[
+                  {
+                  "MediaId":"0c60e6f02dae71edbfaa472190a90102",
+                  "In":2811
+                  }
+                ]
+              }
+            ]
+          }
+        \"\"\",
+            cover_url="https://demo.aliyundoc.com/6AB4D0E1E1C74468883516C2349D1FC2-6-2.png",
+            division=default.regions[0].id)
+        ```
+
         ## Import
 
         VOD Editing Project can be imported using the id, e.g.
@@ -298,6 +331,39 @@ class EditingProject(pulumi.CustomResource):
         For information about VOD Editing Project and how to use it, see [What is Editing Project](https://www.alibabacloud.com/help/en/apsaravideo-for-vod/latest/addeditingproject#doc-api-vod-AddEditingProject).
 
         > **NOTE:** Available since v1.187.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        default = alicloud.get_regions(current=True)
+        example = alicloud.vod.EditingProject("example",
+            editing_project_name=name,
+            title=name,
+            timeline=\"\"\"  {
+            "VideoTracks":[
+              {
+                "VideoTrackClips":[
+                  {
+                  "MediaId":"0c60e6f02dae71edbfaa472190a90102",
+                  "In":2811
+                  }
+                ]
+              }
+            ]
+          }
+        \"\"\",
+            cover_url="https://demo.aliyundoc.com/6AB4D0E1E1C74468883516C2349D1FC2-6-2.png",
+            division=default.regions[0].id)
+        ```
 
         ## Import
 

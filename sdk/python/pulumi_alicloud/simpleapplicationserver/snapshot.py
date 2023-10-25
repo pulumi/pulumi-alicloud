@@ -160,6 +160,33 @@ class Snapshot(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.143.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_images = alicloud.simpleapplicationserver.get_images()
+        default_server_plans = alicloud.simpleapplicationserver.get_server_plans()
+        default_instance = alicloud.simpleapplicationserver.Instance("defaultInstance",
+            payment_type="Subscription",
+            plan_id=default_server_plans.plans[0].id,
+            instance_name=name,
+            image_id=default_images.images[0].id,
+            period=1,
+            data_disk_size=100)
+        default_server_disks = alicloud.simpleapplicationserver.get_server_disks_output(instance_id=default_instance.id)
+        default_snapshot = alicloud.simpleapplicationserver.Snapshot("defaultSnapshot",
+            disk_id=default_server_disks.ids[0],
+            snapshot_name=name)
+        ```
+
         ## Import
 
         Simple Application Server Snapshot can be imported using the id, e.g.
@@ -185,6 +212,33 @@ class Snapshot(pulumi.CustomResource):
         For information about Simple Application Server Snapshot and how to use it, see [What is Snapshot](https://www.alibabacloud.com/help/doc-detail/190452.htm).
 
         > **NOTE:** Available since v1.143.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_images = alicloud.simpleapplicationserver.get_images()
+        default_server_plans = alicloud.simpleapplicationserver.get_server_plans()
+        default_instance = alicloud.simpleapplicationserver.Instance("defaultInstance",
+            payment_type="Subscription",
+            plan_id=default_server_plans.plans[0].id,
+            instance_name=name,
+            image_id=default_images.images[0].id,
+            period=1,
+            data_disk_size=100)
+        default_server_disks = alicloud.simpleapplicationserver.get_server_disks_output(instance_id=default_instance.id)
+        default_snapshot = alicloud.simpleapplicationserver.Snapshot("defaultSnapshot",
+            disk_id=default_server_disks.ids[0],
+            snapshot_name=name)
+        ```
 
         ## Import
 

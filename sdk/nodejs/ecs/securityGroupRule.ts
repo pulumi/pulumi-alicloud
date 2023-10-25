@@ -10,6 +10,26 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:**  `nicType` should set to `intranet` when security group type is `vpc` or specifying the `sourceSecurityGroupId`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.ecs.SecurityGroup("default", {});
+ * const allowAllTcp = new alicloud.ecs.SecurityGroupRule("allowAllTcp", {
+ *     type: "ingress",
+ *     ipProtocol: "tcp",
+ *     nicType: "internet",
+ *     policy: "accept",
+ *     portRange: "1/65535",
+ *     priority: 1,
+ *     securityGroupId: _default.id,
+ *     cidrIp: "0.0.0.0/0",
+ * });
+ * ```
  * ## Module Support
  *
  * You can use the existing security-group module

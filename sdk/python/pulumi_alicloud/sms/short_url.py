@@ -202,6 +202,20 @@ class ShortUrl(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.178.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.sms.ShortUrl("example",
+            effective_days=30,
+            short_url_name="example_value",
+            source_url="example_value")
+        ```
+
         ## Import
 
         SMS Short Url can be imported using the id, e.g.
@@ -228,6 +242,20 @@ class ShortUrl(pulumi.CustomResource):
         For information about SMS Short Url and how to use it, see [What is Short Url](https://next.api.alibabacloud.com/api/Dysmsapi/2017-05-25/AddShortUrl).
 
         > **NOTE:** Available in v1.178.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.sms.ShortUrl("example",
+            effective_days=30,
+            short_url_name="example_value",
+            source_url="example_value")
+        ```
 
         ## Import
 

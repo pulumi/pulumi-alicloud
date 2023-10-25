@@ -219,6 +219,23 @@ class Portfolio(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.204.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.servicecatalog.Portfolio("default",
+            portfolio_name=name,
+            provider_name=name)
+        ```
+
         ## Import
 
         Service Catalog Portfolio can be imported using the id, e.g.
@@ -245,6 +262,23 @@ class Portfolio(pulumi.CustomResource):
         For information about Service Catalog Portfolio and how to use it, see [What is Portfolio](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createportfolio).
 
         > **NOTE:** Available since v1.204.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.servicecatalog.Portfolio("default",
+            portfolio_name=name,
+            provider_name=name)
+        ```
 
         ## Import
 

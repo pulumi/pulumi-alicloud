@@ -11,6 +11,17 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.134.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.alb.HealthCheckTemplate("example", {healthCheckTemplateName: "example_name"});
+ * ```
+ *
  * ## Import
  *
  * Application Load Balancer (ALB) Health Check Template can be imported using the id, e.g.

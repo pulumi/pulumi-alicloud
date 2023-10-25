@@ -180,6 +180,35 @@ class BasicAccelerateIp(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.194.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        default_basic_accelerator = alicloud.ga.BasicAccelerator("defaultBasicAccelerator",
+            duration=1,
+            basic_accelerator_name="terraform-example",
+            description="terraform-example",
+            bandwidth_billing_type="CDT",
+            auto_use_coupon="true",
+            auto_pay=True)
+        default_basic_ip_set = alicloud.ga.BasicIpSet("defaultBasicIpSet",
+            accelerator_id=default_basic_accelerator.id,
+            accelerate_region_id=region,
+            isp_type="BGP",
+            bandwidth=5)
+        default_basic_accelerate_ip = alicloud.ga.BasicAccelerateIp("defaultBasicAccelerateIp",
+            accelerator_id=default_basic_accelerator.id,
+            ip_set_id=default_basic_ip_set.id)
+        ```
+
         ## Import
 
         Global Accelerator (GA) Basic Accelerate IP can be imported using the id, e.g.
@@ -205,6 +234,35 @@ class BasicAccelerateIp(pulumi.CustomResource):
         For information about Global Accelerator (GA) Basic Accelerate IP and how to use it, see [What is Basic Accelerate IP](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createbasicaccelerateip).
 
         > **NOTE:** Available since v1.194.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        default_basic_accelerator = alicloud.ga.BasicAccelerator("defaultBasicAccelerator",
+            duration=1,
+            basic_accelerator_name="terraform-example",
+            description="terraform-example",
+            bandwidth_billing_type="CDT",
+            auto_use_coupon="true",
+            auto_pay=True)
+        default_basic_ip_set = alicloud.ga.BasicIpSet("defaultBasicIpSet",
+            accelerator_id=default_basic_accelerator.id,
+            accelerate_region_id=region,
+            isp_type="BGP",
+            bandwidth=5)
+        default_basic_accelerate_ip = alicloud.ga.BasicAccelerateIp("defaultBasicAccelerateIp",
+            accelerator_id=default_basic_accelerator.id,
+            ip_set_id=default_basic_ip_set.id)
+        ```
 
         ## Import
 

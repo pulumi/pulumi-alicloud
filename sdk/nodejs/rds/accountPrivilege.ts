@@ -11,6 +11,57 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.5.0.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const defaultZones = alicloud.rds.getZones({
+ *     engine: "MySQL",
+ *     engineVersion: "5.6",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     vswitchName: name,
+ * });
+ * const instance = new alicloud.rds.Instance("instance", {
+ *     engine: "MySQL",
+ *     engineVersion: "5.6",
+ *     instanceType: "rds.mysql.s1.small",
+ *     instanceStorage: 10,
+ *     vswitchId: defaultSwitch.id,
+ *     instanceName: name,
+ * });
+ * const db: alicloud.rds.Database[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     db.push(new alicloud.rds.Database(`db-${range.value}`, {
+ *         instanceId: instance.id,
+ *         description: "from terraform",
+ *     }));
+ * }
+ * const account = new alicloud.rds.Account("account", {
+ *     dbInstanceId: instance.id,
+ *     accountName: "tfexample",
+ *     accountPassword: "Example12345",
+ *     accountDescription: "from terraform",
+ * });
+ * const privilege = new alicloud.rds.AccountPrivilege("privilege", {
+ *     instanceId: instance.id,
+ *     accountName: account.name,
+ *     privilege: "ReadOnly",
+ *     dbNames: db.map(__item => __item.name),
+ * });
+ * ```
+ *
  * ## Import
  *
  * RDS account privilege can be imported using the id, e.g.

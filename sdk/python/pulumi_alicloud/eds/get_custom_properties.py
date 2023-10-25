@@ -80,6 +80,18 @@ def get_custom_properties(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.176.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.eds.get_custom_properties(ids=["example_id"])
+    pulumi.export("ecdCustomPropertyId1", ids.properties[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Custom Property IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -105,6 +117,18 @@ def get_custom_properties_output(ids: Optional[pulumi.Input[Optional[Sequence[st
     This data source provides the Ecd Custom Properties of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.176.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.eds.get_custom_properties(ids=["example_id"])
+    pulumi.export("ecdCustomPropertyId1", ids.properties[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Custom Property IDs.

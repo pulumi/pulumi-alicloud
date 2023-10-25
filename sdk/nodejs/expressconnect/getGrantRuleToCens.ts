@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides the Express Connect Grant Rule To Cens of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.196.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.expressconnect.getGrantRuleToCens({
+ *     ids: ["example_id"],
+ *     instanceId: "your_vbr_instance_id",
+ * });
+ * export const expressConnectGrantRuleToCenId0 = ids.then(ids => ids.cens?.[0]?.id);
+ * ```
  */
 export function getGrantRuleToCens(args: GetGrantRuleToCensArgs, opts?: pulumi.InvokeOptions): Promise<GetGrantRuleToCensResult> {
 
@@ -65,6 +80,21 @@ export interface GetGrantRuleToCensResult {
  * This data source provides the Express Connect Grant Rule To Cens of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.196.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.expressconnect.getGrantRuleToCens({
+ *     ids: ["example_id"],
+ *     instanceId: "your_vbr_instance_id",
+ * });
+ * export const expressConnectGrantRuleToCenId0 = ids.then(ids => ids.cens?.[0]?.id);
+ * ```
  */
 export function getGrantRuleToCensOutput(args: GetGrantRuleToCensOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGrantRuleToCensResult> {
     return pulumi.output(args).apply((a: any) => getGrantRuleToCens(a, opts))

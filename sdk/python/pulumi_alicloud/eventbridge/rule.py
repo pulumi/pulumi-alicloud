@@ -298,6 +298,38 @@ class Rule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.129.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_event_bus = alicloud.eventbridge.EventBus("exampleEventBus", event_bus_name="example_value")
+        example_rule = alicloud.eventbridge.Rule("exampleRule",
+            event_bus_name=example_event_bus.id,
+            rule_name=var["name"],
+            description="test",
+            filter_pattern="{\\"source\\":[\\"crmabc.newsletter\\"],\\"type\\":[\\"UserSignUp\\", \\"UserLogin\\"]}",
+            targets=[alicloud.eventbridge.RuleTargetArgs(
+                target_id="tf-test",
+                endpoint="acs:mns:cn-hangzhou:118938335****:queues/tf-test",
+                type="acs.mns.queue",
+                param_lists=[
+                    alicloud.eventbridge.RuleTargetParamListArgs(
+                        resource_key="queue",
+                        form="CONSTANT",
+                        value="tf-testaccEbRule",
+                    ),
+                    alicloud.eventbridge.RuleTargetParamListArgs(
+                        resource_key="Body",
+                        form="ORIGINAL",
+                    ),
+                ],
+            )])
+        ```
+
         ## Import
 
         Event Bridge Rule can be imported using the id, e.g.
@@ -327,6 +359,38 @@ class Rule(pulumi.CustomResource):
         For information about Event Bridge Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/eventbridge/latest/createrule-6).
 
         > **NOTE:** Available since v1.129.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_event_bus = alicloud.eventbridge.EventBus("exampleEventBus", event_bus_name="example_value")
+        example_rule = alicloud.eventbridge.Rule("exampleRule",
+            event_bus_name=example_event_bus.id,
+            rule_name=var["name"],
+            description="test",
+            filter_pattern="{\\"source\\":[\\"crmabc.newsletter\\"],\\"type\\":[\\"UserSignUp\\", \\"UserLogin\\"]}",
+            targets=[alicloud.eventbridge.RuleTargetArgs(
+                target_id="tf-test",
+                endpoint="acs:mns:cn-hangzhou:118938335****:queues/tf-test",
+                type="acs.mns.queue",
+                param_lists=[
+                    alicloud.eventbridge.RuleTargetParamListArgs(
+                        resource_key="queue",
+                        form="CONSTANT",
+                        value="tf-testaccEbRule",
+                    ),
+                    alicloud.eventbridge.RuleTargetParamListArgs(
+                        resource_key="Body",
+                        form="ORIGINAL",
+                    ),
+                ],
+            )])
+        ```
 
         ## Import
 

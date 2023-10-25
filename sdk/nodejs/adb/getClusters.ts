@@ -13,6 +13,19 @@ import * as utilities from "../utilities";
  * > **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
  *
  * > **NOTE:** Available in v1.71.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const adbClustersDs = alicloud.adb.getClusters({
+ *     descriptionRegex: "am-\\w+",
+ *     status: "Running",
+ * });
+ * export const firstAdbClusterId = adbClustersDs.then(adbClustersDs => adbClustersDs.clusters?.[0]?.id);
+ * ```
  */
 export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetClustersResult> {
     args = args || {};
@@ -112,6 +125,19 @@ export interface GetClustersResult {
  * > **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
  *
  * > **NOTE:** Available in v1.71.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const adbClustersDs = alicloud.adb.getClusters({
+ *     descriptionRegex: "am-\\w+",
+ *     status: "Running",
+ * });
+ * export const firstAdbClusterId = adbClustersDs.then(adbClustersDs => adbClustersDs.clusters?.[0]?.id);
+ * ```
  */
 export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClustersResult> {
     return pulumi.output(args).apply((a: any) => getClusters(a, opts))

@@ -15,6 +15,38 @@ import (
 // This data source provides the Ecs Prefix Lists of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.152.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := ecs.GetEcsPrefixLists(ctx, &ecs.GetEcsPrefixListsArgs{
+//				Ids: []string{
+//					"E2RY53-xxxx",
+//				},
+//				NameRegex: pulumi.StringRef("tf-testAcc"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("outputId", example.Lists[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetEcsPrefixLists(ctx *pulumi.Context, args *GetEcsPrefixListsArgs, opts ...pulumi.InvokeOption) (*GetEcsPrefixListsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEcsPrefixListsResult

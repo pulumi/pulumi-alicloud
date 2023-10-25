@@ -10,6 +10,24 @@ import * as utilities from "../utilities";
  * This data source provides the Ddos Bgp Ips of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.180.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.ddos.getDdosBgpIps({
+ *     instanceId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const ddosbgpIpId1 = ids.then(ids => ids.ips?.[0]?.id);
+ * ```
  */
 export function getDdosBgpIps(args: GetDdosBgpIpsArgs, opts?: pulumi.InvokeOptions): Promise<GetDdosBgpIpsResult> {
 
@@ -74,6 +92,24 @@ export interface GetDdosBgpIpsResult {
  * This data source provides the Ddos Bgp Ips of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.180.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.ddos.getDdosBgpIps({
+ *     instanceId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const ddosbgpIpId1 = ids.then(ids => ids.ips?.[0]?.id);
+ * ```
  */
 export function getDdosBgpIpsOutput(args: GetDdosBgpIpsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDdosBgpIpsResult> {
     return pulumi.output(args).apply((a: any) => getDdosBgpIps(a, opts))

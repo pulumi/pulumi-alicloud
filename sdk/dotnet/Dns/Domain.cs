@@ -16,6 +16,25 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// &gt; **NOTE:** The domain name which you want to add must be already registered and had not added by another account. Every domain name can only exist in a unique group.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Add a new Domain.
+    ///     var dns = new AliCloud.Dns.Domain("dns", new()
+    ///     {
+    ///         GroupId = "85ab8713-4a30-4de4-9d20-155ff830f651",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// DNS can be imported using the id or domain name, e.g.

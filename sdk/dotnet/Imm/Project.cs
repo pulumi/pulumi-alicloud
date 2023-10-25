@@ -16,6 +16,50 @@ namespace Pulumi.AliCloud.Imm
     /// 
     /// &gt; **NOTE:** Available since v1.134.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tfexample";
+    ///     var role = new AliCloud.Ram.Role("role", new()
+    ///     {
+    ///         Document = @"  {
+    ///     ""Statement"": [
+    ///       {
+    ///         ""Action"": ""sts:AssumeRole"",
+    ///         ""Effect"": ""Allow"",
+    ///         ""Principal"": {
+    ///           ""Service"": [
+    ///             ""imm.aliyuncs.com""
+    ///           ]
+    ///         }
+    ///       }
+    ///     ],
+    ///     ""Version"": ""1""
+    ///   }
+    /// ",
+    ///         Description = "this is a role test.",
+    ///         Force = true,
+    ///     });
+    /// 
+    ///     var example = new AliCloud.Imm.Project("example", new()
+    ///     {
+    ///         ProjectName = name,
+    ///         ServiceRole = role.Name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Intelligent Media Management Project can be imported using the id, e.g.

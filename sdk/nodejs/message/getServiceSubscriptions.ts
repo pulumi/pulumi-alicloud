@@ -10,6 +10,23 @@ import * as utilities from "../utilities";
  * This data source provides the Message Notification Service Subscriptions of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.188.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.message.getServiceSubscriptions({
+ *     ids: ["example_id"],
+ *     topicName: "tf-example",
+ * });
+ * export const subscriptionId1 = ids.then(ids => ids.subscriptions?.[0]?.id);
+ * const name = alicloud.message.getServiceSubscriptions({
+ *     topicName: "tf-example",
+ * });
+ * export const subscriptionId2 = name.then(name => name.subscriptions?.[0]?.id);
+ * ```
  */
 export function getServiceSubscriptions(args: GetServiceSubscriptionsArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceSubscriptionsResult> {
 
@@ -87,6 +104,23 @@ export interface GetServiceSubscriptionsResult {
  * This data source provides the Message Notification Service Subscriptions of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.188.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.message.getServiceSubscriptions({
+ *     ids: ["example_id"],
+ *     topicName: "tf-example",
+ * });
+ * export const subscriptionId1 = ids.then(ids => ids.subscriptions?.[0]?.id);
+ * const name = alicloud.message.getServiceSubscriptions({
+ *     topicName: "tf-example",
+ * });
+ * export const subscriptionId2 = name.then(name => name.subscriptions?.[0]?.id);
+ * ```
  */
 export function getServiceSubscriptionsOutput(args: GetServiceSubscriptionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceSubscriptionsResult> {
     return pulumi.output(args).apply((a: any) => getServiceSubscriptions(a, opts))

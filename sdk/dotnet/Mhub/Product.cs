@@ -18,6 +18,26 @@ namespace Pulumi.AliCloud.Mhub
     /// 
     /// &gt; **NOTE:** At present, the resource only supports cn-shanghai region.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AliCloud.Mhub.Product("example", new()
+    ///     {
+    ///         ProductName = "example_value",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// MHUB Product can be imported using the id, e.g.

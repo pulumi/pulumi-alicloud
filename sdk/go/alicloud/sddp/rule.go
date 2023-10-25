@@ -19,6 +19,44 @@ import (
 //
 // > **NOTE:** Available since v1.132.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sddp"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example_name"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := sddp.NewRule(ctx, "default", &sddp.RuleArgs{
+//				Category:    pulumi.Int(0),
+//				Content:     pulumi.String("content"),
+//				RuleName:    pulumi.String(name),
+//				RiskLevelId: pulumi.String("4"),
+//				ProductCode: pulumi.String("OSS"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Data Security Center Rule can be imported using the id, e.g.

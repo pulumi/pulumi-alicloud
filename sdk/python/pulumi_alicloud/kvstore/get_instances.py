@@ -305,6 +305,16 @@ def get_instances(architecture_type: Optional[str] = None,
     The `kvstore_get_instances` data source provides a collection of kvstore instances available in Alicloud account.
     Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.kvstore.get_instances(name_regex="testname")
+    pulumi.export("firstInstanceName", default.instances[0].name)
+    ```
+
 
     :param str architecture_type: The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
     :param str edition_type: Used to retrieve instances belong to specified `vswitch` resources.  Valid values: `Enterprise`, `Community`.
@@ -402,6 +412,16 @@ def get_instances_output(architecture_type: Optional[pulumi.Input[Optional[str]]
     """
     The `kvstore_get_instances` data source provides a collection of kvstore instances available in Alicloud account.
     Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.kvstore.get_instances(name_regex="testname")
+    pulumi.export("firstInstanceName", default.instances[0].name)
+    ```
 
 
     :param str architecture_type: The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.

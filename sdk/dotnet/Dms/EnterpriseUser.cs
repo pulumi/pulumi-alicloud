@@ -14,6 +14,40 @@ namespace Pulumi.AliCloud.Dms
     /// 
     /// &gt; **NOTE:** Available since v1.90.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tfexamplename";
+    ///     var defaultUser = new AliCloud.Ram.User("defaultUser", new()
+    ///     {
+    ///         DisplayName = name,
+    ///         Mobile = "86-18688888888",
+    ///         Email = "hello.uuu@aaa.com",
+    ///         Comments = "example",
+    ///     });
+    /// 
+    ///     var defaultEnterpriseUser = new AliCloud.Dms.EnterpriseUser("defaultEnterpriseUser", new()
+    ///     {
+    ///         Uid = defaultUser.Id,
+    ///         UserName = name,
+    ///         RoleNames = new[]
+    ///         {
+    ///             "DBA",
+    ///         },
+    ///         Mobile = "86-18688888888",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// DMS Enterprise User can be imported using the id, e.g.

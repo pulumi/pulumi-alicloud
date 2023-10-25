@@ -17,6 +17,29 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// &gt; **NOTE:** Available in v1.33.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new AliCloud.Nas.AccessGroup("foo", new()
+    ///     {
+    ///         AccessGroupName = "terraform-example",
+    ///         AccessGroupType = "Vpc",
+    ///         Description = "terraform-example",
+    ///         FileSystemType = "extreme",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// NAS Access Group can be imported using the id, e.g.

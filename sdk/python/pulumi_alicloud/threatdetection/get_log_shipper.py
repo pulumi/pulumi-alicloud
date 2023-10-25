@@ -134,6 +134,17 @@ def get_log_shipper(enable: Optional[str] = None,
 
     > **NOTE:** Available in v1.195.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    open = alicloud.threatdetection.get_log_shipper(enable="On")
+    ```
+
 
     :param str enable: Setting the value to `On` to enable the service. Valid values: `On` or `Off`. Default to `Off`.
            
@@ -164,6 +175,17 @@ def get_log_shipper_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
     For information about Threat Detection Log Shipper and how to use it, see [What is Log Shipper](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifyopenlogshipper).
 
     > **NOTE:** Available in v1.195.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    open = alicloud.threatdetection.get_log_shipper(enable="On")
+    ```
 
 
     :param str enable: Setting the value to `On` to enable the service. Valid values: `On` or `Off`. Default to `Off`.

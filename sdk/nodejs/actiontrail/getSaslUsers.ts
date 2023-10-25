@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * This data source provides a list of ALIKAFKA Sasl users in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in 1.66.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const saslUsersDs = alicloud.actiontrail.getSaslUsers({
+ *     instanceId: "xxx",
+ *     nameRegex: "username",
+ *     outputFile: "saslUsers.txt",
+ * });
+ * export const firstSaslUsername = saslUsersDs.then(saslUsersDs => saslUsersDs.users?.[0]?.username);
+ * ```
  */
 export function getSaslUsers(args: GetSaslUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetSaslUsersResult> {
 
@@ -63,6 +77,20 @@ export interface GetSaslUsersResult {
  * This data source provides a list of ALIKAFKA Sasl users in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in 1.66.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const saslUsersDs = alicloud.actiontrail.getSaslUsers({
+ *     instanceId: "xxx",
+ *     nameRegex: "username",
+ *     outputFile: "saslUsers.txt",
+ * });
+ * export const firstSaslUsername = saslUsersDs.then(saslUsersDs => saslUsersDs.users?.[0]?.username);
+ * ```
  */
 export function getSaslUsersOutput(args: GetSaslUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSaslUsersResult> {
     return pulumi.output(args).apply((a: any) => getSaslUsers(a, opts))

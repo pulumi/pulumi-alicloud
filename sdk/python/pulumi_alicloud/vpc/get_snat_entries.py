@@ -180,6 +180,37 @@ def get_snat_entries(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in 1.37.0+.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "snat-entry-example-name"
+    default = alicloud.get_zones(available_resource_creation="VSwitch")
+    foo_network = alicloud.vpc.Network("fooNetwork", cidr_block="172.16.0.0/12")
+    foo_switch = alicloud.vpc.Switch("fooSwitch",
+        vpc_id=foo_network.id,
+        cidr_block="172.16.0.0/21",
+        availability_zone=default.zones[0].id,
+        vswitch_name=name)
+    foo_nat_gateway = alicloud.vpc.NatGateway("fooNatGateway",
+        vpc_id=foo_network.id,
+        specification="Small")
+    foo_eip_address = alicloud.ecs.EipAddress("fooEipAddress", address_name=name)
+    foo_eip_association = alicloud.ecs.EipAssociation("fooEipAssociation",
+        allocation_id=foo_eip_address.id,
+        instance_id=foo_nat_gateway.id)
+    foo_snat_entry = alicloud.vpc.SnatEntry("fooSnatEntry",
+        snat_table_id=foo_nat_gateway.snat_table_ids,
+        source_vswitch_id=foo_switch.id,
+        snat_ip=foo_eip_address.ip_address)
+    foo_snat_entries = alicloud.vpc.get_snat_entries_output(snat_table_id=foo_snat_entry.snat_table_id)
+    ```
+
 
     :param Sequence[str] ids: A list of Snat Entries IDs.
     :param str name_regex: A regex string to filter results by the resource name.
@@ -234,6 +265,37 @@ def get_snat_entries_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     This data source provides a list of Snat Entries owned by an Alibaba Cloud account.
 
     > **NOTE:** Available in 1.37.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "snat-entry-example-name"
+    default = alicloud.get_zones(available_resource_creation="VSwitch")
+    foo_network = alicloud.vpc.Network("fooNetwork", cidr_block="172.16.0.0/12")
+    foo_switch = alicloud.vpc.Switch("fooSwitch",
+        vpc_id=foo_network.id,
+        cidr_block="172.16.0.0/21",
+        availability_zone=default.zones[0].id,
+        vswitch_name=name)
+    foo_nat_gateway = alicloud.vpc.NatGateway("fooNatGateway",
+        vpc_id=foo_network.id,
+        specification="Small")
+    foo_eip_address = alicloud.ecs.EipAddress("fooEipAddress", address_name=name)
+    foo_eip_association = alicloud.ecs.EipAssociation("fooEipAssociation",
+        allocation_id=foo_eip_address.id,
+        instance_id=foo_nat_gateway.id)
+    foo_snat_entry = alicloud.vpc.SnatEntry("fooSnatEntry",
+        snat_table_id=foo_nat_gateway.snat_table_ids,
+        source_vswitch_id=foo_switch.id,
+        snat_ip=foo_eip_address.ip_address)
+    foo_snat_entries = alicloud.vpc.get_snat_entries_output(snat_table_id=foo_snat_entry.snat_table_id)
+    ```
 
 
     :param Sequence[str] ids: A list of Snat Entries IDs.

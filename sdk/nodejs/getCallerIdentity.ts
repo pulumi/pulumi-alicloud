@@ -8,6 +8,16 @@ import * as utilities from "./utilities";
  * This data source provides the identity of the current user.
  *
  * > **NOTE:** Available in 1.65.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const current = alicloud.getCallerIdentity({});
+ * export const currentUserArn = current.then(current => current.id);
+ * ```
  */
 export function getCallerIdentity(opts?: pulumi.InvokeOptions): Promise<GetCallerIdentityResult> {
 
@@ -41,6 +51,16 @@ export interface GetCallerIdentityResult {
  * This data source provides the identity of the current user.
  *
  * > **NOTE:** Available in 1.65.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const current = alicloud.getCallerIdentity({});
+ * export const currentUserArn = current.then(current => current.id);
+ * ```
  */
 export function getCallerIdentityOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetCallerIdentityResult> {
     return pulumi.output(getCallerIdentity(opts))

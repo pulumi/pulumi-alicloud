@@ -10,6 +10,24 @@ import * as utilities from "../utilities";
  * This data source provides the Simple Application Server Custom Images of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.143.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.simpleapplicationserver.getServerCustomImages({
+ *     ids: ["example_id"],
+ * });
+ * export const simpleApplicationServerCustomImageId1 = ids.then(ids => ids.images?.[0]?.id);
+ * const nameRegex = alicloud.simpleapplicationserver.getServerCustomImages({
+ *     nameRegex: "^my-CustomImage",
+ * });
+ * export const simpleApplicationServerCustomImageId2 = nameRegex.then(nameRegex => nameRegex.images?.[0]?.id);
+ * ```
  */
 export function getServerCustomImages(args?: GetServerCustomImagesArgs, opts?: pulumi.InvokeOptions): Promise<GetServerCustomImagesResult> {
     args = args || {};
@@ -58,6 +76,24 @@ export interface GetServerCustomImagesResult {
  * This data source provides the Simple Application Server Custom Images of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.143.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.simpleapplicationserver.getServerCustomImages({
+ *     ids: ["example_id"],
+ * });
+ * export const simpleApplicationServerCustomImageId1 = ids.then(ids => ids.images?.[0]?.id);
+ * const nameRegex = alicloud.simpleapplicationserver.getServerCustomImages({
+ *     nameRegex: "^my-CustomImage",
+ * });
+ * export const simpleApplicationServerCustomImageId2 = nameRegex.then(nameRegex => nameRegex.images?.[0]?.id);
+ * ```
  */
 export function getServerCustomImagesOutput(args?: GetServerCustomImagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerCustomImagesResult> {
     return pulumi.output(args).apply((a: any) => getServerCustomImages(a, opts))

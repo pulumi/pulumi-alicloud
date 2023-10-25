@@ -932,6 +932,29 @@ class Cluster(pulumi.CustomResource):
         > **NOTE:**  Create Cassandra cluster or change cluster type and storage would cost 30 minutes. Please make full preparation.
 
         ## Example Usage
+        ### Create a cassandra cluster
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.cassandra.Cluster("default",
+            auto_renew=False,
+            cluster_name="cassandra-cluster-name-tf",
+            data_center_name="dc-1",
+            disk_size=160,
+            disk_type="cloud_ssd",
+            instance_type="cassandra.c.large",
+            ip_white="127.0.0.1",
+            maintain_end_time="20:00Z",
+            maintain_start_time="18:00Z",
+            major_version="3.11",
+            node_count=2,
+            pay_type="PayAsYouGo",
+            vswitch_id="vsw-xxxx")
+        ```
+
+        This is a example for class netType cluster. You can find more detail with the examples/cassandra_cluster dir.
 
         ## Import
 
@@ -984,6 +1007,29 @@ class Cluster(pulumi.CustomResource):
         > **NOTE:**  Create Cassandra cluster or change cluster type and storage would cost 30 minutes. Please make full preparation.
 
         ## Example Usage
+        ### Create a cassandra cluster
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.cassandra.Cluster("default",
+            auto_renew=False,
+            cluster_name="cassandra-cluster-name-tf",
+            data_center_name="dc-1",
+            disk_size=160,
+            disk_type="cloud_ssd",
+            instance_type="cassandra.c.large",
+            ip_white="127.0.0.1",
+            maintain_end_time="20:00Z",
+            maintain_start_time="18:00Z",
+            major_version="3.11",
+            node_count=2,
+            pay_type="PayAsYouGo",
+            vswitch_id="vsw-xxxx")
+        ```
+
+        This is a example for class netType cluster. You can find more detail with the examples/cassandra_cluster dir.
 
         ## Import
 

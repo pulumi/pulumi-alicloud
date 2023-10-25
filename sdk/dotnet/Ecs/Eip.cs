@@ -19,6 +19,25 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **NOTE:** From version 1.10.1, this resource supports creating "PrePaid" EIP. In addition, it supports setting EIP name and description.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new EIP.
+    ///     var example = new AliCloud.Ecs.Eip("example", new()
+    ///     {
+    ///         Bandwidth = "10",
+    ///         InternetChargeType = "PayByBandwidth",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## Module Support
     /// 
     /// You can use the existing eip module

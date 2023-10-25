@@ -383,6 +383,47 @@ class Binding(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.135.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_instance = alicloud.amqp.Instance("defaultInstance",
+            instance_type="enterprise",
+            max_tps="3000",
+            queue_capacity="200",
+            storage_size="700",
+            support_eip=False,
+            max_eip_tps="128",
+            payment_type="Subscription",
+            period=1)
+        default_virtual_host = alicloud.amqp.VirtualHost("defaultVirtualHost",
+            instance_id=default_instance.id,
+            virtual_host_name="tf-example")
+        default_exchange = alicloud.amqp.Exchange("defaultExchange",
+            auto_delete_state=False,
+            exchange_name="tf-example",
+            exchange_type="DIRECT",
+            instance_id=default_instance.id,
+            internal=False,
+            virtual_host_name=default_virtual_host.virtual_host_name)
+        default_queue = alicloud.amqp.Queue("defaultQueue",
+            instance_id=default_instance.id,
+            queue_name="tf-example",
+            virtual_host_name=default_virtual_host.virtual_host_name)
+        default_binding = alicloud.amqp.Binding("defaultBinding",
+            argument="x-match:all",
+            binding_key=default_queue.queue_name,
+            binding_type="QUEUE",
+            destination_name="tf-example",
+            instance_id=default_instance.id,
+            source_exchange=default_exchange.exchange_name,
+            virtual_host_name=default_virtual_host.virtual_host_name)
+        ```
+
         ## Import
 
         RabbitMQ (AMQP) Binding can be imported using the id, e.g.
@@ -422,6 +463,47 @@ class Binding(pulumi.CustomResource):
         For information about RabbitMQ (AMQP) Binding and how to use it, see [What is Binding](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createbinding).
 
         > **NOTE:** Available since v1.135.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_instance = alicloud.amqp.Instance("defaultInstance",
+            instance_type="enterprise",
+            max_tps="3000",
+            queue_capacity="200",
+            storage_size="700",
+            support_eip=False,
+            max_eip_tps="128",
+            payment_type="Subscription",
+            period=1)
+        default_virtual_host = alicloud.amqp.VirtualHost("defaultVirtualHost",
+            instance_id=default_instance.id,
+            virtual_host_name="tf-example")
+        default_exchange = alicloud.amqp.Exchange("defaultExchange",
+            auto_delete_state=False,
+            exchange_name="tf-example",
+            exchange_type="DIRECT",
+            instance_id=default_instance.id,
+            internal=False,
+            virtual_host_name=default_virtual_host.virtual_host_name)
+        default_queue = alicloud.amqp.Queue("defaultQueue",
+            instance_id=default_instance.id,
+            queue_name="tf-example",
+            virtual_host_name=default_virtual_host.virtual_host_name)
+        default_binding = alicloud.amqp.Binding("defaultBinding",
+            argument="x-match:all",
+            binding_key=default_queue.queue_name,
+            binding_type="QUEUE",
+            destination_name="tf-example",
+            instance_id=default_instance.id,
+            source_exchange=default_exchange.exchange_name,
+            virtual_host_name=default_virtual_host.virtual_host_name)
+        ```
 
         ## Import
 

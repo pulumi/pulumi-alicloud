@@ -228,6 +228,26 @@ class Namespace(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.173.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_regions = alicloud.get_regions(current=True)
+        default_namespace = alicloud.edas.Namespace("defaultNamespace",
+            debug_enable=False,
+            description=name,
+            namespace_logical_id=f"{default_regions.regions[0].id}:example",
+            namespace_name=name)
+        ```
+
         ## Import
 
         EDAS Namespace can be imported using the id, e.g.
@@ -257,6 +277,26 @@ class Namespace(pulumi.CustomResource):
         For information about EDAS Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/enterprise-distributed-application-service/latest/insertorupdateregion).
 
         > **NOTE:** Available since v1.173.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_regions = alicloud.get_regions(current=True)
+        default_namespace = alicloud.edas.Namespace("defaultNamespace",
+            debug_enable=False,
+            description=name,
+            namespace_logical_id=f"{default_regions.regions[0].id}:example",
+            namespace_name=name)
+        ```
 
         ## Import
 

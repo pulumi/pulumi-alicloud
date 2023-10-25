@@ -15,6 +15,31 @@ namespace Pulumi.AliCloud.ApiGateway
         /// This data source provides the Api Gateway Backends of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.181.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.ApiGateway.GetBackends.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["apiGatewayBackendId1"] = ids.Apply(getBackendsResult =&gt; getBackendsResult.Backends[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetBackendsResult> InvokeAsync(GetBackendsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBackendsResult>("alicloud:apigateway/getBackends:getBackends", args ?? new GetBackendsArgs(), options.WithDefaults());
@@ -23,6 +48,31 @@ namespace Pulumi.AliCloud.ApiGateway
         /// This data source provides the Api Gateway Backends of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.181.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.ApiGateway.GetBackends.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["apiGatewayBackendId1"] = ids.Apply(getBackendsResult =&gt; getBackendsResult.Backends[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetBackendsResult> Invoke(GetBackendsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBackendsResult>("alicloud:apigateway/getBackends:getBackends", args ?? new GetBackendsInvokeArgs(), options.WithDefaults());

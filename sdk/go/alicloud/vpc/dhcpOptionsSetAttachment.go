@@ -19,6 +19,57 @@ import (
 //
 // > **NOTE:** Available since v1.153.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleDhcpOptionsSet, err := vpc.NewDhcpOptionsSet(ctx, "exampleDhcpOptionsSet", &vpc.DhcpOptionsSetArgs{
+//				DhcpOptionsSetName:        pulumi.String(name),
+//				DhcpOptionsSetDescription: pulumi.String(name),
+//				DomainName:                pulumi.String("example.com"),
+//				DomainNameServers:         pulumi.String("100.100.2.136"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewDhcpOptionsSetAttachment(ctx, "exampleDhcpOptionsSetAttachment", &vpc.DhcpOptionsSetAttachmentArgs{
+//				VpcId:            exampleNetwork.ID(),
+//				DhcpOptionsSetId: exampleDhcpOptionsSet.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // VPC Dhcp Options Set Attachment can be imported using the id, e.g.

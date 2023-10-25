@@ -475,6 +475,17 @@ class Zone(pulumi.CustomResource):
                  zone_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo = alicloud.pvtz.Zone("foo", zone_name="foo.test.com")
+        ```
+
         ## Import
 
         Private Zone can be imported using the id, e.g.
@@ -505,6 +516,17 @@ class Zone(pulumi.CustomResource):
                  args: Optional[ZoneArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo = alicloud.pvtz.Zone("foo", zone_name="foo.test.com")
+        ```
+
         ## Import
 
         Private Zone can be imported using the id, e.g.

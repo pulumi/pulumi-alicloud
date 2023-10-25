@@ -220,6 +220,24 @@ class Backend(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.181.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.apigateway.Backend("default",
+            backend_name=name,
+            description=name,
+            backend_type="HTTP")
+        ```
+
         ## Import
 
         Api Gateway Backend can be imported using the id, e.g.
@@ -247,6 +265,24 @@ class Backend(pulumi.CustomResource):
         For information about Api Gateway Backend and how to use it, see [What is Backend](https://www.alibabacloud.com/help/en/api-gateway/developer-reference/api-cloudapi-2016-07-14-createbackend).
 
         > **NOTE:** Available since v1.181.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.apigateway.Backend("default",
+            backend_name=name,
+            description=name,
+            backend_type="HTTP")
+        ```
 
         ## Import
 

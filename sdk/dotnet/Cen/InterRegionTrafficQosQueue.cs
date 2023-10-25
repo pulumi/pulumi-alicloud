@@ -16,6 +16,117 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// &gt; **NOTE:** Available since v1.195.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var defaultRegion = config.Get("defaultRegion") ?? "cn-hangzhou";
+    ///     var peerRegion = config.Get("peerRegion") ?? "cn-beijing";
+    ///     var hz = new AliCloud.Provider("hz", new()
+    ///     {
+    ///         Region = defaultRegion,
+    ///     });
+    /// 
+    ///     var bj = new AliCloud.Provider("bj", new()
+    ///     {
+    ///         Region = peerRegion,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new()
+    ///     {
+    ///         CenInstanceName = name,
+    ///         ProtectionLevel = "REDUCED",
+    ///     });
+    /// 
+    ///     var defaultBandwidthPackage = new AliCloud.Cen.BandwidthPackage("defaultBandwidthPackage", new()
+    ///     {
+    ///         Bandwidth = 5,
+    ///         CenBandwidthPackageName = "tf_example",
+    ///         GeographicRegionAId = "China",
+    ///         GeographicRegionBId = "China",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Hz,
+    ///     });
+    /// 
+    ///     var defaultBandwidthPackageAttachment = new AliCloud.Cen.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", new()
+    ///     {
+    ///         InstanceId = defaultInstance.Id,
+    ///         BandwidthPackageId = defaultBandwidthPackage.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Hz,
+    ///     });
+    /// 
+    ///     var defaultTransitRouter = new AliCloud.Cen.TransitRouter("defaultTransitRouter", new()
+    ///     {
+    ///         CenId = defaultInstance.Id,
+    ///         SupportMulticast = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Hz,
+    ///     });
+    /// 
+    ///     var peer = new AliCloud.Cen.TransitRouter("peer", new()
+    ///     {
+    ///         CenId = defaultTransitRouter.CenId,
+    ///         SupportMulticast = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Bj,
+    ///     });
+    /// 
+    ///     var defaultTransitRouterPeerAttachment = new AliCloud.Cen.TransitRouterPeerAttachment("defaultTransitRouterPeerAttachment", new()
+    ///     {
+    ///         CenId = defaultInstance.Id,
+    ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+    ///         PeerTransitRouterRegionId = peerRegion,
+    ///         PeerTransitRouterId = peer.TransitRouterId,
+    ///         CenBandwidthPackageId = defaultBandwidthPackageAttachment.BandwidthPackageId,
+    ///         Bandwidth = 5,
+    ///         TransitRouterAttachmentDescription = name,
+    ///         TransitRouterAttachmentName = name,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Hz,
+    ///     });
+    /// 
+    ///     var defaultInterRegionTrafficQosPolicy = new AliCloud.Cen.InterRegionTrafficQosPolicy("defaultInterRegionTrafficQosPolicy", new()
+    ///     {
+    ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+    ///         TransitRouterAttachmentId = defaultTransitRouterPeerAttachment.TransitRouterAttachmentId,
+    ///         InterRegionTrafficQosPolicyName = name,
+    ///         InterRegionTrafficQosPolicyDescription = name,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Hz,
+    ///     });
+    /// 
+    ///     var defaultInterRegionTrafficQosQueue = new AliCloud.Cen.InterRegionTrafficQosQueue("defaultInterRegionTrafficQosQueue", new()
+    ///     {
+    ///         RemainBandwidthPercent = 20,
+    ///         TrafficQosPolicyId = defaultInterRegionTrafficQosPolicy.Id,
+    ///         Dscps = new[]
+    ///         {
+    ///             "1",
+    ///             "2",
+    ///         },
+    ///         InterRegionTrafficQosQueueDescription = name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Cen Inter Region Traffic Qos Queue can be imported using the id, e.g.

@@ -119,6 +119,25 @@ def get_address_pools(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.152.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.dns.get_address_pools(instance_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("alidnsAddressPoolId1", ids.pools[0].id)
+    name_regex = alicloud.dns.get_address_pools(instance_id="example_value",
+        name_regex="^my-AddressPool")
+    pulumi.export("alidnsAddressPoolId2", name_regex.pools[0].id)
+    ```
+
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Address Pool IDs.
@@ -157,6 +176,25 @@ def get_address_pools_output(enable_details: Optional[pulumi.Input[Optional[bool
     This data source provides the Alidns Address Pools of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.152.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.dns.get_address_pools(instance_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("alidnsAddressPoolId1", ids.pools[0].id)
+    name_regex = alicloud.dns.get_address_pools(instance_id="example_value",
+        name_regex="^my-AddressPool")
+    pulumi.export("alidnsAddressPoolId2", name_regex.pools[0].id)
+    ```
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

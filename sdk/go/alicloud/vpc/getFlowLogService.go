@@ -17,6 +17,34 @@ import (
 // For information about Vpc Flow Log and how to use it, see [What is Vpc Flow Log](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-openflowlog).
 //
 // > **NOTE:** Available since v1.209.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vpc.GetFlowLogService(ctx, &vpc.GetFlowLogServiceArgs{
+//				Enable: pulumi.StringRef("On"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetFlowLogService(ctx *pulumi.Context, args *GetFlowLogServiceArgs, opts ...pulumi.InvokeOption) (*GetFlowLogServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFlowLogServiceResult

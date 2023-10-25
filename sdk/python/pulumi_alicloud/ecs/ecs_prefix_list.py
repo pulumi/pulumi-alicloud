@@ -261,6 +261,25 @@ class EcsPrefixList(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.152.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ecs.EcsPrefixList("default",
+            address_family="IPv4",
+            description="description",
+            entries=[alicloud.ecs.EcsPrefixListEntryArgs(
+                cidr="192.168.0.0/24",
+                description="description",
+            )],
+            max_entries=2,
+            prefix_list_name="tftest")
+        ```
+
         ## Import
 
         ECS Prefix List can be imported using the id, e.g.
@@ -289,6 +308,25 @@ class EcsPrefixList(pulumi.CustomResource):
         For information about ECS Prefix List and how to use it, see [What is Prefix List.](https://www.alibabacloud.com/help/en/doc-detail/207969.html).
 
         > **NOTE:** Available in v1.152.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ecs.EcsPrefixList("default",
+            address_family="IPv4",
+            description="description",
+            entries=[alicloud.ecs.EcsPrefixListEntryArgs(
+                cidr="192.168.0.0/24",
+                description="description",
+            )],
+            max_entries=2,
+            prefix_list_name="tftest")
+        ```
 
         ## Import
 

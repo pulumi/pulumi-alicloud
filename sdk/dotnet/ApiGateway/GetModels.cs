@@ -15,6 +15,44 @@ namespace Pulumi.AliCloud.ApiGateway
         /// This data source provides the Api Gateway Models of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.187.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.ApiGateway.GetModels.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         GroupId = "example_group_id",
+        ///     });
+        /// 
+        ///     var groupId = AliCloud.ApiGateway.GetModels.Invoke(new()
+        ///     {
+        ///         GroupId = "example_group_id",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["apiGatewayModelId1"] = ids.Apply(getModelsResult =&gt; getModelsResult.Models[0]?.Id),
+        ///         ["apiGatewayModelId2"] = groupId.Apply(getModelsResult =&gt; getModelsResult.Models[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetModelsResult> InvokeAsync(GetModelsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetModelsResult>("alicloud:apigateway/getModels:getModels", args ?? new GetModelsArgs(), options.WithDefaults());
@@ -23,6 +61,44 @@ namespace Pulumi.AliCloud.ApiGateway
         /// This data source provides the Api Gateway Models of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.187.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.ApiGateway.GetModels.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         GroupId = "example_group_id",
+        ///     });
+        /// 
+        ///     var groupId = AliCloud.ApiGateway.GetModels.Invoke(new()
+        ///     {
+        ///         GroupId = "example_group_id",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["apiGatewayModelId1"] = ids.Apply(getModelsResult =&gt; getModelsResult.Models[0]?.Id),
+        ///         ["apiGatewayModelId2"] = groupId.Apply(getModelsResult =&gt; getModelsResult.Models[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetModelsResult> Invoke(GetModelsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetModelsResult>("alicloud:apigateway/getModels:getModels", args ?? new GetModelsInvokeArgs(), options.WithDefaults());

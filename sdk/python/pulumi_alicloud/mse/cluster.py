@@ -776,6 +776,35 @@ class Cluster(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.94.0+.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=example_network.id,
+            zone_id=example_zones.zones[0].id)
+        example_cluster = alicloud.mse.Cluster("exampleCluster",
+            cluster_specification="MSE_SC_1_2_60_c",
+            cluster_type="Nacos-Ans",
+            cluster_version="NACOS_2_0_0",
+            instance_count=1,
+            net_type="privatenet",
+            pub_network_flow="1",
+            connection_type="slb",
+            cluster_alias_name="terraform-example",
+            mse_version="mse_dev",
+            vswitch_id=example_switch.id,
+            vpc_id=example_network.id)
+        ```
+
         ## Import
 
         MSE Cluster can be imported using the id, e.g.
@@ -813,6 +842,35 @@ class Cluster(pulumi.CustomResource):
         Provides a MSE Cluster resource. It is a one-stop microservice platform for the industry's mainstream open source microservice frameworks Spring Cloud and Dubbo, providing governance center, managed registry and managed configuration center.
 
         > **NOTE:** Available in 1.94.0+.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=example_network.id,
+            zone_id=example_zones.zones[0].id)
+        example_cluster = alicloud.mse.Cluster("exampleCluster",
+            cluster_specification="MSE_SC_1_2_60_c",
+            cluster_type="Nacos-Ans",
+            cluster_version="NACOS_2_0_0",
+            instance_count=1,
+            net_type="privatenet",
+            pub_network_flow="1",
+            connection_type="slb",
+            cluster_alias_name="terraform-example",
+            mse_version="mse_dev",
+            vswitch_id=example_switch.id,
+            vpc_id=example_network.id)
+        ```
 
         ## Import
 

@@ -11,6 +11,30 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.147.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-testaccoossetting";
+ * const defaultBucket = new alicloud.oss.Bucket("defaultBucket", {
+ *     bucket: name,
+ *     acl: "public-read-write",
+ * });
+ * const defaultProject = new alicloud.log.Project("defaultProject", {});
+ * const defaultServiceSetting = new alicloud.oos.ServiceSetting("defaultServiceSetting", {
+ *     deliveryOssEnabled: true,
+ *     deliveryOssKeyPrefix: "path1/",
+ *     deliveryOssBucketName: defaultBucket.bucket,
+ *     deliverySlsEnabled: true,
+ *     deliverySlsProjectName: defaultProject.name,
+ * });
+ * ```
+ *
  * ## Import
  *
  * OOS Service Setting can be imported using the id, e.g.

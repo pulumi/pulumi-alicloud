@@ -387,6 +387,29 @@ class FileSystem(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.140.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.dfs.get_zones()
+        default_file_system = alicloud.dfs.FileSystem("defaultFileSystem",
+            storage_type=default_zones.zones[0].options[0].storage_type,
+            zone_id=default_zones.zones[0].zone_id,
+            protocol_type="HDFS",
+            description=name,
+            file_system_name=name,
+            throughput_mode="Standard",
+            space_capacity=1024)
+        ```
+
         ## Import
 
         DFS File System can be imported using the id, e.g.
@@ -418,6 +441,29 @@ class FileSystem(pulumi.CustomResource):
         For information about DFS File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/doc-detail/207144.htm).
 
         > **NOTE:** Available since v1.140.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.dfs.get_zones()
+        default_file_system = alicloud.dfs.FileSystem("defaultFileSystem",
+            storage_type=default_zones.zones[0].options[0].storage_type,
+            zone_id=default_zones.zones[0].zone_id,
+            protocol_type="HDFS",
+            description=name,
+            file_system_name=name,
+            throughput_mode="Standard",
+            space_capacity=1024)
+        ```
 
         ## Import
 

@@ -462,6 +462,31 @@ class QosCar(pulumi.CustomResource):
 
         > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_qos = alicloud.rocketmq.Qos("defaultQos")
+        default_qos_car = alicloud.rocketmq.QosCar("defaultQosCar",
+            qos_id=default_qos.id,
+            description=name,
+            priority=1,
+            limit_type="Absolute",
+            min_bandwidth_abs=10,
+            max_bandwidth_abs=20,
+            min_bandwidth_percent=10,
+            max_bandwidth_percent=20,
+            percent_source_type="InternetUpBandwidth")
+        ```
+
         ## Import
 
         The Sag Qos Car can be imported using the id, e.g.
@@ -498,6 +523,31 @@ class QosCar(pulumi.CustomResource):
         > **NOTE:** Available since v1.60.0.
 
         > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_qos = alicloud.rocketmq.Qos("defaultQos")
+        default_qos_car = alicloud.rocketmq.QosCar("defaultQosCar",
+            qos_id=default_qos.id,
+            description=name,
+            priority=1,
+            limit_type="Absolute",
+            min_bandwidth_abs=10,
+            max_bandwidth_abs=20,
+            min_bandwidth_percent=10,
+            max_bandwidth_percent=20,
+            percent_source_type="InternetUpBandwidth")
+        ```
 
         ## Import
 

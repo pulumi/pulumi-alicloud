@@ -100,6 +100,22 @@ def get_accelerator_spare_ip_attachments(accelerator_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.167.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.ga.get_accelerator_spare_ip_attachments(accelerator_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("gaAcceleratorSpareIpAttachmentId1", ids.attachments[0].id)
+    ```
+
 
     :param str accelerator_id: The ID of the global acceleration instance.
     :param Sequence[str] ids: A list of Accelerator Spare Ip Attachment IDs.
@@ -133,6 +149,22 @@ def get_accelerator_spare_ip_attachments_output(accelerator_id: Optional[pulumi.
     This data source provides the Ga Accelerator Spare Ip Attachments of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.167.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.ga.get_accelerator_spare_ip_attachments(accelerator_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("gaAcceleratorSpareIpAttachmentId1", ids.attachments[0].id)
+    ```
 
 
     :param str accelerator_id: The ID of the global acceleration instance.

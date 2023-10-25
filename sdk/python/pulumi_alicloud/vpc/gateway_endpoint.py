@@ -381,6 +381,34 @@ class GatewayEndpoint(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.208.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        domain = config.get("domain")
+        if domain is None:
+            domain = "com.aliyun.cn-hangzhou.oss"
+        default_vpc = alicloud.vpc.Network("defaultVpc", description="tf-example")
+        default_rg = alicloud.resourcemanager.ResourceGroup("defaultRg",
+            display_name="tf-example-497",
+            resource_group_name=name)
+        default = alicloud.vpc.GatewayEndpoint("default",
+            gateway_endpoint_descrption="test-gateway-endpoint",
+            gateway_endpoint_name=name,
+            vpc_id=default_vpc.id,
+            resource_group_id=default_rg.id,
+            service_name=domain,
+            policy_document="{ \\"Version\\" : \\"1\\", \\"Statement\\" : [ { \\"Effect\\" : \\"Allow\\", \\"Resource\\" : [ \\"*\\" ], \\"Action\\" : [ \\"*\\" ], \\"Principal\\" : [ \\"*\\" ] } ] }")
+        ```
+
         ## Import
 
         VPC Gateway Endpoint can be imported using the id, e.g.
@@ -411,6 +439,34 @@ class GatewayEndpoint(pulumi.CustomResource):
         For information about VPC Gateway Endpoint and how to use it, see [What is Gateway Endpoint](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/gateway-endpoint).
 
         > **NOTE:** Available since v1.208.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        domain = config.get("domain")
+        if domain is None:
+            domain = "com.aliyun.cn-hangzhou.oss"
+        default_vpc = alicloud.vpc.Network("defaultVpc", description="tf-example")
+        default_rg = alicloud.resourcemanager.ResourceGroup("defaultRg",
+            display_name="tf-example-497",
+            resource_group_name=name)
+        default = alicloud.vpc.GatewayEndpoint("default",
+            gateway_endpoint_descrption="test-gateway-endpoint",
+            gateway_endpoint_name=name,
+            vpc_id=default_vpc.id,
+            resource_group_id=default_rg.id,
+            service_name=domain,
+            policy_document="{ \\"Version\\" : \\"1\\", \\"Statement\\" : [ { \\"Effect\\" : \\"Allow\\", \\"Resource\\" : [ \\"*\\" ], \\"Action\\" : [ \\"*\\" ], \\"Principal\\" : [ \\"*\\" ] } ] }")
+        ```
 
         ## Import
 

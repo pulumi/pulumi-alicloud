@@ -19,6 +19,51 @@ import (
 //
 // > **NOTE:** Available in v1.155.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleZones, err := nas.GetZones(ctx, &nas.GetZonesArgs{
+//				FileSystemType: pulumi.StringRef("standard"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleFileSystem, err := nas.NewFileSystem(ctx, "exampleFileSystem", &nas.FileSystemArgs{
+//				ProtocolType: pulumi.String("NFS"),
+//				StorageType:  pulumi.String("Performance"),
+//				Description:  pulumi.String("terraform-example"),
+//				EncryptType:  pulumi.Int(1),
+//				ZoneId:       *pulumi.String(exampleZones.Zones[0].ZoneId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = nas.NewRecycleBin(ctx, "exampleRecycleBin", &nas.RecycleBinArgs{
+//				FileSystemId: exampleFileSystem.ID(),
+//				ReservedDays: pulumi.Int(3),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Network Attached Storage (NAS) Recycle Bin can be imported using the id, e.g.

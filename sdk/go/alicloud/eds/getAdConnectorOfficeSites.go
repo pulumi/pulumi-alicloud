@@ -15,6 +15,40 @@ import (
 // This data source provides the Ecd Ad Connector Office Sites of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.176.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := eds.GetAdConnectorOfficeSites(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("ecdAdConnectorOfficeSiteId1", ids.Sites[0].Id)
+//			nameRegex, err := eds.GetAdConnectorOfficeSites(ctx, &eds.GetAdConnectorOfficeSitesArgs{
+//				NameRegex: pulumi.StringRef("^my-AdConnectorOfficeSite"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("ecdAdConnectorOfficeSiteId2", nameRegex.Sites[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetAdConnectorOfficeSites(ctx *pulumi.Context, args *GetAdConnectorOfficeSitesArgs, opts ...pulumi.InvokeOption) (*GetAdConnectorOfficeSitesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAdConnectorOfficeSitesResult

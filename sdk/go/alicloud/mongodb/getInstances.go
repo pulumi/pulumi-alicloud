@@ -14,6 +14,35 @@ import (
 
 // The `mongodb.getInstances` data source provides a collection of MongoDB instances available in Alicloud account.
 // Filters support regular expression for the instance name, engine or instance type.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mongodb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := mongodb.GetInstances(ctx, &mongodb.GetInstancesArgs{
+//				AvailabilityZone: pulumi.StringRef("eu-central-1a"),
+//				InstanceClass:    pulumi.StringRef("dds.mongo.mid"),
+//				InstanceType:     pulumi.StringRef("replicate"),
+//				NameRegex:        pulumi.StringRef("dds-.+\\d+"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstancesResult

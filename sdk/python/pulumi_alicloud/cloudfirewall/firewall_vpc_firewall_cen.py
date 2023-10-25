@@ -384,6 +384,25 @@ class FirewallVpcFirewallCen(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.194.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.cloudfirewall.FirewallVpcFirewallCen("default",
+            cen_id="cen-cjok7uyb5w2b27573v",
+            local_vpc=alicloud.cloudfirewall.FirewallVpcFirewallCenLocalVpcArgs(
+                network_instance_id="vpc-a2d4wzzfuumzuq6uog5w4",
+            ),
+            member_uid="1415189284827022",
+            status="open",
+            vpc_firewall_name="tf-vpc-firewall-name",
+            vpc_region="ap-south-1")
+        ```
+
         ## Import
 
         Cloud Firewall Vpc Firewall Cen can be imported using the id, e.g.
@@ -414,6 +433,25 @@ class FirewallVpcFirewallCen(pulumi.CustomResource):
         For information about Cloud Firewall Vpc Firewall Cen and how to use it, see [What is Vpc Firewall Cen](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallcenconfigure).
 
         > **NOTE:** Available since v1.194.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.cloudfirewall.FirewallVpcFirewallCen("default",
+            cen_id="cen-cjok7uyb5w2b27573v",
+            local_vpc=alicloud.cloudfirewall.FirewallVpcFirewallCenLocalVpcArgs(
+                network_instance_id="vpc-a2d4wzzfuumzuq6uog5w4",
+            ),
+            member_uid="1415189284827022",
+            status="open",
+            vpc_firewall_name="tf-vpc-firewall-name",
+            vpc_region="ap-south-1")
+        ```
 
         ## Import
 

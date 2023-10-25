@@ -13,6 +13,96 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.161.0+.
  *
+ * ## Example Usage
+ *
+ * Set bucket replication configuration
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const bucketSrc = new alicloud.oss.Bucket("bucketSrc", {bucket: pulumi.interpolate`example-src-${_default.result}`});
+ * const bucketDest = new alicloud.oss.Bucket("bucketDest", {bucket: pulumi.interpolate`example-dest-${_default.result}`});
+ * const role = new alicloud.ram.Role("role", {
+ *     document: `		{
+ * 		  "Statement": [
+ * 			{
+ * 			  "Action": "sts:AssumeRole",
+ * 			  "Effect": "Allow",
+ * 			  "Principal": {
+ * 				"Service": [
+ * 				  "oss.aliyuncs.com"
+ * 				]
+ * 			  }
+ * 			}
+ * 		  ],
+ * 		  "Version": "1"
+ * 		}
+ * `,
+ *     description: "this is a test",
+ *     force: true,
+ * });
+ * const policy = new alicloud.ram.Policy("policy", {
+ *     policyName: pulumi.interpolate`example-policy-${_default.result}`,
+ *     policyDocument: `		{
+ * 		  "Statement": [
+ * 			{
+ * 			  "Action": [
+ * 				"*"
+ * 			  ],
+ * 			  "Effect": "Allow",
+ * 			  "Resource": [
+ * 				"*"
+ * 			  ]
+ * 			}
+ * 		  ],
+ * 			"Version": "1"
+ * 		}
+ * `,
+ *     description: "this is a policy test",
+ *     force: true,
+ * });
+ * const attach = new alicloud.ram.RolePolicyAttachment("attach", {
+ *     policyName: policy.name,
+ *     policyType: policy.type,
+ *     roleName: role.name,
+ * });
+ * const key = new alicloud.kms.Key("key", {
+ *     description: "Hello KMS",
+ *     pendingWindowInDays: 7,
+ *     status: "Enabled",
+ * });
+ * const cross_region_replication = new alicloud.oss.BucketReplication("cross-region-replication", {
+ *     bucket: bucketSrc.id,
+ *     action: "PUT,DELETE",
+ *     historicalObjectReplication: "enabled",
+ *     prefixSet: {
+ *         prefixes: [
+ *             "prefix1/",
+ *             "prefix2/",
+ *         ],
+ *     },
+ *     destination: {
+ *         bucket: bucketDest.id,
+ *         location: bucketDest.location,
+ *     },
+ *     syncRole: role.name,
+ *     encryptionConfiguration: {
+ *         replicaKmsKeyId: key.id,
+ *     },
+ *     sourceSelectionCriteria: {
+ *         sseKmsEncryptedObjects: {
+ *             status: "Enabled",
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * ### Timeouts The `timeouts` block allows you to specify timeouts for certain actions* `delete` - (Defaults to 30 mins) Used when delete a data replication rule (until the data replication task is cleared).

@@ -10,6 +10,30 @@ import * as utilities from "../utilities";
  * This data source provides the Mhub Apps of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.138.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "example_value";
+ * const _default = new alicloud.mhub.App("default", {
+ *     appName: name,
+ *     productId: alicloud_mhub_product["default"].id,
+ *     packageName: "com.test.android",
+ *     type: "2",
+ * });
+ * const ids = alicloud.mhub.getApps({});
+ * export const mhubAppId1 = ids.then(ids => ids.apps?.[0]?.id);
+ * const nameRegex = alicloud.mhub.getApps({
+ *     nameRegex: "^my-App",
+ * });
+ * export const mhubAppId2 = nameRegex.then(nameRegex => nameRegex.apps?.[0]?.id);
+ * ```
  */
 export function getApps(args: GetAppsArgs, opts?: pulumi.InvokeOptions): Promise<GetAppsResult> {
 
@@ -75,6 +99,30 @@ export interface GetAppsResult {
  * This data source provides the Mhub Apps of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.138.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "example_value";
+ * const _default = new alicloud.mhub.App("default", {
+ *     appName: name,
+ *     productId: alicloud_mhub_product["default"].id,
+ *     packageName: "com.test.android",
+ *     type: "2",
+ * });
+ * const ids = alicloud.mhub.getApps({});
+ * export const mhubAppId1 = ids.then(ids => ids.apps?.[0]?.id);
+ * const nameRegex = alicloud.mhub.getApps({
+ *     nameRegex: "^my-App",
+ * });
+ * export const mhubAppId2 = nameRegex.then(nameRegex => nameRegex.apps?.[0]?.id);
+ * ```
  */
 export function getAppsOutput(args: GetAppsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppsResult> {
     return pulumi.output(args).apply((a: any) => getApps(a, opts))

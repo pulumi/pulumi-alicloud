@@ -149,6 +149,19 @@ def get_network_acls(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.122.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.vpc.get_network_acls(ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstNetworkAclId", example.acls[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Network Acl ID.
     :param str name_regex: A regex string to filter results by Network Acl name.
@@ -199,6 +212,19 @@ def get_network_acls_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     This data source provides the Network Acls of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.122.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.vpc.get_network_acls(ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstNetworkAclId", example.acls[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Network Acl ID.

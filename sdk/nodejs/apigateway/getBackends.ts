@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * This data source provides the Api Gateway Backends of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.181.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.apigateway.getBackends({});
+ * export const apiGatewayBackendId1 = ids.then(ids => ids.backends?.[0]?.id);
+ * ```
  */
 export function getBackends(args?: GetBackendsArgs, opts?: pulumi.InvokeOptions): Promise<GetBackendsResult> {
     args = args || {};
@@ -64,6 +76,18 @@ export interface GetBackendsResult {
  * This data source provides the Api Gateway Backends of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.181.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.apigateway.getBackends({});
+ * export const apiGatewayBackendId1 = ids.then(ids => ids.backends?.[0]?.id);
+ * ```
  */
 export function getBackendsOutput(args?: GetBackendsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackendsResult> {
     return pulumi.output(args).apply((a: any) => getBackends(a, opts))

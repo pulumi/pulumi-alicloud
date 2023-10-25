@@ -16,6 +16,67 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// &gt; **NOTE:** Available since v1.153.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var examplePhysicalConnections = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
+    ///     {
+    ///         NameRegex = "^preserved-NODELETING",
+    ///     });
+    /// 
+    ///     var vlanId = new Random.RandomInteger("vlanId", new()
+    ///     {
+    ///         Max = 2999,
+    ///         Min = 1,
+    ///     });
+    /// 
+    ///     var exampleVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("exampleVirtualBorderRouter", new()
+    ///     {
+    ///         LocalGatewayIp = "10.0.0.1",
+    ///         PeerGatewayIp = "10.0.0.2",
+    ///         PeeringSubnetMask = "255.255.255.252",
+    ///         PhysicalConnectionId = examplePhysicalConnections.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id),
+    ///         VirtualBorderRouterName = name,
+    ///         VlanId = vlanId.Id,
+    ///         MinRxInterval = 1000,
+    ///         MinTxInterval = 1000,
+    ///         DetectMultiplier = 10,
+    ///     });
+    /// 
+    ///     var exampleBgpGroup = new AliCloud.Vpc.BgpGroup("exampleBgpGroup", new()
+    ///     {
+    ///         AuthKey = "YourPassword+12345678",
+    ///         BgpGroupName = name,
+    ///         Description = name,
+    ///         PeerAsn = 1111,
+    ///         RouterId = exampleVirtualBorderRouter.Id,
+    ///         IsFakeAsn = true,
+    ///     });
+    /// 
+    ///     var exampleBgpPeer = new AliCloud.Vpc.BgpPeer("exampleBgpPeer", new()
+    ///     {
+    ///         BfdMultiHop = 10,
+    ///         BgpGroupId = exampleBgpGroup.Id,
+    ///         EnableBfd = true,
+    ///         IpVersion = "IPV4",
+    ///         PeerIpAddress = "1.1.1.1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// VPC Bgp Peer can be imported using the id, e.g.

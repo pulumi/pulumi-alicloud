@@ -15,6 +15,39 @@ import (
 // This data source provides the Cloud Firewall Vpc Firewall Control Policies of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.194.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := cloudfirewall.GetVpcFirewallControlPolicies(ctx, &cloudfirewall.GetVpcFirewallControlPoliciesArgs{
+//				VpcFirewallId: "example_value",
+//				Ids: []string{
+//					"example_value-1",
+//					"example_value-2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudCloudFirewallVpcFirewallControlPoliciesId1", ids.Policies[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetVpcFirewallControlPolicies(ctx *pulumi.Context, args *GetVpcFirewallControlPoliciesArgs, opts ...pulumi.InvokeOption) (*GetVpcFirewallControlPoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVpcFirewallControlPoliciesResult

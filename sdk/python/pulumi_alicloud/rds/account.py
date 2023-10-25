@@ -615,6 +615,40 @@ class Account(pulumi.CustomResource):
 
         > **DEPRECATED:**  This resource  has been deprecated from version `1.120.0`. Please use new resource alicloud_rds_account.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        creation = config.get("creation")
+        if creation is None:
+            creation = "Rds"
+        name = config.get("name")
+        if name is None:
+            name = "dbaccountmysql"
+        default_zones = alicloud.get_zones(available_resource_creation=creation)
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        instance = alicloud.rds.Instance("instance",
+            engine="MySQL",
+            engine_version="5.6",
+            instance_type="rds.mysql.s1.small",
+            instance_storage=10,
+            vswitch_id=default_switch.id,
+            instance_name=name)
+        account = alicloud.rds.Account("account",
+            instance_id=instance.id,
+            password="Test12345")
+        ```
+
         ## Import
 
         RDS account can be imported using the id, e.g.
@@ -647,6 +681,40 @@ class Account(pulumi.CustomResource):
         Provides an RDS account resource and used to manage databases.
 
         > **DEPRECATED:**  This resource  has been deprecated from version `1.120.0`. Please use new resource alicloud_rds_account.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        creation = config.get("creation")
+        if creation is None:
+            creation = "Rds"
+        name = config.get("name")
+        if name is None:
+            name = "dbaccountmysql"
+        default_zones = alicloud.get_zones(available_resource_creation=creation)
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        instance = alicloud.rds.Instance("instance",
+            engine="MySQL",
+            engine_version="5.6",
+            instance_type="rds.mysql.s1.small",
+            instance_storage=10,
+            vswitch_id=default_switch.id,
+            instance_name=name)
+        account = alicloud.rds.Account("account",
+            instance_id=instance.id,
+            password="Test12345")
+        ```
 
         ## Import
 

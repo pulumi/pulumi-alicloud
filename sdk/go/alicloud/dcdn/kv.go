@@ -19,6 +19,49 @@ import (
 //
 // > **NOTE:** Available since v1.198.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultKvNamespace, err := dcdn.NewKvNamespace(ctx, "defaultKvNamespace", &dcdn.KvNamespaceArgs{
+//				Description: pulumi.String(name),
+//				Namespace:   pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dcdn.NewKv(ctx, "defaultKv", &dcdn.KvArgs{
+//				Value:     pulumi.String("example-value"),
+//				Key:       pulumi.String(name),
+//				Namespace: defaultKvNamespace.Namespace,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Dcdn Kv can be imported using the id, e.g.

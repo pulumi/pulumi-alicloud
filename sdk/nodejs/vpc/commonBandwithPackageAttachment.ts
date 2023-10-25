@@ -5,6 +5,32 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultCommonBandwithPackage = new alicloud.vpc.CommonBandwithPackage("defaultCommonBandwithPackage", {
+ *     bandwidth: "3",
+ *     internetChargeType: "PayByBandwidth",
+ * });
+ * const defaultEipAddress = new alicloud.ecs.EipAddress("defaultEipAddress", {
+ *     bandwidth: "3",
+ *     internetChargeType: "PayByTraffic",
+ * });
+ * const defaultCommonBandwithPackageAttachment = new alicloud.vpc.CommonBandwithPackageAttachment("defaultCommonBandwithPackageAttachment", {
+ *     bandwidthPackageId: defaultCommonBandwithPackage.id,
+ *     instanceId: defaultEipAddress.id,
+ *     bandwidthPackageBandwidth: "2",
+ *     ipType: "EIP",
+ * });
+ * ```
+ *
  * ## Import
  *
  * cbwp Common Bandwidth Package Attachment can be imported using the id, e.g.

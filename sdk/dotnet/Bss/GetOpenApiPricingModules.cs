@@ -15,6 +15,35 @@ namespace Pulumi.AliCloud.Bss
         /// This data source provides Bss Open Api Pricing Module available to the user.[What is Pricing Module](https://www.alibabacloud.com/help/en/bss-openapi/latest/describepricingmodule#doc-api-BssOpenApi-DescribePricingModule)
         /// 
         /// &gt; **NOTE:** Available in 1.195.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Bss.GetOpenApiPricingModules.Invoke(new()
+        ///     {
+        ///         NameRegex = "国内月均日峰值带宽",
+        ///         ProductCode = "cdn",
+        ///         ProductType = "CDN",
+        ///         SubscriptionType = "PayAsYouGo",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudBssOpenapiPricingModuleExampleId"] = @default.Apply(@default =&gt; @default.Apply(getOpenApiPricingModulesResult =&gt; getOpenApiPricingModulesResult.Modules[0]?.Code)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetOpenApiPricingModulesResult> InvokeAsync(GetOpenApiPricingModulesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOpenApiPricingModulesResult>("alicloud:bss/getOpenApiPricingModules:getOpenApiPricingModules", args ?? new GetOpenApiPricingModulesArgs(), options.WithDefaults());
@@ -23,6 +52,35 @@ namespace Pulumi.AliCloud.Bss
         /// This data source provides Bss Open Api Pricing Module available to the user.[What is Pricing Module](https://www.alibabacloud.com/help/en/bss-openapi/latest/describepricingmodule#doc-api-BssOpenApi-DescribePricingModule)
         /// 
         /// &gt; **NOTE:** Available in 1.195.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Bss.GetOpenApiPricingModules.Invoke(new()
+        ///     {
+        ///         NameRegex = "国内月均日峰值带宽",
+        ///         ProductCode = "cdn",
+        ///         ProductType = "CDN",
+        ///         SubscriptionType = "PayAsYouGo",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudBssOpenapiPricingModuleExampleId"] = @default.Apply(@default =&gt; @default.Apply(getOpenApiPricingModulesResult =&gt; getOpenApiPricingModulesResult.Modules[0]?.Code)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetOpenApiPricingModulesResult> Invoke(GetOpenApiPricingModulesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOpenApiPricingModulesResult>("alicloud:bss/getOpenApiPricingModules:getOpenApiPricingModules", args ?? new GetOpenApiPricingModulesInvokeArgs(), options.WithDefaults());

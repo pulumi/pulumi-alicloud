@@ -15,6 +15,40 @@ import (
 // This data source provides a list of Ram user permissions.
 //
 // > **NOTE:** Available in v1.122.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			usersDs, err := ram.GetUsers(ctx, &ram.GetUsersArgs{
+//				NameRegex: pulumi.StringRef("your_user_name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := cs.LookupKubernetesPermission(ctx, &cs.LookupKubernetesPermissionArgs{
+//				Uid: usersDs.Users[0].Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("permissions", _default.Permissions)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupKubernetesPermission(ctx *pulumi.Context, args *LookupKubernetesPermissionArgs, opts ...pulumi.InvokeOption) (*LookupKubernetesPermissionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupKubernetesPermissionResult

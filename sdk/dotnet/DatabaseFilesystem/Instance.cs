@@ -16,6 +16,32 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// 
     /// &gt; **NOTE:** Available since v1.136.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var example = new AliCloud.DatabaseFilesystem.Instance("example", new()
+    ///     {
+    ///         Category = "standard",
+    ///         ZoneId = "cn-hangzhou-i",
+    ///         PerformanceLevel = "PL1",
+    ///         InstanceName = name,
+    ///         Size = 100,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// DBFS Instance can be imported using the id, e.g.

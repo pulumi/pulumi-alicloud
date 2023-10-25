@@ -11,6 +11,70 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.160.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "Instance",
+ *     availableDiskCategory: "cloud_essd",
+ * });
+ * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultZones.zones?.[0]?.id,
+ *     systemDiskCategory: "cloud_essd",
+ * }));
+ * const defaultImages = alicloud.ecs.getImages({
+ *     owners: "system",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
+ * const defaultInstance = new alicloud.ecs.Instance("defaultInstance", {
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     instanceName: "terraform-example",
+ *     securityGroups: [defaultSecurityGroup.id],
+ *     vswitchId: defaultSwitch.id,
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
+ *     internetMaxBandwidthOut: 10,
+ * });
+ * const defaultEcsDisk = new alicloud.ecs.EcsDisk("defaultEcsDisk", {
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     diskName: "terraform-example",
+ *     description: "terraform-example",
+ *     category: "cloud_essd",
+ *     size: 30,
+ * });
+ * const defaultDiskAttachment = new alicloud.ecs.DiskAttachment("defaultDiskAttachment", {
+ *     diskId: defaultEcsDisk.id,
+ *     instanceId: defaultInstance.id,
+ * });
+ * const defaultEcsSnapshotGroup = new alicloud.ecs.EcsSnapshotGroup("defaultEcsSnapshotGroup", {
+ *     description: "terraform-example",
+ *     diskIds: [defaultEcsDisk.id],
+ *     snapshotGroupName: "terraform-example",
+ *     instanceId: defaultInstance.id,
+ *     instantAccess: true,
+ *     instantAccessRetentionDays: 1,
+ *     tags: {
+ *         Created: "TF",
+ *         For: "Acceptance",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * ECS Snapshot Group can be imported using the id, e.g.

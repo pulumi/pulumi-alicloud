@@ -15,6 +15,39 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// This data source provides Service Catalog Launch Option available to the user. [What is Launch Option](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listlaunchoptions).
         /// 
         /// &gt; **NOTE:** Available since v1.196.0.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var defaultEndUserProducts = AliCloud.ServiceCatalog.GetEndUserProducts.Invoke(new()
+        ///     {
+        ///         NameRegex = "ram模板创建",
+        ///     });
+        /// 
+        ///     var defaultLaunchOptions = AliCloud.ServiceCatalog.GetLaunchOptions.Invoke(new()
+        ///     {
+        ///         ProductId = "data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudServiceCatalogLaunchOptionExampleId"] = defaultLaunchOptions.Apply(getLaunchOptionsResult =&gt; getLaunchOptionsResult.LaunchOptions[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetLaunchOptionsResult> InvokeAsync(GetLaunchOptionsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLaunchOptionsResult>("alicloud:servicecatalog/getLaunchOptions:getLaunchOptions", args ?? new GetLaunchOptionsArgs(), options.WithDefaults());
@@ -23,6 +56,39 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// This data source provides Service Catalog Launch Option available to the user. [What is Launch Option](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listlaunchoptions).
         /// 
         /// &gt; **NOTE:** Available since v1.196.0.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var defaultEndUserProducts = AliCloud.ServiceCatalog.GetEndUserProducts.Invoke(new()
+        ///     {
+        ///         NameRegex = "ram模板创建",
+        ///     });
+        /// 
+        ///     var defaultLaunchOptions = AliCloud.ServiceCatalog.GetLaunchOptions.Invoke(new()
+        ///     {
+        ///         ProductId = "data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudServiceCatalogLaunchOptionExampleId"] = defaultLaunchOptions.Apply(getLaunchOptionsResult =&gt; getLaunchOptionsResult.LaunchOptions[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetLaunchOptionsResult> Invoke(GetLaunchOptionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLaunchOptionsResult>("alicloud:servicecatalog/getLaunchOptions:getLaunchOptions", args ?? new GetLaunchOptionsInvokeArgs(), options.WithDefaults());

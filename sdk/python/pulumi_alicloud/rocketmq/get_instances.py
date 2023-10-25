@@ -144,6 +144,23 @@ def get_instances(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in 1.52.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "onsInstanceDatasourceName"
+    default = alicloud.rocketmq.Instance("default", remark="default_ons_instance_remark")
+    instances_ds = alicloud.rocketmq.get_instances_output(ids=[default.id],
+        name_regex=default.name,
+        output_file="instances.txt")
+    pulumi.export("firstInstanceId", instances_ds.instances[0].instance_id)
+    ```
+
 
     :param bool enable_details: Default to `false`. Set it to true can output more details.
     :param Sequence[str] ids: A list of instance IDs to filter results.
@@ -186,6 +203,23 @@ def get_instances_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
     This data source provides a list of ONS Instances in an Alibaba Cloud account according to the specified filters.
 
     > **NOTE:** Available in 1.52.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "onsInstanceDatasourceName"
+    default = alicloud.rocketmq.Instance("default", remark="default_ons_instance_remark")
+    instances_ds = alicloud.rocketmq.get_instances_output(ids=[default.id],
+        name_regex=default.name,
+        output_file="instances.txt")
+    pulumi.export("firstInstanceId", instances_ds.instances[0].instance_id)
+    ```
 
 
     :param bool enable_details: Default to `false`. Set it to true can output more details.

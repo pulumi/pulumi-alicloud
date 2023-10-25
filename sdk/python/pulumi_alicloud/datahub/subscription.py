@@ -237,6 +237,31 @@ class Subscription(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.19.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform_example"
+        example_project = alicloud.datahub.Project("exampleProject", comment="created by terraform")
+        example_topic = alicloud.datahub.Topic("exampleTopic",
+            project_name=example_project.name,
+            record_type="BLOB",
+            shard_count=3,
+            life_cycle=7,
+            comment="created by terraform")
+        example_subscription = alicloud.datahub.Subscription("exampleSubscription",
+            project_name=example_project.name,
+            topic_name=example_topic.name,
+            comment="created by terraform")
+        ```
+
         ## Import
 
         Datahub subscription can be imported using the ID, e.g.
@@ -261,6 +286,31 @@ class Subscription(pulumi.CustomResource):
         The subscription is the basic unit of resource usage in Datahub Service under Publish/Subscribe model. You can manage the relationships between user and topics by using subscriptions. [Refer to details](https://www.alibabacloud.com/help/en/datahub/latest/nerbcz).
 
         > **NOTE:** Available since v1.19.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform_example"
+        example_project = alicloud.datahub.Project("exampleProject", comment="created by terraform")
+        example_topic = alicloud.datahub.Topic("exampleTopic",
+            project_name=example_project.name,
+            record_type="BLOB",
+            shard_count=3,
+            life_cycle=7,
+            comment="created by terraform")
+        example_subscription = alicloud.datahub.Subscription("exampleSubscription",
+            project_name=example_project.name,
+            topic_name=example_topic.name,
+            comment="created by terraform")
+        ```
 
         ## Import
 

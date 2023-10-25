@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * This data source provides the Resource Manager Delegated Administrators of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.181.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.resourcemanager.getDelegatedAdministrators({
+ *     ids: ["example_value"],
+ * });
+ * export const resourceManagerDelegatedAdministratorId1 = ids.then(ids => ids.administrators?.[0]?.id);
+ * ```
  */
 export function getDelegatedAdministrators(args?: GetDelegatedAdministratorsArgs, opts?: pulumi.InvokeOptions): Promise<GetDelegatedAdministratorsResult> {
     args = args || {};
@@ -63,6 +77,20 @@ export interface GetDelegatedAdministratorsResult {
  * This data source provides the Resource Manager Delegated Administrators of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.181.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.resourcemanager.getDelegatedAdministrators({
+ *     ids: ["example_value"],
+ * });
+ * export const resourceManagerDelegatedAdministratorId1 = ids.then(ids => ids.administrators?.[0]?.id);
+ * ```
  */
 export function getDelegatedAdministratorsOutput(args?: GetDelegatedAdministratorsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDelegatedAdministratorsResult> {
     return pulumi.output(args).apply((a: any) => getDelegatedAdministrators(a, opts))

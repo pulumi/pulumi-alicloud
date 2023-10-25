@@ -17,6 +17,39 @@ import (
 //
 // > **NOTE:** Available in v1.117.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/brain"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := brain.NewIndustrialPidLoop(ctx, "example", &brain.IndustrialPidLoopArgs{
+//				PidLoopConfiguration: pulumi.String("YourLoopConfiguration"),
+//				PidLoopDcsType:       pulumi.String("standard"),
+//				PidLoopIsCrucial:     pulumi.Bool(true),
+//				PidLoopName:          pulumi.String("tf-testAcc"),
+//				PidLoopType:          pulumi.String("0"),
+//				PidProjectId:         pulumi.String("856c6b8f-ca63-40a4-xxxx-xxxx"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Brain Industrial Pid Loop can be imported using the id, e.g.

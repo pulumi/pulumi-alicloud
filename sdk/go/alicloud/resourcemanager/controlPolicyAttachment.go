@@ -19,6 +19,73 @@ import (
 //
 // > **NOTE:** Available since v1.120.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			exampleControlPolicy, err := resourcemanager.NewControlPolicy(ctx, "exampleControlPolicy", &resourcemanager.ControlPolicyArgs{
+//				ControlPolicyName: pulumi.String(name),
+//				Description:       pulumi.String(name),
+//				EffectScope:       pulumi.String("RAM"),
+//				PolicyDocument: pulumi.String(`  {
+//	    "Version": "1",
+//	    "Statement": [
+//	      {
+//	        "Effect": "Deny",
+//	        "Action": [
+//	          "ram:UpdateRole",
+//	          "ram:DeleteRole",
+//	          "ram:AttachPolicyToRole",
+//	          "ram:DetachPolicyFromRole"
+//	        ],
+//	        "Resource": "acs:ram:*:*:role/ResourceDirectoryAccountAccessRole"
+//	      }
+//	    ]
+//	  }
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleFolder, err := resourcemanager.NewFolder(ctx, "exampleFolder", &resourcemanager.FolderArgs{
+//				FolderName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = resourcemanager.NewControlPolicyAttachment(ctx, "exampleControlPolicyAttachment", &resourcemanager.ControlPolicyAttachmentArgs{
+//				PolicyId: exampleControlPolicy.ID(),
+//				TargetId: exampleFolder.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Resource Manager Control Policy Attachment can be imported using the id, e.g.

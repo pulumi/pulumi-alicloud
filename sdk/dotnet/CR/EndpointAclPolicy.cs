@@ -16,6 +16,49 @@ namespace Pulumi.AliCloud.CR
     /// 
     /// &gt; **NOTE:** Available since v1.139.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", new()
+    ///     {
+    ///         PaymentType = "Subscription",
+    ///         Period = 1,
+    ///         RenewalStatus = "ManualRenewal",
+    ///         InstanceType = "Advanced",
+    ///         InstanceName = name,
+    ///     });
+    /// 
+    ///     var defaultEndpointAclService = AliCloud.CR.GetEndpointAclService.Invoke(new()
+    ///     {
+    ///         EndpointType = "internet",
+    ///         Enable = true,
+    ///         InstanceId = defaultRegistryEnterpriseInstance.Id,
+    ///         ModuleName = "Registry",
+    ///     });
+    /// 
+    ///     var defaultEndpointAclPolicy = new AliCloud.CR.EndpointAclPolicy("defaultEndpointAclPolicy", new()
+    ///     {
+    ///         InstanceId = defaultEndpointAclService.Apply(getEndpointAclServiceResult =&gt; getEndpointAclServiceResult.InstanceId),
+    ///         Entry = "192.168.1.0/24",
+    ///         Description = name,
+    ///         ModuleName = "Registry",
+    ///         EndpointType = "internet",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// CR Endpoint Acl Policy can be imported using the id, e.g.

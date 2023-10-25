@@ -1902,6 +1902,106 @@ class EdgeKubernetes(pulumi.CustomResource):
 
         > **NOTE:** From version 1.185.0+, support new fields `cluster_spec`, `runtime` and `load_balancer_spec`.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=4,
+            memory_size=8,
+            kubernetes_node_role="Master")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_edge_kubernetes = alicloud.cs.EdgeKubernetes("defaultEdgeKubernetes",
+            worker_vswitch_ids=[default_switch.id],
+            worker_instance_types=[default_instance_types.instance_types[0].id],
+            version="1.20.11-aliyunedge.1",
+            worker_number=1,
+            password="Test12345",
+            pod_cidr="10.99.0.0/16",
+            service_cidr="172.16.0.0/16",
+            worker_instance_charge_type="PostPaid",
+            new_nat_gateway=True,
+            node_cidr_mask=24,
+            install_cloud_monitor=True,
+            slb_internet_enabled=True,
+            is_enterprise_security_group=True,
+            worker_data_disks=[alicloud.cs.EdgeKubernetesWorkerDataDiskArgs(
+                category="cloud_ssd",
+                size="200",
+                encrypted="false",
+            )])
+        ```
+
+        You could create a professional kubernetes edge cluster now.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=4,
+            memory_size=8,
+            kubernetes_node_role="Master")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_edge_kubernetes = alicloud.cs.EdgeKubernetes("defaultEdgeKubernetes",
+            worker_vswitch_ids=[default_switch.id],
+            worker_instance_types=[default_instance_types.instance_types[0].id],
+            version="1.20.11-aliyunedge.1",
+            cluster_spec="ack.pro.small",
+            worker_number=1,
+            password="Test12345",
+            pod_cidr="10.99.0.0/16",
+            service_cidr="172.16.0.0/16",
+            worker_instance_charge_type="PostPaid",
+            new_nat_gateway=True,
+            node_cidr_mask=24,
+            load_balancer_spec="slb.s2.small",
+            install_cloud_monitor=True,
+            slb_internet_enabled=True,
+            is_enterprise_security_group=True,
+            addons=[alicloud.cs.EdgeKubernetesAddonArgs(
+                name="alibaba-log-controller",
+                config="{\\"IngressDashboardEnabled\\":\\"false\\"}",
+            )],
+            worker_data_disks=[alicloud.cs.EdgeKubernetesWorkerDataDiskArgs(
+                category="cloud_ssd",
+                size="200",
+                encrypted="false",
+            )],
+            runtime=alicloud.cs.EdgeKubernetesRuntimeArgs(
+                name="containerd",
+                version="1.5.10",
+            ))
+        ```
+
         ## Import
 
         Kubernetes edge cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
@@ -1987,6 +2087,106 @@ class EdgeKubernetes(pulumi.CustomResource):
         > **NOTE:** Available since v1.103.0.
 
         > **NOTE:** From version 1.185.0+, support new fields `cluster_spec`, `runtime` and `load_balancer_spec`.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=4,
+            memory_size=8,
+            kubernetes_node_role="Master")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_edge_kubernetes = alicloud.cs.EdgeKubernetes("defaultEdgeKubernetes",
+            worker_vswitch_ids=[default_switch.id],
+            worker_instance_types=[default_instance_types.instance_types[0].id],
+            version="1.20.11-aliyunedge.1",
+            worker_number=1,
+            password="Test12345",
+            pod_cidr="10.99.0.0/16",
+            service_cidr="172.16.0.0/16",
+            worker_instance_charge_type="PostPaid",
+            new_nat_gateway=True,
+            node_cidr_mask=24,
+            install_cloud_monitor=True,
+            slb_internet_enabled=True,
+            is_enterprise_security_group=True,
+            worker_data_disks=[alicloud.cs.EdgeKubernetesWorkerDataDiskArgs(
+                category="cloud_ssd",
+                size="200",
+                encrypted="false",
+            )])
+        ```
+
+        You could create a professional kubernetes edge cluster now.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=4,
+            memory_size=8,
+            kubernetes_node_role="Master")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_edge_kubernetes = alicloud.cs.EdgeKubernetes("defaultEdgeKubernetes",
+            worker_vswitch_ids=[default_switch.id],
+            worker_instance_types=[default_instance_types.instance_types[0].id],
+            version="1.20.11-aliyunedge.1",
+            cluster_spec="ack.pro.small",
+            worker_number=1,
+            password="Test12345",
+            pod_cidr="10.99.0.0/16",
+            service_cidr="172.16.0.0/16",
+            worker_instance_charge_type="PostPaid",
+            new_nat_gateway=True,
+            node_cidr_mask=24,
+            load_balancer_spec="slb.s2.small",
+            install_cloud_monitor=True,
+            slb_internet_enabled=True,
+            is_enterprise_security_group=True,
+            addons=[alicloud.cs.EdgeKubernetesAddonArgs(
+                name="alibaba-log-controller",
+                config="{\\"IngressDashboardEnabled\\":\\"false\\"}",
+            )],
+            worker_data_disks=[alicloud.cs.EdgeKubernetesWorkerDataDiskArgs(
+                category="cloud_ssd",
+                size="200",
+                encrypted="false",
+            )],
+            runtime=alicloud.cs.EdgeKubernetesRuntimeArgs(
+                name="containerd",
+                version="1.5.10",
+            ))
+        ```
 
         ## Import
 

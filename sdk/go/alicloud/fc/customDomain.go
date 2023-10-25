@@ -19,6 +19,148 @@ import (
 //
 // > **NOTE:** Available since v1.98.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultProject, err := log.NewProject(ctx, "defaultProject", nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultStore, err := log.NewStore(ctx, "defaultStore", &log.StoreArgs{
+//				Project: defaultProject.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRole, err := ram.NewRole(ctx, "defaultRole", &ram.RoleArgs{
+//				Document: pulumi.String(`  {
+//	      "Statement": [
+//	        {
+//	          "Action": "sts:AssumeRole",
+//	          "Effect": "Allow",
+//	          "Principal": {
+//	            "Service": [
+//	              "fc.aliyuncs.com"
+//	            ]
+//	          }
+//	        }
+//	      ],
+//	      "Version": "1"
+//	  }
+//
+// `),
+//
+//				Description: pulumi.String("this is a example"),
+//				Force:       pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ram.NewRolePolicyAttachment(ctx, "defaultRolePolicyAttachment", &ram.RolePolicyAttachmentArgs{
+//				RoleName:   defaultRole.Name,
+//				PolicyName: pulumi.String("AliyunLogFullAccess"),
+//				PolicyType: pulumi.String("System"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultService, err := fc.NewService(ctx, "defaultService", &fc.ServiceArgs{
+//				Description: pulumi.String("example-value"),
+//				Role:        defaultRole.Arn,
+//				LogConfig: &fc.ServiceLogConfigArgs{
+//					Project:               defaultProject.Name,
+//					Logstore:              defaultStore.Name,
+//					EnableInstanceMetrics: pulumi.Bool(true),
+//					EnableRequestMetrics:  pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBucket, err := oss.NewBucket(ctx, "defaultBucket", &oss.BucketArgs{
+//				Bucket: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("terraform-example-%v", result), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBucketObject, err := oss.NewBucketObject(ctx, "defaultBucketObject", &oss.BucketObjectArgs{
+//				Bucket:  defaultBucket.ID(),
+//				Key:     pulumi.String("index.py"),
+//				Content: pulumi.String("import logging \ndef handler(event, context): \nlogger = logging.getLogger() \nlogger.info('hello world') \nreturn 'hello world'"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultFunction, err := fc.NewFunction(ctx, "defaultFunction", &fc.FunctionArgs{
+//				Service:     defaultService.Name,
+//				Description: pulumi.String("example"),
+//				OssBucket:   defaultBucket.ID(),
+//				OssKey:      defaultBucketObject.Key,
+//				MemorySize:  pulumi.Int(512),
+//				Runtime:     pulumi.String("python2.7"),
+//				Handler:     pulumi.String("hello.handler"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = fc.NewCustomDomain(ctx, "defaultCustomDomain", &fc.CustomDomainArgs{
+//				DomainName: pulumi.String("terraform.functioncompute.com"),
+//				Protocol:   pulumi.String("HTTP"),
+//				RouteConfigs: fc.CustomDomainRouteConfigArray{
+//					&fc.CustomDomainRouteConfigArgs{
+//						Path:         pulumi.String("/login/*"),
+//						ServiceName:  defaultService.Name,
+//						FunctionName: defaultFunction.Name,
+//						Qualifier:    pulumi.String("?query"),
+//						Methods: pulumi.StringArray{
+//							pulumi.String("GET"),
+//							pulumi.String("POST"),
+//						},
+//					},
+//				},
+//				CertConfig: &fc.CustomDomainCertConfigArgs{
+//					CertName:    pulumi.String("example"),
+//					Certificate: pulumi.String("-----BEGIN CERTIFICATE-----\nMIICWD****-----END CERTIFICATE-----"),
+//					PrivateKey:  pulumi.String("-----BEGIN RSA PRIVATE KEY-----\nMIICX****n-----END RSA PRIVATE KEY-----"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Function Compute custom domain can be imported using the id or the domain name, e.g.

@@ -15,6 +15,43 @@ import (
 // This data source provides the Ehpc Job Templates of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.133.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ehpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ehpc.NewJobTemplate(ctx, "default", &ehpc.JobTemplateArgs{
+//				JobTemplateName: pulumi.String("example_value"),
+//				CommandLine:     pulumi.String("./LammpsTest/lammps.pbs"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ids := ehpc.GetJobTemplatesOutput(ctx, ehpc.GetJobTemplatesOutputArgs{
+//				Ids: pulumi.StringArray{
+//					_default.ID(),
+//				},
+//			}, nil)
+//			ctx.Export("ehpcJobTemplateId1", ids.ApplyT(func(ids ehpc.GetJobTemplatesResult) (*string, error) {
+//				return &ids.Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetJobTemplates(ctx *pulumi.Context, args *GetJobTemplatesArgs, opts ...pulumi.InvokeOption) (*GetJobTemplatesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetJobTemplatesResult

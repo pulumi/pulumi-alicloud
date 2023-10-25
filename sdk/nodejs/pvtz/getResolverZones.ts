@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * This data source provides the available zones with the Private Zone Resolver of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.143.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.pvtz.getResolverZones({
+ *     status: "NORMAL",
+ * });
+ * export const firstZonesId = _default.then(_default => _default.zones?.[0]?.zoneId);
+ * ```
  */
 export function getResolverZones(args?: GetResolverZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetResolverZonesResult> {
     args = args || {};
@@ -51,6 +65,20 @@ export interface GetResolverZonesResult {
  * This data source provides the available zones with the Private Zone Resolver of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.143.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.pvtz.getResolverZones({
+ *     status: "NORMAL",
+ * });
+ * export const firstZonesId = _default.then(_default => _default.zones?.[0]?.zoneId);
+ * ```
  */
 export function getResolverZonesOutput(args?: GetResolverZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResolverZonesResult> {
     return pulumi.output(args).apply((a: any) => getResolverZones(a, opts))

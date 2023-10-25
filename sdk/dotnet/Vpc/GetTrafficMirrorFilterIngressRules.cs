@@ -15,6 +15,49 @@ namespace Pulumi.AliCloud.Vpc
         /// This data source provides the Vpc Traffic Mirror Filter Ingress Rules of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.141.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Vpc.GetTrafficMirrorFilterIngressRules.Invoke(new()
+        ///     {
+        ///         TrafficMirrorFilterId = "example_traffic_mirror_filter_id",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///     });
+        /// 
+        ///     var status = AliCloud.Vpc.GetTrafficMirrorFilterIngressRules.Invoke(new()
+        ///     {
+        ///         TrafficMirrorFilterId = "example_traffic_mirror_filter_id",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         Status = "Created",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcTrafficMirrorFilterIngressRuleId1"] = ids.Apply(getTrafficMirrorFilterIngressRulesResult =&gt; getTrafficMirrorFilterIngressRulesResult.Rules[0]?.Id),
+        ///         ["vpcTrafficMirrorFilterIngressRuleId2"] = status.Apply(getTrafficMirrorFilterIngressRulesResult =&gt; getTrafficMirrorFilterIngressRulesResult.Rules[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTrafficMirrorFilterIngressRulesResult> InvokeAsync(GetTrafficMirrorFilterIngressRulesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTrafficMirrorFilterIngressRulesResult>("alicloud:vpc/getTrafficMirrorFilterIngressRules:getTrafficMirrorFilterIngressRules", args ?? new GetTrafficMirrorFilterIngressRulesArgs(), options.WithDefaults());
@@ -23,6 +66,49 @@ namespace Pulumi.AliCloud.Vpc
         /// This data source provides the Vpc Traffic Mirror Filter Ingress Rules of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.141.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Vpc.GetTrafficMirrorFilterIngressRules.Invoke(new()
+        ///     {
+        ///         TrafficMirrorFilterId = "example_traffic_mirror_filter_id",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///     });
+        /// 
+        ///     var status = AliCloud.Vpc.GetTrafficMirrorFilterIngressRules.Invoke(new()
+        ///     {
+        ///         TrafficMirrorFilterId = "example_traffic_mirror_filter_id",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         Status = "Created",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcTrafficMirrorFilterIngressRuleId1"] = ids.Apply(getTrafficMirrorFilterIngressRulesResult =&gt; getTrafficMirrorFilterIngressRulesResult.Rules[0]?.Id),
+        ///         ["vpcTrafficMirrorFilterIngressRuleId2"] = status.Apply(getTrafficMirrorFilterIngressRulesResult =&gt; getTrafficMirrorFilterIngressRulesResult.Rules[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetTrafficMirrorFilterIngressRulesResult> Invoke(GetTrafficMirrorFilterIngressRulesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTrafficMirrorFilterIngressRulesResult>("alicloud:vpc/getTrafficMirrorFilterIngressRules:getTrafficMirrorFilterIngressRules", args ?? new GetTrafficMirrorFilterIngressRulesInvokeArgs(), options.WithDefaults());

@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides the Ram Saml Providers of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available since v1.114.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.ram.getSamlProviders({
+ *     ids: ["samlProviderName"],
+ *     nameRegex: "tf-testAcc",
+ * });
+ * export const firstRamSamlProviderId = example.then(example => example.providers?.[0]?.id);
+ * ```
  */
 export function getSamlProviders(args?: GetSamlProvidersArgs, opts?: pulumi.InvokeOptions): Promise<GetSamlProvidersResult> {
     args = args || {};
@@ -70,6 +85,21 @@ export interface GetSamlProvidersResult {
  * This data source provides the Ram Saml Providers of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available since v1.114.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.ram.getSamlProviders({
+ *     ids: ["samlProviderName"],
+ *     nameRegex: "tf-testAcc",
+ * });
+ * export const firstRamSamlProviderId = example.then(example => example.providers?.[0]?.id);
+ * ```
  */
 export function getSamlProvidersOutput(args?: GetSamlProvidersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSamlProvidersResult> {
     return pulumi.output(args).apply((a: any) => getSamlProviders(a, opts))

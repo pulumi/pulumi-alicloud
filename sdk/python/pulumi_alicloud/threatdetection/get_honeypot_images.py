@@ -118,6 +118,17 @@ def get_honeypot_images(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in 1.195.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.threatdetection.get_honeypot_images(ids=["sha256:02882320c9a55303410127c5dc4ae2dc470150f9d7f2483102d994f5e5f4d9df"],
+        name_regex="^meta")
+    pulumi.export("alicloudThreatDetectionHoneypotImageExampleId", default.images[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Honeypot Image IDs.
     :param str name_regex: A regex string to filter results by Honeypot mirror nam.
@@ -151,6 +162,17 @@ def get_honeypot_images_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
     This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
 
     > **NOTE:** Available in 1.195.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.threatdetection.get_honeypot_images(ids=["sha256:02882320c9a55303410127c5dc4ae2dc470150f9d7f2483102d994f5e5f4d9df"],
+        name_regex="^meta")
+    pulumi.export("alicloudThreatDetectionHoneypotImageExampleId", default.images[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Honeypot Image IDs.

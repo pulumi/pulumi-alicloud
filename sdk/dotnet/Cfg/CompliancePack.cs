@@ -16,6 +16,85 @@ namespace Pulumi.AliCloud.Cfg
     /// 
     /// &gt; **NOTE:** Available since v1.124.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example-config-name";
+    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     {
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var rule1 = new AliCloud.Cfg.Rule("rule1", new()
+    ///     {
+    ///         Description = name,
+    ///         SourceOwner = "ALIYUN",
+    ///         SourceIdentifier = "ram-user-ak-create-date-expired-check",
+    ///         RiskLevel = 1,
+    ///         MaximumExecutionFrequency = "TwentyFour_Hours",
+    ///         RegionIdsScope = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         ConfigRuleTriggerTypes = "ScheduledNotification",
+    ///         ResourceTypesScopes = new[]
+    ///         {
+    ///             "ACS::RAM::User",
+    ///         },
+    ///         RuleName = "ciscompliancecheck_ram-user-ak-create-date-expired-check",
+    ///         InputParameters = 
+    ///         {
+    ///             { "days", "90" },
+    ///         },
+    ///     });
+    /// 
+    ///     var rule2 = new AliCloud.Cfg.Rule("rule2", new()
+    ///     {
+    ///         Description = name,
+    ///         SourceOwner = "ALIYUN",
+    ///         SourceIdentifier = "adb-cluster-maintain-time-check",
+    ///         RiskLevel = 2,
+    ///         RegionIdsScope = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         ConfigRuleTriggerTypes = "ScheduledNotification",
+    ///         ResourceTypesScopes = new[]
+    ///         {
+    ///             "ACS::ADB::DBCluster",
+    ///         },
+    ///         RuleName = "governance-evaluation-adb-cluster-maintain-time-check",
+    ///         InputParameters = 
+    ///         {
+    ///             { "maintainTimes", "02:00-04:00,06:00-08:00,12:00-13:00" },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultCompliancePack = new AliCloud.Cfg.CompliancePack("defaultCompliancePack", new()
+    ///     {
+    ///         CompliancePackName = name,
+    ///         Description = "CloudGovernanceCenter evaluation",
+    ///         RiskLevel = 2,
+    ///         ConfigRuleIds = new[]
+    ///         {
+    ///             new AliCloud.Cfg.Inputs.CompliancePackConfigRuleIdArgs
+    ///             {
+    ///                 ConfigRuleId = rule1.Id,
+    ///             },
+    ///             new AliCloud.Cfg.Inputs.CompliancePackConfigRuleIdArgs
+    ///             {
+    ///                 ConfigRuleId = rule2.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Cloud Config Compliance Pack can be imported using the id, e.g.

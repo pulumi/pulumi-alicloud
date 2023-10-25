@@ -20,6 +20,25 @@ import * as utilities from "../utilities";
  *
  * For information about Vpc Vpc and how to use it, see [What is Vpc](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/what-is-a-vpc).
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.vpc.Network("default", {
+ *     ipv6Isp: "BGP",
+ *     description: "test",
+ *     cidrBlock: "10.0.0.0/8",
+ *     vpcName: name,
+ *     enableIpv6: true,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Vpc Vpc can be imported using the id, e.g.

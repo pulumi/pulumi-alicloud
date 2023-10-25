@@ -13,6 +13,137 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.199.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultZones = alicloud.getZones({
+ *     availableInstanceType: "ecs.g7.xlarge",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/21",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     vswitchName: name,
+ * });
+ * const defaultEcsKeyPair = new alicloud.ecs.EcsKeyPair("defaultEcsKeyPair", {keyPairName: name});
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
+ * const defaultRole = new alicloud.ram.Role("defaultRole", {
+ *     document: `    {
+ *         "Statement": [
+ *         {
+ *             "Action": "sts:AssumeRole",
+ *             "Effect": "Allow",
+ *             "Principal": {
+ *             "Service": [
+ *                 "emr.aliyuncs.com",
+ *                 "ecs.aliyuncs.com"
+ *             ]
+ *             }
+ *         }
+ *         ],
+ *         "Version": "1"
+ *     }
+ * `,
+ *     description: "this is a role example.",
+ *     force: true,
+ * });
+ * const defaultCluster = new alicloud.emrv2.Cluster("defaultCluster", {
+ *     paymentType: "PayAsYouGo",
+ *     clusterType: "DATALAKE",
+ *     releaseVersion: "EMR-5.10.0",
+ *     clusterName: name,
+ *     deployMode: "NORMAL",
+ *     securityMode: "NORMAL",
+ *     applications: [
+ *         "HADOOP-COMMON",
+ *         "HDFS",
+ *         "YARN",
+ *         "HIVE",
+ *         "SPARK3",
+ *         "TEZ",
+ *     ],
+ *     applicationConfigs: [
+ *         {
+ *             applicationName: "HIVE",
+ *             configFileName: "hivemetastore-site.xml",
+ *             configItemKey: "hive.metastore.type",
+ *             configItemValue: "DLF",
+ *             configScope: "CLUSTER",
+ *         },
+ *         {
+ *             applicationName: "SPARK3",
+ *             configFileName: "hive-site.xml",
+ *             configItemKey: "hive.metastore.type",
+ *             configItemValue: "DLF",
+ *             configScope: "CLUSTER",
+ *         },
+ *     ],
+ *     nodeAttributes: [{
+ *         ramRole: defaultRole.name,
+ *         securityGroupId: defaultSecurityGroup.id,
+ *         vpcId: defaultNetwork.id,
+ *         zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *         keyPairName: defaultEcsKeyPair.id,
+ *     }],
+ *     tags: {
+ *         created: "tf",
+ *     },
+ *     nodeGroups: [
+ *         {
+ *             nodeGroupType: "MASTER",
+ *             nodeGroupName: "emr-master",
+ *             paymentType: "PayAsYouGo",
+ *             vswitchIds: [defaultSwitch.id],
+ *             withPublicIp: false,
+ *             instanceTypes: ["ecs.g7.xlarge"],
+ *             nodeCount: 1,
+ *             systemDisk: {
+ *                 category: "cloud_essd",
+ *                 size: 80,
+ *                 count: 1,
+ *             },
+ *             dataDisks: [{
+ *                 category: "cloud_essd",
+ *                 size: 80,
+ *                 count: 3,
+ *             }],
+ *         },
+ *         {
+ *             nodeGroupType: "CORE",
+ *             nodeGroupName: "emr-core",
+ *             paymentType: "PayAsYouGo",
+ *             vswitchIds: [defaultSwitch.id],
+ *             withPublicIp: false,
+ *             instanceTypes: ["ecs.g7.xlarge"],
+ *             nodeCount: 3,
+ *             systemDisk: {
+ *                 category: "cloud_essd",
+ *                 size: 80,
+ *                 count: 1,
+ *             },
+ *             dataDisks: [{
+ *                 category: "cloud_essd",
+ *                 size: 80,
+ *                 count: 3,
+ *             }],
+ *         },
+ *     ],
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
+ * });
+ * ```
+ *
  * ## Import
  *
  * Aliclioud E-MapReduce cluster can be imported using the id e.g.

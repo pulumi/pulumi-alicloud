@@ -199,6 +199,18 @@ def get_instances(availability_zone: Optional[str] = None,
 
     > **NOTE:**  Available in 1.47.0+
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.gpdb.get_instances()
+    pulumi.export("gpdbDbInstanceId1", ids.instances[0].id)
+    ```
+
 
     :param str availability_zone: Instance availability zone.
     :param str db_instance_categories: The db instance categories.
@@ -269,6 +281,18 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]
     This data source provides the AnalyticDB for PostgreSQL instances of the current Alibaba Cloud user.
 
     > **NOTE:**  Available in 1.47.0+
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.gpdb.get_instances()
+    pulumi.export("gpdbDbInstanceId1", ids.instances[0].id)
+    ```
 
 
     :param str availability_zone: Instance availability zone.

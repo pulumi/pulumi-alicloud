@@ -140,6 +140,27 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.18.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_bandwidth_package = alicloud.cen.BandwidthPackage("exampleBandwidthPackage",
+            bandwidth=5,
+            cen_bandwidth_package_name="tf_example",
+            geographic_region_a_id="China",
+            geographic_region_b_id="China")
+        example_bandwidth_package_attachment = alicloud.cen.BandwidthPackageAttachment("exampleBandwidthPackageAttachment",
+            instance_id=example_instance.id,
+            bandwidth_package_id=example_bandwidth_package.id)
+        ```
+
         ## Import
 
         CEN bandwidth package attachment resource can be imported using the id, e.g.
@@ -163,6 +184,27 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
         Provides a CEN bandwidth package attachment resource. The resource can be used to bind a bandwidth package to a specified CEN instance.
 
         > **NOTE:** Available since v1.18.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_bandwidth_package = alicloud.cen.BandwidthPackage("exampleBandwidthPackage",
+            bandwidth=5,
+            cen_bandwidth_package_name="tf_example",
+            geographic_region_a_id="China",
+            geographic_region_b_id="China")
+        example_bandwidth_package_attachment = alicloud.cen.BandwidthPackageAttachment("exampleBandwidthPackageAttachment",
+            instance_id=example_instance.id,
+            bandwidth_package_id=example_bandwidth_package.id)
+        ```
 
         ## Import
 

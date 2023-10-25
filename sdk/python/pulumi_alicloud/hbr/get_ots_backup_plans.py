@@ -129,6 +129,18 @@ def get_ots_backup_plans(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.163.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.hbr.get_ots_backup_plans(name_regex="^my-otsBackupPlan")
+    pulumi.export("hbrOtsBackupPlanId", data["alicloud_hbr_ots_backup_plans"]["plans"][0]["id"])
+    ```
+
 
     :param Sequence[str] ids: A list of OtsBackupPlan IDs.
     :param str name_regex: A regex string to filter results by OtsBackupPlan name.
@@ -171,6 +183,18 @@ def get_ots_backup_plans_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     This data source provides the Hbr OtsBackupPlans of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.163.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.hbr.get_ots_backup_plans(name_regex="^my-otsBackupPlan")
+    pulumi.export("hbrOtsBackupPlanId", data["alicloud_hbr_ots_backup_plans"]["plans"][0]["id"])
+    ```
 
 
     :param Sequence[str] ids: A list of OtsBackupPlan IDs.

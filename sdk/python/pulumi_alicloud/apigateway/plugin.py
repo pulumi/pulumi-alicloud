@@ -282,6 +282,25 @@ class Plugin(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.187.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.apigateway.Plugin("default",
+            description="tf_example",
+            plugin_data="{\\"allowOrigins\\": \\"api.foo.com\\",\\"allowMethods\\": \\"GET,POST,PUT,DELETE,HEAD,OPTIONS,PATCH\\",\\"allowHeaders\\": \\"Authorization,Accept,Accept-Ranges,Cache-Control,Range,Date,Content-Type,Content-Length,Content-MD5,User-Agent,X-Ca-Signature,X-Ca-Signature-Headers,X-Ca-Signature-Method,X-Ca-Key,X-Ca-Timestamp,X-Ca-Nonce,X-Ca-Stage,X-Ca-Request-Mode,x-ca-deviceid\\",\\"exposeHeaders\\": \\"Content-MD5,Server,Date,Latency,X-Ca-Request-Id,X-Ca-Error-Code,X-Ca-Error-Message\\",\\"maxAge\\": 172800,\\"allowCredentials\\": true}",
+            plugin_name="tf_example",
+            plugin_type="cors",
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        ```
+
         ## Import
 
         Api Gateway Plugin can be imported using the id, e.g.
@@ -316,6 +335,25 @@ class Plugin(pulumi.CustomResource):
         For information about Api Gateway Plugin and how to use it, see [What is Plugin](https://www.alibabacloud.com/help/en/api-gateway/developer-reference/api-cloudapi-2016-07-14-createplugin).
 
         > **NOTE:** Available since v1.187.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.apigateway.Plugin("default",
+            description="tf_example",
+            plugin_data="{\\"allowOrigins\\": \\"api.foo.com\\",\\"allowMethods\\": \\"GET,POST,PUT,DELETE,HEAD,OPTIONS,PATCH\\",\\"allowHeaders\\": \\"Authorization,Accept,Accept-Ranges,Cache-Control,Range,Date,Content-Type,Content-Length,Content-MD5,User-Agent,X-Ca-Signature,X-Ca-Signature-Headers,X-Ca-Signature-Method,X-Ca-Key,X-Ca-Timestamp,X-Ca-Nonce,X-Ca-Stage,X-Ca-Request-Mode,x-ca-deviceid\\",\\"exposeHeaders\\": \\"Content-MD5,Server,Date,Latency,X-Ca-Request-Id,X-Ca-Error-Code,X-Ca-Error-Message\\",\\"maxAge\\": 172800,\\"allowCredentials\\": true}",
+            plugin_name="tf_example",
+            plugin_type="cors",
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        ```
 
         ## Import
 

@@ -130,6 +130,18 @@ def get_desktop_types(cpu_count: Optional[int] = None,
 
     > **NOTE:** Available in v1.170.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.eds.get_desktop_types(instance_type_family="eds.hf")
+    pulumi.export("ecdDesktopTypeId1", ids.types[0].id)
+    ```
+
 
     :param int cpu_count: The CPU cores.
     :param float gpu_count: The GPU cores.
@@ -175,6 +187,18 @@ def get_desktop_types_output(cpu_count: Optional[pulumi.Input[Optional[int]]] = 
     This data source provides the Ecd Desktop Types of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.170.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.eds.get_desktop_types(instance_type_family="eds.hf")
+    pulumi.export("ecdDesktopTypeId1", ids.types[0].id)
+    ```
 
 
     :param int cpu_count: The CPU cores.

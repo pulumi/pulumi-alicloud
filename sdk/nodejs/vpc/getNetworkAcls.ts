@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides the Network Acls of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.122.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.vpc.getNetworkAcls({
+ *     ids: ["example_value"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstNetworkAclId = example.then(example => example.acls?.[0]?.id);
+ * ```
  */
 export function getNetworkAcls(args?: GetNetworkAclsArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkAclsResult> {
     args = args || {};
@@ -88,6 +103,21 @@ export interface GetNetworkAclsResult {
  * This data source provides the Network Acls of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.122.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.vpc.getNetworkAcls({
+ *     ids: ["example_value"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstNetworkAclId = example.then(example => example.acls?.[0]?.id);
+ * ```
  */
 export function getNetworkAclsOutput(args?: GetNetworkAclsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkAclsResult> {
     return pulumi.output(args).apply((a: any) => getNetworkAcls(a, opts))

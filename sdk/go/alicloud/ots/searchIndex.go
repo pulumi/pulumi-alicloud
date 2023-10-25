@@ -19,6 +19,128 @@ import (
 //
 // > **NOTE:** Available since v1.187.0.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ots"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultInstance, err := ots.NewInstance(ctx, "defaultInstance", &ots.InstanceArgs{
+//				Description: pulumi.String(name),
+//				AccessedBy:  pulumi.String("Any"),
+//				Tags: pulumi.Map{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("example"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultTable, err := ots.NewTable(ctx, "defaultTable", &ots.TableArgs{
+//				InstanceName: defaultInstance.Name,
+//				TableName:    pulumi.String("tf_example"),
+//				TimeToLive:   -1,
+//				MaxVersion:   pulumi.Int(1),
+//				EnableSse:    pulumi.Bool(true),
+//				SseKeyType:   pulumi.String("SSE_KMS_SERVICE"),
+//				PrimaryKeys: ots.TablePrimaryKeyArray{
+//					&ots.TablePrimaryKeyArgs{
+//						Name: pulumi.String("pk1"),
+//						Type: pulumi.String("Integer"),
+//					},
+//					&ots.TablePrimaryKeyArgs{
+//						Name: pulumi.String("pk2"),
+//						Type: pulumi.String("String"),
+//					},
+//					&ots.TablePrimaryKeyArgs{
+//						Name: pulumi.String("pk3"),
+//						Type: pulumi.String("Binary"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ots.NewSearchIndex(ctx, "defaultSearchIndex", &ots.SearchIndexArgs{
+//				InstanceName: defaultInstance.Name,
+//				TableName:    defaultTable.TableName,
+//				IndexName:    pulumi.String("example_index"),
+//				TimeToLive:   -1,
+//				Schemas: ots.SearchIndexSchemaArray{
+//					&ots.SearchIndexSchemaArgs{
+//						FieldSchemas: ots.SearchIndexSchemaFieldSchemaArray{
+//							&ots.SearchIndexSchemaFieldSchemaArgs{
+//								FieldName: pulumi.String("col1"),
+//								FieldType: pulumi.String("Text"),
+//								IsArray:   pulumi.Bool(false),
+//								Index:     pulumi.Bool(true),
+//								Analyzer:  pulumi.String("Split"),
+//								Store:     pulumi.Bool(true),
+//							},
+//							&ots.SearchIndexSchemaFieldSchemaArgs{
+//								FieldName:        pulumi.String("col2"),
+//								FieldType:        pulumi.String("Long"),
+//								EnableSortAndAgg: pulumi.Bool(true),
+//							},
+//							&ots.SearchIndexSchemaFieldSchemaArgs{
+//								FieldName: pulumi.String("pk1"),
+//								FieldType: pulumi.String("Long"),
+//							},
+//							&ots.SearchIndexSchemaFieldSchemaArgs{
+//								FieldName: pulumi.String("pk2"),
+//								FieldType: pulumi.String("Text"),
+//							},
+//						},
+//						IndexSettings: ots.SearchIndexSchemaIndexSettingArray{
+//							&ots.SearchIndexSchemaIndexSettingArgs{
+//								RoutingFields: pulumi.StringArray{
+//									pulumi.String("pk1"),
+//									pulumi.String("pk2"),
+//								},
+//							},
+//						},
+//						IndexSorts: ots.SearchIndexSchemaIndexSortArray{
+//							&ots.SearchIndexSchemaIndexSortArgs{
+//								Sorters: ots.SearchIndexSchemaIndexSortSorterArray{
+//									&ots.SearchIndexSchemaIndexSortSorterArgs{
+//										SorterType: pulumi.String("PrimaryKeySort"),
+//										Order:      pulumi.String("Asc"),
+//									},
+//									&ots.SearchIndexSchemaIndexSortSorterArgs{
+//										SorterType: pulumi.String("FieldSort"),
+//										Order:      pulumi.String("Desc"),
+//										FieldName:  pulumi.String("col2"),
+//										Mode:       pulumi.String("Max"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // OTS search index can be imported using id, e.g.

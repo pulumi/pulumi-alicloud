@@ -16,6 +16,47 @@ namespace Pulumi.AliCloud.Nlb
     /// 
     /// &gt; **NOTE:** Available since v1.187.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var defaultSecurityPolicy = new AliCloud.Nlb.SecurityPolicy("defaultSecurityPolicy", new()
+    ///     {
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///         SecurityPolicyName = name,
+    ///         Ciphers = new[]
+    ///         {
+    ///             "ECDHE-RSA-AES128-SHA",
+    ///             "ECDHE-ECDSA-AES128-SHA",
+    ///         },
+    ///         TlsVersions = new[]
+    ///         {
+    ///             "TLSv1.0",
+    ///             "TLSv1.1",
+    ///             "TLSv1.2",
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// NLB Security Policy can be imported using the id, e.g.

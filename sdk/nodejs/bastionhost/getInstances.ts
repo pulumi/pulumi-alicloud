@@ -12,6 +12,18 @@ import * as utilities from "../utilities";
  * This data source provides a list of cloud Bastionhost instances in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in 1.63.0+ .
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const instanceInstances = alicloud.bastionhost.getInstances({
+ *     descriptionRegex: "^bastionhost",
+ * });
+ * export const instance = alicloud_bastionhost_instances.instance.map(__item => __item.id);
+ * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
@@ -43,6 +55,16 @@ export interface GetInstancesArgs {
     outputFile?: string;
     /**
      * A map of tags assigned to the bastionhost instance. It must be in the format:
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as alicloud from "@pulumi/alicloud";
+     *
+     * const instance = alicloud.bastionhost.getInstances({
+     *     tags: {
+     *         tagKey1: "tagValue1",
+     *     },
+     * });
+     * ```
      */
     tags?: {[key: string]: any};
 }
@@ -74,6 +96,18 @@ export interface GetInstancesResult {
  * This data source provides a list of cloud Bastionhost instances in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in 1.63.0+ .
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const instanceInstances = alicloud.bastionhost.getInstances({
+ *     descriptionRegex: "^bastionhost",
+ * });
+ * export const instance = alicloud_bastionhost_instances.instance.map(__item => __item.id);
+ * ```
  */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
     return pulumi.output(args).apply((a: any) => getInstances(a, opts))
@@ -97,6 +131,16 @@ export interface GetInstancesOutputArgs {
     outputFile?: pulumi.Input<string>;
     /**
      * A map of tags assigned to the bastionhost instance. It must be in the format:
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as alicloud from "@pulumi/alicloud";
+     *
+     * const instance = alicloud.bastionhost.getInstances({
+     *     tags: {
+     *         tagKey1: "tagValue1",
+     *     },
+     * });
+     * ```
      */
     tags?: pulumi.Input<{[key: string]: any}>;
 }

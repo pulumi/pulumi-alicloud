@@ -129,6 +129,26 @@ def get_server_snapshots(disk_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.143.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.simpleapplicationserver.get_server_snapshots(ids=["example_id"])
+    pulumi.export("simpleApplicationServerSnapshotId1", ids.snapshots[0].id)
+    name_regex = alicloud.simpleapplicationserver.get_server_snapshots(name_regex="^my-Snapshot")
+    pulumi.export("simpleApplicationServerSnapshotId2", name_regex.snapshots[0].id)
+    disk_id_conf = alicloud.simpleapplicationserver.get_server_snapshots(ids=["example_id"],
+        disk_id="example_value")
+    pulumi.export("simpleApplicationServerSnapshotId3", disk_id_conf.snapshots[0].id)
+    instance_id_conf = alicloud.simpleapplicationserver.get_server_snapshots(ids=["example_id"],
+        instance_id="example_value")
+    pulumi.export("simpleApplicationServerSnapshotId4", instance_id_conf.snapshots[0].id)
+    ```
+
 
     :param str disk_id: The ID of the source disk. This parameter has a value even after the source disk is released.
     :param Sequence[str] ids: A list of Snapshot IDs.
@@ -171,6 +191,26 @@ def get_server_snapshots_output(disk_id: Optional[pulumi.Input[Optional[str]]] =
     This data source provides the Simple Application Server Snapshots of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.143.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.simpleapplicationserver.get_server_snapshots(ids=["example_id"])
+    pulumi.export("simpleApplicationServerSnapshotId1", ids.snapshots[0].id)
+    name_regex = alicloud.simpleapplicationserver.get_server_snapshots(name_regex="^my-Snapshot")
+    pulumi.export("simpleApplicationServerSnapshotId2", name_regex.snapshots[0].id)
+    disk_id_conf = alicloud.simpleapplicationserver.get_server_snapshots(ids=["example_id"],
+        disk_id="example_value")
+    pulumi.export("simpleApplicationServerSnapshotId3", disk_id_conf.snapshots[0].id)
+    instance_id_conf = alicloud.simpleapplicationserver.get_server_snapshots(ids=["example_id"],
+        instance_id="example_value")
+    pulumi.export("simpleApplicationServerSnapshotId4", instance_id_conf.snapshots[0].id)
+    ```
 
 
     :param str disk_id: The ID of the source disk. This parameter has a value even after the source disk is released.

@@ -182,6 +182,53 @@ class UserAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.134.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.bastionhost.Instance("defaultInstance",
+            description=name,
+            license_code="bhah_ent_50_asset",
+            plan_code="cloudbastion",
+            storage="5",
+            bandwidth="5",
+            period=1,
+            vswitch_id=default_switch.id,
+            security_group_ids=[default_security_group.id])
+        default_user_group = alicloud.bastionhost.UserGroup("defaultUserGroup",
+            instance_id=default_instance.id,
+            user_group_name=name)
+        local_user = alicloud.bastionhost.User("localUser",
+            instance_id=default_instance.id,
+            mobile_country_code="CN",
+            mobile="13312345678",
+            password="YourPassword-123",
+            source="Local",
+            user_name=f"{name}_local_user")
+        default_user_attachment = alicloud.bastionhost.UserAttachment("defaultUserAttachment",
+            instance_id=default_instance.id,
+            user_group_id=default_user_group.user_group_id,
+            user_id=local_user.user_id)
+        ```
+
         ## Import
 
         Bastion Host User Attachment can be imported using the id, e.g.
@@ -206,6 +253,53 @@ class UserAttachment(pulumi.CustomResource):
         Provides a Bastion Host User Attachment resource to add user to one user group.
 
         > **NOTE:** Available since v1.134.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.bastionhost.Instance("defaultInstance",
+            description=name,
+            license_code="bhah_ent_50_asset",
+            plan_code="cloudbastion",
+            storage="5",
+            bandwidth="5",
+            period=1,
+            vswitch_id=default_switch.id,
+            security_group_ids=[default_security_group.id])
+        default_user_group = alicloud.bastionhost.UserGroup("defaultUserGroup",
+            instance_id=default_instance.id,
+            user_group_name=name)
+        local_user = alicloud.bastionhost.User("localUser",
+            instance_id=default_instance.id,
+            mobile_country_code="CN",
+            mobile="13312345678",
+            password="YourPassword-123",
+            source="Local",
+            user_name=f"{name}_local_user")
+        default_user_attachment = alicloud.bastionhost.UserAttachment("defaultUserAttachment",
+            instance_id=default_instance.id,
+            user_group_id=default_user_group.user_group_id,
+            user_id=local_user.user_id)
+        ```
 
         ## Import
 

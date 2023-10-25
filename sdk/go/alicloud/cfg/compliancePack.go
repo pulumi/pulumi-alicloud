@@ -19,6 +19,94 @@ import (
 //
 // > **NOTE:** Available since v1.124.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example-config-name"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			rule1, err := cfg.NewRule(ctx, "rule1", &cfg.RuleArgs{
+//				Description:               pulumi.String(name),
+//				SourceOwner:               pulumi.String("ALIYUN"),
+//				SourceIdentifier:          pulumi.String("ram-user-ak-create-date-expired-check"),
+//				RiskLevel:                 pulumi.Int(1),
+//				MaximumExecutionFrequency: pulumi.String("TwentyFour_Hours"),
+//				RegionIdsScope:            *pulumi.String(defaultRegions.Regions[0].Id),
+//				ConfigRuleTriggerTypes:    pulumi.String("ScheduledNotification"),
+//				ResourceTypesScopes: pulumi.StringArray{
+//					pulumi.String("ACS::RAM::User"),
+//				},
+//				RuleName: pulumi.String("ciscompliancecheck_ram-user-ak-create-date-expired-check"),
+//				InputParameters: pulumi.Map{
+//					"days": pulumi.Any("90"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			rule2, err := cfg.NewRule(ctx, "rule2", &cfg.RuleArgs{
+//				Description:            pulumi.String(name),
+//				SourceOwner:            pulumi.String("ALIYUN"),
+//				SourceIdentifier:       pulumi.String("adb-cluster-maintain-time-check"),
+//				RiskLevel:              pulumi.Int(2),
+//				RegionIdsScope:         *pulumi.String(defaultRegions.Regions[0].Id),
+//				ConfigRuleTriggerTypes: pulumi.String("ScheduledNotification"),
+//				ResourceTypesScopes: pulumi.StringArray{
+//					pulumi.String("ACS::ADB::DBCluster"),
+//				},
+//				RuleName: pulumi.String("governance-evaluation-adb-cluster-maintain-time-check"),
+//				InputParameters: pulumi.Map{
+//					"maintainTimes": pulumi.Any("02:00-04:00,06:00-08:00,12:00-13:00"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cfg.NewCompliancePack(ctx, "defaultCompliancePack", &cfg.CompliancePackArgs{
+//				CompliancePackName: pulumi.String(name),
+//				Description:        pulumi.String("CloudGovernanceCenter evaluation"),
+//				RiskLevel:          pulumi.Int(2),
+//				ConfigRuleIds: cfg.CompliancePackConfigRuleIdArray{
+//					&cfg.CompliancePackConfigRuleIdArgs{
+//						ConfigRuleId: rule1.ID(),
+//					},
+//					&cfg.CompliancePackConfigRuleIdArgs{
+//						ConfigRuleId: rule2.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Cloud Config Compliance Pack can be imported using the id, e.g.

@@ -12,6 +12,22 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.33.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const foo = new alicloud.nas.AccessGroup("foo", {
+ *     accessGroupName: "terraform-example",
+ *     accessGroupType: "Vpc",
+ *     description: "terraform-example",
+ *     fileSystemType: "extreme",
+ * });
+ * ```
+ *
  * ## Import
  *
  * NAS Access Group can be imported using the id, e.g.

@@ -15,6 +15,58 @@ import (
 // This data source provides the Cms Metric Rule Templates of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.134.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := cms.GetMetricRuleTemplates(ctx, &cms.GetMetricRuleTemplatesArgs{
+//				Ids: []string{
+//					"example_value",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cmsMetricRuleTemplateId1", ids.Templates[0].Id)
+//			nameRegex, err := cms.GetMetricRuleTemplates(ctx, &cms.GetMetricRuleTemplatesArgs{
+//				NameRegex: pulumi.StringRef("^my-MetricRuleTemplate"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cmsMetricRuleTemplateId2", nameRegex.Templates[0].Id)
+//			_, err = cms.GetMetricRuleTemplates(ctx, &cms.GetMetricRuleTemplatesArgs{
+//				Keyword: pulumi.StringRef("^my-MetricRuleTemplate"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cmsMetricRuleTemplateId3", nameRegex.Templates[0].Id)
+//			_, err = cms.GetMetricRuleTemplates(ctx, &cms.GetMetricRuleTemplatesArgs{
+//				TemplateId: pulumi.StringRef("example_value"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cmsMetricRuleTemplateId4", nameRegex.Templates[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetMetricRuleTemplates(ctx *pulumi.Context, args *GetMetricRuleTemplatesArgs, opts ...pulumi.InvokeOption) (*GetMetricRuleTemplatesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMetricRuleTemplatesResult

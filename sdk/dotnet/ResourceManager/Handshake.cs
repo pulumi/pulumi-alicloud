@@ -15,6 +15,27 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// &gt; **NOTE:** Available in v1.82.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Add a Resource Manager handshake.
+    ///     var example = new AliCloud.ResourceManager.Handshake("example", new()
+    ///     {
+    ///         Note = "test resource manager handshake",
+    ///         TargetEntity = "1182775234******",
+    ///         TargetType = "Account",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Resource Manager handshake can be imported using the id, e.g.

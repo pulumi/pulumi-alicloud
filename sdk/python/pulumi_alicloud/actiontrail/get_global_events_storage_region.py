@@ -58,6 +58,18 @@ def get_global_events_storage_region(opts: Optional[pulumi.InvokeOptions] = None
     This data source provides the Actiontrail Global Events Storage Region of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.201.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.actiontrail.get_global_events_storage_region()
+    pulumi.export("alicloudActiontrailGlobalEventsStorageRegion1", default.storage_region)
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -74,5 +86,17 @@ def get_global_events_storage_region_output(opts: Optional[pulumi.InvokeOptions]
     This data source provides the Actiontrail Global Events Storage Region of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.201.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.actiontrail.get_global_events_storage_region()
+    pulumi.export("alicloudActiontrailGlobalEventsStorageRegion1", default.storage_region)
+    ```
     """
     ...

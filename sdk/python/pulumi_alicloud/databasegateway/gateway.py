@@ -159,6 +159,17 @@ class Gateway(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.135.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.databasegateway.Gateway("example", gateway_name="example_value")
+        ```
+
         ## Import
 
         Database Gateway Gateway can be imported using the id, e.g.
@@ -184,6 +195,17 @@ class Gateway(pulumi.CustomResource):
         For information about Database Gateway Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/doc-detail/123415.htm).
 
         > **NOTE:** Available in v1.135.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.databasegateway.Gateway("example", gateway_name="example_value")
+        ```
 
         ## Import
 

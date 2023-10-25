@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * This data source provides the Sae Instance Specifications of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.139.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.sae.getInstanceSpecifications({});
+ * export const saeInstanceSpecificationId1 = ids.then(ids => ids.specifications?.[0]?.id);
+ * ```
  */
 export function getInstanceSpecifications(args?: GetInstanceSpecificationsArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceSpecificationsResult> {
     args = args || {};
@@ -51,6 +63,18 @@ export interface GetInstanceSpecificationsResult {
  * This data source provides the Sae Instance Specifications of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.139.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.sae.getInstanceSpecifications({});
+ * export const saeInstanceSpecificationId1 = ids.then(ids => ids.specifications?.[0]?.id);
+ * ```
  */
 export function getInstanceSpecificationsOutput(args?: GetInstanceSpecificationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceSpecificationsResult> {
     return pulumi.output(args).apply((a: any) => getInstanceSpecifications(a, opts))

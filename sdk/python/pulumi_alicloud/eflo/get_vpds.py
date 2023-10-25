@@ -190,6 +190,18 @@ def get_vpds(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in 1.201.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.eflo.get_vpds(ids=[alicloud_eflo_vpd["default"]["id"]],
+        name_regex=alicloud_eflo_vpd["default"]["name"],
+        vpd_name="RMC-Terraform-Test")
+    pulumi.export("alicloudEfloVpdExampleId", default.vpds[0].id)
+    ```
+
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Vpd IDs.
@@ -246,6 +258,18 @@ def get_vpds_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = Non
     This data source provides Eflo Vpd available to the user.[What is Vpd](https://help.aliyun.com/document_detail/604976.html)
 
     > **NOTE:** Available in 1.201.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.eflo.get_vpds(ids=[alicloud_eflo_vpd["default"]["id"]],
+        name_regex=alicloud_eflo_vpd["default"]["name"],
+        vpd_name="RMC-Terraform-Test")
+    pulumi.export("alicloudEfloVpdExampleId", default.vpds[0].id)
+    ```
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

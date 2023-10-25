@@ -402,6 +402,27 @@ class SecurityGroup(pulumi.CustomResource):
 
         > **NOTE:** From version 1.7.2, `ecs.SecurityGroup` has supported to segregate different ECS instance in which the same security group.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ecs.SecurityGroup("default", description="New security group")
+        ```
+        Basic usage for vpc
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        vpc = alicloud.vpc.Network("vpc",
+            vpc_name="terraform-example",
+            cidr_block="10.1.0.0/21")
+        group = alicloud.ecs.SecurityGroup("group", vpc_id=vpc.id)
+        ```
         ## Module Support
 
         You can use the existing security-group module
@@ -443,6 +464,27 @@ class SecurityGroup(pulumi.CustomResource):
 
         > **NOTE:** From version 1.7.2, `ecs.SecurityGroup` has supported to segregate different ECS instance in which the same security group.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ecs.SecurityGroup("default", description="New security group")
+        ```
+        Basic usage for vpc
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        vpc = alicloud.vpc.Network("vpc",
+            vpc_name="terraform-example",
+            cidr_block="10.1.0.0/21")
+        group = alicloud.ecs.SecurityGroup("group", vpc_id=vpc.id)
+        ```
         ## Module Support
 
         You can use the existing security-group module

@@ -10,6 +10,16 @@ import * as utilities from "../utilities";
  * This data source provides the Resource Manager Resource Directories of the current Alibaba Cloud user.
  *
  * > **NOTE:**  Available in 1.86.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.resourcemanager.getResourceDirectories({});
+ * export const resourceDirectoryId = _default.then(_default => _default.directories?.[0]?.id);
+ * ```
  */
 export function getResourceDirectories(args?: GetResourceDirectoriesArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceDirectoriesResult> {
     args = args || {};
@@ -48,6 +58,16 @@ export interface GetResourceDirectoriesResult {
  * This data source provides the Resource Manager Resource Directories of the current Alibaba Cloud user.
  *
  * > **NOTE:**  Available in 1.86.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.resourcemanager.getResourceDirectories({});
+ * export const resourceDirectoryId = _default.then(_default => _default.directories?.[0]?.id);
+ * ```
  */
 export function getResourceDirectoriesOutput(args?: GetResourceDirectoriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceDirectoriesResult> {
     return pulumi.output(args).apply((a: any) => getResourceDirectories(a, opts))

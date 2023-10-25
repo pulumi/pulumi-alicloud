@@ -324,6 +324,34 @@ class PbrRouteEntry(pulumi.CustomResource):
 
         For information about VPN Pbr Route Entry and how to use it, see [What is VPN Pbr Route Entry](https://www.alibabacloud.com/help/en/doc-detail/127248.html).
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfacc"
+        default_gateways = alicloud.vpn.get_gateways()
+        default_customer_gateway = alicloud.vpn.CustomerGateway("defaultCustomerGateway", ip_address="192.168.1.1")
+        default_connection = alicloud.vpn.Connection("defaultConnection",
+            customer_gateway_id=default_customer_gateway.id,
+            vpn_gateway_id=default_gateways.ids[0],
+            local_subnets=["192.168.2.0/24"],
+            remote_subnets=["192.168.3.0/24"])
+        default_pbr_route_entry = alicloud.vpn.PbrRouteEntry("defaultPbrRouteEntry",
+            vpn_gateway_id=default_gateways.ids[0],
+            route_source="192.168.1.0/24",
+            route_dest="10.0.0.0/24",
+            next_hop=default_connection.id,
+            weight=0,
+            publish_vpc=False)
+        ```
+
         ## Import
 
         VPN Pbr route entry can be imported using the id, e.g.
@@ -353,6 +381,34 @@ class PbrRouteEntry(pulumi.CustomResource):
         > **NOTE:** Available in 1.162.0+.
 
         For information about VPN Pbr Route Entry and how to use it, see [What is VPN Pbr Route Entry](https://www.alibabacloud.com/help/en/doc-detail/127248.html).
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfacc"
+        default_gateways = alicloud.vpn.get_gateways()
+        default_customer_gateway = alicloud.vpn.CustomerGateway("defaultCustomerGateway", ip_address="192.168.1.1")
+        default_connection = alicloud.vpn.Connection("defaultConnection",
+            customer_gateway_id=default_customer_gateway.id,
+            vpn_gateway_id=default_gateways.ids[0],
+            local_subnets=["192.168.2.0/24"],
+            remote_subnets=["192.168.3.0/24"])
+        default_pbr_route_entry = alicloud.vpn.PbrRouteEntry("defaultPbrRouteEntry",
+            vpn_gateway_id=default_gateways.ids[0],
+            route_source="192.168.1.0/24",
+            route_dest="10.0.0.0/24",
+            next_hop=default_connection.id,
+            weight=0,
+            publish_vpc=False)
+        ```
 
         ## Import
 

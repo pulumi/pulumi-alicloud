@@ -11,6 +11,51 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.136.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const exampleZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ *     vpcId: exampleNetwork.id,
+ *     cidrBlock: "172.16.0.0/21",
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ *     vswitchName: "terraform-example",
+ * });
+ * const exampleNatGateway = new alicloud.vpc.NatGateway("exampleNatGateway", {
+ *     vpcId: exampleNetwork.id,
+ *     internetChargeType: "PayByLcu",
+ *     natGatewayName: "terraform-example",
+ *     description: "terraform-example",
+ *     natType: "Enhanced",
+ *     vswitchId: exampleSwitch.id,
+ *     networkType: "intranet",
+ * });
+ * const exampleNatIpCidr = new alicloud.vpc.NatIpCidr("exampleNatIpCidr", {
+ *     natIpCidr: "192.168.0.0/16",
+ *     natGatewayId: exampleNatGateway.id,
+ *     natIpCidrDescription: "terraform-example",
+ *     natIpCidrName: "terraform-example",
+ * });
+ * const exampleNatIp = new alicloud.vpc.NatIp("exampleNatIp", {
+ *     natIp: "192.168.0.37",
+ *     natGatewayId: exampleNatGateway.id,
+ *     natIpDescription: "example_value",
+ *     natIpName: "example_value",
+ *     natIpCidr: exampleNatIpCidr.natIpCidr,
+ * });
+ * ```
+ *
  * ## Import
  *
  * VPC Nat Ip can be imported using the id, e.g.

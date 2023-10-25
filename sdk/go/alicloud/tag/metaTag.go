@@ -22,6 +22,37 @@ import (
 //
 // > **NOTE:** Meta Tag Only Support `cn-hangzhou` Region
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/tag"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := tag.NewMetaTag(ctx, "example", &tag.MetaTagArgs{
+//				Key: pulumi.String("Name1"),
+//				Values: pulumi.StringArray{
+//					pulumi.String("Desc2"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Tag Meta Tag can be imported using the id, e.g.

@@ -13,6 +13,32 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.196.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-testAccServiceCatalogProvisionedProduct";
+ * const _default = new alicloud.servicecatalog.ProvisionedProduct("default", {
+ *     provisionedProductName: name,
+ *     stackRegionId: "cn-hangzhou",
+ *     productVersionId: "pv-bp1d7dxy2pcc1g",
+ *     productId: "prod-bp1u3dkc282cwd",
+ *     portfolioId: "port-bp119dvn27jccw",
+ *     tags: {
+ *         v1: "tf-test",
+ *     },
+ *     parameters: [{
+ *         parameterKey: "role_name",
+ *         parameterValue: name,
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Service Catalog Provisioned Product can be imported using the id, e.g.

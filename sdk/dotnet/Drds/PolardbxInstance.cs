@@ -16,6 +16,55 @@ namespace Pulumi.AliCloud.Drds
     /// 
     /// &gt; **NOTE:** Available since v1.211.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///     });
+    /// 
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
+    ///     {
+    ///         VpcId = exampleNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var defaultPolardbxInstance = new AliCloud.Drds.PolardbxInstance("defaultPolardbxInstance", new()
+    ///     {
+    ///         TopologyType = "3azones",
+    ///         VswitchId = exampleSwitch.Id,
+    ///         PrimaryZone = "ap-southeast-1a",
+    ///         CnNodeCount = 2,
+    ///         DnClass = "mysql.n4.medium.25",
+    ///         CnClass = "polarx.x4.medium.2e",
+    ///         DnNodeCount = 2,
+    ///         SecondaryZone = "ap-southeast-1b",
+    ///         TertiaryZone = "ap-southeast-1c",
+    ///         VpcId = exampleNetwork.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// DRDS Polardb X Instance can be imported using the id, e.g.

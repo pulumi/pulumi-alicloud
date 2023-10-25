@@ -3854,6 +3854,15 @@ class GetDisksDiskResult(dict):
         :param str snapshot_id: Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
         :param str status: Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
         :param Mapping[str, Any] tags: A map of tags assigned to the disks. It must be in the format:
+               ```python
+               import pulumi
+               import pulumi_alicloud as alicloud
+               
+               disks_ds = alicloud.ecs.get_disks(tags={
+                   "tagKey1": "tagValue1",
+                   "tagKey2": "tagValue2",
+               })
+               ```
         :param str type: Disk type. Possible values: `system` and `data`.
         """
         GetDisksDiskResult._configure(
@@ -4360,6 +4369,15 @@ class GetDisksDiskResult(dict):
     def tags(self) -> Mapping[str, Any]:
         """
         A map of tags assigned to the disks. It must be in the format:
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        disks_ds = alicloud.ecs.get_disks(tags={
+            "tagKey1": "tagValue1",
+            "tagKey2": "tagValue2",
+        })
+        ```
         """
         return pulumi.get(self, "tags")
 
@@ -12740,6 +12758,15 @@ class GetInstancesInstanceResult(dict):
         :param str vpc_id: ID of the VPC linked to the instances.
         :param str vswitch_id: ID of the VSwitch linked to the instances.
         :param Mapping[str, Any] tags: A map of tags assigned to the ECS instances. It must be in the format:
+               ```python
+               import pulumi
+               import pulumi_alicloud as alicloud
+               
+               tagged_instances = alicloud.ecs.get_instances(tags={
+                   "tagKey1": "tagValue1",
+                   "tagKey2": "tagValue2",
+               })
+               ```
         """
         GetInstancesInstanceResult._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -13095,6 +13122,15 @@ class GetInstancesInstanceResult(dict):
     def tags(self) -> Optional[Mapping[str, Any]]:
         """
         A map of tags assigned to the ECS instances. It must be in the format:
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        tagged_instances = alicloud.ecs.get_instances(tags={
+            "tagKey1": "tagValue1",
+            "tagKey2": "tagValue2",
+        })
+        ```
         """
         return pulumi.get(self, "tags")
 
@@ -14542,6 +14578,15 @@ class GetSecurityGroupsGroupResult(dict):
         :param str security_group_type: The type of the security group.
         :param str vpc_id: Used to retrieve security groups that belong to the specified VPC ID.
         :param Mapping[str, Any] tags: A map of tags assigned to the ECS instances. It must be in the format:
+               ```python
+               import pulumi
+               import pulumi_alicloud as alicloud
+               
+               tagged_security_groups = alicloud.ecs.get_security_groups(tags={
+                   "tagKey1": "tagValue1",
+                   "tagKey2": "tagValue2",
+               })
+               ```
         """
         GetSecurityGroupsGroupResult._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -14676,6 +14721,15 @@ class GetSecurityGroupsGroupResult(dict):
     def tags(self) -> Optional[Mapping[str, Any]]:
         """
         A map of tags assigned to the ECS instances. It must be in the format:
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        tagged_security_groups = alicloud.ecs.get_security_groups(tags={
+            "tagKey1": "tagValue1",
+            "tagKey2": "tagValue2",
+        })
+        ```
         """
         return pulumi.get(self, "tags")
 

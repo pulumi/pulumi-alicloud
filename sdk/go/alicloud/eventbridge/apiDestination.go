@@ -19,6 +19,59 @@ import (
 //
 // > **NOTE:** Available since v1.211.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eventbridge"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			region := "cn-chengdu"
+//			if param := cfg.Get("region"); param != "" {
+//				region = param
+//			}
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultConnection, err := eventbridge.NewConnection(ctx, "defaultConnection", &eventbridge.ConnectionArgs{
+//				ConnectionName: pulumi.String(name),
+//				NetworkParameters: &eventbridge.ConnectionNetworkParametersArgs{
+//					NetworkType: pulumi.String("PublicNetwork"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = eventbridge.NewApiDestination(ctx, "defaultApiDestination", &eventbridge.ApiDestinationArgs{
+//				ConnectionName:     defaultConnection.ConnectionName,
+//				ApiDestinationName: pulumi.String(name),
+//				Description:        pulumi.String("test-api-destination-connection"),
+//				HttpApiParameters: &eventbridge.ApiDestinationHttpApiParametersArgs{
+//					Endpoint: pulumi.String("http://127.0.0.1:8001"),
+//					Method:   pulumi.String("POST"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Event Bridge Api Destination can be imported using the id, e.g.

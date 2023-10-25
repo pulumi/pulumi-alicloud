@@ -15,6 +15,46 @@ import (
 // This data source provides the Cen Transit Router Cidrs of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.193.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := cen.GetTransitRouterCidrs(ctx, &cen.GetTransitRouterCidrsArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//				TransitRouterId: "tr-6ehx7q2jze8ch5ji0****",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cenTransitRouterCidrId0", ids.Cidrs[0].Id)
+//			nameRegex, err := cen.GetTransitRouterCidrs(ctx, &cen.GetTransitRouterCidrsArgs{
+//				NameRegex:       pulumi.StringRef("^my-name"),
+//				TransitRouterId: "tr-6ehx7q2jze8ch5ji0****",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cenTransitRouterCidrId1", nameRegex.Cidrs[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetTransitRouterCidrs(ctx *pulumi.Context, args *GetTransitRouterCidrsArgs, opts ...pulumi.InvokeOption) (*GetTransitRouterCidrsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTransitRouterCidrsResult

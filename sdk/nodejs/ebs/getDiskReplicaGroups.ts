@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * This data source provides the Ebs Disk Replica Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.187.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.ebs.getDiskReplicaGroups({
+ *     ids: ["example_id"],
+ * });
+ * export const ebsDiskReplicaGroupId1 = ids.then(ids => ids.groups?.[0]?.id);
+ * ```
  */
 export function getDiskReplicaGroups(args?: GetDiskReplicaGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDiskReplicaGroupsResult> {
     args = args || {};
@@ -51,6 +65,20 @@ export interface GetDiskReplicaGroupsResult {
  * This data source provides the Ebs Disk Replica Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.187.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.ebs.getDiskReplicaGroups({
+ *     ids: ["example_id"],
+ * });
+ * export const ebsDiskReplicaGroupId1 = ids.then(ids => ids.groups?.[0]?.id);
+ * ```
  */
 export function getDiskReplicaGroupsOutput(args?: GetDiskReplicaGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiskReplicaGroupsResult> {
     return pulumi.output(args).apply((a: any) => getDiskReplicaGroups(a, opts))

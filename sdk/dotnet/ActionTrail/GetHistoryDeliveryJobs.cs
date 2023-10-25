@@ -15,6 +15,47 @@ namespace Pulumi.AliCloud.ActionTrail
         /// This data source provides the Actiontrail History Delivery Jobs of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.139.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.ActionTrail.GetHistoryDeliveryJobs.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///     });
+        /// 
+        ///     var status = AliCloud.ActionTrail.GetHistoryDeliveryJobs.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         Status = 2,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["actiontrailHistoryDeliveryJobId1"] = ids.Apply(getHistoryDeliveryJobsResult =&gt; getHistoryDeliveryJobsResult.Jobs[0]?.Id),
+        ///         ["actiontrailHistoryDeliveryJobId2"] = status.Apply(getHistoryDeliveryJobsResult =&gt; getHistoryDeliveryJobsResult.Jobs[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetHistoryDeliveryJobsResult> InvokeAsync(GetHistoryDeliveryJobsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHistoryDeliveryJobsResult>("alicloud:actiontrail/getHistoryDeliveryJobs:getHistoryDeliveryJobs", args ?? new GetHistoryDeliveryJobsArgs(), options.WithDefaults());
@@ -23,6 +64,47 @@ namespace Pulumi.AliCloud.ActionTrail
         /// This data source provides the Actiontrail History Delivery Jobs of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.139.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.ActionTrail.GetHistoryDeliveryJobs.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///     });
+        /// 
+        ///     var status = AliCloud.ActionTrail.GetHistoryDeliveryJobs.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         Status = 2,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["actiontrailHistoryDeliveryJobId1"] = ids.Apply(getHistoryDeliveryJobsResult =&gt; getHistoryDeliveryJobsResult.Jobs[0]?.Id),
+        ///         ["actiontrailHistoryDeliveryJobId2"] = status.Apply(getHistoryDeliveryJobsResult =&gt; getHistoryDeliveryJobsResult.Jobs[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetHistoryDeliveryJobsResult> Invoke(GetHistoryDeliveryJobsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHistoryDeliveryJobsResult>("alicloud:actiontrail/getHistoryDeliveryJobs:getHistoryDeliveryJobs", args ?? new GetHistoryDeliveryJobsInvokeArgs(), options.WithDefaults());

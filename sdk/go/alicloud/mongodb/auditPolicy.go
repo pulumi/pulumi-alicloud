@@ -19,6 +19,81 @@ import (
 //
 // > **NOTE:** Available since v1.148.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mongodb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := mongodb.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			index := len(defaultZones.Zones) - 1
+//			zoneId := defaultZones.Zones[index].Id
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("172.17.3.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(zoneId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := mongodb.NewInstance(ctx, "defaultInstance", &mongodb.InstanceArgs{
+//				EngineVersion:     pulumi.String("4.2"),
+//				DbInstanceClass:   pulumi.String("dds.mongo.mid"),
+//				DbInstanceStorage: pulumi.Int(10),
+//				VswitchId:         defaultSwitch.ID(),
+//				SecurityIpLists: pulumi.StringArray{
+//					pulumi.String("10.168.1.12"),
+//					pulumi.String("100.69.7.112"),
+//				},
+//				Tags: pulumi.Map{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("example"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = mongodb.NewAuditPolicy(ctx, "defaultAuditPolicy", &mongodb.AuditPolicyArgs{
+//				DbInstanceId: defaultInstance.ID(),
+//				AuditStatus:  pulumi.String("disabled"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // MongoDB Audit Policy can be imported using the id, e.g.

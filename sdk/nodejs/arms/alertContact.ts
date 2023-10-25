@@ -11,6 +11,22 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.129.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.arms.AlertContact("example", {
+ *     alertContactName: "example_value",
+ *     dingRobotWebhookUrl: "https://oapi.dingtalk.com/robot/send?access_token=91f2f6****",
+ *     email: "someone@example.com",
+ *     phoneNum: "1381111****",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Application Real-Time Monitoring Service (ARMS) Alert Contact can be imported using the id, e.g.

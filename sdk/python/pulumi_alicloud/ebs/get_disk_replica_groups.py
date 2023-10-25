@@ -80,6 +80,18 @@ def get_disk_replica_groups(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.187.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.ebs.get_disk_replica_groups(ids=["example_id"])
+    pulumi.export("ebsDiskReplicaGroupId1", ids.groups[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Disk Replica Group IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -105,6 +117,18 @@ def get_disk_replica_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[
     This data source provides the Ebs Disk Replica Groups of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.187.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.ebs.get_disk_replica_groups(ids=["example_id"])
+    pulumi.export("ebsDiskReplicaGroupId1", ids.groups[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Disk Replica Group IDs.

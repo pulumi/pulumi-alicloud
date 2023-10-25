@@ -20,6 +20,93 @@ import (
 //
 // > **NOTE:** Available since v1.43.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       exampleNetwork.ID(),
+//				ZoneId:      *pulumi.String(_default.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewNetworkAcl(ctx, "exampleNetworkAcl", &vpc.NetworkAclArgs{
+//				VpcId:          exampleNetwork.ID(),
+//				NetworkAclName: pulumi.String(name),
+//				Description:    pulumi.String(name),
+//				IngressAclEntries: vpc.NetworkAclIngressAclEntryArray{
+//					&vpc.NetworkAclIngressAclEntryArgs{
+//						Description:         pulumi.String(fmt.Sprintf("%v-ingress", name)),
+//						NetworkAclEntryName: pulumi.String(fmt.Sprintf("%v-ingress", name)),
+//						SourceCidrIp:        pulumi.String("196.168.2.0/21"),
+//						Policy:              pulumi.String("accept"),
+//						Port:                pulumi.String("22/80"),
+//						Protocol:            pulumi.String("tcp"),
+//					},
+//				},
+//				EgressAclEntries: vpc.NetworkAclEgressAclEntryArray{
+//					&vpc.NetworkAclEgressAclEntryArgs{
+//						Description:         pulumi.String(fmt.Sprintf("%v-egress", name)),
+//						NetworkAclEntryName: pulumi.String(fmt.Sprintf("%v-egress", name)),
+//						DestinationCidrIp:   pulumi.String("0.0.0.0/0"),
+//						Policy:              pulumi.String("accept"),
+//						Port:                pulumi.String("-1/-1"),
+//						Protocol:            pulumi.String("all"),
+//					},
+//				},
+//				Resources: vpc.NetworkAclResourceArray{
+//					&vpc.NetworkAclResourceArgs{
+//						ResourceId:   exampleSwitch.ID(),
+//						ResourceType: pulumi.String("VSwitch"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // VPC Network Acl can be imported using the id, e.g.

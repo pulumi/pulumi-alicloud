@@ -8,6 +8,23 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides available scaling configuration resources.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const scalingconfigurationsDs = alicloud.ess.getScalingConfigurations({
+ *     ids: [
+ *         "scaling_configuration_id1",
+ *         "scaling_configuration_id2",
+ *     ],
+ *     nameRegex: "scaling_configuration_name",
+ *     scalingGroupId: "scaling_group_id",
+ * });
+ * export const firstScalingRule = scalingconfigurationsDs.then(scalingconfigurationsDs => scalingconfigurationsDs.configurations?.[0]?.id);
+ * ```
  */
 export function getScalingConfigurations(args?: GetScalingConfigurationsArgs, opts?: pulumi.InvokeOptions): Promise<GetScalingConfigurationsResult> {
     args = args || {};
@@ -72,6 +89,23 @@ export interface GetScalingConfigurationsResult {
 }
 /**
  * This data source provides available scaling configuration resources.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const scalingconfigurationsDs = alicloud.ess.getScalingConfigurations({
+ *     ids: [
+ *         "scaling_configuration_id1",
+ *         "scaling_configuration_id2",
+ *     ],
+ *     nameRegex: "scaling_configuration_name",
+ *     scalingGroupId: "scaling_group_id",
+ * });
+ * export const firstScalingRule = scalingconfigurationsDs.then(scalingconfigurationsDs => scalingconfigurationsDs.configurations?.[0]?.id);
+ * ```
  */
 export function getScalingConfigurationsOutput(args?: GetScalingConfigurationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScalingConfigurationsResult> {
     return pulumi.output(args).apply((a: any) => getScalingConfigurations(a, opts))

@@ -15,6 +15,47 @@ import (
 // This data source provides the Amqp Virtual Hosts of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.126.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/amqp"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := amqp.GetVirtualHosts(ctx, &amqp.GetVirtualHostsArgs{
+//				InstanceId: "amqp-abc12345",
+//				Ids: []string{
+//					"my-VirtualHost-1",
+//					"my-VirtualHost-2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("amqpVirtualHostId1", ids.Hosts[0].Id)
+//			nameRegex, err := amqp.GetVirtualHosts(ctx, &amqp.GetVirtualHostsArgs{
+//				InstanceId: "amqp-abc12345",
+//				NameRegex:  pulumi.StringRef("^my-VirtualHost"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("amqpVirtualHostId2", nameRegex.Hosts[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetVirtualHosts(ctx *pulumi.Context, args *GetVirtualHostsArgs, opts ...pulumi.InvokeOption) (*GetVirtualHostsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVirtualHostsResult

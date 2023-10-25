@@ -10,6 +10,25 @@ import * as utilities from "../utilities";
  * This data source provides the Mhub Products of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.138.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "example_value";
+ * const _default = new alicloud.mhub.Product("default", {productName: name});
+ * const ids = alicloud.mhub.getProducts({});
+ * export const mhubProductId1 = ids.then(ids => ids.products?.[0]?.id);
+ * const nameRegex = alicloud.mhub.getProducts({
+ *     nameRegex: "^my-Product",
+ * });
+ * export const mhubProductId2 = nameRegex.then(nameRegex => nameRegex.products?.[0]?.id);
+ * ```
  */
 export function getProducts(args?: GetProductsArgs, opts?: pulumi.InvokeOptions): Promise<GetProductsResult> {
     args = args || {};
@@ -58,6 +77,25 @@ export interface GetProductsResult {
  * This data source provides the Mhub Products of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.138.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "example_value";
+ * const _default = new alicloud.mhub.Product("default", {productName: name});
+ * const ids = alicloud.mhub.getProducts({});
+ * export const mhubProductId1 = ids.then(ids => ids.products?.[0]?.id);
+ * const nameRegex = alicloud.mhub.getProducts({
+ *     nameRegex: "^my-Product",
+ * });
+ * export const mhubProductId2 = nameRegex.then(nameRegex => nameRegex.products?.[0]?.id);
+ * ```
  */
 export function getProductsOutput(args?: GetProductsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProductsResult> {
     return pulumi.output(args).apply((a: any) => getProducts(a, opts))

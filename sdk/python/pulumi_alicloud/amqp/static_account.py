@@ -262,6 +262,36 @@ class StaticAccount(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.195.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        access_key = config.get("accessKey")
+        if access_key is None:
+            access_key = "access_key"
+        secret_key = config.get("secretKey")
+        if secret_key is None:
+            secret_key = "secret_key"
+        default_instance = alicloud.amqp.Instance("defaultInstance",
+            instance_type="enterprise",
+            max_tps="3000",
+            queue_capacity="200",
+            storage_size="700",
+            support_eip=False,
+            max_eip_tps="128",
+            payment_type="Subscription",
+            period=1)
+        default_static_account = alicloud.amqp.StaticAccount("defaultStaticAccount",
+            instance_id=default_instance.id,
+            access_key=access_key,
+            secret_key=secret_key)
+        ```
+
         ## Import
 
         Amqp Static Account can be imported using the id, e.g.
@@ -288,6 +318,36 @@ class StaticAccount(pulumi.CustomResource):
         For information about Amqp Static Account and how to use it, see [What is Static Account](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/create-a-pair-of-static-username-and-password).
 
         > **NOTE:** Available since v1.195.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        access_key = config.get("accessKey")
+        if access_key is None:
+            access_key = "access_key"
+        secret_key = config.get("secretKey")
+        if secret_key is None:
+            secret_key = "secret_key"
+        default_instance = alicloud.amqp.Instance("defaultInstance",
+            instance_type="enterprise",
+            max_tps="3000",
+            queue_capacity="200",
+            storage_size="700",
+            support_eip=False,
+            max_eip_tps="128",
+            payment_type="Subscription",
+            period=1)
+        default_static_account = alicloud.amqp.StaticAccount("defaultStaticAccount",
+            instance_id=default_instance.id,
+            access_key=access_key,
+            secret_key=secret_key)
+        ```
 
         ## Import
 

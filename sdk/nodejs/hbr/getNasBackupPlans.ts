@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * This data source provides the Hbr NasBackupPlans of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.132.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.hbr.getNasBackupPlans({
+ *     nameRegex: "^my-NasBackupPlan",
+ * });
+ * export const hbrNasBackupPlanId = ids.then(ids => ids.plans?.[0]?.id);
+ * ```
  */
 export function getNasBackupPlans(args?: GetNasBackupPlansArgs, opts?: pulumi.InvokeOptions): Promise<GetNasBackupPlansResult> {
     args = args || {};
@@ -70,6 +84,20 @@ export interface GetNasBackupPlansResult {
  * This data source provides the Hbr NasBackupPlans of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.132.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.hbr.getNasBackupPlans({
+ *     nameRegex: "^my-NasBackupPlan",
+ * });
+ * export const hbrNasBackupPlanId = ids.then(ids => ids.plans?.[0]?.id);
+ * ```
  */
 export function getNasBackupPlansOutput(args?: GetNasBackupPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNasBackupPlansResult> {
     return pulumi.output(args).apply((a: any) => getNasBackupPlans(a, opts))

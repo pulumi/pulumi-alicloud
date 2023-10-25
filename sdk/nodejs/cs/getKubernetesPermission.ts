@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides a list of Ram user permissions.
  *
  * > **NOTE:** Available in v1.122.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const usersDs = alicloud.ram.getUsers({
+ *     nameRegex: "your_user_name",
+ * });
+ * const default = usersDs.then(usersDs => alicloud.cs.getKubernetesPermission({
+ *     uid: usersDs.users?.[0]?.id,
+ * }));
+ * export const permissions = _default.then(_default => _default.permissions);
+ * ```
  */
 export function getKubernetesPermission(args: GetKubernetesPermissionArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesPermissionResult> {
 
@@ -55,6 +70,21 @@ export interface GetKubernetesPermissionResult {
  * This data source provides a list of Ram user permissions.
  *
  * > **NOTE:** Available in v1.122.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const usersDs = alicloud.ram.getUsers({
+ *     nameRegex: "your_user_name",
+ * });
+ * const default = usersDs.then(usersDs => alicloud.cs.getKubernetesPermission({
+ *     uid: usersDs.users?.[0]?.id,
+ * }));
+ * export const permissions = _default.then(_default => _default.permissions);
+ * ```
  */
 export function getKubernetesPermissionOutput(args: GetKubernetesPermissionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesPermissionResult> {
     return pulumi.output(args).apply((a: any) => getKubernetesPermission(a, opts))

@@ -13,6 +13,64 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.181.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultCustomerGateway = new alicloud.vpn.CustomerGateway("defaultCustomerGateway", {
+ *     ipAddress: "42.104.22.210",
+ *     asn: "45014",
+ *     description: name,
+ * });
+ * const defaultGatewayVpnAttachment = new alicloud.vpn.GatewayVpnAttachment("defaultGatewayVpnAttachment", {
+ *     customerGatewayId: defaultCustomerGateway.id,
+ *     networkType: "public",
+ *     localSubnet: "0.0.0.0/0",
+ *     remoteSubnet: "0.0.0.0/0",
+ *     effectImmediately: false,
+ *     ikeConfig: {
+ *         ikeAuthAlg: "md5",
+ *         ikeEncAlg: "des",
+ *         ikeVersion: "ikev2",
+ *         ikeMode: "main",
+ *         ikeLifetime: 86400,
+ *         psk: "tf-testvpn2",
+ *         ikePfs: "group1",
+ *         remoteId: "testbob2",
+ *         localId: "testalice2",
+ *     },
+ *     ipsecConfig: {
+ *         ipsecPfs: "group5",
+ *         ipsecEncAlg: "des",
+ *         ipsecAuthAlg: "md5",
+ *         ipsecLifetime: 86400,
+ *     },
+ *     bgpConfig: {
+ *         enable: true,
+ *         localAsn: 45014,
+ *         tunnelCidr: "169.254.11.0/30",
+ *         localBgpIp: "169.254.11.1",
+ *     },
+ *     healthCheckConfig: {
+ *         enable: true,
+ *         sip: "192.168.1.1",
+ *         dip: "10.0.0.1",
+ *         interval: 10,
+ *         retry: 10,
+ *         policy: "revoke_route",
+ *     },
+ *     enableDpd: true,
+ *     enableNatTraversal: true,
+ *     vpnAttachmentName: name,
+ * });
+ * ```
+ *
  * ## Import
  *
  * VPN Gateway Vpn Attachment can be imported using the id, e.g.

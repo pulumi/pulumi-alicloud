@@ -255,6 +255,33 @@ class IpaDomain(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.158.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "example.com"
+        default = alicloud.resourcemanager.get_resource_groups()
+        example = alicloud.dcdn.IpaDomain("example",
+            domain_name=domain_name,
+            resource_group_id=default.groups[0].id,
+            scope="global",
+            status="online",
+            sources=[alicloud.dcdn.IpaDomainSourceArgs(
+                content="www.alicloud-provider.cn",
+                port=80,
+                priority="20",
+                type="domain",
+                weight=10,
+            )])
+        ```
+
         ## Import
 
         DCDN Ipa Domain can be imported using the id, e.g.
@@ -283,6 +310,33 @@ class IpaDomain(pulumi.CustomResource):
         For information about DCDN Ipa Domain and how to use it, see [What is Ipa Domain](https://www.alibabacloud.com/help/en/doc-detail/130634.html).
 
         > **NOTE:** Available since v1.158.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "example.com"
+        default = alicloud.resourcemanager.get_resource_groups()
+        example = alicloud.dcdn.IpaDomain("example",
+            domain_name=domain_name,
+            resource_group_id=default.groups[0].id,
+            scope="global",
+            status="online",
+            sources=[alicloud.dcdn.IpaDomainSourceArgs(
+                content="www.alicloud-provider.cn",
+                port=80,
+                priority="20",
+                type="domain",
+                weight=10,
+            )])
+        ```
 
         ## Import
 

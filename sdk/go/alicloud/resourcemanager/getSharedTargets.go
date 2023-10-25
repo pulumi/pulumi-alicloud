@@ -15,6 +15,65 @@ import (
 // This data source provides the Resource Manager Shared Targets of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available since v1.111.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultAccounts, err := resourcemanager.GetAccounts(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultResourceShare, err := resourcemanager.NewResourceShare(ctx, "defaultResourceShare", &resourcemanager.ResourceShareArgs{
+//				ResourceShareName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSharedTarget, err := resourcemanager.NewSharedTarget(ctx, "defaultSharedTarget", &resourcemanager.SharedTargetArgs{
+//				ResourceShareId: defaultResourceShare.ID(),
+//				TargetId:        *pulumi.String(defaultAccounts.Ids[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ids := resourcemanager.GetSharedTargetsOutput(ctx, resourcemanager.GetSharedTargetsOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultSharedTarget.TargetId,
+//				},
+//			}, nil)
+//			ctx.Export("firstResourceManagerSharedTargetId", ids.ApplyT(func(ids resourcemanager.GetSharedTargetsResult) (*string, error) {
+//				return &ids.Targets[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			resourceShareId := resourcemanager.GetSharedTargetsOutput(ctx, resourcemanager.GetSharedTargetsOutputArgs{
+//				ResourceShareId: defaultSharedTarget.ResourceShareId,
+//			}, nil)
+//			ctx.Export("secondResourceManagerSharedTargetId", resourceShareId.ApplyT(func(resourceShareId resourcemanager.GetSharedTargetsResult) (*string, error) {
+//				return &resourceShareId.Targets[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetSharedTargets(ctx *pulumi.Context, args *GetSharedTargetsArgs, opts ...pulumi.InvokeOption) (*GetSharedTargetsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSharedTargetsResult

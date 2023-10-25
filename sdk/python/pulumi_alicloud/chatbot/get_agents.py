@@ -137,6 +137,16 @@ def get_agents(agent_name: Optional[str] = None,
 
     > **NOTE:** Available in v1.203.0+.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    name_regex = alicloud.chatbot.get_agents(name_regex="^my-Agent")
+    pulumi.export("alicloudChatbotAgentsId1", name_regex.agents[0].id)
+    ```
+
 
     :param str agent_name: The name of the agent.
     :param str name_regex: A regex string to filter resulting chatbot agents by name.
@@ -174,6 +184,16 @@ def get_agents_output(agent_name: Optional[pulumi.Input[Optional[str]]] = None,
     This data source provides the Chatbot Agents of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.203.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    name_regex = alicloud.chatbot.get_agents(name_regex="^my-Agent")
+    pulumi.export("alicloudChatbotAgentsId1", name_regex.agents[0].id)
+    ```
 
 
     :param str agent_name: The name of the agent.

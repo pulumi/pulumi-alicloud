@@ -343,6 +343,23 @@ class KeyPair(pulumi.CustomResource):
 
         Provides a key pair resource.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        basic = alicloud.ecs.KeyPair("basic", key_name="terraform-test-key-pair")
+        # Using name prefix to build key pair
+        prefix = alicloud.ecs.KeyPair("prefix", key_name_prefix="terraform-test-key-pair-prefix")
+        # Import an existing public key to build a alicloud key pair
+        publickey = alicloud.ecs.KeyPair("publickey",
+            key_name="my_public_key",
+            public_key="ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
+        ```
+
         ## Import
 
         Key pair can be imported using the name, e.g.
@@ -368,6 +385,23 @@ class KeyPair(pulumi.CustomResource):
         > **DEPRECATED:** This resource has been renamed to ecs.EcsKeyPair from version 1.121.0.
 
         Provides a key pair resource.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        basic = alicloud.ecs.KeyPair("basic", key_name="terraform-test-key-pair")
+        # Using name prefix to build key pair
+        prefix = alicloud.ecs.KeyPair("prefix", key_name_prefix="terraform-test-key-pair-prefix")
+        # Import an existing public key to build a alicloud key pair
+        publickey = alicloud.ecs.KeyPair("publickey",
+            key_name="my_public_key",
+            public_key="ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
+        ```
 
         ## Import
 

@@ -138,6 +138,21 @@ class ResourceShare(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.111.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        example = alicloud.resourcemanager.ResourceShare("example", resource_share_name=name)
+        ```
+
         ## Import
 
         Resource Manager Resource Share can be imported using the id, e.g.
@@ -162,6 +177,21 @@ class ResourceShare(pulumi.CustomResource):
         For information about Resource Manager Resource Share and how to use it, see [What is Resource Share](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
 
         > **NOTE:** Available since v1.111.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        example = alicloud.resourcemanager.ResourceShare("example", resource_share_name=name)
+        ```
 
         ## Import
 

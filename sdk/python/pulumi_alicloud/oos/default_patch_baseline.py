@@ -120,6 +120,22 @@ class DefaultPatchBaseline(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.203.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_patch_baseline = alicloud.oos.PatchBaseline("defaultPatchBaseline",
+            operation_system="Windows",
+            patch_baseline_name="terraform-example",
+            description="terraform-example",
+            approval_rules="{\\"PatchRules\\":[{\\"PatchFilterGroup\\":[{\\"Key\\":\\"PatchSet\\",\\"Values\\":[\\"OS\\"]},{\\"Key\\":\\"ProductFamily\\",\\"Values\\":[\\"Windows\\"]},{\\"Key\\":\\"Product\\",\\"Values\\":[\\"Windows 10\\",\\"Windows 7\\"]},{\\"Key\\":\\"Classification\\",\\"Values\\":[\\"Security Updates\\",\\"Updates\\",\\"Update Rollups\\",\\"Critical Updates\\"]},{\\"Key\\":\\"Severity\\",\\"Values\\":[\\"Critical\\",\\"Important\\",\\"Moderate\\"]}],\\"ApproveAfterDays\\":7,\\"EnableNonSecurity\\":true,\\"ComplianceLevel\\":\\"Medium\\"}]}")
+        default_default_patch_baseline = alicloud.oos.DefaultPatchBaseline("defaultDefaultPatchBaseline", patch_baseline_name=default_patch_baseline.id)
+        ```
+
         ## Import
 
         Oos Default Patch Baseline can be imported using the id, e.g.
@@ -144,6 +160,22 @@ class DefaultPatchBaseline(pulumi.CustomResource):
         For information about Oos Default Patch Baseline and how to use it, see [What is Default Patch Baseline](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/api-oos-2019-06-01-registerdefaultpatchbaseline).
 
         > **NOTE:** Available in v1.203.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_patch_baseline = alicloud.oos.PatchBaseline("defaultPatchBaseline",
+            operation_system="Windows",
+            patch_baseline_name="terraform-example",
+            description="terraform-example",
+            approval_rules="{\\"PatchRules\\":[{\\"PatchFilterGroup\\":[{\\"Key\\":\\"PatchSet\\",\\"Values\\":[\\"OS\\"]},{\\"Key\\":\\"ProductFamily\\",\\"Values\\":[\\"Windows\\"]},{\\"Key\\":\\"Product\\",\\"Values\\":[\\"Windows 10\\",\\"Windows 7\\"]},{\\"Key\\":\\"Classification\\",\\"Values\\":[\\"Security Updates\\",\\"Updates\\",\\"Update Rollups\\",\\"Critical Updates\\"]},{\\"Key\\":\\"Severity\\",\\"Values\\":[\\"Critical\\",\\"Important\\",\\"Moderate\\"]}],\\"ApproveAfterDays\\":7,\\"EnableNonSecurity\\":true,\\"ComplianceLevel\\":\\"Medium\\"}]}")
+        default_default_patch_baseline = alicloud.oos.DefaultPatchBaseline("defaultDefaultPatchBaseline", patch_baseline_name=default_patch_baseline.id)
+        ```
 
         ## Import
 

@@ -80,6 +80,18 @@ def get_backup_policies(db_cluster_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.147.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.clickhouse.get_backup_policies(db_cluster_id="example_value")
+    pulumi.export("clickHouseBackupPolicyId1", example.policies[0].id)
+    ```
+
 
     :param str db_cluster_id: The db cluster id.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -105,6 +117,18 @@ def get_backup_policies_output(db_cluster_id: Optional[pulumi.Input[str]] = None
     This data source provides the Click House Backup Policies of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.147.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.clickhouse.get_backup_policies(db_cluster_id="example_value")
+    pulumi.export("clickHouseBackupPolicyId1", example.policies[0].id)
+    ```
 
 
     :param str db_cluster_id: The db cluster id.

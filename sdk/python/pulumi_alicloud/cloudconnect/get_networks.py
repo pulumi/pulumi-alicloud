@@ -110,6 +110,20 @@ def get_networks(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default_networks = alicloud.cloudconnect.get_networks(ids=[alicloud_cloud_connect_networks["default"]["id"]],
+        name_regex="^tf-testAcc.*")
+    default_network = alicloud.cloudconnect.Network("defaultNetwork",
+        cidr_block="192.168.0.0/24",
+        description="tf-testAccCloudConnectNetworkDescription",
+        is_default=True)
+    ```
+
 
     :param Sequence[str] ids: A list of CCN instances IDs.
     :param str name_regex: A regex string to filter CCN instances by name.
@@ -141,6 +155,20 @@ def get_networks_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
     > **NOTE:** Available in 1.59.0+
 
     > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default_networks = alicloud.cloudconnect.get_networks(ids=[alicloud_cloud_connect_networks["default"]["id"]],
+        name_regex="^tf-testAcc.*")
+    default_network = alicloud.cloudconnect.Network("defaultNetwork",
+        cidr_block="192.168.0.0/24",
+        description="tf-testAccCloudConnectNetworkDescription",
+        is_default=True)
+    ```
 
 
     :param Sequence[str] ids: A list of CCN instances IDs.

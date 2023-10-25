@@ -416,6 +416,34 @@ class Ipv4Gateway(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.181.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-testacc-example"
+        default_resource_group = alicloud.resourcemanager.ResourceGroup("defaultResourceGroup",
+            display_name="tf-testAcc-rg665",
+            resource_group_name=name)
+        modify = alicloud.resourcemanager.ResourceGroup("modify",
+            display_name="tf-testAcc-rg298",
+            resource_group_name=f"{name}1")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=f"{name}2",
+            cidr_block="10.0.0.0/8")
+        default_ipv4_gateway = alicloud.vpc.Ipv4Gateway("defaultIpv4Gateway",
+            ipv4_gateway_name=name,
+            ipv4_gateway_description="tf-testAcc-Ipv4Gateway",
+            resource_group_id=default_resource_group.id,
+            vpc_id=default_network.id)
+        ```
+
         ## Import
 
         Vpc Ipv4 Gateway can be imported using the id, e.g.
@@ -446,6 +474,34 @@ class Ipv4Gateway(pulumi.CustomResource):
         For information about Vpc Ipv4 Gateway and how to use it, see [What is Ipv4 Gateway](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createipv4gateway).
 
         > **NOTE:** Available in v1.181.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-testacc-example"
+        default_resource_group = alicloud.resourcemanager.ResourceGroup("defaultResourceGroup",
+            display_name="tf-testAcc-rg665",
+            resource_group_name=name)
+        modify = alicloud.resourcemanager.ResourceGroup("modify",
+            display_name="tf-testAcc-rg298",
+            resource_group_name=f"{name}1")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=f"{name}2",
+            cidr_block="10.0.0.0/8")
+        default_ipv4_gateway = alicloud.vpc.Ipv4Gateway("defaultIpv4Gateway",
+            ipv4_gateway_name=name,
+            ipv4_gateway_description="tf-testAcc-Ipv4Gateway",
+            resource_group_id=default_resource_group.id,
+            vpc_id=default_network.id)
+        ```
 
         ## Import
 

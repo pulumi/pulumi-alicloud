@@ -110,6 +110,22 @@ def get_template_scratches(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.151.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.ros.get_template_scratches(ids=["example_value"])
+    pulumi.export("rosTemplateScratchId1", ids.scratches[0].id)
+    status = alicloud.ros.get_template_scratches(status="GENERATE_COMPLETE")
+    pulumi.export("rosTemplateScratchId2", status.scratches[0].id)
+    template_scratch_type = alicloud.ros.get_template_scratches(template_scratch_type="ResourceImport")
+    pulumi.export("rosTemplateScratchId3", template_scratch_type.scratches[0].id)
+    ```
+
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Template Scratch IDs.
@@ -147,6 +163,22 @@ def get_template_scratches_output(enable_details: Optional[pulumi.Input[Optional
     This data source provides the Ros Template Scratches of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.151.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.ros.get_template_scratches(ids=["example_value"])
+    pulumi.export("rosTemplateScratchId1", ids.scratches[0].id)
+    status = alicloud.ros.get_template_scratches(status="GENERATE_COMPLETE")
+    pulumi.export("rosTemplateScratchId2", status.scratches[0].id)
+    template_scratch_type = alicloud.ros.get_template_scratches(template_scratch_type="ResourceImport")
+    pulumi.export("rosTemplateScratchId3", template_scratch_type.scratches[0].id)
+    ```
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

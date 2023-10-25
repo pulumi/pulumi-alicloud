@@ -9,6 +9,25 @@ import * as utilities from "../utilities";
  *
  * For information about VPC Route Table and how to use it, see [What is Route Table](https://www.alibabacloud.com/help/doc-detail/87057.htm).
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultVpc = new alicloud.vpc.Network("defaultVpc", {vpcName: name});
+ * const _default = new alicloud.vpc.RouteTable("default", {
+ *     description: "test-description",
+ *     vpcId: defaultVpc.id,
+ *     routeTableName: name,
+ *     associateType: "VSwitch",
+ * });
+ * ```
+ *
  * ## Import
  *
  * VPC Route Table can be imported using the id, e.g.

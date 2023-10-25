@@ -23,6 +23,50 @@ import (
 //
 // > **NOTE:** If the origin content is not saved on Alibaba Cloud, the content must be reviewed by Alibaba Cloud. The review will be completed by the next working day after you submit the application.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			domainName := "example.com"
+//			if param := cfg.Get("domainName"); param != "" {
+//				domainName = param
+//			}
+//			_, err := dcdn.NewDomain(ctx, "example", &dcdn.DomainArgs{
+//				DomainName: pulumi.String(domainName),
+//				Scope:      pulumi.String("overseas"),
+//				Sources: dcdn.DomainSourceArray{
+//					&dcdn.DomainSourceArgs{
+//						Content:  pulumi.String("1.1.1.1"),
+//						Port:     pulumi.Int(80),
+//						Priority: pulumi.String("20"),
+//						Type:     pulumi.String("ipaddr"),
+//						Weight:   pulumi.String("10"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // DCDN Domain can be imported using the id or DCDN Domain name, e.g.

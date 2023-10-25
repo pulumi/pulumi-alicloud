@@ -267,6 +267,29 @@ class TransitRouterGrantAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.187.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.get_account()
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="tf_example",
+            cidr_block="172.17.3.0/24")
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_transit_router_grant_attachment = alicloud.cen.TransitRouterGrantAttachment("exampleTransitRouterGrantAttachment",
+            cen_id=example_instance.id,
+            cen_owner_id=default.id,
+            instance_id=example_network.id,
+            instance_type="VPC",
+            order_type="PayByCenOwner")
+        ```
+
         ## Import
 
         Cloud Enterprise Network (CEN) Transit Router Grant Attachment can be imported using the id, e.g.
@@ -295,6 +318,29 @@ class TransitRouterGrantAttachment(pulumi.CustomResource):
         For information about Cloud Enterprise Network (CEN) Transit Router Grant Attachment and how to use it, see [What is Transit Router Grant Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/grantinstancetotransitrouter).
 
         > **NOTE:** Available since v1.187.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.get_account()
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="tf_example",
+            cidr_block="172.17.3.0/24")
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_transit_router_grant_attachment = alicloud.cen.TransitRouterGrantAttachment("exampleTransitRouterGrantAttachment",
+            cen_id=example_instance.id,
+            cen_owner_id=default.id,
+            instance_id=example_network.id,
+            instance_type="VPC",
+            order_type="PayByCenOwner")
+        ```
 
         ## Import
 

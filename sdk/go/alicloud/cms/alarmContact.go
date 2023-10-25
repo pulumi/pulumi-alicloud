@@ -17,6 +17,62 @@ import (
 //
 // > **NOTE:** Available since v1.99.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cms.NewAlarmContact(ctx, "example", &cms.AlarmContactArgs{
+//				AlarmContactName: pulumi.String("terraform-example"),
+//				ChannelsMail:     pulumi.String("terraform@test.com"),
+//				Describe:         pulumi.String("For example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cms.NewAlarmContact(ctx, "example", &cms.AlarmContactArgs{
+//				AlarmContactName: pulumi.String("tf-example"),
+//				Describe:         pulumi.String("For example"),
+//				ChannelsMail:     pulumi.String("terraform@test.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Alarm contact can be imported using the id, e.g.

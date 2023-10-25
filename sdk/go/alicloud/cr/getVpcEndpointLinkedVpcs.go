@@ -15,6 +15,39 @@ import (
 // This data source provides the CR Vpc Endpoint Linked Vpcs of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.199.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := cr.GetVpcEndpointLinkedVpcs(ctx, &cr.GetVpcEndpointLinkedVpcsArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//				InstanceId: "your_cr_instance_id",
+//				ModuleName: "Registry",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudCrVpcEndpointLinkedVpcsId1", ids.VpcEndpointLinkedVpcs[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetVpcEndpointLinkedVpcs(ctx *pulumi.Context, args *GetVpcEndpointLinkedVpcsArgs, opts ...pulumi.InvokeOption) (*GetVpcEndpointLinkedVpcsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVpcEndpointLinkedVpcsResult

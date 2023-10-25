@@ -15,6 +15,37 @@ namespace Pulumi.AliCloud.Alb
         /// This data source provides the Alb Security Policies of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.130.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Alb.GetSecurityPolicies.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.Alb.GetSecurityPolicies.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-SecurityPolicy",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["albSecurityPolicyId1"] = ids.Apply(getSecurityPoliciesResult =&gt; getSecurityPoliciesResult.Policies[0]?.Id),
+        ///         ["albSecurityPolicyId2"] = nameRegex.Apply(getSecurityPoliciesResult =&gt; getSecurityPoliciesResult.Policies[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSecurityPoliciesResult> InvokeAsync(GetSecurityPoliciesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecurityPoliciesResult>("alicloud:alb/getSecurityPolicies:getSecurityPolicies", args ?? new GetSecurityPoliciesArgs(), options.WithDefaults());
@@ -23,6 +54,37 @@ namespace Pulumi.AliCloud.Alb
         /// This data source provides the Alb Security Policies of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.130.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Alb.GetSecurityPolicies.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.Alb.GetSecurityPolicies.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-SecurityPolicy",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["albSecurityPolicyId1"] = ids.Apply(getSecurityPoliciesResult =&gt; getSecurityPoliciesResult.Policies[0]?.Id),
+        ///         ["albSecurityPolicyId2"] = nameRegex.Apply(getSecurityPoliciesResult =&gt; getSecurityPoliciesResult.Policies[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetSecurityPoliciesResult> Invoke(GetSecurityPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecurityPoliciesResult>("alicloud:alb/getSecurityPolicies:getSecurityPolicies", args ?? new GetSecurityPoliciesInvokeArgs(), options.WithDefaults());

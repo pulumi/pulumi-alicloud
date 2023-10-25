@@ -120,6 +120,16 @@ def get_service(enable: Optional[str] = None,
 
     > **NOTE:** Available since v1.98.0.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    open = alicloud.cdn.get_service(enable="On",
+        internet_charge_type="PayByTraffic")
+    ```
+
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
     :param str internet_charge_type: The new billing method. Valid values: `PayByTraffic` and `PayByBandwidth`. Default value: `PayByTraffic`.
@@ -154,6 +164,16 @@ def get_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
     For information about CDN and how to use it, see [What is CDN](https://www.alibabacloud.com/help/product/27099.htm).
 
     > **NOTE:** Available since v1.98.0.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    open = alicloud.cdn.get_service(enable="On",
+        internet_charge_type="PayByTraffic")
+    ```
 
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".

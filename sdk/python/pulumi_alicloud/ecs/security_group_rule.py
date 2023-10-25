@@ -589,6 +589,25 @@ class SecurityGroupRule(pulumi.CustomResource):
 
         > **NOTE:**  `nic_type` should set to `intranet` when security group type is `vpc` or specifying the `source_security_group_id`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ecs.SecurityGroup("default")
+        allow_all_tcp = alicloud.ecs.SecurityGroupRule("allowAllTcp",
+            type="ingress",
+            ip_protocol="tcp",
+            nic_type="internet",
+            policy="accept",
+            port_range="1/65535",
+            priority=1,
+            security_group_id=default.id,
+            cidr_ip="0.0.0.0/0")
+        ```
         ## Module Support
 
         You can use the existing security-group module
@@ -625,6 +644,25 @@ class SecurityGroupRule(pulumi.CustomResource):
 
         > **NOTE:**  `nic_type` should set to `intranet` when security group type is `vpc` or specifying the `source_security_group_id`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ecs.SecurityGroup("default")
+        allow_all_tcp = alicloud.ecs.SecurityGroupRule("allowAllTcp",
+            type="ingress",
+            ip_protocol="tcp",
+            nic_type="internet",
+            policy="accept",
+            port_range="1/65535",
+            priority=1,
+            security_group_id=default.id,
+            cidr_ip="0.0.0.0/0")
+        ```
         ## Module Support
 
         You can use the existing security-group module

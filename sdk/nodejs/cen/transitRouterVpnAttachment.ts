@@ -13,6 +13,89 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.183.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const default = alicloud.cen.getTransitRouterAvailableResources({});
+ * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {cenInstanceName: name});
+ * const exampleTransitRouter = new alicloud.cen.TransitRouter("exampleTransitRouter", {
+ *     cenId: exampleInstance.id,
+ *     transitRouterDescription: name,
+ *     transitRouterName: name,
+ * });
+ * const exampleCustomerGateway = new alicloud.vpn.CustomerGateway("exampleCustomerGateway", {
+ *     ipAddress: "42.104.22.210",
+ *     asn: "45014",
+ *     description: name,
+ * });
+ * const exampleGatewayVpnAttachment = new alicloud.vpn.GatewayVpnAttachment("exampleGatewayVpnAttachment", {
+ *     customerGatewayId: exampleCustomerGateway.id,
+ *     networkType: "public",
+ *     localSubnet: "0.0.0.0/0",
+ *     remoteSubnet: "0.0.0.0/0",
+ *     effectImmediately: false,
+ *     ikeConfig: {
+ *         ikeAuthAlg: "md5",
+ *         ikeEncAlg: "des",
+ *         ikeVersion: "ikev2",
+ *         ikeMode: "main",
+ *         ikeLifetime: 86400,
+ *         psk: "tf-testvpn2",
+ *         ikePfs: "group1",
+ *         remoteId: "testbob2",
+ *         localId: "testalice2",
+ *     },
+ *     ipsecConfig: {
+ *         ipsecPfs: "group5",
+ *         ipsecEncAlg: "des",
+ *         ipsecAuthAlg: "md5",
+ *         ipsecLifetime: 86400,
+ *     },
+ *     bgpConfig: {
+ *         enable: true,
+ *         localAsn: 45014,
+ *         tunnelCidr: "169.254.11.0/30",
+ *         localBgpIp: "169.254.11.1",
+ *     },
+ *     healthCheckConfig: {
+ *         enable: true,
+ *         sip: "192.168.1.1",
+ *         dip: "10.0.0.1",
+ *         interval: 10,
+ *         retry: 10,
+ *         policy: "revoke_route",
+ *     },
+ *     enableDpd: true,
+ *     enableNatTraversal: true,
+ *     vpnAttachmentName: name,
+ * });
+ * const exampleTransitRouterCidr = new alicloud.cen.TransitRouterCidr("exampleTransitRouterCidr", {
+ *     transitRouterId: exampleTransitRouter.transitRouterId,
+ *     cidr: "192.168.0.0/16",
+ *     transitRouterCidrName: name,
+ *     description: name,
+ *     publishCidrRoute: true,
+ * });
+ * const exampleTransitRouterVpnAttachment = new alicloud.cen.TransitRouterVpnAttachment("exampleTransitRouterVpnAttachment", {
+ *     autoPublishRouteEnabled: false,
+ *     transitRouterAttachmentDescription: name,
+ *     transitRouterAttachmentName: name,
+ *     cenId: exampleTransitRouter.cenId,
+ *     transitRouterId: exampleTransitRouterCidr.transitRouterId,
+ *     vpnId: exampleGatewayVpnAttachment.id,
+ *     zones: [{
+ *         zoneId: _default.then(_default => _default.resources?.[0]?.masterZones?.[0]),
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Cloud Enterprise Network (CEN) Transit Router Vpn Attachment can be imported using the id, e.g.

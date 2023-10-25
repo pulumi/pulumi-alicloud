@@ -540,6 +540,30 @@ class HoneypotProbe(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.195.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.threatdetection.HoneypotProbe("default",
+            arp=True,
+            control_node_id="a44e1ab3-6945-444c-889d-5bacee7056e8",
+            display_name="apispec",
+            honeypot_bind_lists=[alicloud.threatdetection.HoneypotProbeHoneypotBindListArgs(
+                bind_port_lists=[alicloud.threatdetection.HoneypotProbeHoneypotBindListBindPortListArgs(
+                    end_port=80,
+                    start_port=80,
+                )],
+                honeypot_id="ede59ccdb1b7a2e21735d4593a6eb5ed31883af320c5ab63ab33818e94307be9",
+            )],
+            ping=True,
+            probe_type="host_probe",
+            uuid="032b618f-b220-4a0d-bd37-fbdc6ef58b6a")
+        ```
+
         ## Import
 
         Threat Detection Honeypot Probe can be imported using the id, e.g.
@@ -574,6 +598,30 @@ class HoneypotProbe(pulumi.CustomResource):
         For information about Threat Detection Honeypot Probe and how to use it, see [What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe).
 
         > **NOTE:** Available in v1.195.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.threatdetection.HoneypotProbe("default",
+            arp=True,
+            control_node_id="a44e1ab3-6945-444c-889d-5bacee7056e8",
+            display_name="apispec",
+            honeypot_bind_lists=[alicloud.threatdetection.HoneypotProbeHoneypotBindListArgs(
+                bind_port_lists=[alicloud.threatdetection.HoneypotProbeHoneypotBindListBindPortListArgs(
+                    end_port=80,
+                    start_port=80,
+                )],
+                honeypot_id="ede59ccdb1b7a2e21735d4593a6eb5ed31883af320c5ab63ab33818e94307be9",
+            )],
+            ping=True,
+            probe_type="host_probe",
+            uuid="032b618f-b220-4a0d-bd37-fbdc6ef58b6a")
+        ```
 
         ## Import
 

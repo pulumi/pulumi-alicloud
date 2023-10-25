@@ -131,6 +131,20 @@ def get_prometheis(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.203.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.arms.get_prometheis(ids=["example_id"])
+    pulumi.export("armsPrometheisId1", ids.prometheis[0].id)
+    name_regex = alicloud.arms.get_prometheis(name_regex="tf-example")
+    pulumi.export("armsPrometheisId2", name_regex.prometheis[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Prometheus IDs.
     :param str name_regex: A regex string to filter results by Prometheus name.
@@ -169,6 +183,20 @@ def get_prometheis_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] =
     This data source provides the Arms Prometheis of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.203.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.arms.get_prometheis(ids=["example_id"])
+    pulumi.export("armsPrometheisId1", ids.prometheis[0].id)
+    name_regex = alicloud.arms.get_prometheis(name_regex="tf-example")
+    pulumi.export("armsPrometheisId2", name_regex.prometheis[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Prometheus IDs.

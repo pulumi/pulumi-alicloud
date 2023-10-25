@@ -15,6 +15,38 @@ namespace Pulumi.AliCloud.Ecs
         /// This data source provides Ecs Capacity Reservation available to the user.
         /// 
         /// &gt; **NOTE:** Available in 1.195.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Ecs.GetCapacityReservations.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             alicloud_ecs_capacity_reservation.Default.Id,
+        ///         },
+        ///         NameRegex = alicloud_ecs_capacity_reservation.Default.Name,
+        ///         InstanceType = "ecs.c6.large",
+        ///         Platform = "linux",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudEcsCapacityReservationExampleId"] = @default.Apply(@default =&gt; @default.Apply(getCapacityReservationsResult =&gt; getCapacityReservationsResult.Reservations[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetCapacityReservationsResult> InvokeAsync(GetCapacityReservationsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCapacityReservationsResult>("alicloud:ecs/getCapacityReservations:getCapacityReservations", args ?? new GetCapacityReservationsArgs(), options.WithDefaults());
@@ -23,6 +55,38 @@ namespace Pulumi.AliCloud.Ecs
         /// This data source provides Ecs Capacity Reservation available to the user.
         /// 
         /// &gt; **NOTE:** Available in 1.195.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Ecs.GetCapacityReservations.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             alicloud_ecs_capacity_reservation.Default.Id,
+        ///         },
+        ///         NameRegex = alicloud_ecs_capacity_reservation.Default.Name,
+        ///         InstanceType = "ecs.c6.large",
+        ///         Platform = "linux",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudEcsCapacityReservationExampleId"] = @default.Apply(@default =&gt; @default.Apply(getCapacityReservationsResult =&gt; getCapacityReservationsResult.Reservations[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetCapacityReservationsResult> Invoke(GetCapacityReservationsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCapacityReservationsResult>("alicloud:ecs/getCapacityReservations:getCapacityReservations", args ?? new GetCapacityReservationsInvokeArgs(), options.WithDefaults());

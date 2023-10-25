@@ -15,6 +15,67 @@ namespace Pulumi.AliCloud.Oos
         /// This data source provides the Oos Parameters of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.147.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Oos.GetParameters.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "my-Parameter",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Oos.GetParameters.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Parameter",
+        ///     });
+        /// 
+        ///     var resourceGroupId = AliCloud.Oos.GetParameters.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "my-Parameter",
+        ///         },
+        ///         ResourceGroupId = "example_value",
+        ///     });
+        /// 
+        ///     var tags = AliCloud.Oos.GetParameters.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "my-Parameter",
+        ///         },
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///             { "For", "OosParameter" },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["oosParameterId1"] = ids.Apply(getParametersResult =&gt; getParametersResult.Parameters[0]?.Id),
+        ///         ["oosParameterId2"] = nameRegex.Apply(getParametersResult =&gt; getParametersResult.Parameters[0]?.Id),
+        ///         ["oosParameterId3"] = resourceGroupId.Apply(getParametersResult =&gt; getParametersResult.Parameters[0]?.Id),
+        ///         ["oosParameterId4"] = tags.Apply(getParametersResult =&gt; getParametersResult.Parameters[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetParametersResult> InvokeAsync(GetParametersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetParametersResult>("alicloud:oos/getParameters:getParameters", args ?? new GetParametersArgs(), options.WithDefaults());
@@ -23,6 +84,67 @@ namespace Pulumi.AliCloud.Oos
         /// This data source provides the Oos Parameters of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.147.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Oos.GetParameters.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "my-Parameter",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Oos.GetParameters.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Parameter",
+        ///     });
+        /// 
+        ///     var resourceGroupId = AliCloud.Oos.GetParameters.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "my-Parameter",
+        ///         },
+        ///         ResourceGroupId = "example_value",
+        ///     });
+        /// 
+        ///     var tags = AliCloud.Oos.GetParameters.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "my-Parameter",
+        ///         },
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///             { "For", "OosParameter" },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["oosParameterId1"] = ids.Apply(getParametersResult =&gt; getParametersResult.Parameters[0]?.Id),
+        ///         ["oosParameterId2"] = nameRegex.Apply(getParametersResult =&gt; getParametersResult.Parameters[0]?.Id),
+        ///         ["oosParameterId3"] = resourceGroupId.Apply(getParametersResult =&gt; getParametersResult.Parameters[0]?.Id),
+        ///         ["oosParameterId4"] = tags.Apply(getParametersResult =&gt; getParametersResult.Parameters[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetParametersResult> Invoke(GetParametersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetParametersResult>("alicloud:oos/getParameters:getParameters", args ?? new GetParametersInvokeArgs(), options.WithDefaults());

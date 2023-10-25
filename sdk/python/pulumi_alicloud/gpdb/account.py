@@ -275,6 +275,56 @@ class Account(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.142.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_zones = alicloud.gpdb.get_zones()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.ids[0])
+        default_instance = alicloud.gpdb.Instance("defaultInstance",
+            db_instance_category="HighAvailability",
+            db_instance_class="gpdb.group.segsdx1",
+            db_instance_mode="StorageElastic",
+            description=name,
+            engine="gpdb",
+            engine_version="6.0",
+            zone_id=default_zones.ids[0],
+            instance_network_type="VPC",
+            instance_spec="2C16G",
+            master_node_num=1,
+            payment_type="PayAsYouGo",
+            private_ip_address="1.1.1.1",
+            seg_storage_type="cloud_essd",
+            seg_node_num=4,
+            storage_size=50,
+            vpc_id=default_network.id,
+            vswitch_id=default_switch.id,
+            ip_whitelists=[alicloud.gpdb.InstanceIpWhitelistArgs(
+                security_ip_list="127.0.0.1",
+            )])
+        default_account = alicloud.gpdb.Account("defaultAccount",
+            account_name="tf_example",
+            db_instance_id=default_instance.id,
+            account_password="Example1234",
+            account_description="tf_example")
+        ```
+
         ## Import
 
         GPDB Account can be imported using the id, e.g.
@@ -310,6 +360,56 @@ class Account(pulumi.CustomResource):
         For information about GPDB Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/doc-detail/86924.htm).
 
         > **NOTE:** Available since v1.142.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_zones = alicloud.gpdb.get_zones()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.ids[0])
+        default_instance = alicloud.gpdb.Instance("defaultInstance",
+            db_instance_category="HighAvailability",
+            db_instance_class="gpdb.group.segsdx1",
+            db_instance_mode="StorageElastic",
+            description=name,
+            engine="gpdb",
+            engine_version="6.0",
+            zone_id=default_zones.ids[0],
+            instance_network_type="VPC",
+            instance_spec="2C16G",
+            master_node_num=1,
+            payment_type="PayAsYouGo",
+            private_ip_address="1.1.1.1",
+            seg_storage_type="cloud_essd",
+            seg_node_num=4,
+            storage_size=50,
+            vpc_id=default_network.id,
+            vswitch_id=default_switch.id,
+            ip_whitelists=[alicloud.gpdb.InstanceIpWhitelistArgs(
+                security_ip_list="127.0.0.1",
+            )])
+        default_account = alicloud.gpdb.Account("defaultAccount",
+            account_name="tf_example",
+            db_instance_id=default_instance.id,
+            account_password="Example1234",
+            account_description="tf_example")
+        ```
 
         ## Import
 

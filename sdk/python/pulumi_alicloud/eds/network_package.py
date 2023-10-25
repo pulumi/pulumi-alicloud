@@ -176,6 +176,28 @@ class NetworkPackage(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.142.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
+            cidr_block="172.16.0.0/12",
+            enable_admin_access=False,
+            desktop_access_type="Internet",
+            office_site_name=name)
+        default_network_package = alicloud.eds.NetworkPackage("defaultNetworkPackage",
+            bandwidth=10,
+            office_site_id=default_simple_office_site.id)
+        ```
+
         ## Import
 
         ECD Network Package can be imported using the id, e.g.
@@ -201,6 +223,28 @@ class NetworkPackage(pulumi.CustomResource):
         For information about ECD Network Package and how to use it, see [What is Network Package](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createnetworkpackage).
 
         > **NOTE:** Available since v1.142.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
+            cidr_block="172.16.0.0/12",
+            enable_admin_access=False,
+            desktop_access_type="Internet",
+            office_site_name=name)
+        default_network_package = alicloud.eds.NetworkPackage("defaultNetworkPackage",
+            bandwidth=10,
+            office_site_id=default_simple_office_site.id)
+        ```
 
         ## Import
 

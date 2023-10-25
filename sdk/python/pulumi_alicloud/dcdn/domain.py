@@ -695,6 +695,30 @@ class Domain(pulumi.CustomResource):
 
         > **NOTE:** If the origin content is not saved on Alibaba Cloud, the content must be reviewed by Alibaba Cloud. The review will be completed by the next working day after you submit the application.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "example.com"
+        example = alicloud.dcdn.Domain("example",
+            domain_name=domain_name,
+            scope="overseas",
+            sources=[alicloud.dcdn.DomainSourceArgs(
+                content="1.1.1.1",
+                port=80,
+                priority="20",
+                type="ipaddr",
+                weight="10",
+            )])
+        ```
+
         ## Import
 
         DCDN Domain can be imported using the id or DCDN Domain name, e.g.
@@ -740,6 +764,30 @@ class Domain(pulumi.CustomResource):
         > **NOTE:** Make sure that you have obtained an Internet content provider (ICP) filling for the accelerated domain.
 
         > **NOTE:** If the origin content is not saved on Alibaba Cloud, the content must be reviewed by Alibaba Cloud. The review will be completed by the next working day after you submit the application.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "example.com"
+        example = alicloud.dcdn.Domain("example",
+            domain_name=domain_name,
+            scope="overseas",
+            sources=[alicloud.dcdn.DomainSourceArgs(
+                content="1.1.1.1",
+                port=80,
+                priority="20",
+                type="ipaddr",
+                weight="10",
+            )])
+        ```
 
         ## Import
 

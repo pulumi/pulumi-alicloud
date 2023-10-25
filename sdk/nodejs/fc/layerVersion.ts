@@ -5,6 +5,38 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const defaultBucket = new alicloud.oss.Bucket("defaultBucket", {bucket: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`});
+ * // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+ * const defaultBucketObject = new alicloud.oss.BucketObject("defaultBucketObject", {
+ *     bucket: defaultBucket.id,
+ *     key: "index.py",
+ *     content: `import logging 
+ * def handler(event, context): 
+ * logger = logging.getLogger() 
+ * logger.info('hello world') 
+ * return 'hello world'`,
+ * });
+ * const example = new alicloud.fc.LayerVersion("example", {
+ *     layerName: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`,
+ *     compatibleRuntimes: ["python2.7"],
+ *     ossBucketName: defaultBucket.bucket,
+ *     ossObjectName: defaultBucketObject.key,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Function Compute Layer Version can be imported using the id, e.g.

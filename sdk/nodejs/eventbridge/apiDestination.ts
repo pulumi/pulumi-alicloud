@@ -13,6 +13,34 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.211.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const region = config.get("region") || "cn-chengdu";
+ * const name = config.get("name") || "terraform-example";
+ * const defaultConnection = new alicloud.eventbridge.Connection("defaultConnection", {
+ *     connectionName: name,
+ *     networkParameters: {
+ *         networkType: "PublicNetwork",
+ *     },
+ * });
+ * const defaultApiDestination = new alicloud.eventbridge.ApiDestination("defaultApiDestination", {
+ *     connectionName: defaultConnection.connectionName,
+ *     apiDestinationName: name,
+ *     description: "test-api-destination-connection",
+ *     httpApiParameters: {
+ *         endpoint: "http://127.0.0.1:8001",
+ *         method: "POST",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Event Bridge Api Destination can be imported using the id, e.g.

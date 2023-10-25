@@ -10,6 +10,27 @@ import * as utilities from "../utilities";
  * This data source provides the Wafv3 Domains of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available since v1.200.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultInstances = alicloud.wafv3.getInstances({});
+ * const ids = defaultInstances.then(defaultInstances => alicloud.wafv3.getDomains({
+ *     instanceId: defaultInstances.ids?.[0],
+ *     ids: ["example_id"],
+ * }));
+ * export const wafv3DomainsId1 = ids.then(ids => ids.domains?.[0]?.id);
+ * const defaultDomains = defaultInstances.then(defaultInstances => alicloud.wafv3.getDomains({
+ *     instanceId: defaultInstances.ids?.[0],
+ *     domain: "zctest12.wafqax.top",
+ * }));
+ * export const wafv3DomainsId2 = defaultDomains.then(defaultDomains => defaultDomains.domains?.[0]?.id);
+ * ```
  */
 export function getDomains(args: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
 
@@ -86,6 +107,27 @@ export interface GetDomainsResult {
  * This data source provides the Wafv3 Domains of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available since v1.200.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultInstances = alicloud.wafv3.getInstances({});
+ * const ids = defaultInstances.then(defaultInstances => alicloud.wafv3.getDomains({
+ *     instanceId: defaultInstances.ids?.[0],
+ *     ids: ["example_id"],
+ * }));
+ * export const wafv3DomainsId1 = ids.then(ids => ids.domains?.[0]?.id);
+ * const defaultDomains = defaultInstances.then(defaultInstances => alicloud.wafv3.getDomains({
+ *     instanceId: defaultInstances.ids?.[0],
+ *     domain: "zctest12.wafqax.top",
+ * }));
+ * export const wafv3DomainsId2 = defaultDomains.then(defaultDomains => defaultDomains.domains?.[0]?.id);
+ * ```
  */
 export function getDomainsOutput(args: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {
     return pulumi.output(args).apply((a: any) => getDomains(a, opts))

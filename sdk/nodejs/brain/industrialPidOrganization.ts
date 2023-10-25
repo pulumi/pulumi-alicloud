@@ -9,6 +9,17 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.113.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.brain.IndustrialPidOrganization("example", {pidOrganizationName: "tf-testAcc"});
+ * ```
+ *
  * ## Import
  *
  * Brain Industrial Pid Organization can be imported using the id, e.g.

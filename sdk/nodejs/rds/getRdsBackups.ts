@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * This data source provides the Rds Backups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.149.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.rds.getRdsBackups({
+ *     dbInstanceId: "example_value",
+ * });
+ * export const firstRdsBackupId = example.then(example => example.backups?.[0]?.id);
+ * ```
  */
 export function getRdsBackups(args: GetRdsBackupsArgs, opts?: pulumi.InvokeOptions): Promise<GetRdsBackupsResult> {
 
@@ -87,6 +101,20 @@ export interface GetRdsBackupsResult {
  * This data source provides the Rds Backups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.149.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.rds.getRdsBackups({
+ *     dbInstanceId: "example_value",
+ * });
+ * export const firstRdsBackupId = example.then(example => example.backups?.[0]?.id);
+ * ```
  */
 export function getRdsBackupsOutput(args: GetRdsBackupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRdsBackupsResult> {
     return pulumi.output(args).apply((a: any) => getRdsBackups(a, opts))

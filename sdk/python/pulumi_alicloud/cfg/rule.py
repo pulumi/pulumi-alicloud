@@ -996,6 +996,34 @@ class Rule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.204.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_rule = alicloud.cfg.Rule("defaultRule",
+            description="If the resource matches one of the specified tag key-value pairs, the configuration is considered compliant.",
+            source_owner="ALIYUN",
+            source_identifier="contains-tag",
+            risk_level=1,
+            tag_value_scope="example-value",
+            tag_key_scope="example-key",
+            exclude_resource_ids_scope="example-resource_id",
+            region_ids_scope="cn-hangzhou",
+            config_rule_trigger_types="ConfigurationItemChangeNotification",
+            resource_group_ids_scope=default_resource_groups.ids[0],
+            resource_types_scopes=["ACS::RDS::DBInstance"],
+            rule_name="contains-tag",
+            input_parameters={
+                "key": "example",
+                "value": "example",
+            })
+        ```
+
         ## Import
 
         Config Rule can be imported using the id, e.g.
@@ -1039,6 +1067,34 @@ class Rule(pulumi.CustomResource):
         For information about Config Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createconfigrule).
 
         > **NOTE:** Available since v1.204.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_rule = alicloud.cfg.Rule("defaultRule",
+            description="If the resource matches one of the specified tag key-value pairs, the configuration is considered compliant.",
+            source_owner="ALIYUN",
+            source_identifier="contains-tag",
+            risk_level=1,
+            tag_value_scope="example-value",
+            tag_key_scope="example-key",
+            exclude_resource_ids_scope="example-resource_id",
+            region_ids_scope="cn-hangzhou",
+            config_rule_trigger_types="ConfigurationItemChangeNotification",
+            resource_group_ids_scope=default_resource_groups.ids[0],
+            resource_types_scopes=["ACS::RDS::DBInstance"],
+            rule_name="contains-tag",
+            input_parameters={
+                "key": "example",
+                "value": "example",
+            })
+        ```
 
         ## Import
 

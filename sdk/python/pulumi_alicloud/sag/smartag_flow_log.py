@@ -543,6 +543,21 @@ class SmartagFlowLog(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.168.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.sag.SmartagFlowLog("example",
+            netflow_server_ip="192.168.0.2",
+            netflow_server_port=9995,
+            netflow_version="V9",
+            output_type="netflow")
+        ```
+
         ## Import
 
         Smartag Flow Log can be imported using the id, e.g.
@@ -578,6 +593,21 @@ class SmartagFlowLog(pulumi.CustomResource):
         For information about Smartag Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createflowlog).
 
         > **NOTE:** Available since v1.168.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.sag.SmartagFlowLog("example",
+            netflow_server_ip="192.168.0.2",
+            netflow_server_port=9995,
+            netflow_version="V9",
+            output_type="netflow")
+        ```
 
         ## Import
 

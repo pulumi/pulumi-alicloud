@@ -19,6 +19,52 @@ import * as utilities from "../utilities";
  * > **NOTE:**  Create MongoDB Sharding instance or change instance type and storage would cost 10~20 minutes. Please make full preparation
  *
  * ## Example Usage
+ * ### Create a Mongodb Sharding instance
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultZones = alicloud.mongodb.getZones({});
+ * const index = defaultZones.then(defaultZones => defaultZones.zones).length.then(length => length - 1);
+ * const zoneId = defaultZones.then(defaultZones => defaultZones.zones[index].id);
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: zoneId,
+ * });
+ * const defaultShardingInstance = new alicloud.mongodb.ShardingInstance("defaultShardingInstance", {
+ *     zoneId: zoneId,
+ *     vswitchId: defaultSwitch.id,
+ *     engineVersion: "4.2",
+ *     shardLists: [
+ *         {
+ *             nodeClass: "dds.shard.mid",
+ *             nodeStorage: 10,
+ *         },
+ *         {
+ *             nodeClass: "dds.shard.standard",
+ *             nodeStorage: 20,
+ *             readonlyReplicas: 1,
+ *         },
+ *     ],
+ *     mongoLists: [
+ *         {
+ *             nodeClass: "dds.mongos.mid",
+ *         },
+ *         {
+ *             nodeClass: "dds.mongos.mid",
+ *         },
+ *     ],
+ * });
+ * ```
  * ## Module Support
  *
  * You can use to the existing mongodb-sharding module

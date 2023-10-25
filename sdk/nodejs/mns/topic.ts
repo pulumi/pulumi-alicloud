@@ -5,6 +5,20 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const topic = new alicloud.mns.Topic("topic", {
+ *     loggingEnabled: false,
+ *     maximumMessageSize: 65536,
+ * });
+ * ```
+ *
  * ## Import
  *
  * MNS Topic can be imported using the id or name, e.g.

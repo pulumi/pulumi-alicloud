@@ -125,6 +125,15 @@ def get_zones(engine: Optional[str] = None,
 
     > **NOTE:** Available since v1.73.0.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    zones_ids = alicloud.kvstore.get_zones(instance_charge_type="PostPaid")
+    ```
+
 
     :param str engine: Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
            * product_type - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
@@ -163,6 +172,15 @@ def get_zones_output(engine: Optional[pulumi.Input[Optional[str]]] = None,
     This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 
     > **NOTE:** Available since v1.73.0.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    zones_ids = alicloud.kvstore.get_zones(instance_charge_type="PostPaid")
+    ```
 
 
     :param str engine: Database type. Options are `Redis`, `Memcache`. Default to `Redis`.

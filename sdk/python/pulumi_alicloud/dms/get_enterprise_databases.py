@@ -109,6 +109,19 @@ def get_enterprise_databases(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available since v1.195.0.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.dms.get_enterprise_databases(name_regex="test2",
+        instance_id="2195118")
+    pulumi.export("alicloudDmsEnterpriseDatabaseExampleId", default.databases[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Database IDs.
     :param str instance_id: The instance ID of the target database.
@@ -142,6 +155,19 @@ def get_enterprise_databases_output(ids: Optional[pulumi.Input[Optional[Sequence
     This data source provides DMS Enterprise Database available to the user. [What is Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-listdatabases).
 
     > **NOTE:** Available since v1.195.0.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.dms.get_enterprise_databases(name_regex="test2",
+        instance_id="2195118")
+    pulumi.export("alicloudDmsEnterpriseDatabaseExampleId", default.databases[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Database IDs.

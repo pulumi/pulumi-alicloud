@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides the Havips of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.120.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.vpc.getHavips({
+ *     ids: ["example_value"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstHavipId = example.then(example => example.havips?.[0]?.id);
+ * ```
  */
 export function getHavips(args?: GetHavipsArgs, opts?: pulumi.InvokeOptions): Promise<GetHavipsResult> {
     args = args || {};
@@ -64,6 +79,21 @@ export interface GetHavipsResult {
  * This data source provides the Havips of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.120.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.vpc.getHavips({
+ *     ids: ["example_value"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstHavipId = example.then(example => example.havips?.[0]?.id);
+ * ```
  */
 export function getHavipsOutput(args?: GetHavipsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHavipsResult> {
     return pulumi.output(args).apply((a: any) => getHavips(a, opts))

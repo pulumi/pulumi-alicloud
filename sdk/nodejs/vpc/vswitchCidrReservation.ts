@@ -11,6 +11,39 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.205.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultVpc = new alicloud.vpc.Network("defaultVpc", {
+ *     vpcName: name,
+ *     cidrBlock: "10.0.0.0/8",
+ * });
+ * const defaultVSwitch = new alicloud.vpc.Switch("defaultVSwitch", {
+ *     vpcId: defaultVpc.id,
+ *     cidrBlock: "10.0.0.0/20",
+ *     vswitchName: `${name}1`,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultVswitchCidrReservation = new alicloud.vpc.VswitchCidrReservation("defaultVswitchCidrReservation", {
+ *     ipVersion: "IPv4",
+ *     vswitchId: defaultVSwitch.id,
+ *     cidrReservationDescription: name,
+ *     cidrReservationCidr: "10.0.10.0/24",
+ *     vswitchCidrReservationName: name,
+ *     cidrReservationType: "Prefix",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Vpc Vswitch Cidr Reservation can be imported using the id, e.g.

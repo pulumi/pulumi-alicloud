@@ -237,6 +237,25 @@ class Vpd(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.201.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_vpd = alicloud.eflo.Vpd("defaultVpd",
+            cidr="10.0.0.0/8",
+            vpd_name=name,
+            resource_group_id=default_resource_groups.groups[0].id)
+        ```
+
         ## Import
 
         Eflo Vpd can be imported using the id, e.g.
@@ -263,6 +282,25 @@ class Vpd(pulumi.CustomResource):
         For information about Eflo Vpd and how to use it, see [What is Vpd](https://www.alibabacloud.com/help/en/pai/user-guide/overview-of-intelligent-computing-lingjun).
 
         > **NOTE:** Available since v1.201.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_vpd = alicloud.eflo.Vpd("defaultVpd",
+            cidr="10.0.0.0/8",
+            vpd_name=name,
+            resource_group_id=default_resource_groups.groups[0].id)
+        ```
 
         ## Import
 

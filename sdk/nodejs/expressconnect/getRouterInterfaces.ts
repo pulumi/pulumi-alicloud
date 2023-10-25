@@ -10,6 +10,19 @@ import * as utilities from "../utilities";
  * This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
  *
  * > **NOTE:** Available in 1.199.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.expressconnect.getRouterInterfaces({
+ *     ids: [alicloud_router_interface["default"].id],
+ *     nameRegex: alicloud_router_interface["default"].name,
+ * });
+ * export const alicloudRouterInterfaceExampleId = _default.then(_default => _default.interfaces?.[0]?.id);
+ * ```
  */
 export function getRouterInterfaces(args?: GetRouterInterfacesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouterInterfacesResult> {
     args = args || {};
@@ -82,6 +95,19 @@ export interface GetRouterInterfacesResult {
  * This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
  *
  * > **NOTE:** Available in 1.199.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.expressconnect.getRouterInterfaces({
+ *     ids: [alicloud_router_interface["default"].id],
+ *     nameRegex: alicloud_router_interface["default"].name,
+ * });
+ * export const alicloudRouterInterfaceExampleId = _default.then(_default => _default.interfaces?.[0]?.id);
+ * ```
  */
 export function getRouterInterfacesOutput(args?: GetRouterInterfacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouterInterfacesResult> {
     return pulumi.output(args).apply((a: any) => getRouterInterfaces(a, opts))

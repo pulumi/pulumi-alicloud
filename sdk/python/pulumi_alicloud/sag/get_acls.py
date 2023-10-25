@@ -110,6 +110,19 @@ def get_acls(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default_acls = alicloud.sag.get_acls(ids=[alicloud_sag_acls["default"]["id"]],
+        name_regex="^tf-testAcc.*")
+    default_acl = alicloud.rocketmq.Acl("defaultAcl")
+    ```
+
 
     :param Sequence[str] ids: A list of Sag Acl IDs.
     :param str name_regex: A regex string to filter Sag Acl instances by name.
@@ -141,6 +154,19 @@ def get_acls_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
     > **NOTE:** Available in 1.60.0+
 
     > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default_acls = alicloud.sag.get_acls(ids=[alicloud_sag_acls["default"]["id"]],
+        name_regex="^tf-testAcc.*")
+    default_acl = alicloud.rocketmq.Acl("defaultAcl")
+    ```
 
 
     :param Sequence[str] ids: A list of Sag Acl IDs.

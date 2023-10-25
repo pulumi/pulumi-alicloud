@@ -175,6 +175,19 @@ class AclEntryAttachment(pulumi.CustomResource):
 
         For information about acl entry attachment and how to use it, see [Configure an acl entry](https://www.alibabacloud.com/help/en/doc-detail/70023.html).
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        attachment_acl = alicloud.slb.Acl("attachmentAcl", ip_version="ipv4")
+        attachment_acl_entry_attachment = alicloud.slb.AclEntryAttachment("attachmentAclEntryAttachment",
+            acl_id=attachment_acl.id,
+            entry="168.10.10.0/24",
+            comment="second")
+        ```
+
         ## Import
 
         Acl entry attachment can be imported using the id, e.g.
@@ -201,6 +214,19 @@ class AclEntryAttachment(pulumi.CustomResource):
         > **NOTE:** The maximum number of entries per acl is 300.
 
         For information about acl entry attachment and how to use it, see [Configure an acl entry](https://www.alibabacloud.com/help/en/doc-detail/70023.html).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        attachment_acl = alicloud.slb.Acl("attachmentAcl", ip_version="ipv4")
+        attachment_acl_entry_attachment = alicloud.slb.AclEntryAttachment("attachmentAclEntryAttachment",
+            acl_id=attachment_acl.id,
+            entry="168.10.10.0/24",
+            comment="second")
+        ```
 
         ## Import
 

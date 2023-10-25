@@ -15,6 +15,53 @@ import (
 // This data source provides a list of Route Tables owned by an Alibaba Cloud account.
 //
 // > **NOTE:** Available in 1.36.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "route-tables-datasource-example-name";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
+// CidrBlock: pulumi.String("172.16.0.0/12"),
+// VpcName: pulumi.String(name),
+// })
+// if err != nil {
+// return err
+// }
+// fooRouteTable, err := vpc.NewRouteTable(ctx, "fooRouteTable", &vpc.RouteTableArgs{
+// Description: pulumi.String(name),
+// RouteTableName: pulumi.String(name),
+// VpcId: fooNetwork.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// fooRouteTables := vpc.GetRouteTablesOutput(ctx, vpc.GetRouteTablesOutputArgs{
+// Ids: pulumi.StringArray{
+// fooRouteTable.ID(),
+// },
+// }, nil);
+// ctx.Export("routeTableIds", fooRouteTables.ApplyT(func(fooRouteTables vpc.GetRouteTablesResult) (interface{}, error) {
+// return fooRouteTables.Ids, nil
+// }).(pulumi.Interface{}Output))
+// return nil
+// })
+// }
+// ```
 func GetRouteTables(ctx *pulumi.Context, args *GetRouteTablesArgs, opts ...pulumi.InvokeOption) (*GetRouteTablesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRouteTablesResult

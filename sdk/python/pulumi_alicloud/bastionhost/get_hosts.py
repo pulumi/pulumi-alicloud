@@ -179,6 +179,25 @@ def get_hosts(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.135.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.bastionhost.get_hosts(instance_id="example_value",
+        ids=[
+            "1",
+            "2",
+        ])
+    pulumi.export("bastionhostHostId1", ids.hosts[0].id)
+    name_regex = alicloud.bastionhost.get_hosts(instance_id="example_value",
+        name_regex="^my-Host")
+    pulumi.export("bastionhostHostId2", name_regex.hosts[0].id)
+    ```
+
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param str host_address: The host address.
@@ -241,6 +260,25 @@ def get_hosts_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = No
     This data source provides the Bastionhost Hosts of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.135.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.bastionhost.get_hosts(instance_id="example_value",
+        ids=[
+            "1",
+            "2",
+        ])
+    pulumi.export("bastionhostHostId1", ids.hosts[0].id)
+    name_regex = alicloud.bastionhost.get_hosts(instance_id="example_value",
+        name_regex="^my-Host")
+    pulumi.export("bastionhostHostId2", name_regex.hosts[0].id)
+    ```
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

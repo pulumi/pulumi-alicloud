@@ -140,6 +140,21 @@ class Group(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.133.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        example = alicloud.securitycenter.Group("example", group_name=name)
+        ```
+
         ## Import
 
         Security Center Group can be imported using the id, e.g.
@@ -165,6 +180,21 @@ class Group(pulumi.CustomResource):
         For information about Security Center Group and how to use it, see [What is Group](https://www.alibabacloud.com/help/doc-detail/129195.htm).
 
         > **NOTE:** Available since v1.133.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        example = alicloud.securitycenter.Group("example", group_name=name)
+        ```
 
         ## Import
 

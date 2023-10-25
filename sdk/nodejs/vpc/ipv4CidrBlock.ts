@@ -11,6 +11,23 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.185.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultvpc = new alicloud.vpc.Network("defaultvpc", {description: name});
+ * const _default = new alicloud.vpc.Ipv4CidrBlock("default", {
+ *     secondaryCidrBlock: "192.168.0.0/16",
+ *     vpcId: defaultvpc.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * VPC Ipv4 Cidr Block can be imported using the id, e.g.

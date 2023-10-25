@@ -159,6 +159,26 @@ class RecycleBin(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.155.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_zones = alicloud.nas.get_zones(file_system_type="standard")
+        example_file_system = alicloud.nas.FileSystem("exampleFileSystem",
+            protocol_type="NFS",
+            storage_type="Performance",
+            description="terraform-example",
+            encrypt_type=1,
+            zone_id=example_zones.zones[0].zone_id)
+        example_recycle_bin = alicloud.nas.RecycleBin("exampleRecycleBin",
+            file_system_id=example_file_system.id,
+            reserved_days=3)
+        ```
+
         ## Import
 
         Network Attached Storage (NAS) Recycle Bin can be imported using the id, e.g.
@@ -184,6 +204,26 @@ class RecycleBin(pulumi.CustomResource):
         For information about Network Attached Storage (NAS) Recycle Bin and how to use it, see [What is Recycle Bin](https://www.alibabacloud.com/help/en/doc-detail/264185.html).
 
         > **NOTE:** Available in v1.155.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_zones = alicloud.nas.get_zones(file_system_type="standard")
+        example_file_system = alicloud.nas.FileSystem("exampleFileSystem",
+            protocol_type="NFS",
+            storage_type="Performance",
+            description="terraform-example",
+            encrypt_type=1,
+            zone_id=example_zones.zones[0].zone_id)
+        example_recycle_bin = alicloud.nas.RecycleBin("exampleRecycleBin",
+            file_system_id=example_file_system.id,
+            reserved_days=3)
+        ```
 
         ## Import
 

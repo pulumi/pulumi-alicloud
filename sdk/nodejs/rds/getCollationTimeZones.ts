@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * Operation to query the character set collations and time zones available for use in ApsaraDB RDS.
  *
  * > **NOTE:** Available in v1.198.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const zones = alicloud.rds.getCollationTimeZones({
+ *     outputFile: "./classes.txt",
+ * });
+ * export const firstRdsCollationTimeZones = zones.then(zones => zones.collationTimeZones?.[0]);
+ * ```
  */
 export function getCollationTimeZones(args?: GetCollationTimeZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetCollationTimeZonesResult> {
     args = args || {};
@@ -52,6 +66,20 @@ export interface GetCollationTimeZonesResult {
  * Operation to query the character set collations and time zones available for use in ApsaraDB RDS.
  *
  * > **NOTE:** Available in v1.198.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const zones = alicloud.rds.getCollationTimeZones({
+ *     outputFile: "./classes.txt",
+ * });
+ * export const firstRdsCollationTimeZones = zones.then(zones => zones.collationTimeZones?.[0]);
+ * ```
  */
 export function getCollationTimeZonesOutput(args?: GetCollationTimeZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCollationTimeZonesResult> {
     return pulumi.output(args).apply((a: any) => getCollationTimeZones(a, opts))

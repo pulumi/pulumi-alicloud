@@ -126,6 +126,17 @@ def get_delivery_channels(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cfg.get_delivery_channels(ids=["cdc-49a2ad756057********"],
+        name_regex="tftest")
+    pulumi.export("firstConfigDeliveryChannelId", example.channels[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Config Delivery Channel IDs.
     :param str name_regex: A regex string to filter results by delivery channel name.
@@ -165,6 +176,17 @@ def get_delivery_channels_output(ids: Optional[pulumi.Input[Optional[Sequence[st
     > **NOTE:**  Available in 1.99.0+.
 
     > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cfg.get_delivery_channels(ids=["cdc-49a2ad756057********"],
+        name_regex="tftest")
+    pulumi.export("firstConfigDeliveryChannelId", example.channels[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Config Delivery Channel IDs.

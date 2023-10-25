@@ -141,6 +141,24 @@ class AlertContactGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.131.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_alert_contact = alicloud.arms.AlertContact("exampleAlertContact",
+            alert_contact_name="example_value",
+            ding_robot_webhook_url="https://oapi.dingtalk.com/robot/send?access_token=91f2f6****",
+            email="someone@example.com",
+            phone_num="1381111****")
+        example_alert_contact_group = alicloud.arms.AlertContactGroup("exampleAlertContactGroup",
+            alert_contact_group_name="example_value",
+            contact_ids=[example_alert_contact.id])
+        ```
+
         ## Import
 
         Application Real-Time Monitoring Service (ARMS) Alert Contact Group can be imported using the id, e.g.
@@ -166,6 +184,24 @@ class AlertContactGroup(pulumi.CustomResource):
         For information about Application Real-Time Monitoring Service (ARMS) Alert Contact Group and how to use it, see [What is Alert Contact Group](https://www.alibabacloud.com/help/en/doc-detail/130677.htm).
 
         > **NOTE:** Available since v1.131.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_alert_contact = alicloud.arms.AlertContact("exampleAlertContact",
+            alert_contact_name="example_value",
+            ding_robot_webhook_url="https://oapi.dingtalk.com/robot/send?access_token=91f2f6****",
+            email="someone@example.com",
+            phone_num="1381111****")
+        example_alert_contact_group = alicloud.arms.AlertContactGroup("exampleAlertContactGroup",
+            alert_contact_group_name="example_value",
+            contact_ids=[example_alert_contact.id])
+        ```
 
         ## Import
 

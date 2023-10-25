@@ -16,6 +16,37 @@ namespace Pulumi.AliCloud.Dts
     /// 
     /// &gt; **NOTE:** Available since v1.138.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     {
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var defaultSynchronizationInstance = new AliCloud.Dts.SynchronizationInstance("defaultSynchronizationInstance", new()
+    ///     {
+    ///         PaymentType = "PayAsYouGo",
+    ///         SourceEndpointEngineName = "MySQL",
+    ///         SourceEndpointRegion = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         DestinationEndpointEngineName = "MySQL",
+    ///         DestinationEndpointRegion = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         InstanceClass = "small",
+    ///         SyncArchitecture = "oneway",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// DTS Synchronization Instance can be imported using the id, e.g.

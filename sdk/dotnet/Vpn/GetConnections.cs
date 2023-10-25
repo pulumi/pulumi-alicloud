@@ -13,12 +13,68 @@ namespace Pulumi.AliCloud.Vpn
     {
         /// <summary>
         /// The VPN connections data source lists lots of VPN connections resource information owned by an Alicloud account.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = AliCloud.Vpn.GetConnections.Invoke(new()
+        ///     {
+        ///         CustomerGatewayId = "fake-cgw-id",
+        ///         Ids = new[]
+        ///         {
+        ///             "fake-conn-id",
+        ///         },
+        ///         OutputFile = "/tmp/vpnconn",
+        ///         VpnGatewayId = "fake-vpn-id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetConnectionsResult> InvokeAsync(GetConnectionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectionsResult>("alicloud:vpn/getConnections:getConnections", args ?? new GetConnectionsArgs(), options.WithDefaults());
 
         /// <summary>
         /// The VPN connections data source lists lots of VPN connections resource information owned by an Alicloud account.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = AliCloud.Vpn.GetConnections.Invoke(new()
+        ///     {
+        ///         CustomerGatewayId = "fake-cgw-id",
+        ///         Ids = new[]
+        ///         {
+        ///             "fake-conn-id",
+        ///         },
+        ///         OutputFile = "/tmp/vpnconn",
+        ///         VpnGatewayId = "fake-vpn-id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetConnectionsResult> Invoke(GetConnectionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectionsResult>("alicloud:vpn/getConnections:getConnections", args ?? new GetConnectionsInvokeArgs(), options.WithDefaults());

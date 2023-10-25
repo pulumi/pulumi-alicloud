@@ -8,6 +8,20 @@ import * as utilities from "../utilities";
 
 /**
  * The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const instancesDs = alicloud.ecs.getInstances({
+ *     nameRegex: "web_server",
+ *     status: "Running",
+ * });
+ * export const firstInstanceId = instancesDs.then(instancesDs => instancesDs.instances?.[0]?.id);
+ * export const instanceIds = instancesDs.then(instancesDs => instancesDs.ids);
+ * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
@@ -80,6 +94,17 @@ export interface GetInstancesArgs {
     status?: string;
     /**
      * A map of tags assigned to the ECS instances. It must be in the format:
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as alicloud from "@pulumi/alicloud";
+     *
+     * const taggedInstances = alicloud.ecs.getInstances({
+     *     tags: {
+     *         tagKey1: "tagValue1",
+     *         tagKey2: "tagValue2",
+     *     },
+     * });
+     * ```
      */
     tags?: {[key: string]: any};
     /**
@@ -154,6 +179,20 @@ export interface GetInstancesResult {
 }
 /**
  * The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const instancesDs = alicloud.ecs.getInstances({
+ *     nameRegex: "web_server",
+ *     status: "Running",
+ * });
+ * export const firstInstanceId = instancesDs.then(instancesDs => instancesDs.instances?.[0]?.id);
+ * export const instanceIds = instancesDs.then(instancesDs => instancesDs.ids);
+ * ```
  */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
     return pulumi.output(args).apply((a: any) => getInstances(a, opts))
@@ -207,6 +246,17 @@ export interface GetInstancesOutputArgs {
     status?: pulumi.Input<string>;
     /**
      * A map of tags assigned to the ECS instances. It must be in the format:
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as alicloud from "@pulumi/alicloud";
+     *
+     * const taggedInstances = alicloud.ecs.getInstances({
+     *     tags: {
+     *         tagKey1: "tagValue1",
+     *         tagKey2: "tagValue2",
+     *     },
+     * });
+     * ```
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**

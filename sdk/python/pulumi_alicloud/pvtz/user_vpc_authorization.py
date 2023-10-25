@@ -180,6 +180,23 @@ class UserVpcAuthorization(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.138.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        authorized_user_id = config.get_float("authorizedUserId")
+        if authorized_user_id is None:
+            authorized_user_id = 123456789
+        example = alicloud.pvtz.UserVpcAuthorization("example",
+            authorized_user_id=authorized_user_id,
+            auth_channel="RESOURCE_DIRECTORY")
+        ```
+
         ## Import
 
         Private Zone User Vpc Authorization can be imported using the id, e.g.
@@ -204,6 +221,23 @@ class UserVpcAuthorization(pulumi.CustomResource):
         Provides a Private Zone User Vpc Authorization resource.
 
         > **NOTE:** Available since v1.138.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        authorized_user_id = config.get_float("authorizedUserId")
+        if authorized_user_id is None:
+            authorized_user_id = 123456789
+        example = alicloud.pvtz.UserVpcAuthorization("example",
+            authorized_user_id=authorized_user_id,
+            auth_channel="RESOURCE_DIRECTORY")
+        ```
 
         ## Import
 

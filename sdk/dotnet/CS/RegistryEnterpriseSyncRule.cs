@@ -18,6 +18,92 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// &gt; **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var sourceRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("sourceRegistryEnterpriseInstance", new()
+    ///     {
+    ///         PaymentType = "Subscription",
+    ///         Period = 1,
+    ///         RenewPeriod = 0,
+    ///         RenewalStatus = "ManualRenewal",
+    ///         InstanceType = "Advanced",
+    ///         InstanceName = $"{name}-source",
+    ///     });
+    /// 
+    ///     var targetRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("targetRegistryEnterpriseInstance", new()
+    ///     {
+    ///         PaymentType = "Subscription",
+    ///         Period = 1,
+    ///         RenewPeriod = 0,
+    ///         RenewalStatus = "ManualRenewal",
+    ///         InstanceType = "Advanced",
+    ///         InstanceName = $"{name}-target",
+    ///     });
+    /// 
+    ///     var sourceRegistryEnterpriseNamespace = new AliCloud.CS.RegistryEnterpriseNamespace("sourceRegistryEnterpriseNamespace", new()
+    ///     {
+    ///         InstanceId = sourceRegistryEnterpriseInstance.Id,
+    ///         AutoCreate = false,
+    ///         DefaultVisibility = "PUBLIC",
+    ///     });
+    /// 
+    ///     var targetRegistryEnterpriseNamespace = new AliCloud.CS.RegistryEnterpriseNamespace("targetRegistryEnterpriseNamespace", new()
+    ///     {
+    ///         InstanceId = targetRegistryEnterpriseInstance.Id,
+    ///         AutoCreate = false,
+    ///         DefaultVisibility = "PUBLIC",
+    ///     });
+    /// 
+    ///     var sourceRegistryEnterpriseRepo = new AliCloud.CS.RegistryEnterpriseRepo("sourceRegistryEnterpriseRepo", new()
+    ///     {
+    ///         InstanceId = sourceRegistryEnterpriseInstance.Id,
+    ///         Namespace = sourceRegistryEnterpriseNamespace.Name,
+    ///         Summary = "this is summary of my new repo",
+    ///         RepoType = "PUBLIC",
+    ///         Detail = "this is a public repo",
+    ///     });
+    /// 
+    ///     var targetRegistryEnterpriseRepo = new AliCloud.CS.RegistryEnterpriseRepo("targetRegistryEnterpriseRepo", new()
+    ///     {
+    ///         InstanceId = targetRegistryEnterpriseInstance.Id,
+    ///         Namespace = targetRegistryEnterpriseNamespace.Name,
+    ///         Summary = "this is summary of my new repo",
+    ///         RepoType = "PUBLIC",
+    ///         Detail = "this is a public repo",
+    ///     });
+    /// 
+    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     {
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var defaultRegistryEnterpriseSyncRule = new AliCloud.CS.RegistryEnterpriseSyncRule("defaultRegistryEnterpriseSyncRule", new()
+    ///     {
+    ///         InstanceId = sourceRegistryEnterpriseInstance.Id,
+    ///         NamespaceName = sourceRegistryEnterpriseNamespace.Name,
+    ///         TargetRegionId = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         TargetInstanceId = targetRegistryEnterpriseInstance.Id,
+    ///         TargetNamespaceName = targetRegistryEnterpriseNamespace.Name,
+    ///         TagFilter = ".*",
+    ///         RepoName = sourceRegistryEnterpriseRepo.Name,
+    ///         TargetRepoName = targetRegistryEnterpriseRepo.Name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Container Registry Enterprise Edition sync rule can be imported using the id. Format to `{instance_id}:{namespace_name}:{rule_id}`, e.g.

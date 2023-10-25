@@ -397,6 +397,26 @@ class SnapshotPolicy(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.42.0+.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        sp = alicloud.ecs.SnapshotPolicy("sp",
+            repeat_weekdays=[
+                "1",
+                "2",
+                "3",
+            ],
+            retention_days=-1,
+            time_points=[
+                "1",
+                "22",
+                "23",
+            ])
+        ```
+
         ## Import
 
         Snapshot can be imported using the id, e.g.
@@ -434,6 +454,26 @@ class SnapshotPolicy(pulumi.CustomResource):
         For information about snapshot policy and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
 
         > **NOTE:** Available in 1.42.0+.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        sp = alicloud.ecs.SnapshotPolicy("sp",
+            repeat_weekdays=[
+                "1",
+                "2",
+                "3",
+            ],
+            retention_days=-1,
+            time_points=[
+                "1",
+                "22",
+                "23",
+            ])
+        ```
 
         ## Import
 

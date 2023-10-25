@@ -15,6 +15,39 @@ namespace Pulumi.AliCloud.Cfg
         /// This data source provides the Config Aggregate Config Rules of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.124.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Cfg.GetAggregateConfigRules.Invoke(new()
+        ///     {
+        ///         AggregatorId = "ca-3a9b626622af001d****",
+        ///         Ids = new[]
+        ///         {
+        ///             "cr-5154626622af0034****",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstConfigAggregateConfigRuleId"] = example.Apply(getAggregateConfigRulesResult =&gt; getAggregateConfigRulesResult.Rules[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAggregateConfigRulesResult> InvokeAsync(GetAggregateConfigRulesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAggregateConfigRulesResult>("alicloud:cfg/getAggregateConfigRules:getAggregateConfigRules", args ?? new GetAggregateConfigRulesArgs(), options.WithDefaults());
@@ -23,6 +56,39 @@ namespace Pulumi.AliCloud.Cfg
         /// This data source provides the Config Aggregate Config Rules of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.124.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Cfg.GetAggregateConfigRules.Invoke(new()
+        ///     {
+        ///         AggregatorId = "ca-3a9b626622af001d****",
+        ///         Ids = new[]
+        ///         {
+        ///             "cr-5154626622af0034****",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstConfigAggregateConfigRuleId"] = example.Apply(getAggregateConfigRulesResult =&gt; getAggregateConfigRulesResult.Rules[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAggregateConfigRulesResult> Invoke(GetAggregateConfigRulesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAggregateConfigRulesResult>("alicloud:cfg/getAggregateConfigRules:getAggregateConfigRules", args ?? new GetAggregateConfigRulesInvokeArgs(), options.WithDefaults());

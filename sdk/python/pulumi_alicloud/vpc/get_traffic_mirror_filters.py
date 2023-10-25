@@ -119,6 +119,24 @@ def get_traffic_mirror_filters(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.140.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.vpc.get_traffic_mirror_filters(ids=["example_id"])
+    pulumi.export("vpcTrafficMirrorFilterId1", ids.filters[0].id)
+    name_regex = alicloud.vpc.get_traffic_mirror_filters(name_regex="^my-TrafficMirrorFilter")
+    pulumi.export("vpcTrafficMirrorFilterId2", name_regex.filters[0].id)
+    filter_name = alicloud.vpc.get_traffic_mirror_filters(traffic_mirror_filter_name="example_traffic_mirror_filter_name")
+    pulumi.export("vpcTrafficMirrorFilterId3", filter_name.filters[0].id)
+    status = alicloud.vpc.get_traffic_mirror_filters(status="^my-TrafficMirrorFilter")
+    pulumi.export("vpcTrafficMirrorFilterId4", status.filters[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Traffic Mirror Filter IDs.
     :param str name_regex: A regex string to filter results by Traffic Mirror Filter name.
@@ -157,6 +175,24 @@ def get_traffic_mirror_filters_output(ids: Optional[pulumi.Input[Optional[Sequen
     This data source provides the Vpc Traffic Mirror Filters of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.140.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.vpc.get_traffic_mirror_filters(ids=["example_id"])
+    pulumi.export("vpcTrafficMirrorFilterId1", ids.filters[0].id)
+    name_regex = alicloud.vpc.get_traffic_mirror_filters(name_regex="^my-TrafficMirrorFilter")
+    pulumi.export("vpcTrafficMirrorFilterId2", name_regex.filters[0].id)
+    filter_name = alicloud.vpc.get_traffic_mirror_filters(traffic_mirror_filter_name="example_traffic_mirror_filter_name")
+    pulumi.export("vpcTrafficMirrorFilterId3", filter_name.filters[0].id)
+    status = alicloud.vpc.get_traffic_mirror_filters(status="^my-TrafficMirrorFilter")
+    pulumi.export("vpcTrafficMirrorFilterId4", status.filters[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Traffic Mirror Filter IDs.

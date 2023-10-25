@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * This data source provides the Intelligent Media Management Projects of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.134.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.imm.getProjects({
+ *     ids: ["example_id"],
+ * });
+ * export const immProjectId1 = ids.then(ids => ids.projects?.[0]?.id);
+ * ```
  */
 export function getProjects(args?: GetProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectsResult> {
     args = args || {};
@@ -51,6 +65,20 @@ export interface GetProjectsResult {
  * This data source provides the Intelligent Media Management Projects of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.134.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.imm.getProjects({
+ *     ids: ["example_id"],
+ * });
+ * export const immProjectId1 = ids.then(ids => ids.projects?.[0]?.id);
+ * ```
  */
 export function getProjectsOutput(args?: GetProjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectsResult> {
     return pulumi.output(args).apply((a: any) => getProjects(a, opts))

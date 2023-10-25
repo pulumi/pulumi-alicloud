@@ -10,6 +10,24 @@ import * as utilities from "../utilities";
  * This data source provides the Cloud Architect Design Tools (BPStudio) Applications of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.192.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.bp.getStudioApplications({
+ *     ids: ["example_id"],
+ * });
+ * export const bpStudioApplicationId1 = ids.then(ids => ids.applications?.[0]?.id);
+ * const nameRegex = alicloud.bp.getStudioApplications({
+ *     nameRegex: "^my-Application",
+ * });
+ * export const bpStudioApplicationId2 = nameRegex.then(nameRegex => nameRegex.applications?.[0]?.id);
+ * ```
  */
 export function getStudioApplications(args?: GetStudioApplicationsArgs, opts?: pulumi.InvokeOptions): Promise<GetStudioApplicationsResult> {
     args = args || {};
@@ -97,6 +115,24 @@ export interface GetStudioApplicationsResult {
  * This data source provides the Cloud Architect Design Tools (BPStudio) Applications of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.192.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.bp.getStudioApplications({
+ *     ids: ["example_id"],
+ * });
+ * export const bpStudioApplicationId1 = ids.then(ids => ids.applications?.[0]?.id);
+ * const nameRegex = alicloud.bp.getStudioApplications({
+ *     nameRegex: "^my-Application",
+ * });
+ * export const bpStudioApplicationId2 = nameRegex.then(nameRegex => nameRegex.applications?.[0]?.id);
+ * ```
  */
 export function getStudioApplicationsOutput(args?: GetStudioApplicationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStudioApplicationsResult> {
     return pulumi.output(args).apply((a: any) => getStudioApplications(a, opts))

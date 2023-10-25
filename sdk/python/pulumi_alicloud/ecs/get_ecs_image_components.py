@@ -139,6 +139,20 @@ def get_ecs_image_components(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.159.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.ecs.get_ecs_image_components(ids=["example_id"])
+    pulumi.export("ecsImageComponentId1", ids.components[0].id)
+    name_regex = alicloud.ecs.get_ecs_image_components(name_regex="^my-ImageComponent")
+    pulumi.export("ecsImageComponentId2", name_regex.components[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Image Component IDs.
     :param str image_component_name: The name of the image component.
@@ -185,6 +199,20 @@ def get_ecs_image_components_output(ids: Optional[pulumi.Input[Optional[Sequence
     This data source provides the Ecs Image Components of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.159.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.ecs.get_ecs_image_components(ids=["example_id"])
+    pulumi.export("ecsImageComponentId1", ids.components[0].id)
+    name_regex = alicloud.ecs.get_ecs_image_components(name_regex="^my-ImageComponent")
+    pulumi.export("ecsImageComponentId2", name_regex.components[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Image Component IDs.

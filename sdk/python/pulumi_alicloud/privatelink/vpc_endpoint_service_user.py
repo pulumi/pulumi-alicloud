@@ -183,6 +183,32 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.110.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexampleuser"
+        example_vpc_endpoint_service = alicloud.privatelink.VpcEndpointService("exampleVpcEndpointService",
+            service_description=name,
+            connect_bandwidth=103,
+            auto_accept_connection=False)
+        example_user = alicloud.ram.User("exampleUser",
+            display_name="user_display_name",
+            mobile="86-18688888888",
+            email="hello.uuu@aaa.com",
+            comments="yoyoyo")
+        example_vpc_endpoint_service_user = alicloud.privatelink.VpcEndpointServiceUser("exampleVpcEndpointServiceUser",
+            service_id=example_vpc_endpoint_service.id,
+            user_id=example_user.id)
+        ```
+
         ## Import
 
         Private Link Vpc Endpoint Service User can be imported using the id, e.g.
@@ -209,6 +235,32 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
         For information about Private Link Vpc Endpoint Service User and how to use it, see [What is Vpc Endpoint Service User](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-addusertovpcendpointservice).
 
         > **NOTE:** Available since v1.110.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexampleuser"
+        example_vpc_endpoint_service = alicloud.privatelink.VpcEndpointService("exampleVpcEndpointService",
+            service_description=name,
+            connect_bandwidth=103,
+            auto_accept_connection=False)
+        example_user = alicloud.ram.User("exampleUser",
+            display_name="user_display_name",
+            mobile="86-18688888888",
+            email="hello.uuu@aaa.com",
+            comments="yoyoyo")
+        example_vpc_endpoint_service_user = alicloud.privatelink.VpcEndpointServiceUser("exampleVpcEndpointServiceUser",
+            service_id=example_vpc_endpoint_service.id,
+            user_id=example_user.id)
+        ```
 
         ## Import
 

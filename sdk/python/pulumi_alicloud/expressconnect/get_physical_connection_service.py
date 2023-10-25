@@ -74,6 +74,15 @@ def get_physical_connection_service(enable: Optional[str] = None,
 
     > **NOTE:** Available in v1.132.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    open = alicloud.expressconnect.get_physical_connection_service(enable="On")
+    ```
+
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
            
@@ -99,6 +108,15 @@ def get_physical_connection_service_output(enable: Optional[pulumi.Input[Optiona
     For information about Express Connect and how to use it, see [What is Express Connect](https://www.alibabacloud.com/help/doc-detail/275179.htm).
 
     > **NOTE:** Available in v1.132.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    open = alicloud.expressconnect.get_physical_connection_service(enable="On")
+    ```
 
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.

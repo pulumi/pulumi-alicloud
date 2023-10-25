@@ -11,6 +11,17 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.101.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.cms.AlarmContactGroup("example", {alarmContactGroupName: "tf-example"});
+ * ```
+ *
  * ## Import
  *
  * CMS Alarm Contact Group can be imported using the id, e.g.

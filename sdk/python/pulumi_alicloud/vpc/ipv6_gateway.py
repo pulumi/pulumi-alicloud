@@ -423,6 +423,34 @@ class Ipv6Gateway(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.142.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-testacc-example"
+        default_vpc = alicloud.vpc.Network("defaultVpc",
+            description="tf-testacc",
+            enable_ipv6=True)
+        default_rg = alicloud.resourcemanager.ResourceGroup("defaultRg",
+            display_name="tf-testacc-ipv6gateway503",
+            resource_group_name=f"{name}1")
+        change_rg = alicloud.resourcemanager.ResourceGroup("changeRg",
+            display_name="tf-testacc-ipv6gateway311",
+            resource_group_name=f"{name}2")
+        default = alicloud.vpc.Ipv6Gateway("default",
+            description="test",
+            ipv6_gateway_name=name,
+            vpc_id=default_vpc.id,
+            resource_group_id=default_rg.id)
+        ```
+
         ## Import
 
         Vpc Ipv6 Gateway can be imported using the id, e.g.
@@ -452,6 +480,34 @@ class Ipv6Gateway(pulumi.CustomResource):
         For information about Vpc Ipv6 Gateway and how to use it, see [What is Ipv6 Gateway](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createipv6gateway).
 
         > **NOTE:** Available in v1.142.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-testacc-example"
+        default_vpc = alicloud.vpc.Network("defaultVpc",
+            description="tf-testacc",
+            enable_ipv6=True)
+        default_rg = alicloud.resourcemanager.ResourceGroup("defaultRg",
+            display_name="tf-testacc-ipv6gateway503",
+            resource_group_name=f"{name}1")
+        change_rg = alicloud.resourcemanager.ResourceGroup("changeRg",
+            display_name="tf-testacc-ipv6gateway311",
+            resource_group_name=f"{name}2")
+        default = alicloud.vpc.Ipv6Gateway("default",
+            description="test",
+            ipv6_gateway_name=name,
+            vpc_id=default_vpc.id,
+            resource_group_id=default_rg.id)
+        ```
 
         ## Import
 

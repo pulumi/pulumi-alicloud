@@ -224,6 +224,30 @@ class ChartNamespace(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.149.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "example-name"
+        example_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance",
+            payment_type="Subscription",
+            period=1,
+            renew_period=0,
+            renewal_status="ManualRenewal",
+            instance_type="Advanced",
+            instance_name=name)
+        example_chart_namespace = alicloud.cr.ChartNamespace("exampleChartNamespace",
+            instance_id=example_registry_enterprise_instance.id,
+            namespace_name=name)
+        ```
+
         ## Import
 
         CR Chart Namespace can be imported using the id, e.g.
@@ -251,6 +275,30 @@ class ChartNamespace(pulumi.CustomResource):
         For information about CR Chart Namespace and how to use it, see [What is Chart Namespace](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createchartnamespace).
 
         > **NOTE:** Available since v1.149.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "example-name"
+        example_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance",
+            payment_type="Subscription",
+            period=1,
+            renew_period=0,
+            renewal_status="ManualRenewal",
+            instance_type="Advanced",
+            instance_name=name)
+        example_chart_namespace = alicloud.cr.ChartNamespace("exampleChartNamespace",
+            instance_id=example_registry_enterprise_instance.id,
+            namespace_name=name)
+        ```
 
         ## Import
 

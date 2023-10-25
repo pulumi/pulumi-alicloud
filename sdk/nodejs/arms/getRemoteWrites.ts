@@ -10,6 +10,26 @@ import * as utilities from "../utilities";
  * This data source provides the Arms Remote Writes of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.204.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.arms.getRemoteWrites({
+ *     ids: ["example_id"],
+ *     clusterId: "your_cluster_id",
+ * });
+ * export const armsRemoteWritesId1 = ids.then(ids => ids.remoteWrites?.[0]?.id);
+ * const nameRegex = alicloud.arms.getRemoteWrites({
+ *     nameRegex: "tf-example",
+ *     clusterId: "your_cluster_id",
+ * });
+ * export const armsRemoteWritesId2 = nameRegex.then(nameRegex => nameRegex.remoteWrites?.[0]?.id);
+ * ```
  */
 export function getRemoteWrites(args: GetRemoteWritesArgs, opts?: pulumi.InvokeOptions): Promise<GetRemoteWritesResult> {
 
@@ -72,6 +92,26 @@ export interface GetRemoteWritesResult {
  * This data source provides the Arms Remote Writes of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.204.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.arms.getRemoteWrites({
+ *     ids: ["example_id"],
+ *     clusterId: "your_cluster_id",
+ * });
+ * export const armsRemoteWritesId1 = ids.then(ids => ids.remoteWrites?.[0]?.id);
+ * const nameRegex = alicloud.arms.getRemoteWrites({
+ *     nameRegex: "tf-example",
+ *     clusterId: "your_cluster_id",
+ * });
+ * export const armsRemoteWritesId2 = nameRegex.then(nameRegex => nameRegex.remoteWrites?.[0]?.id);
+ * ```
  */
 export function getRemoteWritesOutput(args: GetRemoteWritesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRemoteWritesResult> {
     return pulumi.output(args).apply((a: any) => getRemoteWrites(a, opts))

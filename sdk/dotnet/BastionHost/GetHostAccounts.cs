@@ -15,6 +15,48 @@ namespace Pulumi.AliCloud.BastionHost
         /// This data source provides the Bastionhost Host Accounts of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.135.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.BastionHost.GetHostAccounts.Invoke(new()
+        ///     {
+        ///         HostId = "15",
+        ///         InstanceId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "1",
+        ///             "2",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.BastionHost.GetHostAccounts.Invoke(new()
+        ///     {
+        ///         HostId = "15",
+        ///         InstanceId = "example_value",
+        ///         NameRegex = "^my-HostAccount",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["bastionhostHostAccountId1"] = ids.Apply(getHostAccountsResult =&gt; getHostAccountsResult.Accounts[0]?.Id),
+        ///         ["bastionhostHostAccountId2"] = nameRegex.Apply(getHostAccountsResult =&gt; getHostAccountsResult.Accounts[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetHostAccountsResult> InvokeAsync(GetHostAccountsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHostAccountsResult>("alicloud:bastionhost/getHostAccounts:getHostAccounts", args ?? new GetHostAccountsArgs(), options.WithDefaults());
@@ -23,6 +65,48 @@ namespace Pulumi.AliCloud.BastionHost
         /// This data source provides the Bastionhost Host Accounts of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.135.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.BastionHost.GetHostAccounts.Invoke(new()
+        ///     {
+        ///         HostId = "15",
+        ///         InstanceId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "1",
+        ///             "2",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.BastionHost.GetHostAccounts.Invoke(new()
+        ///     {
+        ///         HostId = "15",
+        ///         InstanceId = "example_value",
+        ///         NameRegex = "^my-HostAccount",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["bastionhostHostAccountId1"] = ids.Apply(getHostAccountsResult =&gt; getHostAccountsResult.Accounts[0]?.Id),
+        ///         ["bastionhostHostAccountId2"] = nameRegex.Apply(getHostAccountsResult =&gt; getHostAccountsResult.Accounts[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetHostAccountsResult> Invoke(GetHostAccountsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHostAccountsResult>("alicloud:bastionhost/getHostAccounts:getHostAccounts", args ?? new GetHostAccountsInvokeArgs(), options.WithDefaults());

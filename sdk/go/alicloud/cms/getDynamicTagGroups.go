@@ -15,6 +15,65 @@ import (
 // This data source provides the Cms Dynamic Tag Groups of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.142.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "example_value"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultAlarmContactGroup, err := cms.NewAlarmContactGroup(ctx, "defaultAlarmContactGroup", &cms.AlarmContactGroupArgs{
+//				AlarmContactGroupName: pulumi.String(name),
+//				Describe:              pulumi.String("example_value"),
+//				EnableSubscribed:      pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultDynamicTagGroup, err := cms.NewDynamicTagGroup(ctx, "defaultDynamicTagGroup", &cms.DynamicTagGroupArgs{
+//				ContactGroupLists: pulumi.StringArray{
+//					defaultAlarmContactGroup.ID(),
+//				},
+//				TagKey: pulumi.String("your_tag_key"),
+//				MatchExpresses: cms.DynamicTagGroupMatchExpressArray{
+//					&cms.DynamicTagGroupMatchExpressArgs{
+//						TagValue:              pulumi.String("your_tag_value"),
+//						TagValueMatchFunction: pulumi.String("all"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ids := cms.GetDynamicTagGroupsOutput(ctx, cms.GetDynamicTagGroupsOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultDynamicTagGroup.ID(),
+//				},
+//			}, nil)
+//			ctx.Export("cmsDynamicTagGroupId1", ids.ApplyT(func(ids cms.GetDynamicTagGroupsResult) (*string, error) {
+//				return &ids.Groups[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDynamicTagGroups(ctx *pulumi.Context, args *GetDynamicTagGroupsArgs, opts ...pulumi.InvokeOption) (*GetDynamicTagGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDynamicTagGroupsResult

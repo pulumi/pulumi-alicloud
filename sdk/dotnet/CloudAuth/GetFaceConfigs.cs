@@ -15,6 +15,44 @@ namespace Pulumi.AliCloud.CloudAuth
         /// This data source provides the Cloudauth Face Configs of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.137.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var defaultFaceConfig = new AliCloud.CloudAuth.FaceConfig("defaultFaceConfig", new()
+        ///     {
+        ///         BizName = "example-value",
+        ///         BizType = "example-value",
+        ///     });
+        /// 
+        ///     var defaultFaceConfigs = AliCloud.CloudAuth.GetFaceConfigs.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultFaceConfig.Id,
+        ///         },
+        ///         NameRegex = defaultFaceConfig.BizName,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["faceConfig"] = defaultFaceConfigs.Apply(getFaceConfigsResult =&gt; getFaceConfigsResult.Configs[0]),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetFaceConfigsResult> InvokeAsync(GetFaceConfigsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFaceConfigsResult>("alicloud:cloudauth/getFaceConfigs:getFaceConfigs", args ?? new GetFaceConfigsArgs(), options.WithDefaults());
@@ -23,6 +61,44 @@ namespace Pulumi.AliCloud.CloudAuth
         /// This data source provides the Cloudauth Face Configs of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.137.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var defaultFaceConfig = new AliCloud.CloudAuth.FaceConfig("defaultFaceConfig", new()
+        ///     {
+        ///         BizName = "example-value",
+        ///         BizType = "example-value",
+        ///     });
+        /// 
+        ///     var defaultFaceConfigs = AliCloud.CloudAuth.GetFaceConfigs.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultFaceConfig.Id,
+        ///         },
+        ///         NameRegex = defaultFaceConfig.BizName,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["faceConfig"] = defaultFaceConfigs.Apply(getFaceConfigsResult =&gt; getFaceConfigsResult.Configs[0]),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetFaceConfigsResult> Invoke(GetFaceConfigsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFaceConfigsResult>("alicloud:cloudauth/getFaceConfigs:getFaceConfigs", args ?? new GetFaceConfigsInvokeArgs(), options.WithDefaults());

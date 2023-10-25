@@ -11,6 +11,19 @@ import * as utilities from "../utilities";
  * that connect VPCs together.
  *
  * > **DEPRECATED:**  This datasource has been deprecated from version `1.199.0`. Please use new data source alicloud_express_connect_router_interfaces.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const routerInterfacesDs = alicloud.vpc.getRouterInterfaces({
+ *     nameRegex: "^testenv",
+ *     status: "Active",
+ * });
+ * export const firstRouterInterfaceId = routerInterfacesDs.then(routerInterfacesDs => routerInterfacesDs.interfaces?.[0]?.id);
+ * ```
  */
 export function getRouterInterfaces(args?: GetRouterInterfacesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouterInterfacesResult> {
     args = args || {};
@@ -133,6 +146,19 @@ export interface GetRouterInterfacesResult {
  * that connect VPCs together.
  *
  * > **DEPRECATED:**  This datasource has been deprecated from version `1.199.0`. Please use new data source alicloud_express_connect_router_interfaces.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const routerInterfacesDs = alicloud.vpc.getRouterInterfaces({
+ *     nameRegex: "^testenv",
+ *     status: "Active",
+ * });
+ * export const firstRouterInterfaceId = routerInterfacesDs.then(routerInterfacesDs => routerInterfacesDs.interfaces?.[0]?.id);
+ * ```
  */
 export function getRouterInterfacesOutput(args?: GetRouterInterfacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouterInterfacesResult> {
     return pulumi.output(args).apply((a: any) => getRouterInterfaces(a, opts))

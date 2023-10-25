@@ -259,6 +259,21 @@ class AlertContact(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.129.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.arms.AlertContact("example",
+            alert_contact_name="example_value",
+            ding_robot_webhook_url="https://oapi.dingtalk.com/robot/send?access_token=91f2f6****",
+            email="someone@example.com",
+            phone_num="1381111****")
+        ```
+
         ## Import
 
         Application Real-Time Monitoring Service (ARMS) Alert Contact can be imported using the id, e.g.
@@ -287,6 +302,21 @@ class AlertContact(pulumi.CustomResource):
         For information about Application Real-Time Monitoring Service (ARMS) Alert Contact and how to use it, see [What is Alert Contact](https://www.alibabacloud.com/help/en/application-real-time-monitoring-service/latest/createalertcontact).
 
         > **NOTE:** Available since v1.129.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.arms.AlertContact("example",
+            alert_contact_name="example_value",
+            ding_robot_webhook_url="https://oapi.dingtalk.com/robot/send?access_token=91f2f6****",
+            email="someone@example.com",
+            phone_num="1381111****")
+        ```
 
         ## Import
 

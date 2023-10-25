@@ -11,6 +11,19 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.134.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const domainName = config.get("domainName") || "alicloud-provider.online";
+ * const example = new alicloud.directmail.Domain("example", {domainName: domainName});
+ * ```
+ *
  * ## Import
  *
  * Direct Mail Domain can be imported using the id, e.g.

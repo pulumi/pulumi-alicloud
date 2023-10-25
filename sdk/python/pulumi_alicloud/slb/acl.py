@@ -287,6 +287,14 @@ class Acl(pulumi.CustomResource):
 
         For information about acl and how to use it, see [Configure an access control list](https://www.alibabacloud.com/help/doc-detail/70015.htm).
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        acl = alicloud.slb.Acl("acl", ip_version="ipv4")
+        ```
         ## Entry Block
 
         The entry mapping supports the following:
@@ -341,6 +349,14 @@ class Acl(pulumi.CustomResource):
 
         For information about acl and how to use it, see [Configure an access control list](https://www.alibabacloud.com/help/doc-detail/70015.htm).
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        acl = alicloud.slb.Acl("acl", ip_version="ipv4")
+        ```
         ## Entry Block
 
         The entry mapping supports the following:

@@ -858,6 +858,20 @@ class Key(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.85.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        key = alicloud.kms.Key("key",
+            description="Hello KMS",
+            pending_window_in_days=7,
+            status="Enabled")
+        ```
+
         ## Import
 
         Alikms key can be imported using the id, e.g.
@@ -906,6 +920,20 @@ class Key(pulumi.CustomResource):
         A kms key can help user to protect data security in the transmission process. For information about Alikms Key and how to use it, see [What is Resource Alikms Key](https://www.alibabacloud.com/help/doc-detail/28947.htm).
 
         > **NOTE:** Available since v1.85.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        key = alicloud.kms.Key("key",
+            description="Hello KMS",
+            pending_window_in_days=7,
+            status="Enabled")
+        ```
 
         ## Import
 

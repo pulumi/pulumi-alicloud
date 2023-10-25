@@ -15,6 +15,33 @@ namespace Pulumi.AliCloud.Mns
         /// This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
         /// 
         /// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_subscriptions.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var subscriptions = AliCloud.Mns.GetTopicSubscriptions.Invoke(new()
+        ///     {
+        ///         NamePrefix = "tf-",
+        ///         TopicName = "topic_name",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstTopicSubscriptionId"] = subscriptions.Apply(getTopicSubscriptionsResult =&gt; getTopicSubscriptionsResult.Subscriptions[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTopicSubscriptionsResult> InvokeAsync(GetTopicSubscriptionsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTopicSubscriptionsResult>("alicloud:mns/getTopicSubscriptions:getTopicSubscriptions", args ?? new GetTopicSubscriptionsArgs(), options.WithDefaults());
@@ -23,6 +50,33 @@ namespace Pulumi.AliCloud.Mns
         /// This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
         /// 
         /// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_subscriptions.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var subscriptions = AliCloud.Mns.GetTopicSubscriptions.Invoke(new()
+        ///     {
+        ///         NamePrefix = "tf-",
+        ///         TopicName = "topic_name",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstTopicSubscriptionId"] = subscriptions.Apply(getTopicSubscriptionsResult =&gt; getTopicSubscriptionsResult.Subscriptions[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetTopicSubscriptionsResult> Invoke(GetTopicSubscriptionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTopicSubscriptionsResult>("alicloud:mns/getTopicSubscriptions:getTopicSubscriptions", args ?? new GetTopicSubscriptionsInvokeArgs(), options.WithDefaults());

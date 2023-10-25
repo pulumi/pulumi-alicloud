@@ -220,6 +220,19 @@ class Organization(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.137.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.rdc.Organization("example",
+            organization_name="example_value",
+            source="example_value")
+        ```
+
         ## Import
 
         RDC Organization can be imported using the id, e.g.
@@ -247,6 +260,19 @@ class Organization(pulumi.CustomResource):
         For information about RDC Organization and how to use it, see [What is Organization](https://help.aliyun.com/product/51588.html).
 
         > **NOTE:** Available in v1.137.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.rdc.Organization("example",
+            organization_name="example_value",
+            source="example_value")
+        ```
 
         ## Import
 

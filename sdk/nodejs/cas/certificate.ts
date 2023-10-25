@@ -15,6 +15,20 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in 1.35.0+ .
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as fs from "fs";
+ *
+ * // Add a new Certificate.
+ * const cert = new alicloud.cas.Certificate("cert", {
+ *     cert: fs.readFileSync(`${path.module}/test.crt`),
+ *     key: fs.readFileSync(`${path.module}/test.key`),
+ * });
+ * ```
+ *
  * @deprecated This resource has been deprecated in favour of ServiceCertificate
  */
 export class Certificate extends pulumi.CustomResource {

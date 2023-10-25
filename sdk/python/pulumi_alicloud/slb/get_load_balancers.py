@@ -337,6 +337,17 @@ def get_load_balancers(address: Optional[str] = None,
 
     This data source provides the server load balancers of the current Alibaba Cloud user.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.slb.LoadBalancer("default")
+    slbs_ds = alicloud.slb.get_load_balancers(name_regex="sample_slb")
+    pulumi.export("firstSlbId", slbs_ds.slbs[0].id)
+    ```
+
 
     :param str address: Service address of the SLBs.
     :param Sequence[str] ids: A list of SLBs IDs.
@@ -346,6 +357,15 @@ def get_load_balancers(address: Optional[str] = None,
     :param str resource_group_id: The Id of resource group which SLB belongs.
     :param str status: SLB current status. Possible values: `inactive`, `active` and `locked`.
     :param Mapping[str, Any] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+           ```python
+           import pulumi
+           import pulumi_alicloud as alicloud
+           
+           tagged_instances = alicloud.slb.get_load_balancers(tags={
+               "tagKey1": "tagValue1",
+               "tagKey2": "tagValue2",
+           })
+           ```
     :param str vpc_id: ID of the VPC linked to the SLBs.
     :param str vswitch_id: ID of the VSwitch linked to the SLBs.
     """
@@ -434,6 +454,17 @@ def get_load_balancers_output(address: Optional[pulumi.Input[Optional[str]]] = N
 
     This data source provides the server load balancers of the current Alibaba Cloud user.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.slb.LoadBalancer("default")
+    slbs_ds = alicloud.slb.get_load_balancers(name_regex="sample_slb")
+    pulumi.export("firstSlbId", slbs_ds.slbs[0].id)
+    ```
+
 
     :param str address: Service address of the SLBs.
     :param Sequence[str] ids: A list of SLBs IDs.
@@ -443,6 +474,15 @@ def get_load_balancers_output(address: Optional[pulumi.Input[Optional[str]]] = N
     :param str resource_group_id: The Id of resource group which SLB belongs.
     :param str status: SLB current status. Possible values: `inactive`, `active` and `locked`.
     :param Mapping[str, Any] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+           ```python
+           import pulumi
+           import pulumi_alicloud as alicloud
+           
+           tagged_instances = alicloud.slb.get_load_balancers(tags={
+               "tagKey1": "tagValue1",
+               "tagKey2": "tagValue2",
+           })
+           ```
     :param str vpc_id: ID of the VPC linked to the SLBs.
     :param str vswitch_id: ID of the VSwitch linked to the SLBs.
     """

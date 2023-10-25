@@ -80,6 +80,18 @@ def get_resolver_zones(output_file: Optional[str] = None,
 
     > **NOTE:** Available in v1.143.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.pvtz.get_resolver_zones(status="NORMAL")
+    pulumi.export("firstZonesId", default.zones[0].zone_id)
+    ```
+
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the Zone.
@@ -105,6 +117,18 @@ def get_resolver_zones_output(output_file: Optional[pulumi.Input[Optional[str]]]
     This data source provides the available zones with the Private Zone Resolver of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.143.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.pvtz.get_resolver_zones(status="NORMAL")
+    pulumi.export("firstZonesId", default.zones[0].zone_id)
+    ```
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

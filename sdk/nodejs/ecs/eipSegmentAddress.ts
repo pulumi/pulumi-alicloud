@@ -11,6 +11,25 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.207.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.ecs.EipSegmentAddress("default", {
+ *     bandwidth: "5",
+ *     eipMask: "28",
+ *     internetChargeType: "PayByBandwidth",
+ *     isp: "BGP",
+ *     netmode: "public",
+ * });
+ * ```
+ *
  * ## Import
  *
  * EIP Segment Address can be imported using the id, e.g.

@@ -16,6 +16,30 @@ namespace Pulumi.AliCloud.QuickBI
     /// 
     /// &gt; **NOTE:** Available in v1.136.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AliCloud.QuickBI.User("example", new()
+    ///     {
+    ///         AccountName = "example_value",
+    ///         AdminUser = false,
+    ///         AuthAdminUser = false,
+    ///         NickName = "example_value",
+    ///         UserType = "Analyst",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Quick BI User can be imported using the id, e.g.

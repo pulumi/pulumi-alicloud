@@ -329,6 +329,34 @@ class RouteService(pulumi.CustomResource):
 
         > **NOTE:** Ensure that at least one VPC in the selected region is attached to the CEN instance.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.get_regions(current=True)
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="tf_example",
+            cidr_block="172.17.3.0/24")
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
+            instance_id=example_instance.id,
+            child_instance_id=example_network.id,
+            child_instance_type="VPC",
+            child_instance_region_id=default.regions[0].id)
+        example_route_service = alicloud.cen.RouteService("exampleRouteService",
+            access_region_id=default.regions[0].id,
+            host_region_id=default.regions[0].id,
+            host_vpc_id=example_network.id,
+            cen_id=example_instance_attachment.instance_id,
+            host="100.118.28.52/32")
+        ```
+
         ## Import
 
         CEN Route Service can be imported using the id, e.g.
@@ -362,6 +390,34 @@ class RouteService(pulumi.CustomResource):
         > **NOTE:** Available since v1.99.0.
 
         > **NOTE:** Ensure that at least one VPC in the selected region is attached to the CEN instance.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.get_regions(current=True)
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="tf_example",
+            cidr_block="172.17.3.0/24")
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
+            instance_id=example_instance.id,
+            child_instance_id=example_network.id,
+            child_instance_type="VPC",
+            child_instance_region_id=default.regions[0].id)
+        example_route_service = alicloud.cen.RouteService("exampleRouteService",
+            access_region_id=default.regions[0].id,
+            host_region_id=default.regions[0].id,
+            host_vpc_id=example_network.id,
+            cen_id=example_instance_attachment.instance_id,
+            host="100.118.28.52/32")
+        ```
 
         ## Import
 

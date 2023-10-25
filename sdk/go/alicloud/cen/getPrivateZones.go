@@ -15,6 +15,37 @@ import (
 // This data source provides CEN Private Zones available to the user.
 //
 // > **NOTE:** Available in v1.88.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := cen.GetPrivateZones(ctx, &cen.GetPrivateZonesArgs{
+//				CenId: "cen-o40h17ll9w********",
+//				Ids: []string{
+//					"cn-hangzhou",
+//				},
+//				Status: pulumi.StringRef("Active"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstCenPrivateZonesId", this.Zones[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetPrivateZones(ctx *pulumi.Context, args *GetPrivateZonesArgs, opts ...pulumi.InvokeOption) (*GetPrivateZonesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPrivateZonesResult

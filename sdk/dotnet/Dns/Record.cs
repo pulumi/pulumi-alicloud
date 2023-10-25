@@ -16,6 +16,27 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// &gt; **NOTE:** When the site is an international site, the `type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new Domain record
+    ///     var record = new AliCloud.Dns.Record("record", new()
+    ///     {
+    ///         HostRecord = "@",
+    ///         Type = "A",
+    ///         Value = "192.168.99.99",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// RDS record can be imported using the id, e.g.

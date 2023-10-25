@@ -144,6 +144,30 @@ class NetworkAttachment(pulumi.CustomResource):
 
         > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        sag_id = config.get("sagId")
+        if sag_id is None:
+            sag_id = "sag-9bifkf***"
+        default_network = alicloud.cloudconnect.Network("defaultNetwork",
+            description=name,
+            cidr_block="192.168.0.0/24",
+            is_default=True)
+        default_network_attachment = alicloud.cloudconnect.NetworkAttachment("defaultNetworkAttachment",
+            ccn_id=default_network.id,
+            sag_id=sag_id)
+        ```
+
         ## Import
 
         The Cloud Connect Network Attachment can be imported using the instance_id, e.g.
@@ -171,6 +195,30 @@ class NetworkAttachment(pulumi.CustomResource):
         > **NOTE:** Available since v1.64.0.
 
         > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        sag_id = config.get("sagId")
+        if sag_id is None:
+            sag_id = "sag-9bifkf***"
+        default_network = alicloud.cloudconnect.Network("defaultNetwork",
+            description=name,
+            cidr_block="192.168.0.0/24",
+            is_default=True)
+        default_network_attachment = alicloud.cloudconnect.NetworkAttachment("defaultNetworkAttachment",
+            ccn_id=default_network.id,
+            sag_id=sag_id)
+        ```
 
         ## Import
 

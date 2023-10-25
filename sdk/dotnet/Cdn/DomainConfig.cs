@@ -16,6 +16,54 @@ namespace Pulumi.AliCloud.Cdn
     /// 
     /// &gt; **NOTE:** Available in v1.34.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new Domain config.
+    ///     var domain = new AliCloud.Cdn.DomainNew("domain", new()
+    ///     {
+    ///         DomainName = "mycdndomain.alicloud-provider.cn",
+    ///         CdnType = "web",
+    ///         Scope = "overseas",
+    ///         Sources = new[]
+    ///         {
+    ///             new AliCloud.Cdn.Inputs.DomainNewSourceArgs
+    ///             {
+    ///                 Content = "1.1.1.1",
+    ///                 Type = "ipaddr",
+    ///                 Priority = 20,
+    ///                 Port = 80,
+    ///                 Weight = 15,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var config = new AliCloud.Cdn.DomainConfig("config", new()
+    ///     {
+    ///         DomainName = domain.DomainName,
+    ///         FunctionName = "ip_allow_list_set",
+    ///         FunctionArgs = new[]
+    ///         {
+    ///             new AliCloud.Cdn.Inputs.DomainConfigFunctionArgArgs
+    ///             {
+    ///                 ArgName = "ip_list",
+    ///                 ArgValue = "110.110.110.110",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// CDN domain config can be imported using the id, e.g.

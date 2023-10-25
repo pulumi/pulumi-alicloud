@@ -9,6 +9,28 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.90.0.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tfexamplename";
+ * const defaultUser = new alicloud.ram.User("defaultUser", {
+ *     displayName: name,
+ *     mobile: "86-18688888888",
+ *     email: "hello.uuu@aaa.com",
+ *     comments: "example",
+ * });
+ * const defaultEnterpriseUser = new alicloud.dms.EnterpriseUser("defaultEnterpriseUser", {
+ *     uid: defaultUser.id,
+ *     userName: name,
+ *     roleNames: ["DBA"],
+ *     mobile: "86-18688888888",
+ * });
+ * ```
+ *
  * ## Import
  *
  * DMS Enterprise User can be imported using the id, e.g.

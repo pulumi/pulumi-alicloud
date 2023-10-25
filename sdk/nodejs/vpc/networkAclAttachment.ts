@@ -13,6 +13,42 @@ import * as utilities from "../utilities";
  * Note that because this resource conflicts with the `resources` attribute of `alicloud.vpc.NetworkAcl`, this resource can no be used.
  *
  * > **NOTE:** Available in 1.44.0+. Currently, the resource are only available in Hongkong(cn-hongkong), India(ap-south-1), and Indonesia(ap-southeast-1) regions.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "NatGatewayConfigSpec";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const defaultNetworkAcl = new alicloud.vpc.NetworkAcl("defaultNetworkAcl", {
+ *     vpcId: defaultNetwork.id,
+ *     networkAclName: name,
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/21",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     vswitchName: name,
+ * });
+ * const defaultNetworkAclAttachment = new alicloud.vpc.NetworkAclAttachment("defaultNetworkAclAttachment", {
+ *     networkAclId: defaultNetworkAcl.id,
+ *     resources: [{
+ *         resourceId: defaultSwitch.id,
+ *         resourceType: "VSwitch",
+ *     }],
+ * });
+ * ```
  */
 export class NetworkAclAttachment extends pulumi.CustomResource {
     /**

@@ -11,6 +11,26 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.183.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const instance = new alicloud.ddos.DdosBgpInstance("instance", {
+ *     baseBandwidth: 20,
+ *     bandwidth: -1,
+ *     ipCount: 100,
+ *     ipType: "IPv4",
+ *     normalBandwidth: 100,
+ *     type: "Enterprise",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Ddosbgp instance can be imported using the id, e.g.

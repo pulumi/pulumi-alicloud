@@ -10,6 +10,37 @@ import * as utilities from "../utilities";
  * This data source provides the Vod Domains of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.136.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultDomain = new alicloud.vod.Domain("defaultDomain", {
+ *     domainName: "your_domain_name",
+ *     scope: "domestic",
+ *     sources: [{
+ *         sourceType: "domain",
+ *         sourceContent: "your_source_content",
+ *         sourcePort: "80",
+ *     }],
+ *     tags: {
+ *         key1: "value1",
+ *         key2: "value2",
+ *     },
+ * });
+ * const defaultDomains = alicloud.vod.getDomainsOutput({
+ *     ids: [defaultDomain.id],
+ *     tags: {
+ *         key1: "value1",
+ *         key2: "value2",
+ *     },
+ * });
+ * export const vodDomain = defaultDomains.apply(defaultDomains => defaultDomains.domains?.[0]);
+ * ```
  */
 export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
     args = args || {};
@@ -76,6 +107,37 @@ export interface GetDomainsResult {
  * This data source provides the Vod Domains of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.136.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultDomain = new alicloud.vod.Domain("defaultDomain", {
+ *     domainName: "your_domain_name",
+ *     scope: "domestic",
+ *     sources: [{
+ *         sourceType: "domain",
+ *         sourceContent: "your_source_content",
+ *         sourcePort: "80",
+ *     }],
+ *     tags: {
+ *         key1: "value1",
+ *         key2: "value2",
+ *     },
+ * });
+ * const defaultDomains = alicloud.vod.getDomainsOutput({
+ *     ids: [defaultDomain.id],
+ *     tags: {
+ *         key1: "value1",
+ *         key2: "value2",
+ *     },
+ * });
+ * export const vodDomain = defaultDomains.apply(defaultDomains => defaultDomains.domains?.[0]);
+ * ```
  */
 export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {
     return pulumi.output(args).apply((a: any) => getDomains(a, opts))

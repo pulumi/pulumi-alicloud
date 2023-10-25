@@ -18,6 +18,32 @@ import (
 //
 // > **NOTE:** Available since v1.201.0.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := actiontrail.NewGlobalEventsStorageRegion(ctx, "foo", &actiontrail.GlobalEventsStorageRegionArgs{
+//				StorageRegion: pulumi.String("cn-hangzhou"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Global events storage region not can be imported.

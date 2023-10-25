@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides the Ecs Disks of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.122.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.ecs.getEcsDisks({
+ *     ids: ["d-artgdsvdvxxxx"],
+ *     nameRegex: "tf-test",
+ * });
+ * export const firstEcsDiskId = example.then(example => example.disks?.[0]?.id);
+ * ```
  */
 export function getEcsDisks(args?: GetEcsDisksArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsDisksResult> {
     args = args || {};
@@ -216,6 +231,21 @@ export interface GetEcsDisksResult {
  * This data source provides the Ecs Disks of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.122.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.ecs.getEcsDisks({
+ *     ids: ["d-artgdsvdvxxxx"],
+ *     nameRegex: "tf-test",
+ * });
+ * export const firstEcsDiskId = example.then(example => example.disks?.[0]?.id);
+ * ```
  */
 export function getEcsDisksOutput(args?: GetEcsDisksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsDisksResult> {
     return pulumi.output(args).apply((a: any) => getEcsDisks(a, opts))

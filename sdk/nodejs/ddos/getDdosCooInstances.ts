@@ -8,6 +8,18 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of BGP-Line Anti-DDoS Pro instances in an Alibaba Cloud account according to the specified filters.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const instanceDdosCooInstances = alicloud.ddos.getDdosCooInstances({
+ *     nameRegex: "^ddoscoo",
+ * });
+ * export const instance = alicloud_ddoscoo_instances.instance.map(__item => __item.id);
+ * ```
  */
 export function getDdosCooInstances(args?: GetDdosCooInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetDdosCooInstancesResult> {
     args = args || {};
@@ -63,6 +75,18 @@ export interface GetDdosCooInstancesResult {
 }
 /**
  * This data source provides a list of BGP-Line Anti-DDoS Pro instances in an Alibaba Cloud account according to the specified filters.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const instanceDdosCooInstances = alicloud.ddos.getDdosCooInstances({
+ *     nameRegex: "^ddoscoo",
+ * });
+ * export const instance = alicloud_ddoscoo_instances.instance.map(__item => __item.id);
+ * ```
  */
 export function getDdosCooInstancesOutput(args?: GetDdosCooInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDdosCooInstancesResult> {
     return pulumi.output(args).apply((a: any) => getDdosCooInstances(a, opts))

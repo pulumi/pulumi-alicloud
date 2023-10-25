@@ -11,6 +11,44 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.153.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const exampleZones = alicloud.nas.getZones({
+ *     fileSystemType: "cpfs",
+ * });
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: exampleNetwork.id,
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[1]?.zoneId),
+ * });
+ * const exampleFileSystem = new alicloud.nas.FileSystem("exampleFileSystem", {
+ *     protocolType: "cpfs",
+ *     storageType: "advance_200",
+ *     fileSystemType: "cpfs",
+ *     capacity: 3600,
+ *     description: "terraform-example",
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[1]?.zoneId),
+ *     vpcId: exampleNetwork.id,
+ *     vswitchId: exampleSwitch.id,
+ * });
+ * const exampleFileset = new alicloud.nas.Fileset("exampleFileset", {
+ *     fileSystemId: exampleFileSystem.id,
+ *     description: "terraform-example",
+ *     fileSystemPath: "/example_path/",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Network Attached Storage (NAS) Fileset can be imported using the id, e.g.

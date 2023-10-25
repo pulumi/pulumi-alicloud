@@ -16,6 +16,90 @@ import (
 // Filters support regular expression for the account name, searches by clusterId.
 //
 // > **NOTE:** Available since v1.70.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/polardb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := polardb.GetNodeClasses(ctx, &polardb.GetNodeClassesArgs{
+//				DbType:    pulumi.StringRef("MySQL"),
+//				DbVersion: pulumi.StringRef("8.0"),
+//				PayType:   "PostPaid",
+//				Category:  pulumi.StringRef("Normal"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				ZoneId:      *pulumi.String(this.Classes[0].ZoneId),
+//				VswitchName: pulumi.String("terraform-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cluster, err := polardb.NewCluster(ctx, "cluster", &polardb.ClusterArgs{
+//				DbType:      pulumi.String("MySQL"),
+//				DbVersion:   pulumi.String("8.0"),
+//				PayType:     pulumi.String("PostPaid"),
+//				DbNodeCount: pulumi.Int(2),
+//				DbNodeClass: *pulumi.String(this.Classes[0].SupportedEngines[0].AvailableResources[0].DbNodeClass),
+//				VswitchId:   defaultSwitch.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			polardbClustersDs := polardb.GetClustersOutput(ctx, polardb.GetClustersOutputArgs{
+//				DescriptionRegex: cluster.Description,
+//				Status:           pulumi.String("Running"),
+//			}, nil)
+//			accountAccount, err := polardb.NewAccount(ctx, "accountAccount", &polardb.AccountArgs{
+//				DbClusterId: polardbClustersDs.ApplyT(func(polardbClustersDs polardb.GetClustersResult) (*string, error) {
+//					return &polardbClustersDs.Clusters[0].Id, nil
+//				}).(pulumi.StringPtrOutput),
+//				AccountName:        pulumi.String("tfnormal_01"),
+//				AccountPassword:    pulumi.String("Test12345"),
+//				AccountDescription: pulumi.String("tf_account_description"),
+//				AccountType:        pulumi.String("Normal"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultAccounts := pulumi.All(polardbClustersDs, accountAccount.AccountName).ApplyT(func(_args []interface{}) (polardb.GetAccountsResult, error) {
+//				polardbClustersDs := _args[0].(polardb.GetClustersResult)
+//				accountName := _args[1].(string)
+//				return polardb.GetAccountsOutput(ctx, polardb.GetAccountsOutputArgs{
+//					DbClusterId: polardbClustersDs.Clusters[0].Id,
+//					NameRegex:   accountName,
+//				}, nil), nil
+//			}).(polardb.GetAccountsResultOutput)
+//			ctx.Export("account", defaultAccounts.ApplyT(func(defaultAccounts polardb.GetAccountsResult) (*string, error) {
+//				return &defaultAccounts.Accounts[0].AccountName, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetAccounts(ctx *pulumi.Context, args *GetAccountsArgs, opts ...pulumi.InvokeOption) (*GetAccountsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountsResult

@@ -17,6 +17,46 @@ import (
 // > **NOTE:** Available in v1.189.0+.
 //
 // > **NOTE:** Only users who have the required permissions can use the IP address pool feature of Elastic IP Address (EIP). To apply for the required permissions, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := vpc.GetPublicIpAddressPoolCidrBlocks(ctx, &vpc.GetPublicIpAddressPoolCidrBlocksArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//				PublicIpAddressPoolId: "example_value",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcPublicIpAddressPoolCidrBlockId1", ids.Blocks[0].Id)
+//			cidrBlock, err := vpc.GetPublicIpAddressPoolCidrBlocks(ctx, &vpc.GetPublicIpAddressPoolCidrBlocksArgs{
+//				PublicIpAddressPoolId: "example_value",
+//				CidrBlock:             pulumi.StringRef("example_value"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcPublicIpAddressPoolCidrBlockId2", cidrBlock.Blocks[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetPublicIpAddressPoolCidrBlocks(ctx *pulumi.Context, args *GetPublicIpAddressPoolCidrBlocksArgs, opts ...pulumi.InvokeOption) (*GetPublicIpAddressPoolCidrBlocksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPublicIpAddressPoolCidrBlocksResult

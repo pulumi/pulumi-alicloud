@@ -357,6 +357,32 @@ class ServiceSubscription(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.188.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_service_topic = alicloud.message.ServiceTopic("defaultServiceTopic",
+            topic_name=name,
+            max_message_size=12357,
+            logging_enabled=True)
+        default_service_subscription = alicloud.message.ServiceSubscription("defaultServiceSubscription",
+            topic_name=default_service_topic.topic_name,
+            subscription_name=name,
+            endpoint="http://example.com",
+            push_type="http",
+            filter_tag="tf-example",
+            notify_content_format="XML",
+            notify_strategy="BACKOFF_RETRY")
+        ```
+
         ## Import
 
         Message Notification Service Subscription can be imported using the id, e.g.
@@ -390,6 +416,32 @@ class ServiceSubscription(pulumi.CustomResource):
         For information about Message Notification Service Subscription and how to use it, see [What is Subscription](https://www.alibabacloud.com/help/en/message-service/latest/subscribe-1).
 
         > **NOTE:** Available since v1.188.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_service_topic = alicloud.message.ServiceTopic("defaultServiceTopic",
+            topic_name=name,
+            max_message_size=12357,
+            logging_enabled=True)
+        default_service_subscription = alicloud.message.ServiceSubscription("defaultServiceSubscription",
+            topic_name=default_service_topic.topic_name,
+            subscription_name=name,
+            endpoint="http://example.com",
+            push_type="http",
+            filter_tag="tf-example",
+            notify_content_format="XML",
+            notify_strategy="BACKOFF_RETRY")
+        ```
 
         ## Import
 

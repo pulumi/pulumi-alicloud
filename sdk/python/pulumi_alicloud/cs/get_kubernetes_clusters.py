@@ -130,6 +130,18 @@ def get_kubernetes_clusters(enable_details: Optional[bool] = None,
 
     > **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kube_config_file_prefix`.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    k8s_clusters = alicloud.cs.get_kubernetes_clusters(kube_config_file_prefix="~/.kube/k8s",
+        name_regex="my-first-k8s",
+        output_file="my-first-k8s-json")
+    pulumi.export("output", k8s_clusters.clusters)
+    ```
+
 
     :param Sequence[str] ids: Cluster IDs to filter.
     :param str kube_config_file_prefix: The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/k8s`, then it will be named with `~/.kube/k8s-clusterID-kubeconfig`. From version 1.187.0+, kube_config will not export kube_config if this field is not set.
@@ -169,6 +181,18 @@ def get_kubernetes_clusters_output(enable_details: Optional[pulumi.Input[Optiona
     > **NOTE:** Available in v1.34.0+.
 
     > **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kube_config_file_prefix`.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    k8s_clusters = alicloud.cs.get_kubernetes_clusters(kube_config_file_prefix="~/.kube/k8s",
+        name_regex="my-first-k8s",
+        output_file="my-first-k8s-json")
+    pulumi.export("output", k8s_clusters.clusters)
+    ```
 
 
     :param Sequence[str] ids: Cluster IDs to filter.

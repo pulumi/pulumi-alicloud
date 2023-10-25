@@ -243,6 +243,36 @@ class ApiDestination(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.211.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-chengdu"
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_connection = alicloud.eventbridge.Connection("defaultConnection",
+            connection_name=name,
+            network_parameters=alicloud.eventbridge.ConnectionNetworkParametersArgs(
+                network_type="PublicNetwork",
+            ))
+        default_api_destination = alicloud.eventbridge.ApiDestination("defaultApiDestination",
+            connection_name=default_connection.connection_name,
+            api_destination_name=name,
+            description="test-api-destination-connection",
+            http_api_parameters=alicloud.eventbridge.ApiDestinationHttpApiParametersArgs(
+                endpoint="http://127.0.0.1:8001",
+                method="POST",
+            ))
+        ```
+
         ## Import
 
         Event Bridge Api Destination can be imported using the id, e.g.
@@ -270,6 +300,36 @@ class ApiDestination(pulumi.CustomResource):
         For information about Event Bridge Api Destination and how to use it, see [What is Api Destination](https://www.alibabacloud.com/help/en/eventbridge/latest/api-eventbridge-2020-04-01-createapidestination).
 
         > **NOTE:** Available since v1.211.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-chengdu"
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_connection = alicloud.eventbridge.Connection("defaultConnection",
+            connection_name=name,
+            network_parameters=alicloud.eventbridge.ConnectionNetworkParametersArgs(
+                network_type="PublicNetwork",
+            ))
+        default_api_destination = alicloud.eventbridge.ApiDestination("defaultApiDestination",
+            connection_name=default_connection.connection_name,
+            api_destination_name=name,
+            description="test-api-destination-connection",
+            http_api_parameters=alicloud.eventbridge.ApiDestinationHttpApiParametersArgs(
+                endpoint="http://127.0.0.1:8001",
+                method="POST",
+            ))
+        ```
 
         ## Import
 

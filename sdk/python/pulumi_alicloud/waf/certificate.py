@@ -298,6 +298,26 @@ class Certificate(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.135.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.waf.Certificate("default",
+            certificate="your_certificate",
+            certificate_name="your_certificate_name",
+            domain="your_domain_name",
+            instance_id="your_instance_id",
+            private_key="your_private_key")
+        default2 = alicloud.waf.Certificate("default2",
+            certificate_id="your_certificate_id",
+            domain="your_domain_name",
+            instance_id="your_instance_id")
+        ```
+
         ## Import
 
         WAF Certificate can be imported using the id, e.g.
@@ -327,6 +347,26 @@ class Certificate(pulumi.CustomResource):
         For information about WAF Certificate and how to use it, see [What is Certificate](https://www.alibabacloud.com/help/doc-detail/28517.htm).
 
         > **NOTE:** Available in v1.135.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.waf.Certificate("default",
+            certificate="your_certificate",
+            certificate_name="your_certificate_name",
+            domain="your_domain_name",
+            instance_id="your_instance_id",
+            private_key="your_private_key")
+        default2 = alicloud.waf.Certificate("default2",
+            certificate_id="your_certificate_id",
+            domain="your_domain_name",
+            instance_id="your_instance_id")
+        ```
 
         ## Import
 

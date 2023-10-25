@@ -132,6 +132,17 @@ class HpcCluster(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.116.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ecs.HpcCluster("example", description="For Terraform Test")
+        ```
+
         ## Import
 
         ECS Hpc Cluster can be imported using the id, e.g.
@@ -157,6 +168,17 @@ class HpcCluster(pulumi.CustomResource):
         For information about ECS Hpc Cluster and how to use it, see [What is Hpc Cluster](https://www.alibabacloud.com/help/en/doc-detail/109138.htm).
 
         > **NOTE:** Available in v1.116.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ecs.HpcCluster("example", description="For Terraform Test")
+        ```
 
         ## Import
 

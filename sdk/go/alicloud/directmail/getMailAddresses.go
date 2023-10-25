@@ -15,6 +15,37 @@ import (
 // This data source provides the Direct Mail Mail Addresses of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.134.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/directmail"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := directmail.GetMailAddresses(ctx, &directmail.GetMailAddressesArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("directMailMailAddressId1", ids.Addresses[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetMailAddresses(ctx *pulumi.Context, args *GetMailAddressesArgs, opts ...pulumi.InvokeOption) (*GetMailAddressesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMailAddressesResult

@@ -15,6 +15,83 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// &gt; **NOTE:** Available in 1.161.0+
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
+    ///     {
+    ///         Description = "terraform-example",
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
+    ///     {
+    ///         Project = exampleProject.Name,
+    ///         RetentionPeriod = 3650,
+    ///         ShardCount = 3,
+    ///         AutoSplit = true,
+    ///         MaxSplitShardCount = 60,
+    ///         AppendMeta = true,
+    ///     });
+    /// 
+    ///     var exampleIngestion = new AliCloud.Log.Ingestion("exampleIngestion", new()
+    ///     {
+    ///         Project = exampleProject.Name,
+    ///         Logstore = exampleStore.Name,
+    ///         IngestionName = "terraform-example",
+    ///         DisplayName = "terraform-example",
+    ///         Description = "terraform-example",
+    ///         Interval = "30m",
+    ///         RunImmediately = true,
+    ///         TimeZone = "+0800",
+    ///         Source = @"        {
+    ///           ""bucket"": ""bucket_name"",
+    ///           ""compressionCodec"": ""none"",
+    ///           ""encoding"": ""UTF-8"",
+    ///           ""endpoint"": ""oss-cn-hangzhou-internal.aliyuncs.com"",
+    ///           ""format"": {
+    ///             ""escapeChar"": ""\\"",
+    ///             ""fieldDelimiter"": "","",
+    ///             ""fieldNames"": [],
+    ///             ""firstRowAsHeader"": true,
+    ///             ""maxLines"": 1,
+    ///             ""quoteChar"": ""\"""",
+    ///             ""skipLeadingRows"": 0,
+    ///             ""timeField"": """",
+    ///             ""type"": ""DelimitedText""
+    ///           },
+    ///           ""pattern"": """",
+    ///           ""prefix"": ""test-prefix/"",
+    ///           ""restoreObjectEnabled"": false,
+    ///           ""roleARN"": ""acs:ram::1049446484210612:role/aliyunlogimportossrole"",
+    ///           ""type"": ""AliyunOSS""
+    ///         }
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Log ingestion can be imported using the id or name, e.g.

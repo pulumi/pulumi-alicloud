@@ -15,6 +15,38 @@ import (
 // This data source provides the Ros Stacks of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.106.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ros"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := ros.GetStacks(ctx, &ros.GetStacksArgs{
+//				Ids: []string{
+//					"example_value",
+//				},
+//				NameRegex: pulumi.StringRef("the_resource_name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstRosStackId", example.Stacks[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetStacks(ctx *pulumi.Context, args *GetStacksArgs, opts ...pulumi.InvokeOption) (*GetStacksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetStacksResult

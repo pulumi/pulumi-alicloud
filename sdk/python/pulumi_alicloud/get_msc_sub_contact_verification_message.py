@@ -80,6 +80,23 @@ def get_msc_sub_contact_verification_message(contact_id: Optional[str] = None,
     """
     > **NOTE:** Available in v1.156.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default_msc_sub_contract = alicloud.MscSubContract("defaultMscSubContract",
+        contact_name="example_value",
+        position="CEO",
+        email="123@163.com",
+        mobile="153xxxxx906")
+    default_msc_sub_contact_verification_message = default_msc_sub_contract.id.apply(lambda id: alicloud.get_msc_sub_contact_verification_message_output(contact_id=id,
+        type=1))
+    ```
+
 
     :param str contact_id: The ID of the Contact.
     :param int type: How a user receives verification messages. Valid values : `1`, `2`.
@@ -103,6 +120,23 @@ def get_msc_sub_contact_verification_message_output(contact_id: Optional[pulumi.
                                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMscSubContactVerificationMessageResult]:
     """
     > **NOTE:** Available in v1.156.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default_msc_sub_contract = alicloud.MscSubContract("defaultMscSubContract",
+        contact_name="example_value",
+        position="CEO",
+        email="123@163.com",
+        mobile="153xxxxx906")
+    default_msc_sub_contact_verification_message = default_msc_sub_contract.id.apply(lambda id: alicloud.get_msc_sub_contact_verification_message_output(contact_id=id,
+        type=1))
+    ```
 
 
     :param str contact_id: The ID of the Contact.

@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * This data source provides the Ecd Ad Connector Directories of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.174.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.eds.getAdConnectorDirectories({
+ *     ids: ["example_id"],
+ * });
+ * export const ecdAdConnectorDirectoryId1 = ids.then(ids => ids.directories?.[0]?.id);
+ * ```
  */
 export function getAdConnectorDirectories(args?: GetAdConnectorDirectoriesArgs, opts?: pulumi.InvokeOptions): Promise<GetAdConnectorDirectoriesResult> {
     args = args || {};
@@ -64,6 +78,20 @@ export interface GetAdConnectorDirectoriesResult {
  * This data source provides the Ecd Ad Connector Directories of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.174.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.eds.getAdConnectorDirectories({
+ *     ids: ["example_id"],
+ * });
+ * export const ecdAdConnectorDirectoryId1 = ids.then(ids => ids.directories?.[0]?.id);
+ * ```
  */
 export function getAdConnectorDirectoriesOutput(args?: GetAdConnectorDirectoriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAdConnectorDirectoriesResult> {
     return pulumi.output(args).apply((a: any) => getAdConnectorDirectories(a, opts))

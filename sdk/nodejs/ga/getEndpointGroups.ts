@@ -10,6 +10,22 @@ import * as utilities from "../utilities";
  * This data source provides the Global Accelerator (GA) Endpoint Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.113.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.ga.getEndpointGroups({
+ *     acceleratorId: "example_value",
+ *     ids: ["example_value"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstGaEndpointGroupId = example.then(example => example.groups?.[0]?.id);
+ * ```
  */
 export function getEndpointGroups(args: GetEndpointGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointGroupsResult> {
 
@@ -81,6 +97,22 @@ export interface GetEndpointGroupsResult {
  * This data source provides the Global Accelerator (GA) Endpoint Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.113.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.ga.getEndpointGroups({
+ *     acceleratorId: "example_value",
+ *     ids: ["example_value"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstGaEndpointGroupId = example.then(example => example.groups?.[0]?.id);
+ * ```
  */
 export function getEndpointGroupsOutput(args: GetEndpointGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointGroupsResult> {
     return pulumi.output(args).apply((a: any) => getEndpointGroups(a, opts))

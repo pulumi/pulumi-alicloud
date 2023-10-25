@@ -19,6 +19,50 @@ import (
 //
 // > **NOTE:** Available since v1.210.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudmonitor"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			source, err := cms.NewNamespace(ctx, "source", &cms.NamespaceArgs{
+//				Namespace: pulumi.String("your_source_namespace"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultNamespace, err := cms.NewNamespace(ctx, "defaultNamespace", &cms.NamespaceArgs{
+//				Namespace: pulumi.String("your_namespace"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudmonitor.NewServiceHybridDoubleWrite(ctx, "defaultServiceHybridDoubleWrite", &cloudmonitor.ServiceHybridDoubleWriteArgs{
+//				SourceNamespace: source.ID(),
+//				SourceUserId:    pulumi.String("your_source_account"),
+//				Namespace:       defaultNamespace.ID(),
+//				UserId:          pulumi.String("your_account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Cloud Monitor Service Hybrid Double Write can be imported using the id, e.g.

@@ -11,6 +11,33 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.110.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tfexampleuser";
+ * const exampleVpcEndpointService = new alicloud.privatelink.VpcEndpointService("exampleVpcEndpointService", {
+ *     serviceDescription: name,
+ *     connectBandwidth: 103,
+ *     autoAcceptConnection: false,
+ * });
+ * const exampleUser = new alicloud.ram.User("exampleUser", {
+ *     displayName: "user_display_name",
+ *     mobile: "86-18688888888",
+ *     email: "hello.uuu@aaa.com",
+ *     comments: "yoyoyo",
+ * });
+ * const exampleVpcEndpointServiceUser = new alicloud.privatelink.VpcEndpointServiceUser("exampleVpcEndpointServiceUser", {
+ *     serviceId: exampleVpcEndpointService.id,
+ *     userId: exampleUser.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Private Link Vpc Endpoint Service User can be imported using the id, e.g.

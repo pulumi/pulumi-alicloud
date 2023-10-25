@@ -15,6 +15,34 @@ namespace Pulumi.AliCloud.Tag
         /// This data source provides the Tag Meta Tags of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.169.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Tag.GetMetaTags.Invoke(new()
+        ///     {
+        ///         KeyName = "example_value",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["tagMetaTagDefault1"] = @default.Apply(@default =&gt; @default.Apply(getMetaTagsResult =&gt; getMetaTagsResult.Tags?.ValueName)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetMetaTagsResult> InvokeAsync(GetMetaTagsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMetaTagsResult>("alicloud:tag/getMetaTags:getMetaTags", args ?? new GetMetaTagsArgs(), options.WithDefaults());
@@ -23,6 +51,34 @@ namespace Pulumi.AliCloud.Tag
         /// This data source provides the Tag Meta Tags of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.169.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Tag.GetMetaTags.Invoke(new()
+        ///     {
+        ///         KeyName = "example_value",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["tagMetaTagDefault1"] = @default.Apply(@default =&gt; @default.Apply(getMetaTagsResult =&gt; getMetaTagsResult.Tags?.ValueName)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetMetaTagsResult> Invoke(GetMetaTagsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMetaTagsResult>("alicloud:tag/getMetaTags:getMetaTags", args ?? new GetMetaTagsInvokeArgs(), options.WithDefaults());

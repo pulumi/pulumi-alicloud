@@ -15,6 +15,42 @@ import (
 // This data source provides the Message Notification Service Topics of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.188.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/message"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := message.GetServiceTopics(ctx, &message.GetServiceTopicsArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("topicId1", ids.Topics[0].Id)
+//			name, err := message.GetServiceTopics(ctx, &message.GetServiceTopicsArgs{
+//				TopicName: pulumi.StringRef("tf-example"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("topicId2", name.Topics[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetServiceTopics(ctx *pulumi.Context, args *GetServiceTopicsArgs, opts ...pulumi.InvokeOption) (*GetServiceTopicsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServiceTopicsResult

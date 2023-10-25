@@ -220,7 +220,58 @@ class AppAttachment(pulumi.CustomResource):
                  stage_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a AppAttachment resource with the given unique name, props, and options.
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform_example"
+        example_group = alicloud.apigateway.Group("exampleGroup", description=name)
+        example_api = alicloud.apigateway.Api("exampleApi",
+            group_id=example_group.id,
+            description=name,
+            auth_type="APP",
+            force_nonce_check=False,
+            request_config=alicloud.apigateway.ApiRequestConfigArgs(
+                protocol="HTTP",
+                method="GET",
+                path="/example/path",
+                mode="MAPPING",
+            ),
+            service_type="HTTP",
+            http_service_config=alicloud.apigateway.ApiHttpServiceConfigArgs(
+                address="http://apigateway-backend.alicloudapi.com:8080",
+                method="GET",
+                path="/web/cloudapi",
+                timeout=12,
+                aone_name="cloudapi-openapi",
+            ),
+            request_parameters=[alicloud.apigateway.ApiRequestParameterArgs(
+                name="example",
+                type="STRING",
+                required="OPTIONAL",
+                in_="QUERY",
+                in_service="QUERY",
+                name_service="exampleservice",
+            )],
+            stage_names=[
+                "RELEASE",
+                "TEST",
+            ])
+        example_app = alicloud.apigateway.App("exampleApp", description=name)
+        example_app_attachment = alicloud.apigateway.AppAttachment("exampleAppAttachment",
+            api_id=example_api.api_id,
+            group_id=example_group.id,
+            app_id=example_app.id,
+            stage_name="PRE")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_id: The api_id that app apply to access.
@@ -235,7 +286,58 @@ class AppAttachment(pulumi.CustomResource):
                  args: AppAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a AppAttachment resource with the given unique name, props, and options.
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform_example"
+        example_group = alicloud.apigateway.Group("exampleGroup", description=name)
+        example_api = alicloud.apigateway.Api("exampleApi",
+            group_id=example_group.id,
+            description=name,
+            auth_type="APP",
+            force_nonce_check=False,
+            request_config=alicloud.apigateway.ApiRequestConfigArgs(
+                protocol="HTTP",
+                method="GET",
+                path="/example/path",
+                mode="MAPPING",
+            ),
+            service_type="HTTP",
+            http_service_config=alicloud.apigateway.ApiHttpServiceConfigArgs(
+                address="http://apigateway-backend.alicloudapi.com:8080",
+                method="GET",
+                path="/web/cloudapi",
+                timeout=12,
+                aone_name="cloudapi-openapi",
+            ),
+            request_parameters=[alicloud.apigateway.ApiRequestParameterArgs(
+                name="example",
+                type="STRING",
+                required="OPTIONAL",
+                in_="QUERY",
+                in_service="QUERY",
+                name_service="exampleservice",
+            )],
+            stage_names=[
+                "RELEASE",
+                "TEST",
+            ])
+        example_app = alicloud.apigateway.App("exampleApp", description=name)
+        example_app_attachment = alicloud.apigateway.AppAttachment("exampleAppAttachment",
+            api_id=example_api.api_id,
+            group_id=example_group.id,
+            app_id=example_app.id,
+            stage_name="PRE")
+        ```
+
         :param str resource_name: The name of the resource.
         :param AppAttachmentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

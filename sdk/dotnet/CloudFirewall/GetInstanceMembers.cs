@@ -15,6 +15,35 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)
         /// 
         /// &gt; **NOTE:** Available in 1.194.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.CloudFirewall.GetInstanceMembers.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             alicloud_cloud_firewall_instance_member.Default.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudCloudFirewallInstanceMemberExampleId"] = @default.Apply(@default =&gt; @default.Apply(getInstanceMembersResult =&gt; getInstanceMembersResult.Members[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceMembersResult> InvokeAsync(GetInstanceMembersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceMembersResult>("alicloud:cloudfirewall/getInstanceMembers:getInstanceMembers", args ?? new GetInstanceMembersArgs(), options.WithDefaults());
@@ -23,6 +52,35 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)
         /// 
         /// &gt; **NOTE:** Available in 1.194.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.CloudFirewall.GetInstanceMembers.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             alicloud_cloud_firewall_instance_member.Default.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudCloudFirewallInstanceMemberExampleId"] = @default.Apply(@default =&gt; @default.Apply(getInstanceMembersResult =&gt; getInstanceMembersResult.Members[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstanceMembersResult> Invoke(GetInstanceMembersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceMembersResult>("alicloud:cloudfirewall/getInstanceMembers:getInstanceMembers", args ?? new GetInstanceMembersInvokeArgs(), options.WithDefaults());

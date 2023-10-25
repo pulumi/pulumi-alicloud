@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * This data source provides a list Container Registry Enterprise Edition repositories on Alibaba Cloud.
  *
  * > **NOTE:** Available in v1.87.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const myRepos = alicloud.cs.getRegistryEnterpriseRepos({
+ *     instanceId: "cri-xx",
+ *     nameRegex: "my-repos",
+ *     outputFile: "my-repo-json",
+ * });
+ * export const output = myRepos.then(myRepos => myRepos.repos);
+ * ```
  */
 export function getRegistryEnterpriseRepos(args: GetRegistryEnterpriseReposArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryEnterpriseReposResult> {
 
@@ -90,6 +104,20 @@ export interface GetRegistryEnterpriseReposResult {
  * This data source provides a list Container Registry Enterprise Edition repositories on Alibaba Cloud.
  *
  * > **NOTE:** Available in v1.87.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const myRepos = alicloud.cs.getRegistryEnterpriseRepos({
+ *     instanceId: "cri-xx",
+ *     nameRegex: "my-repos",
+ *     outputFile: "my-repo-json",
+ * });
+ * export const output = myRepos.then(myRepos => myRepos.repos);
+ * ```
  */
 export function getRegistryEnterpriseReposOutput(args: GetRegistryEnterpriseReposOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryEnterpriseReposResult> {
     return pulumi.output(args).apply((a: any) => getRegistryEnterpriseRepos(a, opts))

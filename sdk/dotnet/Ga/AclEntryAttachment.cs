@@ -16,6 +16,34 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// &gt; **NOTE:** Available since v1.190.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultAcl = new AliCloud.Ga.Acl("defaultAcl", new()
+    ///     {
+    ///         AclName = "tf-example-value",
+    ///         AddressIpVersion = "IPv4",
+    ///     });
+    /// 
+    ///     var defaultAclEntryAttachment = new AliCloud.Ga.AclEntryAttachment("defaultAclEntryAttachment", new()
+    ///     {
+    ///         AclId = defaultAcl.Id,
+    ///         Entry = "192.168.1.1/32",
+    ///         EntryDescription = "tf-example-value",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Global Accelerator (GA) Acl entry attachment can be imported using the id.Format to `&lt;acl_id&gt;:&lt;entry&gt;`, e.g.

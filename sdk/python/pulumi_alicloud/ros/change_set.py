@@ -809,6 +809,22 @@ class ChangeSet(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.105.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ros.ChangeSet("example",
+            change_set_name="example_value",
+            change_set_type="CREATE",
+            description="Test From Terraform",
+            stack_name="tf-testacc",
+            template_body="{\\"ROSTemplateFormatVersion\\":\\"2015-09-01\\"}")
+        ```
+
         ## Import
 
         ROS Change Set can be imported using the id, e.g.
@@ -850,6 +866,22 @@ class ChangeSet(pulumi.CustomResource):
         For information about ROS Change Set and how to use it, see [What is Change Set](https://www.alibabacloud.com/help/doc-detail/131051.htm).
 
         > **NOTE:** Available in v1.105.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ros.ChangeSet("example",
+            change_set_name="example_value",
+            change_set_type="CREATE",
+            description="Test From Terraform",
+            stack_name="tf-testacc",
+            template_body="{\\"ROSTemplateFormatVersion\\":\\"2015-09-01\\"}")
+        ```
 
         ## Import
 

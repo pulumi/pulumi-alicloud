@@ -149,6 +149,53 @@ def get_desktops(desktop_name: Optional[str] = None,
 
     > **NOTE:** Available in v1.144.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
+        cidr_block="172.16.0.0/12",
+        desktop_access_type="Internet",
+        office_site_name="your_office_site_name")
+    default_bundles = alicloud.eds.get_bundles(bundle_type="SYSTEM")
+    default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup",
+        policy_group_name="your_policy_group_name",
+        clipboard="readwrite",
+        local_drive="read",
+        authorize_access_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs(
+            description="example_value",
+            cidr_ip="1.2.3.4/24",
+        )],
+        authorize_security_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs(
+            type="inflow",
+            policy="accept",
+            description="example_value",
+            port_range="80/80",
+            ip_protocol="TCP",
+            priority="1",
+            cidr_ip="0.0.0.0/0",
+        )])
+    default_user = alicloud.eds.User("defaultUser",
+        end_user_id="your_end_user_id",
+        email="your_email",
+        phone="your_phone",
+        password="your_password")
+    default_desktop = alicloud.eds.Desktop("defaultDesktop",
+        office_site_id=default_simple_office_site.id,
+        policy_group_id=default_ecd_policy_group.id,
+        bundle_id=default_bundles.bundles[0].id,
+        desktop_name="your_desktop_name",
+        end_user_ids=[default_user.id])
+    ids = alicloud.eds.get_desktops_output(ids=[default_desktop.id])
+    pulumi.export("ecdDesktopId1", ids.desktops[0].id)
+    name_regex = default_desktop.desktop_name.apply(lambda desktop_name: alicloud.eds.get_desktops_output(name_regex=desktop_name))
+    pulumi.export("ecdDesktopId2", name_regex.desktops[0].id)
+    ```
+
 
     :param str desktop_name: The desktop name of the Desktop.
     :param Sequence[str] end_user_ids: The desktop end user id of the Desktop.
@@ -199,6 +246,53 @@ def get_desktops_output(desktop_name: Optional[pulumi.Input[Optional[str]]] = No
     This data source provides the Ecd Desktops of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.144.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
+        cidr_block="172.16.0.0/12",
+        desktop_access_type="Internet",
+        office_site_name="your_office_site_name")
+    default_bundles = alicloud.eds.get_bundles(bundle_type="SYSTEM")
+    default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup",
+        policy_group_name="your_policy_group_name",
+        clipboard="readwrite",
+        local_drive="read",
+        authorize_access_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs(
+            description="example_value",
+            cidr_ip="1.2.3.4/24",
+        )],
+        authorize_security_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs(
+            type="inflow",
+            policy="accept",
+            description="example_value",
+            port_range="80/80",
+            ip_protocol="TCP",
+            priority="1",
+            cidr_ip="0.0.0.0/0",
+        )])
+    default_user = alicloud.eds.User("defaultUser",
+        end_user_id="your_end_user_id",
+        email="your_email",
+        phone="your_phone",
+        password="your_password")
+    default_desktop = alicloud.eds.Desktop("defaultDesktop",
+        office_site_id=default_simple_office_site.id,
+        policy_group_id=default_ecd_policy_group.id,
+        bundle_id=default_bundles.bundles[0].id,
+        desktop_name="your_desktop_name",
+        end_user_ids=[default_user.id])
+    ids = alicloud.eds.get_desktops_output(ids=[default_desktop.id])
+    pulumi.export("ecdDesktopId1", ids.desktops[0].id)
+    name_regex = default_desktop.desktop_name.apply(lambda desktop_name: alicloud.eds.get_desktops_output(name_regex=desktop_name))
+    pulumi.export("ecdDesktopId2", name_regex.desktops[0].id)
+    ```
 
 
     :param str desktop_name: The desktop name of the Desktop.

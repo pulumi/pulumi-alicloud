@@ -79,6 +79,18 @@ def get_zones(output_file: Optional[str] = None,
 
     > **NOTE:** Available in v1.132.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.alb.get_zones()
+    pulumi.export("firstAlbZonesId", example.zones[0].zone_id)
+    ```
+
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
@@ -101,6 +113,18 @@ def get_zones_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
     This data source provides the available zones with the Application Load Balancer (ALB) Instance of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.132.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.alb.get_zones()
+    pulumi.export("firstAlbZonesId", example.zones[0].zone_id)
+    ```
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

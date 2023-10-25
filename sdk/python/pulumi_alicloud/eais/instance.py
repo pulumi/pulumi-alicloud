@@ -280,6 +280,36 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.137.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        zone_id = "cn-hangzhou-h"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.0.0.0/8")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.1.0.0/16",
+            vpc_id=default_network.id,
+            zone_id=zone_id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.eais.Instance("defaultInstance",
+            instance_type="eais.ei-a6.2xlarge",
+            instance_name=name,
+            security_group_id=default_security_group.id,
+            vswitch_id=default_switch.id)
+        ```
+
         ## Import
 
         EAIS Instance can be imported using the id, e.g.
@@ -308,6 +338,36 @@ class Instance(pulumi.CustomResource):
         For information about EAIS Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-instance).
 
         > **NOTE:** Available since v1.137.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        zone_id = "cn-hangzhou-h"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.0.0.0/8")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.1.0.0/16",
+            vpc_id=default_network.id,
+            zone_id=zone_id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.eais.Instance("defaultInstance",
+            instance_type="eais.ei-a6.2xlarge",
+            instance_name=name,
+            security_group_id=default_security_group.id,
+            vswitch_id=default_switch.id)
+        ```
 
         ## Import
 

@@ -18,6 +18,67 @@ import (
 //
 // > **NOTE:** Available in v1.182.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-testacc-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultRg, err := resourcemanager.NewResourceGroup(ctx, "defaultRg", &resourcemanager.ResourceGroupArgs{
+//				DisplayName:       pulumi.String("tf-testacc-chenyi"),
+//				ResourceGroupName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = resourcemanager.NewResourceGroup(ctx, "changeRg", &resourcemanager.ResourceGroupArgs{
+//				DisplayName:       pulumi.String("tf-testacc-chenyi-change"),
+//				ResourceGroupName: pulumi.String(fmt.Sprintf("%v1", name)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewPrefixList(ctx, "default", &vpc.PrefixListArgs{
+//				MaxEntries:            pulumi.Int(50),
+//				ResourceGroupId:       defaultRg.ID(),
+//				PrefixListDescription: pulumi.String("test"),
+//				IpVersion:             pulumi.String("IPV4"),
+//				PrefixListName:        pulumi.String(name),
+//				Entrys: vpc.PrefixListEntryArray{
+//					&vpc.PrefixListEntryArgs{
+//						Cidr:        pulumi.String("192.168.0.0/16"),
+//						Description: pulumi.String("test"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Vpc Prefix List can be imported using the id, e.g.

@@ -19,6 +19,54 @@ import (
 //
 // > **NOTE:** Available since v1.210.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			aAP0, err := kms.NewApplicationAccessPoint(ctx, "aAP0", &kms.ApplicationAccessPointArgs{
+//				Policies: pulumi.StringArray{
+//					pulumi.String("aa"),
+//				},
+//				Description:                pulumi.String("aa"),
+//				ApplicationAccessPointName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kms.NewClientKey(ctx, "default", &kms.ClientKeyArgs{
+//				AapName:            aAP0.ApplicationAccessPointName,
+//				Password:           pulumi.String("YouPassword123!"),
+//				NotBefore:          pulumi.String("2023-09-01T14:11:22Z"),
+//				NotAfter:           pulumi.String("2028-09-01T14:11:22Z"),
+//				PrivateKeyDataFile: pulumi.String("./private_key_data_file.txt"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // KMS Client Key can be imported using the id, e.g.

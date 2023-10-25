@@ -130,6 +130,35 @@ def get_stack_instances(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.145.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.ros.get_stack_instances(stack_group_name="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ],
+        enable_details=True)
+    pulumi.export("rosStackInstanceId1", ids.instances[0].id)
+    status = alicloud.ros.get_stack_instances(stack_group_name="example_value",
+        status="CURRENT",
+        enable_details=True)
+    pulumi.export("rosStackInstanceId2", status.instances[0].id)
+    region_id = alicloud.ros.get_stack_instances(stack_group_name="example_value",
+        stack_instance_region_id="example_value",
+        enable_details=True)
+    pulumi.export("rosStackInstanceId3", region_id.instances[0].id)
+    account_id = alicloud.ros.get_stack_instances(stack_group_name="example_value",
+        stack_instance_account_id="example_value",
+        enable_details=True)
+    pulumi.export("rosStackInstanceId4", account_id.instances[0].id)
+    ```
+
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Stack Instance IDs.
@@ -175,6 +204,35 @@ def get_stack_instances_output(enable_details: Optional[pulumi.Input[Optional[bo
     This data source provides the Ros Stack Instances of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.145.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.ros.get_stack_instances(stack_group_name="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ],
+        enable_details=True)
+    pulumi.export("rosStackInstanceId1", ids.instances[0].id)
+    status = alicloud.ros.get_stack_instances(stack_group_name="example_value",
+        status="CURRENT",
+        enable_details=True)
+    pulumi.export("rosStackInstanceId2", status.instances[0].id)
+    region_id = alicloud.ros.get_stack_instances(stack_group_name="example_value",
+        stack_instance_region_id="example_value",
+        enable_details=True)
+    pulumi.export("rosStackInstanceId3", region_id.instances[0].id)
+    account_id = alicloud.ros.get_stack_instances(stack_group_name="example_value",
+        stack_instance_account_id="example_value",
+        enable_details=True)
+    pulumi.export("rosStackInstanceId4", account_id.instances[0].id)
+    ```
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

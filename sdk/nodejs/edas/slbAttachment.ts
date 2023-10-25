@@ -8,6 +8,84 @@ import * as utilities from "../utilities";
  * Binds SLB to an EDAS application.
  *
  * > **NOTE:** Available since v1.82.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultRegions = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
+ *     owners: "system",
+ * });
+ * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultZones.zones?.[0]?.id,
+ *     cpuCoreCount: 1,
+ *     memorySize: 2,
+ * }));
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
+ * const defaultInstance = new alicloud.ecs.Instance("defaultInstance", {
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     instanceName: name,
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ *     securityGroups: [defaultSecurityGroup.id],
+ *     vswitchId: defaultSwitch.id,
+ *     internetMaxBandwidthOut: 10,
+ *     internetChargeType: "PayByTraffic",
+ *     instanceChargeType: "PostPaid",
+ *     systemDiskCategory: "cloud_efficiency",
+ * });
+ * const defaultCluster = new alicloud.edas.Cluster("defaultCluster", {
+ *     clusterName: name,
+ *     clusterType: 2,
+ *     networkMode: 2,
+ *     logicalRegionId: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultInstanceClusterAttachment = new alicloud.edas.InstanceClusterAttachment("defaultInstanceClusterAttachment", {
+ *     clusterId: defaultCluster.id,
+ *     instanceIds: [defaultInstance.id],
+ * });
+ * const defaultApplication = new alicloud.edas.Application("defaultApplication", {
+ *     applicationName: name,
+ *     clusterId: defaultCluster.id,
+ *     packageType: "JAR",
+ * });
+ * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", {
+ *     loadBalancerName: name,
+ *     vswitchId: defaultSwitch.id,
+ *     loadBalancerSpec: "slb.s2.small",
+ *     addressType: "intranet",
+ * });
+ * const defaultSlbAttachment = new alicloud.edas.SlbAttachment("defaultSlbAttachment", {
+ *     appId: defaultApplication.id,
+ *     slbId: defaultApplicationLoadBalancer.id,
+ *     slbIp: defaultApplicationLoadBalancer.address,
+ *     type: defaultApplicationLoadBalancer.addressType,
+ * });
+ * ```
  */
 export class SlbAttachment extends pulumi.CustomResource {
     /**

@@ -697,6 +697,55 @@ class WafRule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.201.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        example_waf_policy = alicloud.dcdn.WafPolicy("exampleWafPolicy",
+            defense_scene="waf_group",
+            policy_name=name,
+            policy_type="custom",
+            status="on")
+        example_waf_rule = alicloud.dcdn.WafRule("exampleWafRule",
+            policy_id=example_waf_policy.id,
+            rule_name=name,
+            conditions=[
+                alicloud.dcdn.WafRuleConditionArgs(
+                    key="URI",
+                    op_value="ne",
+                    values="/login.php",
+                ),
+                alicloud.dcdn.WafRuleConditionArgs(
+                    key="Header",
+                    sub_key="a",
+                    op_value="eq",
+                    values="b",
+                ),
+            ],
+            status="on",
+            cc_status="on",
+            action="monitor",
+            effect="rule",
+            rate_limit=alicloud.dcdn.WafRuleRateLimitArgs(
+                target="IP",
+                interval=5,
+                threshold=5,
+                ttl=1800,
+                status=alicloud.dcdn.WafRuleRateLimitStatusArgs(
+                    code="200",
+                    ratio=60,
+                ),
+            ))
+        ```
+
         ## Import
 
         Dcdn Waf Rule can be imported using the id, e.g.
@@ -735,6 +784,55 @@ class WafRule(pulumi.CustomResource):
         For information about Dcdn Waf Rule and how to use it, see [What is Waf Rule](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchcreatedcdnwafrules).
 
         > **NOTE:** Available since v1.201.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        example_waf_policy = alicloud.dcdn.WafPolicy("exampleWafPolicy",
+            defense_scene="waf_group",
+            policy_name=name,
+            policy_type="custom",
+            status="on")
+        example_waf_rule = alicloud.dcdn.WafRule("exampleWafRule",
+            policy_id=example_waf_policy.id,
+            rule_name=name,
+            conditions=[
+                alicloud.dcdn.WafRuleConditionArgs(
+                    key="URI",
+                    op_value="ne",
+                    values="/login.php",
+                ),
+                alicloud.dcdn.WafRuleConditionArgs(
+                    key="Header",
+                    sub_key="a",
+                    op_value="eq",
+                    values="b",
+                ),
+            ],
+            status="on",
+            cc_status="on",
+            action="monitor",
+            effect="rule",
+            rate_limit=alicloud.dcdn.WafRuleRateLimitArgs(
+                target="IP",
+                interval=5,
+                threshold=5,
+                ttl=1800,
+                status=alicloud.dcdn.WafRuleRateLimitStatusArgs(
+                    code="200",
+                    ratio=60,
+                ),
+            ))
+        ```
 
         ## Import
 

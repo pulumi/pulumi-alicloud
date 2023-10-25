@@ -10,6 +10,22 @@ import * as utilities from "../utilities";
  * For information about SLS Alert and how to use it, see [SLS Alert Overview](https://www.alibabacloud.com/help/en/doc-detail/209202.html)
  *
  * > **NOTE:** Available in v1.161.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const exampleUser = alicloud.log.getAlertResource({
+ *     lang: "cn",
+ *     type: "user",
+ * });
+ * const exampleProject = alicloud.log.getAlertResource({
+ *     project: "test-alert-tf",
+ *     type: "project",
+ * });
+ * ```
  */
 export function getAlertResource(args: GetAlertResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetAlertResourceResult> {
 
@@ -57,6 +73,22 @@ export interface GetAlertResourceResult {
  * For information about SLS Alert and how to use it, see [SLS Alert Overview](https://www.alibabacloud.com/help/en/doc-detail/209202.html)
  *
  * > **NOTE:** Available in v1.161.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const exampleUser = alicloud.log.getAlertResource({
+ *     lang: "cn",
+ *     type: "user",
+ * });
+ * const exampleProject = alicloud.log.getAlertResource({
+ *     project: "test-alert-tf",
+ *     type: "project",
+ * });
+ * ```
  */
 export function getAlertResourceOutput(args: GetAlertResourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlertResourceResult> {
     return pulumi.output(args).apply((a: any) => getAlertResource(a, opts))

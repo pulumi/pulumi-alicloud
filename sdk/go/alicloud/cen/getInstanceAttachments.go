@@ -15,6 +15,33 @@ import (
 // This data source provides Cen Instance Attachments of the current Alibaba Cloud User.
 //
 // > **NOTE:** Available in v1.97.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := cen.GetInstanceAttachments(ctx, &cen.GetInstanceAttachmentsArgs{
+//				InstanceId: "cen-o40h17ll9w********",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("theFirstAttachmentedInstanceId", example.Attachments[0].ChildInstanceId)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetInstanceAttachments(ctx *pulumi.Context, args *GetInstanceAttachmentsArgs, opts ...pulumi.InvokeOption) (*GetInstanceAttachmentsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstanceAttachmentsResult

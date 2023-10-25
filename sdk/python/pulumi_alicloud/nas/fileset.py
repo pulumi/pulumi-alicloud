@@ -258,6 +258,38 @@ class Fileset(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.153.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_zones = alicloud.nas.get_zones(file_system_type="cpfs")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=example_network.id,
+            zone_id=example_zones.zones[1].zone_id)
+        example_file_system = alicloud.nas.FileSystem("exampleFileSystem",
+            protocol_type="cpfs",
+            storage_type="advance_200",
+            file_system_type="cpfs",
+            capacity=3600,
+            description="terraform-example",
+            zone_id=example_zones.zones[1].zone_id,
+            vpc_id=example_network.id,
+            vswitch_id=example_switch.id)
+        example_fileset = alicloud.nas.Fileset("exampleFileset",
+            file_system_id=example_file_system.id,
+            description="terraform-example",
+            file_system_path="/example_path/")
+        ```
+
         ## Import
 
         Network Attached Storage (NAS) Fileset can be imported using the id, e.g.
@@ -285,6 +317,38 @@ class Fileset(pulumi.CustomResource):
         For information about Network Attached Storage (NAS) Fileset and how to use it, see [What is Fileset](https://www.alibabacloud.com/help/en/doc-detail/27530.html).
 
         > **NOTE:** Available in v1.153.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_zones = alicloud.nas.get_zones(file_system_type="cpfs")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=example_network.id,
+            zone_id=example_zones.zones[1].zone_id)
+        example_file_system = alicloud.nas.FileSystem("exampleFileSystem",
+            protocol_type="cpfs",
+            storage_type="advance_200",
+            file_system_type="cpfs",
+            capacity=3600,
+            description="terraform-example",
+            zone_id=example_zones.zones[1].zone_id,
+            vpc_id=example_network.id,
+            vswitch_id=example_switch.id)
+        example_fileset = alicloud.nas.Fileset("exampleFileset",
+            file_system_id=example_file_system.id,
+            description="terraform-example",
+            file_system_path="/example_path/")
+        ```
 
         ## Import
 

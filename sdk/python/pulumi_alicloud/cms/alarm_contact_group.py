@@ -215,6 +215,17 @@ class AlarmContactGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.101.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.cms.AlarmContactGroup("example", alarm_contact_group_name="tf-example")
+        ```
+
         ## Import
 
         CMS Alarm Contact Group can be imported using the id, e.g.
@@ -242,6 +253,17 @@ class AlarmContactGroup(pulumi.CustomResource):
         For information about CMS Alarm Contact Group and how to use it, see [What is Alarm Contact Group](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putcontactgroup).
 
         > **NOTE:** Available since v1.101.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.cms.AlarmContactGroup("example", alarm_contact_group_name="tf-example")
+        ```
 
         ## Import
 

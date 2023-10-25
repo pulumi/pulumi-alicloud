@@ -150,6 +150,19 @@ def get_quota_alarms(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.116.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.quotas.get_quota_alarms(ids=["5VR90-421F886-81E9-xxx"],
+        name_regex="tf-testAcc")
+    pulumi.export("firstQuotasQuotaAlarmId", example.alarms[0].id)
+    ```
+
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Quota Alarm IDs.
@@ -200,6 +213,19 @@ def get_quota_alarms_output(enable_details: Optional[pulumi.Input[Optional[bool]
     This data source provides the Quotas Quota Alarms of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.116.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.quotas.get_quota_alarms(ids=["5VR90-421F886-81E9-xxx"],
+        name_regex="tf-testAcc")
+    pulumi.export("firstQuotasQuotaAlarmId", example.alarms[0].id)
+    ```
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

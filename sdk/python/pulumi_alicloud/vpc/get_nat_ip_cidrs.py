@@ -139,6 +139,35 @@ def get_nat_ip_cidrs(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.136.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.vpc.get_nat_ip_cidrs(nat_gateway_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("vpcNatIpCidrId1", ids.cidrs[0].id)
+    name_regex = alicloud.vpc.get_nat_ip_cidrs(nat_gateway_id="example_value",
+        name_regex="^my-NatIpCidr")
+    pulumi.export("vpcNatIpCidrId2", name_regex.cidrs[0].id)
+    status = alicloud.vpc.get_nat_ip_cidrs(nat_gateway_id="example_value",
+        ids=["example_value-1"],
+        status="Available")
+    pulumi.export("vpcNatIpCidrId3", status.cidrs[0].id)
+    nat_ip_cidr = alicloud.vpc.get_nat_ip_cidrs(nat_gateway_id="example_value",
+        nat_ip_cidrs=["example_value-1"])
+    pulumi.export("vpcNatIpCidrId4", nat_ip_cidr.cidrs[0].id)
+    at_ip_cidr_name = alicloud.vpc.get_nat_ip_cidrs(nat_gateway_id="example_value",
+        nat_ip_cidr_names=["example_value-1"])
+    pulumi.export("vpcNatIpCidrId5", at_ip_cidr_name.cidrs[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Nat Ip Cidr IDs.
     :param str name_regex: A regex string to filter results by Nat Ip Cidr name.
@@ -185,6 +214,35 @@ def get_nat_ip_cidrs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     This data source provides the Vpc Nat Ip Cidrs of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.136.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.vpc.get_nat_ip_cidrs(nat_gateway_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("vpcNatIpCidrId1", ids.cidrs[0].id)
+    name_regex = alicloud.vpc.get_nat_ip_cidrs(nat_gateway_id="example_value",
+        name_regex="^my-NatIpCidr")
+    pulumi.export("vpcNatIpCidrId2", name_regex.cidrs[0].id)
+    status = alicloud.vpc.get_nat_ip_cidrs(nat_gateway_id="example_value",
+        ids=["example_value-1"],
+        status="Available")
+    pulumi.export("vpcNatIpCidrId3", status.cidrs[0].id)
+    nat_ip_cidr = alicloud.vpc.get_nat_ip_cidrs(nat_gateway_id="example_value",
+        nat_ip_cidrs=["example_value-1"])
+    pulumi.export("vpcNatIpCidrId4", nat_ip_cidr.cidrs[0].id)
+    at_ip_cidr_name = alicloud.vpc.get_nat_ip_cidrs(nat_gateway_id="example_value",
+        nat_ip_cidr_names=["example_value-1"])
+    pulumi.export("vpcNatIpCidrId5", at_ip_cidr_name.cidrs[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Nat Ip Cidr IDs.

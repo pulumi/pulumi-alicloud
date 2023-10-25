@@ -19,6 +19,46 @@ import (
 //
 // > **NOTE:** Available in v1.135.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/waf"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := waf.NewCertificate(ctx, "default", &waf.CertificateArgs{
+//				Certificate:     pulumi.String("your_certificate"),
+//				CertificateName: pulumi.String("your_certificate_name"),
+//				Domain:          pulumi.String("your_domain_name"),
+//				InstanceId:      pulumi.String("your_instance_id"),
+//				PrivateKey:      pulumi.String("your_private_key"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = waf.NewCertificate(ctx, "default2", &waf.CertificateArgs{
+//				CertificateId: pulumi.String("your_certificate_id"),
+//				Domain:        pulumi.String("your_domain_name"),
+//				InstanceId:    pulumi.String("your_instance_id"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // WAF Certificate can be imported using the id, e.g.

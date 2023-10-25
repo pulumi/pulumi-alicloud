@@ -19,6 +19,63 @@ import (
 //
 // > **NOTE:** Available since v1.208.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			domain := "com.aliyun.cn-hangzhou.oss"
+//			if param := cfg.Get("domain"); param != "" {
+//				domain = param
+//			}
+//			defaultVpc, err := vpc.NewNetwork(ctx, "defaultVpc", &vpc.NetworkArgs{
+//				Description: pulumi.String("tf-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRg, err := resourcemanager.NewResourceGroup(ctx, "defaultRg", &resourcemanager.ResourceGroupArgs{
+//				DisplayName:       pulumi.String("tf-example-497"),
+//				ResourceGroupName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewGatewayEndpoint(ctx, "default", &vpc.GatewayEndpointArgs{
+//				GatewayEndpointDescrption: pulumi.String("test-gateway-endpoint"),
+//				GatewayEndpointName:       pulumi.String(name),
+//				VpcId:                     defaultVpc.ID(),
+//				ResourceGroupId:           defaultRg.ID(),
+//				ServiceName:               pulumi.String(domain),
+//				PolicyDocument:            pulumi.String("{ \"Version\" : \"1\", \"Statement\" : [ { \"Effect\" : \"Allow\", \"Resource\" : [ \"*\" ], \"Action\" : [ \"*\" ], \"Principal\" : [ \"*\" ] } ] }"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // VPC Gateway Endpoint can be imported using the id, e.g.

@@ -1096,6 +1096,58 @@ class RestoreJob(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.133.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_ecs_backup_plans = alicloud.hbr.get_ecs_backup_plans(name_regex="plan-tf-used-dont-delete")
+        default_oss_backup_plans = alicloud.hbr.get_oss_backup_plans(name_regex="plan-tf-used-dont-delete")
+        default_nas_backup_plans = alicloud.hbr.get_nas_backup_plans(name_regex="plan-tf-used-dont-delete")
+        ecs_snapshots = alicloud.hbr.get_snapshots(source_type="ECS_FILE",
+            vault_id=default_ecs_backup_plans.plans[0].vault_id,
+            instance_id=default_ecs_backup_plans.plans[0].instance_id)
+        oss_snapshots = alicloud.hbr.get_snapshots(source_type="OSS",
+            vault_id=default_oss_backup_plans.plans[0].vault_id,
+            bucket=default_oss_backup_plans.plans[0].bucket)
+        nas_snapshots = alicloud.hbr.get_snapshots(source_type="NAS",
+            vault_id=default_nas_backup_plans.plans[0].vault_id,
+            file_system_id=default_nas_backup_plans.plans[0].file_system_id,
+            create_time=default_nas_backup_plans.plans[0].create_time)
+        nas_job = alicloud.hbr.RestoreJob("nasJob",
+            snapshot_hash=nas_snapshots.snapshots[0].snapshot_hash,
+            vault_id=default_nas_backup_plans.plans[0].vault_id,
+            source_type="NAS",
+            restore_type="NAS",
+            snapshot_id=nas_snapshots.snapshots[0].snapshot_id,
+            target_file_system_id=default_nas_backup_plans.plans[0].file_system_id,
+            target_create_time=default_nas_backup_plans.plans[0].create_time,
+            target_path="/",
+            options="    {\\"includes\\":[], \\"excludes\\":[]}\\n")
+        oss_job = alicloud.hbr.RestoreJob("ossJob",
+            snapshot_hash=oss_snapshots.snapshots[0].snapshot_hash,
+            vault_id=default_oss_backup_plans.plans[0].vault_id,
+            source_type="OSS",
+            restore_type="OSS",
+            snapshot_id=oss_snapshots.snapshots[0].snapshot_id,
+            target_bucket=default_oss_backup_plans.plans[0].bucket,
+            target_prefix="",
+            options="    {\\"includes\\":[], \\"excludes\\":[]}\\n")
+        ecs_job = alicloud.hbr.RestoreJob("ecsJob",
+            snapshot_hash=ecs_snapshots.snapshots[0].snapshot_hash,
+            vault_id=default_ecs_backup_plans.plans[0].vault_id,
+            source_type="ECS_FILE",
+            restore_type="ECS_FILE",
+            snapshot_id=ecs_snapshots.snapshots[0].snapshot_id,
+            target_instance_id=default_ecs_backup_plans.plans[0].instance_id,
+            target_path="/")
+        ```
+
+        > **NOTE:** This resource can only be created, cannot be modified or deleted. Therefore, any modification of the resource attribute will not affect exist resource.
+
         ## Import
 
         Hybrid Backup Recovery (HBR) Restore Job can be imported using the id. Format to `<restore_job_id>:<restore_type>`, e.g.
@@ -1144,6 +1196,58 @@ class RestoreJob(pulumi.CustomResource):
         For information about Hybrid Backup Recovery (HBR) Restore Job and how to use it, see [What is Restore Job](https://www.alibabacloud.com/help/doc-detail/186575.htm).
 
         > **NOTE:** Available in v1.133.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_ecs_backup_plans = alicloud.hbr.get_ecs_backup_plans(name_regex="plan-tf-used-dont-delete")
+        default_oss_backup_plans = alicloud.hbr.get_oss_backup_plans(name_regex="plan-tf-used-dont-delete")
+        default_nas_backup_plans = alicloud.hbr.get_nas_backup_plans(name_regex="plan-tf-used-dont-delete")
+        ecs_snapshots = alicloud.hbr.get_snapshots(source_type="ECS_FILE",
+            vault_id=default_ecs_backup_plans.plans[0].vault_id,
+            instance_id=default_ecs_backup_plans.plans[0].instance_id)
+        oss_snapshots = alicloud.hbr.get_snapshots(source_type="OSS",
+            vault_id=default_oss_backup_plans.plans[0].vault_id,
+            bucket=default_oss_backup_plans.plans[0].bucket)
+        nas_snapshots = alicloud.hbr.get_snapshots(source_type="NAS",
+            vault_id=default_nas_backup_plans.plans[0].vault_id,
+            file_system_id=default_nas_backup_plans.plans[0].file_system_id,
+            create_time=default_nas_backup_plans.plans[0].create_time)
+        nas_job = alicloud.hbr.RestoreJob("nasJob",
+            snapshot_hash=nas_snapshots.snapshots[0].snapshot_hash,
+            vault_id=default_nas_backup_plans.plans[0].vault_id,
+            source_type="NAS",
+            restore_type="NAS",
+            snapshot_id=nas_snapshots.snapshots[0].snapshot_id,
+            target_file_system_id=default_nas_backup_plans.plans[0].file_system_id,
+            target_create_time=default_nas_backup_plans.plans[0].create_time,
+            target_path="/",
+            options="    {\\"includes\\":[], \\"excludes\\":[]}\\n")
+        oss_job = alicloud.hbr.RestoreJob("ossJob",
+            snapshot_hash=oss_snapshots.snapshots[0].snapshot_hash,
+            vault_id=default_oss_backup_plans.plans[0].vault_id,
+            source_type="OSS",
+            restore_type="OSS",
+            snapshot_id=oss_snapshots.snapshots[0].snapshot_id,
+            target_bucket=default_oss_backup_plans.plans[0].bucket,
+            target_prefix="",
+            options="    {\\"includes\\":[], \\"excludes\\":[]}\\n")
+        ecs_job = alicloud.hbr.RestoreJob("ecsJob",
+            snapshot_hash=ecs_snapshots.snapshots[0].snapshot_hash,
+            vault_id=default_ecs_backup_plans.plans[0].vault_id,
+            source_type="ECS_FILE",
+            restore_type="ECS_FILE",
+            snapshot_id=ecs_snapshots.snapshots[0].snapshot_id,
+            target_instance_id=default_ecs_backup_plans.plans[0].instance_id,
+            target_path="/")
+        ```
+
+        > **NOTE:** This resource can only be created, cannot be modified or deleted. Therefore, any modification of the resource attribute will not affect exist resource.
 
         ## Import
 

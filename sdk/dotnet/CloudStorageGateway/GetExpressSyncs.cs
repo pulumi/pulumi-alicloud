@@ -15,6 +15,37 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// This data source provides the Cloud Storage Gateway Express Syncs of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.144.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.CloudStorageGateway.GetExpressSyncs.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.CloudStorageGateway.GetExpressSyncs.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-ExpressSync",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cloudStorageGatewayExpressSyncId1"] = ids.Apply(getExpressSyncsResult =&gt; getExpressSyncsResult.Syncs[0]?.Id),
+        ///         ["cloudStorageGatewayExpressSyncId2"] = nameRegex.Apply(getExpressSyncsResult =&gt; getExpressSyncsResult.Syncs[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetExpressSyncsResult> InvokeAsync(GetExpressSyncsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetExpressSyncsResult>("alicloud:cloudstoragegateway/getExpressSyncs:getExpressSyncs", args ?? new GetExpressSyncsArgs(), options.WithDefaults());
@@ -23,6 +54,37 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// This data source provides the Cloud Storage Gateway Express Syncs of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.144.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.CloudStorageGateway.GetExpressSyncs.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.CloudStorageGateway.GetExpressSyncs.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-ExpressSync",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cloudStorageGatewayExpressSyncId1"] = ids.Apply(getExpressSyncsResult =&gt; getExpressSyncsResult.Syncs[0]?.Id),
+        ///         ["cloudStorageGatewayExpressSyncId2"] = nameRegex.Apply(getExpressSyncsResult =&gt; getExpressSyncsResult.Syncs[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetExpressSyncsResult> Invoke(GetExpressSyncsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetExpressSyncsResult>("alicloud:cloudstoragegateway/getExpressSyncs:getExpressSyncs", args ?? new GetExpressSyncsInvokeArgs(), options.WithDefaults());

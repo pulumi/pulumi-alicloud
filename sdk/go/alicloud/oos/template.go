@@ -17,6 +17,62 @@ import (
 //
 // > **NOTE:** Available in 1.92.0+.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := oos.NewTemplate(ctx, "example", &oos.TemplateArgs{
+//				Content: pulumi.String(`  {
+//	    "FormatVersion": "OOS-2019-06-01",
+//	    "Description": "Update Describe instances of given status",
+//	    "Parameters":{
+//	      "Status":{
+//	        "Type": "String",
+//	        "Description": "(Required) The status of the Ecs instance."
+//	      }
+//	    },
+//	    "Tasks": [
+//	      {
+//	        "Properties" :{
+//	          "Parameters":{
+//	            "Status": "{{ Status }}"
+//	          },
+//	          "API": "DescribeInstances",
+//	          "Service": "Ecs"
+//	        },
+//	        "Name": "foo",
+//	        "Action": "ACS::ExecuteApi"
+//	      }]
+//	  }
+//
+// `),
+//
+//				Tags: pulumi.Map{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("acceptance Test"),
+//				},
+//				TemplateName: pulumi.String("test-name"),
+//				VersionName:  pulumi.String("test"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // OOS Template can be imported using the id or template_name, e.g.

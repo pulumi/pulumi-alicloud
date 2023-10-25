@@ -19,6 +19,46 @@ import (
 //
 // > **NOTE:** Available in v1.106.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ros"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ros.NewStack(ctx, "example", &ros.StackArgs{
+//				StackName: pulumi.String("tf-testaccstack"),
+//				StackPolicyBody: pulumi.String(`    {
+//	    	"Statement": [{
+//	    		"Action": "Update:Delete",
+//	    		"Resource": "*",
+//	    		"Effect": "Allow",
+//	    		"Principal": "*"
+//	    	}]
+//	    }
+//
+// `),
+//
+//				TemplateBody: pulumi.String("    {\n    	\"ROSTemplateFormatVersion\": \"2015-09-01\"\n    }\n    \n"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ROS Stack can be imported using the id, e.g.

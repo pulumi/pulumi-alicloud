@@ -15,6 +15,51 @@ namespace Pulumi.AliCloud.RocketMQ
         /// This data source provides a list of ONS Topics in an Alibaba Cloud account according to the specified filters.
         /// 
         /// &gt; **NOTE:** Available in 1.53.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "onsInstanceName";
+        ///     var topic = config.Get("topic") ?? "onsTopicDatasourceName";
+        ///     var defaultInstance = new AliCloud.RocketMQ.Instance("defaultInstance", new()
+        ///     {
+        ///         InstanceName = name,
+        ///         Remark = "default_ons_instance_remark",
+        ///     });
+        /// 
+        ///     var defaultTopic = new AliCloud.RocketMQ.Topic("defaultTopic", new()
+        ///     {
+        ///         TopicName = topic,
+        ///         InstanceId = defaultInstance.Id,
+        ///         MessageType = 0,
+        ///         Remark = "dafault_ons_topic_remark",
+        ///     });
+        /// 
+        ///     var topicsDs = AliCloud.RocketMQ.GetTopics.Invoke(new()
+        ///     {
+        ///         InstanceId = defaultTopic.InstanceId,
+        ///         NameRegex = topic,
+        ///         OutputFile = "topics.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstTopicName"] = topicsDs.Apply(getTopicsResult =&gt; getTopicsResult.Topics[0]?.TopicName),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTopicsResult> InvokeAsync(GetTopicsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTopicsResult>("alicloud:rocketmq/getTopics:getTopics", args ?? new GetTopicsArgs(), options.WithDefaults());
@@ -23,6 +68,51 @@ namespace Pulumi.AliCloud.RocketMQ
         /// This data source provides a list of ONS Topics in an Alibaba Cloud account according to the specified filters.
         /// 
         /// &gt; **NOTE:** Available in 1.53.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "onsInstanceName";
+        ///     var topic = config.Get("topic") ?? "onsTopicDatasourceName";
+        ///     var defaultInstance = new AliCloud.RocketMQ.Instance("defaultInstance", new()
+        ///     {
+        ///         InstanceName = name,
+        ///         Remark = "default_ons_instance_remark",
+        ///     });
+        /// 
+        ///     var defaultTopic = new AliCloud.RocketMQ.Topic("defaultTopic", new()
+        ///     {
+        ///         TopicName = topic,
+        ///         InstanceId = defaultInstance.Id,
+        ///         MessageType = 0,
+        ///         Remark = "dafault_ons_topic_remark",
+        ///     });
+        /// 
+        ///     var topicsDs = AliCloud.RocketMQ.GetTopics.Invoke(new()
+        ///     {
+        ///         InstanceId = defaultTopic.InstanceId,
+        ///         NameRegex = topic,
+        ///         OutputFile = "topics.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstTopicName"] = topicsDs.Apply(getTopicsResult =&gt; getTopicsResult.Topics[0]?.TopicName),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetTopicsResult> Invoke(GetTopicsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTopicsResult>("alicloud:rocketmq/getTopics:getTopics", args ?? new GetTopicsInvokeArgs(), options.WithDefaults());

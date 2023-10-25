@@ -15,6 +15,35 @@ import (
 // This data source provides the Hbr EcsBackupPlans of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.132.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := hbr.GetEcsBackupPlans(ctx, &hbr.GetEcsBackupPlansArgs{
+//				NameRegex: pulumi.StringRef("plan-name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("hbrEcsBackupPlanId", ids.Plans[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetEcsBackupPlans(ctx *pulumi.Context, args *GetEcsBackupPlansArgs, opts ...pulumi.InvokeOption) (*GetEcsBackupPlansResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEcsBackupPlansResult

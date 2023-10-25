@@ -13,6 +13,23 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.105.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.ros.ChangeSet("example", {
+ *     changeSetName: "example_value",
+ *     changeSetType: "CREATE",
+ *     description: "Test From Terraform",
+ *     stackName: "tf-testacc",
+ *     templateBody: "{\"ROSTemplateFormatVersion\":\"2015-09-01\"}",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ROS Change Set can be imported using the id, e.g.

@@ -10,6 +10,35 @@ import * as utilities from "../utilities";
  * This data source provides the Cms Dynamic Tag Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.142.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "example_value";
+ * const defaultAlarmContactGroup = new alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", {
+ *     alarmContactGroupName: name,
+ *     describe: "example_value",
+ *     enableSubscribed: true,
+ * });
+ * const defaultDynamicTagGroup = new alicloud.cms.DynamicTagGroup("defaultDynamicTagGroup", {
+ *     contactGroupLists: [defaultAlarmContactGroup.id],
+ *     tagKey: "your_tag_key",
+ *     matchExpresses: [{
+ *         tagValue: "your_tag_value",
+ *         tagValueMatchFunction: "all",
+ *     }],
+ * });
+ * const ids = alicloud.cms.getDynamicTagGroupsOutput({
+ *     ids: [defaultDynamicTagGroup.id],
+ * });
+ * export const cmsDynamicTagGroupId1 = ids.apply(ids => ids.groups?.[0]?.id);
+ * ```
  */
 export function getDynamicTagGroups(args?: GetDynamicTagGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDynamicTagGroupsResult> {
     args = args || {};
@@ -63,6 +92,35 @@ export interface GetDynamicTagGroupsResult {
  * This data source provides the Cms Dynamic Tag Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.142.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "example_value";
+ * const defaultAlarmContactGroup = new alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", {
+ *     alarmContactGroupName: name,
+ *     describe: "example_value",
+ *     enableSubscribed: true,
+ * });
+ * const defaultDynamicTagGroup = new alicloud.cms.DynamicTagGroup("defaultDynamicTagGroup", {
+ *     contactGroupLists: [defaultAlarmContactGroup.id],
+ *     tagKey: "your_tag_key",
+ *     matchExpresses: [{
+ *         tagValue: "your_tag_value",
+ *         tagValueMatchFunction: "all",
+ *     }],
+ * });
+ * const ids = alicloud.cms.getDynamicTagGroupsOutput({
+ *     ids: [defaultDynamicTagGroup.id],
+ * });
+ * export const cmsDynamicTagGroupId1 = ids.apply(ids => ids.groups?.[0]?.id);
+ * ```
  */
 export function getDynamicTagGroupsOutput(args?: GetDynamicTagGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDynamicTagGroupsResult> {
     return pulumi.output(args).apply((a: any) => getDynamicTagGroups(a, opts))

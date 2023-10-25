@@ -19,6 +19,47 @@ import (
 //
 // > **NOTE:** Available since v1.185.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultvpc, err := vpc.NewNetwork(ctx, "defaultvpc", &vpc.NetworkArgs{
+//				Description: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewIpv4CidrBlock(ctx, "default", &vpc.Ipv4CidrBlockArgs{
+//				SecondaryCidrBlock: pulumi.String("192.168.0.0/16"),
+//				VpcId:              defaultvpc.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // VPC Ipv4 Cidr Block can be imported using the id, e.g.

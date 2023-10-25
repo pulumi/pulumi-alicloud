@@ -10,6 +10,63 @@ import * as utilities from "../utilities";
  * This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available since v1.0.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultGroup = new alicloud.ram.Group("defaultGroup", {
+ *     comments: "group comments",
+ *     force: true,
+ * });
+ * const defaultUser = new alicloud.ram.User("defaultUser", {
+ *     displayName: "displayname",
+ *     mobile: "86-18888888888",
+ *     email: "hello.uuu@aaa.com",
+ *     comments: "yoyoyo",
+ * });
+ * const defaultGroupMembership = new alicloud.ram.GroupMembership("defaultGroupMembership", {
+ *     groupName: defaultGroup.name,
+ *     userNames: [defaultUser.name],
+ * });
+ * const defaultPolicy = new alicloud.ram.Policy("defaultPolicy", {
+ *     policyName: "ram-policy-example",
+ *     policyDocument: `			{
+ * 				"Statement": [
+ * 				 {
+ * 					"Action": [
+ * 					"oss:ListObjects",
+ * 					"oss:ListObjects"
+ * 			  		],
+ * 			  		"Effect": "Deny",
+ * 			  		"Resource": [
+ * 						"acs:oss:*:*:mybucket",
+ * 						"acs:oss:*:*:mybucket/*"
+ * 			  		]
+ * 				 }
+ * 		  		],
+ * 				"Version": "1"
+ * 			}
+ * `,
+ *     description: "this is a policy example",
+ *     force: true,
+ * });
+ * const defaultUserPolicyAttachment = new alicloud.ram.UserPolicyAttachment("defaultUserPolicyAttachment", {
+ *     policyName: defaultPolicy.policyName,
+ *     userName: defaultUser.name,
+ *     policyType: defaultPolicy.type,
+ * });
+ * const usersDs = alicloud.ram.getUsersOutput({
+ *     outputFile: "users.txt",
+ *     groupName: defaultGroup.name,
+ *     policyName: defaultPolicy.policyName,
+ *     policyType: "Custom",
+ *     nameRegex: defaultUser.name,
+ * });
+ * export const firstUserId = usersDs.apply(usersDs => usersDs.users?.[0]?.id);
+ * ```
  */
 export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
     args = args || {};
@@ -85,6 +142,63 @@ export interface GetUsersResult {
  * This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available since v1.0.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultGroup = new alicloud.ram.Group("defaultGroup", {
+ *     comments: "group comments",
+ *     force: true,
+ * });
+ * const defaultUser = new alicloud.ram.User("defaultUser", {
+ *     displayName: "displayname",
+ *     mobile: "86-18888888888",
+ *     email: "hello.uuu@aaa.com",
+ *     comments: "yoyoyo",
+ * });
+ * const defaultGroupMembership = new alicloud.ram.GroupMembership("defaultGroupMembership", {
+ *     groupName: defaultGroup.name,
+ *     userNames: [defaultUser.name],
+ * });
+ * const defaultPolicy = new alicloud.ram.Policy("defaultPolicy", {
+ *     policyName: "ram-policy-example",
+ *     policyDocument: `			{
+ * 				"Statement": [
+ * 				 {
+ * 					"Action": [
+ * 					"oss:ListObjects",
+ * 					"oss:ListObjects"
+ * 			  		],
+ * 			  		"Effect": "Deny",
+ * 			  		"Resource": [
+ * 						"acs:oss:*:*:mybucket",
+ * 						"acs:oss:*:*:mybucket/*"
+ * 			  		]
+ * 				 }
+ * 		  		],
+ * 				"Version": "1"
+ * 			}
+ * `,
+ *     description: "this is a policy example",
+ *     force: true,
+ * });
+ * const defaultUserPolicyAttachment = new alicloud.ram.UserPolicyAttachment("defaultUserPolicyAttachment", {
+ *     policyName: defaultPolicy.policyName,
+ *     userName: defaultUser.name,
+ *     policyType: defaultPolicy.type,
+ * });
+ * const usersDs = alicloud.ram.getUsersOutput({
+ *     outputFile: "users.txt",
+ *     groupName: defaultGroup.name,
+ *     policyName: defaultPolicy.policyName,
+ *     policyType: "Custom",
+ *     nameRegex: defaultUser.name,
+ * });
+ * export const firstUserId = usersDs.apply(usersDs => usersDs.users?.[0]?.id);
+ * ```
  */
 export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
     return pulumi.output(args).apply((a: any) => getUsers(a, opts))

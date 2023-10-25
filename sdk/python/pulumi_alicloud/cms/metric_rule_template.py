@@ -520,6 +520,36 @@ class MetricRuleTemplate(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.134.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example = alicloud.cms.MetricRuleTemplate("example",
+            metric_rule_template_name=name,
+            alert_templates=[alicloud.cms.MetricRuleTemplateAlertTemplateArgs(
+                category="ecs",
+                metric_name="cpu_total",
+                namespace="acs_ecs_dashboard",
+                rule_name="tf_example",
+                escalations=alicloud.cms.MetricRuleTemplateAlertTemplateEscalationsArgs(
+                    critical=alicloud.cms.MetricRuleTemplateAlertTemplateEscalationsCriticalArgs(
+                        comparison_operator="GreaterThanThreshold",
+                        statistics="Average",
+                        threshold="90",
+                        times="3",
+                    ),
+                ),
+            )])
+        ```
+
         ## Import
 
         Cloud Monitor Service Metric Rule Template can be imported using the id, e.g.
@@ -558,6 +588,36 @@ class MetricRuleTemplate(pulumi.CustomResource):
         For information about Cloud Monitor Service Metric Rule Template and how to use it, see [What is Metric Rule Template](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createmetricruletemplate).
 
         > **NOTE:** Available since v1.134.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example = alicloud.cms.MetricRuleTemplate("example",
+            metric_rule_template_name=name,
+            alert_templates=[alicloud.cms.MetricRuleTemplateAlertTemplateArgs(
+                category="ecs",
+                metric_name="cpu_total",
+                namespace="acs_ecs_dashboard",
+                rule_name="tf_example",
+                escalations=alicloud.cms.MetricRuleTemplateAlertTemplateEscalationsArgs(
+                    critical=alicloud.cms.MetricRuleTemplateAlertTemplateEscalationsCriticalArgs(
+                        comparison_operator="GreaterThanThreshold",
+                        statistics="Average",
+                        threshold="90",
+                        times="3",
+                    ),
+                ),
+            )])
+        ```
 
         ## Import
 

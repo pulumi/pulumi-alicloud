@@ -90,7 +90,23 @@ def get_plaintext(ciphertext_blob: Optional[str] = None,
                   encryption_context: Optional[Mapping[str, str]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPlaintextResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    key = alicloud.kms.Key("key",
+        description="example key",
+        is_enabled=True)
+    # Encrypt plaintext 'example'
+    encrypted = alicloud.kms.Ciphertext("encrypted",
+        key_id=key.id,
+        plaintext="example")
+    plaintext = alicloud.kms.get_plaintext_output(ciphertext_blob=encrypted.ciphertext_blob)
+    pulumi.export("decrypted", plaintext.plaintext)
+    ```
+
 
     :param str ciphertext_blob: The ciphertext to be decrypted.
     :param Mapping[str, str] encryption_context: (Optional) The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
@@ -114,7 +130,23 @@ def get_plaintext_output(ciphertext_blob: Optional[pulumi.Input[str]] = None,
                          encryption_context: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPlaintextResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    key = alicloud.kms.Key("key",
+        description="example key",
+        is_enabled=True)
+    # Encrypt plaintext 'example'
+    encrypted = alicloud.kms.Ciphertext("encrypted",
+        key_id=key.id,
+        plaintext="example")
+    plaintext = alicloud.kms.get_plaintext_output(ciphertext_blob=encrypted.ciphertext_blob)
+    pulumi.export("decrypted", plaintext.plaintext)
+    ```
+
 
     :param str ciphertext_blob: The ciphertext to be decrypted.
     :param Mapping[str, str] encryption_context: (Optional) The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).

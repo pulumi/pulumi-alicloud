@@ -10,6 +10,26 @@ import * as utilities from "../utilities";
  * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in 1.197.0+
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.ga.getCustomRoutingEndpointGroups({
+ *     ids: ["example_id"],
+ *     acceleratorId: "your_accelerator_id",
+ * });
+ * export const gaCustomRoutingEndpointGroupsId1 = ids.then(ids => ids.groups?.[0]?.id);
+ * const nameRegex = alicloud.ga.getCustomRoutingEndpointGroups({
+ *     nameRegex: "tf-example",
+ *     acceleratorId: "your_accelerator_id",
+ * });
+ * export const gaCustomRoutingEndpointGroupsId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
+ * ```
  */
 export function getCustomRoutingEndpointGroups(args: GetCustomRoutingEndpointGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomRoutingEndpointGroupsResult> {
 
@@ -105,6 +125,26 @@ export interface GetCustomRoutingEndpointGroupsResult {
  * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in 1.197.0+
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.ga.getCustomRoutingEndpointGroups({
+ *     ids: ["example_id"],
+ *     acceleratorId: "your_accelerator_id",
+ * });
+ * export const gaCustomRoutingEndpointGroupsId1 = ids.then(ids => ids.groups?.[0]?.id);
+ * const nameRegex = alicloud.ga.getCustomRoutingEndpointGroups({
+ *     nameRegex: "tf-example",
+ *     acceleratorId: "your_accelerator_id",
+ * });
+ * export const gaCustomRoutingEndpointGroupsId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
+ * ```
  */
 export function getCustomRoutingEndpointGroupsOutput(args: GetCustomRoutingEndpointGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomRoutingEndpointGroupsResult> {
     return pulumi.output(args).apply((a: any) => getCustomRoutingEndpointGroups(a, opts))

@@ -381,6 +381,22 @@ class AlidnsDomain(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.95.0.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_domain_group = alicloud.dns.DomainGroup("defaultDomainGroup", domain_group_name="tf-example")
+        default_alidns_domain = alicloud.dns.AlidnsDomain("defaultAlidnsDomain",
+            domain_name="starmove.com",
+            group_id=default_domain_group.id,
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        ```
+
         ## Import
 
         Alidns domain can be imported using the id or domain name, e.g.
@@ -412,6 +428,22 @@ class AlidnsDomain(pulumi.CustomResource):
         > **NOTE:** The domain name which you want to add must be already registered and had not added by another account. Every domain name can only exist in a unique group.
 
         > **NOTE:** Available since v1.95.0.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_domain_group = alicloud.dns.DomainGroup("defaultDomainGroup", domain_group_name="tf-example")
+        default_alidns_domain = alicloud.dns.AlidnsDomain("defaultAlidnsDomain",
+            domain_name="starmove.com",
+            group_id=default_domain_group.id,
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        ```
 
         ## Import
 

@@ -456,6 +456,30 @@ class StateConfiguration(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.147.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_state_configuration = alicloud.oos.StateConfiguration("defaultStateConfiguration",
+            template_name="ACS-ECS-InventoryDataCollection",
+            configure_mode="ApplyOnly",
+            description="terraform-example",
+            schedule_type="rate",
+            schedule_expression="1 hour",
+            resource_group_id=default_resource_groups.ids[0],
+            targets="{\\"Filters\\": [{\\"Type\\": \\"All\\", \\"Parameters\\": {\\"InstanceChargeType\\": \\"PrePaid\\"}}], \\"ResourceType\\": \\"ALIYUN::ECS::Instance\\"}",
+            parameters="{\\"policy\\": {\\"ACS:Application\\": {\\"Collection\\": \\"Enabled\\"}}}",
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        ```
+
         ## Import
 
         OOS State Configuration can be imported using the id, e.g.
@@ -489,6 +513,30 @@ class StateConfiguration(pulumi.CustomResource):
         For information about OOS State Configuration and how to use it, see [What is State Configuration](https://www.alibabacloud.com/help/en/doc-detail/208728.html).
 
         > **NOTE:** Available in v1.147.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_state_configuration = alicloud.oos.StateConfiguration("defaultStateConfiguration",
+            template_name="ACS-ECS-InventoryDataCollection",
+            configure_mode="ApplyOnly",
+            description="terraform-example",
+            schedule_type="rate",
+            schedule_expression="1 hour",
+            resource_group_id=default_resource_groups.ids[0],
+            targets="{\\"Filters\\": [{\\"Type\\": \\"All\\", \\"Parameters\\": {\\"InstanceChargeType\\": \\"PrePaid\\"}}], \\"ResourceType\\": \\"ALIYUN::ECS::Instance\\"}",
+            parameters="{\\"policy\\": {\\"ACS:Application\\": {\\"Collection\\": \\"Enabled\\"}}}",
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        ```
 
         ## Import
 

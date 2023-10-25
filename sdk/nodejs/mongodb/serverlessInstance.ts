@@ -13,6 +13,49 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.148.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultZones = alicloud.mongodb.getZones({});
+ * const defaultNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "default-NODELETING",
+ * });
+ * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultNetworks.ids?.[0],
+ *     zoneId: defaultZones.zones?.[0]?.id,
+ * }));
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const example = new alicloud.mongodb.ServerlessInstance("example", {
+ *     accountPassword: "Abc12345",
+ *     dbInstanceDescription: "example_value",
+ *     dbInstanceStorage: 5,
+ *     storageEngine: "WiredTiger",
+ *     capacityUnit: 100,
+ *     engine: "MongoDB",
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
+ *     engineVersion: "4.2",
+ *     period: 1,
+ *     periodPriceType: "Month",
+ *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     tags: {
+ *         Created: "MongodbServerlessInstance",
+ *         For: "TF",
+ *     },
+ *     securityIpGroups: [{
+ *         securityIpGroupAttribute: "example_value",
+ *         securityIpGroupName: "example_value",
+ *         securityIpList: "192.168.0.1",
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * MongoDB Serverless Instance can be imported using the id, e.g.

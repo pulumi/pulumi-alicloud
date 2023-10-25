@@ -139,6 +139,19 @@ def get_vpc_endpoint_services(auto_accept_connection: Optional[bool] = None,
 
     > **NOTE:** Available in v1.109.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.privatelink.get_vpc_endpoint_services(ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstPrivatelinkVpcEndpointServiceId", example.services[0].id)
+    ```
+
 
     :param bool auto_accept_connection: Whether to automatically accept terminal node connections..
     :param Sequence[str] ids: A list of Vpc Endpoint Service IDs.
@@ -185,6 +198,19 @@ def get_vpc_endpoint_services_output(auto_accept_connection: Optional[pulumi.Inp
     This data source provides the Privatelink Vpc Endpoint Services of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.109.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.privatelink.get_vpc_endpoint_services(ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstPrivatelinkVpcEndpointServiceId", example.services[0].id)
+    ```
 
 
     :param bool auto_accept_connection: Whether to automatically accept terminal node connections..

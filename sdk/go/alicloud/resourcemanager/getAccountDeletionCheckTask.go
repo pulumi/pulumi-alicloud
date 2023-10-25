@@ -19,6 +19,39 @@ import (
 // > **NOTE:** Available in v1.187.0+.
 //
 // > **NOTE:** The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			task, err := resourcemanager.GetAccountDeletionCheckTask(ctx, &resourcemanager.GetAccountDeletionCheckTaskArgs{
+//				AccountId: "your_account_id",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var splat0 []*string
+//			for _, val0 := range task.AbandonAbleChecks {
+//				splat0 = append(splat0, val0.CheckId)
+//			}
+//			ctx.Export("abandonAbleChecksIds", splat0)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetAccountDeletionCheckTask(ctx *pulumi.Context, args *GetAccountDeletionCheckTaskArgs, opts ...pulumi.InvokeOption) (*GetAccountDeletionCheckTaskResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountDeletionCheckTaskResult

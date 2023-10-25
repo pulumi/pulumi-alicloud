@@ -405,6 +405,16 @@ def get_disks(additional_attributes: Optional[Sequence[str]] = None,
 
     This data source provides the disks of the current Alibaba Cloud user.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    disks_ds = alicloud.ecs.get_disks(name_regex="sample_disk")
+    pulumi.export("firstDiskId", disks_ds.disks[0].id)
+    ```
+
 
     :param str availability_zone: Availability zone of the disk.
     :param str category: Disk category. Possible values: `cloud` (basic cloud disk), `cloud_efficiency` (ultra cloud disk), `ephemeral_ssd` (local SSD cloud disk), `cloud_ssd` (SSD cloud disk), and `cloud_essd` (ESSD cloud disk).
@@ -417,6 +427,15 @@ def get_disks(additional_attributes: Optional[Sequence[str]] = None,
     :param str snapshot_id: Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
     :param str status: Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
     :param Mapping[str, Any] tags: A map of tags assigned to the disks. It must be in the format:
+           ```python
+           import pulumi
+           import pulumi_alicloud as alicloud
+           
+           disks_ds = alicloud.ecs.get_disks(tags={
+               "tagKey1": "tagValue1",
+               "tagKey2": "tagValue2",
+           })
+           ```
     :param str type: Disk type. Possible values: `system` and `data`.
     """
     __args__ = dict()
@@ -524,6 +543,16 @@ def get_disks_output(additional_attributes: Optional[pulumi.Input[Optional[Seque
 
     This data source provides the disks of the current Alibaba Cloud user.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    disks_ds = alicloud.ecs.get_disks(name_regex="sample_disk")
+    pulumi.export("firstDiskId", disks_ds.disks[0].id)
+    ```
+
 
     :param str availability_zone: Availability zone of the disk.
     :param str category: Disk category. Possible values: `cloud` (basic cloud disk), `cloud_efficiency` (ultra cloud disk), `ephemeral_ssd` (local SSD cloud disk), `cloud_ssd` (SSD cloud disk), and `cloud_essd` (ESSD cloud disk).
@@ -536,6 +565,15 @@ def get_disks_output(additional_attributes: Optional[pulumi.Input[Optional[Seque
     :param str snapshot_id: Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
     :param str status: Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
     :param Mapping[str, Any] tags: A map of tags assigned to the disks. It must be in the format:
+           ```python
+           import pulumi
+           import pulumi_alicloud as alicloud
+           
+           disks_ds = alicloud.ecs.get_disks(tags={
+               "tagKey1": "tagValue1",
+               "tagKey2": "tagValue2",
+           })
+           ```
     :param str type: Disk type. Possible values: `system` and `data`.
     """
     ...

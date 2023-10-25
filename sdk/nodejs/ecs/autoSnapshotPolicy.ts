@@ -11,6 +11,29 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.117.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.ecs.AutoSnapshotPolicy("example", {
+ *     repeatWeekdays: [
+ *         "1",
+ *         "2",
+ *         "3",
+ *     ],
+ *     retentionDays: -1,
+ *     timePoints: [
+ *         "1",
+ *         "22",
+ *         "23",
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * ECS Auto Snapshot Policy can be imported using the id, e.g.

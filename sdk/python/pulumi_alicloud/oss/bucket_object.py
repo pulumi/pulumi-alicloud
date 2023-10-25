@@ -636,6 +636,42 @@ class BucketObject(pulumi.CustomResource):
         Provides a resource to put a object(content or file) to a oss bucket.
 
         ## Example Usage
+        ### Uploading a file to a bucket
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_bucket = alicloud.oss.Bucket("defaultBucket",
+            bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
+            acl="private")
+        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
+            bucket=default_bucket.bucket,
+            key="example_key",
+            source="./main.tf")
+        ```
+        ### Uploading a content to a bucket
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_bucket = alicloud.oss.Bucket("defaultBucket",
+            bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
+            acl="private")
+        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
+            bucket=default_bucket.bucket,
+            key="example_key",
+            content="the content that you want to upload.")
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -666,6 +702,42 @@ class BucketObject(pulumi.CustomResource):
         Provides a resource to put a object(content or file) to a oss bucket.
 
         ## Example Usage
+        ### Uploading a file to a bucket
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_bucket = alicloud.oss.Bucket("defaultBucket",
+            bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
+            acl="private")
+        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
+            bucket=default_bucket.bucket,
+            key="example_key",
+            source="./main.tf")
+        ```
+        ### Uploading a content to a bucket
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_bucket = alicloud.oss.Bucket("defaultBucket",
+            bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
+            acl="private")
+        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
+            bucket=default_bucket.bucket,
+            key="example_key",
+            content="the content that you want to upload.")
+        ```
 
         :param str resource_name: The name of the resource.
         :param BucketObjectArgs args: The arguments to use to populate this resource's properties.

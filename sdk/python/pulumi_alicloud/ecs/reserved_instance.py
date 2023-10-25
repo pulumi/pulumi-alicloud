@@ -800,6 +800,24 @@ class ReservedInstance(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.65.0+
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_instance_types = alicloud.ecs.get_instance_types(instance_type_family="ecs.g6")
+        default_reserved_instance = alicloud.ecs.ReservedInstance("defaultReservedInstance",
+            instance_type=default_instance_types.instance_types[0].id,
+            instance_amount=1,
+            period_unit="Month",
+            offering_type="All Upfront",
+            reserved_instance_name="terraform-example",
+            description="ReservedInstance",
+            zone_id=default_instance_types.instance_types[0].availability_zones[0],
+            scope="Zone")
+        ```
+
         ## Import
 
         reservedInstance can be imported using id, e.g.
@@ -841,6 +859,24 @@ class ReservedInstance(pulumi.CustomResource):
         Provides an Reserved Instance resource.
 
         > **NOTE:** Available in 1.65.0+
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_instance_types = alicloud.ecs.get_instance_types(instance_type_family="ecs.g6")
+        default_reserved_instance = alicloud.ecs.ReservedInstance("defaultReservedInstance",
+            instance_type=default_instance_types.instance_types[0].id,
+            instance_amount=1,
+            period_unit="Month",
+            offering_type="All Upfront",
+            reserved_instance_name="terraform-example",
+            description="ReservedInstance",
+            zone_id=default_instance_types.instance_types[0].availability_zones[0],
+            scope="Zone")
+        ```
 
         ## Import
 

@@ -19,6 +19,41 @@ import (
 //
 // > **NOTE:** Available since v1.151.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dns.NewCustomLine(ctx, "default", &dns.CustomLineArgs{
+//				CustomLineName: pulumi.String("tf-example"),
+//				DomainName:     pulumi.String("alicloud-provider.com"),
+//				IpSegmentLists: dns.CustomLineIpSegmentListArray{
+//					&dns.CustomLineIpSegmentListArgs{
+//						EndIp:   pulumi.String("192.0.2.125"),
+//						StartIp: pulumi.String("192.0.2.123"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Alidns Custom Line can be imported using the id, e.g.

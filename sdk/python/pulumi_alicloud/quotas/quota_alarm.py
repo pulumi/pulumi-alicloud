@@ -415,6 +415,30 @@ class QuotaAlarm(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.116.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.quotas.QuotaAlarm("default",
+            quota_action_code="q_desktop-count",
+            quota_dimensions=[alicloud.quotas.QuotaAlarmQuotaDimensionArgs(
+                key="regionId",
+                value="cn-hangzhou",
+            )],
+            threshold_percent=80,
+            product_code="gws",
+            quota_alarm_name=name,
+            threshold_type="used")
+        ```
+
         ## Import
 
         Quotas Quota Alarm can be imported using the id, e.g.
@@ -448,6 +472,30 @@ class QuotaAlarm(pulumi.CustomResource):
         For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createquotaalarm).
 
         > **NOTE:** Available since v1.116.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.quotas.QuotaAlarm("default",
+            quota_action_code="q_desktop-count",
+            quota_dimensions=[alicloud.quotas.QuotaAlarmQuotaDimensionArgs(
+                key="regionId",
+                value="cn-hangzhou",
+            )],
+            threshold_percent=80,
+            product_code="gws",
+            quota_alarm_name=name,
+            threshold_type="used")
+        ```
 
         ## Import
 

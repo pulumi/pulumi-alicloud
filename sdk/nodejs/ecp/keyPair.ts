@@ -11,6 +11,20 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.130.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.ecp.KeyPair("example", {
+ *     keyPairName: "my-KeyPair",
+ *     publicKeyBody: "ssh-rsa AAAAxxxxxxxxxxtyuudsfsg",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Elastic Cloud Phone (ECP) Key Pair can be imported using the id, e.g.

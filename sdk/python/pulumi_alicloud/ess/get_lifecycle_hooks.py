@@ -121,6 +121,17 @@ def get_lifecycle_hooks(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in 1.72.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ds = alicloud.ess.get_lifecycle_hooks(name_regex="lifecyclehook_name",
+        scaling_group_id="scaling_group_id")
+    pulumi.export("firstLifecycleHook", ds.hooks[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of lifecycle hook IDs.
     :param str name_regex: A regex string to filter resulting lifecycle hook by name.
@@ -155,6 +166,17 @@ def get_lifecycle_hooks_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
     This data source provides available lifecycle hook resources.
 
     > **NOTE:** Available in 1.72.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ds = alicloud.ess.get_lifecycle_hooks(name_regex="lifecyclehook_name",
+        scaling_group_id="scaling_group_id")
+    pulumi.export("firstLifecycleHook", ds.hooks[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of lifecycle hook IDs.

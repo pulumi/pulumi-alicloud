@@ -16,6 +16,48 @@ namespace Pulumi.AliCloud.Hbr
     /// 
     /// &gt; **NOTE:** Available in v1.132.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultVault = new AliCloud.Hbr.Vault("defaultVault", new()
+    ///     {
+    ///         VaultName = "terraform-example2",
+    ///     });
+    /// 
+    ///     var defaultFileSystem = new AliCloud.Nas.FileSystem("defaultFileSystem", new()
+    ///     {
+    ///         ProtocolType = "NFS",
+    ///         StorageType = "Performance",
+    ///         Description = "terraform-example",
+    ///         EncryptType = 1,
+    ///     });
+    /// 
+    ///     var defaultNasBackupPlan = new AliCloud.Hbr.NasBackupPlan("defaultNasBackupPlan", new()
+    ///     {
+    ///         NasBackupPlanName = "terraform-example",
+    ///         FileSystemId = defaultFileSystem.Id,
+    ///         Schedule = "I|1602673264|PT2H",
+    ///         BackupType = "COMPLETE",
+    ///         VaultId = defaultVault.Id,
+    ///         Retention = "2",
+    ///         Paths = new[]
+    ///         {
+    ///             "/",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// HBR Nas Backup Plan can be imported using the id, e.g.

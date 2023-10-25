@@ -335,6 +335,32 @@ class Schedule(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.105.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_flow = alicloud.fnf.Flow("exampleFlow",
+            definition=\"\"\"  version: v1beta1
+          type: flow
+          steps:
+            - type: pass
+              name: helloworld
+        \"\"\",
+            description="tf-testaccFnFFlow983041",
+            type="FDL")
+        example_schedule = alicloud.fnf.Schedule("exampleSchedule",
+            cron_expression="30 9 * * * *",
+            description="tf-testaccFnFSchedule983041",
+            enable=True,
+            flow_name=example_flow.name,
+            payload="{\\"tf-test\\": \\"test success\\"}",
+            schedule_name="tf-testaccFnFSchedule983041")
+        ```
+
         ## Import
 
         Serverless Workflow Schedule can be imported using the id, e.g.
@@ -364,6 +390,32 @@ class Schedule(pulumi.CustomResource):
         For information about Serverless Workflow Schedule and how to use it, see [What is Schedule](https://www.alibabacloud.com/help/en/doc-detail/168934.htm).
 
         > **NOTE:** Available in v1.105.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_flow = alicloud.fnf.Flow("exampleFlow",
+            definition=\"\"\"  version: v1beta1
+          type: flow
+          steps:
+            - type: pass
+              name: helloworld
+        \"\"\",
+            description="tf-testaccFnFFlow983041",
+            type="FDL")
+        example_schedule = alicloud.fnf.Schedule("exampleSchedule",
+            cron_expression="30 9 * * * *",
+            description="tf-testaccFnFSchedule983041",
+            enable=True,
+            flow_name=example_flow.name,
+            payload="{\\"tf-test\\": \\"test success\\"}",
+            schedule_name="tf-testaccFnFSchedule983041")
+        ```
 
         ## Import
 

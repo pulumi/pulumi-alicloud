@@ -18,6 +18,81 @@ namespace Pulumi.AliCloud.MongoDB
     /// 
     /// &gt; **NOTE:** This operation supports sharded cluster instances only.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultZones = AliCloud.MongoDB.GetZones.Invoke();
+    /// 
+    ///     var index = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones).Length.Apply(length =&gt; length - 1);
+    /// 
+    ///     var zoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones)[index].Id;
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.17.3.0/24",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "172.17.3.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = zoneId,
+    ///     });
+    /// 
+    ///     var defaultShardingInstance = new AliCloud.MongoDB.ShardingInstance("defaultShardingInstance", new()
+    ///     {
+    ///         ZoneId = zoneId,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         EngineVersion = "4.2",
+    ///         ShardLists = new[]
+    ///         {
+    ///             new AliCloud.MongoDB.Inputs.ShardingInstanceShardListArgs
+    ///             {
+    ///                 NodeClass = "dds.shard.mid",
+    ///                 NodeStorage = 10,
+    ///             },
+    ///             new AliCloud.MongoDB.Inputs.ShardingInstanceShardListArgs
+    ///             {
+    ///                 NodeClass = "dds.shard.standard",
+    ///                 NodeStorage = 20,
+    ///                 ReadonlyReplicas = 1,
+    ///             },
+    ///         },
+    ///         MongoLists = new[]
+    ///         {
+    ///             new AliCloud.MongoDB.Inputs.ShardingInstanceMongoListArgs
+    ///             {
+    ///                 NodeClass = "dds.mongos.mid",
+    ///             },
+    ///             new AliCloud.MongoDB.Inputs.ShardingInstanceMongoListArgs
+    ///             {
+    ///                 NodeClass = "dds.mongos.mid",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var example = new AliCloud.MongoDB.ShardingNetworkPublicAddress("example", new()
+    ///     {
+    ///         DbInstanceId = defaultShardingInstance.Id,
+    ///         NodeId = defaultShardingInstance.MongoLists.Apply(mongoLists =&gt; mongoLists[0].NodeId),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// MongoDB Sharding Network Public Address can be imported using the id, e.g.

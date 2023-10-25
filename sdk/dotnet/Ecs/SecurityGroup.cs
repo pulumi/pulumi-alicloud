@@ -16,6 +16,48 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **NOTE:** From version 1.7.2, `alicloud.ecs.SecurityGroup` has supported to segregate different ECS instance in which the same security group.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new AliCloud.Ecs.SecurityGroup("default", new()
+    ///     {
+    ///         Description = "New security group",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// Basic usage for vpc
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "10.1.0.0/21",
+    ///     });
+    /// 
+    ///     var @group = new AliCloud.Ecs.SecurityGroup("group", new()
+    ///     {
+    ///         VpcId = vpc.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## Module Support
     /// 
     /// You can use the existing security-group module

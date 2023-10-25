@@ -13,6 +13,28 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const exampleNamespace = new alicloud.cr.Namespace("exampleNamespace", {
+ *     autoCreate: false,
+ *     defaultVisibility: "PUBLIC",
+ * });
+ * const exampleRepo = new alicloud.cr.Repo("exampleRepo", {
+ *     namespace: exampleNamespace.name,
+ *     summary: "this is summary of my new repo",
+ *     repoType: "PUBLIC",
+ *     detail: "this is a public repo",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Container Registry repository can be imported using the `namespace/repository`, e.g.

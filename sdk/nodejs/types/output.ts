@@ -4087,6 +4087,16 @@ export namespace bastionhost {
         securityGroupIds: string[];
         /**
          * A map of tags assigned to the bastionhost instance. It must be in the format:
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * import * as alicloud from "@pulumi/alicloud";
+         *
+         * const instance = alicloud.bastionhost.getInstances({
+         *     tags: {
+         *         tagKey1: "tagValue1",
+         *     },
+         * });
+         * ```
          */
         tags?: {[key: string]: any};
         /**
@@ -12739,6 +12749,9 @@ export namespace cs {
          * Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
          *
          * for example:
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         weeklyPeriod: string;
     }
@@ -12778,6 +12791,24 @@ export namespace cs {
          * The taint effect.
          *
          * The following example is the definition of taints block:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * import * as alicloud from "@pulumi/alicloud";
+         *
+         * const k8s = new alicloud.cs.ManagedKubernetes("k8s", {taints: [
+         *     {
+         *         effect: "NoSchedule",
+         *         key: "key-a",
+         *         value: "value-a",
+         *     },
+         *     {
+         *         effect: "NoSchedule",
+         *         key: "key-b",
+         *         value: "value-b",
+         *     },
+         * ]});
+         * ```
          */
         effect?: string;
         /**
@@ -19383,6 +19414,17 @@ export namespace ecs {
         status: string;
         /**
          * A map of tags assigned to the disks. It must be in the format:
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * import * as alicloud from "@pulumi/alicloud";
+         *
+         * const disksDs = alicloud.ecs.getDisks({
+         *     tags: {
+         *         tagKey1: "tagValue1",
+         *         tagKey2: "tagValue2",
+         *     },
+         * });
+         * ```
          */
         tags: {[key: string]: any};
         /**
@@ -21345,6 +21387,17 @@ export namespace ecs {
         status: string;
         /**
          * A map of tags assigned to the ECS instances. It must be in the format:
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * import * as alicloud from "@pulumi/alicloud";
+         *
+         * const taggedInstances = alicloud.ecs.getInstances({
+         *     tags: {
+         *         tagKey1: "tagValue1",
+         *         tagKey2: "tagValue2",
+         *     },
+         * });
+         * ```
          */
         tags?: {[key: string]: any};
         /**
@@ -21677,6 +21730,17 @@ export namespace ecs {
         securityGroupType: string;
         /**
          * A map of tags assigned to the ECS instances. It must be in the format:
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * import * as alicloud from "@pulumi/alicloud";
+         *
+         * const taggedSecurityGroups = alicloud.ecs.getSecurityGroups({
+         *     tags: {
+         *         tagKey1: "tagValue1",
+         *         tagKey2: "tagValue2",
+         *     },
+         * });
+         * ```
          */
         tags?: {[key: string]: any};
         /**
@@ -26243,6 +26307,9 @@ export namespace eventbridge {
          *
          * > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
          *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          *
          * In order to fix the diff, from version 1.160.0,
          * this resource has removed the param which `resourceKey = "IsBase64Encode"` and `value = "false"`.
@@ -31861,6 +31928,9 @@ export namespace log {
         encryptType?: string;
         /**
          * User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `userCmkInfo` below.
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         userCmkInfo?: outputs.log.StoreEncryptConfUserCmkInfo;
     }
@@ -35768,6 +35838,17 @@ export namespace oss {
         status: string;
         /**
          * A map of tags assigned to the instance. It must be in the format:
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * import * as alicloud from "@pulumi/alicloud";
+         *
+         * const instancesDs = alicloud.ots.getInstances({
+         *     tags: {
+         *         tagKey1: "tagValue1",
+         *         tagKey2: "tagValue2",
+         *     },
+         * });
+         * ```
          */
         tags: {[key: string]: any};
         /**
@@ -35891,6 +35972,17 @@ export namespace ots {
         status: string;
         /**
          * A map of tags assigned to the instance. It must be in the format:
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * import * as alicloud from "@pulumi/alicloud";
+         *
+         * const instancesDs = alicloud.ots.getInstances({
+         *     tags: {
+         *         tagKey1: "tagValue1",
+         *         tagKey2: "tagValue2",
+         *     },
+         * });
+         * ```
          */
         tags: {[key: string]: any};
         /**
@@ -43764,6 +43856,17 @@ export namespace slb {
         status: string;
         /**
          * A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * import * as alicloud from "@pulumi/alicloud";
+         *
+         * const taggedInstances = alicloud.slb.getLoadBalancers({
+         *     tags: {
+         *         tagKey1: "tagValue1",
+         *         tagKey2: "tagValue2",
+         *     },
+         * });
+         * ```
          */
         tags: {[key: string]: any};
         /**
@@ -43839,6 +43942,17 @@ export namespace slb {
         status: string;
         /**
          * A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * import * as alicloud from "@pulumi/alicloud";
+         *
+         * const taggedInstances = alicloud.slb.getLoadBalancers({
+         *     tags: {
+         *         tagKey1: "tagValue1",
+         *         tagKey2: "tagValue2",
+         *     },
+         * });
+         * ```
          */
         tags: {[key: string]: any};
         /**

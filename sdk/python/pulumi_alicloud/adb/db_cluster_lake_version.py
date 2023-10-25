@@ -900,6 +900,29 @@ class DBClusterLakeVersion(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.190.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_zones = alicloud.adb.get_zones()
+        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+            zone_id=default_zones.ids[0])
+        default_db_cluster_lake_version = alicloud.adb.DBClusterLakeVersion("defaultDBClusterLakeVersion",
+            db_cluster_version="5.0",
+            vpc_id=default_networks.ids[0],
+            vswitch_id=default_switches.ids[0],
+            zone_id=default_zones.ids[0],
+            compute_resource="16ACU",
+            storage_resource="0ACU",
+            payment_type="PayAsYouGo",
+            enable_default_resource_group=False)
+        ```
+
         ## Import
 
         AnalyticDB for MySQL (ADB) DB Cluster Lake Version can be imported using the id, e.g.
@@ -940,6 +963,29 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         For information about AnalyticDB for MySQL (ADB) DB Cluster Lake Version and how to use it, see [What is DB Cluster Lake Version](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-createdbcluster).
 
         > **NOTE:** Available since v1.190.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_zones = alicloud.adb.get_zones()
+        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+            zone_id=default_zones.ids[0])
+        default_db_cluster_lake_version = alicloud.adb.DBClusterLakeVersion("defaultDBClusterLakeVersion",
+            db_cluster_version="5.0",
+            vpc_id=default_networks.ids[0],
+            vswitch_id=default_switches.ids[0],
+            zone_id=default_zones.ids[0],
+            compute_resource="16ACU",
+            storage_resource="0ACU",
+            payment_type="PayAsYouGo",
+            enable_default_resource_group=False)
+        ```
 
         ## Import
 

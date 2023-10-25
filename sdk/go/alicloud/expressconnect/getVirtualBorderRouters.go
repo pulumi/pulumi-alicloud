@@ -15,6 +15,61 @@ import (
 // This data source provides the Express Connect Virtual Border Routers of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.134.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := expressconnect.GetVirtualBorderRouters(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("expressConnectVirtualBorderRouterId1", ids.Routers[0].Id)
+//			nameRegex, err := expressconnect.GetVirtualBorderRouters(ctx, &expressconnect.GetVirtualBorderRoutersArgs{
+//				NameRegex: pulumi.StringRef("^my-VirtualBorderRouter"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("expressConnectVirtualBorderRouterId2", nameRegex.Routers[0].Id)
+//			filter, err := expressconnect.GetVirtualBorderRouters(ctx, &expressconnect.GetVirtualBorderRoutersArgs{
+//				Filters: []expressconnect.GetVirtualBorderRoutersFilter{
+//					{
+//						Key: pulumi.StringRef("PhysicalConnectionId"),
+//						Values: []string{
+//							"pc-xxxx1",
+//						},
+//					},
+//					{
+//						Key: pulumi.StringRef("VbrId"),
+//						Values: []string{
+//							"vbr-xxxx1",
+//							"vbr-xxxx2",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("expressConnectVirtualBorderRouterId3", filter.Routers[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetVirtualBorderRouters(ctx *pulumi.Context, args *GetVirtualBorderRoutersArgs, opts ...pulumi.InvokeOption) (*GetVirtualBorderRoutersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVirtualBorderRoutersResult

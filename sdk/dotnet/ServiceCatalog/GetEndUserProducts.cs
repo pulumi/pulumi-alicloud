@@ -15,6 +15,32 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// This data source provides Service Catalog End User Product available to the user.[What is End User Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-servicecatalog-2021-09-01-listproductsasenduser)
         /// 
         /// &gt; **NOTE:** Available since v1.197.0.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.ServiceCatalog.GetEndUserProducts.Invoke(new()
+        ///     {
+        ///         NameRegex = "ram模板创建",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudServiceCatalogEndUserProductExampleId"] = @default.Apply(@default =&gt; @default.Apply(getEndUserProductsResult =&gt; getEndUserProductsResult.EndUserProducts[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetEndUserProductsResult> InvokeAsync(GetEndUserProductsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEndUserProductsResult>("alicloud:servicecatalog/getEndUserProducts:getEndUserProducts", args ?? new GetEndUserProductsArgs(), options.WithDefaults());
@@ -23,6 +49,32 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// This data source provides Service Catalog End User Product available to the user.[What is End User Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-servicecatalog-2021-09-01-listproductsasenduser)
         /// 
         /// &gt; **NOTE:** Available since v1.197.0.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.ServiceCatalog.GetEndUserProducts.Invoke(new()
+        ///     {
+        ///         NameRegex = "ram模板创建",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudServiceCatalogEndUserProductExampleId"] = @default.Apply(@default =&gt; @default.Apply(getEndUserProductsResult =&gt; getEndUserProductsResult.EndUserProducts[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetEndUserProductsResult> Invoke(GetEndUserProductsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEndUserProductsResult>("alicloud:servicecatalog/getEndUserProducts:getEndUserProducts", args ?? new GetEndUserProductsInvokeArgs(), options.WithDefaults());

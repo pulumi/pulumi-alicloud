@@ -158,6 +158,24 @@ class Ipv4CidrBlock(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.185.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        defaultvpc = alicloud.vpc.Network("defaultvpc", description=name)
+        default = alicloud.vpc.Ipv4CidrBlock("default",
+            secondary_cidr_block="192.168.0.0/16",
+            vpc_id=defaultvpc.id)
+        ```
+
         ## Import
 
         VPC Ipv4 Cidr Block can be imported using the id, e.g.
@@ -187,6 +205,24 @@ class Ipv4CidrBlock(pulumi.CustomResource):
         For information about VPC Ipv4 Cidr Block and how to use it, see [What is Ipv4 Cidr Block](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/associatevpccidrblock).
 
         > **NOTE:** Available since v1.185.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        defaultvpc = alicloud.vpc.Network("defaultvpc", description=name)
+        default = alicloud.vpc.Ipv4CidrBlock("default",
+            secondary_cidr_block="192.168.0.0/16",
+            vpc_id=defaultvpc.id)
+        ```
 
         ## Import
 

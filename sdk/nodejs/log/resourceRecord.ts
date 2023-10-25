@@ -11,6 +11,22 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in 1.162.0+, log resource region should be set a main region: cn-heyuan
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.log.ResourceRecord("example", {
+ *     recordId: "user_tf_test_resource_1",
+ *     resourceName: "user.tf.test_resource",
+ *     tag: "test resource tag",
+ *     value: "{\"col1\": \"this is col1 value\", \"col2\": \"col2 value\"}",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Log resource record can be imported using the id, e.g.

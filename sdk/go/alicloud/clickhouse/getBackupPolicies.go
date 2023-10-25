@@ -15,6 +15,35 @@ import (
 // This data source provides the Click House Backup Policies of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.147.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/clickhouse"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := clickhouse.GetBackupPolicies(ctx, &clickhouse.GetBackupPoliciesArgs{
+//				DbClusterId: "example_value",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("clickHouseBackupPolicyId1", example.Policies[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetBackupPolicies(ctx *pulumi.Context, args *GetBackupPoliciesArgs, opts ...pulumi.InvokeOption) (*GetBackupPoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBackupPoliciesResult

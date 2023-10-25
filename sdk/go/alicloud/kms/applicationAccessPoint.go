@@ -19,6 +19,46 @@ import (
 //
 // > **NOTE:** Available since v1.210.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := kms.NewApplicationAccessPoint(ctx, "default", &kms.ApplicationAccessPointArgs{
+//				Description:                pulumi.String("example aap"),
+//				ApplicationAccessPointName: pulumi.String(name),
+//				Policies: pulumi.StringArray{
+//					pulumi.String("abc"),
+//					pulumi.String("efg"),
+//					pulumi.String("hfc"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // KMS Application Access Point can be imported using the id, e.g.

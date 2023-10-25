@@ -12,6 +12,48 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in 1.121.0+
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const exampleProject = new alicloud.log.Project("exampleProject", {
+ *     description: "terraform-example",
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
+ * });
+ * const exampleStore = new alicloud.log.Store("exampleStore", {
+ *     project: exampleProject.name,
+ *     retentionPeriod: 3650,
+ *     autoSplit: true,
+ *     maxSplitShardCount: 60,
+ *     appendMeta: true,
+ * });
+ * const exampleOssShipper = new alicloud.log.OssShipper("exampleOssShipper", {
+ *     projectName: exampleProject.name,
+ *     logstoreName: exampleStore.name,
+ *     shipperName: "terraform-example",
+ *     ossBucket: "example_bucket",
+ *     ossPrefix: "root",
+ *     bufferInterval: 300,
+ *     bufferSize: 250,
+ *     compressType: "none",
+ *     pathFormat: "%Y/%m/%d/%H/%M",
+ *     format: "json",
+ *     jsonEnableTag: true,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Log oss shipper can be imported using the id or name, e.g.

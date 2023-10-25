@@ -11,6 +11,27 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.173.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultRegions = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultNamespace = new alicloud.edas.Namespace("defaultNamespace", {
+ *     debugEnable: false,
+ *     description: name,
+ *     namespaceLogicalId: defaultRegions.then(defaultRegions => `${defaultRegions.regions?.[0]?.id}:example`),
+ *     namespaceName: name,
+ * });
+ * ```
+ *
  * ## Import
  *
  * EDAS Namespace can be imported using the id, e.g.

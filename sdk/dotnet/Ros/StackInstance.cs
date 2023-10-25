@@ -16,6 +16,59 @@ namespace Pulumi.AliCloud.Ros
     /// 
     /// &gt; **NOTE:** Available in v1.145.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleRegions = AliCloud.Ros.GetRegions.Invoke();
+    /// 
+    ///     var exampleStackGroup = new AliCloud.Ros.StackGroup("exampleStackGroup", new()
+    ///     {
+    ///         StackGroupName = @var.Name,
+    ///         TemplateBody = "{\"ROSTemplateFormatVersion\":\"2015-09-01\", \"Parameters\": {\"VpcName\": {\"Type\": \"String\"},\"InstanceType\": {\"Type\": \"String\"}}}",
+    ///         Description = "test for stack groups",
+    ///         Parameters = new[]
+    ///         {
+    ///             new AliCloud.Ros.Inputs.StackGroupParameterArgs
+    ///             {
+    ///                 ParameterKey = "VpcName",
+    ///                 ParameterValue = "VpcName",
+    ///             },
+    ///             new AliCloud.Ros.Inputs.StackGroupParameterArgs
+    ///             {
+    ///                 ParameterKey = "InstanceType",
+    ///                 ParameterValue = "InstanceType",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleStackInstance = new AliCloud.Ros.StackInstance("exampleStackInstance", new()
+    ///     {
+    ///         StackGroupName = exampleStackGroup.StackGroupName,
+    ///         StackInstanceAccountId = "example_value",
+    ///         StackInstanceRegionId = exampleRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.RegionId),
+    ///         OperationPreferences = "{\"FailureToleranceCount\": 1, \"MaxConcurrentCount\": 2}",
+    ///         ParameterOverrides = new[]
+    ///         {
+    ///             new AliCloud.Ros.Inputs.StackInstanceParameterOverrideArgs
+    ///             {
+    ///                 ParameterValue = "VpcName",
+    ///                 ParameterKey = "VpcName",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ROS Stack Instance can be imported using the id, e.g.

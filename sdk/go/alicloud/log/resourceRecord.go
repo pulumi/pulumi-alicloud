@@ -19,6 +19,37 @@ import (
 //
 // > **NOTE:** Available in 1.162.0+, log resource region should be set a main region: cn-heyuan
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := log.NewResourceRecord(ctx, "example", &log.ResourceRecordArgs{
+//				RecordId:     pulumi.String("user_tf_test_resource_1"),
+//				ResourceName: pulumi.String("user.tf.test_resource"),
+//				Tag:          pulumi.String("test resource tag"),
+//				Value:        pulumi.String("{\"col1\": \"this is col1 value\", \"col2\": \"col2 value\"}"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Log resource record can be imported using the id, e.g.

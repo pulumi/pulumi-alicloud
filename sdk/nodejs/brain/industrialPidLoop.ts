@@ -9,6 +9,24 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.117.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.brain.IndustrialPidLoop("example", {
+ *     pidLoopConfiguration: "YourLoopConfiguration",
+ *     pidLoopDcsType: "standard",
+ *     pidLoopIsCrucial: true,
+ *     pidLoopName: "tf-testAcc",
+ *     pidLoopType: "0",
+ *     pidProjectId: "856c6b8f-ca63-40a4-xxxx-xxxx",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Brain Industrial Pid Loop can be imported using the id, e.g.

@@ -139,6 +139,24 @@ def get_metric_rule_templates(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.134.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cms.get_metric_rule_templates(ids=["example_value"])
+    pulumi.export("cmsMetricRuleTemplateId1", ids.templates[0].id)
+    name_regex = alicloud.cms.get_metric_rule_templates(name_regex="^my-MetricRuleTemplate")
+    pulumi.export("cmsMetricRuleTemplateId2", name_regex.templates[0].id)
+    keyword = alicloud.cms.get_metric_rule_templates(keyword="^my-MetricRuleTemplate")
+    pulumi.export("cmsMetricRuleTemplateId3", name_regex.templates[0].id)
+    template_id = alicloud.cms.get_metric_rule_templates(template_id="example_value")
+    pulumi.export("cmsMetricRuleTemplateId4", name_regex.templates[0].id)
+    ```
+
 
     :param bool enable_details: Valid values: `true` or `false`. Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Metric Rule Template IDs.
@@ -185,6 +203,24 @@ def get_metric_rule_templates_output(enable_details: Optional[pulumi.Input[Optio
     This data source provides the Cms Metric Rule Templates of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.134.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cms.get_metric_rule_templates(ids=["example_value"])
+    pulumi.export("cmsMetricRuleTemplateId1", ids.templates[0].id)
+    name_regex = alicloud.cms.get_metric_rule_templates(name_regex="^my-MetricRuleTemplate")
+    pulumi.export("cmsMetricRuleTemplateId2", name_regex.templates[0].id)
+    keyword = alicloud.cms.get_metric_rule_templates(keyword="^my-MetricRuleTemplate")
+    pulumi.export("cmsMetricRuleTemplateId3", name_regex.templates[0].id)
+    template_id = alicloud.cms.get_metric_rule_templates(template_id="example_value")
+    pulumi.export("cmsMetricRuleTemplateId4", name_regex.templates[0].id)
+    ```
 
 
     :param bool enable_details: Valid values: `true` or `false`. Default to `false`. Set it to `true` can output more details about resource attributes.

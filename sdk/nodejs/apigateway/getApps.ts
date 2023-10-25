@@ -8,6 +8,18 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides the apps of the current Alibaba Cloud user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const dataApigatway = alicloud.apigateway.getApps({
+ *     outputFile: "outapps",
+ * });
+ * export const firstAppId = dataApigatway.then(dataApigatway => dataApigatway.apps?.[0]?.id);
+ * ```
  */
 export function getApps(args?: GetAppsArgs, opts?: pulumi.InvokeOptions): Promise<GetAppsResult> {
     args = args || {};
@@ -69,6 +81,18 @@ export interface GetAppsResult {
 }
 /**
  * This data source provides the apps of the current Alibaba Cloud user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const dataApigatway = alicloud.apigateway.getApps({
+ *     outputFile: "outapps",
+ * });
+ * export const firstAppId = dataApigatway.then(dataApigatway => dataApigatway.apps?.[0]?.id);
+ * ```
  */
 export function getAppsOutput(args?: GetAppsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppsResult> {
     return pulumi.output(args).apply((a: any) => getApps(a, opts))

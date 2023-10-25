@@ -11,6 +11,40 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.195.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultInstanceTypes = alicloud.ecs.getInstanceTypes({
+ *     instanceTypeFamily: "ecs.g5",
+ * });
+ * const defaultZones = defaultInstanceTypes.then(defaultInstanceTypes => alicloud.getZones({
+ *     availableResourceCreation: "Instance",
+ *     availableInstanceType: defaultInstanceTypes.ids?.[0],
+ * }));
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
+ *     status: "OK",
+ * });
+ * const defaultCapacityReservation = new alicloud.ecs.CapacityReservation("defaultCapacityReservation", {
+ *     description: "terraform-example",
+ *     platform: "linux",
+ *     capacityReservationName: "terraform-example",
+ *     endTimeType: "Unlimited",
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
+ *     instanceAmount: 1,
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.ids?.[0]),
+ *     matchCriteria: "Open",
+ *     tags: {
+ *         Created: "terraform-example",
+ *     },
+ *     zoneIds: [defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id)],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Ecs Capacity Reservation can be imported using the id, e.g.

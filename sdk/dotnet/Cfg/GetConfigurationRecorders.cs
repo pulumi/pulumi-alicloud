@@ -17,6 +17,29 @@ namespace Pulumi.AliCloud.Cfg
         /// &gt; **NOTE:**  Available in 1.99.0+.
         /// 
         /// &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Cfg.GetConfigurationRecorders.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["listOfResourceTypes"] = data.Alicloud_config_configuration_recorders.This.Recorders[0].Resource_types,
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetConfigurationRecordersResult> InvokeAsync(GetConfigurationRecordersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConfigurationRecordersResult>("alicloud:cfg/getConfigurationRecorders:getConfigurationRecorders", args ?? new GetConfigurationRecordersArgs(), options.WithDefaults());
@@ -27,6 +50,29 @@ namespace Pulumi.AliCloud.Cfg
         /// &gt; **NOTE:**  Available in 1.99.0+.
         /// 
         /// &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Cfg.GetConfigurationRecorders.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["listOfResourceTypes"] = data.Alicloud_config_configuration_recorders.This.Recorders[0].Resource_types,
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetConfigurationRecordersResult> Invoke(GetConfigurationRecordersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConfigurationRecordersResult>("alicloud:cfg/getConfigurationRecorders:getConfigurationRecorders", args ?? new GetConfigurationRecordersInvokeArgs(), options.WithDefaults());

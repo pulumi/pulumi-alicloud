@@ -8,6 +8,24 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const secGroupsDs = alicloud.ecs.getSecurityGroups({
+ *     nameRegex: "^web-",
+ *     outputFile: "web_access.json",
+ * });
+ * // In conjunction with a VPC
+ * const primaryVpcDs = new alicloud.vpc.Network("primaryVpcDs", {});
+ * const primarySecGroupsDs = alicloud.ecs.getSecurityGroupsOutput({
+ *     vpcId: primaryVpcDs.id,
+ * });
+ * export const firstGroupId = primarySecGroupsDs.apply(primarySecGroupsDs => primarySecGroupsDs.groups?.[0]?.id);
+ * ```
  */
 export function getSecurityGroups(args?: GetSecurityGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityGroupsResult> {
     args = args || {};
@@ -51,6 +69,17 @@ export interface GetSecurityGroupsArgs {
     resourceGroupId?: string;
     /**
      * A map of tags assigned to the ECS instances. It must be in the format:
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as alicloud from "@pulumi/alicloud";
+     *
+     * const taggedSecurityGroups = alicloud.ecs.getSecurityGroups({
+     *     tags: {
+     *         tagKey1: "tagValue1",
+     *         tagKey2: "tagValue2",
+     *     },
+     * });
+     * ```
      */
     tags?: {[key: string]: any};
     /**
@@ -100,6 +129,24 @@ export interface GetSecurityGroupsResult {
 }
 /**
  * This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const secGroupsDs = alicloud.ecs.getSecurityGroups({
+ *     nameRegex: "^web-",
+ *     outputFile: "web_access.json",
+ * });
+ * // In conjunction with a VPC
+ * const primaryVpcDs = new alicloud.vpc.Network("primaryVpcDs", {});
+ * const primarySecGroupsDs = alicloud.ecs.getSecurityGroupsOutput({
+ *     vpcId: primaryVpcDs.id,
+ * });
+ * export const firstGroupId = primarySecGroupsDs.apply(primarySecGroupsDs => primarySecGroupsDs.groups?.[0]?.id);
+ * ```
  */
 export function getSecurityGroupsOutput(args?: GetSecurityGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecurityGroupsResult> {
     return pulumi.output(args).apply((a: any) => getSecurityGroups(a, opts))
@@ -130,6 +177,17 @@ export interface GetSecurityGroupsOutputArgs {
     resourceGroupId?: pulumi.Input<string>;
     /**
      * A map of tags assigned to the ECS instances. It must be in the format:
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as alicloud from "@pulumi/alicloud";
+     *
+     * const taggedSecurityGroups = alicloud.ecs.getSecurityGroups({
+     *     tags: {
+     *         tagKey1: "tagValue1",
+     *         tagKey2: "tagValue2",
+     *     },
+     * });
+     * ```
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**

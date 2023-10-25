@@ -13,6 +13,33 @@ import (
 )
 
 // This data source provides the Function Compute services of the current Alibaba Cloud user.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			fcServicesDs, err := fc.GetServices(ctx, &fc.GetServicesArgs{
+//				NameRegex: pulumi.StringRef("sample_fc_service"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstFcServiceName", fcServicesDs.Services[0].Name)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetServices(ctx *pulumi.Context, args *GetServicesArgs, opts ...pulumi.InvokeOption) (*GetServicesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServicesResult

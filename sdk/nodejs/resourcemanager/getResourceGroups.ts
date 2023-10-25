@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * This data source provides resource groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available since v1.84.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.resourcemanager.getResourceGroups({
+ *     nameRegex: "tf",
+ * });
+ * export const firstResourceGroupId = example.then(example => example.groups?.[0]?.id);
+ * ```
  */
 export function getResourceGroups(args?: GetResourceGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceGroupsResult> {
     args = args || {};
@@ -82,6 +96,20 @@ export interface GetResourceGroupsResult {
  * This data source provides resource groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available since v1.84.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.resourcemanager.getResourceGroups({
+ *     nameRegex: "tf",
+ * });
+ * export const firstResourceGroupId = example.then(example => example.groups?.[0]?.id);
+ * ```
  */
 export function getResourceGroupsOutput(args?: GetResourceGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceGroupsResult> {
     return pulumi.output(args).apply((a: any) => getResourceGroups(a, opts))

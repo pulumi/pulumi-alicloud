@@ -564,6 +564,64 @@ class Connection(pulumi.CustomResource):
                  vpn_gateway_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        foo_network = alicloud.vpc.Network("fooNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/12")
+        foo_switch = alicloud.vpc.Switch("fooSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.16.0.0/21",
+            vpc_id=foo_network.id,
+            zone_id=foo_zones.zones[0].id)
+        foo_gateway = alicloud.vpn.Gateway("fooGateway",
+            vpc_id=foo_network.id,
+            bandwidth=10,
+            enable_ssl=True,
+            instance_charge_type="PrePaid",
+            description="test_create_description",
+            vswitch_id=foo_switch.id)
+        foo_customer_gateway = alicloud.vpn.CustomerGateway("fooCustomerGateway",
+            ip_address="42.104.22.210",
+            description="terraform-example")
+        foo_connection = alicloud.vpn.Connection("fooConnection",
+            vpn_gateway_id=foo_gateway.id,
+            customer_gateway_id=foo_customer_gateway.id,
+            local_subnets=[
+                "172.16.0.0/24",
+                "172.16.1.0/24",
+            ],
+            remote_subnets=[
+                "10.0.0.0/24",
+                "10.0.1.0/24",
+            ],
+            effect_immediately=True,
+            ike_config=alicloud.vpn.ConnectionIkeConfigArgs(
+                ike_auth_alg="md5",
+                ike_enc_alg="des",
+                ike_version="ikev2",
+                ike_mode="main",
+                ike_lifetime=86400,
+                psk="tf-testvpn2",
+                ike_pfs="group1",
+                ike_remote_id="testbob2",
+                ike_local_id="testalice2",
+            ),
+            ipsec_config=alicloud.vpn.ConnectionIpsecConfigArgs(
+                ipsec_pfs="group5",
+                ipsec_enc_alg="des",
+                ipsec_auth_alg="md5",
+                ipsec_lifetime=8640,
+            ))
+        ```
+
         ## Import
 
         VPN connection can be imported using the id, e.g.
@@ -594,6 +652,64 @@ class Connection(pulumi.CustomResource):
                  args: ConnectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        foo_network = alicloud.vpc.Network("fooNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/12")
+        foo_switch = alicloud.vpc.Switch("fooSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.16.0.0/21",
+            vpc_id=foo_network.id,
+            zone_id=foo_zones.zones[0].id)
+        foo_gateway = alicloud.vpn.Gateway("fooGateway",
+            vpc_id=foo_network.id,
+            bandwidth=10,
+            enable_ssl=True,
+            instance_charge_type="PrePaid",
+            description="test_create_description",
+            vswitch_id=foo_switch.id)
+        foo_customer_gateway = alicloud.vpn.CustomerGateway("fooCustomerGateway",
+            ip_address="42.104.22.210",
+            description="terraform-example")
+        foo_connection = alicloud.vpn.Connection("fooConnection",
+            vpn_gateway_id=foo_gateway.id,
+            customer_gateway_id=foo_customer_gateway.id,
+            local_subnets=[
+                "172.16.0.0/24",
+                "172.16.1.0/24",
+            ],
+            remote_subnets=[
+                "10.0.0.0/24",
+                "10.0.1.0/24",
+            ],
+            effect_immediately=True,
+            ike_config=alicloud.vpn.ConnectionIkeConfigArgs(
+                ike_auth_alg="md5",
+                ike_enc_alg="des",
+                ike_version="ikev2",
+                ike_mode="main",
+                ike_lifetime=86400,
+                psk="tf-testvpn2",
+                ike_pfs="group1",
+                ike_remote_id="testbob2",
+                ike_local_id="testalice2",
+            ),
+            ipsec_config=alicloud.vpn.ConnectionIpsecConfigArgs(
+                ipsec_pfs="group5",
+                ipsec_enc_alg="des",
+                ipsec_auth_alg="md5",
+                ipsec_lifetime=8640,
+            ))
+        ```
+
         ## Import
 
         VPN connection can be imported using the id, e.g.

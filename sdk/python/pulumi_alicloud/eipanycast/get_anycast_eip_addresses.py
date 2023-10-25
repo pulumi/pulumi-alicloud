@@ -179,6 +179,19 @@ def get_anycast_eip_addresses(anycast_eip_address_name: Optional[str] = None,
 
     > **NOTE:** Available in v1.113.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.eipanycast.get_anycast_eip_addresses(ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstEipanycastAnycastEipAddressId", example.addresses[0].id)
+    ```
+
 
     :param str anycast_eip_address_name: Anycast EIP instance name.
     :param Sequence[str] bind_instance_ids: The bind instance ids.
@@ -241,6 +254,19 @@ def get_anycast_eip_addresses_output(anycast_eip_address_name: Optional[pulumi.I
     This data source provides the Eipanycast Anycast Eip Addresses of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.113.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.eipanycast.get_anycast_eip_addresses(ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstEipanycastAnycastEipAddressId", example.addresses[0].id)
+    ```
 
 
     :param str anycast_eip_address_name: Anycast EIP instance name.

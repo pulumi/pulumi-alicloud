@@ -333,6 +333,45 @@ class Remediation(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.204.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example-oss"
+        default_regions = alicloud.get_regions(current=True)
+        default_bucket = alicloud.oss.Bucket("defaultBucket",
+            bucket=name,
+            acl="public-read",
+            tags={
+                "For": "example",
+            })
+        default_rule = alicloud.cfg.Rule("defaultRule",
+            description="If the ACL policy of the OSS bucket denies read access from the Internet, the configuration is considered compliant.",
+            source_owner="ALIYUN",
+            source_identifier="oss-bucket-public-read-prohibited",
+            risk_level=1,
+            tag_key_scope="For",
+            tag_value_scope="example",
+            region_ids_scope=default_regions.regions[0].id,
+            config_rule_trigger_types="ConfigurationItemChangeNotification",
+            resource_types_scopes=["ACS::OSS::Bucket"],
+            rule_name="oss-bucket-public-read-prohibited")
+        default_remediation = alicloud.cfg.Remediation("defaultRemediation",
+            config_rule_id=default_rule.config_rule_id,
+            remediation_template_id="ACS-OSS-PutBucketAcl",
+            remediation_source_type="ALIYUN",
+            invoke_type="MANUAL_EXECUTION",
+            params=default_bucket.bucket.apply(lambda bucket: f"{{\\"bucketName\\": \\"{bucket}\\", \\"regionId\\": \\"{default_regions.regions[0].id}\\", \\"permissionName\\": \\"private\\"}}"),
+            remediation_type="OOS")
+        ```
+
         ## Import
 
         Config Remediation can be imported using the id, e.g.
@@ -364,6 +403,45 @@ class Remediation(pulumi.CustomResource):
         For information about Config Remediation and how to use it, see [What is Remediation](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createremediation).
 
         > **NOTE:** Available since v1.204.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example-oss"
+        default_regions = alicloud.get_regions(current=True)
+        default_bucket = alicloud.oss.Bucket("defaultBucket",
+            bucket=name,
+            acl="public-read",
+            tags={
+                "For": "example",
+            })
+        default_rule = alicloud.cfg.Rule("defaultRule",
+            description="If the ACL policy of the OSS bucket denies read access from the Internet, the configuration is considered compliant.",
+            source_owner="ALIYUN",
+            source_identifier="oss-bucket-public-read-prohibited",
+            risk_level=1,
+            tag_key_scope="For",
+            tag_value_scope="example",
+            region_ids_scope=default_regions.regions[0].id,
+            config_rule_trigger_types="ConfigurationItemChangeNotification",
+            resource_types_scopes=["ACS::OSS::Bucket"],
+            rule_name="oss-bucket-public-read-prohibited")
+        default_remediation = alicloud.cfg.Remediation("defaultRemediation",
+            config_rule_id=default_rule.config_rule_id,
+            remediation_template_id="ACS-OSS-PutBucketAcl",
+            remediation_source_type="ALIYUN",
+            invoke_type="MANUAL_EXECUTION",
+            params=default_bucket.bucket.apply(lambda bucket: f"{{\\"bucketName\\": \\"{bucket}\\", \\"regionId\\": \\"{default_regions.regions[0].id}\\", \\"permissionName\\": \\"private\\"}}"),
+            remediation_type="OOS")
+        ```
 
         ## Import
 

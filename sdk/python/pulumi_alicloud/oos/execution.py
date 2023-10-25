@@ -648,6 +648,48 @@ class Execution(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.93.0+.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.oos.Template("default",
+            content=\"\"\"  {
+            "FormatVersion": "OOS-2019-06-01",
+            "Description": "Update Describe instances of given status",
+            "Parameters":{
+              "Status":{
+                "Type": "String",
+                "Description": "(Required) The status of the Ecs instance."
+              }
+            },
+            "Tasks": [
+              {
+                "Properties" :{
+                  "Parameters":{
+                    "Status": "{{ Status }}"
+                  },
+                  "API": "DescribeInstances",
+                  "Service": "Ecs"
+                },
+                "Name": "foo",
+                "Action": "ACS::ExecuteApi"
+              }]
+          }
+        \"\"\",
+            template_name="test-name",
+            version_name="test",
+            tags={
+                "Created": "TF",
+                "For": "acceptance Test",
+            })
+        example = alicloud.oos.Execution("example",
+            template_name=default.template_name,
+            description="From TF Test",
+            parameters="				{\\"Status\\":\\"Running\\"}\\n")
+        ```
+
         ## Import
 
         OOS Execution can be imported using the id, e.g.
@@ -678,6 +720,48 @@ class Execution(pulumi.CustomResource):
         Provides a OOS Execution resource. For information about Alicloud OOS Execution and how to use it, see [What is Resource Alicloud OOS Execution](https://www.alibabacloud.com/help/doc-detail/120771.htm).
 
         > **NOTE:** Available in 1.93.0+.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.oos.Template("default",
+            content=\"\"\"  {
+            "FormatVersion": "OOS-2019-06-01",
+            "Description": "Update Describe instances of given status",
+            "Parameters":{
+              "Status":{
+                "Type": "String",
+                "Description": "(Required) The status of the Ecs instance."
+              }
+            },
+            "Tasks": [
+              {
+                "Properties" :{
+                  "Parameters":{
+                    "Status": "{{ Status }}"
+                  },
+                  "API": "DescribeInstances",
+                  "Service": "Ecs"
+                },
+                "Name": "foo",
+                "Action": "ACS::ExecuteApi"
+              }]
+          }
+        \"\"\",
+            template_name="test-name",
+            version_name="test",
+            tags={
+                "Created": "TF",
+                "For": "acceptance Test",
+            })
+        example = alicloud.oos.Execution("example",
+            template_name=default.template_name,
+            description="From TF Test",
+            parameters="				{\\"Status\\":\\"Running\\"}\\n")
+        ```
 
         ## Import
 

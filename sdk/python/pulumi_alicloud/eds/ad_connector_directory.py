@@ -570,6 +570,42 @@ class AdConnectorDirectory(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.174.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_zones = alicloud.eds.get_zones()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.ids[0],
+            vswitch_name=name)
+        default_ad_connector_directory = alicloud.eds.AdConnectorDirectory("defaultAdConnectorDirectory",
+            directory_name=name,
+            desktop_access_type="INTERNET",
+            dns_addresses=["127.0.0.2"],
+            domain_name="corp.example.com",
+            domain_password="Example1234",
+            domain_user_name="sAMAccountName",
+            enable_admin_access=False,
+            mfa_enabled=False,
+            specification=1,
+            sub_domain_dns_addresses=["127.0.0.3"],
+            sub_domain_name="child.example.com",
+            vswitch_ids=[default_switch.id])
+        ```
+
         ## Import
 
         ECD Ad Connector Directory can be imported using the id, e.g.
@@ -605,6 +641,42 @@ class AdConnectorDirectory(pulumi.CustomResource):
         For information about ECD Ad Connector Directory and how to use it, see [What is Ad Connector Directory](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createadconnectordirectory).
 
         > **NOTE:** Available since v1.174.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_zones = alicloud.eds.get_zones()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.ids[0],
+            vswitch_name=name)
+        default_ad_connector_directory = alicloud.eds.AdConnectorDirectory("defaultAdConnectorDirectory",
+            directory_name=name,
+            desktop_access_type="INTERNET",
+            dns_addresses=["127.0.0.2"],
+            domain_name="corp.example.com",
+            domain_password="Example1234",
+            domain_user_name="sAMAccountName",
+            enable_admin_access=False,
+            mfa_enabled=False,
+            specification=1,
+            sub_domain_dns_addresses=["127.0.0.3"],
+            sub_domain_name="child.example.com",
+            vswitch_ids=[default_switch.id])
+        ```
 
         ## Import
 

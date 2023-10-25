@@ -85,6 +85,16 @@ def get_instances(output_file: Optional[str] = None,
 
     > **NOTE:** Available in 1.200.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.wafv3.get_instances()
+    pulumi.export("alicloudWafv3InstanceExampleId", default.instances[0].id)
+    ```
+
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
@@ -107,6 +117,16 @@ def get_instances_output(output_file: Optional[pulumi.Input[Optional[str]]] = No
     This data source provides Wafv3 Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/web-application-firewall/latest/what-is-waf)
 
     > **NOTE:** Available in 1.200.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.wafv3.get_instances()
+    pulumi.export("alicloudWafv3InstanceExampleId", default.instances[0].id)
+    ```
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

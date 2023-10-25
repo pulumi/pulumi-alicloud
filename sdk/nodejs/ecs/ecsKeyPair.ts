@@ -11,6 +11,24 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.121.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.ecs.EcsKeyPair("example", {keyPairName: "key_pair_name"});
+ * // Using name prefix to build key pair
+ * const prefix = new alicloud.ecs.EcsKeyPair("prefix", {keyNamePrefix: "terraform-test-key-pair-prefix"});
+ * // Import an existing public key to build a alicloud key pair
+ * const publickey = new alicloud.ecs.EcsKeyPair("publickey", {
+ *     keyPairName: "my_public_key",
+ *     publicKey: "ssh-rsa AAAAB3Nza12345678qwertyuudsfsg",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ECS Key Pair can be imported using the id, e.g.

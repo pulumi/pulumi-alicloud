@@ -14,6 +14,34 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// &gt; **NOTE:** Available since v1.0.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var user = new AliCloud.Ram.User("user", new()
+    ///     {
+    ///         DisplayName = "terraform_example",
+    ///         Mobile = "86-18688888888",
+    ///         Email = "hello.uuu@aaa.com",
+    ///         Comments = "terraform_example",
+    ///         Force = true,
+    ///     });
+    /// 
+    ///     var profile = new AliCloud.Ram.LoginProfile("profile", new()
+    ///     {
+    ///         UserName = user.Name,
+    ///         Password = "Example_1234",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// RAM login profile can be imported using the id or user name, e.g.

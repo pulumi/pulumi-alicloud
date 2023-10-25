@@ -119,6 +119,25 @@ def get_host_share_keys(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.165.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.bastionhost.get_host_share_keys(instance_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("bastionhostHostShareKeyId1", ids.keys[0].id)
+    name_regex = alicloud.bastionhost.get_host_share_keys(instance_id="example_value",
+        name_regex="^my-HostShareKey")
+    pulumi.export("bastionhostHostShareKeyId2", name_regex.keys[0].id)
+    ```
+
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Host Share Key IDs.
@@ -157,6 +176,25 @@ def get_host_share_keys_output(enable_details: Optional[pulumi.Input[Optional[bo
     This data source provides the Bastionhost Host Share Keys of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.165.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.bastionhost.get_host_share_keys(instance_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("bastionhostHostShareKeyId1", ids.keys[0].id)
+    name_regex = alicloud.bastionhost.get_host_share_keys(instance_id="example_value",
+        name_regex="^my-HostShareKey")
+    pulumi.export("bastionhostHostShareKeyId2", name_regex.keys[0].id)
+    ```
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

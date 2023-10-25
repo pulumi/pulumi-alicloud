@@ -196,6 +196,42 @@ class PolicyVersion(pulumi.CustomResource):
 
         > **NOTE:** It is not recommended to use this resource management policy version, it is recommended to directly use the policy resource to manage your policy. Please refer to the link for usage resource_manager_policy.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        example_policy = alicloud.resourcemanager.Policy("examplePolicy",
+            policy_name=name,
+            policy_document=\"\"\"		{
+        			"Statement": [{
+        				"Action": ["oss:*"],
+        				"Effect": "Allow",
+        				"Resource": ["acs:oss:*:*:*"]
+        			}],
+        			"Version": "1"
+        		}
+        \"\"\")
+        example_policy_version = alicloud.resourcemanager.PolicyVersion("examplePolicyVersion",
+            policy_name=example_policy.policy_name,
+            policy_document=\"\"\"		{
+        			"Statement": [{
+        				"Action": ["oss:*"],
+        				"Effect": "Allow",
+        				"Resource": ["acs:oss:*:*:myphotos"]
+        			}],
+        			"Version": "1"
+        		}
+        \"\"\")
+        ```
+
         ## Import
 
         Resource Manager Policy Version can be imported using the id, e.g.
@@ -223,6 +259,42 @@ class PolicyVersion(pulumi.CustomResource):
         > **NOTE:** Available since v1.84.0.
 
         > **NOTE:** It is not recommended to use this resource management policy version, it is recommended to directly use the policy resource to manage your policy. Please refer to the link for usage resource_manager_policy.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        example_policy = alicloud.resourcemanager.Policy("examplePolicy",
+            policy_name=name,
+            policy_document=\"\"\"		{
+        			"Statement": [{
+        				"Action": ["oss:*"],
+        				"Effect": "Allow",
+        				"Resource": ["acs:oss:*:*:*"]
+        			}],
+        			"Version": "1"
+        		}
+        \"\"\")
+        example_policy_version = alicloud.resourcemanager.PolicyVersion("examplePolicyVersion",
+            policy_name=example_policy.policy_name,
+            policy_document=\"\"\"		{
+        			"Statement": [{
+        				"Action": ["oss:*"],
+        				"Effect": "Allow",
+        				"Resource": ["acs:oss:*:*:myphotos"]
+        			}],
+        			"Version": "1"
+        		}
+        \"\"\")
+        ```
 
         ## Import
 

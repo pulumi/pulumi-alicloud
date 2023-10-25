@@ -160,6 +160,46 @@ def get_applications(app_name: Optional[str] = None,
 
     > **NOTE:** Available in v1.161.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "tf-testacc"
+    default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+    vpc = alicloud.vpc.Network("vpc",
+        vpc_name="tf_testacc",
+        cidr_block="172.16.0.0/12")
+    vsw = alicloud.vpc.Switch("vsw",
+        vpc_id=vpc.id,
+        cidr_block="172.16.0.0/24",
+        zone_id=default_zones.zones[0].id,
+        vswitch_name=name)
+    default_namespace = alicloud.sae.Namespace("defaultNamespace",
+        namespace_description=name,
+        namespace_id="cn-hangzhou:tfacctest",
+        namespace_name=name)
+    default_application = alicloud.sae.Application("defaultApplication",
+        app_description="tf-testaccDescription",
+        app_name="tf-testaccAppName131",
+        namespace_id=default_namespace.id,
+        image_url="registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
+        package_type="Image",
+        vswitch_id=vsw.id,
+        timezone="Asia/Beijing",
+        replicas=5,
+        cpu=500,
+        memory=2048)
+    default_applications = alicloud.sae.get_applications_output(ids=[default_application.id])
+    pulumi.export("saeApplicationId", default_applications.applications[0].id)
+    ```
+
 
     :param str app_name: Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -217,6 +257,46 @@ def get_applications_output(app_name: Optional[pulumi.Input[Optional[str]]] = No
     This data source provides the Sae Applications of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.161.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "tf-testacc"
+    default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+    vpc = alicloud.vpc.Network("vpc",
+        vpc_name="tf_testacc",
+        cidr_block="172.16.0.0/12")
+    vsw = alicloud.vpc.Switch("vsw",
+        vpc_id=vpc.id,
+        cidr_block="172.16.0.0/24",
+        zone_id=default_zones.zones[0].id,
+        vswitch_name=name)
+    default_namespace = alicloud.sae.Namespace("defaultNamespace",
+        namespace_description=name,
+        namespace_id="cn-hangzhou:tfacctest",
+        namespace_name=name)
+    default_application = alicloud.sae.Application("defaultApplication",
+        app_description="tf-testaccDescription",
+        app_name="tf-testaccAppName131",
+        namespace_id=default_namespace.id,
+        image_url="registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
+        package_type="Image",
+        vswitch_id=vsw.id,
+        timezone="Asia/Beijing",
+        replicas=5,
+        cpu=500,
+        memory=2048)
+    default_applications = alicloud.sae.get_applications_output(ids=[default_application.id])
+    pulumi.export("saeApplicationId", default_applications.applications[0].id)
+    ```
 
 
     :param str app_name: Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.

@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * This data source provides Eflo Vpd available to the user.[What is Vpd](https://help.aliyun.com/document_detail/604976.html)
  *
  * > **NOTE:** Available in 1.201.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.eflo.getVpds({
+ *     ids: [alicloud_eflo_vpd["default"].id],
+ *     nameRegex: alicloud_eflo_vpd["default"].name,
+ *     vpdName: "RMC-Terraform-Test",
+ * });
+ * export const alicloudEfloVpdExampleId = _default.then(_default => _default.vpds?.[0]?.id);
+ * ```
  */
 export function getVpds(args?: GetVpdsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpdsResult> {
     args = args || {};
@@ -115,6 +129,20 @@ export interface GetVpdsResult {
  * This data source provides Eflo Vpd available to the user.[What is Vpd](https://help.aliyun.com/document_detail/604976.html)
  *
  * > **NOTE:** Available in 1.201.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.eflo.getVpds({
+ *     ids: [alicloud_eflo_vpd["default"].id],
+ *     nameRegex: alicloud_eflo_vpd["default"].name,
+ *     vpdName: "RMC-Terraform-Test",
+ * });
+ * export const alicloudEfloVpdExampleId = _default.then(_default => _default.vpds?.[0]?.id);
+ * ```
  */
 export function getVpdsOutput(args?: GetVpdsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpdsResult> {
     return pulumi.output(args).apply((a: any) => getVpds(a, opts))

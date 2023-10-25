@@ -15,6 +15,62 @@ import (
 // This data source provides the Ecd Policy Groups of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.130.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := eds.NewEcdPolicyGroup(ctx, "default", &eds.EcdPolicyGroupArgs{
+//				PolicyGroupName: pulumi.String("my-policy-group"),
+//				Clipboard:       pulumi.String("read"),
+//				LocalDrive:      pulumi.String("read"),
+//				UsbRedirect:     pulumi.String("off"),
+//				Watermark:       pulumi.String("off"),
+//				AuthorizeAccessPolicyRules: eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArray{
+//					&eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs{
+//						Description: pulumi.String("my-description1"),
+//						CidrIp:      pulumi.String("1.2.3.45/24"),
+//					},
+//				},
+//				AuthorizeSecurityPolicyRules: eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArray{
+//					&eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs{
+//						Type:        pulumi.String("inflow"),
+//						Policy:      pulumi.String("accept"),
+//						Description: pulumi.String("my-description"),
+//						PortRange:   pulumi.String("80/80"),
+//						IpProtocol:  pulumi.String("TCP"),
+//						Priority:    pulumi.String("1"),
+//						CidrIp:      pulumi.String("1.2.3.4/24"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			nameRegex, err := eds.GetPolicyGroups(ctx, &eds.GetPolicyGroupsArgs{
+//				NameRegex: pulumi.StringRef("^my-policy"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("ecdPolicyGroupId", nameRegex.Groups[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetPolicyGroups(ctx *pulumi.Context, args *GetPolicyGroupsArgs, opts ...pulumi.InvokeOption) (*GetPolicyGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPolicyGroupsResult

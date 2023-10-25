@@ -139,6 +139,27 @@ def get_host_accounts(host_account_name: Optional[str] = None,
 
     > **NOTE:** Available in v1.135.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.bastionhost.get_host_accounts(host_id="15",
+        instance_id="example_value",
+        ids=[
+            "1",
+            "2",
+        ])
+    pulumi.export("bastionhostHostAccountId1", ids.accounts[0].id)
+    name_regex = alicloud.bastionhost.get_host_accounts(host_id="15",
+        instance_id="example_value",
+        name_regex="^my-HostAccount")
+    pulumi.export("bastionhostHostAccountId2", name_regex.accounts[0].id)
+    ```
+
 
     :param str host_account_name: Specify the new hosting account's name, support the longest 128 characters.
     :param str host_id: Specifies the database where you want to create your hosting account's host ID.
@@ -185,6 +206,27 @@ def get_host_accounts_output(host_account_name: Optional[pulumi.Input[Optional[s
     This data source provides the Bastionhost Host Accounts of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.135.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.bastionhost.get_host_accounts(host_id="15",
+        instance_id="example_value",
+        ids=[
+            "1",
+            "2",
+        ])
+    pulumi.export("bastionhostHostAccountId1", ids.accounts[0].id)
+    name_regex = alicloud.bastionhost.get_host_accounts(host_id="15",
+        instance_id="example_value",
+        name_regex="^my-HostAccount")
+    pulumi.export("bastionhostHostAccountId2", name_regex.accounts[0].id)
+    ```
 
 
     :param str host_account_name: Specify the new hosting account's name, support the longest 128 characters.

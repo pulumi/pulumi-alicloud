@@ -16,6 +16,29 @@ namespace Pulumi.AliCloud.Sag
     /// 
     /// &gt; **NOTE:** Available since v1.168.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AliCloud.Sag.SmartagFlowLog("example", new()
+    ///     {
+    ///         NetflowServerIp = "192.168.0.2",
+    ///         NetflowServerPort = 9995,
+    ///         NetflowVersion = "V9",
+    ///         OutputType = "netflow",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Smartag Flow Log can be imported using the id, e.g.

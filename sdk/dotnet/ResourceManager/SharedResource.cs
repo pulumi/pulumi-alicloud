@@ -16,6 +16,54 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// &gt; **NOTE:** Available since v1.111.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tfexample";
+    ///     var exampleZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "192.168.0.0/16",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
+    ///     {
+    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         CidrBlock = "192.168.0.0/16",
+    ///         VpcId = exampleNetwork.Id,
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var exampleResourceShare = new AliCloud.ResourceManager.ResourceShare("exampleResourceShare", new()
+    ///     {
+    ///         ResourceShareName = name,
+    ///     });
+    /// 
+    ///     var exampleSharedResource = new AliCloud.ResourceManager.SharedResource("exampleSharedResource", new()
+    ///     {
+    ///         ResourceId = exampleSwitch.Id,
+    ///         ResourceShareId = exampleResourceShare.Id,
+    ///         ResourceType = "VSwitch",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Resource Manager Shared Resource can be imported using the id, e.g.

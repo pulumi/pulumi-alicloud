@@ -257,6 +257,15 @@ def get_snapshots(category: Optional[str] = None,
 
     > **NOTE:**  Available in 1.40.0+.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    snapshots = alicloud.ecs.get_snapshots(ids=["s-123456890abcdef"],
+        name_regex="tf-testAcc-snapshot")
+    ```
     ## Argument Reference
 
     The following arguments are supported:
@@ -363,6 +372,15 @@ def get_snapshots_output(category: Optional[pulumi.Input[Optional[str]]] = None,
 
     > **NOTE:**  Available in 1.40.0+.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    snapshots = alicloud.ecs.get_snapshots(ids=["s-123456890abcdef"],
+        name_regex="tf-testAcc-snapshot")
+    ```
     ## Argument Reference
 
     The following arguments are supported:

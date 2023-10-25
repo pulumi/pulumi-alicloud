@@ -13,6 +13,70 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.173.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultImages = alicloud.ecs.getImages({
+ *     nameRegex: "^centos_7_6_x64*",
+ *     owners: "system",
+ * });
+ * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultZones.zones?.[0]?.id,
+ * }));
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.0.0.0/8",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.1.0.0/16",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultFileSystem = new alicloud.nas.FileSystem("defaultFileSystem", {
+ *     storageType: "Performance",
+ *     protocolType: "NFS",
+ * });
+ * const defaultMountTarget = new alicloud.nas.MountTarget("defaultMountTarget", {
+ *     fileSystemId: defaultFileSystem.id,
+ *     accessGroupName: "DEFAULT_VPC_GROUP_NAME",
+ *     vswitchId: defaultSwitch.id,
+ * });
+ * const defaultCluster = new alicloud.ehpc.Cluster("defaultCluster", {
+ *     clusterName: name,
+ *     deployMode: "Simple",
+ *     description: name,
+ *     haEnable: false,
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
+ *     imageOwnerAlias: "system",
+ *     volumeProtocol: "nfs",
+ *     volumeId: defaultFileSystem.id,
+ *     volumeMountpoint: defaultMountTarget.mountTargetDomain,
+ *     computeCount: 1,
+ *     computeInstanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ *     loginCount: 1,
+ *     loginInstanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ *     managerCount: 1,
+ *     managerInstanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ *     osTag: "CentOS_7.6_64",
+ *     schedulerType: "pbs",
+ *     password: "your-password123",
+ *     vswitchId: defaultSwitch.id,
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * ```
+ *
  * ## Import
  *
  * Ehpc Cluster can be imported using the id, e.g.

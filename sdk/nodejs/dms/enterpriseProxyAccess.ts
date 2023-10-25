@@ -11,6 +11,22 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.195.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.dms.EnterpriseProxyAccess("default", {
+ *     indepAccount: "dmstest",
+ *     indepPassword: "PASSWORD-DEMO",
+ *     proxyId: "1881",
+ *     userId: "104442",
+ * });
+ * ```
+ *
  * ## Import
  *
  * DMS Enterprise Proxy Access can be imported using the id, e.g.

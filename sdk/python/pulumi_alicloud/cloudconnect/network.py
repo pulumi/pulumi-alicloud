@@ -217,6 +217,24 @@ class Network(pulumi.CustomResource):
 
         > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.cloudconnect.Network("default",
+            description=name,
+            cidr_block="192.168.0.0/24",
+            is_default=True)
+        ```
+
         ## Import
 
         The cloud connect network instance can be imported using the id, e.g.
@@ -246,6 +264,24 @@ class Network(pulumi.CustomResource):
         > **NOTE:** Available since v1.59.0.
 
         > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.cloudconnect.Network("default",
+            description=name,
+            cidr_block="192.168.0.0/24",
+            is_default=True)
+        ```
 
         ## Import
 

@@ -140,6 +140,17 @@ def get_product_versions(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in 1.196.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.servicecatalog.get_product_versions(name_regex="1.0.0",
+        product_id="prod-bp125x4k29wb7q")
+    pulumi.export("alicloudServiceCatalogProductVersionExampleId", default.product_versions[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Product Version IDs.
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
@@ -178,6 +189,17 @@ def get_product_versions_output(enable_details: Optional[pulumi.Input[Optional[b
     This data source provides Service Catalog Product Version available to the user.[What is Product Version](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listproductversions)
 
     > **NOTE:** Available in 1.196.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.servicecatalog.get_product_versions(name_regex="1.0.0",
+        product_id="prod-bp125x4k29wb7q")
+    pulumi.export("alicloudServiceCatalogProductVersionExampleId", default.product_versions[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Product Version IDs.

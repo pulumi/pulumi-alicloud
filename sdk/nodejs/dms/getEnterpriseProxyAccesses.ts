@@ -10,6 +10,25 @@ import * as utilities from "../utilities";
  * This data source provides DMS Enterprise Proxy Access available to the user.[What is Proxy Access](https://next.api.alibabacloud.com/document/dms-enterprise/2018-11-01/CreateProxyAccess)
  *
  * > **NOTE:** Available since v1.195.0.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultEnterpriseProxyAccess = new alicloud.dms.EnterpriseProxyAccess("defaultEnterpriseProxyAccess", {
+ *     indepPassword: "PASSWORD-DEMO",
+ *     proxyId: "1881",
+ *     indepAccount: "dmstest",
+ *     userId: "104442",
+ * });
+ * const defaultEnterpriseProxyAccesses = alicloud.dms.getEnterpriseProxyAccessesOutput({
+ *     ids: [defaultEnterpriseProxyAccess.id],
+ *     proxyId: "1881",
+ * });
+ * export const alicloudDmsProxyAccesesExampleId = defaultEnterpriseProxyAccesses.apply(defaultEnterpriseProxyAccesses => defaultEnterpriseProxyAccesses.accesses?.[0]?.id);
+ * ```
  */
 export function getEnterpriseProxyAccesses(args: GetEnterpriseProxyAccessesArgs, opts?: pulumi.InvokeOptions): Promise<GetEnterpriseProxyAccessesResult> {
 
@@ -68,6 +87,25 @@ export interface GetEnterpriseProxyAccessesResult {
  * This data source provides DMS Enterprise Proxy Access available to the user.[What is Proxy Access](https://next.api.alibabacloud.com/document/dms-enterprise/2018-11-01/CreateProxyAccess)
  *
  * > **NOTE:** Available since v1.195.0.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultEnterpriseProxyAccess = new alicloud.dms.EnterpriseProxyAccess("defaultEnterpriseProxyAccess", {
+ *     indepPassword: "PASSWORD-DEMO",
+ *     proxyId: "1881",
+ *     indepAccount: "dmstest",
+ *     userId: "104442",
+ * });
+ * const defaultEnterpriseProxyAccesses = alicloud.dms.getEnterpriseProxyAccessesOutput({
+ *     ids: [defaultEnterpriseProxyAccess.id],
+ *     proxyId: "1881",
+ * });
+ * export const alicloudDmsProxyAccesesExampleId = defaultEnterpriseProxyAccesses.apply(defaultEnterpriseProxyAccesses => defaultEnterpriseProxyAccesses.accesses?.[0]?.id);
+ * ```
  */
 export function getEnterpriseProxyAccessesOutput(args: GetEnterpriseProxyAccessesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnterpriseProxyAccessesResult> {
     return pulumi.output(args).apply((a: any) => getEnterpriseProxyAccesses(a, opts))

@@ -137,6 +137,17 @@ class Namespace(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.173.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.schedulerx.Namespace("example", namespace_name="example_value")
+        ```
+
         ## Import
 
         Schedulerx Namespace can be imported using the id, e.g.
@@ -162,6 +173,17 @@ class Namespace(pulumi.CustomResource):
         For information about Schedulerx Namespace and how to use it, see [What is Namespace](https://help.aliyun.com/document_detail/206088.html).
 
         > **NOTE:** Available in v1.173.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.schedulerx.Namespace("example", namespace_name="example_value")
+        ```
 
         ## Import
 

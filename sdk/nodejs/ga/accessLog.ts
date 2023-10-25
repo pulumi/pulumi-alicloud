@@ -11,6 +11,74 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.187.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const config = new pulumi.Config();
+ * const region = config.get("region") || "cn-hangzhou";
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const defaultProject = new alicloud.log.Project("defaultProject", {});
+ * const defaultStore = new alicloud.log.Store("defaultStore", {project: defaultProject.name});
+ * const defaultAccelerator = new alicloud.ga.Accelerator("defaultAccelerator", {
+ *     duration: 1,
+ *     autoUseCoupon: true,
+ *     spec: "2",
+ * });
+ * const defaultBandwidthPackage = new alicloud.ga.BandwidthPackage("defaultBandwidthPackage", {
+ *     bandwidth: 100,
+ *     type: "Basic",
+ *     bandwidthType: "Basic",
+ *     paymentType: "PayAsYouGo",
+ *     billingType: "PayBy95",
+ *     ratio: 30,
+ * });
+ * const defaultBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", {
+ *     acceleratorId: defaultAccelerator.id,
+ *     bandwidthPackageId: defaultBandwidthPackage.id,
+ * });
+ * const defaultListener = new alicloud.ga.Listener("defaultListener", {
+ *     acceleratorId: defaultBandwidthPackageAttachment.acceleratorId,
+ *     clientAffinity: "SOURCE_IP",
+ *     protocol: "HTTP",
+ *     portRanges: [{
+ *         fromPort: 70,
+ *         toPort: 70,
+ *     }],
+ * });
+ * const defaultEipAddress = new alicloud.ecs.EipAddress("defaultEipAddress", {
+ *     bandwidth: "10",
+ *     internetChargeType: "PayByBandwidth",
+ *     addressName: "terraform-example",
+ * });
+ * const defaultEndpointGroup = new alicloud.ga.EndpointGroup("defaultEndpointGroup", {
+ *     acceleratorId: defaultListener.acceleratorId,
+ *     endpointConfigurations: [{
+ *         endpoint: defaultEipAddress.ipAddress,
+ *         type: "PublicIp",
+ *         weight: 20,
+ *     }],
+ *     endpointGroupRegion: region,
+ *     listenerId: defaultListener.id,
+ * });
+ * const defaultAccessLog = new alicloud.ga.AccessLog("defaultAccessLog", {
+ *     acceleratorId: defaultAccelerator.id,
+ *     listenerId: defaultListener.id,
+ *     endpointGroupId: defaultEndpointGroup.id,
+ *     slsProjectName: defaultProject.name,
+ *     slsLogStoreName: defaultStore.name,
+ *     slsRegionId: region,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Global Accelerator (GA) Access Log can be imported using the id, e.g.

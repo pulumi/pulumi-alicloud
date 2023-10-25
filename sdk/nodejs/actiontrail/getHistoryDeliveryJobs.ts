@@ -10,6 +10,25 @@ import * as utilities from "../utilities";
  * This data source provides the Actiontrail History Delivery Jobs of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.139.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.actiontrail.getHistoryDeliveryJobs({
+ *     ids: ["example_id"],
+ * });
+ * export const actiontrailHistoryDeliveryJobId1 = ids.then(ids => ids.jobs?.[0]?.id);
+ * const status = alicloud.actiontrail.getHistoryDeliveryJobs({
+ *     ids: ["example_id"],
+ *     status: 2,
+ * });
+ * export const actiontrailHistoryDeliveryJobId2 = status.then(status => status.jobs?.[0]?.id);
+ * ```
  */
 export function getHistoryDeliveryJobs(args?: GetHistoryDeliveryJobsArgs, opts?: pulumi.InvokeOptions): Promise<GetHistoryDeliveryJobsResult> {
     args = args || {};
@@ -60,6 +79,25 @@ export interface GetHistoryDeliveryJobsResult {
  * This data source provides the Actiontrail History Delivery Jobs of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.139.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.actiontrail.getHistoryDeliveryJobs({
+ *     ids: ["example_id"],
+ * });
+ * export const actiontrailHistoryDeliveryJobId1 = ids.then(ids => ids.jobs?.[0]?.id);
+ * const status = alicloud.actiontrail.getHistoryDeliveryJobs({
+ *     ids: ["example_id"],
+ *     status: 2,
+ * });
+ * export const actiontrailHistoryDeliveryJobId2 = status.then(status => status.jobs?.[0]?.id);
+ * ```
  */
 export function getHistoryDeliveryJobsOutput(args?: GetHistoryDeliveryJobsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHistoryDeliveryJobsResult> {
     return pulumi.output(args).apply((a: any) => getHistoryDeliveryJobs(a, opts))

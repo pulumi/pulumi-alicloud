@@ -2980,6 +2980,52 @@ class Application(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.161.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_regions = alicloud.get_regions(current=True)
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_namespace = alicloud.sae.Namespace("defaultNamespace",
+            namespace_id=f"{default_regions.regions[0].id}:example",
+            namespace_name=name,
+            namespace_description=name,
+            enable_micro_registration=False)
+        default_application = alicloud.sae.Application("defaultApplication",
+            app_description=name,
+            app_name=name,
+            namespace_id=default_namespace.id,
+            image_url=f"registry-vpc.{default_regions.regions[0].id}.aliyuncs.com/sae-demo-image/consumer:1.0",
+            package_type="Image",
+            security_group_id=default_security_group.id,
+            vpc_id=default_network.id,
+            vswitch_id=default_switch.id,
+            timezone="Asia/Beijing",
+            replicas=5,
+            cpu=500,
+            memory=2048)
+        ```
+
         ## Import
 
         Serverless App Engine (SAE) Application can be imported using the id, e.g.
@@ -3077,6 +3123,52 @@ class Application(pulumi.CustomResource):
         For information about Serverless App Engine (SAE) Application and how to use it, see [What is Application](https://www.alibabacloud.com/help/en/sae/latest/createapplication).
 
         > **NOTE:** Available since v1.161.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_regions = alicloud.get_regions(current=True)
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_namespace = alicloud.sae.Namespace("defaultNamespace",
+            namespace_id=f"{default_regions.regions[0].id}:example",
+            namespace_name=name,
+            namespace_description=name,
+            enable_micro_registration=False)
+        default_application = alicloud.sae.Application("defaultApplication",
+            app_description=name,
+            app_name=name,
+            namespace_id=default_namespace.id,
+            image_url=f"registry-vpc.{default_regions.regions[0].id}.aliyuncs.com/sae-demo-image/consumer:1.0",
+            package_type="Image",
+            security_group_id=default_security_group.id,
+            vpc_id=default_network.id,
+            vswitch_id=default_switch.id,
+            timezone="Asia/Beijing",
+            replicas=5,
+            cpu=500,
+            memory=2048)
+        ```
 
         ## Import
 

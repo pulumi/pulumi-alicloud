@@ -19,6 +19,209 @@ import (
 //
 // > **NOTE:** Available since v1.209.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cas"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nlb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultZones, err := nlb.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			default1, err := vpc.NewSwitch(ctx, "default1", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.1.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[1].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultLoadBalancer, err := nlb.NewLoadBalancer(ctx, "defaultLoadBalancer", &nlb.LoadBalancerArgs{
+//				LoadBalancerName: pulumi.String(name),
+//				ResourceGroupId:  *pulumi.String(defaultResourceGroups.Ids[0]),
+//				LoadBalancerType: pulumi.String("Network"),
+//				AddressType:      pulumi.String("Internet"),
+//				AddressIpVersion: pulumi.String("Ipv4"),
+//				VpcId:            defaultNetwork.ID(),
+//				Tags: pulumi.Map{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("example"),
+//				},
+//				ZoneMappings: nlb.LoadBalancerZoneMappingArray{
+//					&nlb.LoadBalancerZoneMappingArgs{
+//						VswitchId: defaultSwitch.ID(),
+//						ZoneId:    *pulumi.String(defaultZones.Zones[0].Id),
+//					},
+//					&nlb.LoadBalancerZoneMappingArgs{
+//						VswitchId: default1.ID(),
+//						ZoneId:    *pulumi.String(defaultZones.Zones[1].Id),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultServerGroup, err := nlb.NewServerGroup(ctx, "defaultServerGroup", &nlb.ServerGroupArgs{
+//				ResourceGroupId:        *pulumi.String(defaultResourceGroups.Ids[0]),
+//				ServerGroupName:        pulumi.String(name),
+//				ServerGroupType:        pulumi.String("Instance"),
+//				VpcId:                  defaultNetwork.ID(),
+//				Scheduler:              pulumi.String("Wrr"),
+//				Protocol:               pulumi.String("TCPSSL"),
+//				ConnectionDrain:        pulumi.Bool(true),
+//				ConnectionDrainTimeout: pulumi.Int(60),
+//				AddressIpVersion:       pulumi.String("Ipv4"),
+//				HealthCheck: &nlb.ServerGroupHealthCheckArgs{
+//					HealthCheckUrl:            pulumi.String("/adc/index.html"),
+//					HealthCheckDomain:         pulumi.String("tf-iac.com"),
+//					HealthCheckEnabled:        pulumi.Bool(true),
+//					HealthCheckType:           pulumi.String("TCP"),
+//					HealthCheckConnectPort:    pulumi.Int(0),
+//					HealthyThreshold:          pulumi.Int(2),
+//					UnhealthyThreshold:        pulumi.Int(2),
+//					HealthCheckConnectTimeout: pulumi.Int(5),
+//					HealthCheckInterval:       pulumi.Int(10),
+//					HttpCheckMethod:           pulumi.String("GET"),
+//					HealthCheckHttpCodes: pulumi.StringArray{
+//						pulumi.String("http_2xx"),
+//						pulumi.String("http_3xx"),
+//						pulumi.String("http_4xx"),
+//					},
+//				},
+//				Tags: pulumi.Map{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("example"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultListener, err := nlb.NewListener(ctx, "defaultListener", &nlb.ListenerArgs{
+//				ListenerProtocol:     pulumi.String("TCPSSL"),
+//				ListenerPort:         pulumi.Int(1883),
+//				SecurityPolicyId:     pulumi.String("tls_cipher_policy_1_0"),
+//				ListenerDescription:  pulumi.String(name),
+//				LoadBalancerId:       defaultLoadBalancer.ID(),
+//				ServerGroupId:        defaultServerGroup.ID(),
+//				IdleTimeout:          pulumi.Int(900),
+//				ProxyProtocolEnabled: pulumi.Bool(true),
+//				SecSensorEnabled:     pulumi.Bool(true),
+//				AlpnEnabled:          pulumi.Bool(true),
+//				AlpnPolicy:           pulumi.String("HTTP2Optional"),
+//				Cps:                  pulumi.Int(10000),
+//				Mss:                  pulumi.Int(0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultServiceCertificate, err := cas.NewServiceCertificate(ctx, "defaultServiceCertificate", &cas.ServiceCertificateArgs{
+//				CertificateName: pulumi.String(name),
+//				Cert: pulumi.String(`-----BEGIN CERTIFICATE-----
+//
+// MIIDRjCCAq+gAwIBAgIJAJn3ox4K13PoMA0GCSqGSIb3DQEBBQUAMHYxCzAJBgNV
+// BAYTAkNOMQswCQYDVQQIEwJCSjELMAkGA1UEBxMCQkoxDDAKBgNVBAoTA0FMSTEP
+// MA0GA1UECxMGQUxJWVVOMQ0wCwYDVQQDEwR0ZXN0MR8wHQYJKoZIhvcNAQkBFhB0
+// ZXN0QGhvdG1haWwuY29tMB4XDTE0MTEyNDA2MDQyNVoXDTI0MTEyMTA2MDQyNVow
+// djELMAkGA1UEBhMCQ04xCzAJBgNVBAgTAkJKMQswCQYDVQQHEwJCSjEMMAoGA1UE
+// ChMDQUxJMQ8wDQYDVQQLEwZBTElZVU4xDTALBgNVBAMTBHRlc3QxHzAdBgkqhkiG
+// 9w0BCQEWEHRlc3RAaG90bWFpbC5jb20wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJ
+// AoGBAM7SS3e9+Nj0HKAsRuIDNSsS3UK6b+62YQb2uuhKrp1HMrOx61WSDR2qkAnB
+// coG00Uz38EE+9DLYNUVQBK7aSgLP5M1Ak4wr4GqGyCgjejzzh3DshUzLCCy2rook
+// KOyRTlPX+Q5l7rE1fcSNzgepcae5i2sE1XXXzLRIDIvQxcspAgMBAAGjgdswgdgw
+// HQYDVR0OBBYEFBdy+OuMsvbkV7R14f0OyoLoh2z4MIGoBgNVHSMEgaAwgZ2AFBdy
+// +OuMsvbkV7R14f0OyoLoh2z4oXqkeDB2MQswCQYDVQQGEwJDTjELMAkGA1UECBMC
+// QkoxCzAJBgNVBAcTAkJKMQwwCgYDVQQKEwNBTEkxDzANBgNVBAsTBkFMSVlVTjEN
+// MAsGA1UEAxMEdGVzdDEfMB0GCSqGSIb3DQEJARYQdGVzdEBob3RtYWlsLmNvbYIJ
+// AJn3ox4K13PoMAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQEFBQADgYEAY7KOsnyT
+// cQzfhiiG7ASjiPakw5wXoycHt5GCvLG5htp2TKVzgv9QTliA3gtfv6oV4zRZx7X1
+// Ofi6hVgErtHaXJheuPVeW6eAW8mHBoEfvDAfU3y9waYrtUevSl07643bzKL6v+Qd
+// DUBTxOAvSYfXTtI90EAxEG/bJJyOm5LqoiA=
+// -----END CERTIFICATE-----
+// `),
+//
+//	Key: pulumi.String(`-----BEGIN RSA PRIVATE KEY-----
+//
+// MIICXAIBAAKBgQDO0kt3vfjY9BygLEbiAzUrEt1Cum/utmEG9rroSq6dRzKzsetV
+// kg0dqpAJwXKBtNFM9/BBPvQy2DVFUASu2koCz+TNQJOMK+BqhsgoI3o884dw7IVM
+// ywgstq6KJCjskU5T1/kOZe6xNX3Ejc4HqXGnuYtrBNV118y0SAyL0MXLKQIDAQAB
+// AoGAfe3NxbsGKhN42o4bGsKZPQDfeCHMxayGp5bTd10BtQIE/ST4BcJH+ihAS7Bd
+// 6FwQlKzivNd4GP1MckemklCXfsVckdL94e8ZbJl23GdWul3v8V+KndJHqv5zVJmP
+// hwWoKimwIBTb2s0ctVryr2f18N4hhyFw1yGp0VxclGHkjgECQQD9CvllsnOwHpP4
+// MdrDHbdb29QrobKyKW8pPcDd+sth+kP6Y8MnCVuAKXCKj5FeIsgVtfluPOsZjPzz
+// 71QQWS1dAkEA0T0KXO8gaBQwJhIoo/w6hy5JGZnrNSpOPp5xvJuMAafs2eyvmhJm
+// Ev9SN/Pf2VYa1z6FEnBaLOVD6hf6YQIsPQJAX/CZPoW6dzwgvimo1/GcY6eleiWE
+// qygqjWhsh71e/3bz7yuEAnj5yE3t7Zshcp+dXR3xxGo0eSuLfLFxHgGxwQJAAxf8
+// 9DzQ5NkPkTCJi0sqbl8/03IUKTgT6hcbpWdDXa7m8J3wRr3o5nUB+TPQ5nzAbthM
+// zWX931YQeACcwhxvHQJBAN5mTzzJD4w4Ma6YTaNHyXakdYfyAWrOkPIWZxfhMfXe
+// DrlNdiysTI4Dd1dLeErVpjsckAaOW/JDG5PCSwkaMxk=
+// -----END RSA PRIVATE KEY-----
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = nlb.NewListenerAdditionalCertificateAttachment(ctx, "defaultListenerAdditionalCertificateAttachment", &nlb.ListenerAdditionalCertificateAttachmentArgs{
+//				CertificateId: defaultServiceCertificate.ID(),
+//				ListenerId:    defaultListener.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // NLB Listener Additional Certificate Attachment can be imported using the id, e.g.

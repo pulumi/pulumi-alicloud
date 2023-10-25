@@ -11,6 +11,38 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.176.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {
+ *     cenInstanceName: name,
+ *     protectionLevel: "REDUCED",
+ * });
+ * const defaultAdConnectorOfficeSite = new alicloud.eds.AdConnectorOfficeSite("defaultAdConnectorOfficeSite", {
+ *     adConnectorOfficeSiteName: name,
+ *     bandwidth: 100,
+ *     cenId: defaultInstance.id,
+ *     cidrBlock: "10.0.0.0/12",
+ *     desktopAccessType: "INTERNET",
+ *     dnsAddresses: ["127.0.0.2"],
+ *     domainName: "corp.example.com",
+ *     domainPassword: "Example1234",
+ *     domainUserName: "sAMAccountName",
+ *     enableAdminAccess: false,
+ *     enableInternetAccess: false,
+ *     mfaEnabled: false,
+ *     subDomainDnsAddresses: ["127.0.0.3"],
+ *     subDomainName: "child.example.com",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ECD Ad Connector Office Site can be imported using the id, e.g.

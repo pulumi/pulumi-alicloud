@@ -17,6 +17,77 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.158.0.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultZones = alicloud.getZones({
+ *     availableDiskCategory: "cloud_efficiency",
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultZones.zones?.[0]?.id,
+ *     cpuCoreCount: 2,
+ *     memorySize: 4,
+ * }));
+ * const defaultImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_18.*64",
+ *     mostRecent: true,
+ *     owners: "system",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     vswitchName: name,
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
+ * const defaultScalingGroup = new alicloud.ess.ScalingGroup("defaultScalingGroup", {
+ *     minSize: 0,
+ *     maxSize: 2,
+ *     scalingGroupName: name,
+ *     defaultCooldown: 200,
+ *     removalPolicies: ["OldestInstance"],
+ *     vswitchIds: [defaultSwitch.id],
+ * });
+ * const defaultScalingConfiguration = new alicloud.ess.ScalingConfiguration("defaultScalingConfiguration", {
+ *     scalingGroupId: defaultScalingGroup.id,
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ *     securityGroupId: defaultSecurityGroup.id,
+ *     forceDelete: true,
+ *     active: true,
+ *     enable: true,
+ * });
+ * const defaultServerGroup = new alicloud.alb.ServerGroup("defaultServerGroup", {
+ *     serverGroupName: name,
+ *     vpcId: defaultNetwork.id,
+ *     healthCheckConfig: {
+ *         healthCheckEnabled: false,
+ *     },
+ *     stickySessionConfig: {
+ *         stickySessionEnabled: true,
+ *         cookie: "tf-example",
+ *         stickySessionType: "Server",
+ *     },
+ * });
+ * const defaultAlbServerGroupAttachment = new alicloud.ess.AlbServerGroupAttachment("defaultAlbServerGroupAttachment", {
+ *     scalingGroupId: defaultScalingConfiguration.scalingGroupId,
+ *     albServerGroupId: defaultServerGroup.id,
+ *     port: 9000,
+ *     weight: 50,
+ *     forceAttach: true,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ESS alb server groups can be imported using the id, e.g.

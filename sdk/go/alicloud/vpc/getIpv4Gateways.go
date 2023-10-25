@@ -15,6 +15,40 @@ import (
 // This data source provides the Vpc Ipv4 Gateways of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.181.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := vpc.GetIpv4Gateways(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcIpv4GatewayId1", ids.Gateways[0].Id)
+//			nameRegex, err := vpc.GetIpv4Gateways(ctx, &vpc.GetIpv4GatewaysArgs{
+//				NameRegex: pulumi.StringRef("^my-Ipv4Gateway"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("vpcIpv4GatewayId2", nameRegex.Gateways[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetIpv4Gateways(ctx *pulumi.Context, args *GetIpv4GatewaysArgs, opts ...pulumi.InvokeOption) (*GetIpv4GatewaysResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIpv4GatewaysResult

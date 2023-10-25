@@ -13,6 +13,91 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/apigateway"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			exampleGroup, err := apigateway.NewGroup(ctx, "exampleGroup", &apigateway.GroupArgs{
+//				Description: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleApi, err := apigateway.NewApi(ctx, "exampleApi", &apigateway.ApiArgs{
+//				GroupId:         exampleGroup.ID(),
+//				Description:     pulumi.String(name),
+//				AuthType:        pulumi.String("APP"),
+//				ForceNonceCheck: pulumi.Bool(false),
+//				RequestConfig: &apigateway.ApiRequestConfigArgs{
+//					Protocol: pulumi.String("HTTP"),
+//					Method:   pulumi.String("GET"),
+//					Path:     pulumi.String("/example/path"),
+//					Mode:     pulumi.String("MAPPING"),
+//				},
+//				ServiceType: pulumi.String("HTTP"),
+//				HttpServiceConfig: &apigateway.ApiHttpServiceConfigArgs{
+//					Address:  pulumi.String("http://apigateway-backend.alicloudapi.com:8080"),
+//					Method:   pulumi.String("GET"),
+//					Path:     pulumi.String("/web/cloudapi"),
+//					Timeout:  pulumi.Int(12),
+//					AoneName: pulumi.String("cloudapi-openapi"),
+//				},
+//				RequestParameters: apigateway.ApiRequestParameterArray{
+//					&apigateway.ApiRequestParameterArgs{
+//						Name:        pulumi.String("example"),
+//						Type:        pulumi.String("STRING"),
+//						Required:    pulumi.String("OPTIONAL"),
+//						In:          pulumi.String("QUERY"),
+//						InService:   pulumi.String("QUERY"),
+//						NameService: pulumi.String("exampleservice"),
+//					},
+//				},
+//				StageNames: pulumi.StringArray{
+//					pulumi.String("RELEASE"),
+//					pulumi.String("TEST"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleApp, err := apigateway.NewApp(ctx, "exampleApp", &apigateway.AppArgs{
+//				Description: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = apigateway.NewAppAttachment(ctx, "exampleAppAttachment", &apigateway.AppAttachmentArgs{
+//				ApiId:     exampleApi.ApiId,
+//				GroupId:   exampleGroup.ID(),
+//				AppId:     exampleApp.ID(),
+//				StageName: pulumi.String("PRE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type AppAttachment struct {
 	pulumi.CustomResourceState
 

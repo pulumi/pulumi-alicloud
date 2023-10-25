@@ -16,6 +16,31 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// For information about acl entry attachment and how to use it, see [Configure an acl entry](https://www.alibabacloud.com/help/en/doc-detail/70023.html).
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var attachmentAcl = new AliCloud.Slb.Acl("attachmentAcl", new()
+    ///     {
+    ///         IpVersion = "ipv4",
+    ///     });
+    /// 
+    ///     var attachmentAclEntryAttachment = new AliCloud.Slb.AclEntryAttachment("attachmentAclEntryAttachment", new()
+    ///     {
+    ///         AclId = attachmentAcl.Id,
+    ///         Entry = "168.10.10.0/24",
+    ///         Comment = "second",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Acl entry attachment can be imported using the id, e.g.

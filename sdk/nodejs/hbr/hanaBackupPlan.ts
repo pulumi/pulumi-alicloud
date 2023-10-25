@@ -11,6 +11,43 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.179.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const exampleResourceGroups = alicloud.resourcemanager.getResourceGroups({
+ *     status: "OK",
+ * });
+ * const exampleVault = new alicloud.hbr.Vault("exampleVault", {vaultName: "terraform-example"});
+ * const exampleHanaInstance = new alicloud.hbr.HanaInstance("exampleHanaInstance", {
+ *     alertSetting: "INHERITED",
+ *     hanaName: "terraform-example",
+ *     host: "1.1.1.1",
+ *     instanceNumber: 1,
+ *     password: "YouPassword123",
+ *     resourceGroupId: exampleResourceGroups.then(exampleResourceGroups => exampleResourceGroups.groups?.[0]?.id),
+ *     sid: "HXE",
+ *     useSsl: false,
+ *     userName: "admin",
+ *     validateCertificate: false,
+ *     vaultId: exampleVault.id,
+ * });
+ * const exampleHanaBackupPlan = new alicloud.hbr.HanaBackupPlan("exampleHanaBackupPlan", {
+ *     backupPrefix: "DIFF_DATA_BACKUP",
+ *     backupType: "COMPLETE",
+ *     clusterId: exampleHanaInstance.hanaInstanceId,
+ *     databaseName: "SYSTEMDB",
+ *     planName: "terraform-example",
+ *     resourceGroupId: exampleResourceGroups.then(exampleResourceGroups => exampleResourceGroups.groups?.[0]?.id),
+ *     schedule: "I|1602673264|P1D",
+ *     vaultId: exampleHanaInstance.vaultId,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Hybrid Backup Recovery (HBR) Hana Backup Plan can be imported using the id, e.g.

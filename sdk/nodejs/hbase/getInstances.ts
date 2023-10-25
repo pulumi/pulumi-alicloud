@@ -11,6 +11,18 @@ import * as utilities from "../utilities";
  * Filters support regular expression for the instance name, ids or availability_zone.
  *
  * > **NOTE:**  Available in 1.67.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const hbase = alicloud.hbase.getInstances({
+ *     availabilityZone: "cn-shenzhen-b",
+ *     nameRegex: "tf_testAccHBase",
+ * });
+ * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
@@ -84,6 +96,18 @@ export interface GetInstancesResult {
  * Filters support regular expression for the instance name, ids or availability_zone.
  *
  * > **NOTE:**  Available in 1.67.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const hbase = alicloud.hbase.getInstances({
+ *     availabilityZone: "cn-shenzhen-b",
+ *     nameRegex: "tf_testAccHBase",
+ * });
+ * ```
  */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
     return pulumi.output(args).apply((a: any) => getInstances(a, opts))

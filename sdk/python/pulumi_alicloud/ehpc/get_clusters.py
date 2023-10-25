@@ -119,6 +119,20 @@ def get_clusters(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.173.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.ehpc.get_clusters(ids=["example_id"])
+    pulumi.export("ehpcClusterId1", ids.clusters[0].id)
+    name_regex = alicloud.ehpc.get_clusters(name_regex="^my-Cluster")
+    pulumi.export("ehpcClusterId2", name_regex.clusters[0].id)
+    ```
+
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Cluster IDs.
@@ -157,6 +171,20 @@ def get_clusters_output(enable_details: Optional[pulumi.Input[Optional[bool]]] =
     This data source provides the Ehpc Clusters of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.173.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.ehpc.get_clusters(ids=["example_id"])
+    pulumi.export("ehpcClusterId1", ids.clusters[0].id)
+    name_regex = alicloud.ehpc.get_clusters(name_regex="^my-Cluster")
+    pulumi.export("ehpcClusterId2", name_regex.clusters[0].id)
+    ```
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

@@ -405,6 +405,21 @@ class EnterpriseProxyAccess(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.195.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.dms.EnterpriseProxyAccess("default",
+            indep_account="dmstest",
+            indep_password="PASSWORD-DEMO",
+            proxy_id="1881",
+            user_id="104442")
+        ```
+
         ## Import
 
         DMS Enterprise Proxy Access can be imported using the id, e.g.
@@ -433,6 +448,21 @@ class EnterpriseProxyAccess(pulumi.CustomResource):
         For information about DMS Enterprise Proxy Access and how to use it, see [What is Proxy Access](https://next.api.alibabacloud.com/document/dms-enterprise/2018-11-01/CreateProxyAccess).
 
         > **NOTE:** Available in v1.195.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.dms.EnterpriseProxyAccess("default",
+            indep_account="dmstest",
+            indep_password="PASSWORD-DEMO",
+            proxy_id="1881",
+            user_id="104442")
+        ```
 
         ## Import
 

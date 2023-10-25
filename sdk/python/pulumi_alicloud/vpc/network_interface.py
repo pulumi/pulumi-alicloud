@@ -774,6 +774,33 @@ class NetworkInterface(pulumi.CustomResource):
 
         > **NOTE** Only one of private_ips or private_ips_count can be specified when assign private IPs.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "networkInterfaceName"
+        vpc = alicloud.vpc.Network("vpc",
+            vpc_name=name,
+            cidr_block="192.168.0.0/24")
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        vswitch = alicloud.vpc.Switch("vswitch",
+            cidr_block="192.168.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vpc_id=vpc.id)
+        group = alicloud.ecs.SecurityGroup("group", vpc_id=vpc.id)
+        default_network_interface = alicloud.vpc.NetworkInterface("defaultNetworkInterface",
+            network_interface_name=name,
+            vswitch_id=vswitch.id,
+            security_group_ids=[group.id],
+            private_ip="192.168.0.2",
+            private_ips_count=3)
+        ```
+
         ## Import
 
         ENI can be imported using the id, e.g.
@@ -808,6 +835,33 @@ class NetworkInterface(pulumi.CustomResource):
         For information about Elastic Network Interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html).
 
         > **NOTE** Only one of private_ips or private_ips_count can be specified when assign private IPs.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "networkInterfaceName"
+        vpc = alicloud.vpc.Network("vpc",
+            vpc_name=name,
+            cidr_block="192.168.0.0/24")
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        vswitch = alicloud.vpc.Switch("vswitch",
+            cidr_block="192.168.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vpc_id=vpc.id)
+        group = alicloud.ecs.SecurityGroup("group", vpc_id=vpc.id)
+        default_network_interface = alicloud.vpc.NetworkInterface("defaultNetworkInterface",
+            network_interface_name=name,
+            vswitch_id=vswitch.id,
+            security_group_ids=[group.id],
+            private_ip="192.168.0.2",
+            private_ips_count=3)
+        ```
 
         ## Import
 

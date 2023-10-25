@@ -103,6 +103,17 @@ def get_domain_extensions(frontend_port: Optional[int] = None,
 
     > **NOTE:** Available in 1.60.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    foo = alicloud.slb.get_domain_extensions(frontend_port="fake-port",
+        ids=["fake-de-id"],
+        load_balancer_id="fake-lb-id")
+    ```
+
 
     :param int frontend_port: The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
     :param Sequence[str] ids: IDs of the SLB domain extensions.
@@ -135,6 +146,17 @@ def get_domain_extensions_output(frontend_port: Optional[pulumi.Input[int]] = No
     This data source provides the domain extensions associated with a server load balancer listener.
 
     > **NOTE:** Available in 1.60.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    foo = alicloud.slb.get_domain_extensions(frontend_port="fake-port",
+        ids=["fake-de-id"],
+        load_balancer_id="fake-lb-id")
+    ```
 
 
     :param int frontend_port: The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.

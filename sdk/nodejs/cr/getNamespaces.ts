@@ -10,6 +10,19 @@ import * as utilities from "../utilities";
  * This data source provides a list Container Registry namespaces on Alibaba Cloud.
  *
  * > **NOTE:** Available in v1.35.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const myNamespaces = alicloud.cr.getNamespaces({
+ *     nameRegex: "my-namespace",
+ *     outputFile: "my-namespace-json",
+ * });
+ * export const output = myNamespaces.then(myNamespaces => myNamespaces.namespaces);
+ * ```
  */
 export function getNamespaces(args?: GetNamespacesArgs, opts?: pulumi.InvokeOptions): Promise<GetNamespacesResult> {
     args = args || {};
@@ -62,6 +75,19 @@ export interface GetNamespacesResult {
  * This data source provides a list Container Registry namespaces on Alibaba Cloud.
  *
  * > **NOTE:** Available in v1.35.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const myNamespaces = alicloud.cr.getNamespaces({
+ *     nameRegex: "my-namespace",
+ *     outputFile: "my-namespace-json",
+ * });
+ * export const output = myNamespaces.then(myNamespaces => myNamespaces.namespaces);
+ * ```
  */
 export function getNamespacesOutput(args?: GetNamespacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNamespacesResult> {
     return pulumi.output(args).apply((a: any) => getNamespaces(a, opts))

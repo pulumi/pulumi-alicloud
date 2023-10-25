@@ -429,6 +429,32 @@ class DedicatedHostGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.132.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_dedicated_host_group = alicloud.cddc.DedicatedHostGroup("defaultDedicatedHostGroup",
+            engine="MySQL",
+            vpc_id=default_network.id,
+            cpu_allocation_ratio=101,
+            mem_allocation_ratio=50,
+            disk_allocation_ratio=200,
+            allocation_policy="Evenly",
+            host_replace_policy="Manual",
+            dedicated_host_group_desc=name)
+        ```
+
         ## Import
 
         ApsaraDB for MyBase Dedicated Host Group can be imported using the id, e.g.
@@ -462,6 +488,32 @@ class DedicatedHostGroup(pulumi.CustomResource):
         For information about ApsaraDB for MyBase Dedicated Host Group and how to use it, see [What is Dedicated Host Group](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/creatededicatedhostgroup).
 
         > **NOTE:** Available since v1.132.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_dedicated_host_group = alicloud.cddc.DedicatedHostGroup("defaultDedicatedHostGroup",
+            engine="MySQL",
+            vpc_id=default_network.id,
+            cpu_allocation_ratio=101,
+            mem_allocation_ratio=50,
+            disk_allocation_ratio=200,
+            allocation_policy="Evenly",
+            host_replace_policy="Manual",
+            dedicated_host_group_desc=name)
+        ```
 
         ## Import
 

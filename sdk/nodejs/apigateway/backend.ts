@@ -11,6 +11,23 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.181.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const _default = new alicloud.apigateway.Backend("default", {
+ *     backendName: name,
+ *     description: name,
+ *     backendType: "HTTP",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Api Gateway Backend can be imported using the id, e.g.

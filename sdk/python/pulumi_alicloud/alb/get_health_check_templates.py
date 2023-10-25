@@ -119,6 +119,20 @@ def get_health_check_templates(health_check_template_ids: Optional[Sequence[str]
 
     > **NOTE:** Available in v1.134.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.alb.get_health_check_templates(ids=["example_id"])
+    pulumi.export("albHealthCheckTemplateId1", ids.templates[0].id)
+    name_regex = alicloud.alb.get_health_check_templates(name_regex="^my-HealthCheckTemplate")
+    pulumi.export("albHealthCheckTemplateId2", name_regex.templates[0].id)
+    ```
+
 
     :param Sequence[str] health_check_template_ids: The health check template ids.
     :param str health_check_template_name: The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
@@ -157,6 +171,20 @@ def get_health_check_templates_output(health_check_template_ids: Optional[pulumi
     This data source provides the Alb Health Check Templates of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.134.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.alb.get_health_check_templates(ids=["example_id"])
+    pulumi.export("albHealthCheckTemplateId1", ids.templates[0].id)
+    name_regex = alicloud.alb.get_health_check_templates(name_regex="^my-HealthCheckTemplate")
+    pulumi.export("albHealthCheckTemplateId2", name_regex.templates[0].id)
+    ```
 
 
     :param Sequence[str] health_check_template_ids: The health check template ids.

@@ -13,6 +13,73 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.133.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultEcsBackupPlans = alicloud.hbr.getEcsBackupPlans({
+ *     nameRegex: "plan-tf-used-dont-delete",
+ * });
+ * const defaultOssBackupPlans = alicloud.hbr.getOssBackupPlans({
+ *     nameRegex: "plan-tf-used-dont-delete",
+ * });
+ * const defaultNasBackupPlans = alicloud.hbr.getNasBackupPlans({
+ *     nameRegex: "plan-tf-used-dont-delete",
+ * });
+ * const ecsSnapshots = Promise.all([defaultEcsBackupPlans, defaultEcsBackupPlans]).then(([defaultEcsBackupPlans, defaultEcsBackupPlans1]) => alicloud.hbr.getSnapshots({
+ *     sourceType: "ECS_FILE",
+ *     vaultId: defaultEcsBackupPlans.plans?.[0]?.vaultId,
+ *     instanceId: defaultEcsBackupPlans1.plans?.[0]?.instanceId,
+ * }));
+ * const ossSnapshots = Promise.all([defaultOssBackupPlans, defaultOssBackupPlans]).then(([defaultOssBackupPlans, defaultOssBackupPlans1]) => alicloud.hbr.getSnapshots({
+ *     sourceType: "OSS",
+ *     vaultId: defaultOssBackupPlans.plans?.[0]?.vaultId,
+ *     bucket: defaultOssBackupPlans1.plans?.[0]?.bucket,
+ * }));
+ * const nasSnapshots = Promise.all([defaultNasBackupPlans, defaultNasBackupPlans, defaultNasBackupPlans]).then(([defaultNasBackupPlans, defaultNasBackupPlans1, defaultNasBackupPlans2]) => alicloud.hbr.getSnapshots({
+ *     sourceType: "NAS",
+ *     vaultId: defaultNasBackupPlans.plans?.[0]?.vaultId,
+ *     fileSystemId: defaultNasBackupPlans1.plans?.[0]?.fileSystemId,
+ *     createTime: defaultNasBackupPlans2.plans?.[0]?.createTime,
+ * }));
+ * const nasJob = new alicloud.hbr.RestoreJob("nasJob", {
+ *     snapshotHash: nasSnapshots.then(nasSnapshots => nasSnapshots.snapshots?.[0]?.snapshotHash),
+ *     vaultId: defaultNasBackupPlans.then(defaultNasBackupPlans => defaultNasBackupPlans.plans?.[0]?.vaultId),
+ *     sourceType: "NAS",
+ *     restoreType: "NAS",
+ *     snapshotId: nasSnapshots.then(nasSnapshots => nasSnapshots.snapshots?.[0]?.snapshotId),
+ *     targetFileSystemId: defaultNasBackupPlans.then(defaultNasBackupPlans => defaultNasBackupPlans.plans?.[0]?.fileSystemId),
+ *     targetCreateTime: defaultNasBackupPlans.then(defaultNasBackupPlans => defaultNasBackupPlans.plans?.[0]?.createTime),
+ *     targetPath: "/",
+ *     options: "    {\"includes\":[], \"excludes\":[]}\n",
+ * });
+ * const ossJob = new alicloud.hbr.RestoreJob("ossJob", {
+ *     snapshotHash: ossSnapshots.then(ossSnapshots => ossSnapshots.snapshots?.[0]?.snapshotHash),
+ *     vaultId: defaultOssBackupPlans.then(defaultOssBackupPlans => defaultOssBackupPlans.plans?.[0]?.vaultId),
+ *     sourceType: "OSS",
+ *     restoreType: "OSS",
+ *     snapshotId: ossSnapshots.then(ossSnapshots => ossSnapshots.snapshots?.[0]?.snapshotId),
+ *     targetBucket: defaultOssBackupPlans.then(defaultOssBackupPlans => defaultOssBackupPlans.plans?.[0]?.bucket),
+ *     targetPrefix: "",
+ *     options: "    {\"includes\":[], \"excludes\":[]}\n",
+ * });
+ * const ecsJob = new alicloud.hbr.RestoreJob("ecsJob", {
+ *     snapshotHash: ecsSnapshots.then(ecsSnapshots => ecsSnapshots.snapshots?.[0]?.snapshotHash),
+ *     vaultId: defaultEcsBackupPlans.then(defaultEcsBackupPlans => defaultEcsBackupPlans.plans?.[0]?.vaultId),
+ *     sourceType: "ECS_FILE",
+ *     restoreType: "ECS_FILE",
+ *     snapshotId: ecsSnapshots.then(ecsSnapshots => ecsSnapshots.snapshots?.[0]?.snapshotId),
+ *     targetInstanceId: defaultEcsBackupPlans.then(defaultEcsBackupPlans => defaultEcsBackupPlans.plans?.[0]?.instanceId),
+ *     targetPath: "/",
+ * });
+ * ```
+ *
+ * > **NOTE:** This resource can only be created, cannot be modified or deleted. Therefore, any modification of the resource attribute will not affect exist resource.
+ *
  * ## Import
  *
  * Hybrid Backup Recovery (HBR) Restore Job can be imported using the id. Format to `<restore_job_id>:<restore_type>`, e.g.

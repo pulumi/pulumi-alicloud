@@ -119,6 +119,18 @@ def get_activations(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.177.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.ecs.get_activations()
+    pulumi.export("ecsActivationId1", ids.activations[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Activation IDs.
     :param str instance_name: The default prefix of the instance name.
@@ -155,6 +167,18 @@ def get_activations_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] 
     This data source provides the Ecs Activations of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.177.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.ecs.get_activations()
+    pulumi.export("ecsActivationId1", ids.activations[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Activation IDs.

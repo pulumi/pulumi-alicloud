@@ -834,6 +834,44 @@ class OssShipper(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.121.0+
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject",
+            description="terraform-example",
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            retention_period=3650,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        example_oss_shipper = alicloud.log.OssShipper("exampleOssShipper",
+            project_name=example_project.name,
+            logstore_name=example_store.name,
+            shipper_name="terraform-example",
+            oss_bucket="example_bucket",
+            oss_prefix="root",
+            buffer_interval=300,
+            buffer_size=250,
+            compress_type="none",
+            path_format="%Y/%m/%d/%H/%M",
+            format="json",
+            json_enable_tag=True)
+        ```
+
         ## Import
 
         Log oss shipper can be imported using the id or name, e.g.
@@ -881,6 +919,44 @@ class OssShipper(pulumi.CustomResource):
         [Refer to details](https://www.alibabacloud.com/help/en/doc-detail/43724.htm).
 
         > **NOTE:** Available in 1.121.0+
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject",
+            description="terraform-example",
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            retention_period=3650,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        example_oss_shipper = alicloud.log.OssShipper("exampleOssShipper",
+            project_name=example_project.name,
+            logstore_name=example_store.name,
+            shipper_name="terraform-example",
+            oss_bucket="example_bucket",
+            oss_prefix="root",
+            buffer_interval=300,
+            buffer_size=250,
+            compress_type="none",
+            path_format="%Y/%m/%d/%H/%M",
+            format="json",
+            json_enable_tag=True)
+        ```
 
         ## Import
 

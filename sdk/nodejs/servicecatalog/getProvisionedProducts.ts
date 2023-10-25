@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides Service Catalog Provisioned Product available to the user. [What is Provisioned Product](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-launchproduct)
  *
  * > **NOTE:** Available since v1.196.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.servicecatalog.getProvisionedProducts({
+ *     ids: ["IdExample"],
+ *     nameRegex: "NameRegexExample",
+ * });
+ * export const alicloudServiceCatalogProvisionedProductExampleId = _default.then(_default => _default.provisionedProducts?.[0]?.id);
+ * ```
  */
 export function getProvisionedProducts(args?: GetProvisionedProductsArgs, opts?: pulumi.InvokeOptions): Promise<GetProvisionedProductsResult> {
     args = args || {};
@@ -103,6 +118,21 @@ export interface GetProvisionedProductsResult {
  * This data source provides Service Catalog Provisioned Product available to the user. [What is Provisioned Product](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-launchproduct)
  *
  * > **NOTE:** Available since v1.196.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.servicecatalog.getProvisionedProducts({
+ *     ids: ["IdExample"],
+ *     nameRegex: "NameRegexExample",
+ * });
+ * export const alicloudServiceCatalogProvisionedProductExampleId = _default.then(_default => _default.provisionedProducts?.[0]?.id);
+ * ```
  */
 export function getProvisionedProductsOutput(args?: GetProvisionedProductsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProvisionedProductsResult> {
     return pulumi.output(args).apply((a: any) => getProvisionedProducts(a, opts))

@@ -13,6 +13,35 @@ import * as utilities from "../utilities";
  * > **NOTE:**  Available in 1.127.0+
  *
  * ## Example Usage
+ * ### Create a AnalyticDB for PostgreSQL instance
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "Gpdb",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     vswitchName: "vpc-123456",
+ * });
+ * const adbPgInstance = new alicloud.gpdb.ElasticInstance("adbPgInstance", {
+ *     engine: "gpdb",
+ *     engineVersion: "6.0",
+ *     segStorageType: "cloud_essd",
+ *     segNodeNum: 4,
+ *     storageSize: 50,
+ *     instanceSpec: "2C16G",
+ *     dbInstanceDescription: "Created by terraform",
+ *     instanceNetworkType: "VPC",
+ *     paymentType: "PayAsYouGo",
+ *     vswitchId: defaultSwitch.id,
+ * });
+ * ```
  *
  * ## Import
  *

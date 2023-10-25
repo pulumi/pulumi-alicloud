@@ -11,6 +11,32 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.129.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultRegions = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const example = new alicloud.sae.Namespace("example", {
+ *     namespaceId: pulumi.all([defaultRegions, defaultRandomInteger.result]).apply(([defaultRegions, result]) => `${defaultRegions.regions?.[0]?.id}:example${result}`),
+ *     namespaceName: name,
+ *     namespaceDescription: name,
+ *     enableMicroRegistration: false,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Serverless App Engine (SAE) Namespace can be imported using the id, e.g.

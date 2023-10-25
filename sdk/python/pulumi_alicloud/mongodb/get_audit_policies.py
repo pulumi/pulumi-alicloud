@@ -80,6 +80,18 @@ def get_audit_policies(db_instance_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.148.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.mongodb.get_audit_policies(db_instance_id="example_value")
+    pulumi.export("mongodbAuditPolicyId1", example.policies[0].id)
+    ```
+
 
     :param str db_instance_id: The ID of the instance.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -105,6 +117,18 @@ def get_audit_policies_output(db_instance_id: Optional[pulumi.Input[str]] = None
     This data source provides the Mongodb Audit Policies of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.148.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.mongodb.get_audit_policies(db_instance_id="example_value")
+    pulumi.export("mongodbAuditPolicyId1", example.policies[0].id)
+    ```
 
 
     :param str db_instance_id: The ID of the instance.

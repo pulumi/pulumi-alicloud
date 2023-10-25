@@ -15,6 +15,63 @@ namespace Pulumi.AliCloud.ClickHouse
         /// This data source provides the Click House Accounts of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.134.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "testaccountname";
+        ///     var pwd = config.Get("pwd") ?? "Tf-testpwd";
+        ///     var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("defaultDbCluster", new()
+        ///     {
+        ///         DbClusterVersion = "20.3.10.75",
+        ///         Category = "Basic",
+        ///         DbClusterClass = "S8",
+        ///         DbClusterNetworkType = "vpc",
+        ///         DbClusterDescription = name,
+        ///         DbNodeGroupCount = 1,
+        ///         PaymentType = "PayAsYouGo",
+        ///         DbNodeStorage = "500",
+        ///         StorageType = "cloud_essd",
+        ///         VswitchId = "your_vswitch_id",
+        ///     });
+        /// 
+        ///     var defaultAccount = new AliCloud.ClickHouse.Account("defaultAccount", new()
+        ///     {
+        ///         DbClusterId = defaultDbCluster.Id,
+        ///         AccountDescription = "your_description",
+        ///         AccountName = name,
+        ///         AccountPassword = pwd,
+        ///     });
+        /// 
+        ///     var defaultAccounts = AliCloud.ClickHouse.GetAccounts.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultAccount.Id,
+        ///         },
+        ///         DbClusterId = defaultDbCluster.Id,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["accountId"] = defaultAccounts.Apply(getAccountsResult =&gt; getAccountsResult.Ids[0]),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountsResult> InvokeAsync(GetAccountsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountsResult>("alicloud:clickhouse/getAccounts:getAccounts", args ?? new GetAccountsArgs(), options.WithDefaults());
@@ -23,6 +80,63 @@ namespace Pulumi.AliCloud.ClickHouse
         /// This data source provides the Click House Accounts of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.134.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "testaccountname";
+        ///     var pwd = config.Get("pwd") ?? "Tf-testpwd";
+        ///     var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("defaultDbCluster", new()
+        ///     {
+        ///         DbClusterVersion = "20.3.10.75",
+        ///         Category = "Basic",
+        ///         DbClusterClass = "S8",
+        ///         DbClusterNetworkType = "vpc",
+        ///         DbClusterDescription = name,
+        ///         DbNodeGroupCount = 1,
+        ///         PaymentType = "PayAsYouGo",
+        ///         DbNodeStorage = "500",
+        ///         StorageType = "cloud_essd",
+        ///         VswitchId = "your_vswitch_id",
+        ///     });
+        /// 
+        ///     var defaultAccount = new AliCloud.ClickHouse.Account("defaultAccount", new()
+        ///     {
+        ///         DbClusterId = defaultDbCluster.Id,
+        ///         AccountDescription = "your_description",
+        ///         AccountName = name,
+        ///         AccountPassword = pwd,
+        ///     });
+        /// 
+        ///     var defaultAccounts = AliCloud.ClickHouse.GetAccounts.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultAccount.Id,
+        ///         },
+        ///         DbClusterId = defaultDbCluster.Id,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["accountId"] = defaultAccounts.Apply(getAccountsResult =&gt; getAccountsResult.Ids[0]),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAccountsResult> Invoke(GetAccountsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountsResult>("alicloud:clickhouse/getAccounts:getAccounts", args ?? new GetAccountsInvokeArgs(), options.WithDefaults());

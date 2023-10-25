@@ -369,6 +369,48 @@ class TrafficMirrorFilter(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.140.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default3i_xhoa = alicloud.resourcemanager.ResourceGroup("default3iXhoa",
+            display_name="testname03",
+            resource_group_name=name)
+        defaultd_nz2qk = alicloud.resourcemanager.ResourceGroup("defaultdNz2qk",
+            display_name="testname04",
+            resource_group_name=f"{name}1")
+        default = alicloud.vpc.TrafficMirrorFilter("default",
+            traffic_mirror_filter_description="test",
+            traffic_mirror_filter_name=name,
+            resource_group_id=default3i_xhoa.id,
+            egress_rules=[alicloud.vpc.TrafficMirrorFilterEgressRuleArgs(
+                priority=1,
+                protocol="TCP",
+                action="accept",
+                destination_cidr_block="32.0.0.0/4",
+                destination_port_range="80/80",
+                source_cidr_block="16.0.0.0/4",
+                source_port_range="80/80",
+            )],
+            ingress_rules=[alicloud.vpc.TrafficMirrorFilterIngressRuleArgs(
+                priority=1,
+                protocol="TCP",
+                action="accept",
+                destination_cidr_block="10.64.0.0/10",
+                destination_port_range="80/80",
+                source_cidr_block="10.0.0.0/8",
+                source_port_range="80/80",
+            )])
+        ```
+
         ## Import
 
         VPC Traffic Mirror Filter can be imported using the id, e.g.
@@ -401,6 +443,48 @@ class TrafficMirrorFilter(pulumi.CustomResource):
         For information about VPC Traffic Mirror Filter and how to use it, see [What is Traffic Mirror Filter](https://www.alibabacloud.com/help/doc-detail/207513.htm).
 
         > **NOTE:** Available in v1.140.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default3i_xhoa = alicloud.resourcemanager.ResourceGroup("default3iXhoa",
+            display_name="testname03",
+            resource_group_name=name)
+        defaultd_nz2qk = alicloud.resourcemanager.ResourceGroup("defaultdNz2qk",
+            display_name="testname04",
+            resource_group_name=f"{name}1")
+        default = alicloud.vpc.TrafficMirrorFilter("default",
+            traffic_mirror_filter_description="test",
+            traffic_mirror_filter_name=name,
+            resource_group_id=default3i_xhoa.id,
+            egress_rules=[alicloud.vpc.TrafficMirrorFilterEgressRuleArgs(
+                priority=1,
+                protocol="TCP",
+                action="accept",
+                destination_cidr_block="32.0.0.0/4",
+                destination_port_range="80/80",
+                source_cidr_block="16.0.0.0/4",
+                source_port_range="80/80",
+            )],
+            ingress_rules=[alicloud.vpc.TrafficMirrorFilterIngressRuleArgs(
+                priority=1,
+                protocol="TCP",
+                action="accept",
+                destination_cidr_block="10.64.0.0/10",
+                destination_port_range="80/80",
+                source_cidr_block="10.0.0.0/8",
+                source_port_range="80/80",
+            )])
+        ```
 
         ## Import
 

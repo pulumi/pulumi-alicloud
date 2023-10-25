@@ -15,6 +15,64 @@ import (
 // This data source provides the Simple Application Server Snapshots of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.143.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/simpleapplicationserver"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := simpleapplicationserver.GetServerSnapshots(ctx, &simpleapplicationserver.GetServerSnapshotsArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("simpleApplicationServerSnapshotId1", ids.Snapshots[0].Id)
+//			nameRegex, err := simpleapplicationserver.GetServerSnapshots(ctx, &simpleapplicationserver.GetServerSnapshotsArgs{
+//				NameRegex: pulumi.StringRef("^my-Snapshot"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("simpleApplicationServerSnapshotId2", nameRegex.Snapshots[0].Id)
+//			diskIdConf, err := simpleapplicationserver.GetServerSnapshots(ctx, &simpleapplicationserver.GetServerSnapshotsArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//				DiskId: pulumi.StringRef("example_value"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("simpleApplicationServerSnapshotId3", diskIdConf.Snapshots[0].Id)
+//			instanceIdConf, err := simpleapplicationserver.GetServerSnapshots(ctx, &simpleapplicationserver.GetServerSnapshotsArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//				InstanceId: pulumi.StringRef("example_value"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("simpleApplicationServerSnapshotId4", instanceIdConf.Snapshots[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetServerSnapshots(ctx *pulumi.Context, args *GetServerSnapshotsArgs, opts ...pulumi.InvokeOption) (*GetServerSnapshotsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServerSnapshotsResult

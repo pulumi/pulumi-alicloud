@@ -179,6 +179,23 @@ class Namespace(pulumi.CustomResource):
 
         > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        example = alicloud.cr.Namespace("example",
+            auto_create=False,
+            default_visibility="PUBLIC")
+        ```
+
         ## Import
 
         Container Registry namespace can be imported using the namespace, e.g.
@@ -205,6 +222,23 @@ class Namespace(pulumi.CustomResource):
         > **NOTE:** Available since v1.34.0.
 
         > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        example = alicloud.cr.Namespace("example",
+            auto_create=False,
+            default_visibility="PUBLIC")
+        ```
 
         ## Import
 

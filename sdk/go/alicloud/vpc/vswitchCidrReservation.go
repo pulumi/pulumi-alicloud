@@ -19,6 +19,70 @@ import (
 //
 // > **NOTE:** Available since v1.205.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultVpc, err := vpc.NewNetwork(ctx, "defaultVpc", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.0.0.0/8"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultVSwitch, err := vpc.NewSwitch(ctx, "defaultVSwitch", &vpc.SwitchArgs{
+//				VpcId:       defaultVpc.ID(),
+//				CidrBlock:   pulumi.String("10.0.0.0/20"),
+//				VswitchName: pulumi.String(fmt.Sprintf("%v1", name)),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewVswitchCidrReservation(ctx, "defaultVswitchCidrReservation", &vpc.VswitchCidrReservationArgs{
+//				IpVersion:                  pulumi.String("IPv4"),
+//				VswitchId:                  defaultVSwitch.ID(),
+//				CidrReservationDescription: pulumi.String(name),
+//				CidrReservationCidr:        pulumi.String("10.0.10.0/24"),
+//				VswitchCidrReservationName: pulumi.String(name),
+//				CidrReservationType:        pulumi.String("Prefix"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Vpc Vswitch Cidr Reservation can be imported using the id, e.g.

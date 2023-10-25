@@ -16,6 +16,37 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// &gt; **NOTE:** Available in v1.34.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var fooAccessGroup = new AliCloud.Nas.AccessGroup("fooAccessGroup", new()
+    ///     {
+    ///         AccessGroupName = "tf-NasConfigName",
+    ///         AccessGroupType = "Vpc",
+    ///         Description = "tf-testAccNasConfig",
+    ///     });
+    /// 
+    ///     var fooAccessRule = new AliCloud.Nas.AccessRule("fooAccessRule", new()
+    ///     {
+    ///         AccessGroupName = fooAccessGroup.AccessGroupName,
+    ///         SourceCidrIp = "168.1.1.0/16",
+    ///         RwAccessType = "RDWR",
+    ///         UserAccessType = "no_squash",
+    ///         Priority = 2,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Nas Access Rule can be imported using the id, e.g.

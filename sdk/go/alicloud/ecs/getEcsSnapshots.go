@@ -15,6 +15,38 @@ import (
 // This data source provides the Ecs Snapshots of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.120.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := ecs.GetEcsSnapshots(ctx, &ecs.GetEcsSnapshotsArgs{
+//				Ids: []string{
+//					"s-bp1fvuxxxxxxxx",
+//				},
+//				NameRegex: pulumi.StringRef("tf-test"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstEcsSnapshotId", example.Snapshots[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetEcsSnapshots(ctx *pulumi.Context, args *GetEcsSnapshotsArgs, opts ...pulumi.InvokeOption) (*GetEcsSnapshotsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEcsSnapshotsResult

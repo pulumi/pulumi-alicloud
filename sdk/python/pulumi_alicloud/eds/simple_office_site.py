@@ -548,6 +548,21 @@ class SimpleOfficeSite(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.140.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.eds.SimpleOfficeSite("default",
+            cidr_block="172.16.0.0/12",
+            desktop_access_type="Internet",
+            enable_admin_access=True,
+            office_site_name="terraform-example")
+        ```
+
         ## Import
 
         ECD Simple Office Site can be imported using the id, e.g.
@@ -582,6 +597,21 @@ class SimpleOfficeSite(pulumi.CustomResource):
         For information about ECD Simple Office Site and how to use it, see [What is Simple Office Site](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createsimpleofficesite).
 
         > **NOTE:** Available since v1.140.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.eds.SimpleOfficeSite("default",
+            cidr_block="172.16.0.0/12",
+            desktop_access_type="Internet",
+            enable_admin_access=True,
+            office_site_name="terraform-example")
+        ```
 
         ## Import
 

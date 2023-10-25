@@ -15,6 +15,37 @@ import (
 // This data source provides the Eci Container Groups of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.111.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eci"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := eci.GetContainerGroups(ctx, &eci.GetContainerGroupsArgs{
+//				Ids: []string{
+//					"example_value",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstEciContainerGroupId", example.Groups[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetContainerGroups(ctx *pulumi.Context, args *GetContainerGroupsArgs, opts ...pulumi.InvokeOption) (*GetContainerGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetContainerGroupsResult

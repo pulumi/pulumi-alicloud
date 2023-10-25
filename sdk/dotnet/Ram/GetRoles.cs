@@ -15,6 +15,35 @@ namespace Pulumi.AliCloud.Ram
         /// This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
         /// 
         /// &gt; **NOTE:** Available since v1.0.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var rolesDs = AliCloud.Ram.GetRoles.Invoke(new()
+        ///     {
+        ///         NameRegex = ".*test.*",
+        ///         OutputFile = "roles.txt",
+        ///         PolicyName = "AliyunACSDefaultAccess",
+        ///         PolicyType = "Custom",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRoleId"] = rolesDs.Apply(getRolesResult =&gt; getRolesResult.Roles[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRolesResult> InvokeAsync(GetRolesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRolesResult>("alicloud:ram/getRoles:getRoles", args ?? new GetRolesArgs(), options.WithDefaults());
@@ -23,6 +52,35 @@ namespace Pulumi.AliCloud.Ram
         /// This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
         /// 
         /// &gt; **NOTE:** Available since v1.0.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var rolesDs = AliCloud.Ram.GetRoles.Invoke(new()
+        ///     {
+        ///         NameRegex = ".*test.*",
+        ///         OutputFile = "roles.txt",
+        ///         PolicyName = "AliyunACSDefaultAccess",
+        ///         PolicyType = "Custom",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRoleId"] = rolesDs.Apply(getRolesResult =&gt; getRolesResult.Roles[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetRolesResult> Invoke(GetRolesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRolesResult>("alicloud:ram/getRoles:getRoles", args ?? new GetRolesInvokeArgs(), options.WithDefaults());

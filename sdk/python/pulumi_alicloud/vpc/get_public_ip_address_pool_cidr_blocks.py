@@ -124,6 +124,22 @@ def get_public_ip_address_pool_cidr_blocks(cidr_block: Optional[str] = None,
 
     > **NOTE:** Only users who have the required permissions can use the IP address pool feature of Elastic IP Address (EIP). To apply for the required permissions, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.vpc.get_public_ip_address_pool_cidr_blocks(ids=["example_id"],
+        public_ip_address_pool_id="example_value")
+    pulumi.export("vpcPublicIpAddressPoolCidrBlockId1", ids.blocks[0].id)
+    cidr_block = alicloud.vpc.get_public_ip_address_pool_cidr_blocks(public_ip_address_pool_id="example_value",
+        cidr_block="example_value")
+    pulumi.export("vpcPublicIpAddressPoolCidrBlockId2", cidr_block.blocks[0].id)
+    ```
+
 
     :param str cidr_block: The CIDR block.
     :param Sequence[str] ids: A list of Vpc Public Ip Address Pool Cidr Block IDs.
@@ -163,6 +179,22 @@ def get_public_ip_address_pool_cidr_blocks_output(cidr_block: Optional[pulumi.In
     > **NOTE:** Available in v1.189.0+.
 
     > **NOTE:** Only users who have the required permissions can use the IP address pool feature of Elastic IP Address (EIP). To apply for the required permissions, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.vpc.get_public_ip_address_pool_cidr_blocks(ids=["example_id"],
+        public_ip_address_pool_id="example_value")
+    pulumi.export("vpcPublicIpAddressPoolCidrBlockId1", ids.blocks[0].id)
+    cidr_block = alicloud.vpc.get_public_ip_address_pool_cidr_blocks(public_ip_address_pool_id="example_value",
+        cidr_block="example_value")
+    pulumi.export("vpcPublicIpAddressPoolCidrBlockId2", cidr_block.blocks[0].id)
+    ```
 
 
     :param str cidr_block: The CIDR block.

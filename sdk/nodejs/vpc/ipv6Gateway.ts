@@ -11,6 +11,36 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.142.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-testacc-example";
+ * const defaultVpc = new alicloud.vpc.Network("defaultVpc", {
+ *     description: "tf-testacc",
+ *     enableIpv6: true,
+ * });
+ * const defaultRg = new alicloud.resourcemanager.ResourceGroup("defaultRg", {
+ *     displayName: "tf-testacc-ipv6gateway503",
+ *     resourceGroupName: `${name}1`,
+ * });
+ * const changeRg = new alicloud.resourcemanager.ResourceGroup("changeRg", {
+ *     displayName: "tf-testacc-ipv6gateway311",
+ *     resourceGroupName: `${name}2`,
+ * });
+ * const _default = new alicloud.vpc.Ipv6Gateway("default", {
+ *     description: "test",
+ *     ipv6GatewayName: name,
+ *     vpcId: defaultVpc.id,
+ *     resourceGroupId: defaultRg.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Vpc Ipv6 Gateway can be imported using the id, e.g.

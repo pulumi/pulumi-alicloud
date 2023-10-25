@@ -10,6 +10,19 @@ import * as utilities from "../utilities";
  * This data source provides the Ecd bundles of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.143.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.eds.getBundles({
+ *     bundleType: "SYSTEM",
+ * });
+ * ```
  */
 export function getBundles(args?: GetBundlesArgs, opts?: pulumi.InvokeOptions): Promise<GetBundlesResult> {
     args = args || {};
@@ -70,6 +83,19 @@ export interface GetBundlesResult {
  * This data source provides the Ecd bundles of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.143.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.eds.getBundles({
+ *     bundleType: "SYSTEM",
+ * });
+ * ```
  */
 export function getBundlesOutput(args?: GetBundlesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBundlesResult> {
     return pulumi.output(args).apply((a: any) => getBundles(a, opts))

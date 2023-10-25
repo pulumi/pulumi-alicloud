@@ -11,6 +11,26 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.131.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const exampleAlertContact = new alicloud.arms.AlertContact("exampleAlertContact", {
+ *     alertContactName: "example_value",
+ *     dingRobotWebhookUrl: "https://oapi.dingtalk.com/robot/send?access_token=91f2f6****",
+ *     email: "someone@example.com",
+ *     phoneNum: "1381111****",
+ * });
+ * const exampleAlertContactGroup = new alicloud.arms.AlertContactGroup("exampleAlertContactGroup", {
+ *     alertContactGroupName: "example_value",
+ *     contactIds: [exampleAlertContact.id],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Application Real-Time Monitoring Service (ARMS) Alert Contact Group can be imported using the id, e.g.

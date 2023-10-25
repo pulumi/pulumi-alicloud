@@ -19,6 +19,96 @@ import (
 //
 // > **NOTE:** Available since v1.195.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultRegion := "cn-hangzhou"
+//			if param := cfg.Get("defaultRegion"); param != "" {
+//				defaultRegion = param
+//			}
+//			peerRegion := "cn-beijing"
+//			if param := cfg.Get("peerRegion"); param != "" {
+//				peerRegion = param
+//			}
+//			_, err := alicloud.NewProvider(ctx, "hz", &alicloud.ProviderArgs{
+//				Region: pulumi.String(defaultRegion),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = alicloud.NewProvider(ctx, "bj", &alicloud.ProviderArgs{
+//				Region: pulumi.String(peerRegion),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String(name),
+//				ProtectionLevel: pulumi.String("REDUCED"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultTransitRouter, err := cen.NewTransitRouter(ctx, "defaultTransitRouter", &cen.TransitRouterArgs{
+//				CenId: defaultInstance.ID(),
+//			}, pulumi.Provider(alicloud.Hz))
+//			if err != nil {
+//				return err
+//			}
+//			peerTransitRouter, err := cen.NewTransitRouter(ctx, "peerTransitRouter", &cen.TransitRouterArgs{
+//				CenId: defaultTransitRouter.CenId,
+//			}, pulumi.Provider(alicloud.Bj))
+//			if err != nil {
+//				return err
+//			}
+//			defaultTransitRouterMulticastDomain, err := cen.NewTransitRouterMulticastDomain(ctx, "defaultTransitRouterMulticastDomain", &cen.TransitRouterMulticastDomainArgs{
+//				TransitRouterId:                  defaultTransitRouter.TransitRouterId,
+//				TransitRouterMulticastDomainName: pulumi.String(name),
+//			}, pulumi.Provider(alicloud.Hz))
+//			if err != nil {
+//				return err
+//			}
+//			peerTransitRouterMulticastDomain, err := cen.NewTransitRouterMulticastDomain(ctx, "peerTransitRouterMulticastDomain", &cen.TransitRouterMulticastDomainArgs{
+//				TransitRouterId:                  peerTransitRouter.TransitRouterId,
+//				TransitRouterMulticastDomainName: pulumi.String(name),
+//			}, pulumi.Provider(alicloud.Bj))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cen.NewTransitRouterMulticastDomainPeerMember(ctx, "defaultTransitRouterMulticastDomainPeerMember", &cen.TransitRouterMulticastDomainPeerMemberArgs{
+//				PeerTransitRouterMulticastDomainId: peerTransitRouterMulticastDomain.ID(),
+//				TransitRouterMulticastDomainId:     defaultTransitRouterMulticastDomain.ID(),
+//				GroupIpAddress:                     pulumi.String("239.1.1.1"),
+//			}, pulumi.Provider(alicloud.Hz))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Cen Transit Router Multicast Domain Peer Member can be imported using the id, e.g.

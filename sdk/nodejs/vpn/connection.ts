@@ -7,6 +7,71 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const fooZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const fooSwitch = new alicloud.vpc.Switch("fooSwitch", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.16.0.0/21",
+ *     vpcId: fooNetwork.id,
+ *     zoneId: fooZones.then(fooZones => fooZones.zones?.[0]?.id),
+ * });
+ * const fooGateway = new alicloud.vpn.Gateway("fooGateway", {
+ *     vpcId: fooNetwork.id,
+ *     bandwidth: 10,
+ *     enableSsl: true,
+ *     instanceChargeType: "PrePaid",
+ *     description: "test_create_description",
+ *     vswitchId: fooSwitch.id,
+ * });
+ * const fooCustomerGateway = new alicloud.vpn.CustomerGateway("fooCustomerGateway", {
+ *     ipAddress: "42.104.22.210",
+ *     description: "terraform-example",
+ * });
+ * const fooConnection = new alicloud.vpn.Connection("fooConnection", {
+ *     vpnGatewayId: fooGateway.id,
+ *     customerGatewayId: fooCustomerGateway.id,
+ *     localSubnets: [
+ *         "172.16.0.0/24",
+ *         "172.16.1.0/24",
+ *     ],
+ *     remoteSubnets: [
+ *         "10.0.0.0/24",
+ *         "10.0.1.0/24",
+ *     ],
+ *     effectImmediately: true,
+ *     ikeConfig: {
+ *         ikeAuthAlg: "md5",
+ *         ikeEncAlg: "des",
+ *         ikeVersion: "ikev2",
+ *         ikeMode: "main",
+ *         ikeLifetime: 86400,
+ *         psk: "tf-testvpn2",
+ *         ikePfs: "group1",
+ *         ikeRemoteId: "testbob2",
+ *         ikeLocalId: "testalice2",
+ *     },
+ *     ipsecConfig: {
+ *         ipsecPfs: "group5",
+ *         ipsecEncAlg: "des",
+ *         ipsecAuthAlg: "md5",
+ *         ipsecLifetime: 8640,
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * VPN connection can be imported using the id, e.g.

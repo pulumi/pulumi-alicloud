@@ -15,6 +15,35 @@ import (
 // This data source provides the Cddc Dedicated Host Groups of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.132.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cddc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := cddc.GetDedicatedHostGroups(ctx, &cddc.GetDedicatedHostGroupsArgs{
+//				Engine: pulumi.StringRef("MongoDB"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cddcDedicatedHostGroupId", _default.Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDedicatedHostGroups(ctx *pulumi.Context, args *GetDedicatedHostGroupsArgs, opts ...pulumi.InvokeOption) (*GetDedicatedHostGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDedicatedHostGroupsResult

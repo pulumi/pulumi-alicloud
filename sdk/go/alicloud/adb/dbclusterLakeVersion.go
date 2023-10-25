@@ -19,6 +19,59 @@ import (
 //
 // > **NOTE:** Available since v1.190.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/adb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultZones, err := adb.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(defaultZones.Ids[0]),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = adb.NewDBClusterLakeVersion(ctx, "defaultDBClusterLakeVersion", &adb.DBClusterLakeVersionArgs{
+//				DbClusterVersion:           pulumi.String("5.0"),
+//				VpcId:                      *pulumi.String(defaultNetworks.Ids[0]),
+//				VswitchId:                  *pulumi.String(defaultSwitches.Ids[0]),
+//				ZoneId:                     *pulumi.String(defaultZones.Ids[0]),
+//				ComputeResource:            pulumi.String("16ACU"),
+//				StorageResource:            pulumi.String("0ACU"),
+//				PaymentType:                pulumi.String("PayAsYouGo"),
+//				EnableDefaultResourceGroup: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // AnalyticDB for MySQL (ADB) DB Cluster Lake Version can be imported using the id, e.g.

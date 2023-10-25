@@ -19,6 +19,45 @@ import (
 //
 // > **NOTE:** Available since v1.149.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleInstance, err := rds.NewInstance(ctx, "exampleInstance", &rds.InstanceArgs{
+//				Engine:                pulumi.String("MySQL"),
+//				EngineVersion:         pulumi.String("5.6"),
+//				InstanceType:          pulumi.String("rds.mysql.t1.small"),
+//				InstanceStorage:       pulumi.Int(30),
+//				InstanceChargeType:    pulumi.String("Postpaid"),
+//				DbInstanceStorageType: pulumi.String("local_ssd"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rds.NewRdsBackup(ctx, "exampleRdsBackup", &rds.RdsBackupArgs{
+//				DbInstanceId: exampleInstance.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // RDS Backup can be imported using the id, e.g.

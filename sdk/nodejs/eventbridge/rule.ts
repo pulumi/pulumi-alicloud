@@ -13,6 +13,39 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.129.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const exampleEventBus = new alicloud.eventbridge.EventBus("exampleEventBus", {eventBusName: "example_value"});
+ * const exampleRule = new alicloud.eventbridge.Rule("exampleRule", {
+ *     eventBusName: exampleEventBus.id,
+ *     ruleName: _var.name,
+ *     description: "test",
+ *     filterPattern: "{\"source\":[\"crmabc.newsletter\"],\"type\":[\"UserSignUp\", \"UserLogin\"]}",
+ *     targets: [{
+ *         targetId: "tf-test",
+ *         endpoint: "acs:mns:cn-hangzhou:118938335****:queues/tf-test",
+ *         type: "acs.mns.queue",
+ *         paramLists: [
+ *             {
+ *                 resourceKey: "queue",
+ *                 form: "CONSTANT",
+ *                 value: "tf-testaccEbRule",
+ *             },
+ *             {
+ *                 resourceKey: "Body",
+ *                 form: "ORIGINAL",
+ *             },
+ *         ],
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Event Bridge Rule can be imported using the id, e.g.

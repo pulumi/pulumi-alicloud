@@ -16,6 +16,49 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// &gt; **NOTE:** Available in v1.142.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-testacc-example";
+    ///     var defaultVpc = new AliCloud.Vpc.Network("defaultVpc", new()
+    ///     {
+    ///         Description = "tf-testacc",
+    ///         EnableIpv6 = true,
+    ///     });
+    /// 
+    ///     var defaultRg = new AliCloud.ResourceManager.ResourceGroup("defaultRg", new()
+    ///     {
+    ///         DisplayName = "tf-testacc-ipv6gateway503",
+    ///         ResourceGroupName = $"{name}1",
+    ///     });
+    /// 
+    ///     var changeRg = new AliCloud.ResourceManager.ResourceGroup("changeRg", new()
+    ///     {
+    ///         DisplayName = "tf-testacc-ipv6gateway311",
+    ///         ResourceGroupName = $"{name}2",
+    ///     });
+    /// 
+    ///     var @default = new AliCloud.Vpc.Ipv6Gateway("default", new()
+    ///     {
+    ///         Description = "test",
+    ///         Ipv6GatewayName = name,
+    ///         VpcId = defaultVpc.Id,
+    ///         ResourceGroupId = defaultRg.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Vpc Ipv6 Gateway can be imported using the id, e.g.

@@ -119,6 +119,19 @@ def get_vpc_endpoint_connections(endpoint_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.110.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.privatelink.get_vpc_endpoint_connections(service_id="example_value",
+        status="Connected")
+    pulumi.export("firstPrivatelinkVpcEndpointConnectionId", example.connections[0].id)
+    ```
+
 
     :param str endpoint_id: The ID of the Vpc Endpoint.
     :param int endpoint_owner_id: The endpoint owner id.
@@ -157,6 +170,19 @@ def get_vpc_endpoint_connections_output(endpoint_id: Optional[pulumi.Input[Optio
     This data source provides the Privatelink Vpc Endpoint Connections of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.110.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.privatelink.get_vpc_endpoint_connections(service_id="example_value",
+        status="Connected")
+    pulumi.export("firstPrivatelinkVpcEndpointConnectionId", example.connections[0].id)
+    ```
 
 
     :param str endpoint_id: The ID of the Vpc Endpoint.

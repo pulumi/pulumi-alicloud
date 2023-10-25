@@ -10,6 +10,27 @@ import * as utilities from "../utilities";
  * This data source provides the Vpc Traffic Mirror Filter Egress Rules of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.140.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.vpc.getTrafficMirrorFilterEgressRules({
+ *     trafficMirrorFilterId: "example_traffic_mirror_filter_id",
+ *     ids: ["example_id"],
+ * });
+ * export const vpcTrafficMirrorFilterEgressRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
+ * const status = alicloud.vpc.getTrafficMirrorFilterEgressRules({
+ *     trafficMirrorFilterId: "example_traffic_mirror_filter_id",
+ *     ids: ["example_id"],
+ *     status: "Created",
+ * });
+ * export const vpcTrafficMirrorFilterEgressRuleId2 = status.then(status => status.rules?.[0]?.id);
+ * ```
  */
 export function getTrafficMirrorFilterEgressRules(args: GetTrafficMirrorFilterEgressRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetTrafficMirrorFilterEgressRulesResult> {
 
@@ -62,6 +83,27 @@ export interface GetTrafficMirrorFilterEgressRulesResult {
  * This data source provides the Vpc Traffic Mirror Filter Egress Rules of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.140.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.vpc.getTrafficMirrorFilterEgressRules({
+ *     trafficMirrorFilterId: "example_traffic_mirror_filter_id",
+ *     ids: ["example_id"],
+ * });
+ * export const vpcTrafficMirrorFilterEgressRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
+ * const status = alicloud.vpc.getTrafficMirrorFilterEgressRules({
+ *     trafficMirrorFilterId: "example_traffic_mirror_filter_id",
+ *     ids: ["example_id"],
+ *     status: "Created",
+ * });
+ * export const vpcTrafficMirrorFilterEgressRuleId2 = status.then(status => status.rules?.[0]?.id);
+ * ```
  */
 export function getTrafficMirrorFilterEgressRulesOutput(args: GetTrafficMirrorFilterEgressRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrafficMirrorFilterEgressRulesResult> {
     return pulumi.output(args).apply((a: any) => getTrafficMirrorFilterEgressRules(a, opts))

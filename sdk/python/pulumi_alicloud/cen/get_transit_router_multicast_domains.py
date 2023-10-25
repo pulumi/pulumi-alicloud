@@ -144,6 +144,22 @@ def get_transit_router_multicast_domains(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.195.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cen.get_transit_router_multicast_domains(ids=["example_id"],
+        transit_router_id="your_transit_router_id")
+    pulumi.export("cenTransitRouterMulticastDomainId0", ids.domains[0].id)
+    name_regex = alicloud.cen.get_transit_router_multicast_domains(name_regex="^my-name",
+        transit_router_id="your_transit_router_id")
+    pulumi.export("cenTransitRouterMulticastDomainId1", name_regex.domains[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Transit Router Multicast Domain IDs.
     :param str name_regex: A regex string to filter results by Transit Router Multicast Domain name.
@@ -186,6 +202,22 @@ def get_transit_router_multicast_domains_output(ids: Optional[pulumi.Input[Optio
     This data source provides the Cen Transit Router Multicast Domains of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.195.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cen.get_transit_router_multicast_domains(ids=["example_id"],
+        transit_router_id="your_transit_router_id")
+    pulumi.export("cenTransitRouterMulticastDomainId0", ids.domains[0].id)
+    name_regex = alicloud.cen.get_transit_router_multicast_domains(name_regex="^my-name",
+        transit_router_id="your_transit_router_id")
+    pulumi.export("cenTransitRouterMulticastDomainId1", name_regex.domains[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Transit Router Multicast Domain IDs.

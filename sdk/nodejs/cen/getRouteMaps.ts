@@ -10,6 +10,23 @@ import * as utilities from "../utilities";
  * This data source provides CEN Route Maps available to the user.
  *
  * > **NOTE:** Available in v1.87.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const this = alicloud.cen.getRouteMaps({
+ *     cenId: "cen-ihdlgo87ai********",
+ *     ids: ["cen-ihdlgo87ai:cenrmap-bnh97kb3mn********"],
+ *     descriptionRegex: "datasource_test",
+ *     cenRegionId: "cn-hangzhou",
+ *     transmitDirection: "RegionIn",
+ *     status: "Active",
+ * });
+ * export const firstCenRouteMapId = _this.then(_this => _this.maps?.[0]?.routeMapId);
+ * ```
  */
 export function getRouteMaps(args: GetRouteMapsArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteMapsResult> {
 
@@ -98,6 +115,23 @@ export interface GetRouteMapsResult {
  * This data source provides CEN Route Maps available to the user.
  *
  * > **NOTE:** Available in v1.87.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const this = alicloud.cen.getRouteMaps({
+ *     cenId: "cen-ihdlgo87ai********",
+ *     ids: ["cen-ihdlgo87ai:cenrmap-bnh97kb3mn********"],
+ *     descriptionRegex: "datasource_test",
+ *     cenRegionId: "cn-hangzhou",
+ *     transmitDirection: "RegionIn",
+ *     status: "Active",
+ * });
+ * export const firstCenRouteMapId = _this.then(_this => _this.maps?.[0]?.routeMapId);
+ * ```
  */
 export function getRouteMapsOutput(args: GetRouteMapsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouteMapsResult> {
     return pulumi.output(args).apply((a: any) => getRouteMaps(a, opts))

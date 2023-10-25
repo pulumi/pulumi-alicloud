@@ -13,6 +13,36 @@ import * as utilities from "../utilities";
  *
  * > **NOTE** Only one of privateIps or privateIpsCount can be specified when assign private IPs.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "networkInterfaceName";
+ * const vpc = new alicloud.vpc.Network("vpc", {
+ *     vpcName: name,
+ *     cidrBlock: "192.168.0.0/24",
+ * });
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const vswitch = new alicloud.vpc.Switch("vswitch", {
+ *     cidrBlock: "192.168.0.0/24",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     vpcId: vpc.id,
+ * });
+ * const group = new alicloud.ecs.SecurityGroup("group", {vpcId: vpc.id});
+ * const defaultNetworkInterface = new alicloud.vpc.NetworkInterface("defaultNetworkInterface", {
+ *     networkInterfaceName: name,
+ *     vswitchId: vswitch.id,
+ *     securityGroupIds: [group.id],
+ *     privateIp: "192.168.0.2",
+ *     privateIpsCount: 3,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ENI can be imported using the id, e.g.

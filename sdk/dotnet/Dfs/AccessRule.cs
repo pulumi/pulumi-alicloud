@@ -16,6 +16,39 @@ namespace Pulumi.AliCloud.Dfs
     /// 
     /// &gt; **NOTE:** Available since v1.140.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "example_name";
+    ///     var defaultAccessGroup = new AliCloud.Dfs.AccessGroup("defaultAccessGroup", new()
+    ///     {
+    ///         NetworkType = "VPC",
+    ///         AccessGroupName = name,
+    ///         Description = name,
+    ///     });
+    /// 
+    ///     var defaultAccessRule = new AliCloud.Dfs.AccessRule("defaultAccessRule", new()
+    ///     {
+    ///         NetworkSegment = "192.0.2.0/24",
+    ///         AccessGroupId = defaultAccessGroup.Id,
+    ///         Description = name,
+    ///         RwAccessType = "RDWR",
+    ///         Priority = 10,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// DFS Access Rule can be imported using the id, e.g.

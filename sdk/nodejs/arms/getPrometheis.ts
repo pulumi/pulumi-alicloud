@@ -10,6 +10,24 @@ import * as utilities from "../utilities";
  * This data source provides the Arms Prometheis of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.203.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.arms.getPrometheis({
+ *     ids: ["example_id"],
+ * });
+ * export const armsPrometheisId1 = ids.then(ids => ids.prometheis?.[0]?.id);
+ * const nameRegex = alicloud.arms.getPrometheis({
+ *     nameRegex: "tf-example",
+ * });
+ * export const armsPrometheisId2 = nameRegex.then(nameRegex => nameRegex.prometheis?.[0]?.id);
+ * ```
  */
 export function getPrometheis(args?: GetPrometheisArgs, opts?: pulumi.InvokeOptions): Promise<GetPrometheisResult> {
     args = args || {};
@@ -82,6 +100,24 @@ export interface GetPrometheisResult {
  * This data source provides the Arms Prometheis of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.203.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.arms.getPrometheis({
+ *     ids: ["example_id"],
+ * });
+ * export const armsPrometheisId1 = ids.then(ids => ids.prometheis?.[0]?.id);
+ * const nameRegex = alicloud.arms.getPrometheis({
+ *     nameRegex: "tf-example",
+ * });
+ * export const armsPrometheisId2 = nameRegex.then(nameRegex => nameRegex.prometheis?.[0]?.id);
+ * ```
  */
 export function getPrometheisOutput(args?: GetPrometheisOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrometheisResult> {
     return pulumi.output(args).apply((a: any) => getPrometheis(a, opts))

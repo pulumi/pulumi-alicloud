@@ -413,6 +413,27 @@ class AnycastEipAddress(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.113.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.eipanycast.AnycastEipAddress("default",
+            anycast_eip_address_name=name,
+            description=name,
+            bandwidth=200,
+            service_location="international",
+            internet_charge_type="PayByTraffic",
+            payment_type="PayAsYouGo")
+        ```
+
         ## Import
 
         Eipanycast Anycast Eip Address can be imported using the id, e.g.
@@ -444,6 +465,27 @@ class AnycastEipAddress(pulumi.CustomResource):
         For information about Eipanycast Anycast Eip Address and how to use it, see [What is Anycast Eip Address](https://www.alibabacloud.com/help/en/anycast-eip/latest/api-eipanycast-2020-03-09-allocateanycasteipaddress).
 
         > **NOTE:** Available since v1.113.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.eipanycast.AnycastEipAddress("default",
+            anycast_eip_address_name=name,
+            description=name,
+            bandwidth=200,
+            service_location="international",
+            internet_charge_type="PayByTraffic",
+            payment_type="PayAsYouGo")
+        ```
 
         ## Import
 

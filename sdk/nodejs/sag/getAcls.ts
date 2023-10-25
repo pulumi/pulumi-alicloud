@@ -12,6 +12,21 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in 1.60.0+
  *
  * > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultAcls = alicloud.sag.getAcls({
+ *     ids: [alicloud_sag_acls["default"].id],
+ *     nameRegex: "^tf-testAcc.*",
+ * });
+ * const defaultAcl = new alicloud.rocketmq.Acl("defaultAcl", {});
+ * ```
  */
 export function getAcls(args?: GetAclsArgs, opts?: pulumi.InvokeOptions): Promise<GetAclsResult> {
     args = args || {};
@@ -68,6 +83,21 @@ export interface GetAclsResult {
  * > **NOTE:** Available in 1.60.0+
  *
  * > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultAcls = alicloud.sag.getAcls({
+ *     ids: [alicloud_sag_acls["default"].id],
+ *     nameRegex: "^tf-testAcc.*",
+ * });
+ * const defaultAcl = new alicloud.rocketmq.Acl("defaultAcl", {});
+ * ```
  */
 export function getAclsOutput(args?: GetAclsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclsResult> {
     return pulumi.output(args).apply((a: any) => getAcls(a, opts))

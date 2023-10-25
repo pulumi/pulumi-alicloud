@@ -15,6 +15,36 @@ import (
 // This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
 //
 // > **NOTE:** Available in 1.195.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/threatdetection"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := threatdetection.GetHoneypotImages(ctx, &threatdetection.GetHoneypotImagesArgs{
+//				Ids: []string{
+//					"sha256:02882320c9a55303410127c5dc4ae2dc470150f9d7f2483102d994f5e5f4d9df",
+//				},
+//				NameRegex: pulumi.StringRef("^meta"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudThreatDetectionHoneypotImageExampleId", _default.Images[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetHoneypotImages(ctx *pulumi.Context, args *GetHoneypotImagesArgs, opts ...pulumi.InvokeOption) (*GetHoneypotImagesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHoneypotImagesResult

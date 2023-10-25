@@ -11,6 +11,47 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.166.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const exampleZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: exampleNetwork.id,
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ * });
+ * const exampleCluster = new alicloud.mse.Cluster("exampleCluster", {
+ *     clusterSpecification: "MSE_SC_1_2_60_c",
+ *     clusterType: "Nacos-Ans",
+ *     clusterVersion: "NACOS_2_0_0",
+ *     instanceCount: 1,
+ *     netType: "privatenet",
+ *     pubNetworkFlow: "1",
+ *     connectionType: "slb",
+ *     clusterAliasName: "terraform-example",
+ *     mseVersion: "mse_dev",
+ *     vswitchId: exampleSwitch.id,
+ *     vpcId: exampleNetwork.id,
+ * });
+ * const exampleEngineNamespace = new alicloud.mse.EngineNamespace("exampleEngineNamespace", {
+ *     clusterId: exampleCluster.clusterId,
+ *     namespaceShowName: "terraform-example",
+ *     namespaceId: "terraform-example",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Microservice Engine (MSE) Engine Namespace can be imported using the id, e.g.

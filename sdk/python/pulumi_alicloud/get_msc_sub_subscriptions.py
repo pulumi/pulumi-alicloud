@@ -70,6 +70,18 @@ def get_msc_sub_subscriptions(output_file: Optional[str] = None,
 
     > **NOTE:** Available in v1.135.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.get_msc_sub_subscriptions()
+    pulumi.export("mscSubSubscriptionId1", default.subscriptions[0].id)
+    ```
+
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
@@ -91,6 +103,18 @@ def get_msc_sub_subscriptions_output(output_file: Optional[pulumi.Input[Optional
     This data source provides the Message Center Subscriptions of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.135.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.get_msc_sub_subscriptions()
+    pulumi.export("mscSubSubscriptionId1", default.subscriptions[0].id)
+    ```
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

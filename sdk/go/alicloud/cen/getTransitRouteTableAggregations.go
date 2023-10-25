@@ -15,6 +15,46 @@ import (
 // This data source provides the Cen Transit Route Table Aggregations of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.202.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := cen.GetTransitRouteTableAggregations(ctx, &cen.GetTransitRouteTableAggregationsArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//				TransitRouteTableId: "your_transit_route_table_id",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cenTransitRouterMulticastDomainId0", ids.TransitRouteTableAggregations[0].Id)
+//			nameRegex, err := cen.GetTransitRouteTableAggregations(ctx, &cen.GetTransitRouteTableAggregationsArgs{
+//				NameRegex:           pulumi.StringRef("^my-name"),
+//				TransitRouteTableId: "your_transit_route_table_id",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cenTransitRouterMulticastDomainId1", nameRegex.TransitRouteTableAggregations[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetTransitRouteTableAggregations(ctx *pulumi.Context, args *GetTransitRouteTableAggregationsArgs, opts ...pulumi.InvokeOption) (*GetTransitRouteTableAggregationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTransitRouteTableAggregationsResult

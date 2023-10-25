@@ -11,6 +11,30 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.153.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.nas.AutoSnapshotPolicy("example", {
+ *     autoSnapshotPolicyName: "example_value",
+ *     repeatWeekdays: [
+ *         "3",
+ *         "4",
+ *         "5",
+ *     ],
+ *     retentionDays: 30,
+ *     timePoints: [
+ *         "3",
+ *         "4",
+ *         "5",
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Network Attached Storage (NAS) Auto Snapshot Policy can be imported using the id, e.g.

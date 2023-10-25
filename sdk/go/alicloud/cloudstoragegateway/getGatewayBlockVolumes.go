@@ -15,6 +15,47 @@ import (
 // This data source provides the Cloud Storage Gateway Gateway Block Volumes of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.144.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudstoragegateway"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := cloudstoragegateway.GetGatewayBlockVolumes(ctx, &cloudstoragegateway.GetGatewayBlockVolumesArgs{
+//				GatewayId: "example_value",
+//				Ids: []string{
+//					"example_value-1",
+//					"example_value-2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cloudStorageGatewayGatewayBlockVolumeId1", ids.Volumes[0].Id)
+//			nameRegex, err := cloudstoragegateway.GetGatewayBlockVolumes(ctx, &cloudstoragegateway.GetGatewayBlockVolumesArgs{
+//				GatewayId: "example_value",
+//				NameRegex: pulumi.StringRef("^my-GatewayBlockVolume"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cloudStorageGatewayGatewayBlockVolumeId2", nameRegex.Volumes[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetGatewayBlockVolumes(ctx *pulumi.Context, args *GetGatewayBlockVolumesArgs, opts ...pulumi.InvokeOption) (*GetGatewayBlockVolumesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGatewayBlockVolumesResult

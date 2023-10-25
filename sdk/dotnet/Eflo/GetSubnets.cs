@@ -15,6 +15,35 @@ namespace Pulumi.AliCloud.Eflo
         /// This data source provides Eflo Subnet available to the user.[What is Subnet](https://help.aliyun.com/document_detail/604977.html)
         /// 
         /// &gt; **NOTE:** Available in 1.204.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Eflo.GetSubnets.Invoke(new()
+        ///     {
+        ///         NameRegex = alicloud_eflo_subnet.Default.Name,
+        ///         SubnetName = "SubnetTestForTerraform",
+        ///         VpdId = @var.VpdId,
+        ///         ZoneId = @var.ZoneId,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudEfloSubnetExampleId"] = @default.Apply(@default =&gt; @default.Apply(getSubnetsResult =&gt; getSubnetsResult.Subnets[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSubnetsResult> InvokeAsync(GetSubnetsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSubnetsResult>("alicloud:eflo/getSubnets:getSubnets", args ?? new GetSubnetsArgs(), options.WithDefaults());
@@ -23,6 +52,35 @@ namespace Pulumi.AliCloud.Eflo
         /// This data source provides Eflo Subnet available to the user.[What is Subnet](https://help.aliyun.com/document_detail/604977.html)
         /// 
         /// &gt; **NOTE:** Available in 1.204.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Eflo.GetSubnets.Invoke(new()
+        ///     {
+        ///         NameRegex = alicloud_eflo_subnet.Default.Name,
+        ///         SubnetName = "SubnetTestForTerraform",
+        ///         VpdId = @var.VpdId,
+        ///         ZoneId = @var.ZoneId,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudEfloSubnetExampleId"] = @default.Apply(@default =&gt; @default.Apply(getSubnetsResult =&gt; getSubnetsResult.Subnets[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetSubnetsResult> Invoke(GetSubnetsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSubnetsResult>("alicloud:eflo/getSubnets:getSubnets", args ?? new GetSubnetsInvokeArgs(), options.WithDefaults());

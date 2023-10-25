@@ -1929,6 +1929,49 @@ class ReadOnlyInstance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.52.1.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="5.6")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vpc_id=example_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=example_zones.zones[0].id,
+            vswitch_name=name)
+        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
+        example_instance = alicloud.rds.Instance("exampleInstance",
+            engine="MySQL",
+            engine_version="5.6",
+            instance_type="rds.mysql.t1.small",
+            instance_storage=20,
+            instance_charge_type="Postpaid",
+            instance_name=name,
+            vswitch_id=example_switch.id,
+            security_ips=[
+                "10.168.1.12",
+                "100.69.7.112",
+            ])
+        example_read_only_instance = alicloud.rds.ReadOnlyInstance("exampleReadOnlyInstance",
+            zone_id=example_instance.zone_id,
+            master_db_instance_id=example_instance.id,
+            engine_version=example_instance.engine_version,
+            instance_storage=example_instance.instance_storage,
+            instance_type=example_instance.instance_type,
+            instance_name=f"{name}readonly",
+            vswitch_id=example_switch.id)
+        ```
+
         ## Import
 
         RDS readonly instance can be imported using the id, e.g.
@@ -2047,6 +2090,49 @@ class ReadOnlyInstance(pulumi.CustomResource):
         Provides an RDS readonly instance resource, see [What is DB Readonly Instance](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createreadonlydbinstance).
 
         > **NOTE:** Available since v1.52.1.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="5.6")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vpc_id=example_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=example_zones.zones[0].id,
+            vswitch_name=name)
+        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
+        example_instance = alicloud.rds.Instance("exampleInstance",
+            engine="MySQL",
+            engine_version="5.6",
+            instance_type="rds.mysql.t1.small",
+            instance_storage=20,
+            instance_charge_type="Postpaid",
+            instance_name=name,
+            vswitch_id=example_switch.id,
+            security_ips=[
+                "10.168.1.12",
+                "100.69.7.112",
+            ])
+        example_read_only_instance = alicloud.rds.ReadOnlyInstance("exampleReadOnlyInstance",
+            zone_id=example_instance.zone_id,
+            master_db_instance_id=example_instance.id,
+            engine_version=example_instance.engine_version,
+            instance_storage=example_instance.instance_storage,
+            instance_type=example_instance.instance_type,
+            instance_name=f"{name}readonly",
+            vswitch_id=example_switch.id)
+        ```
 
         ## Import
 

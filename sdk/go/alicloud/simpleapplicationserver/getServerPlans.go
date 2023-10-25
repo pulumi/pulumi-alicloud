@@ -15,6 +15,39 @@ import (
 // This data source provides the Simple Application Server Plans of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.135.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/simpleapplicationserver"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := simpleapplicationserver.GetServerPlans(ctx, &simpleapplicationserver.GetServerPlansArgs{
+//				Memory:    pulumi.IntRef(1),
+//				Bandwidth: pulumi.IntRef(3),
+//				DiskSize:  pulumi.IntRef(40),
+//				Flow:      pulumi.IntRef(6),
+//				Core:      pulumi.IntRef(2),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("simpleApplicationServerPlanId1", data.Alicloud_simple_application_server_plans.Ids.Plans[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetServerPlans(ctx *pulumi.Context, args *GetServerPlansArgs, opts ...pulumi.InvokeOption) (*GetServerPlansResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServerPlansResult

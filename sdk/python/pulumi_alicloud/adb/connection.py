@@ -200,6 +200,51 @@ class Connection(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.81.0.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_zones = alicloud.adb.get_zones()
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="10.4.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_db_cluster = alicloud.adb.DBCluster("defaultDBCluster",
+            db_cluster_category="Cluster",
+            db_node_class="C8",
+            db_node_count=4,
+            db_node_storage=400,
+            mode="reserver",
+            db_cluster_version="3.0",
+            payment_type="PayAsYouGo",
+            vswitch_id=default_switch.id,
+            description=name,
+            maintain_time="23:00Z-00:00Z",
+            resource_group_id=default_resource_groups.ids[0],
+            security_ips=[
+                "10.168.1.12",
+                "10.168.1.11",
+            ],
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        default_connection = alicloud.adb.Connection("defaultConnection",
+            db_cluster_id=default_db_cluster.id,
+            connection_prefix="example")
+        ```
+
         ## Import
 
         ADB connection can be imported using the id, e.g.
@@ -226,6 +271,51 @@ class Connection(pulumi.CustomResource):
          To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
 
         > **NOTE:** Available since v1.81.0.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_zones = alicloud.adb.get_zones()
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="10.4.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_db_cluster = alicloud.adb.DBCluster("defaultDBCluster",
+            db_cluster_category="Cluster",
+            db_node_class="C8",
+            db_node_count=4,
+            db_node_storage=400,
+            mode="reserver",
+            db_cluster_version="3.0",
+            payment_type="PayAsYouGo",
+            vswitch_id=default_switch.id,
+            description=name,
+            maintain_time="23:00Z-00:00Z",
+            resource_group_id=default_resource_groups.ids[0],
+            security_ips=[
+                "10.168.1.12",
+                "10.168.1.11",
+            ],
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        default_connection = alicloud.adb.Connection("defaultConnection",
+            db_cluster_id=default_db_cluster.id,
+            connection_prefix="example")
+        ```
 
         ## Import
 

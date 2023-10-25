@@ -349,6 +349,28 @@ class DnatEntry(pulumi.CustomResource):
 
         > **NOTE:** Only the following regions suppor. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        sag_id = config.get("sagId")
+        if sag_id is None:
+            sag_id = "sag-9bifkfaz***"
+        default = alicloud.rocketmq.DnatEntry("default",
+            sag_id=sag_id,
+            type="Intranet",
+            ip_protocol="any",
+            external_ip="172.32.0.2",
+            external_port="any",
+            internal_ip="172.16.0.4",
+            internal_port="any")
+        ```
+
         ## Import
 
         The Sag DnatEntry can be imported using the id, e.g.
@@ -381,6 +403,28 @@ class DnatEntry(pulumi.CustomResource):
         > **NOTE:** Available since v1.63.0.
 
         > **NOTE:** Only the following regions suppor. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        sag_id = config.get("sagId")
+        if sag_id is None:
+            sag_id = "sag-9bifkfaz***"
+        default = alicloud.rocketmq.DnatEntry("default",
+            sag_id=sag_id,
+            type="Intranet",
+            ip_protocol="any",
+            external_ip="172.32.0.2",
+            external_port="any",
+            internal_ip="172.16.0.4",
+            internal_port="any")
+        ```
 
         ## Import
 

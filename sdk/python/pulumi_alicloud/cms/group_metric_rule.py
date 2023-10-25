@@ -750,6 +750,52 @@ class GroupMetricRule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.104.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup",
+            alarm_contact_group_name=name,
+            describe=name)
+        default_monitor_group = alicloud.cms.MonitorGroup("defaultMonitorGroup",
+            monitor_group_name=name,
+            contact_groups=[default_alarm_contact_group.id])
+        this = alicloud.cms.GroupMetricRule("this",
+            group_id=default_monitor_group.id,
+            group_metric_rule_name=name,
+            category="ecs",
+            metric_name="cpu_total",
+            namespace="acs_ecs_dashboard",
+            rule_id=name,
+            period=60,
+            interval="3600",
+            silence_time=85800,
+            no_effective_interval="00:00-05:30",
+            webhook="http://www.aliyun.com",
+            escalations=alicloud.cms.GroupMetricRuleEscalationsArgs(
+                warn=alicloud.cms.GroupMetricRuleEscalationsWarnArgs(
+                    comparison_operator="GreaterThanOrEqualToThreshold",
+                    statistics="Average",
+                    threshold="90",
+                    times=3,
+                ),
+                info=alicloud.cms.GroupMetricRuleEscalationsInfoArgs(
+                    comparison_operator="LessThanLastWeek",
+                    statistics="Average",
+                    threshold="90",
+                    times=5,
+                ),
+            ))
+        ```
+
         ## Import
 
         Cloud Monitor Service Group Metric Rule can be imported using the id, e.g.
@@ -790,6 +836,52 @@ class GroupMetricRule(pulumi.CustomResource):
         For information about Cloud Monitor Service Group Metric Rule and how to use it, see [What is Group Metric Rule](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putgroupmetricrule).
 
         > **NOTE:** Available since v1.104.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup",
+            alarm_contact_group_name=name,
+            describe=name)
+        default_monitor_group = alicloud.cms.MonitorGroup("defaultMonitorGroup",
+            monitor_group_name=name,
+            contact_groups=[default_alarm_contact_group.id])
+        this = alicloud.cms.GroupMetricRule("this",
+            group_id=default_monitor_group.id,
+            group_metric_rule_name=name,
+            category="ecs",
+            metric_name="cpu_total",
+            namespace="acs_ecs_dashboard",
+            rule_id=name,
+            period=60,
+            interval="3600",
+            silence_time=85800,
+            no_effective_interval="00:00-05:30",
+            webhook="http://www.aliyun.com",
+            escalations=alicloud.cms.GroupMetricRuleEscalationsArgs(
+                warn=alicloud.cms.GroupMetricRuleEscalationsWarnArgs(
+                    comparison_operator="GreaterThanOrEqualToThreshold",
+                    statistics="Average",
+                    threshold="90",
+                    times=3,
+                ),
+                info=alicloud.cms.GroupMetricRuleEscalationsInfoArgs(
+                    comparison_operator="LessThanLastWeek",
+                    statistics="Average",
+                    threshold="90",
+                    times=5,
+                ),
+            ))
+        ```
 
         ## Import
 

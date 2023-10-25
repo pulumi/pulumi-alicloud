@@ -11,6 +11,32 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.130.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example1 = new alicloud.cloudfirewall.ControlPolicy("example1", {
+ *     applicationName: "ANY",
+ *     aclAction: "accept",
+ *     description: "example",
+ *     destinationType: "net",
+ *     destination: "100.1.1.0/24",
+ *     direction: "out",
+ *     proto: "ANY",
+ *     source: "1.2.3.0/24",
+ *     sourceType: "net",
+ * });
+ * const example2 = new alicloud.cloudfirewall.ControlPolicyOrder("example2", {
+ *     aclUuid: example1.aclUuid,
+ *     direction: example1.direction,
+ *     order: 1,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Cloud Firewall Control Policy Order can be imported using the id, e.g.

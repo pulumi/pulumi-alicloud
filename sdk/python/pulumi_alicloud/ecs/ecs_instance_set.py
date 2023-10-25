@@ -1889,6 +1889,47 @@ class EcsInstanceSet(pulumi.CustomResource):
 
         > **NOTE:** Only `tags` support batch modification.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            most_recent=True,
+            owners="system")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.17.3.0/24")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="172.17.3.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        beijing_k = alicloud.ecs.EcsInstanceSet("beijingK",
+            amount=10,
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            instance_name=name,
+            instance_charge_type="PostPaid",
+            system_disk_performance_level="PL0",
+            system_disk_category="cloud_efficiency",
+            system_disk_size=200,
+            vswitch_id=default_switch.id,
+            security_group_ids=[__item.id for __item in [default_security_group]],
+            zone_id=default_zones.zones[0].id)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] amount: The number of instances that you want to create. Valid values: `1` to `100`.
@@ -1958,6 +1999,47 @@ class EcsInstanceSet(pulumi.CustomResource):
         > **NOTE:** In the instances managed by this resource, names are automatically generated based on `instance_name` and `unique_suffix`.
 
         > **NOTE:** Only `tags` support batch modification.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            most_recent=True,
+            owners="system")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.17.3.0/24")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="172.17.3.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        beijing_k = alicloud.ecs.EcsInstanceSet("beijingK",
+            amount=10,
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            instance_name=name,
+            instance_charge_type="PostPaid",
+            system_disk_performance_level="PL0",
+            system_disk_category="cloud_efficiency",
+            system_disk_size=200,
+            vswitch_id=default_switch.id,
+            security_group_ids=[__item.id for __item in [default_security_group]],
+            zone_id=default_zones.zones[0].id)
+        ```
 
         :param str resource_name: The name of the resource.
         :param EcsInstanceSetArgs args: The arguments to use to populate this resource's properties.

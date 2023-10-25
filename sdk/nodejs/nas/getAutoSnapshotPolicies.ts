@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * This data source provides Auto Snapshot Policies available to the user.
  *
  * > **NOTE**: Available in v1.153.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.nas.getAutoSnapshotPolicies({
+ *     ids: ["example_value"],
+ * });
+ * export const nasAutoSnapshotPoliciesId1 = ids.then(ids => ids.policies?.[0]?.id);
+ * ```
  */
 export function getAutoSnapshotPolicies(args?: GetAutoSnapshotPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetAutoSnapshotPoliciesResult> {
     args = args || {};
@@ -73,6 +85,18 @@ export interface GetAutoSnapshotPoliciesResult {
  * This data source provides Auto Snapshot Policies available to the user.
  *
  * > **NOTE**: Available in v1.153.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.nas.getAutoSnapshotPolicies({
+ *     ids: ["example_value"],
+ * });
+ * export const nasAutoSnapshotPoliciesId1 = ids.then(ids => ids.policies?.[0]?.id);
+ * ```
  */
 export function getAutoSnapshotPoliciesOutput(args?: GetAutoSnapshotPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAutoSnapshotPoliciesResult> {
     return pulumi.output(args).apply((a: any) => getAutoSnapshotPolicies(a, opts))

@@ -16,6 +16,37 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// &gt; **NOTE:** Available in 1.36.0+.
         /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var fooCommonBandwithPackage = new AliCloud.Vpc.CommonBandwithPackage("fooCommonBandwithPackage", new()
+        ///     {
+        ///         Bandwidth = "2",
+        ///         Description = "tf-testAcc-CommonBandwidthPackage",
+        ///     });
+        /// 
+        ///     var fooCommonBandwidthPackages = AliCloud.Vpc.GetCommonBandwidthPackages.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             fooCommonBandwithPackage.Id,
+        ///         },
+        ///         NameRegex = "^tf-testAcc.*",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// ## Public ip addresses Block
         ///   
         ///   The public ip addresses mapping supports the following:
@@ -32,6 +63,37 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// &gt; **NOTE:** Available in 1.36.0+.
         /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var fooCommonBandwithPackage = new AliCloud.Vpc.CommonBandwithPackage("fooCommonBandwithPackage", new()
+        ///     {
+        ///         Bandwidth = "2",
+        ///         Description = "tf-testAcc-CommonBandwidthPackage",
+        ///     });
+        /// 
+        ///     var fooCommonBandwidthPackages = AliCloud.Vpc.GetCommonBandwidthPackages.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             fooCommonBandwithPackage.Id,
+        ///         },
+        ///         NameRegex = "^tf-testAcc.*",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// ## Public ip addresses Block
         ///   
         ///   The public ip addresses mapping supports the following:

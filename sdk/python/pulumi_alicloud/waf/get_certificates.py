@@ -119,6 +119,20 @@ def get_certificates(domain: Optional[str] = None,
 
     > **NOTE:** Available in v1.135.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.waf.get_certificates(ids=["your_certificate_id"],
+        instance_id="your_instance_id",
+        domain="your_domain_name")
+    pulumi.export("wafCertificate", default.certificates[0])
+    ```
+
 
     :param str domain: The domain that you want to add to WAF.
     :param Sequence[str] ids: A list of Certificate IDs.
@@ -157,6 +171,20 @@ def get_certificates_output(domain: Optional[pulumi.Input[Optional[str]]] = None
     This data source provides the Waf Certificates of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.135.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.waf.get_certificates(ids=["your_certificate_id"],
+        instance_id="your_instance_id",
+        domain="your_domain_name")
+    pulumi.export("wafCertificate", default.certificates[0])
+    ```
 
 
     :param str domain: The domain that you want to add to WAF.

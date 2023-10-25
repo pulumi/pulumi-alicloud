@@ -13,6 +13,18 @@ import * as utilities from "../utilities";
  * This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listproductsasenduser)
  *
  * > **NOTE:** Available in 1.196.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.servicecatalog.getProductAsEndUsers({
+ *     nameRegex: "ram模板创建",
+ * });
+ * export const alicloudServiceCatalogProductAsEndUserExampleId = _default.then(_default => _default.users?.[0]?.id);
+ * ```
  */
 export function getProductAsEndUsers(args?: GetProductAsEndUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetProductAsEndUsersResult> {
     args = args || {};
@@ -75,6 +87,18 @@ export interface GetProductAsEndUsersResult {
  * This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listproductsasenduser)
  *
  * > **NOTE:** Available in 1.196.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.servicecatalog.getProductAsEndUsers({
+ *     nameRegex: "ram模板创建",
+ * });
+ * export const alicloudServiceCatalogProductAsEndUserExampleId = _default.then(_default => _default.users?.[0]?.id);
+ * ```
  */
 export function getProductAsEndUsersOutput(args?: GetProductAsEndUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProductAsEndUsersResult> {
     return pulumi.output(args).apply((a: any) => getProductAsEndUsers(a, opts))

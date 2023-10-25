@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides the Ssl Certificates Service Certificates of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.129.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const certs = alicloud.cas.getCertificates({
+ *     nameRegex: "^cas",
+ *     ids: ["Certificate Id"],
+ * });
+ * export const cert = certs.then(certs => certs.certificates?.[0]?.id);
+ * ```
  */
 export function getServiceCertificates(args?: GetServiceCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceCertificatesResult> {
     args = args || {};
@@ -70,6 +85,21 @@ export interface GetServiceCertificatesResult {
  * This data source provides the Ssl Certificates Service Certificates of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.129.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const certs = alicloud.cas.getCertificates({
+ *     nameRegex: "^cas",
+ *     ids: ["Certificate Id"],
+ * });
+ * export const cert = certs.then(certs => certs.certificates?.[0]?.id);
+ * ```
  */
 export function getServiceCertificatesOutput(args?: GetServiceCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceCertificatesResult> {
     return pulumi.output(args).apply((a: any) => getServiceCertificates(a, opts))

@@ -95,6 +95,15 @@ def get_zones(multi: Optional[bool] = None,
 
     > **NOTE:** Available in v1.73.0+.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    zones_ids = alicloud.adb.get_zones()
+    ```
+
 
     :param bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch ADB instances.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -121,6 +130,15 @@ def get_zones_output(multi: Optional[pulumi.Input[Optional[bool]]] = None,
     This data source provides availability zones for ADB that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 
     > **NOTE:** Available in v1.73.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    zones_ids = alicloud.adb.get_zones()
+    ```
 
 
     :param bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch ADB instances.

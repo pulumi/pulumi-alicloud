@@ -9,6 +9,46 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in 1.92.0+.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.oos.Template("example", {
+ *     content: `  {
+ *     "FormatVersion": "OOS-2019-06-01",
+ *     "Description": "Update Describe instances of given status",
+ *     "Parameters":{
+ *       "Status":{
+ *         "Type": "String",
+ *         "Description": "(Required) The status of the Ecs instance."
+ *       }
+ *     },
+ *     "Tasks": [
+ *       {
+ *         "Properties" :{
+ *           "Parameters":{
+ *             "Status": "{{ Status }}"
+ *           },
+ *           "API": "DescribeInstances",
+ *           "Service": "Ecs"
+ *         },
+ *         "Name": "foo",
+ *         "Action": "ACS::ExecuteApi"
+ *       }]
+ *   }
+ *   
+ * `,
+ *     tags: {
+ *         Created: "TF",
+ *         For: "acceptance Test",
+ *     },
+ *     templateName: "test-name",
+ *     versionName: "test",
+ * });
+ * ```
+ *
  * ## Import
  *
  * OOS Template can be imported using the id or template_name, e.g.

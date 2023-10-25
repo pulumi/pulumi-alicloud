@@ -309,6 +309,61 @@ class RouteEntry(pulumi.CustomResource):
         """
         Provides a route entry resource. A route entry represents a route item of one VPC route table.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "RouteEntryConfig"
+        foo_network = alicloud.vpc.Network("fooNetwork",
+            vpc_name=name,
+            cidr_block="10.1.0.0/21")
+        foo_switch = alicloud.vpc.Switch("fooSwitch",
+            vpc_id=foo_network.id,
+            cidr_block="10.1.1.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        tf_test_foo = alicloud.ecs.SecurityGroup("tfTestFoo",
+            description="foo",
+            vpc_id=foo_network.id)
+        ingress = alicloud.ecs.SecurityGroupRule("ingress",
+            type="ingress",
+            ip_protocol="tcp",
+            nic_type="intranet",
+            policy="accept",
+            port_range="22/22",
+            priority=1,
+            security_group_id=tf_test_foo.id,
+            cidr_ip="0.0.0.0/0")
+        foo_instance = alicloud.ecs.Instance("fooInstance",
+            security_groups=[tf_test_foo.id],
+            vswitch_id=foo_switch.id,
+            instance_charge_type="PostPaid",
+            instance_type=default_instance_types.instance_types[0].id,
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=5,
+            system_disk_category="cloud_efficiency",
+            image_id=default_images.images[0].id,
+            instance_name=name)
+        foo_route_entry = alicloud.vpc.RouteEntry("fooRouteEntry",
+            route_table_id=foo_network.route_table_id,
+            destination_cidrblock="172.11.1.1/32",
+            nexthop_type="Instance",
+            nexthop_id=foo_instance.id)
+        ```
         ## Module Support
 
         You can use to the existing vpc module
@@ -340,6 +395,61 @@ class RouteEntry(pulumi.CustomResource):
         """
         Provides a route entry resource. A route entry represents a route item of one VPC route table.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "RouteEntryConfig"
+        foo_network = alicloud.vpc.Network("fooNetwork",
+            vpc_name=name,
+            cidr_block="10.1.0.0/21")
+        foo_switch = alicloud.vpc.Switch("fooSwitch",
+            vpc_id=foo_network.id,
+            cidr_block="10.1.1.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        tf_test_foo = alicloud.ecs.SecurityGroup("tfTestFoo",
+            description="foo",
+            vpc_id=foo_network.id)
+        ingress = alicloud.ecs.SecurityGroupRule("ingress",
+            type="ingress",
+            ip_protocol="tcp",
+            nic_type="intranet",
+            policy="accept",
+            port_range="22/22",
+            priority=1,
+            security_group_id=tf_test_foo.id,
+            cidr_ip="0.0.0.0/0")
+        foo_instance = alicloud.ecs.Instance("fooInstance",
+            security_groups=[tf_test_foo.id],
+            vswitch_id=foo_switch.id,
+            instance_charge_type="PostPaid",
+            instance_type=default_instance_types.instance_types[0].id,
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=5,
+            system_disk_category="cloud_efficiency",
+            image_id=default_images.images[0].id,
+            instance_name=name)
+        foo_route_entry = alicloud.vpc.RouteEntry("fooRouteEntry",
+            route_table_id=foo_network.route_table_id,
+            destination_cidrblock="172.11.1.1/32",
+            nexthop_type="Instance",
+            nexthop_id=foo_instance.id)
+        ```
         ## Module Support
 
         You can use to the existing vpc module

@@ -19,6 +19,124 @@ import (
 //
 // > **NOTE:** Available in v1.183.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.Any(_var.Name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultTransitRouter, err := cen.NewTransitRouter(ctx, "defaultTransitRouter", &cen.TransitRouterArgs{
+//				CenId:                    defaultInstance.ID(),
+//				TransitRouterDescription: pulumi.String("desd"),
+//				TransitRouterName:        pulumi.Any(_var.Name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultTransitRouterAvailableResources, err := cen.GetTransitRouterAvailableResources(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultCustomerGateway, err := vpn.NewCustomerGateway(ctx, "defaultCustomerGateway", &vpn.CustomerGatewayArgs{
+//				IpAddress:   pulumi.String("42.104.22.210"),
+//				Asn:         pulumi.String("45014"),
+//				Description: pulumi.String("testAccVpnConnectionDesc"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultGatewayVpnAttachment, err := vpn.NewGatewayVpnAttachment(ctx, "defaultGatewayVpnAttachment", &vpn.GatewayVpnAttachmentArgs{
+//				CustomerGatewayId: defaultCustomerGateway.ID(),
+//				NetworkType:       pulumi.String("public"),
+//				LocalSubnet:       pulumi.String("0.0.0.0/0"),
+//				RemoteSubnet:      pulumi.String("0.0.0.0/0"),
+//				EffectImmediately: pulumi.Bool(false),
+//				IkeConfig: &vpn.GatewayVpnAttachmentIkeConfigArgs{
+//					IkeAuthAlg:  pulumi.String("md5"),
+//					IkeEncAlg:   pulumi.String("des"),
+//					IkeVersion:  pulumi.String("ikev2"),
+//					IkeMode:     pulumi.String("main"),
+//					IkeLifetime: pulumi.Int(86400),
+//					Psk:         pulumi.String("tf-testvpn2"),
+//					IkePfs:      pulumi.String("group1"),
+//					RemoteId:    pulumi.String("testbob2"),
+//					LocalId:     pulumi.String("testalice2"),
+//				},
+//				IpsecConfig: &vpn.GatewayVpnAttachmentIpsecConfigArgs{
+//					IpsecPfs:      pulumi.String("group5"),
+//					IpsecEncAlg:   pulumi.String("des"),
+//					IpsecAuthAlg:  pulumi.String("md5"),
+//					IpsecLifetime: pulumi.Int(86400),
+//				},
+//				BgpConfig: &vpn.GatewayVpnAttachmentBgpConfigArgs{
+//					Enable:     pulumi.Bool(true),
+//					LocalAsn:   pulumi.Int(45014),
+//					TunnelCidr: pulumi.String("169.254.11.0/30"),
+//					LocalBgpIp: pulumi.String("169.254.11.1"),
+//				},
+//				HealthCheckConfig: &vpn.GatewayVpnAttachmentHealthCheckConfigArgs{
+//					Enable:   pulumi.Bool(true),
+//					Sip:      pulumi.String("192.168.1.1"),
+//					Dip:      pulumi.String("10.0.0.1"),
+//					Interval: pulumi.Int(10),
+//					Retry:    pulumi.Int(10),
+//					Policy:   pulumi.String("revoke_route"),
+//				},
+//				EnableDpd:          pulumi.Bool(true),
+//				EnableNatTraversal: pulumi.Bool(true),
+//				VpnAttachmentName:  pulumi.Any(_var.Name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultTransitRouterVpnAttachment, err := cen.NewTransitRouterVpnAttachment(ctx, "defaultTransitRouterVpnAttachment", &cen.TransitRouterVpnAttachmentArgs{
+//				AutoPublishRouteEnabled:            pulumi.Bool(false),
+//				TransitRouterAttachmentDescription: pulumi.Any(_var.Name),
+//				TransitRouterAttachmentName:        pulumi.Any(_var.Name),
+//				CenId:                              defaultTransitRouter.CenId,
+//				TransitRouterId:                    defaultTransitRouter.TransitRouterId,
+//				VpnId:                              defaultGatewayVpnAttachment.ID(),
+//				Zones: cen.TransitRouterVpnAttachmentZoneArray{
+//					&cen.TransitRouterVpnAttachmentZoneArgs{
+//						ZoneId: *pulumi.String(defaultTransitRouterAvailableResources.Resources[0].MasterZones[0]),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpn.NewGatewayVcoRoute(ctx, "defaultGatewayVcoRoute", &vpn.GatewayVcoRouteArgs{
+//				RouteDest:       pulumi.String("192.168.12.0/24"),
+//				NextHop:         defaultTransitRouterVpnAttachment.VpnId,
+//				VpnConnectionId: defaultTransitRouterVpnAttachment.VpnId,
+//				Weight:          pulumi.Int(100),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // VPN Gateway Vco Route can be imported using the id, e.g.

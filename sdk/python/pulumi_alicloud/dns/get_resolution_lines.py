@@ -139,6 +139,17 @@ def get_resolution_lines(domain_name: Optional[str] = None,
 
     > **NOTE:** Available in 1.60.0.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    resolution_lines_ds = alicloud.dns.get_resolution_lines(line_codes=["cn_unicom_shanxi"],
+        output_file="support_lines.txt")
+    pulumi.export("firstLineCode", resolution_lines_ds.lines[0].line_code)
+    ```
+
 
     :param str domain_name: Domain Name.
     :param str lang: language.
@@ -183,6 +194,17 @@ def get_resolution_lines_output(domain_name: Optional[pulumi.Input[Optional[str]
     This data source provides a list of DNS Resolution Lines in an Alibaba Cloud account according to the specified filters.
 
     > **NOTE:** Available in 1.60.0.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    resolution_lines_ds = alicloud.dns.get_resolution_lines(line_codes=["cn_unicom_shanxi"],
+        output_file="support_lines.txt")
+    pulumi.export("firstLineCode", resolution_lines_ds.lines[0].line_code)
+    ```
 
 
     :param str domain_name: Domain Name.

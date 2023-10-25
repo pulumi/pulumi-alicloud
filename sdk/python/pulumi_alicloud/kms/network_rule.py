@@ -178,6 +178,28 @@ class NetworkRule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.210.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.kms.NetworkRule("default",
+            description="example-description",
+            source_private_ips=[
+                "10.10.10.10/24",
+                "192.168.17.13",
+                "100.177.24.254",
+            ],
+            network_rule_name=name)
+        ```
+
         ## Import
 
         KMS Network Rule can be imported using the id, e.g.
@@ -204,6 +226,28 @@ class NetworkRule(pulumi.CustomResource):
         For information about KMS Network Rule and how to use it, see [What is Network Rule](https://www.alibabacloud.com/help/zh/key-management-service/latest/api-createnetworkrule).
 
         > **NOTE:** Available since v1.210.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.kms.NetworkRule("default",
+            description="example-description",
+            source_private_ips=[
+                "10.10.10.10/24",
+                "192.168.17.13",
+                "100.177.24.254",
+            ],
+            network_rule_name=name)
+        ```
 
         ## Import
 

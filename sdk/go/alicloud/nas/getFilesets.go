@@ -15,6 +15,39 @@ import (
 // This data source provides the Nas Filesets of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.153.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := nas.GetFilesets(ctx, &nas.GetFilesetsArgs{
+//				FileSystemId: "example_value",
+//				Ids: []string{
+//					"example_value-1",
+//					"example_value-2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("nasFilesetId1", ids.Filesets[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetFilesets(ctx *pulumi.Context, args *GetFilesetsArgs, opts ...pulumi.InvokeOption) (*GetFilesetsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFilesetsResult

@@ -16,6 +16,34 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **NOTE:** One of `size` or `snapshot_id` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshot_id` represents. Currently, `alicloud.ecs.Disk` doesn't resize disk.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new ECS disk.
+    ///     var ecsDisk = new AliCloud.Ecs.Disk("ecsDisk", new()
+    ///     {
+    ///         AvailabilityZone = "cn-beijing-b",
+    ///         Category = "cloud_efficiency",
+    ///         Description = "Hello ecs disk.",
+    ///         Encrypted = true,
+    ///         KmsKeyId = "2a6767f0-a16c-4679-a60f-13bf*****",
+    ///         Size = 30,
+    ///         Tags = 
+    ///         {
+    ///             { "Name", "TerraformTest" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Cloud disk can be imported using the id, e.g.

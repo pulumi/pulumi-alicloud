@@ -21,6 +21,44 @@ import (
 //
 // > **NOTE:** The router interface is not connected when it is created. It can be connected by means of resource alicloud_router_interface_connection.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foo, err := vpc.NewNetwork(ctx, "foo", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("tf_test_foo12345"),
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewRouterInterface(ctx, "interface", &vpc.RouterInterfaceArgs{
+//				OppositeRegion: pulumi.String("cn-beijing"),
+//				RouterType:     pulumi.String("VRouter"),
+//				RouterId:       foo.RouterId,
+//				Role:           pulumi.String("InitiatingSide"),
+//				Specification:  pulumi.String("Large.2"),
+//				Description:    pulumi.String("test1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // The router interface can be imported using the id, e.g.

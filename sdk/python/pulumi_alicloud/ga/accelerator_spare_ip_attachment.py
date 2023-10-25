@@ -201,6 +201,38 @@ class AcceleratorSpareIpAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.167.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
+            duration=1,
+            spec="1",
+            accelerator_name="terraform-example",
+            auto_use_coupon=True,
+            description="terraform-example")
+        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
+            bandwidth=100,
+            type="Basic",
+            bandwidth_type="Basic",
+            payment_type="PayAsYouGo",
+            billing_type="PayBy95",
+            ratio=30,
+            bandwidth_package_name="terraform-example",
+            auto_pay=True,
+            auto_use_coupon=True)
+        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
+            accelerator_id=default_accelerator.id,
+            bandwidth_package_id=default_bandwidth_package.id)
+        default_accelerator_spare_ip_attachment = alicloud.ga.AcceleratorSpareIpAttachment("defaultAcceleratorSpareIpAttachment",
+            accelerator_id=default_bandwidth_package_attachment.accelerator_id,
+            spare_ip="127.0.0.1")
+        ```
+
         ## Import
 
         Global Accelerator (GA) Accelerator Spare Ip Attachment can be imported using the id, e.g.
@@ -227,6 +259,38 @@ class AcceleratorSpareIpAttachment(pulumi.CustomResource):
         For information about Global Accelerator (GA) Accelerator Spare Ip Attachment and how to use it, see [What is Accelerator Spare Ip Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createspareips).
 
         > **NOTE:** Available since v1.167.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
+            duration=1,
+            spec="1",
+            accelerator_name="terraform-example",
+            auto_use_coupon=True,
+            description="terraform-example")
+        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
+            bandwidth=100,
+            type="Basic",
+            bandwidth_type="Basic",
+            payment_type="PayAsYouGo",
+            billing_type="PayBy95",
+            ratio=30,
+            bandwidth_package_name="terraform-example",
+            auto_pay=True,
+            auto_use_coupon=True)
+        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
+            accelerator_id=default_accelerator.id,
+            bandwidth_package_id=default_bandwidth_package.id)
+        default_accelerator_spare_ip_attachment = alicloud.ga.AcceleratorSpareIpAttachment("defaultAcceleratorSpareIpAttachment",
+            accelerator_id=default_bandwidth_package_attachment.accelerator_id,
+            spare_ip="127.0.0.1")
+        ```
 
         ## Import
 

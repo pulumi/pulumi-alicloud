@@ -280,6 +280,32 @@ class ReplicationVault(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.152.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        source_region = config.get("sourceRegion")
+        if source_region is None:
+            source_region = "cn-hangzhou"
+        source = alicloud.Provider("source", region=source_region)
+        default_replication_vault_regions = alicloud.hbr.get_replication_vault_regions()
+        replication = alicloud.Provider("replication", region=default_replication_vault_regions.regions[0].replication_region_id)
+        default_vault = alicloud.hbr.Vault("defaultVault", vault_name="terraform-example",
+        opts=pulumi.ResourceOptions(provider=alicloud["source"]))
+        default_replication_vault = alicloud.hbr.ReplicationVault("defaultReplicationVault",
+            replication_source_region_id=source_region,
+            replication_source_vault_id=default_vault.id,
+            vault_name="terraform-example",
+            vault_storage_class="STANDARD",
+            description="terraform-example",
+            opts=pulumi.ResourceOptions(provider=alicloud["replication"]))
+        ```
+
         ## Import
 
         Hybrid Backup Recovery (HBR) Replication Vault can be imported using the id, e.g.
@@ -308,6 +334,32 @@ class ReplicationVault(pulumi.CustomResource):
         For information about Hybrid Backup Recovery (HBR) Replication Vault and how to use it, see [What is Replication Vault](https://www.alibabacloud.com/help/en/doc-detail/345603.html).
 
         > **NOTE:** Available in v1.152.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        source_region = config.get("sourceRegion")
+        if source_region is None:
+            source_region = "cn-hangzhou"
+        source = alicloud.Provider("source", region=source_region)
+        default_replication_vault_regions = alicloud.hbr.get_replication_vault_regions()
+        replication = alicloud.Provider("replication", region=default_replication_vault_regions.regions[0].replication_region_id)
+        default_vault = alicloud.hbr.Vault("defaultVault", vault_name="terraform-example",
+        opts=pulumi.ResourceOptions(provider=alicloud["source"]))
+        default_replication_vault = alicloud.hbr.ReplicationVault("defaultReplicationVault",
+            replication_source_region_id=source_region,
+            replication_source_vault_id=default_vault.id,
+            vault_name="terraform-example",
+            vault_storage_class="STANDARD",
+            description="terraform-example",
+            opts=pulumi.ResourceOptions(provider=alicloud["replication"]))
+        ```
 
         ## Import
 

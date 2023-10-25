@@ -15,6 +15,34 @@ import (
 // This data source provides Service Catalog Product Version available to the user.[What is Product Version](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listproductversions)
 //
 // > **NOTE:** Available in 1.196.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/servicecatalog"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := servicecatalog.GetProductVersions(ctx, &servicecatalog.GetProductVersionsArgs{
+//				NameRegex: pulumi.StringRef("1.0.0"),
+//				ProductId: "prod-bp125x4k29wb7q",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudServiceCatalogProductVersionExampleId", _default.ProductVersions[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetProductVersions(ctx *pulumi.Context, args *GetProductVersionsArgs, opts ...pulumi.InvokeOption) (*GetProductVersionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProductVersionsResult

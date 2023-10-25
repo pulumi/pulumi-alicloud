@@ -109,6 +109,19 @@ def get_simple_office_sites(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.140.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.eds.get_simple_office_sites(ids=["example_id"],
+        status="REGISTERED")
+    pulumi.export("desktopAccessType", default.sites[0].desktop_access_type)
+    ```
+
 
     :param Sequence[str] ids: A list of Simple Office Site IDs.
     :param str name_regex: A regex string to filter results by Simple Office Site name.
@@ -143,6 +156,19 @@ def get_simple_office_sites_output(ids: Optional[pulumi.Input[Optional[Sequence[
     This data source provides the Ecd Simple Office Sites of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.140.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.eds.get_simple_office_sites(ids=["example_id"],
+        status="REGISTERED")
+    pulumi.export("desktopAccessType", default.sites[0].desktop_access_type)
+    ```
 
 
     :param Sequence[str] ids: A list of Simple Office Site IDs.

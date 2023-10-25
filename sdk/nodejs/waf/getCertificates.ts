@@ -10,6 +10,22 @@ import * as utilities from "../utilities";
  * This data source provides the Waf Certificates of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.135.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.waf.getCertificates({
+ *     ids: ["your_certificate_id"],
+ *     instanceId: "your_instance_id",
+ *     domain: "your_domain_name",
+ * });
+ * export const wafCertificate = _default.then(_default => _default.certificates?.[0]);
+ * ```
  */
 export function getCertificates(args: GetCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificatesResult> {
 
@@ -69,6 +85,22 @@ export interface GetCertificatesResult {
  * This data source provides the Waf Certificates of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.135.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.waf.getCertificates({
+ *     ids: ["your_certificate_id"],
+ *     instanceId: "your_instance_id",
+ *     domain: "your_domain_name",
+ * });
+ * export const wafCertificate = _default.then(_default => _default.certificates?.[0]);
+ * ```
  */
 export function getCertificatesOutput(args: GetCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificatesResult> {
     return pulumi.output(args).apply((a: any) => getCertificates(a, opts))

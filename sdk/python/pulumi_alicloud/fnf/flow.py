@@ -290,6 +290,41 @@ class Flow(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.105.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ram.Role("default", document=\"\"\"  {
+            "Statement": [
+              {
+                "Action": "sts:AssumeRole",
+                "Effect": "Allow",
+                "Principal": {
+                  "Service": [
+                    "fnf.aliyuncs.com"
+                  ]
+                }
+              }
+            ],
+            "Version": "1"
+          }
+        \"\"\")
+        example = alicloud.fnf.Flow("example",
+            definition=\"\"\"  version: v1beta1
+          type: flow
+          steps:
+            - type: pass
+              name: helloworld
+        \"\"\",
+            role_arn=default.arn,
+            description="Test for terraform fnf_flow.",
+            type="FDL")
+        ```
+
         ## Import
 
         Serverless Workflow Flow can be imported using the id, e.g.
@@ -318,6 +353,41 @@ class Flow(pulumi.CustomResource):
         For information about Serverless Workflow Flow and how to use it, see [What is Flow](https://www.alibabacloud.com/help/en/doc-detail/123079.htm).
 
         > **NOTE:** Available in v1.105.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ram.Role("default", document=\"\"\"  {
+            "Statement": [
+              {
+                "Action": "sts:AssumeRole",
+                "Effect": "Allow",
+                "Principal": {
+                  "Service": [
+                    "fnf.aliyuncs.com"
+                  ]
+                }
+              }
+            ],
+            "Version": "1"
+          }
+        \"\"\")
+        example = alicloud.fnf.Flow("example",
+            definition=\"\"\"  version: v1beta1
+          type: flow
+          steps:
+            - type: pass
+              name: helloworld
+        \"\"\",
+            role_arn=default.arn,
+            description="Test for terraform fnf_flow.",
+            type="FDL")
+        ```
 
         ## Import
 

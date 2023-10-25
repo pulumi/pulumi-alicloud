@@ -19,6 +19,37 @@ import (
 //
 // > **NOTE:** Available since v1.142.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := eds.NewUser(ctx, "default", &eds.UserArgs{
+//				Email:     pulumi.String("tf.example@abc.com"),
+//				EndUserId: pulumi.String("terraform_example123"),
+//				Password:  pulumi.String("Example_123"),
+//				Phone:     pulumi.String("18888888888"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ECD User can be imported using the id, e.g.

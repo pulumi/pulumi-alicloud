@@ -15,6 +15,34 @@ namespace Pulumi.AliCloud.Eds
         /// This data source provides the Ecd Desktop Types of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.170.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Eds.GetDesktopTypes.Invoke(new()
+        ///     {
+        ///         InstanceTypeFamily = "eds.hf",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecdDesktopTypeId1"] = ids.Apply(getDesktopTypesResult =&gt; getDesktopTypesResult.Types[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDesktopTypesResult> InvokeAsync(GetDesktopTypesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDesktopTypesResult>("alicloud:eds/getDesktopTypes:getDesktopTypes", args ?? new GetDesktopTypesArgs(), options.WithDefaults());
@@ -23,6 +51,34 @@ namespace Pulumi.AliCloud.Eds
         /// This data source provides the Ecd Desktop Types of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.170.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Eds.GetDesktopTypes.Invoke(new()
+        ///     {
+        ///         InstanceTypeFamily = "eds.hf",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecdDesktopTypeId1"] = ids.Apply(getDesktopTypesResult =&gt; getDesktopTypesResult.Types[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDesktopTypesResult> Invoke(GetDesktopTypesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDesktopTypesResult>("alicloud:eds/getDesktopTypes:getDesktopTypes", args ?? new GetDesktopTypesInvokeArgs(), options.WithDefaults());

@@ -15,6 +15,41 @@ import (
 // This data source provides the Alidns Access Strategies of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.152.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := dns.GetAccessStrategies(ctx, &dns.GetAccessStrategiesArgs{
+//				InstanceId:   "example_value",
+//				StrategyMode: "example_value",
+//				Ids: []string{
+//					"example_value-1",
+//					"example_value-2",
+//				},
+//				NameRegex: pulumi.StringRef("the_resource_name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alidnsAccessStrategyId1", ids.Strategies[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetAccessStrategies(ctx *pulumi.Context, args *GetAccessStrategiesArgs, opts ...pulumi.InvokeOption) (*GetAccessStrategiesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccessStrategiesResult

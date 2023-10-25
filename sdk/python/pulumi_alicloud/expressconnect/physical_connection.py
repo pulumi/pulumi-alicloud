@@ -555,6 +555,34 @@ class PhysicalConnection(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.132.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        domestic = alicloud.expressconnect.PhysicalConnection("domestic",
+            access_point_id="ap-cn-hangzhou-yh-B",
+            bandwidth="100",
+            description="my domestic connection",
+            line_operator="CT",
+            peer_location="example_value",
+            physical_connection_name="example_value",
+            port_type="1000Base-LX",
+            type="VPC")
+        international = alicloud.expressconnect.PhysicalConnection("international",
+            access_point_id="ap-sg-singpore-A",
+            bandwidth="100",
+            description="my domestic connection",
+            line_operator="Other",
+            peer_location="example_value",
+            physical_connection_name="example_value",
+            port_type="1000Base-LX",
+            type="VPC")
+        ```
+
         ## Import
 
         Express Connect Physical Connection can be imported using the id, e.g.
@@ -604,6 +632,34 @@ class PhysicalConnection(pulumi.CustomResource):
         For information about Express Connect Physical Connection and how to use it, see [What is Physical Connection](https://www.alibabacloud.com/help/doc-detail/44852.htm).
 
         > **NOTE:** Available since v1.132.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        domestic = alicloud.expressconnect.PhysicalConnection("domestic",
+            access_point_id="ap-cn-hangzhou-yh-B",
+            bandwidth="100",
+            description="my domestic connection",
+            line_operator="CT",
+            peer_location="example_value",
+            physical_connection_name="example_value",
+            port_type="1000Base-LX",
+            type="VPC")
+        international = alicloud.expressconnect.PhysicalConnection("international",
+            access_point_id="ap-sg-singpore-A",
+            bandwidth="100",
+            description="my domestic connection",
+            line_operator="Other",
+            peer_location="example_value",
+            physical_connection_name="example_value",
+            port_type="1000Base-LX",
+            type="VPC")
+        ```
 
         ## Import
 

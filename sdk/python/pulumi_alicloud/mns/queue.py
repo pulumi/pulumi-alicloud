@@ -294,6 +294,22 @@ class Queue(pulumi.CustomResource):
                  visibility_timeout: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        queue = alicloud.mns.Queue("queue",
+            delay_seconds=0,
+            maximum_message_size=65536,
+            message_retention_period=345600,
+            polling_wait_seconds=0,
+            visibility_timeout=30)
+        ```
+
         ## Import
 
         MNS QUEUE can be imported using the id or name, e.g.
@@ -318,6 +334,22 @@ class Queue(pulumi.CustomResource):
                  args: Optional[QueueArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        queue = alicloud.mns.Queue("queue",
+            delay_seconds=0,
+            maximum_message_size=65536,
+            message_retention_period=345600,
+            polling_wait_seconds=0,
+            visibility_timeout=30)
+        ```
+
         ## Import
 
         MNS QUEUE can be imported using the id or name, e.g.

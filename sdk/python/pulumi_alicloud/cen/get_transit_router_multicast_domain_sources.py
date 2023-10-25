@@ -96,6 +96,16 @@ def get_transit_router_multicast_domain_sources(ids: Optional[Sequence[str]] = N
 
     > **NOTE:** Available since v1.195.0.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cen.get_transit_router_multicast_domain_sources(transit_router_multicast_domain_id="tr-mcast-domain-xxxxxx")
+    pulumi.export("alicloudCenTransitRouterMulticastDomainSourceExampleId", default.sources[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of the multicast domain IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -125,6 +135,16 @@ def get_transit_router_multicast_domain_sources_output(ids: Optional[pulumi.Inpu
     This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupsources)
 
     > **NOTE:** Available since v1.195.0.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cen.get_transit_router_multicast_domain_sources(transit_router_multicast_domain_id="tr-mcast-domain-xxxxxx")
+    pulumi.export("alicloudCenTransitRouterMulticastDomainSourceExampleId", default.sources[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of the multicast domain IDs.

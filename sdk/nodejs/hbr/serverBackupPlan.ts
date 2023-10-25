@@ -13,6 +13,59 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.142.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const exampleZones = alicloud.getZones({
+ *     availableResourceCreation: "Instance",
+ * });
+ * const exampleInstanceTypes = exampleZones.then(exampleZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: exampleZones.zones?.[0]?.id,
+ *     cpuCoreCount: 1,
+ *     memorySize: 2,
+ * }));
+ * const exampleImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
+ *     owners: "system",
+ * });
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: exampleNetwork.id,
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ * });
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("exampleSecurityGroup", {vpcId: exampleNetwork.id});
+ * const exampleInstance = new alicloud.ecs.Instance("exampleInstance", {
+ *     imageId: exampleImages.then(exampleImages => exampleImages.images?.[0]?.id),
+ *     instanceType: exampleInstanceTypes.then(exampleInstanceTypes => exampleInstanceTypes.instanceTypes?.[0]?.id),
+ *     availabilityZone: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ *     securityGroups: [exampleSecurityGroup.id],
+ *     instanceName: "terraform-example",
+ *     internetChargeType: "PayByBandwidth",
+ *     vswitchId: exampleSwitch.id,
+ * });
+ * const exampleServerBackupPlan = new alicloud.hbr.ServerBackupPlan("exampleServerBackupPlan", {
+ *     ecsServerBackupPlanName: "terraform-example",
+ *     instanceId: exampleInstance.id,
+ *     schedule: "I|1602673264|PT2H",
+ *     retention: 1,
+ *     details: [{
+ *         appConsistent: true,
+ *         snapshotGroup: true,
+ *     }],
+ *     disabled: false,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Hybrid Backup Recovery (HBR) Server Backup Plan can be imported using the id, e.g.

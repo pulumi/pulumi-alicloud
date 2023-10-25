@@ -15,6 +15,33 @@ import (
 // This data source provides the Sae Instance Specifications of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.139.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sae"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := sae.GetInstanceSpecifications(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("saeInstanceSpecificationId1", ids.Specifications[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetInstanceSpecifications(ctx *pulumi.Context, args *GetInstanceSpecificationsArgs, opts ...pulumi.InvokeOption) (*GetInstanceSpecificationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstanceSpecificationsResult

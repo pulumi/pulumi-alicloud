@@ -357,6 +357,23 @@ class EcsKeyPair(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.121.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ecs.EcsKeyPair("example", key_pair_name="key_pair_name")
+        # Using name prefix to build key pair
+        prefix = alicloud.ecs.EcsKeyPair("prefix", key_name_prefix="terraform-test-key-pair-prefix")
+        # Import an existing public key to build a alicloud key pair
+        publickey = alicloud.ecs.EcsKeyPair("publickey",
+            key_pair_name="my_public_key",
+            public_key="ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
+        ```
+
         ## Import
 
         ECS Key Pair can be imported using the id, e.g.
@@ -385,6 +402,23 @@ class EcsKeyPair(pulumi.CustomResource):
         For information about ECS Key Pair and how to use it, see [What is Key Pair](https://www.alibabacloud.com/help/en/doc-detail/51771.htm).
 
         > **NOTE:** Available in v1.121.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ecs.EcsKeyPair("example", key_pair_name="key_pair_name")
+        # Using name prefix to build key pair
+        prefix = alicloud.ecs.EcsKeyPair("prefix", key_name_prefix="terraform-test-key-pair-prefix")
+        # Import an existing public key to build a alicloud key pair
+        publickey = alicloud.ecs.EcsKeyPair("publickey",
+            key_pair_name="my_public_key",
+            public_key="ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
+        ```
 
         ## Import
 

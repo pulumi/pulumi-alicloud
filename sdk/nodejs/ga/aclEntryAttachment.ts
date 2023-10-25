@@ -11,6 +11,25 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.190.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultAcl = new alicloud.ga.Acl("defaultAcl", {
+ *     aclName: "tf-example-value",
+ *     addressIpVersion: "IPv4",
+ * });
+ * const defaultAclEntryAttachment = new alicloud.ga.AclEntryAttachment("defaultAclEntryAttachment", {
+ *     aclId: defaultAcl.id,
+ *     entry: "192.168.1.1/32",
+ *     entryDescription: "tf-example-value",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Global Accelerator (GA) Acl entry attachment can be imported using the id.Format to `<acl_id>:<entry>`, e.g.

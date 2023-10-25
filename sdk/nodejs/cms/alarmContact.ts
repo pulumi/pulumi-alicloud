@@ -9,6 +9,34 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.99.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * // If you use this template, you need to activate the link before you can return to the alarm contact information, otherwise diff will appear in terraform. So please confirm the activation link as soon as possible.
+ * const example = new alicloud.cms.AlarmContact("example", {
+ *     alarmContactName: "terraform-example",
+ *     channelsMail: "terraform@test.com",
+ *     describe: "For example",
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * // If you use this template, you can ignore the diff of the alarm contact information by `lifestyle`. We recommend the above usage and activate the link in time.
+ * const example = new alicloud.cms.AlarmContact("example", {
+ *     alarmContactName: "tf-example",
+ *     describe: "For example",
+ *     channelsMail: "terraform@test.com",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Alarm contact can be imported using the id, e.g.

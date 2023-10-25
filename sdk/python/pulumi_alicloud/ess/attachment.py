@@ -221,6 +221,80 @@ class Attachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.6.0.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=2,
+            memory_size=4)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
+            type="ingress",
+            ip_protocol="tcp",
+            nic_type="intranet",
+            policy="accept",
+            port_range="22/22",
+            priority=1,
+            security_group_id=default_security_group.id,
+            cidr_ip="172.16.0.0/24")
+        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
+            min_size=0,
+            max_size=2,
+            scaling_group_name=name,
+            removal_policies=[
+                "OldestInstance",
+                "NewestInstance",
+            ],
+            vswitch_ids=[default_switch.id])
+        default_scaling_configuration = alicloud.ess.ScalingConfiguration("defaultScalingConfiguration",
+            scaling_group_id=default_scaling_group.id,
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            security_group_id=default_security_group.id,
+            force_delete=True,
+            active=True,
+            enable=True)
+        default_instance = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            default_instance.append(alicloud.ecs.Instance(f"defaultInstance-{range['value']}",
+                image_id=default_images.images[0].id,
+                instance_type=default_instance_types.instance_types[0].id,
+                security_groups=[default_security_group.id],
+                internet_charge_type="PayByTraffic",
+                internet_max_bandwidth_out=10,
+                instance_charge_type="PostPaid",
+                system_disk_category="cloud_efficiency",
+                vswitch_id=default_switch.id,
+                instance_name=name))
+        default_attachment = alicloud.ess.Attachment("defaultAttachment",
+            scaling_group_id=default_scaling_group.id,
+            instance_ids=[
+                default_instance[0].id,
+                default_instance[1].id,
+            ],
+            force=True)
+        ```
+
         ## Import
 
         ESS attachment can be imported using the id or scaling group id, e.g.
@@ -259,6 +333,80 @@ class Attachment(pulumi.CustomResource):
         > **NOTE:** There are two types ECS instances in a scaling group: "AutoCreated" and "Attached". The total number of them can not larger than the scaling group "MaxSize".
 
         > **NOTE:** Available since v1.6.0.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=2,
+            memory_size=4)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
+            type="ingress",
+            ip_protocol="tcp",
+            nic_type="intranet",
+            policy="accept",
+            port_range="22/22",
+            priority=1,
+            security_group_id=default_security_group.id,
+            cidr_ip="172.16.0.0/24")
+        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
+            min_size=0,
+            max_size=2,
+            scaling_group_name=name,
+            removal_policies=[
+                "OldestInstance",
+                "NewestInstance",
+            ],
+            vswitch_ids=[default_switch.id])
+        default_scaling_configuration = alicloud.ess.ScalingConfiguration("defaultScalingConfiguration",
+            scaling_group_id=default_scaling_group.id,
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            security_group_id=default_security_group.id,
+            force_delete=True,
+            active=True,
+            enable=True)
+        default_instance = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            default_instance.append(alicloud.ecs.Instance(f"defaultInstance-{range['value']}",
+                image_id=default_images.images[0].id,
+                instance_type=default_instance_types.instance_types[0].id,
+                security_groups=[default_security_group.id],
+                internet_charge_type="PayByTraffic",
+                internet_max_bandwidth_out=10,
+                instance_charge_type="PostPaid",
+                system_disk_category="cloud_efficiency",
+                vswitch_id=default_switch.id,
+                instance_name=name))
+        default_attachment = alicloud.ess.Attachment("defaultAttachment",
+            scaling_group_id=default_scaling_group.id,
+            instance_ids=[
+                default_instance[0].id,
+                default_instance[1].id,
+            ],
+            force=True)
+        ```
 
         ## Import
 

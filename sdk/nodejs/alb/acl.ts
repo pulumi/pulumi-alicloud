@@ -13,6 +13,21 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.133.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultAcl = new alicloud.alb.Acl("defaultAcl", {
+ *     aclName: "tf_example",
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
+ * });
+ * ```
+ *
  * ## Import
  *
  * ALB Acl can be imported using the id, e.g.

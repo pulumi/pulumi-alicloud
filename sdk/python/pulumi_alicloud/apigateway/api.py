@@ -686,6 +686,48 @@ class Api(pulumi.CustomResource):
                  system_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiSystemParameterArgs']]]]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_group = alicloud.apigateway.Group("exampleGroup", description="tf-example")
+        example_api = alicloud.apigateway.Api("exampleApi",
+            group_id=example_group.id,
+            description="tf-example",
+            auth_type="APP",
+            force_nonce_check=False,
+            request_config=alicloud.apigateway.ApiRequestConfigArgs(
+                protocol="HTTP",
+                method="GET",
+                path="/example/path",
+                mode="MAPPING",
+            ),
+            service_type="HTTP",
+            http_service_config=alicloud.apigateway.ApiHttpServiceConfigArgs(
+                address="http://apigateway-backend.alicloudapi.com:8080",
+                method="GET",
+                path="/web/cloudapi",
+                timeout=12,
+                aone_name="cloudapi-openapi",
+            ),
+            request_parameters=[alicloud.apigateway.ApiRequestParameterArgs(
+                name="example",
+                type="STRING",
+                required="OPTIONAL",
+                in_="QUERY",
+                in_service="QUERY",
+                name_service="exampleservice",
+            )],
+            stage_names=[
+                "RELEASE",
+                "TEST",
+            ])
+        ```
+
         ## Import
 
         Api gateway api can be imported using the id.Format to `<API Group Id>:<API Id>` e.g.
@@ -719,6 +761,48 @@ class Api(pulumi.CustomResource):
                  args: ApiArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_group = alicloud.apigateway.Group("exampleGroup", description="tf-example")
+        example_api = alicloud.apigateway.Api("exampleApi",
+            group_id=example_group.id,
+            description="tf-example",
+            auth_type="APP",
+            force_nonce_check=False,
+            request_config=alicloud.apigateway.ApiRequestConfigArgs(
+                protocol="HTTP",
+                method="GET",
+                path="/example/path",
+                mode="MAPPING",
+            ),
+            service_type="HTTP",
+            http_service_config=alicloud.apigateway.ApiHttpServiceConfigArgs(
+                address="http://apigateway-backend.alicloudapi.com:8080",
+                method="GET",
+                path="/web/cloudapi",
+                timeout=12,
+                aone_name="cloudapi-openapi",
+            ),
+            request_parameters=[alicloud.apigateway.ApiRequestParameterArgs(
+                name="example",
+                type="STRING",
+                required="OPTIONAL",
+                in_="QUERY",
+                in_service="QUERY",
+                name_service="exampleservice",
+            )],
+            stage_names=[
+                "RELEASE",
+                "TEST",
+            ])
+        ```
+
         ## Import
 
         Api gateway api can be imported using the id.Format to `<API Group Id>:<API Id>` e.g.

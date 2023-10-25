@@ -393,6 +393,28 @@ class DdosCooInstance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.37.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.ddos.DdosCooInstance("default",
+            bandwidth="30",
+            base_bandwidth="30",
+            service_bandwidth="100",
+            port_count="50",
+            domain_count="50",
+            period=1,
+            product_type="ddoscoo")
+        ```
+
         ## Import
 
         Ddoscoo instance can be imported using the id, e.g.
@@ -429,6 +451,28 @@ class DdosCooInstance(pulumi.CustomResource):
         > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
 
         > **NOTE:** Available since v1.37.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.ddos.DdosCooInstance("default",
+            bandwidth="30",
+            base_bandwidth="30",
+            service_bandwidth="100",
+            port_count="50",
+            domain_count="50",
+            period=1,
+            product_type="ddoscoo")
+        ```
 
         ## Import
 

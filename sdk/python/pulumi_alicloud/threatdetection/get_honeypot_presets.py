@@ -185,6 +185,19 @@ def get_honeypot_presets(current_page: Optional[int] = None,
 
     > **NOTE:** Available in 1.195.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.threatdetection.get_honeypot_presets(ids=[alicloud_threat_detection_honeypot_preset["default"]["id"]],
+        honeypot_image_name="shiro",
+        node_id="example_value",
+        preset_name="apiapec_test")
+    pulumi.export("alicloudThreatDetectionHoneypotPresetExampleId", default.presets[0].id)
+    ```
+
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param str honeypot_image_name: Honeypot mirror name
@@ -241,6 +254,19 @@ def get_honeypot_presets_output(current_page: Optional[pulumi.Input[Optional[int
     This data source provides Threat Detection Honeypot Preset available to the user.
 
     > **NOTE:** Available in 1.195.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.threatdetection.get_honeypot_presets(ids=[alicloud_threat_detection_honeypot_preset["default"]["id"]],
+        honeypot_image_name="shiro",
+        node_id="example_value",
+        preset_name="apiapec_test")
+    pulumi.export("alicloudThreatDetectionHoneypotPresetExampleId", default.presets[0].id)
+    ```
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

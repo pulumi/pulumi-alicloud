@@ -19,6 +19,50 @@ import (
 //
 // > **NOTE:** Available in v1.147.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oos.NewStateConfiguration(ctx, "defaultStateConfiguration", &oos.StateConfigurationArgs{
+//				TemplateName:       pulumi.String("ACS-ECS-InventoryDataCollection"),
+//				ConfigureMode:      pulumi.String("ApplyOnly"),
+//				Description:        pulumi.String("terraform-example"),
+//				ScheduleType:       pulumi.String("rate"),
+//				ScheduleExpression: pulumi.String("1 hour"),
+//				ResourceGroupId:    *pulumi.String(defaultResourceGroups.Ids[0]),
+//				Targets:            pulumi.String("{\"Filters\": [{\"Type\": \"All\", \"Parameters\": {\"InstanceChargeType\": \"PrePaid\"}}], \"ResourceType\": \"ALIYUN::ECS::Instance\"}"),
+//				Parameters:         pulumi.String("{\"policy\": {\"ACS:Application\": {\"Collection\": \"Enabled\"}}}"),
+//				Tags: pulumi.Map{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("example"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // OOS State Configuration can be imported using the id, e.g.

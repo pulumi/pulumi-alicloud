@@ -11,6 +11,21 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.111.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.ga.Accelerator("example", {
+ *     autoUseCoupon: true,
+ *     duration: 1,
+ *     spec: "1",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Ga Accelerator can be imported using the id, e.g.

@@ -14,6 +14,96 @@ namespace Pulumi.AliCloud.Log
     /// and each project can create multiple Logstores. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48874.htm)
     /// 
     /// &gt; **NOTE:** Available since v1.0.0.
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
+    ///     {
+    ///         Description = "terraform-example",
+    ///     });
+    /// 
+    ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
+    ///     {
+    ///         Project = exampleProject.Name,
+    ///         ShardCount = 3,
+    ///         AutoSplit = true,
+    ///         MaxSplitShardCount = 60,
+    ///         AppendMeta = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Encrypt Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var region = config.Get("region") ?? "cn-hangzhou";
+    ///     var exampleAccount = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var exampleKey = new AliCloud.Kms.Key("exampleKey", new()
+    ///     {
+    ///         Description = "terraform-example",
+    ///         PendingWindowInDays = 7,
+    ///         Status = "Enabled",
+    ///     });
+    /// 
+    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
+    ///     {
+    ///         Description = "terraform-example",
+    ///     });
+    /// 
+    ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
+    ///     {
+    ///         Project = exampleProject.Name,
+    ///         ShardCount = 1,
+    ///         AutoSplit = true,
+    ///         MaxSplitShardCount = 60,
+    ///         EncryptConf = new AliCloud.Log.Inputs.StoreEncryptConfArgs
+    ///         {
+    ///             Enable = true,
+    ///             EncryptType = "default",
+    ///             UserCmkInfo = new AliCloud.Log.Inputs.StoreEncryptConfUserCmkInfoArgs
+    ///             {
+    ///                 CmkKeyId = exampleKey.Id,
+    ///                 Arn = $"acs:ram::{exampleAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:role/aliyunlogdefaultrole",
+    ///                 RegionId = region,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## Module Support
     /// 
     /// You can use the existing sls module

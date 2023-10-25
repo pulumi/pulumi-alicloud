@@ -224,6 +224,60 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.123.1+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-testAcc"
+        default_zones = alicloud.get_zones(available_resource_creation="Instance")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            eni_amount=3)
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="192.168.0.0/24")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="192.168.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vpc_id=default_network.id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup",
+            description="New security group",
+            vpc_id=default_network.id)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            most_recent=True,
+            owners="system")
+        default_instance = alicloud.ecs.Instance("defaultInstance",
+            availability_zone=default_zones.zones[0].id,
+            instance_name=name,
+            host_name="tf-testAcc",
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            security_groups=[default_security_group.id],
+            vswitch_id=default_switch.id)
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_ecs_network_interface = alicloud.ecs.EcsNetworkInterface("defaultEcsNetworkInterface",
+            network_interface_name=name,
+            vswitch_id=default_switch.id,
+            security_group_ids=[default_security_group.id],
+            description="Basic test",
+            primary_ip_address="192.168.0.2",
+            tags={
+                "Created": "TF",
+                "For": "Test",
+            },
+            resource_group_id=default_resource_groups.ids[0])
+        default_ecs_network_interface_attachment = alicloud.ecs.EcsNetworkInterfaceAttachment("defaultEcsNetworkInterfaceAttachment",
+            network_interface_id=default_ecs_network_interface.id,
+            instance_id=default_instance.id)
+        ```
+
         ## Import
 
         ECS Network Interface Attachment can be imported using the id, e.g.
@@ -251,6 +305,60 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
         For information about ECS Network Interface Attachment and how to use it, see [What is Network Interface Attachment](https://www.alibabacloud.com/help/en/doc-detail/58515.htm).
 
         > **NOTE:** Available in v1.123.1+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-testAcc"
+        default_zones = alicloud.get_zones(available_resource_creation="Instance")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            eni_amount=3)
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="192.168.0.0/24")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="192.168.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vpc_id=default_network.id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup",
+            description="New security group",
+            vpc_id=default_network.id)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            most_recent=True,
+            owners="system")
+        default_instance = alicloud.ecs.Instance("defaultInstance",
+            availability_zone=default_zones.zones[0].id,
+            instance_name=name,
+            host_name="tf-testAcc",
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            security_groups=[default_security_group.id],
+            vswitch_id=default_switch.id)
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_ecs_network_interface = alicloud.ecs.EcsNetworkInterface("defaultEcsNetworkInterface",
+            network_interface_name=name,
+            vswitch_id=default_switch.id,
+            security_group_ids=[default_security_group.id],
+            description="Basic test",
+            primary_ip_address="192.168.0.2",
+            tags={
+                "Created": "TF",
+                "For": "Test",
+            },
+            resource_group_id=default_resource_groups.ids[0])
+        default_ecs_network_interface_attachment = alicloud.ecs.EcsNetworkInterfaceAttachment("defaultEcsNetworkInterfaceAttachment",
+            network_interface_id=default_ecs_network_interface.id,
+            instance_id=default_instance.id)
+        ```
 
         ## Import
 

@@ -15,6 +15,38 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// This data source provides the Simple Application Server Plans of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.135.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.SimpleApplicationServer.GetServerPlans.Invoke(new()
+        ///     {
+        ///         Memory = 1,
+        ///         Bandwidth = 3,
+        ///         DiskSize = 40,
+        ///         Flow = 6,
+        ///         Core = 2,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["simpleApplicationServerPlanId1"] = data.Alicloud_simple_application_server_plans.Ids.Plans[0].Id,
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServerPlansResult> InvokeAsync(GetServerPlansArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerPlansResult>("alicloud:simpleapplicationserver/getServerPlans:getServerPlans", args ?? new GetServerPlansArgs(), options.WithDefaults());
@@ -23,6 +55,38 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// This data source provides the Simple Application Server Plans of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.135.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.SimpleApplicationServer.GetServerPlans.Invoke(new()
+        ///     {
+        ///         Memory = 1,
+        ///         Bandwidth = 3,
+        ///         DiskSize = 40,
+        ///         Flow = 6,
+        ///         Core = 2,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["simpleApplicationServerPlanId1"] = data.Alicloud_simple_application_server_plans.Ids.Plans[0].Id,
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetServerPlansResult> Invoke(GetServerPlansInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerPlansResult>("alicloud:simpleapplicationserver/getServerPlans:getServerPlans", args ?? new GetServerPlansInvokeArgs(), options.WithDefaults());

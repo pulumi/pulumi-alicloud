@@ -11,6 +11,33 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.180.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const instance = new alicloud.ddos.DdosBgpInstance("instance", {
+ *     baseBandwidth: 20,
+ *     bandwidth: -1,
+ *     ipCount: 100,
+ *     ipType: "IPv4",
+ *     normalBandwidth: 100,
+ *     type: "Enterprise",
+ * });
+ * const defaultEipAddress = new alicloud.ecs.EipAddress("defaultEipAddress", {addressName: name});
+ * const defaultBgpIp = new alicloud.ddos.BgpIp("defaultBgpIp", {
+ *     instanceId: instance.id,
+ *     ip: defaultEipAddress.ipAddress,
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
+ * });
+ * ```
+ *
  * ## Import
  *
  * Ddos Bgp Ip can be imported using the id, e.g.

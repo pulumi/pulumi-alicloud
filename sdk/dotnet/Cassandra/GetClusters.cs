@@ -16,6 +16,28 @@ namespace Pulumi.AliCloud.Cassandra
         /// Filters support regular expression for the cluster name, ids or tags.
         /// 
         /// &gt; **NOTE:**  Available in 1.88.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var cassandra = AliCloud.Cassandra.GetClusters.Invoke(new()
+        ///     {
+        ///         NameRegex = "tf_testAccCassandra",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetClustersResult> InvokeAsync(GetClustersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:cassandra/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithDefaults());
@@ -25,6 +47,28 @@ namespace Pulumi.AliCloud.Cassandra
         /// Filters support regular expression for the cluster name, ids or tags.
         /// 
         /// &gt; **NOTE:**  Available in 1.88.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var cassandra = AliCloud.Cassandra.GetClusters.Invoke(new()
+        ///     {
+        ///         NameRegex = "tf_testAccCassandra",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetClustersResult> Invoke(GetClustersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:cassandra/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());

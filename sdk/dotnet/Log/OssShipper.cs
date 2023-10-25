@@ -15,6 +15,62 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// &gt; **NOTE:** Available in 1.121.0+
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
+    ///     {
+    ///         Description = "terraform-example",
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
+    ///     {
+    ///         Project = exampleProject.Name,
+    ///         RetentionPeriod = 3650,
+    ///         AutoSplit = true,
+    ///         MaxSplitShardCount = 60,
+    ///         AppendMeta = true,
+    ///     });
+    /// 
+    ///     var exampleOssShipper = new AliCloud.Log.OssShipper("exampleOssShipper", new()
+    ///     {
+    ///         ProjectName = exampleProject.Name,
+    ///         LogstoreName = exampleStore.Name,
+    ///         ShipperName = "terraform-example",
+    ///         OssBucket = "example_bucket",
+    ///         OssPrefix = "root",
+    ///         BufferInterval = 300,
+    ///         BufferSize = 250,
+    ///         CompressType = "none",
+    ///         PathFormat = "%Y/%m/%d/%H/%M",
+    ///         Format = "json",
+    ///         JsonEnableTag = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Log oss shipper can be imported using the id or name, e.g.

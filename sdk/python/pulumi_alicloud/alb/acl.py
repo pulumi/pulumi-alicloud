@@ -296,6 +296,20 @@ class Acl(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.133.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_acl = alicloud.alb.Acl("defaultAcl",
+            acl_name="tf_example",
+            resource_group_id=default_resource_groups.groups[0].id)
+        ```
+
         ## Import
 
         ALB Acl can be imported using the id, e.g.
@@ -325,6 +339,20 @@ class Acl(pulumi.CustomResource):
         For information about ALB Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createacl).
 
         > **NOTE:** Available since v1.133.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_acl = alicloud.alb.Acl("defaultAcl",
+            acl_name="tf_example",
+            resource_group_id=default_resource_groups.groups[0].id)
+        ```
 
         ## Import
 

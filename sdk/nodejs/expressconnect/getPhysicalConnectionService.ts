@@ -10,6 +10,17 @@ import * as utilities from "../utilities";
  * For information about Express Connect and how to use it, see [What is Express Connect](https://www.alibabacloud.com/help/doc-detail/275179.htm).
  *
  * > **NOTE:** Available in v1.132.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const open = alicloud.expressconnect.getPhysicalConnectionService({
+ *     enable: "On",
+ * });
+ * ```
  */
 export function getPhysicalConnectionService(args?: GetPhysicalConnectionServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetPhysicalConnectionServiceResult> {
     args = args || {};
@@ -52,6 +63,17 @@ export interface GetPhysicalConnectionServiceResult {
  * For information about Express Connect and how to use it, see [What is Express Connect](https://www.alibabacloud.com/help/doc-detail/275179.htm).
  *
  * > **NOTE:** Available in v1.132.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const open = alicloud.expressconnect.getPhysicalConnectionService({
+ *     enable: "On",
+ * });
+ * ```
  */
 export function getPhysicalConnectionServiceOutput(args?: GetPhysicalConnectionServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPhysicalConnectionServiceResult> {
     return pulumi.output(args).apply((a: any) => getPhysicalConnectionService(a, opts))

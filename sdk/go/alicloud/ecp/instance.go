@@ -20,6 +20,87 @@ import (
 //
 // > **NOTE:** Available since v1.158.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecp"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := ecp.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstanceTypes, err := ecp.GetInstanceTypes(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.0.0.0/8"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.1.0.0/16"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].ZoneId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultKeyPair, err := ecp.NewKeyPair(ctx, "defaultKeyPair", &ecp.KeyPairArgs{
+//				KeyPairName:   pulumi.String(name),
+//				PublicKeyBody: pulumi.String("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecp.NewInstance(ctx, "defaultInstance", &ecp.InstanceArgs{
+//				InstanceName:    pulumi.String(name),
+//				Description:     pulumi.String(name),
+//				KeyPairName:     defaultKeyPair.KeyPairName,
+//				SecurityGroupId: defaultSecurityGroup.ID(),
+//				VswitchId:       defaultSwitch.ID(),
+//				ImageId:         pulumi.String("android_9_0_0_release_2851157_20211201.vhd"),
+//				InstanceType:    *pulumi.String(defaultInstanceTypes.InstanceTypes[1].InstanceType),
+//				VncPassword:     pulumi.String("Ecp123"),
+//				PaymentType:     pulumi.String("PayAsYouGo"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Elastic Cloud Phone (ECP) Instance can be imported using the id, e.g.

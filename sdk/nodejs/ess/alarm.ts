@@ -11,6 +11,89 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.15.0.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultZones = alicloud.getZones({
+ *     availableDiskCategory: "cloud_efficiency",
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultZones.zones?.[0]?.id,
+ *     cpuCoreCount: 2,
+ *     memorySize: 4,
+ * }));
+ * const defaultImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_18.*64",
+ *     mostRecent: true,
+ *     owners: "system",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     vswitchName: name,
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
+ * const defaultSecurityGroupRule = new alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule", {
+ *     type: "ingress",
+ *     ipProtocol: "tcp",
+ *     nicType: "intranet",
+ *     policy: "accept",
+ *     portRange: "22/22",
+ *     priority: 1,
+ *     securityGroupId: defaultSecurityGroup.id,
+ *     cidrIp: "172.16.0.0/24",
+ * });
+ * const default2 = new alicloud.vpc.Switch("default2", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.1.0/24",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     vswitchName: `${name}-bar`,
+ * });
+ * const defaultScalingGroup = new alicloud.ess.ScalingGroup("defaultScalingGroup", {
+ *     minSize: 1,
+ *     maxSize: 1,
+ *     scalingGroupName: name,
+ *     defaultCooldown: 20,
+ *     vswitchIds: [
+ *         defaultSwitch.id,
+ *         default2.id,
+ *     ],
+ *     removalPolicies: [
+ *         "OldestInstance",
+ *         "NewestInstance",
+ *     ],
+ * });
+ * const defaultScalingRule = new alicloud.ess.ScalingRule("defaultScalingRule", {
+ *     scalingRuleName: name,
+ *     scalingGroupId: defaultScalingGroup.id,
+ *     adjustmentType: "TotalCapacity",
+ *     adjustmentValue: 2,
+ *     cooldown: 60,
+ * });
+ * const defaultAlarm = new alicloud.ess.Alarm("defaultAlarm", {
+ *     description: name,
+ *     alarmActions: [defaultScalingRule.ari],
+ *     scalingGroupId: defaultScalingGroup.id,
+ *     metricType: "system",
+ *     metricName: "CpuUtilization",
+ *     period: 300,
+ *     statistics: "Average",
+ *     threshold: "200.3",
+ *     comparisonOperator: ">=",
+ *     evaluationCount: 2,
+ * });
+ * ```
  * ## Module Support
  *
  * You can use to the existing autoscaling-rule module

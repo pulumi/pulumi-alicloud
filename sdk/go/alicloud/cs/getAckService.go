@@ -17,6 +17,33 @@ import (
 // For information about Container Service (CS) and how to use it, see [What is Container Service (CS)](https://www.alibabacloud.com/help/en/product/85222.htm).
 //
 // > **NOTE:** Available in v1.113.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cs.GetAckService(ctx, &cs.GetAckServiceArgs{
+//				Enable: pulumi.StringRef("On"),
+//				Type:   "propayasgo",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetAckService(ctx *pulumi.Context, args *GetAckServiceArgs, opts ...pulumi.InvokeOption) (*GetAckServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAckServiceResult

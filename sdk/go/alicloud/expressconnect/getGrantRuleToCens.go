@@ -15,6 +15,38 @@ import (
 // This data source provides the Express Connect Grant Rule To Cens of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.196.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := expressconnect.GetGrantRuleToCens(ctx, &expressconnect.GetGrantRuleToCensArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//				InstanceId: "your_vbr_instance_id",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("expressConnectGrantRuleToCenId0", ids.Cens[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetGrantRuleToCens(ctx *pulumi.Context, args *GetGrantRuleToCensArgs, opts ...pulumi.InvokeOption) (*GetGrantRuleToCensResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGrantRuleToCensResult

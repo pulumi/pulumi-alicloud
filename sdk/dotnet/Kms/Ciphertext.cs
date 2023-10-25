@@ -9,6 +9,32 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Kms
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var key = new AliCloud.Kms.Key("key", new()
+    ///     {
+    ///         Description = "example key",
+    ///         IsEnabled = true,
+    ///     });
+    /// 
+    ///     var encrypted = new AliCloud.Kms.Ciphertext("encrypted", new()
+    ///     {
+    ///         KeyId = key.Id,
+    ///         Plaintext = "example",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [AliCloudResourceType("alicloud:kms/ciphertext:Ciphertext")]
     public partial class Ciphertext : global::Pulumi.CustomResource
     {

@@ -807,6 +807,26 @@ class Network(pulumi.CustomResource):
 
         For information about Vpc Vpc and how to use it, see [What is Vpc](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/what-is-a-vpc).
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.vpc.Network("default",
+            ipv6_isp="BGP",
+            description="test",
+            cidr_block="10.0.0.0/8",
+            vpc_name=name,
+            enable_ipv6=True)
+        ```
+
         ## Import
 
         Vpc Vpc can be imported using the id, e.g.
@@ -862,6 +882,26 @@ class Network(pulumi.CustomResource):
         to create a VPC and several VSwitches one-click.
 
         For information about Vpc Vpc and how to use it, see [What is Vpc](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/what-is-a-vpc).
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.vpc.Network("default",
+            ipv6_isp="BGP",
+            description="test",
+            cidr_block="10.0.0.0/8",
+            vpc_name=name,
+            enable_ipv6=True)
+        ```
 
         ## Import
 

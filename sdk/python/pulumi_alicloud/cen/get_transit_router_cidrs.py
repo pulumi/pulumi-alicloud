@@ -119,6 +119,22 @@ def get_transit_router_cidrs(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.193.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cen.get_transit_router_cidrs(ids=["example_id"],
+        transit_router_id="tr-6ehx7q2jze8ch5ji0****")
+    pulumi.export("cenTransitRouterCidrId0", ids.cidrs[0].id)
+    name_regex = alicloud.cen.get_transit_router_cidrs(name_regex="^my-name",
+        transit_router_id="tr-6ehx7q2jze8ch5ji0****")
+    pulumi.export("cenTransitRouterCidrId1", name_regex.cidrs[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Cen Transit Router Cidr IDs.
     :param str name_regex: A regex string to filter results by Transit Router Cidr name.
@@ -157,6 +173,22 @@ def get_transit_router_cidrs_output(ids: Optional[pulumi.Input[Optional[Sequence
     This data source provides the Cen Transit Router Cidrs of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.193.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cen.get_transit_router_cidrs(ids=["example_id"],
+        transit_router_id="tr-6ehx7q2jze8ch5ji0****")
+    pulumi.export("cenTransitRouterCidrId0", ids.cidrs[0].id)
+    name_regex = alicloud.cen.get_transit_router_cidrs(name_regex="^my-name",
+        transit_router_id="tr-6ehx7q2jze8ch5ji0****")
+    pulumi.export("cenTransitRouterCidrId1", name_regex.cidrs[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Cen Transit Router Cidr IDs.

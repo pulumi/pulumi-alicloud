@@ -15,6 +15,33 @@ import (
 // This data source provides the Iot Device Groups of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.134.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/iot"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := iot.GetDeviceGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("iotDeviceGroupId1", ids.Groups[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDeviceGroups(ctx *pulumi.Context, args *GetDeviceGroupsArgs, opts ...pulumi.InvokeOption) (*GetDeviceGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDeviceGroupsResult

@@ -11,6 +11,27 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.198.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultKvNamespace = new alicloud.dcdn.KvNamespace("defaultKvNamespace", {
+ *     description: name,
+ *     namespace: name,
+ * });
+ * const defaultKv = new alicloud.dcdn.Kv("defaultKv", {
+ *     value: "example-value",
+ *     key: name,
+ *     namespace: defaultKvNamespace.namespace,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Dcdn Kv can be imported using the id, e.g.

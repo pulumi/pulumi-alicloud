@@ -17,6 +17,38 @@ import (
 //
 // > **NOTE:** Available in v1.85.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := kms.NewKey(ctx, "this", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kms.NewKeyVersion(ctx, "keyversion", &kms.KeyVersionArgs{
+//				KeyId: this.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Alikms key version can be imported using the id, e.g.

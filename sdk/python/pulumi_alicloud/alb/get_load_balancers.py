@@ -222,6 +222,20 @@ def get_load_balancers(address_type: Optional[str] = None,
 
     > **NOTE:** Available in v1.132.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.alb.get_load_balancers()
+    pulumi.export("albLoadBalancerId1", ids.balancers[0].id)
+    name_regex = alicloud.alb.get_load_balancers(name_regex="^my-LoadBalancer")
+    pulumi.export("albLoadBalancerId2", name_regex.balancers[0].id)
+    ```
+
 
     :param str address_type: The type of IP address that the ALB instance uses to provide services.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -300,6 +314,20 @@ def get_load_balancers_output(address_type: Optional[pulumi.Input[Optional[str]]
     This data source provides the Alb Load Balancers of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.132.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.alb.get_load_balancers()
+    pulumi.export("albLoadBalancerId1", ids.balancers[0].id)
+    name_regex = alicloud.alb.get_load_balancers(name_regex="^my-LoadBalancer")
+    pulumi.export("albLoadBalancerId2", name_regex.balancers[0].id)
+    ```
 
 
     :param str address_type: The type of IP address that the ALB instance uses to provide services.

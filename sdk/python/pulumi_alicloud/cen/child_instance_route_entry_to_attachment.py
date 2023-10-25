@@ -305,6 +305,67 @@ class ChildInstanceRouteEntryToAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.195.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.cen.get_transit_router_available_resources()
+        master_zone = default.resources[0].master_zones[0]
+        slave_zone = default.resources[0].slave_zones[1]
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name=name,
+            cidr_block="192.168.0.0/16")
+        example_master = alicloud.vpc.Switch("exampleMaster",
+            vswitch_name=name,
+            cidr_block="192.168.1.0/24",
+            vpc_id=example_network.id,
+            zone_id=master_zone)
+        example_slave = alicloud.vpc.Switch("exampleSlave",
+            vswitch_name=name,
+            cidr_block="192.168.2.0/24",
+            vpc_id=example_network.id,
+            zone_id=slave_zone)
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name=name,
+            protection_level="REDUCED")
+        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+            transit_router_name=name,
+            cen_id=example_instance.id)
+        example_transit_router_vpc_attachment = alicloud.cen.TransitRouterVpcAttachment("exampleTransitRouterVpcAttachment",
+            cen_id=example_instance.id,
+            transit_router_id=example_transit_router.transit_router_id,
+            vpc_id=example_network.id,
+            zone_mappings=[
+                alicloud.cen.TransitRouterVpcAttachmentZoneMappingArgs(
+                    zone_id=master_zone,
+                    vswitch_id=example_master.id,
+                ),
+                alicloud.cen.TransitRouterVpcAttachmentZoneMappingArgs(
+                    zone_id=slave_zone,
+                    vswitch_id=example_slave.id,
+                ),
+            ],
+            transit_router_attachment_name=name,
+            transit_router_attachment_description=name)
+        example_route_table = alicloud.vpc.RouteTable("exampleRouteTable",
+            vpc_id=example_network.id,
+            route_table_name=name,
+            description=name)
+        example_child_instance_route_entry_to_attachment = alicloud.cen.ChildInstanceRouteEntryToAttachment("exampleChildInstanceRouteEntryToAttachment",
+            transit_router_attachment_id=example_transit_router_vpc_attachment.transit_router_attachment_id,
+            cen_id=example_instance.id,
+            destination_cidr_block="10.0.0.0/24",
+            child_instance_route_table_id=example_route_table.id)
+        ```
+
         ## Import
 
         Cen Child Instance Route Entry To Attachment can be imported using the id, e.g.
@@ -333,6 +394,67 @@ class ChildInstanceRouteEntryToAttachment(pulumi.CustomResource):
         For information about Cen Child Instance Route Entry To Attachment and how to use it, see [What is Child Instance Route Entry To Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcenchildinstancerouteentrytoattachment).
 
         > **NOTE:** Available since v1.195.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.cen.get_transit_router_available_resources()
+        master_zone = default.resources[0].master_zones[0]
+        slave_zone = default.resources[0].slave_zones[1]
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name=name,
+            cidr_block="192.168.0.0/16")
+        example_master = alicloud.vpc.Switch("exampleMaster",
+            vswitch_name=name,
+            cidr_block="192.168.1.0/24",
+            vpc_id=example_network.id,
+            zone_id=master_zone)
+        example_slave = alicloud.vpc.Switch("exampleSlave",
+            vswitch_name=name,
+            cidr_block="192.168.2.0/24",
+            vpc_id=example_network.id,
+            zone_id=slave_zone)
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name=name,
+            protection_level="REDUCED")
+        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+            transit_router_name=name,
+            cen_id=example_instance.id)
+        example_transit_router_vpc_attachment = alicloud.cen.TransitRouterVpcAttachment("exampleTransitRouterVpcAttachment",
+            cen_id=example_instance.id,
+            transit_router_id=example_transit_router.transit_router_id,
+            vpc_id=example_network.id,
+            zone_mappings=[
+                alicloud.cen.TransitRouterVpcAttachmentZoneMappingArgs(
+                    zone_id=master_zone,
+                    vswitch_id=example_master.id,
+                ),
+                alicloud.cen.TransitRouterVpcAttachmentZoneMappingArgs(
+                    zone_id=slave_zone,
+                    vswitch_id=example_slave.id,
+                ),
+            ],
+            transit_router_attachment_name=name,
+            transit_router_attachment_description=name)
+        example_route_table = alicloud.vpc.RouteTable("exampleRouteTable",
+            vpc_id=example_network.id,
+            route_table_name=name,
+            description=name)
+        example_child_instance_route_entry_to_attachment = alicloud.cen.ChildInstanceRouteEntryToAttachment("exampleChildInstanceRouteEntryToAttachment",
+            transit_router_attachment_id=example_transit_router_vpc_attachment.transit_router_attachment_id,
+            cen_id=example_instance.id,
+            destination_cidr_block="10.0.0.0/24",
+            child_instance_route_table_id=example_route_table.id)
+        ```
 
         ## Import
 

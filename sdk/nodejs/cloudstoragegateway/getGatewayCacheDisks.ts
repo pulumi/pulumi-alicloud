@@ -10,6 +10,33 @@ import * as utilities from "../utilities";
  * This data source provides the Cloud Storage Gateway Gateway Cache Disks of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.144.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cloudstoragegateway.getGatewayCacheDisks({
+ *     gatewayId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const cloudStorageGatewayGatewayCacheDiskId1 = ids.then(ids => ids.disks?.[0]?.id);
+ * const status = alicloud.cloudstoragegateway.getGatewayCacheDisks({
+ *     gatewayId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ *     status: 0,
+ * });
+ * export const cloudStorageGatewayGatewayCacheDiskId2 = status.then(status => status.disks?.[0]?.id);
+ * ```
  */
 export function getGatewayCacheDisks(args: GetGatewayCacheDisksArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayCacheDisksResult> {
 
@@ -62,6 +89,33 @@ export interface GetGatewayCacheDisksResult {
  * This data source provides the Cloud Storage Gateway Gateway Cache Disks of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.144.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cloudstoragegateway.getGatewayCacheDisks({
+ *     gatewayId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const cloudStorageGatewayGatewayCacheDiskId1 = ids.then(ids => ids.disks?.[0]?.id);
+ * const status = alicloud.cloudstoragegateway.getGatewayCacheDisks({
+ *     gatewayId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ *     status: 0,
+ * });
+ * export const cloudStorageGatewayGatewayCacheDiskId2 = status.then(status => status.disks?.[0]?.id);
+ * ```
  */
 export function getGatewayCacheDisksOutput(args: GetGatewayCacheDisksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayCacheDisksResult> {
     return pulumi.output(args).apply((a: any) => getGatewayCacheDisks(a, opts))

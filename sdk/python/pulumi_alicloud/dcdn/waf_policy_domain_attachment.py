@@ -142,6 +142,44 @@ class WafPolicyDomainAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.186.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "example.com"
+        example_domain = alicloud.dcdn.Domain("exampleDomain",
+            domain_name=domain_name,
+            scope="overseas",
+            sources=[alicloud.dcdn.DomainSourceArgs(
+                content="1.1.1.1",
+                port=80,
+                priority="20",
+                type="ipaddr",
+                weight="10",
+            )])
+        example_waf_domain = alicloud.dcdn.WafDomain("exampleWafDomain",
+            domain_name=example_domain.domain_name,
+            client_ip_tag="X-Forwarded-For")
+        example_waf_policy = alicloud.dcdn.WafPolicy("exampleWafPolicy",
+            defense_scene="waf_group",
+            policy_name=name,
+            policy_type="custom",
+            status="on")
+        example_waf_policy_domain_attachment = alicloud.dcdn.WafPolicyDomainAttachment("exampleWafPolicyDomainAttachment",
+            domain_name=example_waf_domain.domain_name,
+            policy_id=example_waf_policy.id)
+        ```
+
         ## Import
 
         DCDN Waf Policy Domain Attachment can be imported using the id, e.g.
@@ -167,6 +205,44 @@ class WafPolicyDomainAttachment(pulumi.CustomResource):
         For information about DCDN Waf Policy Domain Attachment and how to use it, see [What is Waf Policy Domain Attachment](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-modifydcdnwafpolicydomains).
 
         > **NOTE:** Available since v1.186.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "example.com"
+        example_domain = alicloud.dcdn.Domain("exampleDomain",
+            domain_name=domain_name,
+            scope="overseas",
+            sources=[alicloud.dcdn.DomainSourceArgs(
+                content="1.1.1.1",
+                port=80,
+                priority="20",
+                type="ipaddr",
+                weight="10",
+            )])
+        example_waf_domain = alicloud.dcdn.WafDomain("exampleWafDomain",
+            domain_name=example_domain.domain_name,
+            client_ip_tag="X-Forwarded-For")
+        example_waf_policy = alicloud.dcdn.WafPolicy("exampleWafPolicy",
+            defense_scene="waf_group",
+            policy_name=name,
+            policy_type="custom",
+            status="on")
+        example_waf_policy_domain_attachment = alicloud.dcdn.WafPolicyDomainAttachment("exampleWafPolicyDomainAttachment",
+            domain_name=example_waf_domain.domain_name,
+            policy_id=example_waf_policy.id)
+        ```
 
         ## Import
 

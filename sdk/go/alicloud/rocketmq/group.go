@@ -19,6 +19,52 @@ import (
 //
 // > **NOTE:** Available in 1.53.0+
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "onsInstanceName"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			groupName := "GID-onsGroupDatasourceName"
+//			if param := cfg.Get("groupName"); param != "" {
+//				groupName = param
+//			}
+//			defaultInstance, err := rocketmq.NewInstance(ctx, "defaultInstance", &rocketmq.InstanceArgs{
+//				Remark: pulumi.String("default_ons_instance_remark"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rocketmq.NewGroup(ctx, "defaultGroup", &rocketmq.GroupArgs{
+//				GroupName:  pulumi.String(groupName),
+//				InstanceId: defaultInstance.ID(),
+//				Remark:     pulumi.String("dafault_ons_group_remark"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ONS GROUP can be imported using the id, e.g.

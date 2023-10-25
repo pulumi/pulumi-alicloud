@@ -159,6 +159,24 @@ def get_instance_types(cluster_type: Optional[str] = None,
 
     > **NOTE:** Available in 1.59.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.emr.get_instance_types(cluster_type="HADOOP",
+        destination_resource="InstanceType",
+        instance_charge_type="PostPaid",
+        instance_type="ecs.g5.2xlarge",
+        support_local_storage=False,
+        support_node_types=[
+            "MASTER",
+            "CORE",
+        ])
+    pulumi.export("firstInstanceType", default.types[0].id)
+    ```
+
 
     :param str cluster_type: The cluster type of the emr cluster instance. Possible values: `HADOOP`, `KAFKA`, `ZOOKEEPER`, `DRUID`.
     :param str destination_resource: The destination resource of emr cluster instance
@@ -211,6 +229,24 @@ def get_instance_types_output(cluster_type: Optional[pulumi.Input[str]] = None,
     instance types available in Alibaba Cloud account when create a emr cluster.
 
     > **NOTE:** Available in 1.59.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.emr.get_instance_types(cluster_type="HADOOP",
+        destination_resource="InstanceType",
+        instance_charge_type="PostPaid",
+        instance_type="ecs.g5.2xlarge",
+        support_local_storage=False,
+        support_node_types=[
+            "MASTER",
+            "CORE",
+        ])
+    pulumi.export("firstInstanceType", default.types[0].id)
+    ```
 
 
     :param str cluster_type: The cluster type of the emr cluster instance. Possible values: `HADOOP`, `KAFKA`, `ZOOKEEPER`, `DRUID`.

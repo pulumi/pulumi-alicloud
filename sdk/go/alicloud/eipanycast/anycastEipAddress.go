@@ -19,6 +19,45 @@ import (
 //
 // > **NOTE:** Available since v1.113.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eipanycast"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := eipanycast.NewAnycastEipAddress(ctx, "default", &eipanycast.AnycastEipAddressArgs{
+//				AnycastEipAddressName: pulumi.String(name),
+//				Description:           pulumi.String(name),
+//				Bandwidth:             pulumi.Int(200),
+//				ServiceLocation:       pulumi.String("international"),
+//				InternetChargeType:    pulumi.String("PayByTraffic"),
+//				PaymentType:           pulumi.String("PayAsYouGo"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Eipanycast Anycast Eip Address can be imported using the id, e.g.

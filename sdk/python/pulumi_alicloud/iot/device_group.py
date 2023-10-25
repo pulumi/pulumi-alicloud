@@ -223,6 +223,21 @@ class DeviceGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.134.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        example = alicloud.iot.DeviceGroup("example", group_name=name)
+        ```
+
         ## Import
 
         Iot Device Group can be imported using the id, e.g.
@@ -250,6 +265,21 @@ class DeviceGroup(pulumi.CustomResource):
         For information about Iot Device Group and how to use it, see [What is Device Group](https://www.alibabacloud.com/help/product/30520.htm).
 
         > **NOTE:** Available since v1.134.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        example = alicloud.iot.DeviceGroup("example", group_name=name)
+        ```
 
         ## Import
 

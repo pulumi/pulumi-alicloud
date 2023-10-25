@@ -139,6 +139,20 @@ def get_public_ip_address_pools(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.186.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.vpc.get_public_ip_address_pools(ids=["example_id"])
+    pulumi.export("vpcPublicIpAddressPoolId1", ids.pools[0].id)
+    name_regex = alicloud.vpc.get_public_ip_address_pools(name_regex="example_name")
+    pulumi.export("vpcPublicIpAddressPoolId2", name_regex.pools[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Vpc Public Ip Address Pool IDs.
     :param str isp: The Internet service provider.
@@ -185,6 +199,20 @@ def get_public_ip_address_pools_output(ids: Optional[pulumi.Input[Optional[Seque
     This data source provides the Vpc Public Ip Address Pools of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.186.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.vpc.get_public_ip_address_pools(ids=["example_id"])
+    pulumi.export("vpcPublicIpAddressPoolId1", ids.pools[0].id)
+    name_regex = alicloud.vpc.get_public_ip_address_pools(name_regex="example_name")
+    pulumi.export("vpcPublicIpAddressPoolId2", name_regex.pools[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Vpc Public Ip Address Pool IDs.

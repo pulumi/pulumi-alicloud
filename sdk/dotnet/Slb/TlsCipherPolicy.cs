@@ -16,6 +16,35 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// &gt; **NOTE:** Available in v1.135.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AliCloud.Slb.TlsCipherPolicy("example", new()
+    ///     {
+    ///         Ciphers = new[]
+    ///         {
+    ///             "AES256-SHA256",
+    ///             "AES128-GCM-SHA256",
+    ///         },
+    ///         TlsCipherPolicyName = "Test-example_value",
+    ///         TlsVersions = new[]
+    ///         {
+    ///             "TLSv1.2",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// SLB Tls Cipher Policy can be imported using the id, e.g.

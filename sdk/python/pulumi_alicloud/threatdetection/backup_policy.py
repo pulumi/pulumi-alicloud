@@ -281,6 +281,22 @@ class BackupPolicy(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.195.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_assets = alicloud.threatdetection.get_assets(machine_types="ecs")
+        default_backup_policy = alicloud.threatdetection.BackupPolicy("defaultBackupPolicy",
+            backup_policy_name="tf-example-name",
+            policy="{\\"Exclude\\":[\\"/bin/\\",\\"/usr/bin/\\",\\"/sbin/\\",\\"/boot/\\",\\"/proc/\\",\\"/sys/\\",\\"/srv/\\",\\"/lib/\\",\\"/selinux/\\",\\"/usr/sbin/\\",\\"/run/\\",\\"/lib32/\\",\\"/lib64/\\",\\"/lost+found/\\",\\"/var/lib/kubelet/\\",\\"/var/lib/ntp/proc\\",\\"/var/lib/container\\"],\\"ExcludeSystemPath\\":true,\\"Include\\":[],\\"IsDefault\\":1,\\"Retention\\":7,\\"Schedule\\":\\"I|1668703620|PT24H\\",\\"Source\\":[],\\"SpeedLimiter\\":\\"\\",\\"UseVss\\":true}",
+            policy_version="2.0.0",
+            uuid_lists=[default_assets.ids[0]])
+        ```
+
         ## Import
 
         Threat Detection Backup Policy can be imported using the id, e.g.
@@ -309,6 +325,22 @@ class BackupPolicy(pulumi.CustomResource):
         For information about Threat Detection Backup Policy and how to use it, see [What is Backup Policy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createbackuppolicy).
 
         > **NOTE:** Available in v1.195.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_assets = alicloud.threatdetection.get_assets(machine_types="ecs")
+        default_backup_policy = alicloud.threatdetection.BackupPolicy("defaultBackupPolicy",
+            backup_policy_name="tf-example-name",
+            policy="{\\"Exclude\\":[\\"/bin/\\",\\"/usr/bin/\\",\\"/sbin/\\",\\"/boot/\\",\\"/proc/\\",\\"/sys/\\",\\"/srv/\\",\\"/lib/\\",\\"/selinux/\\",\\"/usr/sbin/\\",\\"/run/\\",\\"/lib32/\\",\\"/lib64/\\",\\"/lost+found/\\",\\"/var/lib/kubelet/\\",\\"/var/lib/ntp/proc\\",\\"/var/lib/container\\"],\\"ExcludeSystemPath\\":true,\\"Include\\":[],\\"IsDefault\\":1,\\"Retention\\":7,\\"Schedule\\":\\"I|1668703620|PT24H\\",\\"Source\\":[],\\"SpeedLimiter\\":\\"\\",\\"UseVss\\":true}",
+            policy_version="2.0.0",
+            uuid_lists=[default_assets.ids[0]])
+        ```
 
         ## Import
 

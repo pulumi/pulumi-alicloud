@@ -13,6 +13,114 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.111.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultZones = alicloud.eci.getZones({});
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.0.0.0/8",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.1.0.0/16",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.zoneIds?.[0]),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
+ * const defaultContainerGroup = new alicloud.eci.ContainerGroup("defaultContainerGroup", {
+ *     containerGroupName: name,
+ *     cpu: 8,
+ *     memory: 16,
+ *     restartPolicy: "OnFailure",
+ *     securityGroupId: defaultSecurityGroup.id,
+ *     vswitchId: defaultSwitch.id,
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
+ *     containers: [
+ *         {
+ *             image: "registry-vpc.cn-beijing.aliyuncs.com/eci_open/nginx:alpine",
+ *             name: "nginx",
+ *             workingDir: "/tmp/nginx",
+ *             imagePullPolicy: "IfNotPresent",
+ *             commands: [
+ *                 "/bin/sh",
+ *                 "-c",
+ *                 "sleep 9999",
+ *             ],
+ *             volumeMounts: [{
+ *                 mountPath: "/tmp/example",
+ *                 readOnly: false,
+ *                 name: "empty1",
+ *             }],
+ *             ports: [{
+ *                 port: 80,
+ *                 protocol: "TCP",
+ *             }],
+ *             environmentVars: [{
+ *                 key: "name",
+ *                 value: "nginx",
+ *             }],
+ *             livenessProbes: [{
+ *                 periodSeconds: 5,
+ *                 initialDelaySeconds: 5,
+ *                 successThreshold: 1,
+ *                 failureThreshold: 3,
+ *                 timeoutSeconds: 1,
+ *                 execs: [{
+ *                     commands: ["cat /tmp/healthy"],
+ *                 }],
+ *             }],
+ *             readinessProbes: [{
+ *                 periodSeconds: 5,
+ *                 initialDelaySeconds: 5,
+ *                 successThreshold: 1,
+ *                 failureThreshold: 3,
+ *                 timeoutSeconds: 1,
+ *                 execs: [{
+ *                     commands: ["cat /tmp/healthy"],
+ *                 }],
+ *             }],
+ *         },
+ *         {
+ *             image: "registry-vpc.cn-beijing.aliyuncs.com/eci_open/centos:7",
+ *             name: "centos",
+ *             commands: [
+ *                 "/bin/sh",
+ *                 "-c",
+ *                 "sleep 9999",
+ *             ],
+ *         },
+ *     ],
+ *     initContainers: [{
+ *         name: "init-busybox",
+ *         image: "registry-vpc.cn-beijing.aliyuncs.com/eci_open/busybox:1.30",
+ *         imagePullPolicy: "IfNotPresent",
+ *         commands: ["echo"],
+ *         args: ["hello initcontainer"],
+ *     }],
+ *     volumes: [
+ *         {
+ *             name: "empty1",
+ *             type: "EmptyDirVolume",
+ *         },
+ *         {
+ *             name: "empty2",
+ *             type: "EmptyDirVolume",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * ECI Container Group can be imported using the id, e.g.

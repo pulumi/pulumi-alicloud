@@ -183,6 +183,60 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.198.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_zones = alicloud.nlb.get_zones()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default1 = alicloud.vpc.Switch("default1",
+            vswitch_name=name,
+            cidr_block="10.4.1.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[1].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_load_balancer = alicloud.nlb.LoadBalancer("defaultLoadBalancer",
+            load_balancer_name=name,
+            resource_group_id=default_resource_groups.ids[0],
+            load_balancer_type="Network",
+            address_type="Internet",
+            address_ip_version="Ipv4",
+            vpc_id=default_network.id,
+            tags={
+                "Created": "TF",
+                "For": "example",
+            },
+            zone_mappings=[
+                alicloud.nlb.LoadBalancerZoneMappingArgs(
+                    vswitch_id=default_switch.id,
+                    zone_id=default_zones.zones[0].id,
+                ),
+                alicloud.nlb.LoadBalancerZoneMappingArgs(
+                    vswitch_id=default1.id,
+                    zone_id=default_zones.zones[1].id,
+                ),
+            ])
+        default_load_balancer_security_group_attachment = alicloud.nlb.LoadBalancerSecurityGroupAttachment("defaultLoadBalancerSecurityGroupAttachment",
+            security_group_id=default_security_group.id,
+            load_balancer_id=default_load_balancer.id)
+        ```
+
         ## Import
 
         Nlb Load Balancer Security Group Attachment can be imported using the id, e.g.
@@ -209,6 +263,60 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
         For information about Nlb Load Balancer Security Group Attachment and how to use it, see [What is Load Balancer Security Group Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/loadbalancerjoinsecuritygroup).
 
         > **NOTE:** Available since v1.198.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_zones = alicloud.nlb.get_zones()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default1 = alicloud.vpc.Switch("default1",
+            vswitch_name=name,
+            cidr_block="10.4.1.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[1].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_load_balancer = alicloud.nlb.LoadBalancer("defaultLoadBalancer",
+            load_balancer_name=name,
+            resource_group_id=default_resource_groups.ids[0],
+            load_balancer_type="Network",
+            address_type="Internet",
+            address_ip_version="Ipv4",
+            vpc_id=default_network.id,
+            tags={
+                "Created": "TF",
+                "For": "example",
+            },
+            zone_mappings=[
+                alicloud.nlb.LoadBalancerZoneMappingArgs(
+                    vswitch_id=default_switch.id,
+                    zone_id=default_zones.zones[0].id,
+                ),
+                alicloud.nlb.LoadBalancerZoneMappingArgs(
+                    vswitch_id=default1.id,
+                    zone_id=default_zones.zones[1].id,
+                ),
+            ])
+        default_load_balancer_security_group_attachment = alicloud.nlb.LoadBalancerSecurityGroupAttachment("defaultLoadBalancerSecurityGroupAttachment",
+            security_group_id=default_security_group.id,
+            load_balancer_id=default_load_balancer.id)
+        ```
 
         ## Import
 

@@ -16,6 +16,45 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
     /// 
     /// &gt; **NOTE:** Available since v1.143.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var defaultImages = AliCloud.SimpleApplicationServer.GetImages.Invoke();
+    /// 
+    ///     var defaultServerPlans = AliCloud.SimpleApplicationServer.GetServerPlans.Invoke();
+    /// 
+    ///     var defaultInstance = new AliCloud.SimpleApplicationServer.Instance("defaultInstance", new()
+    ///     {
+    ///         PaymentType = "Subscription",
+    ///         PlanId = defaultServerPlans.Apply(getServerPlansResult =&gt; getServerPlansResult.Plans[0]?.Id),
+    ///         InstanceName = name,
+    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         Period = 1,
+    ///         DataDiskSize = 100,
+    ///     });
+    /// 
+    ///     var defaultFirewallRule = new AliCloud.SimpleApplicationServer.FirewallRule("defaultFirewallRule", new()
+    ///     {
+    ///         InstanceId = defaultInstance.Id,
+    ///         RuleProtocol = "Tcp",
+    ///         Port = "9999",
+    ///         Remark = name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Simple Application Server Firewall Rule can be imported using the id, e.g.

@@ -103,6 +103,18 @@ def get_vul_whitelists(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.195.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.threatdetection.get_vul_whitelists(ids=["example_id"])
+    pulumi.export("alicloudThreatDetectionVulWhitelistExampleId", default.whitelists[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Threat Detection Vul Whitelist IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -134,6 +146,18 @@ def get_vul_whitelists_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
     This data source provides Threat Detection Vul Whitelists of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.195.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.threatdetection.get_vul_whitelists(ids=["example_id"])
+    pulumi.export("alicloudThreatDetectionVulWhitelistExampleId", default.whitelists[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Threat Detection Vul Whitelist IDs.

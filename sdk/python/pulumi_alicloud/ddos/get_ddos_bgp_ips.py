@@ -130,6 +130,22 @@ def get_ddos_bgp_ips(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.180.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.ddos.get_ddos_bgp_ips(instance_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("ddosbgpIpId1", ids.ips[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Ip IDs.
     :param str instance_id: The ID of the native protection enterprise instance to be operated.
@@ -173,6 +189,22 @@ def get_ddos_bgp_ips_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     This data source provides the Ddos Bgp Ips of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.180.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.ddos.get_ddos_bgp_ips(instance_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("ddosbgpIpId1", ids.ips[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Ip IDs.

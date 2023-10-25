@@ -15,6 +15,47 @@ import (
 // This data source provides the Actiontrail History Delivery Jobs of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.139.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := actiontrail.GetHistoryDeliveryJobs(ctx, &actiontrail.GetHistoryDeliveryJobsArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("actiontrailHistoryDeliveryJobId1", ids.Jobs[0].Id)
+//			status, err := actiontrail.GetHistoryDeliveryJobs(ctx, &actiontrail.GetHistoryDeliveryJobsArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//				Status: pulumi.IntRef(2),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("actiontrailHistoryDeliveryJobId2", status.Jobs[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetHistoryDeliveryJobs(ctx *pulumi.Context, args *GetHistoryDeliveryJobsArgs, opts ...pulumi.InvokeOption) (*GetHistoryDeliveryJobsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHistoryDeliveryJobsResult

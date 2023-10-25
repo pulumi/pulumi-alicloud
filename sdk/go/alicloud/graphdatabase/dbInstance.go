@@ -19,6 +19,47 @@ import (
 //
 // > **NOTE:** Available since v1.136.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/graphdatabase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := graphdatabase.NewDbInstance(ctx, "example", &graphdatabase.DbInstanceArgs{
+//				DbNodeClass:           pulumi.String("gdb.r.2xlarge"),
+//				DbInstanceNetworkType: pulumi.String("vpc"),
+//				DbVersion:             pulumi.String("1.0"),
+//				DbInstanceCategory:    pulumi.String("HA"),
+//				DbInstanceStorageType: pulumi.String("cloud_ssd"),
+//				DbNodeStorage:         pulumi.Int(50),
+//				PaymentType:           pulumi.String("PayAsYouGo"),
+//				DbInstanceDescription: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Graph Database Db Instance can be imported using the id, e.g.

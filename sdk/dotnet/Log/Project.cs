@@ -15,6 +15,83 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// &gt; **NOTE:** Available since v1.9.5.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var example = new AliCloud.Log.Project("example", new()
+    ///     {
+    ///         Description = "terraform-example",
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Project With Policy Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var examplePolicy = new AliCloud.Log.Project("examplePolicy", new()
+    ///     {
+    ///         Description = "terraform-example",
+    ///         Policy = @"{
+    ///   ""Statement"": [
+    ///     {
+    ///       ""Action"": [
+    ///         ""log:PostLogStoreLogs""
+    ///       ],
+    ///       ""Condition"": {
+    ///         ""StringNotLike"": {
+    ///           ""acs:SourceVpc"": [
+    ///             ""vpc-*""
+    ///           ]
+    ///         }
+    ///       },
+    ///       ""Effect"": ""Deny"",
+    ///       ""Resource"": ""acs:log:*:*:project/tf-log/*""
+    ///     }
+    ///   ],
+    ///   ""Version"": ""1""
+    /// }
+    /// 
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## Module Support
     /// 
     /// You can use the existing sls module

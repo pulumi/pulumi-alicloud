@@ -13,6 +13,31 @@ import (
 )
 
 // This data source provides the server certificate list.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sampleDs, err := slb.GetServerCertificates(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstSlbServerCertificateId", sampleDs.Certificates[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetServerCertificates(ctx *pulumi.Context, args *GetServerCertificatesArgs, opts ...pulumi.InvokeOption) (*GetServerCertificatesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServerCertificatesResult

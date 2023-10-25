@@ -11,6 +11,25 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.139.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.cloudfirewall.Instance("example", {
+ *     bandWidth: 10,
+ *     cfwLog: true,
+ *     cfwLogStorage: 1000,
+ *     ipNumber: 20,
+ *     paymentType: "Subscription",
+ *     period: 1,
+ *     spec: "premium_version",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Cloud Firewall Instance can be imported using the id, e.g.

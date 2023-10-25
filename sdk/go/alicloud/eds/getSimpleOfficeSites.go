@@ -15,6 +15,38 @@ import (
 // This data source provides the Ecd Simple Office Sites of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.140.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := eds.GetSimpleOfficeSites(ctx, &eds.GetSimpleOfficeSitesArgs{
+//				Ids: []string{
+//					"example_id",
+//				},
+//				Status: pulumi.StringRef("REGISTERED"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("desktopAccessType", _default.Sites[0].DesktopAccessType)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetSimpleOfficeSites(ctx *pulumi.Context, args *GetSimpleOfficeSitesArgs, opts ...pulumi.InvokeOption) (*GetSimpleOfficeSitesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSimpleOfficeSitesResult

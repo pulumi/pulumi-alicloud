@@ -262,6 +262,57 @@ class AddressPool(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.152.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "alicloud-provider.com"
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", alarm_contact_group_name=name)
+        default_gtm_instance = alicloud.dns.GtmInstance("defaultGtmInstance",
+            instance_name=name,
+            payment_type="Subscription",
+            period=1,
+            renewal_status="ManualRenewal",
+            package_edition="standard",
+            health_check_task_count=100,
+            sms_notification_count=1000,
+            public_cname_mode="SYSTEM_ASSIGN",
+            ttl=60,
+            cname_type="PUBLIC",
+            resource_group_id=default_resource_groups.groups[0].id,
+            alert_groups=[default_alarm_contact_group.alarm_contact_group_name],
+            public_user_domain_name=domain_name,
+            alert_configs=[alicloud.dns.GtmInstanceAlertConfigArgs(
+                sms_notice=True,
+                notice_type="ADDR_ALERT",
+                email_notice=True,
+                dingtalk_notice=True,
+            )])
+        default_address_pool = alicloud.dns.AddressPool("defaultAddressPool",
+            address_pool_name=name,
+            instance_id=default_gtm_instance.id,
+            lba_strategy="RATIO",
+            type="IPV4",
+            addresses=[alicloud.dns.AddressPoolAddressArgs(
+                attribute_info="{\\"lineCodeRectifyType\\":\\"RECTIFIED\\",\\"lineCodes\\":[\\"os_namerica_us\\"]}",
+                remark="address_remark",
+                address="1.1.1.1",
+                mode="SMART",
+                lba_weight=1,
+            )])
+        ```
+
         ## Import
 
         Alidns Address Pool can be imported using the id, e.g.
@@ -290,6 +341,57 @@ class AddressPool(pulumi.CustomResource):
         For information about Alidns Address Pool and how to use it, see [What is Address Pool](https://www.alibabacloud.com/help/doc-detail/189621.html).
 
         > **NOTE:** Available since v1.152.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "alicloud-provider.com"
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", alarm_contact_group_name=name)
+        default_gtm_instance = alicloud.dns.GtmInstance("defaultGtmInstance",
+            instance_name=name,
+            payment_type="Subscription",
+            period=1,
+            renewal_status="ManualRenewal",
+            package_edition="standard",
+            health_check_task_count=100,
+            sms_notification_count=1000,
+            public_cname_mode="SYSTEM_ASSIGN",
+            ttl=60,
+            cname_type="PUBLIC",
+            resource_group_id=default_resource_groups.groups[0].id,
+            alert_groups=[default_alarm_contact_group.alarm_contact_group_name],
+            public_user_domain_name=domain_name,
+            alert_configs=[alicloud.dns.GtmInstanceAlertConfigArgs(
+                sms_notice=True,
+                notice_type="ADDR_ALERT",
+                email_notice=True,
+                dingtalk_notice=True,
+            )])
+        default_address_pool = alicloud.dns.AddressPool("defaultAddressPool",
+            address_pool_name=name,
+            instance_id=default_gtm_instance.id,
+            lba_strategy="RATIO",
+            type="IPV4",
+            addresses=[alicloud.dns.AddressPoolAddressArgs(
+                attribute_info="{\\"lineCodeRectifyType\\":\\"RECTIFIED\\",\\"lineCodes\\":[\\"os_namerica_us\\"]}",
+                remark="address_remark",
+                address="1.1.1.1",
+                mode="SMART",
+                lba_weight=1,
+            )])
+        ```
 
         ## Import
 

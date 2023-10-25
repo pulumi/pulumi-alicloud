@@ -11,6 +11,22 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.168.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.sag.SmartagFlowLog("example", {
+ *     netflowServerIp: "192.168.0.2",
+ *     netflowServerPort: 9995,
+ *     netflowVersion: "V9",
+ *     outputType: "netflow",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Smartag Flow Log can be imported using the id, e.g.

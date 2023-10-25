@@ -19,6 +19,99 @@ import (
 //
 // > **NOTE:** Available since v1.195.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/adb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := adb.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//				Status: pulumi.StringRef("OK"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultDBCluster, err := adb.NewDBCluster(ctx, "defaultDBCluster", &adb.DBClusterArgs{
+//				ComputeResource:   pulumi.String("48Core192GBNEW"),
+//				DbClusterCategory: pulumi.String("MixedStorage"),
+//				DbClusterVersion:  pulumi.String("3.0"),
+//				DbNodeClass:       pulumi.String("E32"),
+//				DbNodeCount:       pulumi.Int(1),
+//				DbNodeStorage:     pulumi.Int(100),
+//				Description:       pulumi.String(name),
+//				ElasticIoResource: pulumi.Int(1),
+//				MaintainTime:      pulumi.String("04:00Z-05:00Z"),
+//				Mode:              pulumi.String("flexible"),
+//				PaymentType:       pulumi.String("PayAsYouGo"),
+//				ResourceGroupId:   *pulumi.String(defaultResourceGroups.Ids[0]),
+//				SecurityIps: pulumi.StringArray{
+//					pulumi.String("10.168.1.12"),
+//					pulumi.String("10.168.1.11"),
+//				},
+//				VpcId:     defaultNetwork.ID(),
+//				VswitchId: defaultSwitch.ID(),
+//				ZoneId:    *pulumi.String(defaultZones.Zones[0].Id),
+//				Tags: pulumi.Map{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("example"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = adb.NewResourceGroup(ctx, "defaultResourceGroup", &adb.ResourceGroupArgs{
+//				GroupName:   pulumi.String("TF_EXAMPLE"),
+//				GroupType:   pulumi.String("batch"),
+//				NodeNum:     pulumi.Int(1),
+//				DbClusterId: defaultDBCluster.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Adb Resource Group can be imported using the id, e.g.

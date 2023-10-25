@@ -328,6 +328,58 @@ class DispatchRule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.136.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_alert_contact = alicloud.arms.AlertContact("defaultAlertContact",
+            alert_contact_name="example_value",
+            email="example_value@aaa.com")
+        default_alert_contact_group = alicloud.arms.AlertContactGroup("defaultAlertContactGroup",
+            alert_contact_group_name="example_value",
+            contact_ids=[default_alert_contact.id])
+        default_dispatch_rule = alicloud.arms.DispatchRule("defaultDispatchRule",
+            dispatch_rule_name="example_value",
+            dispatch_type="CREATE_ALERT",
+            group_rules=[alicloud.arms.DispatchRuleGroupRuleArgs(
+                group_wait_time=5,
+                group_interval=15,
+                repeat_interval=100,
+                grouping_fields=["alertname"],
+            )],
+            label_match_expression_grids=[alicloud.arms.DispatchRuleLabelMatchExpressionGridArgs(
+                label_match_expression_groups=[alicloud.arms.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs(
+                    label_match_expressions=[alicloud.arms.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs(
+                        key="_aliyun_arms_involvedObject_kind",
+                        value="app",
+                        operator="eq",
+                    )],
+                )],
+            )],
+            notify_rules=[alicloud.arms.DispatchRuleNotifyRuleArgs(
+                notify_objects=[
+                    alicloud.arms.DispatchRuleNotifyRuleNotifyObjectArgs(
+                        notify_object_id=default_alert_contact.id,
+                        notify_type="ARMS_CONTACT",
+                        name="example_value",
+                    ),
+                    alicloud.arms.DispatchRuleNotifyRuleNotifyObjectArgs(
+                        notify_object_id=default_alert_contact_group.id,
+                        notify_type="ARMS_CONTACT_GROUP",
+                        name="example_value",
+                    ),
+                ],
+                notify_channels=[
+                    "dingTalk",
+                    "wechat",
+                ],
+            )])
+        ```
+
         ## Import
 
         Application Real-Time Monitoring Service (ARMS) Alert Contact can be imported using the id, e.g.
@@ -357,6 +409,58 @@ class DispatchRule(pulumi.CustomResource):
         For information about Application Real-Time Monitoring Service (ARMS) Alert Dispatch Rule and how to use it, see [What is Alert Dispatch_Rule](https://next.api.alibabacloud.com/document/ARMS/2019-08-08/CreateDispatchRule).
 
         > **NOTE:** Available since v1.136.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_alert_contact = alicloud.arms.AlertContact("defaultAlertContact",
+            alert_contact_name="example_value",
+            email="example_value@aaa.com")
+        default_alert_contact_group = alicloud.arms.AlertContactGroup("defaultAlertContactGroup",
+            alert_contact_group_name="example_value",
+            contact_ids=[default_alert_contact.id])
+        default_dispatch_rule = alicloud.arms.DispatchRule("defaultDispatchRule",
+            dispatch_rule_name="example_value",
+            dispatch_type="CREATE_ALERT",
+            group_rules=[alicloud.arms.DispatchRuleGroupRuleArgs(
+                group_wait_time=5,
+                group_interval=15,
+                repeat_interval=100,
+                grouping_fields=["alertname"],
+            )],
+            label_match_expression_grids=[alicloud.arms.DispatchRuleLabelMatchExpressionGridArgs(
+                label_match_expression_groups=[alicloud.arms.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs(
+                    label_match_expressions=[alicloud.arms.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs(
+                        key="_aliyun_arms_involvedObject_kind",
+                        value="app",
+                        operator="eq",
+                    )],
+                )],
+            )],
+            notify_rules=[alicloud.arms.DispatchRuleNotifyRuleArgs(
+                notify_objects=[
+                    alicloud.arms.DispatchRuleNotifyRuleNotifyObjectArgs(
+                        notify_object_id=default_alert_contact.id,
+                        notify_type="ARMS_CONTACT",
+                        name="example_value",
+                    ),
+                    alicloud.arms.DispatchRuleNotifyRuleNotifyObjectArgs(
+                        notify_object_id=default_alert_contact_group.id,
+                        notify_type="ARMS_CONTACT_GROUP",
+                        name="example_value",
+                    ),
+                ],
+                notify_channels=[
+                    "dingTalk",
+                    "wechat",
+                ],
+            )])
+        ```
 
         ## Import
 

@@ -15,6 +15,38 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// This data source provides Service Catalog Provisioned Product available to the user. [What is Provisioned Product](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-launchproduct)
         /// 
         /// &gt; **NOTE:** Available since v1.196.0.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.ServiceCatalog.GetProvisionedProducts.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "IdExample",
+        ///         },
+        ///         NameRegex = "NameRegexExample",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudServiceCatalogProvisionedProductExampleId"] = @default.Apply(@default =&gt; @default.Apply(getProvisionedProductsResult =&gt; getProvisionedProductsResult.ProvisionedProducts[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetProvisionedProductsResult> InvokeAsync(GetProvisionedProductsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProvisionedProductsResult>("alicloud:servicecatalog/getProvisionedProducts:getProvisionedProducts", args ?? new GetProvisionedProductsArgs(), options.WithDefaults());
@@ -23,6 +55,38 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// This data source provides Service Catalog Provisioned Product available to the user. [What is Provisioned Product](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-launchproduct)
         /// 
         /// &gt; **NOTE:** Available since v1.196.0.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.ServiceCatalog.GetProvisionedProducts.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "IdExample",
+        ///         },
+        ///         NameRegex = "NameRegexExample",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudServiceCatalogProvisionedProductExampleId"] = @default.Apply(@default =&gt; @default.Apply(getProvisionedProductsResult =&gt; getProvisionedProductsResult.ProvisionedProducts[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetProvisionedProductsResult> Invoke(GetProvisionedProductsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProvisionedProductsResult>("alicloud:servicecatalog/getProvisionedProducts:getProvisionedProducts", args ?? new GetProvisionedProductsInvokeArgs(), options.WithDefaults());

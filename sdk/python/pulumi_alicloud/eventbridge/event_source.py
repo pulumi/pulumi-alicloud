@@ -354,6 +354,31 @@ class EventSource(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.130.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example_event_bus = alicloud.eventbridge.EventBus("exampleEventBus", event_bus_name=name)
+        example_queue = alicloud.mns.Queue("exampleQueue")
+        example_event_source = alicloud.eventbridge.EventSource("exampleEventSource",
+            event_bus_name=example_event_bus.event_bus_name,
+            event_source_name=name,
+            description=name,
+            linked_external_source=True,
+            external_source_type="MNS",
+            external_source_config={
+                "QueueName": example_queue.name,
+            })
+        ```
+
         ## Import
 
         Event Bridge Event Source can be imported using the id, e.g.
@@ -396,6 +421,31 @@ class EventSource(pulumi.CustomResource):
         For information about Event Bridge Event Source and how to use it, see [What is Event Source](https://www.alibabacloud.com/help/en/eventbridge/latest/api-eventbridge-2020-04-01-createeventsource).
 
         > **NOTE:** Available since v1.130.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        example_event_bus = alicloud.eventbridge.EventBus("exampleEventBus", event_bus_name=name)
+        example_queue = alicloud.mns.Queue("exampleQueue")
+        example_event_source = alicloud.eventbridge.EventSource("exampleEventSource",
+            event_bus_name=example_event_bus.event_bus_name,
+            event_source_name=name,
+            description=name,
+            linked_external_source=True,
+            external_source_type="MNS",
+            external_source_config={
+                "QueueName": example_queue.name,
+            })
+        ```
 
         ## Import
 

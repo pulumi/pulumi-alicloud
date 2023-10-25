@@ -242,6 +242,78 @@ class Connection(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.210.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-chengdu"
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_zones = alicloud.get_zones()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_switch.vpc_id)
+        default_connection = alicloud.eventbridge.Connection("defaultConnection",
+            connection_name=name,
+            description="test-connection-basic-pre",
+            network_parameters=alicloud.eventbridge.ConnectionNetworkParametersArgs(
+                network_type="PublicNetwork",
+                vpc_id=default_network.id,
+                vswitche_id=default_switch.id,
+                security_group_id=default_security_group.id,
+            ),
+            auth_parameters=alicloud.eventbridge.ConnectionAuthParametersArgs(
+                authorization_type="BASIC_AUTH",
+                api_key_auth_parameters=alicloud.eventbridge.ConnectionAuthParametersApiKeyAuthParametersArgs(
+                    api_key_name="Token",
+                    api_key_value="Token-value",
+                ),
+                basic_auth_parameters=alicloud.eventbridge.ConnectionAuthParametersBasicAuthParametersArgs(
+                    username="admin",
+                    password="admin",
+                ),
+                oauth_parameters=alicloud.eventbridge.ConnectionAuthParametersOauthParametersArgs(
+                    authorization_endpoint="http://127.0.0.1:8080",
+                    http_method="POST",
+                    client_parameters=alicloud.eventbridge.ConnectionAuthParametersOauthParametersClientParametersArgs(
+                        client_id="ClientId",
+                        client_secret="ClientSecret",
+                    ),
+                    oauth_http_parameters=alicloud.eventbridge.ConnectionAuthParametersOauthParametersOauthHttpParametersArgs(
+                        header_parameters=[alicloud.eventbridge.ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgs(
+                            key="name",
+                            value="name",
+                            is_value_secret="true",
+                        )],
+                        body_parameters=[alicloud.eventbridge.ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgs(
+                            key="name",
+                            value="name",
+                            is_value_secret="true",
+                        )],
+                        query_string_parameters=[alicloud.eventbridge.ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgs(
+                            key="name",
+                            value="name",
+                            is_value_secret="true",
+                        )],
+                    ),
+                ),
+            ))
+        ```
+
         ## Import
 
         Event Bridge Connection can be imported using the id, e.g.
@@ -269,6 +341,78 @@ class Connection(pulumi.CustomResource):
         For information about Event Bridge Connection and how to use it, see [What is Connection](https://www.alibabacloud.com/help/en/eventbridge/latest/api-eventbridge-2020-04-01-createconnection).
 
         > **NOTE:** Available since v1.210.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-chengdu"
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_zones = alicloud.get_zones()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_switch.vpc_id)
+        default_connection = alicloud.eventbridge.Connection("defaultConnection",
+            connection_name=name,
+            description="test-connection-basic-pre",
+            network_parameters=alicloud.eventbridge.ConnectionNetworkParametersArgs(
+                network_type="PublicNetwork",
+                vpc_id=default_network.id,
+                vswitche_id=default_switch.id,
+                security_group_id=default_security_group.id,
+            ),
+            auth_parameters=alicloud.eventbridge.ConnectionAuthParametersArgs(
+                authorization_type="BASIC_AUTH",
+                api_key_auth_parameters=alicloud.eventbridge.ConnectionAuthParametersApiKeyAuthParametersArgs(
+                    api_key_name="Token",
+                    api_key_value="Token-value",
+                ),
+                basic_auth_parameters=alicloud.eventbridge.ConnectionAuthParametersBasicAuthParametersArgs(
+                    username="admin",
+                    password="admin",
+                ),
+                oauth_parameters=alicloud.eventbridge.ConnectionAuthParametersOauthParametersArgs(
+                    authorization_endpoint="http://127.0.0.1:8080",
+                    http_method="POST",
+                    client_parameters=alicloud.eventbridge.ConnectionAuthParametersOauthParametersClientParametersArgs(
+                        client_id="ClientId",
+                        client_secret="ClientSecret",
+                    ),
+                    oauth_http_parameters=alicloud.eventbridge.ConnectionAuthParametersOauthParametersOauthHttpParametersArgs(
+                        header_parameters=[alicloud.eventbridge.ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgs(
+                            key="name",
+                            value="name",
+                            is_value_secret="true",
+                        )],
+                        body_parameters=[alicloud.eventbridge.ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgs(
+                            key="name",
+                            value="name",
+                            is_value_secret="true",
+                        )],
+                        query_string_parameters=[alicloud.eventbridge.ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgs(
+                            key="name",
+                            value="name",
+                            is_value_secret="true",
+                        )],
+                    ),
+                ),
+            ))
+        ```
 
         ## Import
 

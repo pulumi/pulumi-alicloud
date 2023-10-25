@@ -224,6 +224,64 @@ class HostAccountUserAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.135.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.bastionhost.Instance("defaultInstance",
+            description=name,
+            license_code="bhah_ent_50_asset",
+            plan_code="cloudbastion",
+            storage="5",
+            bandwidth="5",
+            period=1,
+            vswitch_id=default_switch.id,
+            security_group_ids=[default_security_group.id])
+        default_host = alicloud.bastionhost.Host("defaultHost",
+            instance_id=default_instance.id,
+            host_name=name,
+            active_address_type="Private",
+            host_private_address="172.16.0.10",
+            os_type="Linux",
+            source="Local")
+        default_host_account = alicloud.bastionhost.HostAccount("defaultHostAccount",
+            host_account_name=name,
+            host_id=default_host.host_id,
+            instance_id=default_host.instance_id,
+            protocol_name="SSH",
+            password="YourPassword12345")
+        local_user = alicloud.bastionhost.User("localUser",
+            instance_id=default_instance.id,
+            mobile_country_code="CN",
+            mobile="13312345678",
+            password="YourPassword-123",
+            source="Local",
+            user_name=f"{name}_local_user")
+        default_host_account_user_attachment = alicloud.bastionhost.HostAccountUserAttachment("defaultHostAccountUserAttachment",
+            instance_id=default_host.instance_id,
+            user_id=local_user.user_id,
+            host_id=default_host.host_id,
+            host_account_ids=[default_host_account.host_account_id])
+        ```
+
         ## Import
 
         Bastion Host Host Account can be imported using the id, e.g.
@@ -249,6 +307,64 @@ class HostAccountUserAttachment(pulumi.CustomResource):
         Provides a Bastion Host Host Account Attachment resource to add list host accounts into one user.
 
         > **NOTE:** Available since v1.135.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.bastionhost.Instance("defaultInstance",
+            description=name,
+            license_code="bhah_ent_50_asset",
+            plan_code="cloudbastion",
+            storage="5",
+            bandwidth="5",
+            period=1,
+            vswitch_id=default_switch.id,
+            security_group_ids=[default_security_group.id])
+        default_host = alicloud.bastionhost.Host("defaultHost",
+            instance_id=default_instance.id,
+            host_name=name,
+            active_address_type="Private",
+            host_private_address="172.16.0.10",
+            os_type="Linux",
+            source="Local")
+        default_host_account = alicloud.bastionhost.HostAccount("defaultHostAccount",
+            host_account_name=name,
+            host_id=default_host.host_id,
+            instance_id=default_host.instance_id,
+            protocol_name="SSH",
+            password="YourPassword12345")
+        local_user = alicloud.bastionhost.User("localUser",
+            instance_id=default_instance.id,
+            mobile_country_code="CN",
+            mobile="13312345678",
+            password="YourPassword-123",
+            source="Local",
+            user_name=f"{name}_local_user")
+        default_host_account_user_attachment = alicloud.bastionhost.HostAccountUserAttachment("defaultHostAccountUserAttachment",
+            instance_id=default_host.instance_id,
+            user_id=local_user.user_id,
+            host_id=default_host.host_id,
+            host_account_ids=[default_host_account.host_account_id])
+        ```
 
         ## Import
 

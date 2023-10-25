@@ -11,6 +11,23 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.195.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.threatdetection.AntiBruteForceRule("default", {
+ *     antiBruteForceRuleName: "apispec_example",
+ *     failCount: 80,
+ *     forbiddenTime: 360,
+ *     span: 10,
+ *     uuidLists: ["032b618f-b220-4a0d-bd37-fbdc6ef58b6a"],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Threat Detection Anti Brute Force Rule can be imported using the id, e.g.

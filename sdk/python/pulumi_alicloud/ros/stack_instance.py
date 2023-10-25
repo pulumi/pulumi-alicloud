@@ -409,6 +409,40 @@ class StackInstance(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.145.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_regions = alicloud.ros.get_regions()
+        example_stack_group = alicloud.ros.StackGroup("exampleStackGroup",
+            stack_group_name=var["name"],
+            template_body="{\\"ROSTemplateFormatVersion\\":\\"2015-09-01\\", \\"Parameters\\": {\\"VpcName\\": {\\"Type\\": \\"String\\"},\\"InstanceType\\": {\\"Type\\": \\"String\\"}}}",
+            description="test for stack groups",
+            parameters=[
+                alicloud.ros.StackGroupParameterArgs(
+                    parameter_key="VpcName",
+                    parameter_value="VpcName",
+                ),
+                alicloud.ros.StackGroupParameterArgs(
+                    parameter_key="InstanceType",
+                    parameter_value="InstanceType",
+                ),
+            ])
+        example_stack_instance = alicloud.ros.StackInstance("exampleStackInstance",
+            stack_group_name=example_stack_group.stack_group_name,
+            stack_instance_account_id="example_value",
+            stack_instance_region_id=example_regions.regions[0].region_id,
+            operation_preferences="{\\"FailureToleranceCount\\": 1, \\"MaxConcurrentCount\\": 2}",
+            parameter_overrides=[alicloud.ros.StackInstanceParameterOverrideArgs(
+                parameter_value="VpcName",
+                parameter_key="VpcName",
+            )])
+        ```
+
         ## Import
 
         ROS Stack Instance can be imported using the id, e.g.
@@ -440,6 +474,40 @@ class StackInstance(pulumi.CustomResource):
         For information about ROS Stack Instance and how to use it, see [What is Stack Instance](https://www.alibabacloud.com/help/en/doc-detail/151338.html).
 
         > **NOTE:** Available in v1.145.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_regions = alicloud.ros.get_regions()
+        example_stack_group = alicloud.ros.StackGroup("exampleStackGroup",
+            stack_group_name=var["name"],
+            template_body="{\\"ROSTemplateFormatVersion\\":\\"2015-09-01\\", \\"Parameters\\": {\\"VpcName\\": {\\"Type\\": \\"String\\"},\\"InstanceType\\": {\\"Type\\": \\"String\\"}}}",
+            description="test for stack groups",
+            parameters=[
+                alicloud.ros.StackGroupParameterArgs(
+                    parameter_key="VpcName",
+                    parameter_value="VpcName",
+                ),
+                alicloud.ros.StackGroupParameterArgs(
+                    parameter_key="InstanceType",
+                    parameter_value="InstanceType",
+                ),
+            ])
+        example_stack_instance = alicloud.ros.StackInstance("exampleStackInstance",
+            stack_group_name=example_stack_group.stack_group_name,
+            stack_instance_account_id="example_value",
+            stack_instance_region_id=example_regions.regions[0].region_id,
+            operation_preferences="{\\"FailureToleranceCount\\": 1, \\"MaxConcurrentCount\\": 2}",
+            parameter_overrides=[alicloud.ros.StackInstanceParameterOverrideArgs(
+                parameter_value="VpcName",
+                parameter_key="VpcName",
+            )])
+        ```
 
         ## Import
 

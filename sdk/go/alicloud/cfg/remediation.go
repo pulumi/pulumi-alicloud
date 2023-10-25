@@ -19,6 +19,84 @@ import (
 //
 // > **NOTE:** Available since v1.204.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example-oss"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultBucket, err := oss.NewBucket(ctx, "defaultBucket", &oss.BucketArgs{
+//				Bucket: pulumi.String(name),
+//				Acl:    pulumi.String("public-read"),
+//				Tags: pulumi.Map{
+//					"For": pulumi.Any("example"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRule, err := cfg.NewRule(ctx, "defaultRule", &cfg.RuleArgs{
+//				Description:            pulumi.String("If the ACL policy of the OSS bucket denies read access from the Internet, the configuration is considered compliant."),
+//				SourceOwner:            pulumi.String("ALIYUN"),
+//				SourceIdentifier:       pulumi.String("oss-bucket-public-read-prohibited"),
+//				RiskLevel:              pulumi.Int(1),
+//				TagKeyScope:            pulumi.String("For"),
+//				TagValueScope:          pulumi.String("example"),
+//				RegionIdsScope:         *pulumi.String(defaultRegions.Regions[0].Id),
+//				ConfigRuleTriggerTypes: pulumi.String("ConfigurationItemChangeNotification"),
+//				ResourceTypesScopes: pulumi.StringArray{
+//					pulumi.String("ACS::OSS::Bucket"),
+//				},
+//				RuleName: pulumi.String("oss-bucket-public-read-prohibited"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cfg.NewRemediation(ctx, "defaultRemediation", &cfg.RemediationArgs{
+//				ConfigRuleId:          defaultRule.ConfigRuleId,
+//				RemediationTemplateId: pulumi.String("ACS-OSS-PutBucketAcl"),
+//				RemediationSourceType: pulumi.String("ALIYUN"),
+//				InvokeType:            pulumi.String("MANUAL_EXECUTION"),
+//				Params: defaultBucket.Bucket.ApplyT(func(bucket *string) (string, error) {
+//					return fmt.Sprintf("{\"bucketName\": \"%v\", \"regionId\": \"%v\", \"permissionName\": \"private\"}", bucket, defaultRegions.Regions[0].Id), nil
+//				}).(pulumi.StringOutput),
+//				RemediationType: pulumi.String("OOS"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Config Remediation can be imported using the id, e.g.

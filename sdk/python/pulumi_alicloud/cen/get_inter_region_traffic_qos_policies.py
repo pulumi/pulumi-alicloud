@@ -174,6 +174,24 @@ def get_inter_region_traffic_qos_policies(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.195.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cen.get_inter_region_traffic_qos_policies(ids=["example_id"],
+        transit_router_id="your_transit_router_id",
+        transit_router_attachment_id="your_transit_router_attachment_id")
+    pulumi.export("cenInterRegionTrafficQosPolicyId0", ids.policies[0].id)
+    name_regex = alicloud.cen.get_inter_region_traffic_qos_policies(name_regex="^my-name",
+        transit_router_id="your_transit_router_id",
+        transit_router_attachment_id="your_transit_router_attachment_id")
+    pulumi.export("cenInterRegionTrafficQosPolicyId1", name_regex.policies[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Inter Region Traffic Qos Policy IDs.
     :param str name_regex: A regex string to filter results by Inter Region Traffic Qos Policy name.
@@ -228,6 +246,24 @@ def get_inter_region_traffic_qos_policies_output(ids: Optional[pulumi.Input[Opti
     This data source provides the Cen Inter Region Traffic Qos Policies of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.195.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cen.get_inter_region_traffic_qos_policies(ids=["example_id"],
+        transit_router_id="your_transit_router_id",
+        transit_router_attachment_id="your_transit_router_attachment_id")
+    pulumi.export("cenInterRegionTrafficQosPolicyId0", ids.policies[0].id)
+    name_regex = alicloud.cen.get_inter_region_traffic_qos_policies(name_regex="^my-name",
+        transit_router_id="your_transit_router_id",
+        transit_router_attachment_id="your_transit_router_attachment_id")
+    pulumi.export("cenInterRegionTrafficQosPolicyId1", name_regex.policies[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Inter Region Traffic Qos Policy IDs.

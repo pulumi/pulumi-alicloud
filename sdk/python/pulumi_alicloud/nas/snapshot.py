@@ -243,6 +243,33 @@ class Snapshot(pulumi.CustomResource):
 
         > **NOTE:** Only Extreme NAS file systems support the snapshot feature.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "testacc"
+        default_zones = alicloud.nas.get_zones(file_system_type="extreme")
+        default_file_system = alicloud.nas.FileSystem("defaultFileSystem",
+            file_system_type="extreme",
+            protocol_type="NFS",
+            zone_id=default_zones.zones[0].zone_id,
+            storage_type="standard",
+            description=name,
+            capacity=100)
+        default_snapshot = alicloud.nas.Snapshot("defaultSnapshot",
+            file_system_id=default_file_system.id,
+            description=name,
+            retention_days=20,
+            snapshot_name=name)
+        ```
+
         ## Import
 
         Network Attached Storage (NAS) Snapshot can be imported using the id, e.g.
@@ -273,6 +300,33 @@ class Snapshot(pulumi.CustomResource):
         > **NOTE:** Available in v1.152.0+.
 
         > **NOTE:** Only Extreme NAS file systems support the snapshot feature.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "testacc"
+        default_zones = alicloud.nas.get_zones(file_system_type="extreme")
+        default_file_system = alicloud.nas.FileSystem("defaultFileSystem",
+            file_system_type="extreme",
+            protocol_type="NFS",
+            zone_id=default_zones.zones[0].zone_id,
+            storage_type="standard",
+            description=name,
+            capacity=100)
+        default_snapshot = alicloud.nas.Snapshot("defaultSnapshot",
+            file_system_id=default_file_system.id,
+            description=name,
+            retention_days=20,
+            snapshot_name=name)
+        ```
 
         ## Import
 

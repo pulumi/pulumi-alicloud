@@ -331,6 +331,21 @@ class Command(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.116.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ecs.Command("example",
+            command_content="bHMK",
+            description="For Terraform Test",
+            type="RunShellScript",
+            working_dir="/root")
+        ```
+
         ## Import
 
         ECS Command can be imported using the id, e.g.
@@ -361,6 +376,21 @@ class Command(pulumi.CustomResource):
         For information about ECS Command and how to use it, see [What is Command](https://www.alibabacloud.com/help/en/doc-detail/64844.htm).
 
         > **NOTE:** Available in v1.116.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ecs.Command("example",
+            command_content="bHMK",
+            description="For Terraform Test",
+            type="RunShellScript",
+            working_dir="/root")
+        ```
 
         ## Import
 

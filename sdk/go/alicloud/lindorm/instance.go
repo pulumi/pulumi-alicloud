@@ -21,6 +21,71 @@ import (
 //
 // > **NOTE:**  The Lindorm Instance does not support updating the specifications of multiple different engines, or the number of nodes at the same time.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/lindorm"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_ := "cn-hangzhou"
+//			zoneId := "cn-hangzhou-h"
+//			_, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(zoneId),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = lindorm.NewInstance(ctx, "defaultInstance", &lindorm.InstanceArgs{
+//				DiskCategory:             pulumi.String("cloud_efficiency"),
+//				PaymentType:              pulumi.String("PayAsYouGo"),
+//				ZoneId:                   pulumi.String(zoneId),
+//				VswitchId:                *pulumi.String(defaultSwitches.Ids[0]),
+//				VpcId:                    *pulumi.String(defaultNetworks.Ids[0]),
+//				InstanceName:             pulumi.String(name),
+//				TableEngineSpecification: pulumi.String("lindorm.g.4xlarge"),
+//				TableEngineNodeCount:     pulumi.Int(2),
+//				InstanceStorage:          pulumi.String("1920"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Lindorm Instance can be imported using the id, e.g.

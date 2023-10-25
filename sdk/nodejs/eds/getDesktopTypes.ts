@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * This data source provides the Ecd Desktop Types of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.170.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.eds.getDesktopTypes({
+ *     instanceTypeFamily: "eds.hf",
+ * });
+ * export const ecdDesktopTypeId1 = ids.then(ids => ids.types?.[0]?.id);
+ * ```
  */
 export function getDesktopTypes(args?: GetDesktopTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetDesktopTypesResult> {
     args = args || {};
@@ -81,6 +95,20 @@ export interface GetDesktopTypesResult {
  * This data source provides the Ecd Desktop Types of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.170.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.eds.getDesktopTypes({
+ *     instanceTypeFamily: "eds.hf",
+ * });
+ * export const ecdDesktopTypeId1 = ids.then(ids => ids.types?.[0]?.id);
+ * ```
  */
 export function getDesktopTypesOutput(args?: GetDesktopTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDesktopTypesResult> {
     return pulumi.output(args).apply((a: any) => getDesktopTypes(a, opts))

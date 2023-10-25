@@ -11,6 +11,22 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.202.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.databasefilesystem.AutoSnapShotPolicy("default", {
+ *     policyName: "tf-example",
+ *     repeatWeekdays: ["2"],
+ *     retentionDays: 1,
+ *     timePoints: ["01"],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Dbfs Auto Snap Shot Policy can be imported using the id, e.g.

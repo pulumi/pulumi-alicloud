@@ -15,6 +15,38 @@ import (
 // This data source provides the Brain Industrial Pid Organizations of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.113.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/brain"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := brain.GetIndustrialPidOrganizations(ctx, &brain.GetIndustrialPidOrganizationsArgs{
+//				Ids: []string{
+//					"3e74e684-cbb5-xxxx",
+//				},
+//				NameRegex: pulumi.StringRef("tf-testAcc"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstBrainIndustrialPidOrganizationId", example.Organizations[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetIndustrialPidOrganizations(ctx *pulumi.Context, args *GetIndustrialPidOrganizationsArgs, opts ...pulumi.InvokeOption) (*GetIndustrialPidOrganizationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIndustrialPidOrganizationsResult

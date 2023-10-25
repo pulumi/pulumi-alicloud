@@ -8,6 +8,20 @@ import * as utilities from "../utilities";
 
 /**
  * The VPN connections data source lists lots of VPN connections resource information owned by an Alicloud account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const foo = alicloud.vpn.getConnections({
+ *     customerGatewayId: "fake-cgw-id",
+ *     ids: ["fake-conn-id"],
+ *     outputFile: "/tmp/vpnconn",
+ *     vpnGatewayId: "fake-vpn-id",
+ * });
+ * ```
  */
 export function getConnections(args?: GetConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionsResult> {
     args = args || {};
@@ -81,6 +95,20 @@ export interface GetConnectionsResult {
 }
 /**
  * The VPN connections data source lists lots of VPN connections resource information owned by an Alicloud account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const foo = alicloud.vpn.getConnections({
+ *     customerGatewayId: "fake-cgw-id",
+ *     ids: ["fake-conn-id"],
+ *     outputFile: "/tmp/vpnconn",
+ *     vpnGatewayId: "fake-vpn-id",
+ * });
+ * ```
  */
 export function getConnectionsOutput(args?: GetConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionsResult> {
     return pulumi.output(args).apply((a: any) => getConnections(a, opts))

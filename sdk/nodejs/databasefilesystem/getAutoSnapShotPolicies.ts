@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * This data source provides Dbfs Auto Snap Shot Policy available to the user.[What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html)
  *
  * > **NOTE:** Available in 1.202.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.databasefilesystem.getAutoSnapShotPolicies({
+ *     ids: [alicloud_dbfs_auto_snap_shot_policy["default"].id],
+ * });
+ * export const alicloudDbfsAutoSnapShotPolicyExampleId = _default.then(_default => _default.autoSnapShotPolicies?.[0]?.id);
+ * ```
  */
 export function getAutoSnapShotPolicies(args?: GetAutoSnapShotPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetAutoSnapShotPoliciesResult> {
     args = args || {};
@@ -73,6 +85,18 @@ export interface GetAutoSnapShotPoliciesResult {
  * This data source provides Dbfs Auto Snap Shot Policy available to the user.[What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html)
  *
  * > **NOTE:** Available in 1.202.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.databasefilesystem.getAutoSnapShotPolicies({
+ *     ids: [alicloud_dbfs_auto_snap_shot_policy["default"].id],
+ * });
+ * export const alicloudDbfsAutoSnapShotPolicyExampleId = _default.then(_default => _default.autoSnapShotPolicies?.[0]?.id);
+ * ```
  */
 export function getAutoSnapShotPoliciesOutput(args?: GetAutoSnapShotPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAutoSnapShotPoliciesResult> {
     return pulumi.output(args).apply((a: any) => getAutoSnapShotPolicies(a, opts))

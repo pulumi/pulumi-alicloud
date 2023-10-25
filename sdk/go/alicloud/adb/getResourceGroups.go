@@ -15,6 +15,34 @@ import (
 // This data source provides Adb Resource Group available to the user.[What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describedbresourcegroup)
 //
 // > **NOTE:** Available since v1.195.0.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/adb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := adb.GetResourceGroups(ctx, &adb.GetResourceGroupsArgs{
+//				DbClusterId: "am-bp1a16357gty69185",
+//				GroupName:   pulumi.StringRef("TESTOPENAPI"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudAdbResourceGroupExampleId", _default.Groups[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetResourceGroups(ctx *pulumi.Context, args *GetResourceGroupsArgs, opts ...pulumi.InvokeOption) (*GetResourceGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetResourceGroupsResult

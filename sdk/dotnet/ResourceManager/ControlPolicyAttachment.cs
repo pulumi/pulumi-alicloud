@@ -16,6 +16,57 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// &gt; **NOTE:** Available since v1.120.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var exampleControlPolicy = new AliCloud.ResourceManager.ControlPolicy("exampleControlPolicy", new()
+    ///     {
+    ///         ControlPolicyName = name,
+    ///         Description = name,
+    ///         EffectScope = "RAM",
+    ///         PolicyDocument = @"  {
+    ///     ""Version"": ""1"",
+    ///     ""Statement"": [
+    ///       {
+    ///         ""Effect"": ""Deny"",
+    ///         ""Action"": [
+    ///           ""ram:UpdateRole"",
+    ///           ""ram:DeleteRole"",
+    ///           ""ram:AttachPolicyToRole"",
+    ///           ""ram:DetachPolicyFromRole""
+    ///         ],
+    ///         ""Resource"": ""acs:ram:*:*:role/ResourceDirectoryAccountAccessRole""
+    ///       }
+    ///     ]
+    ///   }
+    /// ",
+    ///     });
+    /// 
+    ///     var exampleFolder = new AliCloud.ResourceManager.Folder("exampleFolder", new()
+    ///     {
+    ///         FolderName = name,
+    ///     });
+    /// 
+    ///     var exampleControlPolicyAttachment = new AliCloud.ResourceManager.ControlPolicyAttachment("exampleControlPolicyAttachment", new()
+    ///     {
+    ///         PolicyId = exampleControlPolicy.Id,
+    ///         TargetId = exampleFolder.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Resource Manager Control Policy Attachment can be imported using the id, e.g.

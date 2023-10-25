@@ -15,6 +15,47 @@ import (
 // This data source provides the Bastionhost Hosts of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.135.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := bastionhost.GetHosts(ctx, &bastionhost.GetHostsArgs{
+//				InstanceId: "example_value",
+//				Ids: []string{
+//					"1",
+//					"2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("bastionhostHostId1", ids.Hosts[0].Id)
+//			nameRegex, err := bastionhost.GetHosts(ctx, &bastionhost.GetHostsArgs{
+//				InstanceId: "example_value",
+//				NameRegex:  pulumi.StringRef("^my-Host"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("bastionhostHostId2", nameRegex.Hosts[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetHosts(ctx *pulumi.Context, args *GetHostsArgs, opts ...pulumi.InvokeOption) (*GetHostsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHostsResult

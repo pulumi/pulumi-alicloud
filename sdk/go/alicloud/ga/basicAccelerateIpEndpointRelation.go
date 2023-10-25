@@ -19,6 +19,146 @@ import (
 //
 // > **NOTE:** Available since v1.194.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			region := "cn-shenzhen"
+//			if param := cfg.Get("region"); param != "" {
+//				region = param
+//			}
+//			endpointRegion := "cn-hangzhou"
+//			if param := cfg.Get("endpointRegion"); param != "" {
+//				endpointRegion = param
+//			}
+//			_, err := alicloud.NewProvider(ctx, "sz", &alicloud.ProviderArgs{
+//				Region: pulumi.String(region),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = alicloud.NewProvider(ctx, "hz", &alicloud.ProviderArgs{
+//				Region: pulumi.String(endpointRegion),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
+//			}, pulumi.Provider(alicloud.Sz))
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String("terraform-example"),
+//				CidrBlock:   pulumi.String("172.17.3.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			}, pulumi.Provider(alicloud.Sz))
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			}, pulumi.Provider(alicloud.Sz))
+//			if err != nil {
+//				return err
+//			}
+//			defaultEcsNetworkInterface, err := ecs.NewEcsNetworkInterface(ctx, "defaultEcsNetworkInterface", &ecs.EcsNetworkInterfaceArgs{
+//				VswitchId: defaultSwitch.ID(),
+//				SecurityGroupIds: pulumi.StringArray{
+//					defaultSecurityGroup.ID(),
+//				},
+//			}, pulumi.Provider(alicloud.Sz))
+//			if err != nil {
+//				return err
+//			}
+//			defaultBasicAccelerator, err := ga.NewBasicAccelerator(ctx, "defaultBasicAccelerator", &ga.BasicAcceleratorArgs{
+//				Duration:             pulumi.Int(1),
+//				BasicAcceleratorName: pulumi.String("terraform-example"),
+//				Description:          pulumi.String("terraform-example"),
+//				BandwidthBillingType: pulumi.String("CDT"),
+//				AutoUseCoupon:        pulumi.String("true"),
+//				AutoPay:              pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBasicIpSet, err := ga.NewBasicIpSet(ctx, "defaultBasicIpSet", &ga.BasicIpSetArgs{
+//				AcceleratorId:      defaultBasicAccelerator.ID(),
+//				AccelerateRegionId: pulumi.String(endpointRegion),
+//				IspType:            pulumi.String("BGP"),
+//				Bandwidth:          pulumi.Int(5),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBasicAccelerateIp, err := ga.NewBasicAccelerateIp(ctx, "defaultBasicAccelerateIp", &ga.BasicAccelerateIpArgs{
+//				AcceleratorId: defaultBasicAccelerator.ID(),
+//				IpSetId:       defaultBasicIpSet.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBasicEndpointGroup, err := ga.NewBasicEndpointGroup(ctx, "defaultBasicEndpointGroup", &ga.BasicEndpointGroupArgs{
+//				AcceleratorId:          defaultBasicAccelerator.ID(),
+//				EndpointGroupRegion:    pulumi.String(region),
+//				BasicEndpointGroupName: pulumi.String("terraform-example"),
+//				Description:            pulumi.String("terraform-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBasicEndpoint, err := ga.NewBasicEndpoint(ctx, "defaultBasicEndpoint", &ga.BasicEndpointArgs{
+//				AcceleratorId:          defaultBasicAccelerator.ID(),
+//				EndpointGroupId:        defaultBasicEndpointGroup.ID(),
+//				EndpointType:           pulumi.String("ENI"),
+//				EndpointAddress:        defaultEcsNetworkInterface.ID(),
+//				EndpointSubAddressType: pulumi.String("primary"),
+//				EndpointSubAddress:     pulumi.String("192.168.0.1"),
+//				BasicEndpointName:      pulumi.String("terraform-example"),
+//			}, pulumi.Provider(alicloud.Hz))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ga.NewBasicAccelerateIpEndpointRelation(ctx, "defaultBasicAccelerateIpEndpointRelation", &ga.BasicAccelerateIpEndpointRelationArgs{
+//				AcceleratorId:  defaultBasicAccelerateIp.AcceleratorId,
+//				AccelerateIpId: defaultBasicAccelerateIp.ID(),
+//				EndpointId:     defaultBasicEndpoint.EndpointId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Global Accelerator (GA) Basic Accelerate Ip Endpoint Relation can be imported using the id, e.g.

@@ -344,6 +344,51 @@ class Tunnel(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.172.0.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_instance = alicloud.ots.Instance("defaultInstance",
+            description=name,
+            accessed_by="Any",
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        default_table = alicloud.ots.Table("defaultTable",
+            instance_name=default_instance.name,
+            table_name="tf_example",
+            time_to_live=-1,
+            max_version=1,
+            enable_sse=True,
+            sse_key_type="SSE_KMS_SERVICE",
+            primary_keys=[
+                alicloud.ots.TablePrimaryKeyArgs(
+                    name="pk1",
+                    type="Integer",
+                ),
+                alicloud.ots.TablePrimaryKeyArgs(
+                    name="pk2",
+                    type="String",
+                ),
+                alicloud.ots.TablePrimaryKeyArgs(
+                    name="pk3",
+                    type="Binary",
+                ),
+            ])
+        default_tunnel = alicloud.ots.Tunnel("defaultTunnel",
+            instance_name=default_instance.name,
+            table_name=default_table.table_name,
+            tunnel_name="tf_example",
+            tunnel_type="BaseAndStream")
+        ```
+
         ## Import
 
         OTS tunnel can be imported using id, e.g.
@@ -371,6 +416,51 @@ class Tunnel(pulumi.CustomResource):
         For information about OTS tunnel and how to use it, see [Tunnel overview](https://www.alibabacloud.com/help/en/tablestore/latest/tunnel-service-overview).
 
         > **NOTE:** Available since v1.172.0.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_instance = alicloud.ots.Instance("defaultInstance",
+            description=name,
+            accessed_by="Any",
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        default_table = alicloud.ots.Table("defaultTable",
+            instance_name=default_instance.name,
+            table_name="tf_example",
+            time_to_live=-1,
+            max_version=1,
+            enable_sse=True,
+            sse_key_type="SSE_KMS_SERVICE",
+            primary_keys=[
+                alicloud.ots.TablePrimaryKeyArgs(
+                    name="pk1",
+                    type="Integer",
+                ),
+                alicloud.ots.TablePrimaryKeyArgs(
+                    name="pk2",
+                    type="String",
+                ),
+                alicloud.ots.TablePrimaryKeyArgs(
+                    name="pk3",
+                    type="Binary",
+                ),
+            ])
+        default_tunnel = alicloud.ots.Tunnel("defaultTunnel",
+            instance_name=default_instance.name,
+            table_name=default_table.table_name,
+            tunnel_name="tf_example",
+            tunnel_type="BaseAndStream")
+        ```
 
         ## Import
 

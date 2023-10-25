@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Group Destinations of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in 1.197.0+
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.ga.getCustomRoutingEndpointGroupDestinations({
+ *     ids: ["example_id"],
+ *     acceleratorId: "your_accelerator_id",
+ * });
+ * export const gaCustomRoutingEndpointGroupDestinationsId1 = ids.then(ids => ids.customRoutingEndpointGroupDestinations?.[0]?.id);
+ * ```
  */
 export function getCustomRoutingEndpointGroupDestinations(args: GetCustomRoutingEndpointGroupDestinationsArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomRoutingEndpointGroupDestinationsResult> {
 
@@ -113,6 +128,21 @@ export interface GetCustomRoutingEndpointGroupDestinationsResult {
  * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Group Destinations of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in 1.197.0+
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.ga.getCustomRoutingEndpointGroupDestinations({
+ *     ids: ["example_id"],
+ *     acceleratorId: "your_accelerator_id",
+ * });
+ * export const gaCustomRoutingEndpointGroupDestinationsId1 = ids.then(ids => ids.customRoutingEndpointGroupDestinations?.[0]?.id);
+ * ```
  */
 export function getCustomRoutingEndpointGroupDestinationsOutput(args: GetCustomRoutingEndpointGroupDestinationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomRoutingEndpointGroupDestinationsResult> {
     return pulumi.output(args).apply((a: any) => getCustomRoutingEndpointGroupDestinations(a, opts))

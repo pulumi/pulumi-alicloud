@@ -21,6 +21,53 @@ import (
 //
 // > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultAcl, err := rocketmq.NewAcl(ctx, "defaultAcl", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rocketmq.NewAclRule(ctx, "defaultAclRule", &rocketmq.AclRuleArgs{
+//				AclId:           defaultAcl.ID(),
+//				Description:     pulumi.String(name),
+//				Policy:          pulumi.String("accept"),
+//				IpProtocol:      pulumi.String("ALL"),
+//				Direction:       pulumi.String("in"),
+//				SourceCidr:      pulumi.String("10.10.1.0/24"),
+//				SourcePortRange: pulumi.String("-1/-1"),
+//				DestCidr:        pulumi.String("192.168.1.0/24"),
+//				DestPortRange:   pulumi.String("-1/-1"),
+//				Priority:        pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // The Sag Acl Rule can be imported using the id, e.g.

@@ -18,6 +18,54 @@ namespace Pulumi.AliCloud.Waf
     /// 
     /// &gt; **NOTE:** Available in 1.82.0+ .
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var domain = new AliCloud.Waf.Domain("domain", new()
+    ///     {
+    ///         ClusterType = "PhysicalCluster",
+    ///         DomainName = "alicloud-provider.cn",
+    ///         Http2Ports = new[]
+    ///         {
+    ///             "443",
+    ///         },
+    ///         HttpPorts = new[]
+    ///         {
+    ///             "80",
+    ///         },
+    ///         HttpToUserIp = "Off",
+    ///         HttpsPorts = new[]
+    ///         {
+    ///             "443",
+    ///         },
+    ///         HttpsRedirect = "Off",
+    ///         InstanceId = "waf-123455",
+    ///         IsAccessProduct = "On",
+    ///         LoadBalancing = "IpHash",
+    ///         LogHeaders = new[]
+    ///         {
+    ///             new AliCloud.Waf.Inputs.DomainLogHeaderArgs
+    ///             {
+    ///                 Key = "foo",
+    ///                 Value = "http",
+    ///             },
+    ///         },
+    ///         SourceIps = new[]
+    ///         {
+    ///             "1.1.1.1",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// WAF domain can be imported using the id, e.g.

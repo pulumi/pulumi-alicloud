@@ -18,6 +18,50 @@ namespace Pulumi.AliCloud.Gpdb
     /// &gt; **NOTE:**  Available in 1.127.0+
     /// 
     /// ## Example Usage
+    /// ### Create a AnalyticDB for PostgreSQL instance
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "Gpdb",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         VswitchName = "vpc-123456",
+    ///     });
+    /// 
+    ///     var adbPgInstance = new AliCloud.Gpdb.ElasticInstance("adbPgInstance", new()
+    ///     {
+    ///         Engine = "gpdb",
+    ///         EngineVersion = "6.0",
+    ///         SegStorageType = "cloud_essd",
+    ///         SegNodeNum = 4,
+    ///         StorageSize = 50,
+    ///         InstanceSpec = "2C16G",
+    ///         DbInstanceDescription = "Created by terraform",
+    ///         InstanceNetworkType = "VPC",
+    ///         PaymentType = "PayAsYouGo",
+    ///         VswitchId = defaultSwitch.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

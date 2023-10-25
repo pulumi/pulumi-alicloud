@@ -118,6 +118,31 @@ def get_address_books(group_type: Optional[str] = None,
 
     > **NOTE:** Available since v1.178.0.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "tf-example"
+    default = alicloud.cloudfirewall.AddressBook("default",
+        group_name=name,
+        group_type="ip",
+        description="tf-description",
+        auto_add_tag_ecs=0,
+        address_lists=[
+            "10.21.0.0/16",
+            "10.168.0.0/16",
+        ])
+    ids = alicloud.cloudfirewall.get_address_books_output(ids=[default.id])
+    pulumi.export("cloudFirewallAddressBookId1", ids.books[0].id)
+    ```
+
 
     :param str group_type: The type of the Address Book. Valid values: `ip`, `tag`.
     :param Sequence[str] ids: A list of Address Book IDs.
@@ -152,6 +177,31 @@ def get_address_books_output(group_type: Optional[pulumi.Input[Optional[str]]] =
     This data source provides the Cloud Firewall Address Books of the current Alibaba Cloud user.
 
     > **NOTE:** Available since v1.178.0.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "tf-example"
+    default = alicloud.cloudfirewall.AddressBook("default",
+        group_name=name,
+        group_type="ip",
+        description="tf-description",
+        auto_add_tag_ecs=0,
+        address_lists=[
+            "10.21.0.0/16",
+            "10.168.0.0/16",
+        ])
+    ids = alicloud.cloudfirewall.get_address_books_output(ids=[default.id])
+    pulumi.export("cloudFirewallAddressBookId1", ids.books[0].id)
+    ```
 
 
     :param str group_type: The type of the Address Book. Valid values: `ip`, `tag`.

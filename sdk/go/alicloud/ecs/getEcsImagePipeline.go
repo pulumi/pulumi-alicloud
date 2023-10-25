@@ -15,6 +15,44 @@ import (
 // This data source provides the Ecs Image Pipelines of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.163.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := ecs.LookupEcsImagePipeline(ctx, &ecs.LookupEcsImagePipelineArgs{
+//				Ids: []string{
+//					"example_value",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("ecsImagePipelineId1", ids.Pipelines[0].Id)
+//			nameRegex, err := ecs.LookupEcsImagePipeline(ctx, &ecs.LookupEcsImagePipelineArgs{
+//				NameRegex: pulumi.StringRef("^my-ImagePipeline"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("ecsImagePipelineId2", nameRegex.Pipelines[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupEcsImagePipeline(ctx *pulumi.Context, args *LookupEcsImagePipelineArgs, opts ...pulumi.InvokeOption) (*LookupEcsImagePipelineResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupEcsImagePipelineResult

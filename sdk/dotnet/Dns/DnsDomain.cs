@@ -18,6 +18,31 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// &gt; **NOTE:** Available in v1.81.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Add a new Domain.
+    ///     var dns = new AliCloud.Dns.DnsDomain("dns", new()
+    ///     {
+    ///         DomainName = "starmove.com",
+    ///         GroupId = "85ab8713-4a30-4de4-9d20-155ff830****",
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "Terraform" },
+    ///             { "Environment", "test" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// DNS domain can be imported using the id or domain name, e.g.

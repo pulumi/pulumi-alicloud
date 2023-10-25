@@ -317,6 +317,22 @@ class EnterpriseLogicDatabase(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.195.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.dms.EnterpriseLogicDatabase("default",
+            alias="TF_logic_db_test",
+            database_ids=[
+                "35617919",
+                "35617920",
+            ])
+        ```
+
         ## Import
 
         DMS Enterprise Logic Database can be imported using the id, e.g.
@@ -343,6 +359,22 @@ class EnterpriseLogicDatabase(pulumi.CustomResource):
         For information about DMS Enterprise Logic Database and how to use it, see [What is Logic Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-createlogicdatabase).
 
         > **NOTE:** Available in v1.195.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.dms.EnterpriseLogicDatabase("default",
+            alias="TF_logic_db_test",
+            database_ids=[
+                "35617919",
+                "35617920",
+            ])
+        ```
 
         ## Import
 

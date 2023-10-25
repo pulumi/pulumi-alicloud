@@ -495,6 +495,30 @@ class OssBackupPlan(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.131.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_vault = alicloud.hbr.Vault("defaultVault", vault_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
+        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
+        default_oss_backup_plan = alicloud.hbr.OssBackupPlan("defaultOssBackupPlan",
+            oss_backup_plan_name="terraform-example",
+            prefix="/",
+            bucket=default_bucket.bucket,
+            vault_id=default_vault.id,
+            schedule="I|1602673264|PT2H",
+            backup_type="COMPLETE",
+            retention="2")
+        ```
+
         ## Import
 
         HBR Oss Backup Plan can be imported using the id, e.g.
@@ -529,6 +553,30 @@ class OssBackupPlan(pulumi.CustomResource):
         For information about HBR Oss Backup Plan and how to use it, see [What is Oss Backup Plan](https://www.alibabacloud.com/help/doc-detail/130040.htm).
 
         > **NOTE:** Available in v1.131.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_vault = alicloud.hbr.Vault("defaultVault", vault_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
+        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
+        default_oss_backup_plan = alicloud.hbr.OssBackupPlan("defaultOssBackupPlan",
+            oss_backup_plan_name="terraform-example",
+            prefix="/",
+            bucket=default_bucket.bucket,
+            vault_id=default_vault.id,
+            schedule="I|1602673264|PT2H",
+            backup_type="COMPLETE",
+            retention="2")
+        ```
 
         ## Import
 

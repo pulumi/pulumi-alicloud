@@ -141,6 +141,33 @@ def get_users(directory_id: Optional[str] = None,
 
     > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cloudsso.get_users(directory_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("cloudSsoUserId1", ids.users[0].id)
+    name_regex = alicloud.cloudsso.get_users(directory_id="example_value",
+        name_regex="^my-User")
+    pulumi.export("cloudSsoUserId2", name_regex.users[0].id)
+    provision_type = alicloud.cloudsso.get_users(directory_id="example_value",
+        ids=["example_value-1"],
+        provision_type="Manual")
+    pulumi.export("cloudSsoUserId3", provision_type.users[0].id)
+    status = alicloud.cloudsso.get_users(directory_id="example_value",
+        ids=["example_value-1"],
+        status="Enabled")
+    pulumi.export("cloudSsoUserId4", status.users[0].id)
+    ```
+
 
     :param str directory_id: The ID of the Directory.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -189,6 +216,33 @@ def get_users_output(directory_id: Optional[pulumi.Input[str]] = None,
     > **NOTE:** Available in v1.140.0+.
 
     > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cloudsso.get_users(directory_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("cloudSsoUserId1", ids.users[0].id)
+    name_regex = alicloud.cloudsso.get_users(directory_id="example_value",
+        name_regex="^my-User")
+    pulumi.export("cloudSsoUserId2", name_regex.users[0].id)
+    provision_type = alicloud.cloudsso.get_users(directory_id="example_value",
+        ids=["example_value-1"],
+        provision_type="Manual")
+    pulumi.export("cloudSsoUserId3", provision_type.users[0].id)
+    status = alicloud.cloudsso.get_users(directory_id="example_value",
+        ids=["example_value-1"],
+        status="Enabled")
+    pulumi.export("cloudSsoUserId4", status.users[0].id)
+    ```
 
 
     :param str directory_id: The ID of the Directory.

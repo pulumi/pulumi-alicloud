@@ -16,6 +16,61 @@ namespace Pulumi.AliCloud.Dcdn
     /// 
     /// &gt; **NOTE:** Available since v1.186.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var domainName = config.Get("domainName") ?? "example.com";
+    ///     var exampleDomain = new AliCloud.Dcdn.Domain("exampleDomain", new()
+    ///     {
+    ///         DomainName = domainName,
+    ///         Scope = "overseas",
+    ///         Sources = new[]
+    ///         {
+    ///             new AliCloud.Dcdn.Inputs.DomainSourceArgs
+    ///             {
+    ///                 Content = "1.1.1.1",
+    ///                 Port = 80,
+    ///                 Priority = "20",
+    ///                 Type = "ipaddr",
+    ///                 Weight = "10",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleWafDomain = new AliCloud.Dcdn.WafDomain("exampleWafDomain", new()
+    ///     {
+    ///         DomainName = exampleDomain.DomainName,
+    ///         ClientIpTag = "X-Forwarded-For",
+    ///     });
+    /// 
+    ///     var exampleWafPolicy = new AliCloud.Dcdn.WafPolicy("exampleWafPolicy", new()
+    ///     {
+    ///         DefenseScene = "waf_group",
+    ///         PolicyName = name,
+    ///         PolicyType = "custom",
+    ///         Status = "on",
+    ///     });
+    /// 
+    ///     var exampleWafPolicyDomainAttachment = new AliCloud.Dcdn.WafPolicyDomainAttachment("exampleWafPolicyDomainAttachment", new()
+    ///     {
+    ///         DomainName = exampleWafDomain.DomainName,
+    ///         PolicyId = exampleWafPolicy.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// DCDN Waf Policy Domain Attachment can be imported using the id, e.g.

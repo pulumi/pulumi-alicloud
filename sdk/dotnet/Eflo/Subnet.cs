@@ -16,6 +16,42 @@ namespace Pulumi.AliCloud.Eflo
     /// 
     /// &gt; **NOTE:** Available since v1.204.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultZones = AliCloud.GetZones.Invoke();
+    /// 
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var defaultVpd = new AliCloud.Eflo.Vpd("defaultVpd", new()
+    ///     {
+    ///         Cidr = "10.0.0.0/8",
+    ///         VpdName = name,
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultSubnet = new AliCloud.Eflo.Subnet("defaultSubnet", new()
+    ///     {
+    ///         SubnetName = name,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         Cidr = "10.0.0.0/16",
+    ///         VpdId = defaultVpd.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Eflo Subnet can be imported using the id, e.g.

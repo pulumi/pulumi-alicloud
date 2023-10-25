@@ -10,6 +10,22 @@ import * as utilities from "../utilities";
  * This data source provides the Message Notification Service Queues of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.188.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.message.getServiceQueues({
+ *     ids: ["example_id"],
+ * });
+ * export const queueId1 = ids.then(ids => ids.queues?.[0]?.id);
+ * const name = alicloud.message.getServiceQueues({
+ *     queueName: "tf-example",
+ * });
+ * export const queueId2 = name.then(name => name.queues?.[0]?.id);
+ * ```
  */
 export function getServiceQueues(args?: GetServiceQueuesArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceQueuesResult> {
     args = args || {};
@@ -79,6 +95,22 @@ export interface GetServiceQueuesResult {
  * This data source provides the Message Notification Service Queues of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.188.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.message.getServiceQueues({
+ *     ids: ["example_id"],
+ * });
+ * export const queueId1 = ids.then(ids => ids.queues?.[0]?.id);
+ * const name = alicloud.message.getServiceQueues({
+ *     queueName: "tf-example",
+ * });
+ * export const queueId2 = name.then(name => name.queues?.[0]?.id);
+ * ```
  */
 export function getServiceQueuesOutput(args?: GetServiceQueuesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceQueuesResult> {
     return pulumi.output(args).apply((a: any) => getServiceQueues(a, opts))

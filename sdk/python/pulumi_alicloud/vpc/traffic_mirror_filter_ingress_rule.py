@@ -527,6 +527,26 @@ class TrafficMirrorFilterIngressRule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.141.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_traffic_mirror_filter = alicloud.vpc.TrafficMirrorFilter("exampleTrafficMirrorFilter", traffic_mirror_filter_name="example_value")
+        example_traffic_mirror_filter_ingress_rule = alicloud.vpc.TrafficMirrorFilterIngressRule("exampleTrafficMirrorFilterIngressRule",
+            traffic_mirror_filter_id=example_traffic_mirror_filter.id,
+            priority=1,
+            rule_action="accept",
+            protocol="UDP",
+            destination_cidr_block="10.0.0.0/24",
+            source_cidr_block="10.0.0.0/24",
+            destination_port_range="1/120",
+            source_port_range="1/120")
+        ```
+
         ## Import
 
         VPC Traffic Mirror Filter Ingress Rule can be imported using the id, e.g.
@@ -564,6 +584,26 @@ class TrafficMirrorFilterIngressRule(pulumi.CustomResource):
         For information about VPC Traffic Mirror Filter Ingress Rule and how to use it, see [What is Traffic Mirror Filter Ingress Rule](https://www.alibabacloud.com/help/doc-detail/261357.htm).
 
         > **NOTE:** Available since v1.141.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_traffic_mirror_filter = alicloud.vpc.TrafficMirrorFilter("exampleTrafficMirrorFilter", traffic_mirror_filter_name="example_value")
+        example_traffic_mirror_filter_ingress_rule = alicloud.vpc.TrafficMirrorFilterIngressRule("exampleTrafficMirrorFilterIngressRule",
+            traffic_mirror_filter_id=example_traffic_mirror_filter.id,
+            priority=1,
+            rule_action="accept",
+            protocol="UDP",
+            destination_cidr_block="10.0.0.0/24",
+            source_cidr_block="10.0.0.0/24",
+            destination_port_range="1/120",
+            source_port_range="1/120")
+        ```
 
         ## Import
 

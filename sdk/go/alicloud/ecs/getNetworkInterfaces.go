@@ -18,6 +18,113 @@ import (
 //
 // For information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "networkInterfacesName";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+// CidrBlock: pulumi.String("192.168.0.0/24"),
+// VpcName: pulumi.String(name),
+// })
+// if err != nil {
+// return err
+// }
+// defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
+// AvailabilityZone: *pulumi.String(defaultZones.Zones[0].Id),
+// CidrBlock: pulumi.String("192.168.0.0/24"),
+// VpcId: vpc.ID(),
+// VswitchName: pulumi.String(name),
+// })
+// if err != nil {
+// return err
+// }
+// group, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
+// VpcId: vpc.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// interface, err := vpc.NewNetworkInterface(ctx, "interface", &vpc.NetworkInterfaceArgs{
+// Description: pulumi.String("Basic test"),
+// PrivateIp: pulumi.String("192.168.0.2"),
+// SecurityGroups: pulumi.StringArray{
+// group.ID(),
+// },
+// Tags: pulumi.Map{
+// "TF-VER": pulumi.Any("0.11.3"),
+// },
+// VswitchId: vswitch.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// instance, err := ecs.NewInstance(ctx, "instance", &ecs.InstanceArgs{
+// AvailabilityZone: *pulumi.String(defaultZones.Zones[0].Id),
+// ImageId: pulumi.String("centos_7_04_64_20G_alibase_201701015.vhd"),
+// InstanceName: pulumi.String(name),
+// InstanceType: pulumi.String("ecs.e3.xlarge"),
+// InternetMaxBandwidthOut: pulumi.Int(10),
+// SecurityGroups: pulumi.StringArray{
+// group.ID(),
+// },
+// SystemDiskCategory: pulumi.String("cloud_efficiency"),
+// VswitchId: vswitch.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// attachment, err := vpc.NewNetworkInterfaceAttachment(ctx, "attachment", &vpc.NetworkInterfaceAttachmentArgs{
+// InstanceId: instance.ID(),
+// NetworkInterfaceId: interface.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// defaultNetworkInterfaces := ecs.GetNetworkInterfacesOutput(ctx, ecs.GetNetworkInterfacesOutputArgs{
+// Ids: pulumi.StringArray{
+// attachment.NetworkInterfaceId,
+// },
+// InstanceId: instance.ID(),
+// NameRegex: pulumi.String(name),
+// PrivateIp: pulumi.String("192.168.0.2"),
+// SecurityGroupId: group.ID(),
+// Tags: pulumi.Map{
+// "TF-VER": pulumi.Any("0.11.3"),
+// },
+// Type: pulumi.String("Secondary"),
+// VpcId: vpc.ID(),
+// VswitchId: vswitch.ID(),
+// }, nil);
+// ctx.Export("eni0Name", defaultNetworkInterfaces.ApplyT(func(defaultNetworkInterfaces ecs.GetNetworkInterfacesResult) (*string, error) {
+// return &defaultNetworkInterfaces.Interfaces[0].Name, nil
+// }).(pulumi.StringPtrOutput))
+// return nil
+// })
+// }
+// ```
 // ## Argument Reference
 //
 // The following arguments are supported:

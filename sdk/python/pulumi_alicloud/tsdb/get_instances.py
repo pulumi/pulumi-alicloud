@@ -140,6 +140,18 @@ def get_instances(app_key: Optional[str] = None,
 
     > **NOTE:** Available in v1.112.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.tsdb.get_instances(ids=["example_value"])
+    pulumi.export("firstTsdbInstanceId", example.instances[0].id)
+    ```
+
 
     :param str app_key: The app key.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -189,6 +201,18 @@ def get_instances_output(app_key: Optional[pulumi.Input[Optional[str]]] = None,
     This data source provides the Time Series Database (TSDB) Instances of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.112.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.tsdb.get_instances(ids=["example_value"])
+    pulumi.export("firstTsdbInstanceId", example.instances[0].id)
+    ```
 
 
     :param str app_key: The app key.

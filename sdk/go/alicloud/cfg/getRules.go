@@ -17,6 +17,36 @@ import (
 // > **NOTE:**  Available in 1.99.0+.
 //
 // > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := cfg.GetRules(ctx, &cfg.GetRulesArgs{
+//				Ids: []string{
+//					"cr-ed4bad756057********",
+//				},
+//				NameRegex: pulumi.StringRef("tftest"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstConfigRuleId", example.Rules[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetRules(ctx *pulumi.Context, args *GetRulesArgs, opts ...pulumi.InvokeOption) (*GetRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRulesResult

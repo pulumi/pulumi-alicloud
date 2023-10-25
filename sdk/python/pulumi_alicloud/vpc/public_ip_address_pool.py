@@ -365,6 +365,26 @@ class PublicIpAddressPool(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.186.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_public_ip_address_pool = alicloud.vpc.PublicIpAddressPool("defaultPublicIpAddressPool",
+            description=name,
+            public_ip_address_pool_name=name,
+            isp="BGP",
+            resource_group_id=default_resource_groups.ids[0])
+        ```
+
         ## Import
 
         Vpc Public Ip Address Pool can be imported using the id, e.g.
@@ -393,6 +413,26 @@ class PublicIpAddressPool(pulumi.CustomResource):
         For information about Vpc Public Ip Address Pool and how to use it, see [What is Public Ip Address Pool](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createpublicipaddresspool).
 
         > **NOTE:** Available since v1.186.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_public_ip_address_pool = alicloud.vpc.PublicIpAddressPool("defaultPublicIpAddressPool",
+            description=name,
+            public_ip_address_pool_name=name,
+            isp="BGP",
+            resource_group_id=default_resource_groups.ids[0])
+        ```
 
         ## Import
 

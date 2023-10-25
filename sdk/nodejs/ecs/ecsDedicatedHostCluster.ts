@@ -11,6 +11,26 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.146.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const exampleZones = alicloud.getZones({});
+ * const exampleEcsDedicatedHostCluster = new alicloud.ecs.EcsDedicatedHostCluster("exampleEcsDedicatedHostCluster", {
+ *     dedicatedHostClusterName: "example_value",
+ *     description: "example_value",
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ *     tags: {
+ *         Create: "TF",
+ *         For: "DDH_Cluster_Test",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * ECS Dedicated Host Cluster can be imported using the id, e.g.

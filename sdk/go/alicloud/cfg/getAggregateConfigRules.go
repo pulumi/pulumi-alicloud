@@ -15,6 +15,39 @@ import (
 // This data source provides the Config Aggregate Config Rules of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.124.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := cfg.GetAggregateConfigRules(ctx, &cfg.GetAggregateConfigRulesArgs{
+//				AggregatorId: "ca-3a9b626622af001d****",
+//				Ids: []string{
+//					"cr-5154626622af0034****",
+//				},
+//				NameRegex: pulumi.StringRef("the_resource_name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstConfigAggregateConfigRuleId", example.Rules[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetAggregateConfigRules(ctx *pulumi.Context, args *GetAggregateConfigRulesArgs, opts ...pulumi.InvokeOption) (*GetAggregateConfigRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAggregateConfigRulesResult

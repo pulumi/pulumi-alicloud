@@ -143,6 +143,15 @@ def get_domains(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in 1.86.0+ .
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.waf.get_domains(instance_id="waf-cf-xxxxx")
+    ```
+
 
     :param bool enable_details: Default to false and only output `id`, `domain_name`. Set it to true can output more details.
     :param Sequence[str] ids: A list of WAF domain names. Each item is domain name.
@@ -187,6 +196,15 @@ def get_domains_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = 
     For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
 
     > **NOTE:** Available in 1.86.0+ .
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.waf.get_domains(instance_id="waf-cf-xxxxx")
+    ```
 
 
     :param bool enable_details: Default to false and only output `id`, `domain_name`. Set it to true can output more details.

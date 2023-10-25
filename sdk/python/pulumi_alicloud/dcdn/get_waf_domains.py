@@ -100,6 +100,18 @@ def get_waf_domains(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.185.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.dcdn.get_waf_domains()
+    pulumi.export("dcdnWafDomainId1", ids.domains[0].id)
+    ```
+
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Waf Domain IDs.
@@ -133,6 +145,18 @@ def get_waf_domains_output(enable_details: Optional[pulumi.Input[Optional[bool]]
     This data source provides the Dcdn Waf Domains of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.185.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.dcdn.get_waf_domains()
+    pulumi.export("dcdnWafDomainId1", ids.domains[0].id)
+    ```
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

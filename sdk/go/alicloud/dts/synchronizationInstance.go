@@ -19,6 +19,47 @@ import (
 //
 // > **NOTE:** Available since v1.138.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dts"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dts.NewSynchronizationInstance(ctx, "defaultSynchronizationInstance", &dts.SynchronizationInstanceArgs{
+//				PaymentType:                   pulumi.String("PayAsYouGo"),
+//				SourceEndpointEngineName:      pulumi.String("MySQL"),
+//				SourceEndpointRegion:          *pulumi.String(defaultRegions.Regions[0].Id),
+//				DestinationEndpointEngineName: pulumi.String("MySQL"),
+//				DestinationEndpointRegion:     *pulumi.String(defaultRegions.Regions[0].Id),
+//				InstanceClass:                 pulumi.String("small"),
+//				SyncArchitecture:              pulumi.String("oneway"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // DTS Synchronization Instance can be imported using the id, e.g.

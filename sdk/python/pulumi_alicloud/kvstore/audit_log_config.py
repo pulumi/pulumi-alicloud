@@ -238,6 +238,51 @@ class AuditLogConfig(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.130.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.kvstore.get_zones()
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_instance = alicloud.kvstore.Instance("defaultInstance",
+            db_instance_name=name,
+            vswitch_id=default_switch.id,
+            resource_group_id=default_resource_groups.ids[0],
+            zone_id=default_zones.zones[0].id,
+            instance_class="redis.master.large.default",
+            instance_type="Redis",
+            engine_version="5.0",
+            security_ips=["10.23.12.24"],
+            config={
+                "appendonly": "yes",
+                "lazyfree-lazy-eviction": "yes",
+            },
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        example = alicloud.kvstore.AuditLogConfig("example",
+            instance_id=default_instance.id,
+            db_audit=True,
+            retention=1)
+        ```
+
         ## Import
 
         Redis And Memcache (KVStore) Audit Log Config can be imported using the id, e.g.
@@ -268,6 +313,51 @@ class AuditLogConfig(pulumi.CustomResource):
         Provides a Redis And Memcache (KVStore) Audit Log Config resource.
 
         > **NOTE:** Available since v1.130.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_zones = alicloud.kvstore.get_zones()
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_instance = alicloud.kvstore.Instance("defaultInstance",
+            db_instance_name=name,
+            vswitch_id=default_switch.id,
+            resource_group_id=default_resource_groups.ids[0],
+            zone_id=default_zones.zones[0].id,
+            instance_class="redis.master.large.default",
+            instance_type="Redis",
+            engine_version="5.0",
+            security_ips=["10.23.12.24"],
+            config={
+                "appendonly": "yes",
+                "lazyfree-lazy-eviction": "yes",
+            },
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        example = alicloud.kvstore.AuditLogConfig("example",
+            instance_id=default_instance.id,
+            db_audit=True,
+            retention=1)
+        ```
 
         ## Import
 

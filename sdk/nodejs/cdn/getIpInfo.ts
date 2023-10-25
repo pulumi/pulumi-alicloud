@@ -8,6 +8,19 @@ import * as utilities from "../utilities";
  * This data source provides the function of verifying whether an IP is a CDN node.
  *
  * > **NOTE:** Available in v1.153.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ipTest = alicloud.cdn.getIpInfo({
+ *     ip: "114.114.114.114",
+ * });
+ * ```
  */
 export function getIpInfo(args: GetIpInfoArgs, opts?: pulumi.InvokeOptions): Promise<GetIpInfoResult> {
 
@@ -46,6 +59,19 @@ export interface GetIpInfoResult {
  * This data source provides the function of verifying whether an IP is a CDN node.
  *
  * > **NOTE:** Available in v1.153.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ipTest = alicloud.cdn.getIpInfo({
+ *     ip: "114.114.114.114",
+ * });
+ * ```
  */
 export function getIpInfoOutput(args: GetIpInfoOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpInfoResult> {
     return pulumi.output(args).apply((a: any) => getIpInfo(a, opts))

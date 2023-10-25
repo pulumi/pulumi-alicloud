@@ -19,6 +19,46 @@ import (
 //
 // > **NOTE:** Available in v1.136.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vod"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vod.NewDomain(ctx, "default", &vod.DomainArgs{
+//				DomainName: pulumi.String("your_domain_name"),
+//				Scope:      pulumi.String("domestic"),
+//				Sources: vod.DomainSourceArray{
+//					&vod.DomainSourceArgs{
+//						SourceContent: pulumi.String("your_source_content"),
+//						SourcePort:    pulumi.String("80"),
+//						SourceType:    pulumi.String("domain"),
+//					},
+//				},
+//				Tags: pulumi.Map{
+//					"key1": pulumi.Any("value1"),
+//					"key2": pulumi.Any("value2"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // VOD Domain can be imported using the id, e.g.

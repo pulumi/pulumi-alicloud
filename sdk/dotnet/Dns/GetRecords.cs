@@ -15,6 +15,36 @@ namespace Pulumi.AliCloud.Dns
         /// This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
         /// 
         /// &gt; **NOTE:** Available since v1.0.0.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var recordsDs = AliCloud.Dns.GetRecords.Invoke(new()
+        ///     {
+        ///         DomainName = "xiaozhu.top",
+        ///         HostRecordRegex = "^@",
+        ///         IsLocked = false,
+        ///         OutputFile = "records.txt",
+        ///         Type = "A",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRecordId"] = recordsDs.Apply(getRecordsResult =&gt; getRecordsResult.Records[0]?.RecordId),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRecordsResult> InvokeAsync(GetRecordsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRecordsResult>("alicloud:dns/getRecords:getRecords", args ?? new GetRecordsArgs(), options.WithDefaults());
@@ -23,6 +53,36 @@ namespace Pulumi.AliCloud.Dns
         /// This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
         /// 
         /// &gt; **NOTE:** Available since v1.0.0.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var recordsDs = AliCloud.Dns.GetRecords.Invoke(new()
+        ///     {
+        ///         DomainName = "xiaozhu.top",
+        ///         HostRecordRegex = "^@",
+        ///         IsLocked = false,
+        ///         OutputFile = "records.txt",
+        ///         Type = "A",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRecordId"] = recordsDs.Apply(getRecordsResult =&gt; getRecordsResult.Records[0]?.RecordId),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetRecordsResult> Invoke(GetRecordsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRecordsResult>("alicloud:dns/getRecords:getRecords", args ?? new GetRecordsInvokeArgs(), options.WithDefaults());

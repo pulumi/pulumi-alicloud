@@ -11,6 +11,26 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.113.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const _default = new alicloud.eipanycast.AnycastEipAddress("default", {
+ *     anycastEipAddressName: name,
+ *     description: name,
+ *     bandwidth: 200,
+ *     serviceLocation: "international",
+ *     internetChargeType: "PayByTraffic",
+ *     paymentType: "PayAsYouGo",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Eipanycast Anycast Eip Address can be imported using the id, e.g.

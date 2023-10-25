@@ -193,7 +193,20 @@ class Ciphertext(pulumi.CustomResource):
                  plaintext: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Ciphertext resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        key = alicloud.kms.Key("key",
+            description="example key",
+            is_enabled=True)
+        encrypted = alicloud.kms.Ciphertext("encrypted",
+            key_id=key.id,
+            plaintext="example")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] encryption_context: The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
@@ -207,7 +220,20 @@ class Ciphertext(pulumi.CustomResource):
                  args: CiphertextArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Ciphertext resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        key = alicloud.kms.Key("key",
+            description="example key",
+            is_enabled=True)
+        encrypted = alicloud.kms.Ciphertext("encrypted",
+            key_id=key.id,
+            plaintext="example")
+        ```
+
         :param str resource_name: The name of the resource.
         :param CiphertextArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

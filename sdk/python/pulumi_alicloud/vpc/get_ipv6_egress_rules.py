@@ -139,6 +139,31 @@ def get_ipv6_egress_rules(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.142.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.vpc.get_ipv6_egress_rules(ipv6_gateway_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("vpcIpv6EgressRuleId1", ids.rules[0].id)
+    name_regex = alicloud.vpc.get_ipv6_egress_rules(ipv6_gateway_id="example_value",
+        name_regex="^my-Ipv6EgressRule")
+    pulumi.export("vpcIpv6EgressRuleId2", name_regex.rules[0].id)
+    status = alicloud.vpc.get_ipv6_egress_rules(ipv6_gateway_id="example_value",
+        status="Available")
+    pulumi.export("vpcIpv6EgressRuleId3", status.rules[0].id)
+    ipv6_egress_rule_name = alicloud.vpc.get_ipv6_egress_rules(ipv6_gateway_id="example_value",
+        ipv6_egress_rule_name="example_value")
+    pulumi.export("vpcIpv6EgressRuleId4", ipv6_egress_rule_name.rules[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Ipv6 Egress Rule IDs.
     :param str instance_id: The ID of the instance to which the egress-only rule is applied.
@@ -185,6 +210,31 @@ def get_ipv6_egress_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[st
     This data source provides the Vpc Ipv6 Egress Rules of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.142.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.vpc.get_ipv6_egress_rules(ipv6_gateway_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("vpcIpv6EgressRuleId1", ids.rules[0].id)
+    name_regex = alicloud.vpc.get_ipv6_egress_rules(ipv6_gateway_id="example_value",
+        name_regex="^my-Ipv6EgressRule")
+    pulumi.export("vpcIpv6EgressRuleId2", name_regex.rules[0].id)
+    status = alicloud.vpc.get_ipv6_egress_rules(ipv6_gateway_id="example_value",
+        status="Available")
+    pulumi.export("vpcIpv6EgressRuleId3", status.rules[0].id)
+    ipv6_egress_rule_name = alicloud.vpc.get_ipv6_egress_rules(ipv6_gateway_id="example_value",
+        ipv6_egress_rule_name="example_value")
+    pulumi.export("vpcIpv6EgressRuleId4", ipv6_egress_rule_name.rules[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Ipv6 Egress Rule IDs.

@@ -15,6 +15,28 @@ namespace Pulumi.AliCloud.Dcdn
         /// This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-describedcdnkvaccount)
         /// 
         /// &gt; **NOTE:** Available since v1.198.0.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var status = AliCloud.Dcdn.GetKvAccount.Invoke(new()
+        ///     {
+        ///         Status = "online",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKvAccountResult> InvokeAsync(GetKvAccountArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKvAccountResult>("alicloud:dcdn/getKvAccount:getKvAccount", args ?? new GetKvAccountArgs(), options.WithDefaults());
@@ -23,6 +45,28 @@ namespace Pulumi.AliCloud.Dcdn
         /// This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-describedcdnkvaccount)
         /// 
         /// &gt; **NOTE:** Available since v1.198.0.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var status = AliCloud.Dcdn.GetKvAccount.Invoke(new()
+        ///     {
+        ///         Status = "online",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetKvAccountResult> Invoke(GetKvAccountInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKvAccountResult>("alicloud:dcdn/getKvAccount:getKvAccount", args ?? new GetKvAccountInvokeArgs(), options.WithDefaults());

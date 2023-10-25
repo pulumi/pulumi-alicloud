@@ -642,6 +642,20 @@ class Accelerator(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.111.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ga.Accelerator("example",
+            auto_use_coupon=True,
+            duration=1,
+            spec="1")
+        ```
+
         ## Import
 
         Ga Accelerator can be imported using the id, e.g.
@@ -681,6 +695,20 @@ class Accelerator(pulumi.CustomResource):
         For information about Global Accelerator (GA) Accelerator and how to use it, see [What is Accelerator](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createaccelerator).
 
         > **NOTE:** Available since v1.111.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ga.Accelerator("example",
+            auto_use_coupon=True,
+            duration=1,
+            spec="1")
+        ```
 
         ## Import
 

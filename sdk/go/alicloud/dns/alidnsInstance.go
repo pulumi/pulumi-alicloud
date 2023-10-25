@@ -17,6 +17,39 @@ import (
 //
 // > **NOTE:** Available since v1.95.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dns.NewAlidnsInstance(ctx, "example", &dns.AlidnsInstanceArgs{
+//				DnsSecurity:   pulumi.String("no"),
+//				DomainNumbers: pulumi.String("2"),
+//				Period:        pulumi.Int(1),
+//				RenewPeriod:   pulumi.Int(1),
+//				RenewalStatus: pulumi.String("ManualRenewal"),
+//				VersionCode:   pulumi.String("version_personal"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // DNS instance be imported using the id, e.g.

@@ -15,6 +15,51 @@ import (
 // This data source provides the Ecd Network Packages of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.142.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultSimpleOfficeSite, err := eds.NewSimpleOfficeSite(ctx, "defaultSimpleOfficeSite", &eds.SimpleOfficeSiteArgs{
+//				CidrBlock:         pulumi.String("172.16.0.0/12"),
+//				DesktopAccessType: pulumi.String("Internet"),
+//				OfficeSiteName:    pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetworkPackage, err := eds.NewNetworkPackage(ctx, "defaultNetworkPackage", &eds.NetworkPackageArgs{
+//				Bandwidth:    pulumi.Int(10),
+//				OfficeSiteId: defaultSimpleOfficeSite.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetworkPackages := eds.GetNetworkPackagesOutput(ctx, eds.GetNetworkPackagesOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultNetworkPackage.ID(),
+//				},
+//			}, nil)
+//			ctx.Export("ecdNetworkPackageId1", defaultNetworkPackages.ApplyT(func(defaultNetworkPackages eds.GetNetworkPackagesResult) (*string, error) {
+//				return &defaultNetworkPackages.Packages[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetNetworkPackages(ctx *pulumi.Context, args *GetNetworkPackagesArgs, opts ...pulumi.InvokeOption) (*GetNetworkPackagesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNetworkPackagesResult

@@ -16,6 +16,31 @@ namespace Pulumi.AliCloud.Dms
     /// 
     /// &gt; **NOTE:** Available in v1.195.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new AliCloud.Dms.EnterpriseLogicDatabase("default", new()
+    ///     {
+    ///         Alias = "TF_logic_db_test",
+    ///         DatabaseIds = new[]
+    ///         {
+    ///             "35617919",
+    ///             "35617920",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// DMS Enterprise Logic Database can be imported using the id, e.g.

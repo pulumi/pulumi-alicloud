@@ -132,6 +132,16 @@ def get_instances(availability_zone: Optional[str] = None,
 
     > **NOTE:**  Available in 1.67.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    hbase = alicloud.hbase.get_instances(availability_zone="cn-shenzhen-b",
+        name_regex="tf_testAccHBase")
+    ```
+
 
     :param str availability_zone: Instance availability zone.
     :param Sequence[str] ids: The ids list of HBase instances
@@ -171,6 +181,16 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]
     Filters support regular expression for the instance name, ids or availability_zone.
 
     > **NOTE:**  Available in 1.67.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    hbase = alicloud.hbase.get_instances(availability_zone="cn-shenzhen-b",
+        name_regex="tf_testAccHBase")
+    ```
 
 
     :param str availability_zone: Instance availability zone.

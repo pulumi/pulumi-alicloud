@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * This data source provides a list of ALIKAFKA Topics in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in 1.56.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const topicsDs = alicloud.actiontrail.getTopics({
+ *     instanceId: "xxx",
+ *     nameRegex: "alikafkaTopicName",
+ *     outputFile: "topics.txt",
+ * });
+ * export const firstTopicName = topicsDs.then(topicsDs => topicsDs.topics?.[0]?.topic);
+ * ```
  */
 export function getTopics(args: GetTopicsArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicsResult> {
 
@@ -88,6 +102,20 @@ export interface GetTopicsResult {
  * This data source provides a list of ALIKAFKA Topics in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in 1.56.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const topicsDs = alicloud.actiontrail.getTopics({
+ *     instanceId: "xxx",
+ *     nameRegex: "alikafkaTopicName",
+ *     outputFile: "topics.txt",
+ * });
+ * export const firstTopicName = topicsDs.then(topicsDs => topicsDs.topics?.[0]?.topic);
+ * ```
  */
 export function getTopicsOutput(args: GetTopicsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicsResult> {
     return pulumi.output(args).apply((a: any) => getTopics(a, opts))

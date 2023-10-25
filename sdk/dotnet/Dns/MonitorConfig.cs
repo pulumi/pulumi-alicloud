@@ -16,6 +16,98 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// &gt; **NOTE:** Available since v1.153.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var domainName = config.Get("domainName") ?? "alicloud-provider.com";
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var defaultAlarmContactGroup = new AliCloud.Cms.AlarmContactGroup("defaultAlarmContactGroup", new()
+    ///     {
+    ///         AlarmContactGroupName = name,
+    ///     });
+    /// 
+    ///     var defaultGtmInstance = new AliCloud.Dns.GtmInstance("defaultGtmInstance", new()
+    ///     {
+    ///         InstanceName = name,
+    ///         PaymentType = "Subscription",
+    ///         Period = 1,
+    ///         RenewalStatus = "ManualRenewal",
+    ///         PackageEdition = "standard",
+    ///         HealthCheckTaskCount = 100,
+    ///         SmsNotificationCount = 1000,
+    ///         PublicCnameMode = "SYSTEM_ASSIGN",
+    ///         Ttl = 60,
+    ///         CnameType = "PUBLIC",
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         AlertGroups = new[]
+    ///         {
+    ///             defaultAlarmContactGroup.AlarmContactGroupName,
+    ///         },
+    ///         PublicUserDomainName = domainName,
+    ///         AlertConfigs = new[]
+    ///         {
+    ///             new AliCloud.Dns.Inputs.GtmInstanceAlertConfigArgs
+    ///             {
+    ///                 SmsNotice = true,
+    ///                 NoticeType = "ADDR_ALERT",
+    ///                 EmailNotice = true,
+    ///                 DingtalkNotice = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultAddressPool = new AliCloud.Dns.AddressPool("defaultAddressPool", new()
+    ///     {
+    ///         AddressPoolName = name,
+    ///         InstanceId = defaultGtmInstance.Id,
+    ///         LbaStrategy = "RATIO",
+    ///         Type = "IPV4",
+    ///         Addresses = new[]
+    ///         {
+    ///             new AliCloud.Dns.Inputs.AddressPoolAddressArgs
+    ///             {
+    ///                 AttributeInfo = "{\"lineCodeRectifyType\":\"RECTIFIED\",\"lineCodes\":[\"os_namerica_us\"]}",
+    ///                 Remark = "address_remark",
+    ///                 Address = "1.1.1.1",
+    ///                 Mode = "SMART",
+    ///                 LbaWeight = 1,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultMonitorConfig = new AliCloud.Dns.MonitorConfig("defaultMonitorConfig", new()
+    ///     {
+    ///         AddrPoolId = defaultAddressPool.Id,
+    ///         EvaluationCount = 1,
+    ///         Interval = 60,
+    ///         Timeout = 5000,
+    ///         ProtocolType = "TCP",
+    ///         MonitorExtendInfo = "{\"failureRate\":50,\"port\":80}",
+    ///         IspCityNodes = new[]
+    ///         {
+    ///             new AliCloud.Dns.Inputs.MonitorConfigIspCityNodeArgs
+    ///             {
+    ///                 CityCode = "503",
+    ///                 IspCode = "465",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// DNS Monitor Config can be imported using the id, e.g.

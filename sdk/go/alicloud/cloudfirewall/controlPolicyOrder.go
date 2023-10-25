@@ -19,6 +19,50 @@ import (
 //
 // > **NOTE:** Available in v1.130.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example1, err := cloudfirewall.NewControlPolicy(ctx, "example1", &cloudfirewall.ControlPolicyArgs{
+//				ApplicationName: pulumi.String("ANY"),
+//				AclAction:       pulumi.String("accept"),
+//				Description:     pulumi.String("example"),
+//				DestinationType: pulumi.String("net"),
+//				Destination:     pulumi.String("100.1.1.0/24"),
+//				Direction:       pulumi.String("out"),
+//				Proto:           pulumi.String("ANY"),
+//				Source:          pulumi.String("1.2.3.0/24"),
+//				SourceType:      pulumi.String("net"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudfirewall.NewControlPolicyOrder(ctx, "example2", &cloudfirewall.ControlPolicyOrderArgs{
+//				AclUuid:   example1.AclUuid,
+//				Direction: example1.Direction,
+//				Order:     pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Cloud Firewall Control Policy Order can be imported using the id, e.g.

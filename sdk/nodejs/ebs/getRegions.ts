@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * This data source provides the Ebs Regions of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.187.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.ebs.getRegions({
+ *     regionId: "cn-hangzhou",
+ * });
+ * export const regions = _default.then(_default => _default.regions);
+ * ```
  */
 export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> {
     args = args || {};
@@ -51,6 +65,20 @@ export interface GetRegionsResult {
  * This data source provides the Ebs Regions of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.187.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.ebs.getRegions({
+ *     regionId: "cn-hangzhou",
+ * });
+ * export const regions = _default.then(_default => _default.regions);
+ * ```
  */
 export function getRegionsOutput(args?: GetRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionsResult> {
     return pulumi.output(args).apply((a: any) => getRegions(a, opts))

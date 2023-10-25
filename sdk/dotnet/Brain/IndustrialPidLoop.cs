@@ -14,6 +14,31 @@ namespace Pulumi.AliCloud.Brain
     /// 
     /// &gt; **NOTE:** Available in v1.117.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AliCloud.Brain.IndustrialPidLoop("example", new()
+    ///     {
+    ///         PidLoopConfiguration = "YourLoopConfiguration",
+    ///         PidLoopDcsType = "standard",
+    ///         PidLoopIsCrucial = true,
+    ///         PidLoopName = "tf-testAcc",
+    ///         PidLoopType = "0",
+    ///         PidProjectId = "856c6b8f-ca63-40a4-xxxx-xxxx",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Brain Industrial Pid Loop can be imported using the id, e.g.

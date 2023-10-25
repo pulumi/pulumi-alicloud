@@ -131,6 +131,17 @@ def get_scheduled_tasks(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in 1.72.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ds = alicloud.ess.get_scheduled_tasks(name_regex="scheduled_task_name",
+        scheduled_task_id="scheduled_task_id")
+    pulumi.export("firstScheduledTask", ds.tasks[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of scheduled task IDs.
     :param str name_regex: A regex string to filter resulting scheduled tasks by name.
@@ -169,6 +180,17 @@ def get_scheduled_tasks_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
     This data source provides available scheduled task resources.
 
     > **NOTE:** Available in 1.72.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ds = alicloud.ess.get_scheduled_tasks(name_regex="scheduled_task_name",
+        scheduled_task_id="scheduled_task_id")
+    pulumi.export("firstScheduledTask", ds.tasks[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of scheduled task IDs.

@@ -102,6 +102,17 @@ class Product(pulumi.CustomResource):
 
         > **NOTE:** At present, the resource only supports cn-shanghai region.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.mhub.Product("example", product_name="example_value")
+        ```
+
         ## Import
 
         MHUB Product can be imported using the id, e.g.
@@ -128,6 +139,17 @@ class Product(pulumi.CustomResource):
         > **NOTE:** Available in v1.138.0+.
 
         > **NOTE:** At present, the resource only supports cn-shanghai region.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.mhub.Product("example", product_name="example_value")
+        ```
 
         ## Import
 

@@ -10,6 +10,29 @@ import * as utilities from "../utilities";
  * This data source provides the Bastionhost Host Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.134.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.bastionhost.getHostGroups({
+ *     instanceId: "bastionhost-cn-tl3xxxxxxx",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const bastionhostHostGroupId1 = ids.then(ids => ids.groups?.[0]?.id);
+ * const nameRegex = alicloud.bastionhost.getHostGroups({
+ *     instanceId: "bastionhost-cn-tl3xxxxxxx",
+ *     nameRegex: "^my-HostGroup",
+ * });
+ * export const bastionhostHostGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
+ * ```
  */
 export function getHostGroups(args: GetHostGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetHostGroupsResult> {
 
@@ -69,6 +92,29 @@ export interface GetHostGroupsResult {
  * This data source provides the Bastionhost Host Groups of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.134.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.bastionhost.getHostGroups({
+ *     instanceId: "bastionhost-cn-tl3xxxxxxx",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const bastionhostHostGroupId1 = ids.then(ids => ids.groups?.[0]?.id);
+ * const nameRegex = alicloud.bastionhost.getHostGroups({
+ *     instanceId: "bastionhost-cn-tl3xxxxxxx",
+ *     nameRegex: "^my-HostGroup",
+ * });
+ * export const bastionhostHostGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
+ * ```
  */
 export function getHostGroupsOutput(args: GetHostGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostGroupsResult> {
     return pulumi.output(args).apply((a: any) => getHostGroups(a, opts))

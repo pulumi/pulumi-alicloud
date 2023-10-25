@@ -980,6 +980,25 @@ class Disk(pulumi.CustomResource):
 
         > **NOTE:** One of `size` or `snapshot_id` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshot_id` represents. Currently, `ecs.Disk` doesn't resize disk.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new ECS disk.
+        ecs_disk = alicloud.ecs.Disk("ecsDisk",
+            availability_zone="cn-beijing-b",
+            category="cloud_efficiency",
+            description="Hello ecs disk.",
+            encrypted=True,
+            kms_key_id="2a6767f0-a16c-4679-a60f-13bf*****",
+            size=30,
+            tags={
+                "Name": "TerraformTest",
+            })
+        ```
+
         ## Import
 
         Cloud disk can be imported using the id, e.g.
@@ -1018,6 +1037,25 @@ class Disk(pulumi.CustomResource):
         > **DEPRECATED:** This resource has been renamed to ecs.EcsDisk from version 1.122.0.
 
         > **NOTE:** One of `size` or `snapshot_id` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshot_id` represents. Currently, `ecs.Disk` doesn't resize disk.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new ECS disk.
+        ecs_disk = alicloud.ecs.Disk("ecsDisk",
+            availability_zone="cn-beijing-b",
+            category="cloud_efficiency",
+            description="Hello ecs disk.",
+            encrypted=True,
+            kms_key_id="2a6767f0-a16c-4679-a60f-13bf*****",
+            size=30,
+            tags={
+                "Name": "TerraformTest",
+            })
+        ```
 
         ## Import
 

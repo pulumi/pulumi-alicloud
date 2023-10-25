@@ -1273,6 +1273,9 @@ class StoreEncryptConf(dict):
         :param bool enable: enable encryption. Default `false`
         :param str encrypt_type: Supported encryption type, only supports `default(AES)`,` m4`
         :param 'StoreEncryptConfUserCmkInfoArgs' user_cmk_info: User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `user_cmk_info` below.
+               ```python
+               import pulumi
+               ```
         """
         StoreEncryptConf._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -1321,6 +1324,9 @@ class StoreEncryptConf(dict):
     def user_cmk_info(self) -> Optional['outputs.StoreEncryptConfUserCmkInfo']:
         """
         User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `user_cmk_info` below.
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "user_cmk_info")
 

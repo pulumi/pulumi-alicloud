@@ -15,6 +15,35 @@ import (
 // This data source provides a list of ECS Dedicated Hosts in an Alibaba Cloud account according to the specified filters.
 //
 // > **NOTE:** Available in v1.91.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			dedicatedHostsDs, err := ecs.GetDedicatedHosts(ctx, &ecs.GetDedicatedHostsArgs{
+//				DedicatedHostType: pulumi.StringRef("ddh.g5"),
+//				NameRegex:         pulumi.StringRef("tf-testAcc"),
+//				Status:            pulumi.StringRef("Available"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstDedicatedHostsId", dedicatedHostsDs.Hosts[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDedicatedHosts(ctx *pulumi.Context, args *GetDedicatedHostsArgs, opts ...pulumi.InvokeOption) (*GetDedicatedHostsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDedicatedHostsResult

@@ -12,6 +12,24 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in v1.193.0+.
  *
  * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cloudsso.getAccessAssignments({
+ *     directoryId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const cloudSsoAccessAssignmentId1 = ids.then(ids => ids.assignments?.[0]?.id);
+ * ```
  */
 export function getAccessAssignments(args: GetAccessAssignmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessAssignmentsResult> {
 
@@ -84,6 +102,24 @@ export interface GetAccessAssignmentsResult {
  * > **NOTE:** Available in v1.193.0+.
  *
  * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cloudsso.getAccessAssignments({
+ *     directoryId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const cloudSsoAccessAssignmentId1 = ids.then(ids => ids.assignments?.[0]?.id);
+ * ```
  */
 export function getAccessAssignmentsOutput(args: GetAccessAssignmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessAssignmentsResult> {
     return pulumi.output(args).apply((a: any) => getAccessAssignments(a, opts))

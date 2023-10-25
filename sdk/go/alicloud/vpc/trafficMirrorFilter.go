@@ -18,6 +18,81 @@ import (
 //
 // > **NOTE:** Available in v1.140.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			default3iXhoa, err := resourcemanager.NewResourceGroup(ctx, "default3iXhoa", &resourcemanager.ResourceGroupArgs{
+//				DisplayName:       pulumi.String("testname03"),
+//				ResourceGroupName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = resourcemanager.NewResourceGroup(ctx, "defaultdNz2qk", &resourcemanager.ResourceGroupArgs{
+//				DisplayName:       pulumi.String("testname04"),
+//				ResourceGroupName: pulumi.String(fmt.Sprintf("%v1", name)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewTrafficMirrorFilter(ctx, "default", &vpc.TrafficMirrorFilterArgs{
+//				TrafficMirrorFilterDescription: pulumi.String("test"),
+//				TrafficMirrorFilterName:        pulumi.String(name),
+//				ResourceGroupId:                default3iXhoa.ID(),
+//				EgressRules: vpc.TrafficMirrorFilterEgressRuleTypeArray{
+//					&vpc.TrafficMirrorFilterEgressRuleTypeArgs{
+//						Priority:             pulumi.Int(1),
+//						Protocol:             pulumi.String("TCP"),
+//						Action:               pulumi.String("accept"),
+//						DestinationCidrBlock: pulumi.String("32.0.0.0/4"),
+//						DestinationPortRange: pulumi.String("80/80"),
+//						SourceCidrBlock:      pulumi.String("16.0.0.0/4"),
+//						SourcePortRange:      pulumi.String("80/80"),
+//					},
+//				},
+//				IngressRules: vpc.TrafficMirrorFilterIngressRuleTypeArray{
+//					&vpc.TrafficMirrorFilterIngressRuleTypeArgs{
+//						Priority:             pulumi.Int(1),
+//						Protocol:             pulumi.String("TCP"),
+//						Action:               pulumi.String("accept"),
+//						DestinationCidrBlock: pulumi.String("10.64.0.0/10"),
+//						DestinationPortRange: pulumi.String("80/80"),
+//						SourceCidrBlock:      pulumi.String("10.0.0.0/8"),
+//						SourcePortRange:      pulumi.String("80/80"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // VPC Traffic Mirror Filter can be imported using the id, e.g.

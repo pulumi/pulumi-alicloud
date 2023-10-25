@@ -15,6 +15,42 @@ namespace Pulumi.AliCloud.FC
     /// 
     /// &gt; **NOTE:** Available since v1.104.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var defaultService = new AliCloud.FC.Service("defaultService", new()
+    ///     {
+    ///         Description = "example-value",
+    ///         Publish = true,
+    ///     });
+    /// 
+    ///     var example = new AliCloud.FC.Alias("example", new()
+    ///     {
+    ///         AliasName = "example-value",
+    ///         Description = "example-value",
+    ///         ServiceName = defaultService.Name,
+    ///         ServiceVersion = "1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Function Compute alias can be imported using the id, e.g.

@@ -182,6 +182,18 @@ def get_access_groups(access_group_name: Optional[str] = None,
 
     > NOTE: Available in 1.35.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.nas.get_access_groups(name_regex="^foo",
+        access_group_type="Classic",
+        description="tf-testAccAccessGroupsdatasource")
+    pulumi.export("alicloudNasAccessGroupsId", example.groups[0].id)
+    ```
+
 
     :param str access_group_name: The name of access group.
     :param str access_group_type: Filter results by a specific AccessGroupType.
@@ -233,6 +245,18 @@ def get_access_groups_output(access_group_name: Optional[pulumi.Input[Optional[s
     This data source provides user-available access groups. Use when you can create mount points
 
     > NOTE: Available in 1.35.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.nas.get_access_groups(name_regex="^foo",
+        access_group_type="Classic",
+        description="tf-testAccAccessGroupsdatasource")
+    pulumi.export("alicloudNasAccessGroupsId", example.groups[0].id)
+    ```
 
 
     :param str access_group_name: The name of access group.

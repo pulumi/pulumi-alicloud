@@ -13,6 +13,44 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.161.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const fooZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const fooSwitch = new alicloud.vpc.Switch("fooSwitch", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.16.0.0/21",
+ *     vpcId: fooNetwork.id,
+ *     zoneId: fooZones.then(fooZones => fooZones.zones?.[0]?.id),
+ * });
+ * const fooGateway = new alicloud.vpn.Gateway("fooGateway", {
+ *     vpcId: fooNetwork.id,
+ *     bandwidth: 10,
+ *     enableSsl: true,
+ *     instanceChargeType: "PrePaid",
+ *     description: "terraform-example",
+ *     vswitchId: fooSwitch.id,
+ * });
+ * const fooIpsecServer = new alicloud.vpn.IpsecServer("fooIpsecServer", {
+ *     clientIpPool: "10.0.0.0/24",
+ *     ipsecServerName: "terraform-example",
+ *     localSubnet: "192.168.0.0/24",
+ *     vpnGatewayId: fooGateway.id,
+ *     pskEnabled: true,
+ * });
+ * ```
+ *
  * ## Import
  *
  * VPN Ipsec Server can be imported using the id, e.g.

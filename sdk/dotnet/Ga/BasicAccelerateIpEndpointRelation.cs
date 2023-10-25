@@ -16,6 +16,132 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// &gt; **NOTE:** Available since v1.194.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var region = config.Get("region") ?? "cn-shenzhen";
+    ///     var endpointRegion = config.Get("endpointRegion") ?? "cn-hangzhou";
+    ///     var sz = new AliCloud.Provider("sz", new()
+    ///     {
+    ///         Region = region,
+    ///     });
+    /// 
+    ///     var hz = new AliCloud.Provider("hz", new()
+    ///     {
+    ///         Region = endpointRegion,
+    ///     });
+    /// 
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Sz,
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Sz,
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Sz,
+    ///     });
+    /// 
+    ///     var defaultEcsNetworkInterface = new AliCloud.Ecs.EcsNetworkInterface("defaultEcsNetworkInterface", new()
+    ///     {
+    ///         VswitchId = defaultSwitch.Id,
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             defaultSecurityGroup.Id,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Sz,
+    ///     });
+    /// 
+    ///     var defaultBasicAccelerator = new AliCloud.Ga.BasicAccelerator("defaultBasicAccelerator", new()
+    ///     {
+    ///         Duration = 1,
+    ///         BasicAcceleratorName = "terraform-example",
+    ///         Description = "terraform-example",
+    ///         BandwidthBillingType = "CDT",
+    ///         AutoUseCoupon = "true",
+    ///         AutoPay = true,
+    ///     });
+    /// 
+    ///     var defaultBasicIpSet = new AliCloud.Ga.BasicIpSet("defaultBasicIpSet", new()
+    ///     {
+    ///         AcceleratorId = defaultBasicAccelerator.Id,
+    ///         AccelerateRegionId = endpointRegion,
+    ///         IspType = "BGP",
+    ///         Bandwidth = 5,
+    ///     });
+    /// 
+    ///     var defaultBasicAccelerateIp = new AliCloud.Ga.BasicAccelerateIp("defaultBasicAccelerateIp", new()
+    ///     {
+    ///         AcceleratorId = defaultBasicAccelerator.Id,
+    ///         IpSetId = defaultBasicIpSet.Id,
+    ///     });
+    /// 
+    ///     var defaultBasicEndpointGroup = new AliCloud.Ga.BasicEndpointGroup("defaultBasicEndpointGroup", new()
+    ///     {
+    ///         AcceleratorId = defaultBasicAccelerator.Id,
+    ///         EndpointGroupRegion = region,
+    ///         BasicEndpointGroupName = "terraform-example",
+    ///         Description = "terraform-example",
+    ///     });
+    /// 
+    ///     var defaultBasicEndpoint = new AliCloud.Ga.BasicEndpoint("defaultBasicEndpoint", new()
+    ///     {
+    ///         AcceleratorId = defaultBasicAccelerator.Id,
+    ///         EndpointGroupId = defaultBasicEndpointGroup.Id,
+    ///         EndpointType = "ENI",
+    ///         EndpointAddress = defaultEcsNetworkInterface.Id,
+    ///         EndpointSubAddressType = "primary",
+    ///         EndpointSubAddress = "192.168.0.1",
+    ///         BasicEndpointName = "terraform-example",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Hz,
+    ///     });
+    /// 
+    ///     var defaultBasicAccelerateIpEndpointRelation = new AliCloud.Ga.BasicAccelerateIpEndpointRelation("defaultBasicAccelerateIpEndpointRelation", new()
+    ///     {
+    ///         AcceleratorId = defaultBasicAccelerateIp.AcceleratorId,
+    ///         AccelerateIpId = defaultBasicAccelerateIp.Id,
+    ///         EndpointId = defaultBasicEndpoint.EndpointId,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Global Accelerator (GA) Basic Accelerate Ip Endpoint Relation can be imported using the id, e.g.

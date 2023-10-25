@@ -82,6 +82,18 @@ def get_alert_resource(lang: Optional[str] = None,
 
     > **NOTE:** Available in v1.161.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example_user = alicloud.log.get_alert_resource(lang="cn",
+        type="user")
+    example_project = alicloud.log.get_alert_resource(project="test-alert-tf",
+        type="project")
+    ```
+
 
     :param str lang: The lang of alert center resource when type is user.
     :param str project: The project of alert resource when type is project.
@@ -112,6 +124,18 @@ def get_alert_resource_output(lang: Optional[pulumi.Input[Optional[str]]] = None
     For information about SLS Alert and how to use it, see [SLS Alert Overview](https://www.alibabacloud.com/help/en/doc-detail/209202.html)
 
     > **NOTE:** Available in v1.161.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example_user = alicloud.log.get_alert_resource(lang="cn",
+        type="user")
+    example_project = alicloud.log.get_alert_resource(project="test-alert-tf",
+        type="project")
+    ```
 
 
     :param str lang: The lang of alert center resource when type is user.

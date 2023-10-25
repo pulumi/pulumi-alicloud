@@ -222,6 +222,25 @@ class WafPolicy(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.184.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        example = alicloud.dcdn.WafPolicy("example",
+            defense_scene="waf_group",
+            policy_name=name,
+            policy_type="custom",
+            status="on")
+        ```
+
         ## Import
 
         DCDN Waf Policy can be imported using the id, e.g.
@@ -249,6 +268,25 @@ class WafPolicy(pulumi.CustomResource):
         For information about DCDN Waf Policy and how to use it, see [What is Waf Policy](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-createdcdnwafpolicy).
 
         > **NOTE:** Available since v1.184.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        example = alicloud.dcdn.WafPolicy("example",
+            defense_scene="waf_group",
+            policy_name=name,
+            policy_type="custom",
+            status="on")
+        ```
 
         ## Import
 

@@ -16,6 +16,40 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     /// &gt; **NOTE:** Available since v1.168.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("defaultEipAddress", new()
+    ///     {
+    ///         AddressName = name,
+    ///         Isp = "BGP",
+    ///         InternetChargeType = "PayByBandwidth",
+    ///         PaymentType = "PayAsYouGo",
+    ///     });
+    /// 
+    ///     var defaultBasicDefenseThreshold = new AliCloud.Ddos.BasicDefenseThreshold("defaultBasicDefenseThreshold", new()
+    ///     {
+    ///         InstanceId = defaultEipAddress.Id,
+    ///         DdosType = "defense",
+    ///         InstanceType = "eip",
+    ///         Bps = 390,
+    ///         Pps = 90000,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Ddos Basic Antiddos can be imported using the id, e.g.

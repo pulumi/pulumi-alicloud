@@ -13,6 +13,51 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Only the following regions support create Cloud Connect Network Grant. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const cenUid = config.getNumber("cenUid") || 123456789;
+ * const _default = new alicloud.Provider("default", {region: "cn-shanghai"});
+ * // Method 1: Use assume_role to operate resources in the target cen account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
+ * const cenAccount = new alicloud.Provider("cenAccount", {
+ *     region: "cn-hangzhou",
+ *     assumeRole: {
+ *         roleArn: `acs:ram::${cenUid}:role/terraform-example-assume-role`,
+ *     },
+ * });
+ * // Method 2: Use the target cen account's access_key, secret_key
+ * // provider "alicloud" {
+ * //   region     = "cn-hangzhou"
+ * //   access_key = "access_key"
+ * //   secret_key = "secret_key"
+ * //   alias      = "cen_account"
+ * // }
+ * const defaultNetwork = new alicloud.cloudconnect.Network("defaultNetwork", {
+ *     description: name,
+ *     cidrBlock: "192.168.0.0/24",
+ *     isDefault: true,
+ * }, {
+ *     provider: alicloud["default"],
+ * });
+ * const cen = new alicloud.cen.Instance("cen", {cenInstanceName: name}, {
+ *     provider: alicloud.cen_account,
+ * });
+ * const defaultNetworkGrant = new alicloud.cloudconnect.NetworkGrant("defaultNetworkGrant", {
+ *     ccnId: defaultNetwork.id,
+ *     cenId: cen.id,
+ *     cenUid: cenUid,
+ * }, {
+ *     provider: alicloud["default"],
+ * });
+ * ```
+ *
  * ## Import
  *
  * The Cloud Connect Network Grant can be imported using the instance_id, e.g.

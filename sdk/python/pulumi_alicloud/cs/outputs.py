@@ -1979,6 +1979,9 @@ class ManagedKubernetesMaintenanceWindow(dict):
         :param str weekly_period: Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
                
                for example:
+               ```python
+               import pulumi
+               ```
         """
         ManagedKubernetesMaintenanceWindow._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -2045,6 +2048,9 @@ class ManagedKubernetesMaintenanceWindow(dict):
         Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
 
         for example:
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "weekly_period")
 
@@ -2202,6 +2208,24 @@ class ManagedKubernetesTaint(dict):
         :param str effect: The taint effect.
                
                The following example is the definition of taints block:
+               
+               ```python
+               import pulumi
+               import pulumi_alicloud as alicloud
+               
+               k8s = alicloud.cs.ManagedKubernetes("k8s", taints=[
+                   alicloud.cs.ManagedKubernetesTaintArgs(
+                       effect="NoSchedule",
+                       key="key-a",
+                       value="value-a",
+                   ),
+                   alicloud.cs.ManagedKubernetesTaintArgs(
+                       effect="NoSchedule",
+                       key="key-b",
+                       value="value-b",
+                   ),
+               ])
+               ```
         :param str key: The taint key.
         :param str value: The taint value.
         """
@@ -2234,6 +2258,24 @@ class ManagedKubernetesTaint(dict):
         The taint effect.
 
         The following example is the definition of taints block:
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        k8s = alicloud.cs.ManagedKubernetes("k8s", taints=[
+            alicloud.cs.ManagedKubernetesTaintArgs(
+                effect="NoSchedule",
+                key="key-a",
+                value="value-a",
+            ),
+            alicloud.cs.ManagedKubernetesTaintArgs(
+                effect="NoSchedule",
+                key="key-b",
+                value="value-b",
+            ),
+        ])
+        ```
         """
         return pulumi.get(self, "effect")
 

@@ -380,6 +380,43 @@ class FirewallVpcFirewall(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.194.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        current = alicloud.get_account()
+        default = alicloud.cloudfirewall.FirewallVpcFirewall("default",
+            vpc_firewall_name="tf-example",
+            member_uid=current.id,
+            local_vpc=alicloud.cloudfirewall.FirewallVpcFirewallLocalVpcArgs(
+                vpc_id="vpc-bp1d065m6hzn1xbw8ibfd",
+                region_no="cn-hangzhou",
+                local_vpc_cidr_table_lists=[alicloud.cloudfirewall.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs(
+                    local_route_table_id="vtb-bp1lj0ddg846856chpzrv",
+                    local_route_entry_lists=[alicloud.cloudfirewall.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs(
+                        local_next_hop_instance_id="ri-bp1uobww3aputjlwwkyrh",
+                        local_destination_cidr="10.1.0.0/16",
+                    )],
+                )],
+            ),
+            peer_vpc=alicloud.cloudfirewall.FirewallVpcFirewallPeerVpcArgs(
+                vpc_id="vpc-bp1gcmm64o3caox84v0nz",
+                region_no="cn-hangzhou",
+                peer_vpc_cidr_table_lists=[alicloud.cloudfirewall.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs(
+                    peer_route_table_id="vtb-bp1f516f2hh4sok1ig9b5",
+                    peer_route_entry_lists=[alicloud.cloudfirewall.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs(
+                        peer_destination_cidr="10.0.0.0/16",
+                        peer_next_hop_instance_id="ri-bp1thhtgf6ydr2or52l3n",
+                    )],
+                )],
+            ),
+            status="open")
+        ```
+
         ## Import
 
         Cloud Firewall Vpc Firewall can be imported using the id, e.g.
@@ -409,6 +446,43 @@ class FirewallVpcFirewall(pulumi.CustomResource):
         For information about Cloud Firewall Vpc Firewall and how to use it, see [What is Vpc Firewall](https://www.alibabacloud.com/help/en/cloud-firewall/developer-reference/api-cloudfw-2017-12-07-createvpcfirewallconfigure).
 
         > **NOTE:** Available since v1.194.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        current = alicloud.get_account()
+        default = alicloud.cloudfirewall.FirewallVpcFirewall("default",
+            vpc_firewall_name="tf-example",
+            member_uid=current.id,
+            local_vpc=alicloud.cloudfirewall.FirewallVpcFirewallLocalVpcArgs(
+                vpc_id="vpc-bp1d065m6hzn1xbw8ibfd",
+                region_no="cn-hangzhou",
+                local_vpc_cidr_table_lists=[alicloud.cloudfirewall.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs(
+                    local_route_table_id="vtb-bp1lj0ddg846856chpzrv",
+                    local_route_entry_lists=[alicloud.cloudfirewall.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs(
+                        local_next_hop_instance_id="ri-bp1uobww3aputjlwwkyrh",
+                        local_destination_cidr="10.1.0.0/16",
+                    )],
+                )],
+            ),
+            peer_vpc=alicloud.cloudfirewall.FirewallVpcFirewallPeerVpcArgs(
+                vpc_id="vpc-bp1gcmm64o3caox84v0nz",
+                region_no="cn-hangzhou",
+                peer_vpc_cidr_table_lists=[alicloud.cloudfirewall.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs(
+                    peer_route_table_id="vtb-bp1f516f2hh4sok1ig9b5",
+                    peer_route_entry_lists=[alicloud.cloudfirewall.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs(
+                        peer_destination_cidr="10.0.0.0/16",
+                        peer_next_hop_instance_id="ri-bp1thhtgf6ydr2or52l3n",
+                    )],
+                )],
+            ),
+            status="open")
+        ```
 
         ## Import
 

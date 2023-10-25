@@ -246,6 +246,82 @@ class ConsumerChannel(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.146.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        example_regions = alicloud.get_regions(current=True)
+        example_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="Basic",
+            db_instance_storage_type="cloud_essd")
+        example_instance_classes = alicloud.rds.get_instance_classes(zone_id=example_zones.zones[0].id,
+            engine="MySQL",
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="Basic",
+            db_instance_storage_type="cloud_essd")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vpc_id=example_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=example_zones.zones[0].id,
+            vswitch_name=name)
+        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
+        example_instance = alicloud.rds.Instance("exampleInstance",
+            engine="MySQL",
+            engine_version="8.0",
+            instance_type=example_instance_classes.instance_classes[0].instance_class,
+            instance_storage=example_instance_classes.instance_classes[0].storage_range.min,
+            instance_charge_type="Postpaid",
+            instance_name=name,
+            vswitch_id=example_switch.id,
+            monitoring_period=60,
+            db_instance_storage_type="cloud_essd",
+            security_group_ids=[example_security_group.id])
+        example_rds_account = alicloud.rds.RdsAccount("exampleRdsAccount",
+            db_instance_id=example_instance.id,
+            account_name="example_name",
+            account_password="example_1234")
+        example_database = alicloud.rds.Database("exampleDatabase", instance_id=example_instance.id)
+        example_account_privilege = alicloud.rds.AccountPrivilege("exampleAccountPrivilege",
+            instance_id=example_instance.id,
+            account_name=example_rds_account.name,
+            privilege="ReadWrite",
+            db_names=[example_database.name])
+        example_subscription_job = alicloud.dts.SubscriptionJob("exampleSubscriptionJob",
+            dts_job_name=name,
+            payment_type="PayAsYouGo",
+            source_endpoint_engine_name="MySQL",
+            source_endpoint_region=example_regions.regions[0].id,
+            source_endpoint_instance_type="RDS",
+            source_endpoint_instance_id=example_instance.id,
+            source_endpoint_database_name=example_database.name,
+            source_endpoint_user_name=example_rds_account.account_name,
+            source_endpoint_password=example_rds_account.account_password,
+            db_list=pulumi.Output.all(example_database.name, example_database.name).apply(lambda exampleDatabaseName, exampleDatabaseName1: f"{{\\"{example_database_name}\\":{{\\"name\\":\\"{example_database_name1}\\",\\"all\\":true}}}}"),
+            subscription_instance_network_type="vpc",
+            subscription_instance_vpc_id=example_network.id,
+            subscription_instance_vswitch_id=example_switch.id,
+            status="Normal")
+        example_consumer_channel = alicloud.dts.ConsumerChannel("exampleConsumerChannel",
+            dts_instance_id=example_subscription_job.dts_instance_id,
+            consumer_group_name=name,
+            consumer_group_user_name="example",
+            consumer_group_password="example1234")
+        ```
+
         ## Import
 
         DTS Consumer Channel can be imported using the id, e.g.
@@ -273,6 +349,82 @@ class ConsumerChannel(pulumi.CustomResource):
         For information about DTS Consumer Channel and how to use it, see [What is Consumer Channel](https://www.alibabacloud.com/help/en/doc-detail/264593.htm).
 
         > **NOTE:** Available since v1.146.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        example_regions = alicloud.get_regions(current=True)
+        example_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="Basic",
+            db_instance_storage_type="cloud_essd")
+        example_instance_classes = alicloud.rds.get_instance_classes(zone_id=example_zones.zones[0].id,
+            engine="MySQL",
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="Basic",
+            db_instance_storage_type="cloud_essd")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vpc_id=example_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=example_zones.zones[0].id,
+            vswitch_name=name)
+        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
+        example_instance = alicloud.rds.Instance("exampleInstance",
+            engine="MySQL",
+            engine_version="8.0",
+            instance_type=example_instance_classes.instance_classes[0].instance_class,
+            instance_storage=example_instance_classes.instance_classes[0].storage_range.min,
+            instance_charge_type="Postpaid",
+            instance_name=name,
+            vswitch_id=example_switch.id,
+            monitoring_period=60,
+            db_instance_storage_type="cloud_essd",
+            security_group_ids=[example_security_group.id])
+        example_rds_account = alicloud.rds.RdsAccount("exampleRdsAccount",
+            db_instance_id=example_instance.id,
+            account_name="example_name",
+            account_password="example_1234")
+        example_database = alicloud.rds.Database("exampleDatabase", instance_id=example_instance.id)
+        example_account_privilege = alicloud.rds.AccountPrivilege("exampleAccountPrivilege",
+            instance_id=example_instance.id,
+            account_name=example_rds_account.name,
+            privilege="ReadWrite",
+            db_names=[example_database.name])
+        example_subscription_job = alicloud.dts.SubscriptionJob("exampleSubscriptionJob",
+            dts_job_name=name,
+            payment_type="PayAsYouGo",
+            source_endpoint_engine_name="MySQL",
+            source_endpoint_region=example_regions.regions[0].id,
+            source_endpoint_instance_type="RDS",
+            source_endpoint_instance_id=example_instance.id,
+            source_endpoint_database_name=example_database.name,
+            source_endpoint_user_name=example_rds_account.account_name,
+            source_endpoint_password=example_rds_account.account_password,
+            db_list=pulumi.Output.all(example_database.name, example_database.name).apply(lambda exampleDatabaseName, exampleDatabaseName1: f"{{\\"{example_database_name}\\":{{\\"name\\":\\"{example_database_name1}\\",\\"all\\":true}}}}"),
+            subscription_instance_network_type="vpc",
+            subscription_instance_vpc_id=example_network.id,
+            subscription_instance_vswitch_id=example_switch.id,
+            status="Normal")
+        example_consumer_channel = alicloud.dts.ConsumerChannel("exampleConsumerChannel",
+            dts_instance_id=example_subscription_job.dts_instance_id,
+            consumer_group_name=name,
+            consumer_group_user_name="example",
+            consumer_group_password="example1234")
+        ```
 
         ## Import
 

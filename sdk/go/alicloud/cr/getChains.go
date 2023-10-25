@@ -17,6 +17,47 @@ import (
 // For information about CR Chains and how to use it, see [What is Chain](https://www.alibabacloud.com/help/en/doc-detail/357821.html).
 //
 // > **NOTE:** Available in v1.161.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := cr.GetChains(ctx, &cr.GetChainsArgs{
+//				InstanceId: "example_value",
+//				Ids: []string{
+//					"example_value-1",
+//					"example_value-2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("crChainId1", ids.Chains[0].Id)
+//			nameRegex, err := cr.GetChains(ctx, &cr.GetChainsArgs{
+//				InstanceId: "example_value",
+//				NameRegex:  pulumi.StringRef("^my-Chain"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("crChainId2", nameRegex.Chains[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetChains(ctx *pulumi.Context, args *GetChainsArgs, opts ...pulumi.InvokeOption) (*GetChainsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetChainsResult

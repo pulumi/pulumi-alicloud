@@ -11,6 +11,55 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.194.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const region = config.get("region") || "cn-hangzhou";
+ * const endpointGroupRegion = config.get("endpointGroupRegion") || "cn-beijing";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", {
+ *     loadBalancerName: "terraform-example",
+ *     vswitchId: defaultSwitch.id,
+ *     loadBalancerSpec: "slb.s2.small",
+ *     addressType: "intranet",
+ * });
+ * const defaultBasicAccelerator = new alicloud.ga.BasicAccelerator("defaultBasicAccelerator", {
+ *     duration: 1,
+ *     basicAcceleratorName: "terraform-example",
+ *     description: "terraform-example",
+ *     bandwidthBillingType: "CDT",
+ *     autoUseCoupon: "true",
+ *     autoPay: true,
+ * });
+ * const defaultBasicEndpointGroup = new alicloud.ga.BasicEndpointGroup("defaultBasicEndpointGroup", {
+ *     acceleratorId: defaultBasicAccelerator.id,
+ *     endpointGroupRegion: endpointGroupRegion,
+ *     endpointType: "SLB",
+ *     endpointAddress: defaultApplicationLoadBalancer.id,
+ *     endpointSubAddress: "192.168.0.1",
+ *     basicEndpointGroupName: "terraform-example",
+ *     description: "terraform-example",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Global Accelerator (GA) Basic Endpoint Group can be imported using the id, e.g.

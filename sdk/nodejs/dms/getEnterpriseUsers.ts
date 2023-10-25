@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * This data source provides a list of DMS Enterprise Users in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in 1.90.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const dmsEnterpriseUsersDs = alicloud.dms.getEnterpriseUsers({
+ *     ids: ["uid"],
+ *     role: "USER",
+ *     status: "NORMAL",
+ * });
+ * export const firstUserId = dmsEnterpriseUsersDs.then(dmsEnterpriseUsersDs => dmsEnterpriseUsersDs.users?.[0]?.id);
+ * ```
  */
 export function getEnterpriseUsers(args?: GetEnterpriseUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetEnterpriseUsersResult> {
     args = args || {};
@@ -94,6 +108,20 @@ export interface GetEnterpriseUsersResult {
  * This data source provides a list of DMS Enterprise Users in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:** Available in 1.90.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const dmsEnterpriseUsersDs = alicloud.dms.getEnterpriseUsers({
+ *     ids: ["uid"],
+ *     role: "USER",
+ *     status: "NORMAL",
+ * });
+ * export const firstUserId = dmsEnterpriseUsersDs.then(dmsEnterpriseUsersDs => dmsEnterpriseUsersDs.users?.[0]?.id);
+ * ```
  */
 export function getEnterpriseUsersOutput(args?: GetEnterpriseUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnterpriseUsersResult> {
     return pulumi.output(args).apply((a: any) => getEnterpriseUsers(a, opts))

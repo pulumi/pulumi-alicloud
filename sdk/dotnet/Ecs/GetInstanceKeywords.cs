@@ -15,6 +15,33 @@ namespace Pulumi.AliCloud.Ecs
         /// Operation to query the reserved keywords of an ApsaraDB RDS instance. The reserved keywords cannot be used for the usernames of accounts or the names of databases.
         /// 
         /// &gt; **NOTE:** Available in v1.196.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var resources = AliCloud.Ecs.GetInstanceKeywords.Invoke(new()
+        ///     {
+        ///         Key = "account",
+        ///         OutputFile = "./classes.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["accountKeywords"] = resources.Apply(getInstanceKeywordsResult =&gt; getInstanceKeywordsResult.Keywords[0]),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceKeywordsResult> InvokeAsync(GetInstanceKeywordsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceKeywordsResult>("alicloud:ecs/getInstanceKeywords:getInstanceKeywords", args ?? new GetInstanceKeywordsArgs(), options.WithDefaults());
@@ -23,6 +50,33 @@ namespace Pulumi.AliCloud.Ecs
         /// Operation to query the reserved keywords of an ApsaraDB RDS instance. The reserved keywords cannot be used for the usernames of accounts or the names of databases.
         /// 
         /// &gt; **NOTE:** Available in v1.196.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var resources = AliCloud.Ecs.GetInstanceKeywords.Invoke(new()
+        ///     {
+        ///         Key = "account",
+        ///         OutputFile = "./classes.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["accountKeywords"] = resources.Apply(getInstanceKeywordsResult =&gt; getInstanceKeywordsResult.Keywords[0]),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstanceKeywordsResult> Invoke(GetInstanceKeywordsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceKeywordsResult>("alicloud:ecs/getInstanceKeywords:getInstanceKeywords", args ?? new GetInstanceKeywordsInvokeArgs(), options.WithDefaults());

@@ -18,6 +18,90 @@ import (
 //
 // > **NOTE:** Available in 1.86.0, parameter "action" in charList is supported since 1.164.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
+//				Description: pulumi.String("terraform-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = log.NewStore(ctx, "exampleStore", &log.StoreArgs{
+//				Project:            exampleProject.Name,
+//				ShardCount:         pulumi.Int(3),
+//				AutoSplit:          pulumi.Bool(true),
+//				MaxSplitShardCount: pulumi.Int(60),
+//				AppendMeta:         pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = log.NewDashboard(ctx, "exampleDashboard", &log.DashboardArgs{
+//				ProjectName:   exampleProject.Name,
+//				DashboardName: pulumi.String("terraform-example"),
+//				Attribute:     pulumi.String("{\"type\":\"grid\"}"),
+//				CharList: pulumi.String(`  [
+//	    {
+//	      "action": {},
+//	      "title":"new_title",
+//	      "type":"map",
+//	      "search":{
+//	        "logstore":"example-store",
+//	        "topic":"new_topic",
+//	        "query":"* | SELECT COUNT(name) as ct_name, COUNT(product) as ct_product, name,product GROUP BY name,product",
+//	        "start":"-86400s",
+//	        "end":"now"
+//	      },
+//	      "display":{
+//	        "xAxis":[
+//	          "ct_name"
+//	        ],
+//	        "yAxis":[
+//	          "ct_product"
+//	        ],
+//	        "xPos":0,
+//	        "yPos":0,
+//	        "width":10,
+//	        "height":12,
+//	        "displayName":"terraform-example"
+//	      }
+//	    }
+//	  ]
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Log Dashboard can be imported using the id or name, e.g.

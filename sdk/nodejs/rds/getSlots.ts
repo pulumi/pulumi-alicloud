@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * This data source provides the Rds Replication Slots of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available since v1.204.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.rds.getSlots({
+ *     dbInstanceId: "example_value",
+ * });
+ * export const firstRdsSlotsName = example.then(example => example.slots?.[0]?.slotName);
+ * ```
  */
 export function getSlots(args: GetSlotsArgs, opts?: pulumi.InvokeOptions): Promise<GetSlotsResult> {
 
@@ -59,6 +73,20 @@ export interface GetSlotsResult {
  * This data source provides the Rds Replication Slots of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available since v1.204.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.rds.getSlots({
+ *     dbInstanceId: "example_value",
+ * });
+ * export const firstRdsSlotsName = example.then(example => example.slots?.[0]?.slotName);
+ * ```
  */
 export function getSlotsOutput(args: GetSlotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSlotsResult> {
     return pulumi.output(args).apply((a: any) => getSlots(a, opts))

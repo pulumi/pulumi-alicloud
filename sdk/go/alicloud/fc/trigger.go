@@ -21,6 +21,753 @@ import (
 //
 // > **NOTE:** Available since v1.93.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultProject, err := log.NewProject(ctx, "defaultProject", nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultStore, err := log.NewStore(ctx, "defaultStore", &log.StoreArgs{
+//				Project: defaultProject.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			sourceStore, err := log.NewStore(ctx, "sourceStore", &log.StoreArgs{
+//				Project: defaultProject.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRole, err := ram.NewRole(ctx, "defaultRole", &ram.RoleArgs{
+//				Document: pulumi.String(`  {
+//	      "Statement": [
+//	        {
+//	          "Action": "sts:AssumeRole",
+//	          "Effect": "Allow",
+//	          "Principal": {
+//	            "Service": [
+//	              "fc.aliyuncs.com"
+//	            ]
+//	          }
+//	        }
+//	      ],
+//	      "Version": "1"
+//	  }
+//
+// `),
+//
+//				Description: pulumi.String("this is a example"),
+//				Force:       pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ram.NewRolePolicyAttachment(ctx, "defaultRolePolicyAttachment", &ram.RolePolicyAttachmentArgs{
+//				RoleName:   defaultRole.Name,
+//				PolicyName: pulumi.String("AliyunLogFullAccess"),
+//				PolicyType: pulumi.String("System"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultService, err := fc.NewService(ctx, "defaultService", &fc.ServiceArgs{
+//				Description: pulumi.String("example-value"),
+//				Role:        defaultRole.Arn,
+//				LogConfig: &fc.ServiceLogConfigArgs{
+//					Project:               defaultProject.Name,
+//					Logstore:              defaultStore.Name,
+//					EnableInstanceMetrics: pulumi.Bool(true),
+//					EnableRequestMetrics:  pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBucket, err := oss.NewBucket(ctx, "defaultBucket", &oss.BucketArgs{
+//				Bucket: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("terraform-example-%v", result), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBucketObject, err := oss.NewBucketObject(ctx, "defaultBucketObject", &oss.BucketObjectArgs{
+//				Bucket:  defaultBucket.ID(),
+//				Key:     pulumi.String("index.py"),
+//				Content: pulumi.String("import logging \ndef handler(event, context): \nlogger = logging.getLogger() \nlogger.info('hello world') \nreturn 'hello world'"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultFunction, err := fc.NewFunction(ctx, "defaultFunction", &fc.FunctionArgs{
+//				Service:     defaultService.Name,
+//				Description: pulumi.String("example"),
+//				OssBucket:   defaultBucket.ID(),
+//				OssKey:      defaultBucketObject.Key,
+//				MemorySize:  pulumi.Int(512),
+//				Runtime:     pulumi.String("python3.10"),
+//				Handler:     pulumi.String("hello.handler"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = fc.NewTrigger(ctx, "defaultTrigger", &fc.TriggerArgs{
+//				Service:  defaultService.Name,
+//				Function: defaultFunction.Name,
+//				Role:     defaultRole.Arn,
+//				SourceArn: defaultProject.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("acs:log:%v:%v:project/%v", defaultRegions.Regions[0].Id, defaultAccount.Id, name), nil
+//				}).(pulumi.StringOutput),
+//				Type: pulumi.String("log"),
+//				Config: pulumi.All(sourceStore.Name, defaultProject.Name, defaultStore.Name).ApplyT(func(_args []interface{}) (string, error) {
+//					sourceStoreName := _args[0].(string)
+//					defaultProjectName := _args[1].(string)
+//					defaultStoreName := _args[2].(string)
+//					return fmt.Sprintf(`    {
+//	        "sourceConfig": {
+//	            "logstore": "%v",
+//	            "startTime": null
+//	        },
+//	        "jobConfig": {
+//	            "maxRetryTime": 3,
+//	            "triggerInterval": 60
+//	        },
+//	        "functionParameter": {
+//	            "a": "b",
+//	            "c": "d"
+//	        },
+//	        "logConfig": {
+//	             "project": "%v",
+//	            "logstore": "%v"
+//	        },
+//	        "targetConfig": null,
+//	        "enable": true
+//	    }
+//
+// `, sourceStoreName, defaultProjectName, defaultStoreName), nil
+//
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// MNS topic trigger:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mns"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultTopic, err := mns.NewTopic(ctx, "defaultTopic", nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultRole, err := ram.NewRole(ctx, "defaultRole", &ram.RoleArgs{
+//				Document: pulumi.String(`  {
+//	      "Statement": [
+//	        {
+//	          "Action": "sts:AssumeRole",
+//	          "Effect": "Allow",
+//	          "Principal": {
+//	            "Service": [
+//	              "mns.aliyuncs.com"
+//	            ]
+//	          }
+//	        }
+//	      ],
+//	      "Version": "1"
+//	  }
+//
+// `),
+//
+//				Description: pulumi.String("this is a example"),
+//				Force:       pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ram.NewRolePolicyAttachment(ctx, "defaultRolePolicyAttachment", &ram.RolePolicyAttachmentArgs{
+//				RoleName:   defaultRole.Name,
+//				PolicyName: pulumi.String("AliyunMNSNotificationRolePolicy"),
+//				PolicyType: pulumi.String("System"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultService, err := fc.NewService(ctx, "defaultService", &fc.ServiceArgs{
+//				Description:    pulumi.String("example-value"),
+//				InternetAccess: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBucket, err := oss.NewBucket(ctx, "defaultBucket", &oss.BucketArgs{
+//				Bucket: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("terraform-example-%v", result), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBucketObject, err := oss.NewBucketObject(ctx, "defaultBucketObject", &oss.BucketObjectArgs{
+//				Bucket:  defaultBucket.ID(),
+//				Key:     pulumi.String("index.py"),
+//				Content: pulumi.String("import logging \ndef handler(event, context): \nlogger = logging.getLogger() \nlogger.info('hello world') \nreturn 'hello world'"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultFunction, err := fc.NewFunction(ctx, "defaultFunction", &fc.FunctionArgs{
+//				Service:     defaultService.Name,
+//				Description: pulumi.String("example"),
+//				OssBucket:   defaultBucket.ID(),
+//				OssKey:      defaultBucketObject.Key,
+//				MemorySize:  pulumi.Int(512),
+//				Runtime:     pulumi.String("python3.10"),
+//				Handler:     pulumi.String("hello.handler"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = fc.NewTrigger(ctx, "defaultTrigger", &fc.TriggerArgs{
+//				Service:  defaultService.Name,
+//				Function: defaultFunction.Name,
+//				Role:     defaultRole.Arn,
+//				SourceArn: defaultTopic.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("acs:mns:%v:%v:/topics/%v", defaultRegions.Regions[0].Id, defaultAccount.Id, name), nil
+//				}).(pulumi.StringOutput),
+//				Type: pulumi.String("mns_topic"),
+//				ConfigMns: pulumi.String(`  {
+//	    "filterTag":"exampleTag",
+//	    "notifyContentFormat":"STREAM",
+//	    "notifyStrategy":"BACKOFF_RETRY"
+//	  }
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// CDN events trigger:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cdn"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultDomainNew, err := cdn.NewDomainNew(ctx, "defaultDomainNew", &cdn.DomainNewArgs{
+//				DomainName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("example%v.tf.com", result), nil
+//				}).(pulumi.StringOutput),
+//				CdnType: pulumi.String("web"),
+//				Scope:   pulumi.String("overseas"),
+//				Sources: cdn.DomainNewSourceArray{
+//					&cdn.DomainNewSourceArgs{
+//						Content:  pulumi.String("1.1.1.1"),
+//						Type:     pulumi.String("ipaddr"),
+//						Priority: pulumi.Int(20),
+//						Port:     pulumi.Int(80),
+//						Weight:   pulumi.Int(10),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultService, err := fc.NewService(ctx, "defaultService", &fc.ServiceArgs{
+//				Description:    pulumi.String("example-value"),
+//				InternetAccess: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRole, err := ram.NewRole(ctx, "defaultRole", &ram.RoleArgs{
+//				Document: pulumi.String(`    {
+//	      "Statement": [
+//	        {
+//	          "Action": "sts:AssumeRole",
+//	          "Effect": "Allow",
+//	          "Principal": {
+//	            "Service": [
+//	              "cdn.aliyuncs.com"
+//	            ]
+//	          }
+//	        }
+//	      ],
+//	      "Version": "1"
+//	  }
+//
+// `),
+//
+//				Description: pulumi.String("this is a example"),
+//				Force:       pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultPolicy, err := ram.NewPolicy(ctx, "defaultPolicy", &ram.PolicyArgs{
+//				PolicyName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("fcservicepolicy-%v", result), nil
+//				}).(pulumi.StringOutput),
+//				PolicyDocument: pulumi.All(defaultService.Name, defaultService.Name).ApplyT(func(_args []interface{}) (string, error) {
+//					defaultServiceName := _args[0].(string)
+//					defaultServiceName1 := _args[1].(string)
+//					return fmt.Sprintf(`    {
+//	        "Version": "1",
+//	        "Statement": [
+//	        {
+//	            "Action": [
+//	            "fc:InvokeFunction"
+//	            ],
+//	        "Resource": [
+//	            "acs:fc:*:*:services/%v/functions/*",
+//	            "acs:fc:*:*:services/%v.*/functions/*"
+//	        ],
+//	        "Effect": "Allow"
+//	        }
+//	        ]
+//	    }
+//
+// `, defaultServiceName, defaultServiceName1), nil
+//
+//				}).(pulumi.StringOutput),
+//				Description: pulumi.String("this is a example"),
+//				Force:       pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ram.NewRolePolicyAttachment(ctx, "defaultRolePolicyAttachment", &ram.RolePolicyAttachmentArgs{
+//				RoleName:   defaultRole.Name,
+//				PolicyName: defaultPolicy.Name,
+//				PolicyType: pulumi.String("Custom"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBucket, err := oss.NewBucket(ctx, "defaultBucket", &oss.BucketArgs{
+//				Bucket: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("terraform-example-%v", result), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBucketObject, err := oss.NewBucketObject(ctx, "defaultBucketObject", &oss.BucketObjectArgs{
+//				Bucket:  defaultBucket.ID(),
+//				Key:     pulumi.String("index.py"),
+//				Content: pulumi.String("import logging \ndef handler(event, context): \nlogger = logging.getLogger() \nlogger.info('hello world') \nreturn 'hello world'"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultFunction, err := fc.NewFunction(ctx, "defaultFunction", &fc.FunctionArgs{
+//				Service:     defaultService.Name,
+//				Description: pulumi.String("example"),
+//				OssBucket:   defaultBucket.ID(),
+//				OssKey:      defaultBucketObject.Key,
+//				MemorySize:  pulumi.Int(512),
+//				Runtime:     pulumi.String("python3.10"),
+//				Handler:     pulumi.String("hello.handler"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = fc.NewTrigger(ctx, "defaultTrigger", &fc.TriggerArgs{
+//				Service:   defaultService.Name,
+//				Function:  defaultFunction.Name,
+//				Role:      defaultRole.Arn,
+//				SourceArn: pulumi.String(fmt.Sprintf("acs:cdn:*:%v", defaultAccount.Id)),
+//				Type:      pulumi.String("cdn_events"),
+//				Config: defaultDomainNew.DomainName.ApplyT(func(domainName string) (string, error) {
+//					return fmt.Sprintf(`      {"eventName":"LogFileCreated",
+//	     "eventVersion":"1.0.0",
+//	     "notes":"cdn events trigger",
+//	     "filter":{
+//	        "domain": ["%v"]
+//	        }
+//	    }
+//
+// `, domainName), nil
+//
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// EventBridge trigger:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/amqp"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eventbridge"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = eventbridge.NewServiceLinkedRole(ctx, "serviceLinkedRole", &eventbridge.ServiceLinkedRoleArgs{
+//				ProductName: pulumi.String("AliyunServiceRoleForEventBridgeSendToFC"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultService, err := fc.NewService(ctx, "defaultService", &fc.ServiceArgs{
+//				Description:    pulumi.String("example-value"),
+//				InternetAccess: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBucket, err := oss.NewBucket(ctx, "defaultBucket", &oss.BucketArgs{
+//				Bucket: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("terraform-example-%v", result), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBucketObject, err := oss.NewBucketObject(ctx, "defaultBucketObject", &oss.BucketObjectArgs{
+//				Bucket:  defaultBucket.ID(),
+//				Key:     pulumi.String("index.py"),
+//				Content: pulumi.String("import logging \ndef handler(event, context): \nlogger = logging.getLogger() \nlogger.info('hello world') \nreturn 'hello world'"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultFunction, err := fc.NewFunction(ctx, "defaultFunction", &fc.FunctionArgs{
+//				Service:     defaultService.Name,
+//				Description: pulumi.String("example"),
+//				OssBucket:   defaultBucket.ID(),
+//				OssKey:      defaultBucketObject.Key,
+//				MemorySize:  pulumi.Int(512),
+//				Runtime:     pulumi.String("python3.10"),
+//				Handler:     pulumi.String("hello.handler"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = fc.NewTrigger(ctx, "ossTrigger", &fc.TriggerArgs{
+//				Service:  defaultService.Name,
+//				Function: defaultFunction.Name,
+//				Type:     pulumi.String("eventbridge"),
+//				Config: pulumi.String(`    {
+//	        "triggerEnable": false,
+//	        "asyncInvocationType": false,
+//	        "eventRuleFilterPattern": {
+//	          "source":[
+//	            "acs.oss"
+//	            ],
+//	            "type":[
+//	              "oss:BucketCreated:PutBucket"
+//	            ]
+//	        },
+//	        "eventSourceConfig": {
+//	            "eventSourceType": "Default"
+//	        }
+//	    }
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = fc.NewTrigger(ctx, "mnsTrigger", &fc.TriggerArgs{
+//				Service:  defaultService.Name,
+//				Function: defaultFunction.Name,
+//				Type:     pulumi.String("eventbridge"),
+//				Config: pulumi.String(`    {
+//	        "triggerEnable": false,
+//	        "asyncInvocationType": false,
+//	        "eventRuleFilterPattern": "{}",
+//	        "eventSourceConfig": {
+//	            "eventSourceType": "MNS",
+//	            "eventSourceParameters": {
+//	                "sourceMNSParameters": {
+//	                    "RegionId": "cn-hangzhou",
+//	                    "QueueName": "mns-queue",
+//	                    "IsBase64Decode": true
+//	                }
+//	            }
+//	        }
+//	    }
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := rocketmq.NewInstance(ctx, "defaultInstance", &rocketmq.InstanceArgs{
+//				InstanceName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("terraform-example-%v", result), nil
+//				}).(pulumi.StringOutput),
+//				Remark: pulumi.String("terraform-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultGroup, err := rocketmq.NewGroup(ctx, "defaultGroup", &rocketmq.GroupArgs{
+//				GroupName:  pulumi.String("GID-example"),
+//				InstanceId: defaultInstance.ID(),
+//				Remark:     pulumi.String("terraform-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultTopic, err := rocketmq.NewTopic(ctx, "defaultTopic", &rocketmq.TopicArgs{
+//				TopicName:   pulumi.String("mytopic"),
+//				InstanceId:  defaultInstance.ID(),
+//				MessageType: pulumi.Int(0),
+//				Remark:      pulumi.String("terraform-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = fc.NewTrigger(ctx, "rocketmqTrigger", &fc.TriggerArgs{
+//				Service:  defaultService.Name,
+//				Function: defaultFunction.Name,
+//				Type:     pulumi.String("eventbridge"),
+//				Config: pulumi.All(defaultInstance.ID(), defaultGroup.GroupName, defaultTopic.TopicName).ApplyT(func(_args []interface{}) (string, error) {
+//					id := _args[0].(string)
+//					groupName := _args[1].(string)
+//					topicName := _args[2].(string)
+//					return fmt.Sprintf(`    {
+//	        "triggerEnable": false,
+//	        "asyncInvocationType": false,
+//	        "eventRuleFilterPattern": "{}",
+//	        "eventSourceConfig": {
+//	            "eventSourceType": "RocketMQ",
+//	            "eventSourceParameters": {
+//	                "sourceRocketMQParameters": {
+//	                    "RegionId": "%v",
+//	                    "InstanceId": "%v",
+//	                    "GroupID": "%v",
+//	                    "Topic": "%v",
+//	                    "Timestamp": 1686296162,
+//	                    "Tag": "example-tag",
+//	                    "Offset": "CONSUME_FROM_LAST_OFFSET"
+//	                }
+//	            }
+//	        }
+//	    }
+//
+// `, defaultRegions.Regions[0].Id, id, groupName, topicName), nil
+//
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = amqp.NewInstance(ctx, "defaultAmqp/instanceInstance", &amqp.InstanceArgs{
+//				InstanceName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("terraform-example-%v", result), nil
+//				}).(pulumi.StringOutput),
+//				InstanceType:  pulumi.String("professional"),
+//				MaxTps:        pulumi.String("1000"),
+//				QueueCapacity: pulumi.String("50"),
+//				SupportEip:    pulumi.Bool(true),
+//				MaxEipTps:     pulumi.String("128"),
+//				PaymentType:   pulumi.String("Subscription"),
+//				Period:        pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultVirtualHost, err := amqp.NewVirtualHost(ctx, "defaultVirtualHost", &amqp.VirtualHostArgs{
+//				InstanceId:      defaultAmqp / instanceInstance.Id,
+//				VirtualHostName: pulumi.String("example-VirtualHost"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultQueue, err := amqp.NewQueue(ctx, "defaultQueue", &amqp.QueueArgs{
+//				InstanceId:      defaultVirtualHost.InstanceId,
+//				QueueName:       pulumi.String("example-queue"),
+//				VirtualHostName: defaultVirtualHost.VirtualHostName,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = fc.NewTrigger(ctx, "rabbitmqTrigger", &fc.TriggerArgs{
+//				Service:  defaultService.Name,
+//				Function: defaultFunction.Name,
+//				Type:     pulumi.String("eventbridge"),
+//				Config: pulumi.All(defaultVirtualHost.VirtualHostName, defaultQueue.QueueName).ApplyT(func(_args []interface{}) (string, error) {
+//					virtualHostName := _args[0].(string)
+//					queueName := _args[1].(string)
+//					return fmt.Sprintf(`    {
+//	        "triggerEnable": false,
+//	        "asyncInvocationType": false,
+//	        "eventRuleFilterPattern": "{}",
+//	        "eventSourceConfig": {
+//	            "eventSourceType": "RabbitMQ",
+//	            "eventSourceParameters": {
+//	                "sourceRabbitMQParameters": {
+//	                    "RegionId": "%v",
+//	                    "InstanceId": "%v",
+//	                    "VirtualHostName": "%v",
+//	                    "QueueName": "%v"
+//	                }
+//	            }
+//	        }
+//	    }
+//
+// `, defaultRegions.Regions[0].Id, defaultAmqp/instanceInstance.Id, virtualHostName, queueName), nil
+//
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Module Support
 //
 // You can use to the existing fc module

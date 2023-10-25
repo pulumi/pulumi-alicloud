@@ -9,6 +9,21 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.85.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const key = new alicloud.kms.Key("key", {
+ *     description: "Hello KMS",
+ *     pendingWindowInDays: 7,
+ *     status: "Enabled",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Alikms key can be imported using the id, e.g.

@@ -334,6 +334,27 @@ class EcsImageComponent(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.159.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.resourcemanager.get_resource_groups(name_regex="default")
+        example = alicloud.ecs.EcsImageComponent("example",
+            component_type="Build",
+            content="RUN yum update -y",
+            description="example_value",
+            image_component_name="example_value",
+            resource_group_id=default.groups[0].id,
+            system_type="Linux",
+            tags={
+                "Created": "TF",
+            })
+        ```
+
         ## Import
 
         ECS Image Component can be imported using the id, e.g.
@@ -364,6 +385,27 @@ class EcsImageComponent(pulumi.CustomResource):
         For information about ECS Image Component and how to use it, see [What is Image Component](https://www.alibabacloud.com/help/en/doc-detail/200424.htm).
 
         > **NOTE:** Available in v1.159.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.resourcemanager.get_resource_groups(name_regex="default")
+        example = alicloud.ecs.EcsImageComponent("example",
+            component_type="Build",
+            content="RUN yum update -y",
+            description="example_value",
+            image_component_name="example_value",
+            resource_group_id=default.groups[0].id,
+            system_type="Linux",
+            tags={
+                "Created": "TF",
+            })
+        ```
 
         ## Import
 

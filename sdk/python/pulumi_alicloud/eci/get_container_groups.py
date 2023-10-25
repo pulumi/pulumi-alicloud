@@ -189,6 +189,18 @@ def get_container_groups(container_group_name: Optional[str] = None,
 
     > **NOTE:** Available in v1.111.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.eci.get_container_groups(ids=["example_value"])
+    pulumi.export("firstEciContainerGroupId", example.groups[0].id)
+    ```
+
 
     :param str container_group_name: The name of ContainerGroup.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -254,6 +266,18 @@ def get_container_groups_output(container_group_name: Optional[pulumi.Input[Opti
     This data source provides the Eci Container Groups of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.111.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.eci.get_container_groups(ids=["example_value"])
+    pulumi.export("firstEciContainerGroupId", example.groups[0].id)
+    ```
 
 
     :param str container_group_name: The name of ContainerGroup.

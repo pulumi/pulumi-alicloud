@@ -839,6 +839,24 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.139.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.cloudfirewall.Instance("example",
+            band_width=10,
+            cfw_log=True,
+            cfw_log_storage=1000,
+            ip_number=20,
+            payment_type="Subscription",
+            period=1,
+            spec="premium_version")
+        ```
+
         ## Import
 
         Cloud Firewall Instance can be imported using the id, e.g.
@@ -879,6 +897,24 @@ class Instance(pulumi.CustomResource):
         For information about Cloud Firewall Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/product/90174.htm).
 
         > **NOTE:** Available since v1.139.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.cloudfirewall.Instance("example",
+            band_width=10,
+            cfw_log=True,
+            cfw_log_storage=1000,
+            ip_number=20,
+            payment_type="Subscription",
+            period=1,
+            spec="premium_version")
+        ```
 
         ## Import
 

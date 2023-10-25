@@ -10,6 +10,24 @@ import * as utilities from "../utilities";
  * This data source provides the Express Connect Access Points of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.132.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.expressconnect.getAccessPoints({
+ *     ids: ["ap-cn-hangzhou-yh-C"],
+ * });
+ * export const expressConnectAccessPointId1 = ids.then(ids => ids.points?.[0]?.id);
+ * const nameRegex = alicloud.expressconnect.getAccessPoints({
+ *     nameRegex: "^杭州-",
+ * });
+ * export const expressConnectAccessPointId2 = nameRegex.then(nameRegex => nameRegex.points?.[0]?.id);
+ * ```
  */
 export function getAccessPoints(args?: GetAccessPointsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessPointsResult> {
     args = args || {};
@@ -64,6 +82,24 @@ export interface GetAccessPointsResult {
  * This data source provides the Express Connect Access Points of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.132.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.expressconnect.getAccessPoints({
+ *     ids: ["ap-cn-hangzhou-yh-C"],
+ * });
+ * export const expressConnectAccessPointId1 = ids.then(ids => ids.points?.[0]?.id);
+ * const nameRegex = alicloud.expressconnect.getAccessPoints({
+ *     nameRegex: "^杭州-",
+ * });
+ * export const expressConnectAccessPointId2 = nameRegex.then(nameRegex => nameRegex.points?.[0]?.id);
+ * ```
  */
 export function getAccessPointsOutput(args?: GetAccessPointsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessPointsResult> {
     return pulumi.output(args).apply((a: any) => getAccessPoints(a, opts))

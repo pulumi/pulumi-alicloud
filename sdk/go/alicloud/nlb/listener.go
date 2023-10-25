@@ -19,6 +19,149 @@ import (
 //
 // > **NOTE:** Available since v1.191.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nlb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultZones, err := nlb.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			default1, err := vpc.NewSwitch(ctx, "default1", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.1.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[1].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultLoadBalancer, err := nlb.NewLoadBalancer(ctx, "defaultLoadBalancer", &nlb.LoadBalancerArgs{
+//				LoadBalancerName: pulumi.String(name),
+//				ResourceGroupId:  *pulumi.String(defaultResourceGroups.Ids[0]),
+//				LoadBalancerType: pulumi.String("Network"),
+//				AddressType:      pulumi.String("Internet"),
+//				AddressIpVersion: pulumi.String("Ipv4"),
+//				VpcId:            defaultNetwork.ID(),
+//				Tags: pulumi.Map{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("example"),
+//				},
+//				ZoneMappings: nlb.LoadBalancerZoneMappingArray{
+//					&nlb.LoadBalancerZoneMappingArgs{
+//						VswitchId: defaultSwitch.ID(),
+//						ZoneId:    *pulumi.String(defaultZones.Zones[0].Id),
+//					},
+//					&nlb.LoadBalancerZoneMappingArgs{
+//						VswitchId: default1.ID(),
+//						ZoneId:    *pulumi.String(defaultZones.Zones[1].Id),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultServerGroup, err := nlb.NewServerGroup(ctx, "defaultServerGroup", &nlb.ServerGroupArgs{
+//				ResourceGroupId:        *pulumi.String(defaultResourceGroups.Ids[0]),
+//				ServerGroupName:        pulumi.String(name),
+//				ServerGroupType:        pulumi.String("Instance"),
+//				VpcId:                  defaultNetwork.ID(),
+//				Scheduler:              pulumi.String("Wrr"),
+//				Protocol:               pulumi.String("TCP"),
+//				ConnectionDrain:        pulumi.Bool(true),
+//				ConnectionDrainTimeout: pulumi.Int(60),
+//				AddressIpVersion:       pulumi.String("Ipv4"),
+//				HealthCheck: &nlb.ServerGroupHealthCheckArgs{
+//					HealthCheckEnabled:        pulumi.Bool(true),
+//					HealthCheckType:           pulumi.String("TCP"),
+//					HealthCheckConnectPort:    pulumi.Int(0),
+//					HealthyThreshold:          pulumi.Int(2),
+//					UnhealthyThreshold:        pulumi.Int(2),
+//					HealthCheckConnectTimeout: pulumi.Int(5),
+//					HealthCheckInterval:       pulumi.Int(10),
+//					HttpCheckMethod:           pulumi.String("GET"),
+//					HealthCheckHttpCodes: pulumi.StringArray{
+//						pulumi.String("http_2xx"),
+//						pulumi.String("http_3xx"),
+//						pulumi.String("http_4xx"),
+//					},
+//				},
+//				Tags: pulumi.Map{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("example"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = nlb.NewListener(ctx, "defaultListener", &nlb.ListenerArgs{
+//				ListenerProtocol:     pulumi.String("TCP"),
+//				ListenerPort:         pulumi.Int(80),
+//				ListenerDescription:  pulumi.String(name),
+//				LoadBalancerId:       defaultLoadBalancer.ID(),
+//				ServerGroupId:        defaultServerGroup.ID(),
+//				IdleTimeout:          pulumi.Int(900),
+//				ProxyProtocolEnabled: pulumi.Bool(true),
+//				SecSensorEnabled:     pulumi.Bool(true),
+//				Cps:                  pulumi.Int(10000),
+//				Mss:                  pulumi.Int(0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // NLB Listener can be imported using the id, e.g.

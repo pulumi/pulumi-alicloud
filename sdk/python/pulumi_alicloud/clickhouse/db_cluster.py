@@ -881,6 +881,40 @@ class DbCluster(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.134.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_regions = alicloud.clickhouse.get_regions(current=True)
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_regions.regions[0].zone_ids[0].zone_id)
+        default_db_cluster = alicloud.clickhouse.DbCluster("defaultDbCluster",
+            db_cluster_version="22.8.5.29",
+            category="Basic",
+            db_cluster_class="S8",
+            db_cluster_network_type="vpc",
+            db_node_group_count=1,
+            payment_type="PayAsYouGo",
+            db_node_storage="500",
+            storage_type="cloud_essd",
+            vswitch_id=default_switch.id,
+            vpc_id=default_network.id)
+        ```
+
         ## Import
 
         Click House DBCluster can be imported using the id, e.g.
@@ -925,6 +959,40 @@ class DbCluster(pulumi.CustomResource):
         For information about Click House DBCluster and how to use it, see [What is DBCluster](https://www.alibabacloud.com/help/en/clickhouse/latest/api-clickhouse-2019-11-11-createdbinstance).
 
         > **NOTE:** Available since v1.134.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_regions = alicloud.clickhouse.get_regions(current=True)
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_regions.regions[0].zone_ids[0].zone_id)
+        default_db_cluster = alicloud.clickhouse.DbCluster("defaultDbCluster",
+            db_cluster_version="22.8.5.29",
+            category="Basic",
+            db_cluster_class="S8",
+            db_cluster_network_type="vpc",
+            db_node_group_count=1,
+            payment_type="PayAsYouGo",
+            db_node_storage="500",
+            storage_type="cloud_essd",
+            vswitch_id=default_switch.id,
+            vpc_id=default_network.id)
+        ```
 
         ## Import
 

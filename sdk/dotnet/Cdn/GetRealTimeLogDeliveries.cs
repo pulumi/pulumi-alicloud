@@ -15,6 +15,34 @@ namespace Pulumi.AliCloud.Cdn
         /// This data source provides the Cdn Real Time Log Deliveries of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.134.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Cdn.GetRealTimeLogDeliveries.Invoke(new()
+        ///     {
+        ///         Domain = "example_value",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cdnRealTimeLogDelivery1"] = example.Apply(getRealTimeLogDeliveriesResult =&gt; getRealTimeLogDeliveriesResult.Deliveries[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRealTimeLogDeliveriesResult> InvokeAsync(GetRealTimeLogDeliveriesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRealTimeLogDeliveriesResult>("alicloud:cdn/getRealTimeLogDeliveries:getRealTimeLogDeliveries", args ?? new GetRealTimeLogDeliveriesArgs(), options.WithDefaults());
@@ -23,6 +51,34 @@ namespace Pulumi.AliCloud.Cdn
         /// This data source provides the Cdn Real Time Log Deliveries of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.134.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Cdn.GetRealTimeLogDeliveries.Invoke(new()
+        ///     {
+        ///         Domain = "example_value",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cdnRealTimeLogDelivery1"] = example.Apply(getRealTimeLogDeliveriesResult =&gt; getRealTimeLogDeliveriesResult.Deliveries[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetRealTimeLogDeliveriesResult> Invoke(GetRealTimeLogDeliveriesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRealTimeLogDeliveriesResult>("alicloud:cdn/getRealTimeLogDeliveries:getRealTimeLogDeliveries", args ?? new GetRealTimeLogDeliveriesInvokeArgs(), options.WithDefaults());

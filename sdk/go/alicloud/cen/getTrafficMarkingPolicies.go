@@ -15,6 +15,47 @@ import (
 // This data source provides the Cen Traffic Marking Policies of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.173.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := cen.GetTrafficMarkingPolicies(ctx, &cen.GetTrafficMarkingPoliciesArgs{
+//				TransitRouterId: "example_value",
+//				Ids: []string{
+//					"example_value-1",
+//					"example_value-2",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cenTrafficMarkingPolicyId1", ids.Policies[0].Id)
+//			nameRegex, err := cen.GetTrafficMarkingPolicies(ctx, &cen.GetTrafficMarkingPoliciesArgs{
+//				TransitRouterId: "example_value",
+//				NameRegex:       pulumi.StringRef("^my-TrafficMarkingPolicy"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("cenTrafficMarkingPolicyId2", nameRegex.Policies[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetTrafficMarkingPolicies(ctx *pulumi.Context, args *GetTrafficMarkingPoliciesArgs, opts ...pulumi.InvokeOption) (*GetTrafficMarkingPoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTrafficMarkingPoliciesResult

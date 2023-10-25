@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * This data source provides the Adb DBClusters of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available since v1.121.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.adb.getDBClusters({
+ *     descriptionRegex: "example",
+ * });
+ * export const firstAdbDbClusterId = example.then(example => example.clusters?.[0]?.id);
+ * ```
  */
 export function getDBClusters(args?: GetDBClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetDBClustersResult> {
     args = args || {};
@@ -113,6 +127,20 @@ export interface GetDBClustersResult {
  * This data source provides the Adb DBClusters of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available since v1.121.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.adb.getDBClusters({
+ *     descriptionRegex: "example",
+ * });
+ * export const firstAdbDbClusterId = example.then(example => example.clusters?.[0]?.id);
+ * ```
  */
 export function getDBClustersOutput(args?: GetDBClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDBClustersResult> {
     return pulumi.output(args).apply((a: any) => getDBClusters(a, opts))

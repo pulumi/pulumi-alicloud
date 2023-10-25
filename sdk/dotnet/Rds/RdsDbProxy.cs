@@ -14,6 +14,99 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// &gt; **NOTE:** Available since v1.193.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultZones = AliCloud.Rds.GetZones.Invoke(new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "5.6",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Rds.Instance("defaultInstance", new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "5.7",
+    ///         InstanceType = "rds.mysql.c1.large",
+    ///         InstanceStorage = 20,
+    ///         InstanceChargeType = "Postpaid",
+    ///         InstanceName = name,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         DbInstanceStorageType = "local_ssd",
+    ///     });
+    /// 
+    ///     var defaultReadOnlyInstance = new AliCloud.Rds.ReadOnlyInstance("defaultReadOnlyInstance", new()
+    ///     {
+    ///         ZoneId = defaultInstance.ZoneId,
+    ///         MasterDbInstanceId = defaultInstance.Id,
+    ///         EngineVersion = defaultInstance.EngineVersion,
+    ///         InstanceStorage = defaultInstance.InstanceStorage,
+    ///         InstanceType = defaultInstance.InstanceType,
+    ///         InstanceName = $"{name}readonly",
+    ///         VswitchId = defaultSwitch.Id,
+    ///     });
+    /// 
+    ///     var defaultRdsDbProxy = new AliCloud.Rds.RdsDbProxy("defaultRdsDbProxy", new()
+    ///     {
+    ///         InstanceId = defaultInstance.Id,
+    ///         InstanceNetworkType = "VPC",
+    ///         VpcId = defaultInstance.VpcId,
+    ///         VswitchId = defaultInstance.VswitchId,
+    ///         DbProxyInstanceNum = 2,
+    ///         DbProxyConnectionPrefix = "example",
+    ///         DbProxyConnectStringPort = 3306,
+    ///         DbProxyEndpointReadWriteMode = "ReadWrite",
+    ///         ReadOnlyInstanceMaxDelayTime = 90,
+    ///         DbProxyFeatures = "TransactionReadSqlRouteOptimizeStatus:1;ConnectionPersist:1;ReadWriteSpliting:1",
+    ///         ReadOnlyInstanceDistributionType = "Custom",
+    ///         ReadOnlyInstanceWeights = new[]
+    ///         {
+    ///             new AliCloud.Rds.Inputs.RdsDbProxyReadOnlyInstanceWeightArgs
+    ///             {
+    ///                 InstanceId = defaultInstance.Id,
+    ///                 Weight = "100",
+    ///             },
+    ///             new AliCloud.Rds.Inputs.RdsDbProxyReadOnlyInstanceWeightArgs
+    ///             {
+    ///                 InstanceId = defaultReadOnlyInstance.Id,
+    ///                 Weight = "500",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// &gt; **NOTE:** Resource `alicloud.rds.RdsDbProxy` should be created after `alicloud.rds.ReadOnlyInstance`, so the `depends_on` statement is necessary.
+    /// 
     /// ## Import
     /// 
     /// RDS database proxy feature can be imported using the id, e.g.

@@ -11,6 +11,22 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const example = new alicloud.cr.Namespace("example", {
+ *     autoCreate: false,
+ *     defaultVisibility: "PUBLIC",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Container Registry namespace can be imported using the namespace, e.g.

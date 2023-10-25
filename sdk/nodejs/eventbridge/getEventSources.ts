@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides the Event Bridge Event Sources of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.130.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.eventbridge.getEventSources({
+ *     ids: ["example_value"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstEventBridgeEventSourceId = example.then(example => example.sources?.[0]?.id);
+ * ```
  */
 export function getEventSources(args?: GetEventSourcesArgs, opts?: pulumi.InvokeOptions): Promise<GetEventSourcesResult> {
     args = args || {};
@@ -58,6 +73,21 @@ export interface GetEventSourcesResult {
  * This data source provides the Event Bridge Event Sources of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.130.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.eventbridge.getEventSources({
+ *     ids: ["example_value"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstEventBridgeEventSourceId = example.then(example => example.sources?.[0]?.id);
+ * ```
  */
 export function getEventSourcesOutput(args?: GetEventSourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEventSourcesResult> {
     return pulumi.output(args).apply((a: any) => getEventSources(a, opts))

@@ -10,6 +10,45 @@ import * as utilities from "../utilities";
  * This data source provides the Vpc Nat Ip Cidrs of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.136.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.vpc.getNatIpCidrs({
+ *     natGatewayId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const vpcNatIpCidrId1 = ids.then(ids => ids.cidrs?.[0]?.id);
+ * const nameRegex = alicloud.vpc.getNatIpCidrs({
+ *     natGatewayId: "example_value",
+ *     nameRegex: "^my-NatIpCidr",
+ * });
+ * export const vpcNatIpCidrId2 = nameRegex.then(nameRegex => nameRegex.cidrs?.[0]?.id);
+ * const status = alicloud.vpc.getNatIpCidrs({
+ *     natGatewayId: "example_value",
+ *     ids: ["example_value-1"],
+ *     status: "Available",
+ * });
+ * export const vpcNatIpCidrId3 = status.then(status => status.cidrs?.[0]?.id);
+ * const natIpCidr = alicloud.vpc.getNatIpCidrs({
+ *     natGatewayId: "example_value",
+ *     natIpCidrs: ["example_value-1"],
+ * });
+ * export const vpcNatIpCidrId4 = natIpCidr.then(natIpCidr => natIpCidr.cidrs?.[0]?.id);
+ * const atIpCidrName = alicloud.vpc.getNatIpCidrs({
+ *     natGatewayId: "example_value",
+ *     natIpCidrNames: ["example_value-1"],
+ * });
+ * export const vpcNatIpCidrId5 = atIpCidrName.then(atIpCidrName => atIpCidrName.cidrs?.[0]?.id);
+ * ```
  */
 export function getNatIpCidrs(args: GetNatIpCidrsArgs, opts?: pulumi.InvokeOptions): Promise<GetNatIpCidrsResult> {
 
@@ -81,6 +120,45 @@ export interface GetNatIpCidrsResult {
  * This data source provides the Vpc Nat Ip Cidrs of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.136.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.vpc.getNatIpCidrs({
+ *     natGatewayId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const vpcNatIpCidrId1 = ids.then(ids => ids.cidrs?.[0]?.id);
+ * const nameRegex = alicloud.vpc.getNatIpCidrs({
+ *     natGatewayId: "example_value",
+ *     nameRegex: "^my-NatIpCidr",
+ * });
+ * export const vpcNatIpCidrId2 = nameRegex.then(nameRegex => nameRegex.cidrs?.[0]?.id);
+ * const status = alicloud.vpc.getNatIpCidrs({
+ *     natGatewayId: "example_value",
+ *     ids: ["example_value-1"],
+ *     status: "Available",
+ * });
+ * export const vpcNatIpCidrId3 = status.then(status => status.cidrs?.[0]?.id);
+ * const natIpCidr = alicloud.vpc.getNatIpCidrs({
+ *     natGatewayId: "example_value",
+ *     natIpCidrs: ["example_value-1"],
+ * });
+ * export const vpcNatIpCidrId4 = natIpCidr.then(natIpCidr => natIpCidr.cidrs?.[0]?.id);
+ * const atIpCidrName = alicloud.vpc.getNatIpCidrs({
+ *     natGatewayId: "example_value",
+ *     natIpCidrNames: ["example_value-1"],
+ * });
+ * export const vpcNatIpCidrId5 = atIpCidrName.then(atIpCidrName => atIpCidrName.cidrs?.[0]?.id);
+ * ```
  */
 export function getNatIpCidrsOutput(args: GetNatIpCidrsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNatIpCidrsResult> {
     return pulumi.output(args).apply((a: any) => getNatIpCidrs(a, opts))

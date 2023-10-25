@@ -19,6 +19,38 @@ import (
 //
 // > **NOTE:** Available in v1.135.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/videosurveillance"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := videosurveillance.NewSystemGroup(ctx, "default", &videosurveillance.SystemGroupArgs{
+//				GroupName:   pulumi.String("your_group_name"),
+//				InProtocol:  pulumi.String("rtmp"),
+//				OutProtocol: pulumi.String("flv"),
+//				PlayDomain:  pulumi.String("your_plan_domain"),
+//				PushDomain:  pulumi.String("your_push_domain"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Video Surveillance System Group can be imported using the id, e.g.

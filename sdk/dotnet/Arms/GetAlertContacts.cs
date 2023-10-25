@@ -15,6 +15,37 @@ namespace Pulumi.AliCloud.Arms
         /// This data source provides the Arms Alert Contacts of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.129.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Arms.GetAlertContacts.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.Arms.GetAlertContacts.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-AlertContact",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["armsAlertContactId1"] = ids.Apply(getAlertContactsResult =&gt; getAlertContactsResult.Contacts[0]?.Id),
+        ///         ["armsAlertContactId2"] = nameRegex.Apply(getAlertContactsResult =&gt; getAlertContactsResult.Contacts[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAlertContactsResult> InvokeAsync(GetAlertContactsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAlertContactsResult>("alicloud:arms/getAlertContacts:getAlertContacts", args ?? new GetAlertContactsArgs(), options.WithDefaults());
@@ -23,6 +54,37 @@ namespace Pulumi.AliCloud.Arms
         /// This data source provides the Arms Alert Contacts of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.129.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Arms.GetAlertContacts.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.Arms.GetAlertContacts.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-AlertContact",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["armsAlertContactId1"] = ids.Apply(getAlertContactsResult =&gt; getAlertContactsResult.Contacts[0]?.Id),
+        ///         ["armsAlertContactId2"] = nameRegex.Apply(getAlertContactsResult =&gt; getAlertContactsResult.Contacts[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAlertContactsResult> Invoke(GetAlertContactsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAlertContactsResult>("alicloud:arms/getAlertContacts:getAlertContacts", args ?? new GetAlertContactsInvokeArgs(), options.WithDefaults());

@@ -21,6 +21,149 @@ import (
 //
 // > **NOTE:** Available since v1.82.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			sourceRegion := "cn-hangzhou"
+//			if param := cfg.Get("sourceRegion"); param != "" {
+//				sourceRegion = param
+//			}
+//			destinationRegion := "cn-shanghai"
+//			if param := cfg.Get("destinationRegion"); param != "" {
+//				destinationRegion = param
+//			}
+//			_, err := alicloud.NewProvider(ctx, "hz", &alicloud.ProviderArgs{
+//				Region: pulumi.String(sourceRegion),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = alicloud.NewProvider(ctx, "sh", &alicloud.ProviderArgs{
+//				Region: pulumi.String(destinationRegion),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleHzNetwork, err := vpc.NewNetwork(ctx, "exampleHzNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("tf_example"),
+//				CidrBlock: pulumi.String("192.168.0.0/16"),
+//			}, pulumi.Provider(alicloud.Hz))
+//			if err != nil {
+//				return err
+//			}
+//			exampleShNetwork, err := vpc.NewNetwork(ctx, "exampleShNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("tf_example"),
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			}, pulumi.Provider(alicloud.Sh))
+//			if err != nil {
+//				return err
+//			}
+//			example, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String("tf_example"),
+//				Description:     pulumi.String("an example for cen"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleHzInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "exampleHzInstanceAttachment", &cen.InstanceAttachmentArgs{
+//				InstanceId:            example.ID(),
+//				ChildInstanceId:       exampleHzNetwork.ID(),
+//				ChildInstanceType:     pulumi.String("VPC"),
+//				ChildInstanceRegionId: pulumi.String(sourceRegion),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleShInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "exampleShInstanceAttachment", &cen.InstanceAttachmentArgs{
+//				InstanceId:            example.ID(),
+//				ChildInstanceId:       exampleShNetwork.ID(),
+//				ChildInstanceType:     pulumi.String("VPC"),
+//				ChildInstanceRegionId: pulumi.String(destinationRegion),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cen.NewRouteMap(ctx, "default", &cen.RouteMapArgs{
+//				CenRegionId:       pulumi.String(sourceRegion),
+//				CenId:             example.ID(),
+//				Description:       pulumi.String("tf_example"),
+//				Priority:          pulumi.Int(1),
+//				TransmitDirection: pulumi.String("RegionIn"),
+//				MapResult:         pulumi.String("Permit"),
+//				NextPriority:      pulumi.Int(1),
+//				SourceRegionIds: pulumi.StringArray{
+//					pulumi.String(sourceRegion),
+//				},
+//				SourceInstanceIds: pulumi.StringArray{
+//					exampleHzInstanceAttachment.ChildInstanceId,
+//				},
+//				SourceInstanceIdsReverseMatch: pulumi.Bool(false),
+//				DestinationInstanceIds: pulumi.StringArray{
+//					exampleShInstanceAttachment.ChildInstanceId,
+//				},
+//				DestinationInstanceIdsReverseMatch: pulumi.Bool(false),
+//				SourceRouteTableIds: pulumi.StringArray{
+//					exampleHzNetwork.RouteTableId,
+//				},
+//				DestinationRouteTableIds: pulumi.StringArray{
+//					exampleShNetwork.RouteTableId,
+//				},
+//				SourceChildInstanceTypes: pulumi.StringArray{
+//					pulumi.String("VPC"),
+//				},
+//				DestinationChildInstanceTypes: pulumi.StringArray{
+//					pulumi.String("VPC"),
+//				},
+//				DestinationCidrBlocks: pulumi.StringArray{
+//					exampleShNetwork.CidrBlock,
+//				},
+//				CidrMatchMode: pulumi.String("Include"),
+//				RouteTypes: pulumi.StringArray{
+//					pulumi.String("System"),
+//				},
+//				MatchAsns: pulumi.StringArray{
+//					pulumi.String("65501"),
+//				},
+//				AsPathMatchMode: pulumi.String("Include"),
+//				MatchCommunitySets: pulumi.StringArray{
+//					pulumi.String("65501:1"),
+//				},
+//				CommunityMatchMode:   pulumi.String("Include"),
+//				CommunityOperateMode: pulumi.String("Additive"),
+//				OperateCommunitySets: pulumi.StringArray{
+//					pulumi.String("65501:1"),
+//				},
+//				Preference: pulumi.Int(20),
+//				PrependAsPaths: pulumi.StringArray{
+//					pulumi.String("65501"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // CEN RouteMap can be imported using the id, e.g.

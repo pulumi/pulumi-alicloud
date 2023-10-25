@@ -396,6 +396,25 @@ class Domain(pulumi.CustomResource):
 
         > **NOTE:** Alibaba Cloud SCDN has stopped new customer purchases from January 26, 2023, and you can choose to buy Alibaba Cloud DCDN products with more comprehensive acceleration and protection capabilities. If you are already a SCDN customer, you can submit a work order at any time to apply for a smooth migration to Alibaba Cloud DCDN products. In the future, we will provide better acceleration and security protection services in Alibaba Cloud DCDN, thank you for your understanding and cooperation.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.scdn.Domain("example",
+            domain_name="my-Domain",
+            sources=[alicloud.scdn.DomainSourceArgs(
+                content="xxx.aliyuncs.com",
+                enabled="online",
+                port=80,
+                priority="20",
+                type="oss",
+            )])
+        ```
+
         ## Import
 
         SCDN Domain can be imported using the id, e.g.
@@ -429,6 +448,25 @@ class Domain(pulumi.CustomResource):
         > **NOTE:** Available in v1.131.0+.
 
         > **NOTE:** Alibaba Cloud SCDN has stopped new customer purchases from January 26, 2023, and you can choose to buy Alibaba Cloud DCDN products with more comprehensive acceleration and protection capabilities. If you are already a SCDN customer, you can submit a work order at any time to apply for a smooth migration to Alibaba Cloud DCDN products. In the future, we will provide better acceleration and security protection services in Alibaba Cloud DCDN, thank you for your understanding and cooperation.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.scdn.Domain("example",
+            domain_name="my-Domain",
+            sources=[alicloud.scdn.DomainSourceArgs(
+                content="xxx.aliyuncs.com",
+                enabled="online",
+                port=80,
+                priority="20",
+                type="oss",
+            )])
+        ```
 
         ## Import
 

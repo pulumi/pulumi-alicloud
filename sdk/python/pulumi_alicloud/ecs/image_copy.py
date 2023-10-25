@@ -458,6 +458,54 @@ class ImageCopy(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.66.0+.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        sh = alicloud.Provider("sh", region="cn-shanghai")
+        hz = alicloud.Provider("hz", region="cn-hangzhou")
+        default_zones = alicloud.get_zones(available_resource_creation="Instance")
+        default_instance_types = alicloud.ecs.get_instance_types(instance_type_family="ecs.sn1ne")
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            owners="system")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id,
+            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id,
+        opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
+        default_instance = alicloud.ecs.Instance("defaultInstance",
+            availability_zone=default_zones.zones[0].id,
+            instance_name="terraform-example",
+            security_groups=[default_security_group.id],
+            vswitch_id=default_switch.id,
+            instance_type=default_instance_types.ids[0],
+            image_id=default_images.ids[0],
+            internet_max_bandwidth_out=10,
+            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
+        default_image = alicloud.ecs.Image("defaultImage",
+            instance_id=default_instance.id,
+            image_name="terraform-example",
+            description="terraform-example",
+            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
+        default_image_copy = alicloud.ecs.ImageCopy("defaultImageCopy",
+            source_image_id=default_image.id,
+            source_region_id="cn-hangzhou",
+            image_name="terraform-example",
+            description="terraform-example",
+            tags={
+                "FinanceDept": "FinanceDeptJoshua",
+            },
+            opts=pulumi.ResourceOptions(provider=alicloud["sh"]))
+        ```
         ## Attributes Reference0
 
          The following attributes are exported:
@@ -502,6 +550,54 @@ class ImageCopy(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.66.0+.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        sh = alicloud.Provider("sh", region="cn-shanghai")
+        hz = alicloud.Provider("hz", region="cn-hangzhou")
+        default_zones = alicloud.get_zones(available_resource_creation="Instance")
+        default_instance_types = alicloud.ecs.get_instance_types(instance_type_family="ecs.sn1ne")
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            owners="system")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id,
+            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id,
+        opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
+        default_instance = alicloud.ecs.Instance("defaultInstance",
+            availability_zone=default_zones.zones[0].id,
+            instance_name="terraform-example",
+            security_groups=[default_security_group.id],
+            vswitch_id=default_switch.id,
+            instance_type=default_instance_types.ids[0],
+            image_id=default_images.ids[0],
+            internet_max_bandwidth_out=10,
+            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
+        default_image = alicloud.ecs.Image("defaultImage",
+            instance_id=default_instance.id,
+            image_name="terraform-example",
+            description="terraform-example",
+            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
+        default_image_copy = alicloud.ecs.ImageCopy("defaultImageCopy",
+            source_image_id=default_image.id,
+            source_region_id="cn-hangzhou",
+            image_name="terraform-example",
+            description="terraform-example",
+            tags={
+                "FinanceDept": "FinanceDeptJoshua",
+            },
+            opts=pulumi.ResourceOptions(provider=alicloud["sh"]))
+        ```
         ## Attributes Reference0
 
          The following attributes are exported:

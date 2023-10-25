@@ -355,6 +355,32 @@ class StudioApplication(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.192.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.bp.StudioApplication("default",
+            application_name="example_value",
+            area_id="example_value",
+            configuration={
+                "enableMonitor": "1",
+            },
+            instances=[alicloud.bp.StudioApplicationInstanceArgs(
+                id="example_value",
+                node_name="example_value",
+                node_type="ecs",
+            )],
+            resource_group_id="example_value",
+            template_id="example_value",
+            variables={
+                "test": "1",
+            })
+        ```
+
         ## Import
 
         Cloud Architect Design Tools Application can be imported using the id, e.g.
@@ -385,6 +411,32 @@ class StudioApplication(pulumi.CustomResource):
         For information about Cloud Architect Design Tools Application and how to use it, see [What is Application](https://help.aliyun.com/document_detail/428263.html).
 
         > **NOTE:** Available in v1.192.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.bp.StudioApplication("default",
+            application_name="example_value",
+            area_id="example_value",
+            configuration={
+                "enableMonitor": "1",
+            },
+            instances=[alicloud.bp.StudioApplicationInstanceArgs(
+                id="example_value",
+                node_name="example_value",
+                node_type="ecs",
+            )],
+            resource_group_id="example_value",
+            template_id="example_value",
+            variables={
+                "test": "1",
+            })
+        ```
 
         ## Import
 

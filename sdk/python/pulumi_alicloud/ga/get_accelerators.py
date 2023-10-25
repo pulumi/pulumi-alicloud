@@ -109,6 +109,19 @@ def get_accelerators(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.111.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.ga.get_accelerators(ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstGaAcceleratorId", example.accelerators[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Accelerator IDs.
     :param str name_regex: A regex string to filter results by Accelerator name.
@@ -143,6 +156,19 @@ def get_accelerators_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     This data source provides the Global Accelerator (GA) Accelerators of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.111.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.ga.get_accelerators(ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstGaAcceleratorId", example.accelerators[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Accelerator IDs.

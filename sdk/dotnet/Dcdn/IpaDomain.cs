@@ -16,6 +16,44 @@ namespace Pulumi.AliCloud.Dcdn
     /// 
     /// &gt; **NOTE:** Available since v1.158.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var domainName = config.Get("domainName") ?? "example.com";
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var example = new AliCloud.Dcdn.IpaDomain("example", new()
+    ///     {
+    ///         DomainName = domainName,
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id)),
+    ///         Scope = "global",
+    ///         Status = "online",
+    ///         Sources = new[]
+    ///         {
+    ///             new AliCloud.Dcdn.Inputs.IpaDomainSourceArgs
+    ///             {
+    ///                 Content = "www.alicloud-provider.cn",
+    ///                 Port = 80,
+    ///                 Priority = "20",
+    ///                 Type = "domain",
+    ///                 Weight = 10,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// DCDN Ipa Domain can be imported using the id, e.g.
